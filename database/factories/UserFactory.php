@@ -23,12 +23,19 @@ $factory->define(App\User::class, function (Faker $faker) {
 });
 
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(App\PersonaDesaparecida::class, function (Faker $faker) {
     return [
         'nombre' => $faker->nombre,
         'apellidoPaterno' => $faker->lastName,
         'apellidoMaterno' => $faker->lastName,
-		'apellidoMaterno' => $faker->lastName,        
+		'apodo' => $faker->color,
+		'edadAparente' => $faker->unique()->numberBetween($min = 1, $max = 87),
+		'nacionalidad' => $faker->country,
+		'edad' => $faker->unique()->numberBetween($min = 1, $max = 95),
+		'fechaNacimiento' => $faker->date($format = 'd/m/Y', $max = ''),
+		'estadoCivil' => $faker->randomElement($estadoCivil),
+
+       
         'remember_token' => str_random(10),
     ];
 });
@@ -57,5 +64,9 @@ $factory->define(App\User::class, function (Faker $faker) {
  });
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6bd13a9b506be98de276f7f2414fde41c5640192
 
 
