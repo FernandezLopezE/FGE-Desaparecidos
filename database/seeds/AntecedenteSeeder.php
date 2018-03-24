@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DomicilioDesaparecidosSeeder extends Seeder
+class AntecedenteSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,9 @@ class DomicilioDesaparecidosSeeder extends Seeder
      */
     public function run()
     {
-        factory(DomicilioDesaparecidosSeeder::class,20)->create();
+        //
+        factory(Antecedente::class, 10)->create();
+        
+
     }
 }

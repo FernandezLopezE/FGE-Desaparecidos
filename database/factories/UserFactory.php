@@ -12,7 +12,7 @@ use Faker\Generator as Faker;
 | model instances for testing / seeding your application's database.
 |
 */
-
+/*
 $factory->define(App\User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
@@ -50,7 +50,34 @@ $factory->define(App\PersonaDesaparecida::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+*/
+
+    $factory->define(App\Models\DomicilioDesaparecido::class, function (Faker $faker) {
+  
+
+            $municipios = App\Models\CatMunicipio::all()->pluck('id')->toArray();
+            $localidades = App\Models\CatLocalidad::all()->pluck('id')->toArray();
+            $colonias = App\Models\CatColonia::all()->pluck('id')->toArray();
 
 
+
+            return [
+
+                'tipoDireccion' => $faker->randomElement(['Personal','Trabajo']),
+                'idMunicipio' => $faker->randomElement($municipios),
+                'idLocalidad' => $faker->randomElement($localidades),
+                'idColonia' => $faker->randomElement($colonias),
+                'calle' => $faker->streetAdress,
+                'numExterno' => $faker->numberBetween($min=1,$max =300),
+                'numInterno' => $faker->numberBetween($min=1,$max =300),
+                'telefono' => $faker->numberBetween($min=2281200000,$max =2288999999)
+            ];
+ });
+
+
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6bd13a9b506be98de276f7f2414fde41c5640192
 
 
