@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class persona_desaparecida extends Seeder
+class nombre_desaparecidos extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class persona_desaparecida extends Seeder
      */
     public function run()
     {
-        db_desaparecidos::table(nombre_desaparecidos)
+        //
     }
 }
