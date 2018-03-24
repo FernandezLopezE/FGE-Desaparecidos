@@ -17,7 +17,7 @@ class CreateParentescoTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('apellidoPaterno');
-            $table->string('apellidoMAterno');
+            $table->string('apellidoMaterno');
             $table->enum('parentesco',['Madre', 'Padre', 'Hijo']);
             $table->integer('edad');
             $table->timestamps();

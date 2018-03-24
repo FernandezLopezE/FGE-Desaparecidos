@@ -7,16 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 class PersonaDesaparecida extends Model
 {
 
-    protected $table = 'persona_desaparecida';
+    protected $table = 'persona_desaparecidos';
     protected $fillable = [
     	'nombre',
     	'apellidoPaterno',
     	'apellidoMaterno',
     	'apodo',
     	'edadAparente',
-    	'nacionalidad',
+    	'id_nacionalidad',
     	'fechaNacimiento',
-    	'estadoCivil',
+    	'id_edocivil',
     	'genero',
     	'embarazo',
     	'periodoGestacion',

@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Parentesco;
 
-class nombre_desaparecidos extends Seeder
+class ParentescoTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +12,6 @@ class nombre_desaparecidos extends Seeder
      */
     public function run()
     {
-        //
+        factory(Parentesco::class,10)->create();
     }
 }

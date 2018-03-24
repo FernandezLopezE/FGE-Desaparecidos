@@ -11,7 +11,6 @@ class AntecedenteSeeder extends Seeder
      */
     public function run()
     {
-        //
         factory(Antecedente::class, 10)->create();
         
 

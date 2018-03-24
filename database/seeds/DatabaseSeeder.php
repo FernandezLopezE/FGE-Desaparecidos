@@ -64,7 +64,7 @@ class DatabaseSeeder extends Seeder
          $this->call(LocalidadesTamaulipasSeeder::class);
          $this->call(LocalidadesVeracruzSeeder::class);
 
-         $this->call(PersonaTableSeeder::class);
+        
 
          /*$this->call(UnidadSeeder::class);
 
@@ -78,6 +78,14 @@ class DatabaseSeeder extends Seeder
          $this->call(Agrupacion2Seeder::class);*/
 
          //domicilioDesaparecidos
-         $this->call(DomicilioDesaparecidosSeeder::class);
+        $this->call(ParentescoTableSeeder::class);
+        $this->call(PersonaTableSeeder::class);
+        $this->call(DomicilioDesaparecidosSeeder::class);
+        $this->call(CatCentroReclusionSeeder::class);
+        $this->call(DocumentosSeeder::class);
+        $this->call(AntecedenteSeeder::class);
+
+
+
     }
 }

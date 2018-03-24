@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDocumentosIdentidad extends Migration
+class CreateDocumentosIdentidadTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,7 +20,7 @@ class CreateDocumentosIdentidad extends Migration
             $table->string('otraIdentificacion');
             $table->string('noIdentificacion');
             $table->integer('idPersonaDesaparecidos')->unsigned();
-            $table->foreign('idPersonaDesaparecidos')->references('id')->on('nombre_desaparecidos');
+            $table->foreign('idPersonaDesaparecidos')->references('id')->on('persona_desaparecidos');
             $table->timestamps();
         });
     }

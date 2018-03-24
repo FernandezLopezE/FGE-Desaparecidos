@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class parentescoSeeder extends Seeder
+class PersonaTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class parentescoSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(PersonaDesaparecida::class,10)->create();
     }
 }

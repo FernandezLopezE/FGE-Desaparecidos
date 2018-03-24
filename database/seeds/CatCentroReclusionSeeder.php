@@ -11,7 +11,6 @@ class CatCentroReclusionSeeder extends Seeder
      */
     public function run()
     {
-        //
         factory(CentroReclusion::class, 10)->create();
         
     }
