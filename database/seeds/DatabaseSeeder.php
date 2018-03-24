@@ -65,6 +65,7 @@ class DatabaseSeeder extends Seeder
          $this->call(LocalidadesVeracruzSeeder::class);
 
          $this->call(PersonaTableSeeder::class);
+
          /*$this->call(UnidadSeeder::class);
 
          $this->call(RegistroPersona::class);
