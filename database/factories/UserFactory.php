@@ -23,16 +23,23 @@ $factory->define(App\User::class, function (Faker $faker) {
 });
 
 
-$factory->define(App\User::class, function (Faker $faker) {
+$factory->define(App\PersonaDesaparecida::class, function (Faker $faker) {
     return [
         'nombre' => $faker->nombre,
         'apellidoPaterno' => $faker->lastName,
         'apellidoMaterno' => $faker->lastName,
-		'apellidoMaterno' => $faker->lastName,        
+		'apodo' => $faker->color,
+		'edadAparente' => $faker->unique()->numberBetween($min = 1, $max = 87),
+		'nacionalidad' => $faker->country,
+		'edad' => $faker->unique()->numberBetween($min = 1, $max = 95),
+		'fechaNacimiento' => $faker->date($format = 'd/m/Y', $max = ''),
+		'estadoCivil' => $faker->randomElement($estadoCivil),
+
+       
         'remember_token' => str_random(10),
     ];
 });
 
-//hola
+
 
 
