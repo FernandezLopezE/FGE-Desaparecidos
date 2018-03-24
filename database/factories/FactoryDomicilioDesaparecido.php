@@ -16,21 +16,24 @@ use Faker\Generator as Faker;
 
 
 
-$factory->define(App\DomicilioDesaparecido::class, function (Faker $faker) {
+    $factory->define(App\DomicilioDesaparecido::class, function (Faker $faker) {
 
 
-	$departamentos = App\Departamento::all()->pluck('id')->toArray();
-	$turnos = App\Turno::all()->pluck('id')->toArray();
+	
+
+	$municipios = App\Turno::all()->pluck('id')->toArray();
+    $localidades = App\Turno::all()->pluck('id')->toArray();
+    $colonias = App\Turno::all()->pluck('id')->toArray();
 
 
 
     return [
 
 		'tipoDireccion' => $faker->randomElement(['Personal','Trabajo']),
-    	'idMunicipio' => $faker->sentence(2),
-    	'idLocalidad' => $faker->sentence(2),
-    	'idColonia' => $faker->sentence(2),
-    	'calle' => $faker->sentence(3),
+    	'idMunicipio' => $faker->randomElement($municipios),
+    	'idLocalidad' => $faker->randomElement($localidades),
+    	'idColonia' => $faker->randomElement($colonias),
+    	'calle' => $faker->streetAdress(),
     	'numExterno' => $faker->numberBetween($min=1,$max =300),
     	'numInterno' => $faker->numberBetween($min=1,$max =300),
     	'telefono' => $faker->numberBetween($min=2281200000,$max =2288999999)
