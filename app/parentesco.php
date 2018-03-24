@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class parentesco extends Model
+class Parentesco extends Model
 {
-    public function nombre_desaparecidos()
+    public function PersonaDesaparecida()
     {
     	return $this->hasMany('App\nombre_desaparecidos', 'id_parentesco', 'id');
     }
