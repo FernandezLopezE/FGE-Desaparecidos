@@ -19,8 +19,8 @@ class CreateDocumentosIdentidad extends Migration
             $table->enum('identificacion',['IFE','Cartilla SM','Licencia','Trajetón','Cartilla','Pasaporte','Otro(especifique)']);
             $table->string('otraIdentificacion');
             $table->string('noIdentificacion');
-            $table->integer('id_nombre_desaparecidos')->unsigned();
-            $table->foreign('id_nombre_desaparecidos')->references('id')->on('nombre_desaparecidos');
+            $table->integer('idPersonaDesaparecida')->unsigned();
+            $table->foreign('idPersonaDesaparecida')->references('id')->on('nombre_desaparecidos');
             $table->timestamps();
         });
     }
