@@ -20,10 +20,10 @@ class CreateAntecedentes extends Migration
             $table->string('mes');
             $table->year('anio');
             $table->text('observaciones');
-            $table->integer('id_nombre_desaparecidos')->unsigned()->default('1');
-            $table->foreign('id_nombre_desaparecidos')->references('id')->on('nombre_desaparecidos');
+            $table->integer('id_persona_desaparecidos')->unsigned();
+            $table->foreign('id_persona_desaparecidos')->references('id')->on('nombre_desaparecidos');
             $table->integer('id_delito')->unsigned();
-            $table->integer('id_delito')->references('id')->on('cat_delito');
+            $table->foreign('id_delito')->references('id')->on('cat_delito');
             $table->timestamps();
         });
     }
