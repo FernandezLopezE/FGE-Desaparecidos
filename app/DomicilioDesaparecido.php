@@ -13,14 +13,14 @@ class domicilios_desaparecidos extends Model
     	'idMunicipio',
     	'idLocalidad',
     	'idColonia',
-    	'idCalle',
+    	'calle',
     	'numExterno',
     	'numInterno',
     	'telefono',
     	'idPersona'
     ];
 
-    public function nombre_desaparecidos(){
+    public function PersonaDesaparecida(){
 
     	return $this->belongsTo('App\nombre_desaparecidos');
     }

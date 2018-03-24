@@ -21,3 +21,28 @@ $factory->define(App\User::class, function (Faker $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+
+$factory->define(App\DomicilioDesaparecido::class, function (Faker $faker) {
+
+
+	$departamentos = App\Departamento::all()->pluck('id')->toArray();
+	$turnos = App\Turno::all()->pluck('id')->toArray();
+
+
+
+    return [
+
+		'tipoDireccion' => $faker->randomElement(['Personal','Trabajo']),
+    	'idMunicipio' => $faker->sentence(2),
+    	'idLocalidad' => $faker->sentence(2),
+    	'idColonia' => $faker->sentence(2),
+    	'calle' => $faker->sentence(3),
+    	'numExterno' => $faker->numberBetween($min=1,$max =300),
+    	'numInterno' => $faker->numberBetween($min=1,$max =300),
+    	'telefono' => $faker->numberBetween($min=2281200000,$max =2288999999)
+    ];
+ });
+
+
