@@ -11,6 +11,6 @@ class DomicilioDesaparecidosSeeder extends Seeder
      */
     public function run()
     {
-        factory(DomicilioDesaparecidosSeeder::class,10)->create();
+        factory(DomicilioDesaparecidosSeeder::class,20)->create();
     }
 }

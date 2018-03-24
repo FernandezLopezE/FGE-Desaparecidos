@@ -16,14 +16,14 @@ use Faker\Generator as Faker;
 
 
 
-    $factory->define(App\DomicilioDesaparecido::class, function (Faker $faker) {
+    $factory->define(App\Models\DomicilioDesaparecido::class, function (Faker $faker) {
 
 
 	
 
-	$municipios = App\Turno::all()->pluck('id')->toArray();
-    $localidades = App\Turno::all()->pluck('id')->toArray();
-    $colonias = App\Turno::all()->pluck('id')->toArray();
+	$municipios = App\Models\CatMunicipio::all()->pluck('id')->toArray();
+    $localidades = App\Models\CatLocalidad::all()->pluck('id')->toArray();
+    $colonias = App\Models\CatColonia::all()->pluck('id')->toArray();
 
 
 
