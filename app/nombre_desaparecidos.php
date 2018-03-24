@@ -36,7 +36,7 @@ public function domiciliosDesaparecidos()
     ];
 
     	public function parentesco(){
-    		return $this->belongsTo('App\parentesco');
+    		return $this->belongsTo('App\parentesco', 'idParentesco', 'id');
     	}
     		{
 		return $this->hasMany('App\nombre_desaparecidos','idPersona','id');
