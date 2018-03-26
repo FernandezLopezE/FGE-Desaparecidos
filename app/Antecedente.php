@@ -5,13 +5,12 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 
 class Antecedente extends Model
-{
-    //
+{    
     protected $table = 'antecedentes';
 
     protected $fillabel = ['antecedentes','mes','anio','observaciones','idPersonaDesaparecida','idDelito','idCentroReclusion'];
 
-	public function nombreDesaparecidos(){
+	/*public function nombreDesaparecidos(){
 		return $this->hasMany('App\PersonaDesaparecida','idPersonaDesaparecida','id');
 	}
 
@@ -21,7 +20,7 @@ class Antecedente extends Model
 
 	public function centroReclusion(){
 		return $this->belongsTo('App\CentroReclusion','idCentroReclusion','id');
-	}
+	}*/
 
 
 }

@@ -16,7 +16,7 @@ class CreateDocumentosIdentidadTable extends Migration
         //
         Schema::create('documentos_identidad', function (Blueprint $table){
             $table->increments('id');
-            $table->enum('identificacion',['IFE','Cartilla SM','Licencia','Trajetón','Cartilla','Pasaporte','Otro(especifique)']);
+            $table->enum('identificacion',['IFE','Cartilla SM','Licencia','Tarjetón','Cartilla','Pasaporte','Otro(especifique)']);
             $table->string('otraIdentificacion');
             $table->string('noIdentificacion');
             $table->integer('idPersonaDesaparecidos')->unsigned();
