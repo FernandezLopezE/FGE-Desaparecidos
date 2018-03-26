@@ -12,5 +12,9 @@
 */
 
 Route::get('/', function () {
-    return view('inicio');
+    return view('desaparecidos.pruebas');
+});
+
+Route::get('/form', function () {
+    return view('desaparecidos.form');
 });
