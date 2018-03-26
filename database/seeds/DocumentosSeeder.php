@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\Documento;
 
 class DocumentosSeeder extends Seeder
 {

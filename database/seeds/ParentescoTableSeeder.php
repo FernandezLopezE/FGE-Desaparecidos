@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Parentesco;
+use App\Models\Parentesco;
 
 class ParentescoTableSeeder extends Seeder
 {
@@ -12,6 +12,6 @@ class ParentescoTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Parentesco::class,10)->create();
+        factory(App\Models\Parentesco::class,10)->create();
     }
 }

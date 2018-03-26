@@ -22,13 +22,24 @@ $factory->define(App\User::class, function (Faker $faker) {
     ];
 });
 
+$factory->define(App\Models\Parentesco::class, function (Faker $faker) {
 
-$factory->define(App\PersonaDesaparecida::class, function (Faker $faker) {
+    return [
+        'nombre' => $faker->name,
+        'apellidoPaterno' => $faker->lastName,
+        'apellidoMaterno' => $faker->lastName,
+        'edad' => $faker->unique()->numberBetween($min = 1, $max = 95),
+        'parentesco' => 'Madre',
+
+    ];
+});
+
+$factory->define(App\Models\Desaparecido::class, function (Faker $faker) {
 	$estadosCivil = App\Models\CatEstadoCivil::all()->pluck('id')->toArray();
 	$nacionalidades = App\Models\CatNacionalidad::all()->pluck('id')->toArray();
 	$escolaridades = App\Models\CatEscolaridad::all()->pluck('id')->toArray();
     $ocupaciones = App\Models\CatOcupacion::all()->pluck('id')->toArray();
-    $parentesco =  App\Parentesco::all()->pluck('id')->toArray();
+    $parentesco =  App\Models\Parentesco::all()->pluck('id')->toArray();
 
     return [
         'nombre' => $faker->name,
@@ -42,7 +53,7 @@ $factory->define(App\PersonaDesaparecida::class, function (Faker $faker) {
 		'id_edocivil' => $faker->randomElement($estadosCivil),
 		'genero' => $faker->randomElement(['Masculino' ,'Femenino']),
 		'embarazo' => $faker->randomElement(['Sí' ,'No']),
-		'periodoGestacion' => $faker->unique()->numberBetween($min = 0, $max = 9),
+		'periodoGestacion' => $faker->randomElement(['1','2','3','4','5','6','7','8','9']),
 		'rumores' => $faker->randomElement(['Sí' ,'No']),   
 		'pormenores' => $faker->sentence(10),
 		'escolaridad' => $faker->randomElement($escolaridades),
@@ -52,11 +63,12 @@ $factory->define(App\PersonaDesaparecida::class, function (Faker $faker) {
 });
 
 
-$factory->define(App\Models\DomicilioDesaparecido::class, function (Faker $faker) {
+$factory->define(App\Models\Domicilio::class, function (Faker $faker) {
 
         $municipios = App\Models\CatMunicipio::all()->pluck('id')->toArray();
         $localidades = App\Models\CatLocalidad::all()->pluck('id')->toArray();
         $colonias = App\Models\CatColonia::all()->pluck('id')->toArray();
+        $desaparecidos = App\Models\Desaparecido::all()->pluck('id')->toArray();
 
         return [
 
@@ -64,25 +76,26 @@ $factory->define(App\Models\DomicilioDesaparecido::class, function (Faker $faker
             'idMunicipio' => $faker->randomElement($municipios),
             'idLocalidad' => $faker->randomElement($localidades),
             'idColonia' => $faker->randomElement($colonias),
-            'calle' => $faker->streetAdress,
+            'calle' => $faker->sentence(5),
             'numExterno' => $faker->numberBetween($min=1,$max =300),
             'numInterno' => $faker->numberBetween($min=1,$max =300),
-            'telefono' => $faker->numberBetween($min=2281200000,$max =2288999999)
+            'telefono' => $faker->numberBetween($min=2281200000,$max =2288999999),
+            'idPersona' => $faker->randomElement($desaparecidos),
         ];
 });
 
-$factory->define(App\Documento::class, function (Faker $faker) {
-    $persona = App\Persona::all()->pluck('id')->toArray();
+$factory->define(App\Models\Documento::class, function (Faker $faker) {
+    $desaparecidos = App\Models\Desaparecido::all()->pluck('id')->toArray();
 
     return [
         'identificacion' => $faker->randomElement(['IFE','Licencia','Tarjetón','Cartilla','Pasaporte']),
-        'otraIdentificacion' => $faker->sentences(2),
-        'noIndetificacion' => $faker->regexify('[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}'),
-        'idPersonaDesaparecida' => $faker->randomElement($persona),
+        'otraIdentificacion' => $faker->sentence(2),
+        'noIdentificacion' => $faker->regexify('[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}'),
+        'idPersonaDesaparecidos' => $faker->randomElement($desaparecidos),
     ];
 });
 
-$factory->define(App\CentroReclusion::class, function (Faker $faker) {
+$factory->define(App\Models\CentroReclusion::class, function (Faker $faker) {
     
 
     return [
@@ -91,30 +104,19 @@ $factory->define(App\CentroReclusion::class, function (Faker $faker) {
     ];
 });
 
-$factory->define(App\Antecedente::class, function (Faker $faker) {
-    $persona = App\Persona::all()->pluck('id')->toArray();
-    $delito = App\CatDelito::all()->pluck('id')->toArray();
-    $centro = App\CentroReclusion::all()->pluck('id')->toArray();
+$factory->define(App\Models\Antecedente::class, function (Faker $faker) {
+    $desaparecidos = App\Models\Desaparecido::all()->pluck('id')->toArray();
+    $delito = App\Models\CatDelito::all()->pluck('id')->toArray();
+    $centro = App\Models\CentroReclusion::all()->pluck('id')->toArray();
 
     return [
         'antecedentes' => $faker->boolean,
         'mes' => $faker->monthName,
         'anio' => $faker->year,
         'observaciones' => $faker->sentence(4),
-        'idPersonaDesaparecida' => $faker->randomElement($persona),
+        'idPersonaDesaparecida' => $faker->randomElement($desaparecidos),
         'idDelito' => $faker->randomElement($delito),
         'idCentroReclusion' => $faker->randomElement($centro),
     ];
 });
 
-$factory->define(App\Parentesco::class, function (Faker $faker) {
-
-    return [
-        'nombre' => $faker->name,
-        'apellidoPaterno' => $faker->lastName,
-        'apellidoMaterno' => $faker->lastName,
-        'edad' => $faker->unique()->numberBetween($min = 1, $max = 95),
-        'parentesco' => 'Madre',
-
-    ];
-});

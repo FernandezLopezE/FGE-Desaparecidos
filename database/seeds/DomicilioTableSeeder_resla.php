@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\CentroReclusion;
 
-class CatCentroReclusionSeeder extends Seeder
+class DomicilioTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +11,6 @@ class CatCentroReclusionSeeder extends Seeder
      */
     public function run()
     {
-        factory(CentroReclusion::class, 10)->create();
-        
+        factory(App\Models\Domicilio::class,10)->create();
     }
 }
