@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class domicilios_desaparecidos extends Model
+class Domicilio extends Model
 {
     
 	protected $table = 'domicilios_desaparecidos';
@@ -20,9 +20,9 @@ class domicilios_desaparecidos extends Model
     	'idPersona'
     ];
 
-    public function PersonaDesaparecida(){
+    /*public function PersonaDesaparecida(){
 
     	return $this->belongsTo('App\nombre_desaparecidos');
-    }
+    }*/
 
 }

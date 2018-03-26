@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -17,8 +17,8 @@ class Parentesco extends Model
             'edad',
 	];
 
-    public function PersonaDesaparecida()
+    /*public function PersonaDesaparecida()
     {
     	return $this->hasMany('App\nombre_desaparecidos', 'id_parentesco', 'id');
-    }
+    }*/
 }

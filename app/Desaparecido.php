@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PersonaDesaparecida extends Model
+class Desaparecido extends Model
 {
 
     protected $table = 'persona_desaparecidos';
@@ -26,13 +26,13 @@ class PersonaDesaparecida extends Model
     	'ocupacion'
     ];
 
-	public function parentesco(){
+	/*public function parentesco(){
 		return $this->belongsTo('App\parentesco', 'idParentesco', 'id');
 	}
 
 	public function domiciliosDesaparecidos(){
 		return $this->hasMany('App\nombre_desaparecidos','idPersona','id');
 
-	}
+	}*/
 
 }
