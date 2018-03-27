@@ -14,6 +14,11 @@
  <hr>   <!--Aqui empieza el titulo que se va a desplazar -->
         <div id = "tituloDomicilio" class=" form-group row p-2 bg-primary text-white  text-center ">Domicilio actual o último del extraviado</div><!-- Aqui termina el titulo-->
 
+<<<<<<< HEAD
+=======
+
+ 
+>>>>>>> 18280ea7245ef18decca86a7073711585261c1a6
 
 <form class ="form-horizontal">
 <div id = "domicilioForm">  <!--Aqui empieza el formulario -->
