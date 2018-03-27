@@ -9,45 +9,35 @@
     <link rel="stylesheet" href="css/select2-bootstrap.css">
     <link rel="stylesheet" href="css/gh-pages.css">
    
-
-    <!--[if lt IE 9]>
-        <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="js/respond.min.js"></script>
-    <![endif]-->
 </head>
+ 
+ <hr>   <!--Aqui empieza el titulo que se va a desplazar -->
+        <div id = "tituloDomicilio" class=" form-group row p-2 bg-primary text-white  text-center ">Domicilio actual o último del extraviado</div><!-- Aqui termina el titulo-->
 
-    <form class ="form-horizontal" >
+@include('desaparecidos.fragmentos.error')
+ 
 
-
-    <div class="form-group row " id ="divAgregarDomicilio">
-
+<form class ="form-horizontal">
+<div id = "domicilioForm">  <!--Aqui empieza el formulario -->
+    
+    <div class="form-group row " id ="divAgregarDomicilio"><!--Este es el grupo para el boton "Agregar domicilio" -->
         <button type = "button" id="agregarDomicilio" class="btn btn-primary">Agregar domicilio</button></div>
-
-
-<form >
-
-
-
+    
     <div class="form-group row " id ="domicilio"  > <!-- Tipo de domicilio -->
         <div class ="col-2">
         <label for="tipoDireccion" class="control-label">Tipo de domicilio</label>
         </div>
-
         <div class ="col-2">
-        <select class="form-control" id="tipoDireccion" id ="domicilio">
-            
+        <select class="form-control" id="tipoDireccion" id ="domicilio">   
             <option value="WI">Personal</option>
             <option value="WY">Trabajo</option>
         </select>
         </div>
-
         <div class ="col-2">
         <input type="text" class="input-medium bfh-phone" data-country="US" placeholder="Número telefónico">
         </div>
     </div>
-
     <div></div>
-
     <div class="form-group row"  id ="domicilio2" > 
         <div class = "col-6">
         <!-- Calle -->
@@ -63,14 +53,11 @@
         <input type="text" class="form-control" id="numInterno" name="numInterno" placeholder="Número Interior">
         </div>  
     </div>
-
     <!--inicia el select2 de localidad-->
         
        <!-- <div class="jumbotron">
              <div class="container">-->
-    <div class="form-group row"  id ="domicilio3">
-
-                           
+    <div class="form-group row"  id ="domicilio3">                        
             <div class="select2-wrapper col-2">
                 <select class="form-control codigoPostal" multiple="multiple">
                     <option></option>
@@ -146,10 +133,10 @@
         <button type="button" class="btn btn-primary" id="guardar">Guardar</button>
     </div>  
 
-</form> <!-- este es el div de el ng-app hide>
+ <!-- este es el div de el ng-app hide>
     <!--Aqui  se maneja la tabla de los domicilios -->
     <div class="container">
-        <h2>Domicilios</h2>          
+        <h4>Domicilios</h4>          
         <table class="table table-striped">
             <thead>
             <tr>
@@ -164,7 +151,7 @@
             </tbody>
         </table>
     </div>
-
+</div>
 
 
 
@@ -231,10 +218,15 @@
     });
 
     });
+   $(document).ready(function(){
+    $("#tituloDomicilio").click(function(){
+        $("#domicilioForm").Toggle();
+    });
+    });
 
 </script>
 
 
 
 
-    </form>
+    </form><!-- Aqui termina mi formulario-->
