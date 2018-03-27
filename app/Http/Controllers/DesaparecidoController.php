@@ -8,6 +8,7 @@ use App\Models\Documento;
 use App\Models\Antecedente;
 use App\Models\Domicilio;
 use App\Http\Requests\DesaparecidoDomicilio;
+use App\Http\Requests\DesaparecidoRequest;
 
 class DesaparecidoController extends Controller
 {
@@ -71,9 +72,10 @@ class DesaparecidoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DesaparecidoRequest $request)
     {
-        //Desaparecidos
+
+       /* //Desaparecidos
         $desaparecido = new Desaparecido();
 
         $desaparecido->nombre = $request->input('nombre');
@@ -110,7 +112,7 @@ class DesaparecidoController extends Controller
         $domicilio->idPersona = $request->input('idPersona');
 
         $domicilio->save();
-
+*/
         //Documentos identidad
         $identificacion = new Documento();
         
@@ -124,7 +126,7 @@ class DesaparecidoController extends Controller
 
         $identificacion->save();
 
-        //Antecedentes
+       /* //Antecedentes
 
         $antecedente = new Antecedente();
 
@@ -138,7 +140,7 @@ class DesaparecidoController extends Controller
 
         $antecendente->save();
 
-
+*/
 
         return ("Hecho");
     }
