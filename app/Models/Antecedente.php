@@ -9,7 +9,7 @@ class Antecedente extends Model
     //
     protected $table = 'antecedentes';
 
-    protected $fillabel = ['antecedentes','mes','anio','observaciones','idPersonaDesaparecida','idDelito','idCentroReclusion'];
+    protected $fillabel = ['antecedentes','mes','anio','observaciones','idPersonaDesaparecidos','idDelito','idCentroReclusion'];
 
 	/*public function nombreDesaparecidos(){
 		return $this->hasMany('App\Models\Desaparecido','idDesaparecido','id');
