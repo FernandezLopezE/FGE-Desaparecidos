@@ -18,6 +18,5 @@ class PersonaSeeder extends Seeder
         factory(App\Models\Familiar::class, 10)->create();
         factory(App\Models\Antecedente::class, 10)->create();
         factory(App\Models\Documento::class, 10)->create();
-
     }
 }
