@@ -14,7 +14,6 @@
  <hr>   <!--Aqui empieza el titulo que se va a desplazar -->
         <div id = "tituloDomicilio" class=" form-group row p-2 bg-primary text-white  text-center ">Domicilio actual o último del extraviado</div><!-- Aqui termina el titulo-->
 
-@include('desaparecidos.fragmentos.error')
  
 
 <form class ="form-horizontal">
