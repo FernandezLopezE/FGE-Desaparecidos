@@ -40,6 +40,5 @@ class CatMunicipio extends Model
     public static function municipios($id){
         return CatMunicipio::select('id', 'nombre')->where('idEstado', '=', $id)->orderBy('nombre', 'ASC')->get();
     }
-
     
 }

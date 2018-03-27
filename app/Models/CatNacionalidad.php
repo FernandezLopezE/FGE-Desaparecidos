@@ -6,21 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class CatNacionalidad extends Model
 {
-    public $table = 'cat_nacionalidad';
+	public $table = 'cat_nacionalidad';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    
-    public $fillable = [
-        'id',
-        'nombre'
-    ];
+	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array
+	 */
+	
+	public $fillable = [
+		'id',
+		'nombre'
+	];
 
-    public function variablesPersonas()
-    {
-       return $this->hasMany('app/Models/VariablesPersona');
-    }
+	public function desaparecidos()
+	{
+		return $this->hasMany('App\Models\Desaparecido', 'idDesaparecido', 'id');
+	}
 }

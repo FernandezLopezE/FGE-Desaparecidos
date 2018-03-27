@@ -6,12 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Documento extends Model
 {
-    //
-    protected $table ='documentos_identidad';
+	protected $table = 'desaparecidos_documentos_identidad';
+	protected $fillable = [
+		'identificacion',
+		'otraIdentificacion',
+		'numIdentificacion',
+		'idDesaparecido',
+	];
 
-    protected $fillabel = ['identificacion','otraIdentificacion','noIdentificacion','idPersonaDesaparecida'];
-
-    /*public function persona(){
-    	return $this->belongsTo('App\PersonaDesaparecida','idPersonaDesaparecida','id');
-    }*/
+	public function desaparecido()
+	{
+		return $this->belongsTo('App\Models\Desaparecido','id');
+	}
 }
