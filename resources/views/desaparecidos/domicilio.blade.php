@@ -14,8 +14,6 @@
  <hr>   <!--Aqui empieza el titulo que se va a desplazar -->
         <div id = "tituloDomicilio" class=" form-group row p-2 bg-primary text-white  text-center ">Domicilio actual o último del extraviado</div><!-- Aqui termina el titulo-->
 
-@include('desaparecidos.fragmentos.error')
- 
 
 <form class ="form-horizontal">
 <div id = "domicilioForm">  <!--Aqui empieza el formulario -->
@@ -33,8 +31,8 @@
             <option value="WY">Trabajo</option>
         </select>
         </div>
-        <div class ="col-2">
-        <input type="text" class="input-medium bfh-phone" data-country="US" placeholder="Número telefónico">
+        <div class ="col-2"><!-- mi numero de telefono solo me deja escribir numeros y no letras -->
+        <input type="text" class="input-medium bfh-phone" data-country="US" placeholder="Número telefónico" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
         </div>
     </div>
     <div></div>
@@ -42,11 +40,11 @@
         <div class = "col-6">
         <!-- Calle -->
         <!--<label for="calle" class="control-label">Calle</label>-->
-        <input type="text" class="form-control" id="calle" name="calle" placeholder="Calle">
+        <input type="text" class="form-control" id="calle" name="calle" placeholder="Calle" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
         </div>  
 
-        <div class="col-2"> <!-- Numero exterior -->
-        <input type="text" class="form-control" id="numExterno" name="numExterno" placeholder="Número Exterior">
+        <div class="col-2"> <!-- Numero exterior e´l pattern solo acepta numeros-->
+        <input type="text" class="form-control" id="numExterno" name="numExterno" placeholder="Número Exterior" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
         </div>  
 
         <div class="col-2"> <!-- Numero interior -->
@@ -223,6 +221,23 @@
         $("#domicilioForm").Toggle();
     });
     });
+    //Aqui se pone la funcion para validar solo numeros.
+   function validaNumericos(event) {
+    if(event.charCode >= 48 && event.charCode <= 57){
+      return true;
+     }
+     return false;        
+    }
+    //Aqui se pone la funcion para validar letras espacios y numeros.
+   function validaNumericos(event) {
+    if(event.charCode >= 48 && event.charCode <= 57){
+      return true;
+     }
+     return false;        
+    }
+   
+
+
 
 </script>
 
