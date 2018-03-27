@@ -19,8 +19,8 @@ class CatNacionalidad extends Model
 		'nombre'
 	];
 
-	public function desaparecidos()
+	public function personas()
 	{
-		return $this->hasMany('App\Models\Desaparecido', 'idDesaparecido', 'id');
+		return $this->hasMany('App\Models\Persona', 'idPersona', 'id');
 	}
 }

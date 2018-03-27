@@ -7,23 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 class Desaparecido extends Model
 {
 	protected $table = 'desaparecidos_personas';
-	protected $fillable = [
-		'nombres',
-		'primerAp',
-		'segundoAp',
+	protected $fillable = [		
 		'apodo',
-		'edadAparente',
-		'fechaNacimiento',
-		'sexo',
+		'edadAparente',		
 		'embarazo',
 		'periodoGestacion',
 		'rumoresBebe',
 		'pormenores',
 		'antecedentesJudiciales',
-		'idEdocivil',
-		'idNacionalidad',			
+		'idEdocivil',				
 		'idOcupacion',		
-		'idEscolaridad',	
+		'idEscolaridad',
+		'idPersona'	
 	];
 
 	public function familiares()
@@ -41,15 +36,20 @@ class Desaparecido extends Model
 		return $this->hasMany('App\Models\Domicilio', 'idDomicilio', 'id');
 	}
 
+	public function antecedentes()
+	{
+		return $this->hasMany('App\Models\Antecedente', 'idAntecedente', 'id');
+	}
+
 	public function edocivil()
 	{
 		return $this->belongsTo('App\Models\CatEstadoCivil','id');
 	}
 
-	public function nacionalidad()
+	/*public function nacionalidad()
 	{
 		return $this->belongsTo('App\Models\CatNacionalidad','id');
-	}
+	}*/
 
 	public function ocupacion()
 	{
@@ -60,5 +60,10 @@ class Desaparecido extends Model
 	{
 		return $this->belongsTo('App\Models\CatEscolaridad','id');
 	}
+
+	public function persona()
+	{
+		return $this->belongsTo('App\Models\Persona','id');
+	}	
 
 }

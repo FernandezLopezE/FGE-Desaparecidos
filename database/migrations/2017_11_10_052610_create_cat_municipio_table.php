@@ -15,13 +15,14 @@ class CreateCatMunicipioTable extends Migration
     {
         Schema::create('cat_municipio', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('idMunicipio')->unsigned();
+            $table->integer('idMunicipio')->unsigned();            
+            $table->string('nombre',250);            
+
             $table->integer('idEstado')->unsigned();
-            $table->string('nombre',250);
+            $table->foreign('idEstado')->references('id')->on('cat_estado')->onDelete('cascade');
+
             $table->timestamps();
             $table->softDeletes();
-            
-            $table->foreign('idEstado')->references('id')->on('cat_estado')->onDelete('cascade');
         });
     }
 

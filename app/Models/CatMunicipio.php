@@ -30,11 +30,11 @@ class CatMunicipio extends Model
     }
 
     public function domicilios(){
-        return $this->hasMany('App\Models\Domicilio');
+        return $this->hasMany('App\Models\Domicilio','idDomicilio', 'id');
     }
 
     public function localidades(){
-        return $this->hasMany('App\Models\CatLocalidad');
+        return $this->hasMany('App\Models\CatLocalidad', 'idLocalidad', 'id');
     }
 
     public static function municipios($id){
