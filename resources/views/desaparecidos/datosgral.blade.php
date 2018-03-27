@@ -23,6 +23,8 @@
   	</fieldset>
   	 </div>
   	<!--Fin Genero -->
+
+  	<!--Nacionalidad -->
   	 <div class="col-6">
 		<input type="text" class="form-control" placeholder="Aquí va la nacionalidad">
 	</div>
@@ -65,7 +67,7 @@
 			<input type="text" class="form-control" name="" placeholder="Ocupación">
 		</div>	
 		<div class="col-3">
-			<select class="custom-select" name="estadoCivil" id="estadoCivil">
+			<select class="form-control" name="estadoCivil" id="estadoCivil">
 				<option selected>Estado civil</option>
   				<option value="soltero(a)">Soltero(a)</option>
   				<option id="casado" name="casado" value="casado">Casado(a)</option>
@@ -89,39 +91,42 @@
 		</div>
 	</div><hr>
 	
-	<div class="form-group row">
+	<div class="form-group row" name="tieneHijos" id="tieneHijos">
 		<label class="col-1 col-form-label">Hijos</label>
 		<div class="col-1">
-			<label class="radio-inline"><input type="radio" class="form-control" name="si" id="si">Sí</label>
+			<label class="radio-inline"><input type="radio" class="form-control" name="hijos" id="hijos" value="si">Sí</label>
 		</div>
 		<div class="col-1">
-			<label class="radio-inline"><input type="radio" class="form-control" name="no">No</label>
-		</div>
-		<div class="col-3" id="nombreHijo" style="display:none">
-			<input type="text" class="form-control" name="" placeholder="Nombre">
-		</div>
-		<div class="col-3" id="nombreHijo" style="display:none">
-			<input type="text" class="form-control" name="" placeholder="Apellido paterno">
-		</div>
-		<div class="col-3" id="nombreHijo" style="display:none">
-			<input type="text" class="form-control" name="" placeholder="Apellido materno">
+			<label class="radio-inline"><input type="radio" class="form-control" name="hijos" id="hijos" value="no">No</label>
 		</div>
 	</div>
 
-	<div class="form-group row">
+	<div class="form-group row" id="nombreHijo" style="display:none">
+		<div class="col-3">
+			<input type="text" class="form-control"  placeholder="Nombre">
+		</div>
+		<div class="col-3">
+			<input type="text" class="form-control"  placeholder="Apellido paterno">
+		</div>
+		<div class="col-3">
+			<input type="text" class="form-control"  placeholder="Apellido materno">
+		</div>
+	</div>
+
+	<div class="form-group row" id="estaEmbarazada">
 		<label class="col-3 col-form-label">Embarazo al desaparecer</label>
 		<div class="col-1">
-			<label class="radio-inline"><input type="radio" class="form-control" name="optradio">Sí</label>
+			<label class="radio-inline"><input type="radio" class="form-control" name="embarazo" id="embarazo" value="si">Sí</label>
 		</div>
 		<div class="col-1">
-			<label class="radio-inline"><input type="radio" class="form-control" name="optradio">No</label>
+			<label class="radio-inline"><input type="radio" class="form-control" name="embarazo" id="embarazo" value="no">No</label>
 		</div>
 		<div class="col-2">
-			<label class="radio-inline"><input type="radio" class="form-control" name="optradio">Lo ignoran</label>
+			<label class="radio-inline"><input type="radio" class="form-control" name="embarazo" id="embarazo" value="ignora">Lo ignoran</label>
 		</div>
 	</div>
 
-	<div class="form-group row">
+	<div class="form-group row" id="datosEmbarazo" style="display:none">
 		<label class="col-3 col-form-label">Periodo de gestación estimado al tiempo de la desaparición</label>
 		<div class="col-2">
 			<input type="text" class="form-control" name="" placeholder="Semanas">
@@ -131,20 +136,20 @@
 		</div>
 	</div>
 
-	<div class="form-group row">
+	<div class="form-group row" id="rumores" style="display:none">
 		<label class="col-3 col-form-label">Rumores sobre el nacimiento o localización del bebé</label>
 		<div class="col-1">
-			<label class="radio-inline"><input type="radio" class="form-control" name="optradio">Sí</label>
+			<label class="radio-inline"><input type="radio" class="form-control" name="optradio" id="rumor">Sí</label>
 		</div>
 		<div class="col-1">
-			<label class="radio-inline"><input type="radio" class="form-control" name="optradio">No</label>
+			<label class="radio-inline"><input type="radio" class="form-control" name="optradio" id="rumor">No</label>
 		</div>
 		<div class="col-2">
-			<label class="radio-inline"><input type="radio" class="form-control" name="optradio">Lo ignoran</label>
+			<label class="radio-inline"><input type="radio" class="form-control" name="optradio" id="rumor">Lo ignoran</label>
 		</div>
 	</div>
 
-	<div class="form-group row">
+	<div class="form-group row" id="datosEmbarazo3" style="display:none">
 		<div class="col-12">
 			<textarea class="form-control" name="" placeholder="Pormenores"></textarea>
 		</div>
@@ -174,22 +179,21 @@
 		<div class="col-3">
 			<input type="text" class="form-control" name="" placeholder="Apellido materno">
 		</div>
-	</div><hr>
+	</div>
 
-	<button type="button" id="prueba" class="btn btn-primary">Prueba xD</button>
 
+	
 	
 
 </form>
 
 <script>
 	var a;
+	var b;
+	var c;
+	var d;
 	$(document).ready(function(){
-	//Botón de prueba
-    //$("#prueba").click(function(){
-       // alert("Hola mundo");
-    //});
-
+	
     //Obtener el valor de estado civil 
     $(document).on('change', '#estadoCivil', function(event) {
     a = $('#estadoCivil').val();
@@ -204,15 +208,54 @@
 	});
 
     //Mostrar formulario de datos hijos
-    $("input[name$='si']").click(function() {
-        var test = $(this).val();
+    $("input#hijos[type=radio]").change(function()
+    {
+    	b = $(this).val();
 
-       
-        $("#si" + test).show();
+    	if (b =='si'){
+    		console.log('Mostrar form de datos de hijos')
+    		$("#nombreHijo").show();
+    	} else {
+    			console.log('No tienes hijos')
+    			$("#nombreHijo").hide();
+    	}
+        
+    });
+    
+	//Mostrar formulario de embarazo
+    $("input#embarazo[type=radio]").change(function()
+    {
+    	c = $(this).val();
+
+    	if (c =='si'){
+    		console.log('Mostrar form de datos de embarazo')
+    		$("#datosEmbarazo").show();
+    		$("#datosEmbarazo2").show();
+    		
+    	} else {
+    			console.log('No tienes hijos')
+    			$("#datosEmbarazo").hide();
+    			$("#datosEmbarazo2").hide();
+    		
+    	} 
     });
 
-	
+    //Mostrar formulario de pormenores de embarazo
+    $("input#rumor[type=radio]").change(function()
+    {
+    	d = $(this).val();
 
+    	if (d =='si'){
+    		console.log('Mostrar form de datos de embarazo')
+    		$("#datosEmbarazo3").show();
+    
+    		
+    	} else {
+    			console.log('No tienes hijos')
+    			$("#datosEmbarazo3").hide();
+    			
+    		
+    	} 
     
 });	
 </script>
