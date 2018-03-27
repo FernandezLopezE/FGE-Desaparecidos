@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Domicilio extends Model
 {
-	protected $table = 'desaparecidos_documentos_identidad';
+	protected $table = 'desaparecidos_domicilios';
 	protected $fillable = [
 			'tipoDireccion',
 			'calle',

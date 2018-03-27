@@ -136,16 +136,16 @@
 		</div>
 	</div>
 
-	<div class="form-group row" id="datosEmbarazo2" style="display:none">
+	<div class="form-group row" id="rumores" style="display:none">
 		<label class="col-3 col-form-label">Rumores sobre el nacimiento o localización del bebé</label>
 		<div class="col-1">
-			<label class="radio-inline"><input type="radio" class="form-control" name="optradio">Sí</label>
+			<label class="radio-inline"><input type="radio" class="form-control" name="optradio" id="rumor">Sí</label>
 		</div>
 		<div class="col-1">
-			<label class="radio-inline"><input type="radio" class="form-control" name="optradio">No</label>
+			<label class="radio-inline"><input type="radio" class="form-control" name="optradio" id="rumor">No</label>
 		</div>
 		<div class="col-2">
-			<label class="radio-inline"><input type="radio" class="form-control" name="optradio">Lo ignoran</label>
+			<label class="radio-inline"><input type="radio" class="form-control" name="optradio" id="rumor">Lo ignoran</label>
 		</div>
 	</div>
 
@@ -191,6 +191,7 @@
 	var a;
 	var b;
 	var c;
+	var d;
 	$(document).ready(function(){
 	
     //Obtener el valor de estado civil 
@@ -240,9 +241,21 @@
     });
 
     //Mostrar formulario de pormenores de embarazo
-    $("input#embarazo[type=radio]").change(function()
+    $("input#rumor[type=radio]").change(function()
     {
-    	c = $(this).val();
+    	d = $(this).val();
+
+    	if (d =='si'){
+    		console.log('Mostrar form de datos de embarazo')
+    		$("#datosEmbarazo3").show();
+    
+    		
+    	} else {
+    			console.log('No tienes hijos')
+    			$("#datosEmbarazo3").hide();
+    			
+    		
+    	} 
     
 });	
 </script>
