@@ -8,6 +8,7 @@ use App\Models\Documento;
 use App\Models\Antecedente;
 use App\Models\Domicilio;
 use App\Http\Requests\DesaparecidoDomicilio;
+use App\Http\Requests\DesaparecidoRequest;
 
 class DesaparecidoController extends Controller
 {
@@ -71,49 +72,10 @@ class DesaparecidoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DesaparecidoRequest $request)
     {
-        //validaciones
-        $validator = Validator::make($request->all(), [
-            'nombre' => 'required|max:255',
-            'apellidoPaterno' => 'required',
-            'apellidoMaterno' => 'required',
-            'apodo' => 'required',
-            'edadAparente' => 'required',
-            'id_nacionalidad' => 'required',
-            'fechaNacimiento' => 'required',
-            'id_edoCivil' => 'required',
-            'genero' => 'required',
-            'embarazo' => 'required',
-            'periodoGestacion' => 'required',
-            'rumores' => 'required',
-            'pormenores' => 'required',
-            'escolaridad' => 'required',
-            'ocupacion' => 'required',
-            'tipoDireccion' => 'required',
-            'idMunicipio' => 'required',
-            'idLocalidad' => 'required',
-            'idColonia' => 'required',
-            'calle' => 'required',
-            'numExterno' => 'required',
-            'numInterno' => 'required',
-            'telefono' => 'required',
-            'idPersona' => 'required',
-            'identificacion' => 'required',
-            'otroId' => 'required',
-            'noId' => 'required',
-            'idPersona' => 'required',
-            'antecendetes' => 'required',
-            'mes' => 'required',
-            'anio' => 'required',
-            'observaciones' => 'required',
-            'idPersona' => 'required',
-            'idDelito' => 'required',
-            'idCentro' => 'required',
-        ]);
 
-
-        //Desaparecidos
+       /* //Desaparecidos
         $desaparecido = new Desaparecido();
 
         $desaparecido->nombre = $request->input('nombre');
@@ -150,7 +112,7 @@ class DesaparecidoController extends Controller
         $domicilio->idPersona = $request->input('idPersona');
 
         $domicilio->save();
-
+*/
         //Documentos identidad
         $identificacion = new Documento();
         
@@ -164,7 +126,7 @@ class DesaparecidoController extends Controller
 
         $identificacion->save();
 
-        //Antecedentes
+       /* //Antecedentes
 
         $antecedente = new Antecedente();
 
@@ -178,7 +140,7 @@ class DesaparecidoController extends Controller
 
         $antecendente->save();
 
-
+*/
 
         return ("Hecho");
     }
