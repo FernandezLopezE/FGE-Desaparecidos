@@ -20,3 +20,7 @@ Route::get('/form', function () {
     return view('desaparecidos.form');
 
 });
+
+Route::resource('/documento','DesaparecidoController');
+
+//Route::post('/documento/store','DesaparecidoController@store');
