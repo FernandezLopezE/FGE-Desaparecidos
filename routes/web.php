@@ -21,6 +21,6 @@ Route::get('/', function () {
 
 });
 
-//Route::resource('/documento','DesaparecidoController');
+Route::resource('/documento','DesaparecidoController');
 
 //Route::post('/documento/store','DesaparecidoController@store');
