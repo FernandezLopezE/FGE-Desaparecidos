@@ -18,6 +18,7 @@ Route::get('/', function () {
 
 Route::get('/form', function () {
     return view('desaparecidos.form');
+
 });
 
 Route::resource('/documento','DesaparecidoController');
