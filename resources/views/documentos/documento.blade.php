@@ -1,6 +1,6 @@
 
 
-{!! Form::model(['action' => 'DesaparecidoController@store']) !!}
+{!! Form::model($desaparecido,['action' => 'DesaparecidoController@store']) !!}
 	<!--{!! csrf_field() !!}-->
 	
 	<div class="form-group">
@@ -23,9 +23,19 @@
 		{!! Form::text ('idPersona',$persona->id, ['class' => 'form-control'] )!!}
 	</div>
 
+	<div class="form-group">
+		{!! Form::label ('antecedentes','Antecedentes') !!}
+		{!! Form::select ('antecedentes',$option,'', ['class' => 'form-control'] )!!}
+	</div>
+	<div class="form-group">
+		{!! Form::label ('mes','Meses') !!}
+		{!! Form::select ('mes',$meses,'', ['class' => 'form-control'] )!!}
+	</div>
 	
 
 	{!! Form::submit('Guardar') !!}
+
+	{!! Form::close() !!}
 
 <!--<form method="post" action="/empleados/store">
 	{{ csrf_field() }}
