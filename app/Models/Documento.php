@@ -18,4 +18,5 @@ class Documento extends Model
 	{
 		return $this->belongsTo('App\Models\Desaparecido','id');
 	}
+
 }
