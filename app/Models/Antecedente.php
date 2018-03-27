@@ -6,22 +6,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Antecedente extends Model
 {
-    //
-    protected $table = 'antecedentes';
+	protected $table = 'desaparecidos_antecedentes';
+	protected $fillable = [
+			'mes',
+			'anio',
+			'observaciones',
+			'idDesaparecido',
+			'idDelito',
+			'idCentroReclusion'
+	];
 
-    protected $fillabel = ['antecedentes','mes','anio','observaciones','idPersonaDesaparecidos','idDelito','idCentroReclusion'];
-
-	/*public function nombreDesaparecidos(){
-		return $this->hasMany('App\Models\Desaparecido','idDesaparecido','id');
+	public function desaparecido()
+	{
+		return $this->belongsTo('App\Models\Desaparecido','id');
 	}
 
-	public function delitos(){
-		return $this->belongsTo('App\Delito','idDelito','id');
+	public function delito()
+	{
+		return $this->belongsTo('App\Models\CatDelito','id');
 	}
 
-	public function centroReclusion(){
-		return $this->belongsTo('App\CentroReclusion','idCentroReclusion','id');
-	}*/
-
-
+	public function centroreclusion()
+	{
+		return $this->belongsTo('App\Models\CatCentroReclusion','id');
+	}
 }

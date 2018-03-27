@@ -4,14 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Documento extends Model
+class Familiar extends Model
 {
-	protected $table = 'desaparecidos_documentos_identidad';
+	protected $table = 'desaparecidos_familiares';
 	protected $fillable = [
-		'identificacion',
-		'otraIdentificacion',
-		'numIdentificacion',
-		'idDesaparecido',
+			'parentesco',
+			'nombres',
+			'primerAp',
+			'segundoAp',
+			'edad',
+			'idDesaparecido',
 	];
 
 	public function desaparecido()
@@ -20,3 +22,4 @@ class Documento extends Model
 	}
 
 }
+  

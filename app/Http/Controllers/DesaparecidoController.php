@@ -7,6 +7,7 @@ use App\Models\Desaparecido;
 use App\Models\Documento;
 use App\Models\Antecedente;
 use App\Models\Domicilio;
+use App\Http\Requests\DesaparecidoDomicilio;
 
 class DesaparecidoController extends Controller
 {

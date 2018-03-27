@@ -11,15 +11,16 @@
 |
 */
 
+//Route::get('/', function () {
+
+  // return view('desaparecidos.pruebas');
+//});
+
 Route::get('/', function () {
-
-    return view('desaparecidos.pruebas');
-});
-
-Route::get('/form', function () {
     return view('desaparecidos.form');
+
 });
 
-Route::resource('/documento','DesaparecidoController');
+//Route::resource('/documento','DesaparecidoController');
 
 //Route::post('/documento/store','DesaparecidoController@store');

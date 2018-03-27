@@ -6,23 +6,38 @@ use Illuminate\Database\Eloquent\Model;
 
 class Domicilio extends Model
 {
-    
-	protected $table = 'domicilios_desaparecidos';
-    protected $fillable = [
-    	'tipoDireccion',
-    	'idMunicipio',
-    	'idLocalidad',
-    	'idColonia',
-    	'calle',
-    	'numExterno',
-    	'numInterno',
-    	'telefono',
-    	'idPersona'
-    ];
+	protected $table = 'desaparecidos_documentos_identidad';
+	protected $fillable = [
+			'tipoDireccion',
+			'calle',
+			'numExterno',
+			'numInterno',
+			'telefono',
+			'idMunicipio',
+			'idLocalidad',
+			'idColonia',
+			'idDesaparecido'
+	];
 
-    /*public function PersonaDesaparecida(){
+	public function desaparecido()
+	{
+		return $this->belongsTo('App\Models\Desaparecido','id');
+	}
 
-    	return $this->belongsTo('App\nombre_desaparecidos');
-    }*/
+	public function municipio()
+	{
+		return $this->belongsTo('App\Models\Municipio','id');
+	}
+
+	public function localidad()
+	{
+		return $this->belongsTo('App\Models\Localidad','id');
+	}
+
+	public function colonia()
+	{
+		return $this->belongsTo('App\Models\Colonia','id');
+	}
 
 }
+			

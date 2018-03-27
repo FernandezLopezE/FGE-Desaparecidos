@@ -14,12 +14,12 @@ class CatColonia extends Model
 
     public function domicilios()
     {
-        return $this->hasMany('App\Models\Domicilio');
+        return $this->hasMany('App\Models\Domicilio', 'idDomicilio', 'id');
     }
 
     public function municipio()
     {
-        return $this->belongsTo('app/Models/CatMunicipio');
+        return $this->belongsTo('app/Models/CatMunicipio', 'id');
     }
 
     public static function colonias($cp){
