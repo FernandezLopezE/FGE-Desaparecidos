@@ -33,6 +33,7 @@ class CreatePersonasTable extends Migration
             $table->integer('idMunicipioOrigen')->unsigned()->default(2496);
             $table->foreign('idMunicipioOrigen')->references('id')->on('cat_municipio')->onDelete('cascade');
 
+
             $table->timestamps();
             $table->softDeletes();
         });
