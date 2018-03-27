@@ -2,9 +2,9 @@
 
 @section('content')
 
-	{{--@include('desaparecidos.datosgral')
+	@include('desaparecidos.datosgral')
 	@include('desaparecidos.domicilio')
 	@include('desaparecidos.datosidentidad')
-	@include('desaparecidos.nacionalidad')--}} 
+	@include('desaparecidos.nacionalidad')
 
 @endsection
