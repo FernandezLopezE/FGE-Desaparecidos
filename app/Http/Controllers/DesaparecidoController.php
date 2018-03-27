@@ -72,6 +72,46 @@ class DesaparecidoController extends Controller
      */
     public function store(Request $request)
     {
+        //validaciones
+        $validator = Validator::make($request->all(), [
+            'nombre' => 'required|max:255',
+            'apellidoPaterno' => 'required',
+            'apellidoMaterno' => 'required',
+            'apodo' => 'required',
+            'edadAparente' => 'required',
+            'id_nacionalidad' => 'required',
+            'fechaNacimiento' => 'required',
+            'id_edoCivil' => 'required',
+            'genero' => 'required',
+            'embarazo' => 'required',
+            'periodoGestacion' => 'required',
+            'rumores' => 'required',
+            'pormenores' => 'required',
+            'escolaridad' => 'required',
+            'ocupacion' => 'required',
+            'tipoDireccion' => 'required',
+            'idMunicipio' => 'required',
+            'idLocalidad' => 'required',
+            'idColonia' => 'required',
+            'calle' => 'required',
+            'numExterno' => 'required',
+            'numInterno' => 'required',
+            'telefono' => 'required',
+            'idPersona' => 'required',
+            'identificacion' => 'required',
+            'otroId' => 'required',
+            'noId' => 'required',
+            'idPersona' => 'required',
+            'antecendetes' => 'required',
+            'mes' => 'required',
+            'anio' => 'required',
+            'observaciones' => 'required',
+            'idPersona' => 'required',
+            'idDelito' => 'required',
+            'idCentro' => 'required',
+        ]);
+
+
         //Desaparecidos
         $desaparecido = new Desaparecido();
 
