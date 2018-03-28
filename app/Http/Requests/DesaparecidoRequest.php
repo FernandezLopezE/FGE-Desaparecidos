@@ -38,16 +38,7 @@ class DesaparecidoRequest extends FormRequest
             'primerAp' => 'required',
             'segundoAp' => 'required',
             'edad' => 'required',
-            'idDesaparecido' => 'required',
-
-            //Datos Domicilio
-            'tipoDireccion' => 'required',
-            'calle' => 'required',
-            'numExterno' => 'required',
-            'numInterno' => 'required',
-            'telefono' => 'required',
-            'idMunicipio' => 'required',
-            'idLocalidad' => 'required',
+            
 
             //Datos desaparecido
             'apodo' => 'required',
@@ -61,10 +52,30 @@ class DesaparecidoRequest extends FormRequest
             'idEscolaridad' => 'required',
             'idPersona' => 'required',
 
+            //Datos Domicilio
+            'tipoDireccion' => 'required',
+            'calle' => 'required',
+            'numExterno' => 'required',
+            'numInterno' => 'required',
+            'telefono' => 'required',
+            'idMunicipio' => 'required',
+            'idLocalidad' => 'required',
+            'idColonia' => 'required',
+            
+
+            //Datos documentos de identificacion
             'identificacion' => 'required',
-            'otroId' => 'required',
-            'noId' => 'required',
-            'idPersona' => 'required',
+            'otraIdentificacion' => 'required',
+            'numIdentificacion' => 'required',
+            
+
+            //Datos Antecedentes
+            'mes' => 'required',
+            'anio'=> 'required',
+            'observaciones' => 'required',
+            'idDesaparecido' => 'required',
+            'idDelito' => 'required',
+            'idCentroReclusion' => 'required',
         ];
     }
 }
