@@ -1,10 +1,9 @@
-<script>
-	var a;
-	var b;
-	var c;
-	var d;
-	$(document).ready(function(){
-	
+$(document).ready(function(){
+var a;
+var b;
+var c;
+var d;
+
     //Obtener el valor de estado civil 
     $(document).on('change', '#idEdocivil', function(event) {
     a = $('#idEdocivil').val();
@@ -42,11 +41,13 @@
     		console.log('Mostrar form de datos de embarazo')
     		$("#datosEmbarazo").show();
     		$("#datosEmbarazo2").show();
+            $("#rumores").show();
     		
     	} else {
     			console.log('No tienes hijos')
     			$("#datosEmbarazo").hide();
     			$("#datosEmbarazo2").hide();
+                $("#rumores").hide();
     		
     	} 
     });
@@ -57,16 +58,15 @@
     	d = $(this).val();
 
     	if (d =='si'){
-    		console.log('Mostrar form de datos de embarazo')
+    		console.log('Mostrar area de texto de rumores')
     		$("#datosEmbarazo3").show();
     
     		
     	} else {
-    			console.log('No tienes hijos')
+    			console.log('No hay rumores')
     			$("#datosEmbarazo3").hide();
     			
     		
     	} 
-    
-});	
-</script>
+    });	
+}); 

@@ -59,15 +59,16 @@ class DesaparecidoController extends Controller
 		$anios = array('2000' => '2000', '2001' => '2001');
 		$sexos = array('MASCULINO' => 'MASCULINO', 'FEMENINO' => 'FEMENINO');
 
-		$escolaridades		= \App\Models\CatEscolaridad::all()->pluck('id','nombre');
-		$ocupaciones	 	= \App\Models\CatOcupacion::all()->pluck('id','nombre');
+		$escolaridades		= \App\Models\CatEscolaridad::all()->pluck('nombre','id');
+		$ocupaciones	 	= \App\Models\CatOcupacion::all()->pluck('nombre','id');
 		$nacionalidades 	= \App\Models\CatNacionalidad::all()->pluck('nombre', 'id');
-		$municipios 		= \App\Models\CatMunicipio::all()->pluck('id','nombre');
-		$localidades 		= \App\Models\CatLocalidad::all()->pluck('id','nombre');
-		$colonias 			= \App\Models\CatColonia::all()->pluck('id','nombre'); 
-		$delitos 			= \App\Models\CatDelito::all()->pluck('id','nombre');
-		$centros 			= \App\Models\CatCentroReclusion::all()->pluck('id','nombre');
-		$estados 			= \App\Models\CatEstadoCivil::all()->pluck('id','nombre');
+		$municipios 		= \App\Models\CatMunicipio::all()->pluck('nombre','id');
+		$localidades 		= \App\Models\CatLocalidad::all()->pluck('nombre','id');
+		$colonias 			= \App\Models\CatColonia::all()->pluck('nombre','id'); 
+		$delitos 			= \App\Models\CatDelito::all()->pluck('nombre','id');
+		$centros 			= \App\Models\CatCentroReclusion::all()->pluck('nombre','id');
+		$estados 			= \App\Models\CatEstado::all()->pluck('nombre','id');
+		$edoscivil 			= \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
 
 		return view('desaparecidos.form',
 					[
@@ -85,7 +86,8 @@ class DesaparecidoController extends Controller
 						'municipios' => $municipios,
 						'localidades' => $localidades,
 						'colonias' => $localidades,
-						'sexos' => $sexos
+						'sexos' => $sexos,
+						'edoscivil' => $edoscivil
 					]);
 	}
 

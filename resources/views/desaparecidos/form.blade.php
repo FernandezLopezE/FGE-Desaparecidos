@@ -9,7 +9,7 @@
 
 @section('content')
 
-	@include('desaparecidos.datosgral')
+	@include('desaparecidos.datosgral2')
 	@include('desaparecidos.domicilio')
 
 	@include('desaparecidos.datosidentidad')
@@ -19,6 +19,7 @@
 
 
 @section('script')
+
 	{!! HTML::script('personal/js/datosgral.js') !!}
 	{!! HTML::script('personal/js/domicilio.js') !!}
 	{!! HTML::script('personal/js/domicilio.js') !!}
