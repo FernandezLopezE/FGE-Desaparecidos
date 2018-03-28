@@ -4,11 +4,17 @@ var b;
 var c;
 var d;
 
+
+    $( "#prueba" ).select(function() {
+        alert( "Hola mundo" );
+    });
+
+
     //Obtener el valor de estado civil 
     $(document).on('change', '#idEdocivil', function(event) {
     a = $('#idEdocivil').val();
     //Mostrar formulario de datos de la pareja
-    if (a == 'casado') {
+    if (a == 'CASADO') {
     	console.log('Mostrar el campo datos de pareja')
     	$("#nombrePareja").show();
     } else {
