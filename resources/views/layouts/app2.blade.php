@@ -7,7 +7,7 @@
     <meta name="author" content="">
     {!! Html::style('bootstrap4/css/bootstrap.css') !!}
     <!-- icons-fontawesome -->
-    {!! Html::style('assets-master/icons/font-awesome/css/font-awesome.min.css') !!}
+   
     <!-- custom style -->
     {!! Html::style('assets-master/style.css') !!}
     <!-- tipografía oficial -->
@@ -52,10 +52,10 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
-    <script src="../../../../assets/js/vendor/popper.min.js"></script>
+    {!! HTML::script('bootstrap4/js/popper.js') !!}
     {!! HTML::script('assets-master/dist/js/bootstrap.js') !!}
     {!! HTML::script('js/jquery-3.3.1.js') !!}
-    
+
     @yield('script')
   </body>
 </html>
