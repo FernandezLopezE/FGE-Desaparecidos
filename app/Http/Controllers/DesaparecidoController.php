@@ -68,6 +68,7 @@ class DesaparecidoController extends Controller
 		$delitos 			= \App\Models\CatDelito::all()->pluck('nombre','id');
 		$centros 			= \App\Models\CatCentroReclusion::all()->pluck('nombre','id');
 		$estados 			= \App\Models\CatEstado::all()->pluck('nombre','id');
+		$codigos 			= \App\Models\CatEstadoCivil::all()->pluck('codigoPostal','id');
 		$edoscivil 			= \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
 
 		return view('desaparecidos.form',
@@ -86,6 +87,7 @@ class DesaparecidoController extends Controller
 						'municipios' => $municipios,
 						'localidades' => $localidades,
 						'colonias' => $localidades,
+						'codigos' => $codigos,
 						'sexos' => $sexos,
 						'edoscivil' => $edoscivil
 					]);
