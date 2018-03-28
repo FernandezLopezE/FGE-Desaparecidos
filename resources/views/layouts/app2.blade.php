@@ -13,6 +13,8 @@
     <!-- tipografía oficial -->
     {!! Html::style('assets-master/css/font-neosans.css') !!}
 
+    @yield('style')
+
     <title>Personas desaparecidas</title>
 
     <!-- Custom styles for this template -->
@@ -53,7 +55,7 @@
     <script src="../../../../assets/js/vendor/popper.min.js"></script>
     {!! HTML::script('assets-master/dist/js/bootstrap.js') !!}
     {!! HTML::script('js/jquery-3.3.1.js') !!}
-
-    </script>
+    
+    @yield('script')
   </body>
 </html>

@@ -1,4 +1,4 @@
-@if (count($errors))
+<!--@if (count($errors))
 <div class = "alert alert-danger">
 	<button type ="button" class = "close" data-dismiss="alert">
 		&times;
@@ -8,4 +8,4 @@
 		{{<li>{{error}}</li>}}
 	</ul>
 </div>
-@endif
+@endif-->
