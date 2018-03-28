@@ -47,6 +47,7 @@ class DesaparecidoRequest extends FormRequest
             'numInterno' => 'required',
             'telefono' => 'required',
             'idMunicipio' => 'required',
+            'idLocalidad' => 'required',
 
             //Datos desaparecido
             'apodo' => 'required',
