@@ -4,7 +4,7 @@
 	<div class="form-group row">
 		<div class="col-3">
 				{!! Form::label ('sexo','Género') !!}
-        		{!! Form::select ('sexo',$sexo,'', ['class' => 'form-control'] )!!}
+        		{!! Form::select ('sexo',$sexos,'', ['class' => 'form-control'] )!!}
 		</div>		
 		<!--Fin Genero -->
 
