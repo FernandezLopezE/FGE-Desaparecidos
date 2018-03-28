@@ -1,1 +1,4 @@
-<p>Nacionalidad</p>
+    <div class="form-group">
+			{!! Form::label('Nacionalidad', 'Nacionalidad:') !!}
+			{{ Form::select('nacion', $nacionalidades, '', ['class' => 'form-control'] )!!}
+		</div>

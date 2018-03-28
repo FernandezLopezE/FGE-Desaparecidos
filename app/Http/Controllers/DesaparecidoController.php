@@ -12,255 +12,278 @@ use App\Http\Requests\DesaparecidoRequest;
 
 class DesaparecidoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index()
+	{
+		//
+	}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-        $desaparecido = new Desaparecido();
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function create()
+	{
+		$desaparecido = new Desaparecido();
 
-        /*$documento = new Documento();
-        $antecedentes = new Antecedente();*/
-        $identificacion = array(
-            'IFE' => 'IFE',
-            'Cartilla SM' => 'Cartilla SM',
-            'Licencia' => 'Licencia',
-            'Tarjetón' => 'Tarjetón',
-            'Cartilla' => 'Cartilla',
-            'Pasaporte' => 'Pasaporte',
-            'Otro(especifique)' => 'Otro(especifique)');
-        $option = array(
-            '1' => 'SI',
-            '0' => 'NO');
-        $meses = array(
-            'ENERO' => 'ENERO',
-            'FEBRERO' => 'FEBRERO',
-            'MARZO' => 'MARZO',
-            'ABRIL' => 'ABRIL',
-            'MAYO' => 'MAYO',
-            'JUNIO' => 'JUNIO',
-            'JULIO' => 'JULIO',
-            'AGOSTO' => 'AGOSTO',
-            'SEPTIEMBRE' => 'SEPTIEMBRE',
-            'OCTUBRE' => 'OCTUBRE',
-            'NOVIEMBRE' => 'NOVIEMBRE',
-            'DICIEMBRE' => 'DICIEMBRE');
+		$identificacion = array(
+			'IFE' => 'IFE',
+			'Cartilla SM' => 'Cartilla SM',
+			'Licencia' => 'Licencia',
+			'Tarjetón' => 'Tarjetón',
+			'Cartilla' => 'Cartilla',
+			'Pasaporte' => 'Pasaporte',
+			'Otro(especifique)' => 'Otro(especifique)');
+		$option = array(
+			'1' => 'SI',
+			'0' => 'NO');
+		$meses = array(
+			'1' => 'ENERO',
+			'2' => 'FEBRERO',
+			'3' => 'MARZO',
+			'4' => 'ABRIL',
+			'5' => 'MAYO',
+			'6' => 'JUNIO',
+			'7' => 'JULIO',
+			'8' => 'AGOSTO',
+			'9' => 'SEPTIEMBRE',
+			'10' => 'OCTUBRE',
+			'11' => 'NOVIEMBRE',
+			'12' => 'DICIEMBRE');
 
-        $persona= Desaparecido::find('1');
+		$anios = array('2000' => '2000', '2001' => '2001');
+		$sexos = array('MASCULINO' => 'MASCULINO', 'FEMENINO' => 'FEMENINO');
 
-        /*return view('documentos.documento',['identificacion' => $identificacion, 'persona' => $persona, 'documento' => $documento, 'antecedente' => $antecedentes, 'option' => $option, 'meses' => $meses]);*/
+		$escolaridades		= \App\Models\CatEscolaridad::all()->pluck('id','nombre');
+		$ocupaciones	 	= \App\Models\CatOcupacion::all()->pluck('id','nombre');
+		$nacionalidades 	= \App\Models\CatNacionalidad::all()->pluck('id','nombre');
+		$municipios 		= \App\Models\CatMunicipio::all()->pluck('id','nombre');
+		$localidades 		= \App\Models\CatLocalidad::all()->pluck('id','nombre');
+		$colonias 			= \App\Models\CatColonia::all()->pluck('id','nombre'); 
+		$delitos 			= \App\Models\CatDelito::all()->pluck('id','nombre');
+		$centros 			= \App\Models\CatCentroReclusion::all()->pluck('id','nombre');
+		$estados 			= \App\Models\CatEstadoCivil::all()->pluck('id','nombre');
 
-        return view('documentos.documento',['identificacion' => $identificacion, 'desaparecido' => $desaparecido,'option' => $option, 'meses' => $meses, 'persona' => $persona]);
-    }
+		return view('desaparecidos.form',
+					[
+						'identificacion' => $identificacion,
+						'desaparecido' => $desaparecido,
+						'option' => $option,
+						'meses' => $meses,
+						'anios' => $anios,
+						'escolaridades' => $escolaridades,
+						'ocupaciones' => $ocupaciones,
+						'nacionalidades' => $nacionalidades,						
+						'delitos' => $delitos,
+						'centros' => $centros,
+						'estados' => $estados,
+						'municipios' => $municipios,
+						'localidades' => $localidades,
+						'colonias' => $localidades,
+						'sexos' => $sexos
+					]);
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(DesaparecidoRequest $request)
-    {
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function store(DesaparecidoRequest $request)
+	{
 
-       /* //Desaparecidos
-        $desaparecido = new Desaparecido();
+	   /* //Desaparecidos
+		$desaparecido = new Desaparecido();
 
-        $desaparecido->nombre = $request->input('nombre');
-        $desaparecido->apellidoPaterno = $request->input('apellidoPaterno');
-        $desaparecido->apellidoMaterno = $request->input('apellidoMaterno');
-        $desaparecido->apodo = $request->input('apodo');
-        $desaparecido->edadAparente = $request->input('edadAparente');
-        $desaparecido->id_nacionalidad = $request->input('id_nacionalidad');
-        $desaparecido->fechaNacimiento = $request->input('fechaNacimiento');
-        $desaparecido->id_edoCivil = $request->input('id_edoCivil');
-        $desaparecido->genero = $request->input('genero');
-        $desaparecido->embarazo = $request->input('embarazo');
-        $desaparecido->periodoGestacion = $request->input('periodoGestacion');
-        $desaparecido->rumores = $request->input('rumores');
-        $desaparecido->pormenores = $request->input('pormenores');
-        $desaparecido->escolaridad = $request->input('escolaridad');
-        $desaparecido->ocupacion = $request->input('ocupacion');
+		$desaparecido->nombre = $request->input('nombre');
+		$desaparecido->apellidoPaterno = $request->input('apellidoPaterno');
+		$desaparecido->apellidoMaterno = $request->input('apellidoMaterno');
+		$desaparecido->apodo = $request->input('apodo');
+		$desaparecido->edadAparente = $request->input('edadAparente');
+		$desaparecido->id_nacionalidad = $request->input('id_nacionalidad');
+		$desaparecido->fechaNacimiento = $request->input('fechaNacimiento');
+		$desaparecido->id_edoCivil = $request->input('id_edoCivil');
+		$desaparecido->genero = $request->input('genero');
+		$desaparecido->embarazo = $request->input('embarazo');
+		$desaparecido->periodoGestacion = $request->input('periodoGestacion');
+		$desaparecido->rumores = $request->input('rumores');
+		$desaparecido->pormenores = $request->input('pormenores');
+		$desaparecido->escolaridad = $request->input('escolaridad');
+		$desaparecido->ocupacion = $request->input('ocupacion');
 
-        $desaparecido->save();
+		$desaparecido->save();
 
-        //Domicilios
-        $domicilio = new Domicilio();
+		//Domicilios
+		$domicilio = new Domicilio();
 
-        $domicilio->tipoDireccion = $request->input('tipoDireccion');
-        $domicilio->idMunicipio = $request->input('idMunicipio');
-        $domicilio->idLocalidad = $request->input('idLocalidad');
-        $domicilio->idColonia = $request->input('idColonia');
-        $domicilio->calle = $request->input('calle');
+		$domicilio->tipoDireccion = $request->input('tipoDireccion');
+		$domicilio->idMunicipio = $request->input('idMunicipio');
+		$domicilio->idLocalidad = $request->input('idLocalidad');
+		$domicilio->idColonia = $request->input('idColonia');
+		$domicilio->calle = $request->input('calle');
 
-        $domicilio->numExterno = $request->input('numExterno');
-        $domicilio->numInterno = $request->input('numInterno');
-        $domicilio->telefono = $request->input('telefono');
+		$domicilio->numExterno = $request->input('numExterno');
+		$domicilio->numInterno = $request->input('numInterno');
+		$domicilio->telefono = $request->input('telefono');
 
-        $domicilio->idPersona = $request->input('idPersona');
+		$domicilio->idPersona = $request->input('idPersona');
 
-        $domicilio->save();
+		$domicilio->save();
 */
-        //Documentos identidad
-        $identificacion = new Documento();
-        
+		//Documentos identidad
+		$identificacion = new Documento();
+		
 
-        $identificacion->identificacion = $request->input('identificacion');
-        $identificacion->otraIdentificacion = $request->input('otroId');
-        $identificacion->noIdentificacion = $request->input('noId');
-        $identificacion->idPersonaDesaparecidos = $request->input('idPersona');
+		$identificacion->identificacion = $request->input('identificacion');
+		$identificacion->otraIdentificacion = $request->input('otroId');
+		$identificacion->noIdentificacion = $request->input('noId');
+		$identificacion->idPersonaDesaparecidos = $request->input('idPersona');
 
-        //dd($identificacion);
+		//dd($identificacion);
 
-        $identificacion->save();
+		$identificacion->save();
 
-       /* //Antecedentes
+	   /* //Antecedentes
 
-        $antecedente = new Antecedente();
+		$antecedente = new Antecedente();
 
-        $antecedente->antecedentes = $request->input('antecendentes');
-        $antecedente->mes = $request->input('mes');
-        $antecedente->anio = $request->input('anio');
-        $antecedente->observaciones = $request->input('observaciones');
-        $antecedente->idPersonaDesaparecidos = $request->input('idPersona');
-        $antecedente->idDelito = $request->input('idDelito');
-        $antecedente->idCentroReclusion = $request->input('idCentro');
+		$antecedente->antecedentes = $request->input('antecendentes');
+		$antecedente->mes = $request->input('mes');
+		$antecedente->anio = $request->input('anio');
+		$antecedente->observaciones = $request->input('observaciones');
+		$antecedente->idPersonaDesaparecidos = $request->input('idPersona');
+		$antecedente->idDelito = $request->input('idDelito');
+		$antecedente->idCentroReclusion = $request->input('idCentro');
 
-        $antecendente->save();
+		$antecendente->save();
 
 */
 
-        return ("Hecho");
-    }
+		return ("Hecho");
+	}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function show($id)
+	{
+		//
+	}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-        $desaparecido = Desaparecido::find($id);
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function edit($id)
+	{
+		//
+		$desaparecido = Desaparecido::find($id);
 
-        $domicilio = Domicilio::where('idPersona','=',$desaparecido->id);
+		$domicilio = Domicilio::where('idPersona','=',$desaparecido->id);
 
-        $documento = Documento::where('idPersonaDesaparecida','=',$desaparecido->id);
+		$documento = Documento::where('idPersonaDesaparecida','=',$desaparecido->id);
 
-        $antecedente = Antecedente::where('idPersona','=',$desaparecido->id);
+		$antecedente = Antecedente::where('idPersona','=',$desaparecido->id);
 
-        return view('documentos.edit',['desaparecido' => $desaparecido, 'domicilio' => $domicilio, 'documento' => $documento, 'antecedente' => $antecendente]);
-    }
+		return view('documentos.edit',['desaparecido' => $desaparecido, 'domicilio' => $domicilio, 'documento' => $documento, 'antecedente' => $antecendente]);
+	}
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //Desaparecidos
-        $desaparecido = Desaparecido::find($id);
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function update(Request $request, $id)
+	{
+		//Desaparecidos
+		$desaparecido = Desaparecido::find($id);
 
-        $desaparecido->nombre = $request->input('nombre');
-        $desaparecido->apellidoPaterno = $request->input('apellidoPaterno');
-        $desaparecido->apellidoMaterno = $request->input('apellidoMaterno');
-        $desaparecido->apodo = $request->input('apodo');
-        $desaparecido->edadAparente = $request->input('edadAparente');
-        $desaparecido->id_nacionalidad = $request->input('id_nacionalidad');
-        $desaparecido->fechaNacimiento = $request->input('fechaNacimiento');
-        $desaparecido->id_edoCivil = $request->input('id_edoCivil');
-        $desaparecido->genero = $request->input('genero');
-        $desaparecido->embarazo = $request->input('embarazo');
-        $desaparecido->periodoGestacion = $request->input('periodoGestacion');
-        $desaparecido->rumores = $request->input('rumores');
-        $desaparecido->pormenores = $request->input('pormenores');
-        $desaparecido->escolaridad = $request->input('escolaridad');
-        $desaparecido->ocupacion = $request->input('ocupacion');
+		$desaparecido->nombre = $request->input('nombre');
+		$desaparecido->apellidoPaterno = $request->input('apellidoPaterno');
+		$desaparecido->apellidoMaterno = $request->input('apellidoMaterno');
+		$desaparecido->apodo = $request->input('apodo');
+		$desaparecido->edadAparente = $request->input('edadAparente');
+		$desaparecido->id_nacionalidad = $request->input('id_nacionalidad');
+		$desaparecido->fechaNacimiento = $request->input('fechaNacimiento');
+		$desaparecido->id_edoCivil = $request->input('id_edoCivil');
+		$desaparecido->genero = $request->input('genero');
+		$desaparecido->embarazo = $request->input('embarazo');
+		$desaparecido->periodoGestacion = $request->input('periodoGestacion');
+		$desaparecido->rumores = $request->input('rumores');
+		$desaparecido->pormenores = $request->input('pormenores');
+		$desaparecido->escolaridad = $request->input('escolaridad');
+		$desaparecido->ocupacion = $request->input('ocupacion');
 
-        $desaparecido->save();
+		$desaparecido->save();
 
-        //Domicilios
-        $domicilio = Domicilio::where('idPersona','=',$desaparecido->id);
+		//Domicilios
+		$domicilio = Domicilio::where('idPersona','=',$desaparecido->id);
 
-        $domicilio->tipoDireccion = $request->input('tipoDireccion');
-        $domicilio->idMunicipio = $request->input('idMunicipio');
-        $domicilio->idLocalidad = $request->input('idLocalidad');
-        $domicilio->idColonia = $request->input('idColonia');
-        $domicilio->calle = $request->input('calle');
+		$domicilio->tipoDireccion = $request->input('tipoDireccion');
+		$domicilio->idMunicipio = $request->input('idMunicipio');
+		$domicilio->idLocalidad = $request->input('idLocalidad');
+		$domicilio->idColonia = $request->input('idColonia');
+		$domicilio->calle = $request->input('calle');
 
-        $domicilio->numExterno = $request->input('numExterno');
-        $domicilio->numInterno = $request->input('numInterno');
-        $domicilio->telefono = $request->input('telefono');
+		$domicilio->numExterno = $request->input('numExterno');
+		$domicilio->numInterno = $request->input('numInterno');
+		$domicilio->telefono = $request->input('telefono');
 
-        $domicilio->idPersona = $request->input('idPersona');
+		$domicilio->idPersona = $request->input('idPersona');
 
-        $domicilio->save();
+		$domicilio->save();
 
 
 
-        //Documentos identidad
-        $identificacion =  Documento::where('idPersonaDesaparecidos','=',$desaparecido->id);
+		//Documentos identidad
+		$identificacion =  Documento::where('idPersonaDesaparecidos','=',$desaparecido->id);
 
-        $identificacion->identificacion = $request->input('identificacion');
-        $identificacion->otraIdentificacion = $request->input('otroId');
-        $identificacion->noIdentificacion = $request->input('noId');
-        $identificacion->idPersonaDesaparecidos = $request->input('idPersona');
+		$identificacion->identificacion = $request->input('identificacion');
+		$identificacion->otraIdentificacion = $request->input('otroId');
+		$identificacion->noIdentificacion = $request->input('noId');
+		$identificacion->idPersonaDesaparecidos = $request->input('idPersona');
 
-        $identificacion->save();
+		$identificacion->save();
 
-        //Antecedentes
+		//Antecedentes
 
-        $antecedente = Antecedente::where('idPersona','=',$desaparecido->id);
+		$antecedente = Antecedente::where('idPersona','=',$desaparecido->id);
 
-        $antecedente->antecedentes = $request->input('antecendentes');
-        $antecedente->mes = $request->input('mes');
-        $antecedente->anio = $request->input('anio');
-        $antecedente->observaciones = $request->input('observaciones');
-        $antecedente->idPersonaDesaparecidos = $request->input('idPersona');
-        $antecedente->idDelito = $request->input('idDelito');
-        $antecedente->idCentroReclusion = $request->input('idCentro');
+		$antecedente->antecedentes = $request->input('antecendentes');
+		$antecedente->mes = $request->input('mes');
+		$antecedente->anio = $request->input('anio');
+		$antecedente->observaciones = $request->input('observaciones');
+		$antecedente->idPersonaDesaparecidos = $request->input('idPersona');
+		$antecedente->idDelito = $request->input('idDelito');
+		$antecedente->idCentroReclusion = $request->input('idCentro');
 
-        $antecendente->save();
+		$antecendente->save();
 
-        return ('Update Hecho');
+		return ('Update Hecho');
 
-    }
+	}
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function destroy($id)
+	{
+		//
+	}
 }
