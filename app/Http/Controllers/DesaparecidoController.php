@@ -7,8 +7,7 @@ use App\Models\Desaparecido;
 use App\Models\Documento;
 use App\Models\Antecedente;
 use App\Models\Domicilio;
-use App\Http\Requests\DesaparecidoDomicilio;
-use App\Http\Requests\DesaparecidoRequest;
+use App\Http\Requests\CreateDesaparecidoRequest;
 
 class DesaparecidoController extends Controller
 {
@@ -62,9 +61,9 @@ class DesaparecidoController extends Controller
 		$escolaridades		= \App\Models\CatEscolaridad::all()->pluck('nombre','id');
 		$ocupaciones	 	= \App\Models\CatOcupacion::all()->pluck('nombre','id');
 		$nacionalidades 	= \App\Models\CatNacionalidad::all()->pluck('nombre', 'id');
-		$municipios 		= \App\Models\CatMunicipio::all()->pluck('nombre','id');
-		$localidades 		= \App\Models\CatLocalidad::all()->pluck('nombre','id');
-		$colonias 			= \App\Models\CatColonia::all()->pluck('nombre','id'); 
+		$municipios 		= \App\Models\CatMunicipio::limit(10)->pluck('nombre','id');
+		$localidades 		= \App\Models\CatLocalidad::limit(10)->pluck('nombre','id');
+		$colonias 			= \App\Models\CatColonia::limit(10)->pluck('nombre','id'); 
 		$delitos 			= \App\Models\CatDelito::all()->pluck('nombre','id');
 		$centros 			= \App\Models\CatCentroReclusion::all()->pluck('nombre','id');
 		$estados 			= \App\Models\CatEstado::all()->pluck('nombre','id');
@@ -99,77 +98,12 @@ class DesaparecidoController extends Controller
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(DesaparecidoRequest $request)
+	public function store(CreateDesaparecidoRequest $request)
 	{
 
-	   /* //Desaparecidos
-		$desaparecido = new Desaparecido();
+		dd($request);
 
-		$desaparecido->nombre = $request->input('nombre');
-		$desaparecido->apellidoPaterno = $request->input('apellidoPaterno');
-		$desaparecido->apellidoMaterno = $request->input('apellidoMaterno');
-		$desaparecido->apodo = $request->input('apodo');
-		$desaparecido->edadAparente = $request->input('edadAparente');
-		$desaparecido->id_nacionalidad = $request->input('id_nacionalidad');
-		$desaparecido->fechaNacimiento = $request->input('fechaNacimiento');
-		$desaparecido->id_edoCivil = $request->input('id_edoCivil');
-		$desaparecido->genero = $request->input('genero');
-		$desaparecido->embarazo = $request->input('embarazo');
-		$desaparecido->periodoGestacion = $request->input('periodoGestacion');
-		$desaparecido->rumores = $request->input('rumores');
-		$desaparecido->pormenores = $request->input('pormenores');
-		$desaparecido->escolaridad = $request->input('escolaridad');
-		$desaparecido->ocupacion = $request->input('ocupacion');
-
-		$desaparecido->save();
-
-		//Domicilios
-		$domicilio = new Domicilio();
-
-		$domicilio->tipoDireccion = $request->input('tipoDireccion');
-		$domicilio->idMunicipio = $request->input('idMunicipio');
-		$domicilio->idLocalidad = $request->input('idLocalidad');
-		$domicilio->idColonia = $request->input('idColonia');
-		$domicilio->calle = $request->input('calle');
-
-		$domicilio->numExterno = $request->input('numExterno');
-		$domicilio->numInterno = $request->input('numInterno');
-		$domicilio->telefono = $request->input('telefono');
-
-		$domicilio->idPersona = $request->input('idPersona');
-
-		$domicilio->save();
-*/
-		//Documentos identidad
-		$identificacion = new Documento();
 		
-
-		$identificacion->identificacion = $request->input('identificacion');
-		$identificacion->otraIdentificacion = $request->input('otroId');
-		$identificacion->noIdentificacion = $request->input('noId');
-		$identificacion->idPersonaDesaparecidos = $request->input('idPersona');
-
-		//dd($identificacion);
-
-		$identificacion->save();
-
-	   /* //Antecedentes
-
-		$antecedente = new Antecedente();
-
-		$antecedente->antecedentes = $request->input('antecendentes');
-		$antecedente->mes = $request->input('mes');
-		$antecedente->anio = $request->input('anio');
-		$antecedente->observaciones = $request->input('observaciones');
-		$antecedente->idPersonaDesaparecidos = $request->input('idPersona');
-		$antecedente->idDelito = $request->input('idDelito');
-		$antecedente->idCentroReclusion = $request->input('idCentro');
-
-		$antecendente->save();
-
-*/
-
-		return ("Hecho");
 	}
 
 	/**
