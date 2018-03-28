@@ -17,10 +17,13 @@
 //});
 
 Route::get('/', function () {
-    return view('desaparecidos.form');
+    return view('inicio');
 
 });
 
+Route::get('/', 'NacionalidadController@find')->name('nacion');
+
+//Route::get('/', 'EscolaridadController@Escolarfind')->name('escolar');
 
 Route::resource('/desaparecido','DesaparecidoController');
 
