@@ -28,15 +28,15 @@ class DesaparecidoRequest extends FormRequest
             'nombres' => 'required',
             'primerAp' => 'required',
             'segundoAp' => 'required',
-            'fechaNacimiento' => 'required',
+            'fechaNacimiento' => 'required|Y/m/d',
             'idNacionalidad' => 'required'
             'sexo' => 'required',
 
             //Datos familia
             'parentesco' => 'required',
-            'nombres' => 'required',
+            /*'nombres' => 'required',
             'primerAp' => 'required',
-            'segundoAp' => 'required',
+            'segundoAp' => 'required',*/
             'edad' => 'required',
             
 
@@ -57,7 +57,7 @@ class DesaparecidoRequest extends FormRequest
             'calle' => 'required',
             'numExterno' => 'required',
             'numInterno' => 'required',
-            'telefono' => 'required',
+            'telefono' => 'required|integer',
             'idMunicipio' => 'required',
             'idLocalidad' => 'required',
             'idColonia' => 'required',
@@ -76,6 +76,15 @@ class DesaparecidoRequest extends FormRequest
             'idDesaparecido' => 'required',
             'idDelito' => 'required',
             'idCentroReclusion' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'nombres.required' => 'Nombre es Requerido',
+            'primerAp.required'  => 'Primer apellido es requerido',
+            'segundoAp.required'  => 'Segundo apellido es requerido',
         ];
     }
 }
