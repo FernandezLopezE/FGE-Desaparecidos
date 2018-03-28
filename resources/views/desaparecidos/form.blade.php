@@ -4,6 +4,7 @@
 	{!! Html::style('') !!}
 	{!! Html::style('css/select2.css') !!}
 	{{--{!! Html::style('css/select2-bootstrap.css') !!}--}}
+	<link href="/css/select2.min.css" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -19,12 +20,9 @@
 
 @section('script')
 
-	{!! HTML::script('js/datosgral.js') !!}
-	{!! HTML::script('js/jquery-3.3.1.js') !!}
-	{!! HTML::script('js/domicilio.js') !!}
-	{!! HTML::script('js/select2.full.js') !!}
-
 	{!! HTML::script('personal/js/datosgral.js') !!}
 	{!! HTML::script('personal/js/domicilio.js') !!}
+	{!! HTML::script('personal/js/domicilio.js') !!}
+	<script src="/js/select2.min.js"></script>
 
 @endsection

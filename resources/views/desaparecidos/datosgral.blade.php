@@ -22,9 +22,8 @@
 		<!--Fin Genero -->
 
 		<!--Nacionalidad -->
-		<div class="col-6">
-			<input type="text" class="form-control" placeholder="Aquí va la nacionalidad">
-		</div>
+		
+	</div>
 		<!--fin de Nacionalidad -->
 	</div>
 
@@ -63,9 +62,7 @@
 
 	<!--Escolaridad, ocupación y select de estado civil -->
 	<div class="form-group row">
-		<div class="col-3">
-			<input type="text" class="form-control" id="idEscolaridad" name="idEscolaridad" placeholder="Escolaridad">
-		</div>
+		
 		<div class="col-3">
 			<input type="text" class="form-control" id="idOcupacion" name="idOcupacion" placeholder="Ocupación">
 		</div>	
