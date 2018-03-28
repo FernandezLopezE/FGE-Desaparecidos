@@ -61,7 +61,7 @@ class DesaparecidoController extends Controller
 
 		$escolaridades		= \App\Models\CatEscolaridad::all()->pluck('id','nombre');
 		$ocupaciones	 	= \App\Models\CatOcupacion::all()->pluck('id','nombre');
-		$nacionalidades 	= \App\Models\CatNacionalidad::all()->pluck('id','nombre');
+		$nacionalidades 	= \App\Models\CatNacionalidad::all()->pluck('nombre', 'id');
 		$municipios 		= \App\Models\CatMunicipio::all()->pluck('id','nombre');
 		$localidades 		= \App\Models\CatLocalidad::all()->pluck('id','nombre');
 		$colonias 			= \App\Models\CatColonia::all()->pluck('id','nombre'); 
