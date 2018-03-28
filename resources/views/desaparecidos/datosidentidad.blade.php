@@ -1,4 +1,4 @@
-<div class="form-group">
+    <div class="form-group">
         {!! Form::label ('identificacion','Identificacion') !!}
         {!! Form::select ('identificacion',$identificacion,'', ['class' => 'form-control'] )!!}
     </div>
@@ -14,31 +14,31 @@
     </div>
 
     <div class="form-group">
-        {!! Form::label ('persona','Persona') !!}
-        {!! Form::text ('idPersona',$persona->id, ['class' => 'form-control'] )!!}
-    </div>
-
-    <div class="form-group">
         {!! Form::label ('antecedentes','Antecedentes') !!}
         {!! Form::select ('antecedentes',$option,'', ['class' => 'form-control'] )!!}
     </div>
+    
     <div class="form-group">
         {!! Form::label ('mes','Meses') !!}
         {!! Form::select ('mes',$meses,'', ['class' => 'form-control'] )!!}
     </div>
+    
     <div class="form-group">
         {!! Form::label ('anio','Anios') !!}
-        {!! Form::select ('anio','', ['class' => 'form-control'] )!!}
+        {!! Form::select ('anio',$anios,'', ['class' => 'form-control'] )!!}
     </div>
+    
     <div class="form-group">
         {!! Form::label ('delito','Delito') !!}
-        {!! Form::select ('idDelito',$Delitos,'', ['class' => 'form-control'] )!!}
+        {!! Form::select ('idDelito',$delitos,'', ['class' => 'form-control'] )!!}
     </div>
+    
     <div class="form-group">
         {!! Form::label ('centro','Centro de reclucion') !!}
-        {!! Form::select ('idCcentro',$centro,'', ['class' => 'form-control'] )!!}
+        {!! Form::select ('idCcentro',$centros,'', ['class' => 'form-control'] )!!}
     </div>
+    
     <div class="form-group">
-        {!! Form::label ('observacion','Observacion') !!}
-        {!! Form::select ('observacion',$observacion,'', ['class' => 'form-control'] )!!}
+        {!! Form::label ('observaciones','Observaciones') !!}
+        {!! Form::text ('observaciones',old('observaciones'), ['class' => 'form-control'] )!!}
     </div>
