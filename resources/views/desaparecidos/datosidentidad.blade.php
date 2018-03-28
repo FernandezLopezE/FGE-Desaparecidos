@@ -1,6 +1,6 @@
     <div class="form-group">
-        {--{!! Form::label ('identificacion','Identificacion') !!}
-        {!! Form::select ('identificacion',$identificacion,'', ['class' => 'form-control'] )!!}--}
+        {!! Form::label ('identificacion','Identificacion') !!}
+        {!! Form::select ('identificacion',$identificacion,'', ['class' => 'form-control'] )!!}
     </div>
 
     <div class="form-group">
