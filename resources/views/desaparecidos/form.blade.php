@@ -16,6 +16,6 @@
 
 
 @section('script')
-	{!! HTML::script('js/datosgral.js') !!}
-	{!! HTML::script('js/domicilio.js') !!}
+	{!! HTML::script('personal/js/datosgral.js') !!}
+	{!! HTML::script('personal/js/domicilio.js') !!}
 @endsection
