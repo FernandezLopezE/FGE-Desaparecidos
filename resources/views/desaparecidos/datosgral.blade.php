@@ -120,7 +120,10 @@
 		<div class="col-3">
 			<input type="text" class="form-control"  id="segundoAp" name="segundoAp" placeholder="Apellido materno">
 		</div>
-	</div>
+		<div class="col-3">
+			<button type="button" class="btn btn-primary form-control">Agregar otro</button>
+		</div>
+	</div><hr>
 	<!--Fin de Campos para ingresar nombre de los hijos -->
 
 	<!--Radio buttons para preguntar si esta embarazada -->
@@ -154,10 +157,10 @@
 	<div class="form-group row" id="rumores" style="display:none">
 		<label class="col-3 col-form-label">Rumores sobre el nacimiento o localización del bebé</label>
 		<div class="col-1">
-			<label class="radio-inline"><input type="radio" class="form-control" name="rumor" id="rumor">Sí</label>
+			<label class="radio-inline"><input type="radio" class="form-control" name="rumor" id="rumor" value="si">Sí</label>
 		</div>
 		<div class="col-1">
-			<label class="radio-inline"><input type="radio" class="form-control" name="rumor" id="rumor">No</label>
+			<label class="radio-inline"><input type="radio" class="form-control" name="rumor" id="rumor" value="no">No</label>
 		</div>
 		<div class="col-2">
 			<label class="radio-inline"><input type="radio" class="form-control" name="rumor" id="rumor">Lo ignoran</label>
