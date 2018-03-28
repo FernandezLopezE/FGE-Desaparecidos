@@ -11,7 +11,7 @@
     <!-- custom style -->
     {!! Html::style('assets-master/style.css') !!}
     <!-- tipografía oficial -->
-    {[!! Html::style('assets-master/css/font-neosans.css') !!}
+    {!! Html::style('assets-master/css/font-neosans.css') !!}
 
     @yield('style')
 
