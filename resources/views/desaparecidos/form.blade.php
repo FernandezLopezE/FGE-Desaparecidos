@@ -2,6 +2,8 @@
 
 @section('style')
 	{!! Html::style('') !!}
+	{!! Html::style('css/select2.css') !!}
+	{{--{!! Html::style('css/select2-bootstrap.css') !!}--}}
 @endsection
 
 @section('content')
@@ -18,4 +20,5 @@
 @section('script')
 	{!! HTML::script('js/datosgral.js') !!}
 	{!! HTML::script('js/domicilio.js') !!}
+	{!! HTML::script('js/select2.full.js') !!}
 @endsection

@@ -1,29 +1,49 @@
 
 
-    $( " .codigoPostal" ).select2( {
+    
+    $(document).ready(function(){
+        $( " .codigoPostal" ).select2({
+            maximumSelectionSize: 6,
+            placeholder: "Municipio",
+        });
+        $( " .codigoPostal" ).select2({
+            maximumSelectionSize: 6,
+            placeholder: "Código Postal",
+        });
+        $( " .municipio" ).select2({
+            maximumSelectionSize: 6,
+            placeholder: "Municipio",
+        });
+        $( " .localidad" ).select2({
+            maximumSelectionSize: 6,
+            placeholder: "Localidad",
+        });
+        $( " .colonia" ).select2({
+            maximumSelectionSize: 6,
+            placeholder: "Colonia",
+        });
+    });
+
+
+/*
+    $( " .municipio" ).select2({
         theme: "classic",
-        placeholder: "Codigo Postal",
+        //placeholder: "Municipio",
         maximumSelectionSize: 4,
         containerCssClass: ':all:'
-    } );
-    $( " .municipio" ).select2( {
+    });
+    $( " .localidad" ).select2({
         theme: "classic",
-        placeholder: "Municipio",
+        //placeholder: "Localidad",
         maximumSelectionSize: 4,
         containerCssClass: ':all:'
-    } );
-    $( " .localidad" ).select2( {
+    });
+    $( " .colonia" ).select2({
         theme: "classic",
-        placeholder: "Localidad",
+        //placeholder: "Colonia",
         maximumSelectionSize: 4,
         containerCssClass: ':all:'
-    } );
-    $( " .colonia" ).select2( {
-        theme: "classic",
-        placeholder: "Colonia",
-        maximumSelectionSize: 4,
-        containerCssClass: ':all:'
-    } );
+    });*/
 
 
     $( ":checkbox" ).on( "click", function() {
