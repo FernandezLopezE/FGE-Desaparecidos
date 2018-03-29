@@ -1,21 +1,21 @@
     <div class="form-group">
         {!! Form::label ('identificacion','Identificacion') !!}
-        {!! Form::select ('identificacion',$identificacion,'', ['class' => 'form-control', 'id' => 'identificacion'] )!!}
+        {!! Form::select ('identificacion',$identificacion,'', ['class' => 'form-control', 'id' => 'identificacion','data-validation-optional-if-answered' => 'Otro(especifique)'] )!!}
     </div>
 
     <div class="form-group">
-        {!! Form::label ('otroId','Otro') !!}
-        {!! Form::text ('otroId',old('Otra identificacion'), ['class' => 'form-control', 'data-validation' =>'required'] )!!}
+        {!! Form::label ('otraIdentificacion','Otro') !!}
+        {!! Form::text ('otraIdentificacion',old('Otra identificacion'), ['class' => 'form-control', 'data-validation-help' => 'En caso de seleccionar otra identificación. Agregar aquí.', 'data-validation-depends-on' => 'identificacion','data-validation-depends-on-value' =>'Otro(especifique)'] )!!}
     </div>
 
     <div class="form-group">
-        {!! Form::label ('noId','No. Identificación') !!}
-        {!! Form::text ('noId',old('Numero identificacion'), ['class' => 'form-control', 'data-validation' =>'required'] )!!}
+        {!! Form::label ('numIdentificacion','No. Identificación') !!}
+        {!! Form::text ('numIdentificacion',old('Numero identificacion'), ['class' => 'form-control', 'data-validation' =>'required', 'data-validation-help' => 'Ejemplo: 117OO02AS23SPPR0.', 'data-validation-error-msg-required' =>'Este campo es requerido.'] )!!}
     </div>
 
     <div class="form-group">
-        {!! Form::label ('antecedentes','Antecedentes') !!}
-        {!! Form::select ('antecedentes',$option,'', ['class' => 'form-control', 'id' => 'opciones'] )!!}
+        {!! Form::label ('antecedentesJudiciales','Antecedentes Judiciales') !!}
+        {!! Form::select ('antecedentesJudiciales',$option,'', ['class' => 'form-control', 'id' => 'opciones'] )!!}
     </div>
     
     <div class="form-group">
@@ -29,18 +29,18 @@
     </div>
     
     <div class="form-group">
-        {!! Form::label ('delito','Delito') !!}
+        {!! Form::label ('idDelito','Delito') !!}
         {!! Form::select ('idDelito',$delitos,'', ['class' => 'form-control', 'id' => 'delitos'] )!!}
     </div>
     
     <div class="form-group">
-        {!! Form::label ('centro','Centro de reclucion') !!}
-        {!! Form::select ('idCcentro',$centros,'', ['class' => 'form-control', 'id' => 'centro'] )!!}
+        {!! Form::label ('idCentroReclusion','Centro de reclucion') !!}
+        {!! Form::select ('idCentroReclusion',$centros,'', ['class' => 'form-control', 'id' => 'centro'] )!!}
     </div>
     
     <div class="form-group">
         {!! Form::label ('observaciones','Observaciones') !!}
-        {!! Form::text ('observaciones',old('observaciones'), ['class' => 'form-control', 'data-validation' =>'required'] )!!}
+        {!! Form::text ('observaciones',old('observaciones'), ['class' => 'form-control', 'data-validation' =>'required','data-validation' =>'length','data-validation-length'=> '50-200', 'data-validation-error-msg' =>'Esta campo debe tener entre 50-200 caracteres.'] )!!}
     </div>
 
     <script type="text/javascript">
