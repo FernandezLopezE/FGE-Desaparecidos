@@ -18,6 +18,12 @@
 
 		@yield('style')
 
+		<style type="text/css">
+			.container {
+    			margin: 70px;
+			}
+		</style>
+
 		<title>Personas desaparecidas</title>
 	</head>
 
