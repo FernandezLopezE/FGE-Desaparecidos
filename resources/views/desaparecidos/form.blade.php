@@ -20,7 +20,7 @@
 				</div>
 			@endif
 
-		@include('desaparecidos.datosgral2')
+		@include('desaparecidos.datosgral')
 		@include('desaparecidos.domicilio')
 
 		@include('desaparecidos.datosidentidad')
