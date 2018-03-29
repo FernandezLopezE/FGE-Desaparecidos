@@ -5,12 +5,12 @@
 
     <div class="form-group">
         {!! Form::label ('otroId','Otro') !!}
-        {!! Form::text ('otroId',old('Otra identificacion'), ['class' => 'form-control'] )!!}
+        {!! Form::text ('otroId',old('Otra identificacion'), ['class' => 'form-control', 'data-validation' =>'required'] )!!}
     </div>
 
     <div class="form-group">
         {!! Form::label ('noId','No. Identificación') !!}
-        {!! Form::text ('noId',old('Numero identificacion'), ['class' => 'form-control'] )!!}
+        {!! Form::text ('noId',old('Numero identificacion'), ['class' => 'form-control', 'data-validation' =>'required'] )!!}
     </div>
 
     <div class="form-group">
@@ -40,7 +40,7 @@
     
     <div class="form-group">
         {!! Form::label ('observaciones','Observaciones') !!}
-        {!! Form::text ('observaciones',old('observaciones'), ['class' => 'form-control'] )!!}
+        {!! Form::text ('observaciones',old('observaciones'), ['class' => 'form-control', 'data-validation' =>'required'] )!!}
     </div>
 
     <script type="text/javascript">
