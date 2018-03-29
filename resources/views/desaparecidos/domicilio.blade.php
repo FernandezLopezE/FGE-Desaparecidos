@@ -26,23 +26,27 @@
 		</div>
 		<div class="row">
 			<div class="form-group col">
-					{!! Form::label ('idMunicipio','Municipio:') !!}
-					{!! Form::select ('idMunicipio',$municipios,'', ['class' => 'form-control', 'id' => 'idMunicipio'] )!!}
+				{!! Form::label ('idEstado','Estado:') !!}
+				{!! Form::select ('idEstado',$estados,'', ['class' => 'form-control', 'id' => 'idEstado'] )!!}
 			</div>
 			<div class="form-group col">
-					{!! Form::label ('idLocalidad','Localidad:') !!}
-					{!! Form::select ('idLocalidad',$localidades,'', ['class' => 'form-control', 'id' => 'idLocalidad'] )!!}
+				{!! Form::label ('idMunicipio','Municipio:') !!}
+				{!! Form::select ('idMunicipio',$municipios,'', ['class' => 'form-control', 'id' => 'idMunicipio'] )!!}
+			</div>
+			<div class="form-group col">
+				{!! Form::label ('idLocalidad','Localidad:') !!}
+				{!! Form::select ('idLocalidad',$localidades,'', ['class' => 'form-control', 'id' => 'idLocalidad'] )!!}
 			</div>
 			<div class="form-group col">
 				{!! Form::label ('idColonia','Colonia:') !!}
 				{!! Form::select ('idColonia',$colonias,'', ['class' => 'form-control', 'id' => 'idColonia'] )!!}
-			</div>
+			</div>		
+		</div>
+		<div class="row">
 			<div class="form-group col">
 				{!! Form::label ('idCodigoPostal','Código postal:') !!}
 				{!! Form::select ('idCodigoPostal',$codigos,'', ['class' => 'form-control', 'id' => 'idCodigoPostal'] )!!}
-			</div>			
-		</div>
-		<div class="row">
+			</div>	
 			<div class="form-group col">
 					{!! Form::label ('telefono','Teléfono:') !!}
 					{!! Form::text ('telefono',old('telefono'), ['class' => 'form-control'] ) !!}
@@ -55,7 +59,7 @@
 <script type="text/javascript">
 	$(document).ready(function()
 	{
-		$('#tipo').select2({
+		/*$('#tipo').select2({
 			width : "100%",
 		});
 
@@ -73,6 +77,6 @@
 
 		$('#colonia').select2({
 			width : "100%",
-		});
+		});*/
 	});
 </script>
