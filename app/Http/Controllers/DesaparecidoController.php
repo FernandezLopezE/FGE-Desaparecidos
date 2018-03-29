@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Desaparecido;
 use App\Models\Documento;
 use App\Models\Antecedente;
-use App\Models\Domicilio;
+//use App\Models\Domicilio;
 use App\Http\Requests\CreateDesaparecidoRequest;
 
 class DesaparecidoController extends Controller
@@ -62,11 +62,11 @@ class DesaparecidoController extends Controller
 		$escolaridades		= \App\Models\CatEscolaridad::all()->pluck('nombre','id');
 		$ocupaciones	 	= \App\Models\CatOcupacion::all()->pluck('nombre','id');
 		$nacionalidades 	= \App\Models\CatNacionalidad::all()->pluck('nombre', 'id');
-		$estados 			= \App\Models\CatEstado::all()->pluck('nombre','id');
+		/*$estados 			= \App\Models\CatEstado::all()->pluck('nombre','id');
 		$municipios 		= array();
 		$localidades 		= array();
 		$colonias 			= array();
-		$codigos 			= array();
+		$codigos 			= array();*/
 		$delitos 			= \App\Models\CatDelito::all()->pluck('nombre','id');
 		$centros 			= \App\Models\CatCentroReclusion::all()->pluck('nombre','id');		
 		$edoscivil 			= \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
@@ -83,11 +83,11 @@ class DesaparecidoController extends Controller
 						'nacionalidades' => $nacionalidades,						
 						'delitos' => $delitos,
 						'centros' => $centros,
-						'estados' => $estados,
+						/*'estados' => $estados,
 						'municipios' => $municipios,
 						'localidades' => $localidades,
 						'colonias' => $localidades,
-						'codigos' => $codigos,
+						'codigos' => $codigos,*/
 						'sexos' => $sexos,
 						'edoscivil' => $edoscivil,
 						'tiposDireccion' => $tiposDireccion

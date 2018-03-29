@@ -20,13 +20,13 @@ class DomiciliosController extends Controller
     	//$localidades= CatLocalidad::pluck('nombre','id');
     	//$colonias= CatColonia::pluck('nombre','id');
 
-    	$codigos = array();
+    	/*$codigos = array();
         $municipios = array();
         $localidades = array();
         $colonias = array();
     	
 
-    	return view('desaparecidos/index',compact('estados', 'codigos', 'municipios','localidades','colonias'));
+    	return view('desaparecidos/index',compact('estados', 'codigos', 'municipios','localidades','colonias'));*/
   		
   		
     }
