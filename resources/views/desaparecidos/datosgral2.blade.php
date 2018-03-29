@@ -5,7 +5,7 @@
 	<div class="form-group row">
 		<div class="col-3">
 				{!! Form::label ('sexo','Género') !!}
-        		{!! Form::select ('sexo',$sexos,'', ['class' => 'form-control'] )!!}
+        		{!! Form::select ('sexo',$sexos,'', ['class' => 'form-control', 'id' => 'sexo'])!!}
         		
 		</div>		
 		<!--Fin Genero -->
@@ -13,7 +13,7 @@
 		<!--Nacionalidad -->
 		<div class="col-6">
 			{!! Form::label ('nacionalidades','Nacionalidad') !!}
-        		{!! Form::select ('nacionalidades',$nacionalidades,'', ['class' => 'form-control','placeholder' => 'MEXICANA'] )!!}
+        		{!! Form::select ('nacionalidades',$nacionalidades,'', ['class' => 'form-control', 'id' => 'nacion'] )!!}
 		</div>
 		<!--fin de Nacionalidad -->
 	</div>
@@ -52,15 +52,15 @@
 	<div class="form-group row">
 		<div class="col-3">
 			{!! Form::label ('idEscolaridad','Escolaridad') !!}
-        		{!! Form::select ('idEscolaridad',$escolaridades,'', ['class' => 'form-control'] )!!}
+        	{!! Form::select ('idEscolaridad',$escolaridades,'', ['class' => 'form-control', 'id' => 'escolaridad'] )!!}
 		</div>
 		<div class="col-3">
 			{!! Form::label ('idOcupacion','Ocupación') !!}
-        		{!! Form::select ('idOcupacion',$ocupaciones,'', ['class' => 'form-control'] )!!}
+        		{!! Form::select ('idOcupacion',$ocupaciones,'', ['class' => 'form-control', 'id' => 'ocupacion'] )!!}
 		</div>	
 		<div class="col-3">
 			{!! Form::label ('idEdocivil','Estado civil') !!}
-        	{!! Form::select ('idEdocivil',$edoscivil ,'', ['class' => 'form-control'] )!!}
+        	{!! Form::select ('idEdocivil',$edoscivil ,'', ['class' => 'form-control', 'id' => 'estadoCivil'] )!!}
 		</div>	
 	</div><br>
 	<!--Fin de Escolaridad, ocupación y select de estado civil -->
@@ -87,7 +87,7 @@
 	<div class="form-group row" name="tieneHijos" id="tieneHijos">
 		<div class="col-2">
 			{!! Form::label ('hijos','Hijos') !!}
-        	{!! Form::select ('hijos',['SI'=>'SI','NO'=>'NO'],'', ['class' => 'form-control'] )!!}
+        	{!! Form::select ('hijos',['SI'=>'SI','NO'=>'NO'],'', ['class' => 'form-control', 'id' => 'hijos'] )!!}
         </div>
 	</div>
 	<!--Fin de Radios buttons para preguntar si tiene hijos -->
@@ -118,7 +118,7 @@
 	<div class="form-group row" id="estaEmbarazada">
 		<div class="col-3">
 		{!! Form::label ('embarazo','Esta embarazada') !!}
-        {!! Form::select ('embarazo',['SI'=>'SI','NO'=>'NO'],'', ['class' => 'form-control'] )!!}
+        {!! Form::select ('embarazo',['SI'=>'SI','NO'=>'NO'],'', ['class' => 'form-control', 'id' => 'embarazada'] )!!}
         </div>
 	</div>
 	<!--Fin de Radio buttons para preguntar si esta embarazada -->
@@ -141,7 +141,7 @@
 		<label class="col-3 col-form-label">Rumores sobre el nacimiento o localización del bebé</label>
 		<div class="col-3">
 			{!! Form::label ('rumor','Rumores sobre el nacimiento') !!}
-        		{!! Form::select ('rumor',['SI'=>'SI','NO'=>'NO'],'', ['class' => 'form-control'] )!!}
+        		{!! Form::select ('rumor',['SI'=>'SI','NO'=>'NO'],'', ['class' => 'form-control', 'id' => 'rumores'] )!!}
 		</div>
 	</div>
 	<!--Fin de Radio buttons para preguntar si conocen algun rumor -->
@@ -192,3 +192,44 @@
 
 	
 </div>
+
+<!--aplicando SELECT2 en los catalogos-->
+<script type="text/javascript">
+	$(document).ready(function()
+	{
+		$('#sexo').select2({
+			width : "100%",
+		});
+
+		$('#nacion').select2({
+			width : "100%",
+		});
+
+		$('#nacion').val(1).trigger('change.select2');
+
+		$('#escolaridad').select2({
+			width : "100%",
+		});
+		
+		$('#ocupacion').select2({
+			width : "100%",
+		});
+
+		$('#estadoCivil').select2({
+			width : "100%",
+		});
+
+		$('#hijos').select2({
+			width : "100%",
+		});
+
+		$('#embarazada').select2({
+			width : "100%",
+		});
+
+		$('#rumores').select2({
+			width : "100%",
+		});
+		
+	});
+</script>
