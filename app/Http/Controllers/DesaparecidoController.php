@@ -57,6 +57,7 @@ class DesaparecidoController extends Controller
 
 		$anios = array('2000' => '2000', '2001' => '2001');
 		$sexos = array('MASCULINO' => 'MASCULINO', 'FEMENINO' => 'FEMENINO');
+		$tiposDireccion = array('PERSONAL' => 'PERSONAL', 'TRABAJO' => 'TRABAJO');
 
 		$escolaridades		= \App\Models\CatEscolaridad::all()->pluck('nombre','id');
 		$ocupaciones	 	= \App\Models\CatOcupacion::all()->pluck('nombre','id');
@@ -88,7 +89,8 @@ class DesaparecidoController extends Controller
 						'colonias' => $localidades,
 						'codigos' => $codigos,
 						'sexos' => $sexos,
-						'edoscivil' => $edoscivil
+						'edoscivil' => $edoscivil,
+						'tiposDireccion' => $tiposDireccion
 					]);
 	}
 
