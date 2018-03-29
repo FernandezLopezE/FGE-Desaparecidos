@@ -23,7 +23,6 @@
 		@include('desaparecidos.domicilio')
 
 		@include('desaparecidos.datosidentidad')
-		@include('desaparecidos.nacionalidad')
 		{!! Form::submit('Agregar datos'); !!}
 	{!! Form::close() !!}
 
