@@ -2,26 +2,67 @@
 
     
     $(document).ready(function(){
+
         $( " .codigoPostal" ).select2({
-            maximumSelectionSize: 6,
-            placeholder: "Municipio",
+                maximumSelectionSize: 6,
+                placeholder: "Municipio",
         });
         $( " .codigoPostal" ).select2({
-            maximumSelectionSize: 6,
-            placeholder: "Código Postal",
+                maximumSelectionSize: 6,
+                placeholder: "Código Postal",
         });
         $( " .municipio" ).select2({
-            maximumSelectionSize: 6,
-            placeholder: "Municipio",
+                maximumSelectionSize: 6,
+                placeholder: "Municipio",
         });
         $( " .localidad" ).select2({
-            maximumSelectionSize: 6,
-            placeholder: "Localidad",
+                maximumSelectionSize: 6,
+                placeholder: "Localidad",
         });
         $( " .colonia" ).select2({
             maximumSelectionSize: 6,
             placeholder: "Colonia",
         });
+    
+
+            
+        $("#idEstado").change(function(event){
+                $.get("municipio/"+event.target.value+"", function(response, estado){
+                    $("#idMunicipio").empty();
+                    $("#idMunicipio").append("<option value=''>Seleccione un municipio</option>");
+                    for(i=0; i<response.length; i++){
+                        $("#idMunicipio").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+                     }
+                })
+            });
+            
+
+        $("#idMunicipio").change(function(event){
+                if(event.target.value!=""){
+                    $.get("localidades/"+event.target.value+"", function(response, municipio){
+                        $("#idLocalidad").empty();
+                        $("#idLocalidad").append("<option value=''>Seleccione una localidad</option>");
+                        for(i=0; i<response.length; i++){
+                            $("#idLocalidad").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+                        }
+                        
+                    });
+                    $.get("colonias2/"+event.target.value+"", function(response, municipio){
+                        $("#idColonia").empty();
+                        $("#idColonia").append("<option value=''>Seleccione una colonia</option>");
+                        for(i=0; i<response.length; i++){
+                            $("#idColonia").append("<option value='"+response[i].id+"'> "+response[i].nombre+"</option>");
+                        }
+                        
+                    });
+                    $.get("codigos/"+event.target.value+"", function(response, municipio){
+                        $("#cp").empty();
+                        $("#cp").append("<option value=''>Seleccione un código postal</option>");
+                        for(i=0; i<response.length; i++){
+                            $("#cp").append("<option value='"+response[i].id+"'> "+response[i].codigoPostal+"</option>");
+                        }                        
+                    });       
+                });
     });
 
 
