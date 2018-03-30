@@ -21,12 +21,16 @@ class CreateDesaparecidosDomiciliosTable extends Migration
             $table->string('numInterno', 10)->default('S/N');
             $table->string('telefono', 30)->default('S/N');
 
+            $table->integer('idEstado')->unsigned()->default(30);
+            $table->foreign('idEstado')->references('id')->on('cat_estado')->onDelete('cascade');            
             $table->integer('idMunicipio')->unsigned()->default(2496);
             $table->foreign('idMunicipio')->references('id')->on('cat_municipio')->onDelete('cascade');
             $table->integer('idLocalidad')->unsigned()->default(108971);
             $table->foreign('idLocalidad')->references('id')->on('cat_localidad')->onDelete('cascade');
             $table->integer('idColonia')->unsigned()->default(49172);
-            $table->foreign('idColonia')->references('id')->on('cat_colonia')->onDelete('cascade'); 
+            $table->foreign('idColonia')->references('id')->on('cat_colonia')->onDelete('cascade');
+            $table->integer('idCodigoPostal')->unsigned()->default(49172);
+            $table->foreign('idCodigoPostal')->references('id')->on('cat_colonia')->onDelete('cascade');              
             $table->integer('idDesaparecido')->unsigned()->default(49172);
             $table->foreign('idDesaparecido')->references('id')->on('desaparecidos_personas')->onDelete('cascade');            
 
