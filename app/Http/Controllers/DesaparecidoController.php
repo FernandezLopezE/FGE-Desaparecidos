@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Desaparecido;
 use App\Models\Documento;
 use App\Models\Antecedente;
-use App\Models\Domicilio;
+//use App\Models\Domicilio;
 use App\Http\Requests\CreateDesaparecidoRequest;
 
 class DesaparecidoController extends Controller
