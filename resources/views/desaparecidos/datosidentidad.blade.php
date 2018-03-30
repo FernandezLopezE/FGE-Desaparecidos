@@ -40,7 +40,7 @@
     
     <div class="form-group">
         {!! Form::label ('observaciones','Observaciones') !!}
-        {!! Form::text ('observaciones',old('observaciones'), ['class' => 'form-control', 'data-validation' =>'required','data-validation' =>'length','data-validation-length'=> '50-200', 'data-validation-error-msg' =>'Esta campo debe tener entre 50-200 caracteres.'] )!!}
+        {!! Form::text ('observaciones',old('observaciones'), ['class' => 'form-control', 'data-validation' =>'alphanumeric','data-validation' =>'length','data-validation-length'=> '50-200', 'data-validation-error-msg' =>'Esta campo debe tener entre 50-200 caracteres.'] )!!}
     </div>
 </div>
     <script type="text/javascript">
