@@ -31,8 +31,9 @@
 
 
 @section('script')
-
 	{!! HTML::script('personal/js/datosgral.js') !!}
 	{!! HTML::script('personal/js/domicilio.js') !!}
 	{!! HTML::script('personal/js/select2.min.js') !!}
+	{!! HTML::script('personal/js/jquery.min.js') !!}
+	{!! HTML::script('personal/js/jquery.form-validator.min.js') !!}
 @endsection
