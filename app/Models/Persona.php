@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Persona extends Model
 {
@@ -41,11 +42,17 @@ class Persona extends Model
 
 	public function familiares(){
 		return $this->hasMany('App\Models\Familiar');
-	}*/	
+	}*/
 
 	public function desaparecidos(){
 		return $this->hasMany('App\Models\Desaparecido', 'idDesaparecido', 'id');
 	}
+
+	public function setFechaNacimientoAttribute($value)
+	{
+		$this->attributes['fechaNacimiento'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+	}
+
 	public static function buscarCURP($curp){
 	  $curps=Persona::where('curp','=',$curp)->get();
 	  if($curps->isNotEmpty()){

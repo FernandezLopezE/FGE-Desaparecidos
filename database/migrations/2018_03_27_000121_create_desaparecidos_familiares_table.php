@@ -15,11 +15,11 @@ class CreateDesaparecidosFamiliaresTable extends Migration
     {
         Schema::create('desaparecidos_familiares', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('parentesco',['MADRE', 'PADRE', 'HIJO']);            
+            $table->enum('parentesco',['MADRE', 'PADRE', 'HIJO', 'PAREJA']);            
             $table->string('nombres', 50);
             $table->string('primerAp', 50);
             $table->string('segundoAp', 50);            
-            $table->integer('edad');
+            $table->string('edad',3);
 
             $table->integer('idDesaparecido')->unsigned();
             $table->foreign('idDesaparecido')->references('id')->on('desaparecidos_personas')->onDelete('cascade');           
