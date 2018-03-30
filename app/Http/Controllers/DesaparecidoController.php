@@ -6,7 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Desaparecido;
 use App\Models\Documento;
 use App\Models\Antecedente;
-//use App\Models\Domicilio;
+use App\Models\Persona;
+use App\Models\Familiar;
 use App\Http\Requests\CreateDesaparecidoRequest;
 
 class DesaparecidoController extends Controller
@@ -103,9 +104,59 @@ class DesaparecidoController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(CreateDesaparecidoRequest $request)
-	{
+	{	
+		
+		$persona = Persona::create([
+						'nombres' 			=> $request->input('nombres'),
+						'primerAp' 			=> $request->input('primerAp'),
+						'segundoAp'			=> $request->input('segundoAp'),
+						'fechaNacimiento'	=> $request->input('fechaNacimiento'),
+						'sexo' 				=> $request->input('sexo'),
+						'idNacionalidad'	=> $request->input('idNacionalidad'),
+					]);
 
-		dd($request);
+
+		$desaparecido = Desaparecido::create([
+						'idPersona' 				=> $persona->id,
+						'apodo' 					=> $request->input('apodo'),
+						'edadAparente' 				=> $request->input('edadAparente'),
+						'embarazo' 					=> $request->input('embarazo'),
+						'gestacionSemanas' 			=> $request->input('gestacionSemanas'),
+						'gestacionMeses' 			=> $request->input('gestacionMeses'),
+						'rumoresBebe' 				=> $request->input('rumoresBebe'),
+						'pormenores' 				=> $request->input('pormenores'),
+						'antecedentesJudiciales' 	=> $request->input('antecedentesJudiciales'),
+						'idEdocivil' 				=> $request->input('idEdocivil'),
+						'idOcupacion' 				=> $request->input('idOcupacion'),
+						'idEscolaridad' 			=> $request->input('idEscolaridad'),
+					]);
+
+		$documento = Documento::create([
+						'idDesaparecido' 		=> $desaparecido->id,
+						'identificacion' 		=> $request->input('identificacion'),
+						'otraIdentificacion' 	=> $request->input('otraIdentificacion'),
+						'numIdentificacion' 	=> $request->input('numIdentificacion'),
+					]);
+
+
+		$parentesco = $request->input('parentesco');
+		$nombres = $request->input('familiaresNombres');
+		$primerAp = $request->input('familiaresPrimerAp');
+		$segundoAp = $request->input('familiaresSegundoAp');
+		$familiaresEdad= $request->input('familiaresEdad');
+		$i = 0;
+		foreach ($request->input('parentesco') as $value) {
+			$familia = Familiar::create([
+				'parentesco' 		=> $parentesco[$i],
+				'nombres' 			=> $nombres[$i],
+				'primerAp' 			=> $primerAp[$i],
+				'segundoAp' 		=> $segundoAp[$i],
+				'edad' 				=> $familiaresEdad[$i],
+				'idDesaparecido' 	=> $desaparecido->id,
+			]);
+			$i++;
+		}
+
 
 		
 	}

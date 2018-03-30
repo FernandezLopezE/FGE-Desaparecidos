@@ -17,8 +17,7 @@ class CreateDesaparecidosPersonasTable extends Migration
 			$table->increments('id');
 			$table->string('apodo', 50)->nullable();
 			$table->string('edadAparente', 20)->nullable();			
-			
-			$table->boolean('embarazo')->default(0);
+			$table->enum('embarazo', ['NO','SI', 'LO IGNORAN']);
 			$table->string('gestacionSemanas')->default(0);
 			$table->string('gestacionMeses')->default(0);
 			$table->enum('rumoresBebe',['SI','NO','LO IGNORAN']);

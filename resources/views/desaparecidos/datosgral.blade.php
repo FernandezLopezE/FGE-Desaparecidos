@@ -31,8 +31,8 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				{!! Form::label ('edad','Edad de extravío') !!}
-				{!! Form::text ('edad',old('Edad de extravío'), ['class' => 'form-control', 'id' => 'edad'] )!!}
+				{!! Form::label ('edadExtravio','Edad de extravío') !!}
+				{!! Form::text ('edadExtravio',old('EdadExtravio'), ['class' => 'form-control', 'id' => 'edadExtravio'] )!!}
 			</div>
 			<div class="col">
 				{!! Form::label ('edadAparente','Edad aparente') !!}
@@ -58,31 +58,43 @@
 			</div>			
 		</div>
 		<div class="row">
+			<div>
+				{{ Form::hidden('parentesco[]', 'MADRE') }}
+			</div>
 			<div class="col">
 				{!! Form::label ('nombres','Nombre de la madre:') !!}
-				{!! Form::text ('familiaresNombres',old('Nombres(s)'), ['class' => 'form-control', 'id' => 'familiaresNombres'] )!!}
+				{!! Form::text ('familiaresNombres[]',old('Nombres(s)'), ['class' => 'form-control', 'id' => 'familiaresNombres'] )!!}
 			</div>
 			<div class="col">
 				{!! Form::label ('primerAp','Apellido paterno') !!}
-				{!! Form::text ('familiaresPrimerAp',old('Apellido paterno'), ['class' => 'form-control', 'id' => 'familiaresPrimerAp'] )!!}
+				{!! Form::text ('familiaresPrimerAp[]',old('Apellido paterno'), ['class' => 'form-control', 'id' => 'familiaresPrimerAp'] )!!}
 			</div>
 			<div class="col">
 				{!! Form::label ('segundoAp','Apellido materno') !!}
-				{!! Form::text ('familiaresSegundoAp',old('Apellido materno'), ['class' => 'form-control', 'id' => 'familiaresSegundoAp'] )!!}
-			</div>			
+				{!! Form::text ('familiaresSegundoAp[]',old('Apellido materno'), ['class' => 'form-control', 'id' => 'familiaresSegundoAp'] )!!}
+			</div>
+			<div>
+				{{ Form::hidden('familiaresEdad[]', '0') }}
+			</div>	
 		</div>
 		<div class="row">
+			<div>
+				{{ Form::hidden('parentesco[]', 'PADRE') }}
+			</div>
 			<div class="col">
 				{!! Form::label ('nombres','Nombre del padre:') !!}
-				{!! Form::text ('familiaresNombres',old('Nombres(s)'), ['class' => 'form-control', 'id' => 'familiaresNombres'] )!!}
+				{!! Form::text ('familiaresNombres[]',old('Nombres(s)'), ['class' => 'form-control', 'id' => 'familiaresNombres'] )!!}
 			</div>
 			<div class="col">
 				{!! Form::label ('primerAp','Apellido paterno') !!}
-				{!! Form::text ('familiaresPrimerAp',old('Apellido paterno'), ['class' => 'form-control', 'id' => 'familiaresPrimerAp'] )!!}
+				{!! Form::text ('familiaresPrimerAp[]',old('Apellido paterno'), ['class' => 'form-control', 'id' => 'familiaresPrimerAp'] )!!}
 			</div>
 			<div class="col">
 				{!! Form::label ('segundoAp','Apellido materno') !!}
-				{!! Form::text ('familiaresSegundoAp',old('Apellido materno'), ['class' => 'form-control', 'id' => 'familiaresSegundoAp'] )!!}
+				{!! Form::text ('familiaresSegundoAp[]',old('Apellido materno'), ['class' => 'form-control', 'id' => 'familiaresSegundoAp'] )!!}
+			</div>
+			<div>
+				{{ Form::hidden('familiaresEdad[]', '0') }}
 			</div>			
 		</div>
 		<div class="row">
@@ -92,18 +104,24 @@
 			</div>			
 		</div>
 		<div class="row" id="nombrePareja" style="display:none">
+			<div>
+				{{ Form::hidden('parentesco[]', 'PAREJA') }}
+			</div>			
 			<div class="col">
 				{!! Form::label ('nombres','Nombre de la esposa o pareja') !!}
-				{!! Form::text ('familiaresNombres',old('Nombres(s)'), ['class' => 'form-control', 'id' =>'familiaresNombres
+				{!! Form::text ('familiaresNombres[]',old('Nombres(s)'), ['class' => 'form-control', 'id' =>'familiaresNombres
 			'] )!!}
 			</div>
 			<div class="col">
 				{!! Form::label ('primerAp','Apellido paterno') !!}
-				{!! Form::text ('familiaresPrimerAp',old('Apellido paterno'), ['class' => 'form-control', 'id' => 'familiaresPrimerAp'] )!!}
+				{!! Form::text ('familiaresPrimerAp[]',old('Apellido paterno'), ['class' => 'form-control', 'id' => 'familiaresPrimerAp'] )!!}
 			</div>
 			<div class="col">
 				{!! Form::label ('segundoAp','Apellido materno') !!}
-				{!! Form::text ('familiaresSegundoAp',old('Apellido materno'), ['class' => 'form-control', 'id' => 'familiaresSegundoAp'] )!!}
+				{!! Form::text ('familiaresSegundoAp[]',old('Apellido materno'), ['class' => 'form-control', 'id' => 'familiaresSegundoAp'] )!!}
+			</div>
+			<div>
+				{{ Form::hidden('familiaresEdad[]', '0') }}
 			</div>
 		</div>
 		<div class="row">
@@ -127,21 +145,27 @@
 	</div>
 	<div class="card-body">
 		<div class="row" id="nombreHijo" style="display:none">
+			<div>
+				{{ Form::hidden('parentesco[]', 'HIJO') }}
+			</div>
 			<div class="col">
 				{!! Form::label ('nombres','Nombres(s)') !!}
-				{!! Form::text ('familiaresNombres',old('Nombres(s)'), ['class' => 'form-control', 'id' => 'familiaresNombres'] )!!}
+				{!! Form::text ('familiaresNombres[]',old('Nombres(s)'), ['class' => 'form-control', 'id' => 'familiaresNombres'] )!!}
 			</div>
 			<div class="col">
 				{!! Form::label ('primerAp','Apellido paterno') !!}
-				{!! Form::text ('familiaresPrimerAp',old('Apellido paterno'), ['class' => 'form-control', 'id' => 'familiaresPrimerAp'] )!!}
+				{!! Form::text ('familiaresPrimerAp[]',old('Apellido paterno'), ['class' => 'form-control', 'id' => 'familiaresPrimerAp'] )!!}
 			</div>
 			<div class="col">
 				{!! Form::label ('segundoAp','Apellido materno') !!}
-				{!! Form::text ('familiaresSegundoAp',old('Apellido materno'), ['class' => 'form-control', 'id' => 'familiaresSegundoAp'] )!!}
+				{!! Form::text ('familiaresSegundoAp[]',old('Apellido materno'), ['class' => 'form-control', 'id' => 'familiaresSegundoAp'] )!!}
 			</div>
 			<div class="col">
 				{!! Form::label ('familiaresEdad', 'Edad') !!}
-				{!! Form::text ('familiaresFamiliaresEdad',old('Edad'), ['class' => 'form-control', 'id' => 'familiaresFamiliaresEdad', 'data-validation' => 'number', 'data-validation-permitted' => 'range [1; 100]', 'data-validation-error-msg-required' => '* Solo puedes ingresar números'] )!!}
+				{!! Form::text ('familiaresEdad[]',old('Edad'), ['class' => 'form-control',
+																 'id' => 'familiaresFamiliaresEdad',										 
+																 'data-validation' => 'number',
+																 'data-validation-permitted' => 'range [1; 100]', 'data-validation-error-msg-required' => '* Solo puedes ingresar números'] )!!}
 			</div>			
 		</div>
 	</div>
@@ -159,12 +183,12 @@
 	<div class="card-body">
 		<div class="row"  id="datosEmbarazo" style="display:none">
 			<div class="col">
-				{!! Form::label ('periodoGestacion','Semanas') !!}
-				{!! Form::text ('periodoGestacion',old('Semanas'), ['class' => 'form-control', 'id' => 'periodoGestacion'] )!!}
+				{!! Form::label ('gestacionSemanas','Semanas') !!}
+				{!! Form::text ('gestacionSemanas',old('gestacionSemanas'), ['class' => 'form-control', 'id' => 'gestacionSemanas'] )!!}
 			</div>
 			<div class="col">
-				{!! Form::label ('periodoGestacion','Meses') !!}
-				{!! Form::text ('periodoGestacion',old('Meses'), ['class' => 'form-control', 'id' => 'periodoGestacion'] )!!}
+				{!! Form::label ('gestacionMeses','Meses') !!}
+				{!! Form::text ('gestacionMeses',old('gestacionMeses'), ['class' => 'form-control', 'id' => 'gestacionMeses'] )!!}
 			</div>
 			<div class="col">
 				{!! Form::label ('rumoresBebe','Rumores sobre el nacimiento') !!}
