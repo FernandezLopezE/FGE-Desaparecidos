@@ -15,7 +15,7 @@ class CreateDesaparecidosFamiliaresTable extends Migration
     {
         Schema::create('desaparecidos_familiares', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('parentesco',['Madre', 'Padre', 'Hijo']);            
+            $table->enum('parentesco',['MADRE', 'PADRE', 'HIJO']);            
             $table->string('nombres', 50);
             $table->string('primerAp', 50);
             $table->string('segundoAp', 50);            
