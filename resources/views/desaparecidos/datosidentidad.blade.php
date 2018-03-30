@@ -3,7 +3,7 @@
         {!! Form::select ('identificacion',$identificacion,'', ['class' => 'form-control', 'id' => 'identificacion','data-validation-optional-if-answered' => 'Otro(especifique)'] )!!}
     </div>
 
-    <div class="form-group">
+    <div class="form-group" id="otraIdDIV">
         {!! Form::label ('otraIdentificacion','Otro') !!}
         {!! Form::text ('otraIdentificacion',old('Otra identificacion'), ['class' => 'form-control', 'data-validation-help' => 'En caso de seleccionar otra identificación. Agregar aquí.', 'data-validation-depends-on' => 'identificacion','data-validation-depends-on-value' =>'Otro(especifique)'] )!!}
     </div>
@@ -15,9 +15,9 @@
 
     <div class="form-group">
         {!! Form::label ('antecedentesJudiciales','Antecedentes Judiciales') !!}
-        {!! Form::select ('antecedentesJudiciales',$option,'', ['class' => 'form-control', 'id' => 'opciones'] )!!}
+        {!! Form::select ('antecedentesJudiciales',$option,'', ['class' => 'form-control'] )!!}
     </div>
-    
+ <div id="antecedentesDIV">   
     <div class="form-group">
         {!! Form::label ('mes','Meses') !!}
         {!! Form::select ('mes',$meses,'', ['class' => 'form-control', 'id' => 'meses'] )!!}
@@ -40,9 +40,9 @@
     
     <div class="form-group">
         {!! Form::label ('observaciones','Observaciones') !!}
-        {!! Form::text ('observaciones',old('observaciones'), ['class' => 'form-control', 'data-validation' =>'required','data-validation' =>'length','data-validation-length'=> '50-200', 'data-validation-error-msg' =>'Esta campo debe tener entre 50-200 caracteres.'] )!!}
+        {!! Form::text ('observaciones',old('observaciones'), ['class' => 'form-control', 'data-validation' =>'alphanumeric','data-validation' =>'length','data-validation-length'=> '50-200', 'data-validation-error-msg' =>'Esta campo debe tener entre 50-200 caracteres.'] )!!}
     </div>
-
+</div>
     <script type="text/javascript">
     $(document).ready(function()
     {
