@@ -20,7 +20,7 @@
 				</div>
 			@endif
 
-		@include('desaparecidos.datosgral2')
+		@include('desaparecidos.datosgral')
 		@include('desaparecidos.domicilio')
 
 		@include('desaparecidos.datosidentidad')
@@ -35,9 +35,4 @@
 	{!! HTML::script('personal/js/datosgral.js') !!}
 	{!! HTML::script('personal/js/domicilio.js') !!}
 	{!! HTML::script('personal/js/select2.min.js') !!}
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
-	<script type="text/javascript">
-		$.validate();
-	</script>
 @endsection

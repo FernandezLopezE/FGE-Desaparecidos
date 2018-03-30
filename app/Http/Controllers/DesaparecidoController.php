@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Desaparecido;
 use App\Models\Documento;
 use App\Models\Antecedente;
-use App\Models\Domicilio;
+//use App\Models\Domicilio;
 use App\Http\Requests\CreateDesaparecidoRequest;
 
 class DesaparecidoController extends Controller
@@ -57,17 +57,18 @@ class DesaparecidoController extends Controller
 
 		$anios = array('2000' => '2000', '2001' => '2001');
 		$sexos = array('MASCULINO' => 'MASCULINO', 'FEMENINO' => 'FEMENINO');
+		$tiposDireccion = array('PERSONAL' => 'PERSONAL', 'TRABAJO' => 'TRABAJO');
 
 		$escolaridades		= \App\Models\CatEscolaridad::all()->pluck('nombre','id');
 		$ocupaciones	 	= \App\Models\CatOcupacion::all()->pluck('nombre','id');
 		$nacionalidades 	= \App\Models\CatNacionalidad::all()->pluck('nombre', 'id');
-		$municipios 		= \App\Models\CatMunicipio::limit(10)->pluck('nombre','id');
-		$localidades 		= \App\Models\CatLocalidad::limit(10)->pluck('nombre','id');
-		$colonias 			= \App\Models\CatColonia::limit(10)->pluck('nombre','id'); 
-		$delitos 			= \App\Models\CatDelito::all()->pluck('nombre','id');
-		$centros 			= \App\Models\CatCentroReclusion::all()->pluck('nombre','id');
 		$estados 			= \App\Models\CatEstado::all()->pluck('nombre','id');
-		$codigos 			= \App\Models\CatEstadoCivil::all()->pluck('codigoPostal','id');
+		$municipios 		= array();
+		$localidades 		= array();
+		$colonias 			= array();
+		$codigos 			= array();
+		$delitos 			= \App\Models\CatDelito::all()->pluck('nombre','id');
+		$centros 			= \App\Models\CatCentroReclusion::all()->pluck('nombre','id');		
 		$edoscivil 			= \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
 
 		return view('desaparecidos.form',
@@ -88,7 +89,8 @@ class DesaparecidoController extends Controller
 						'colonias' => $localidades,
 						'codigos' => $codigos,
 						'sexos' => $sexos,
-						'edoscivil' => $edoscivil
+						'edoscivil' => $edoscivil,
+						'tiposDireccion' => $tiposDireccion
 					]);
 	}
 

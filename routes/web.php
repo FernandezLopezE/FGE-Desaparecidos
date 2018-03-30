@@ -18,5 +18,11 @@ Route::get('/', function () {
 
 Route::resource('/desaparecido','DesaparecidoController');
 
+Route::resource('domicilio','DomiciliosController');
+Route::get('codigos/{id}', 'DomiciliosController@getCodigos');
+Route::get('municipio/{id}', 'DomiciliosController@getMunicipios');
+Route::get('localidades/{id}', 'DomiciliosController@getLocalidades');
+Route::get('colonias2/{id}', 'DomiciliosController@getColonias2');
+
 
 

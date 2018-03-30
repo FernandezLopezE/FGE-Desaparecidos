@@ -1,174 +1,253 @@
-<div class="form-horizontal">
-	<h3>Datos de la persona desaparecida</h3><hr>
-	<!--Genero -->
-	<div class="form-group row">
-		<div class="col-3">
-			<fieldset class="form-group">
-				<div class="row">
-				<legend class="col-form-label col-sm-3 pt-0">Género</legend>
-					<div class="col-sm-2">
-						<div class="form-check">
-							<input class="form-check-input" type="radio" name="sexo" id="sexo" value="masculino">
-							<label class="form-check-label" for="sexo"> Masculino</label>
-						</div>
-						<div class="form-check">
-							<input class="form-check-input" type="radio" name="sexo" id="sexo" value="femenino">
-							<label class="form-check-label" for="sexo"> Femenino</label>
-						</div>
-					</div>
-				</div>
-			</fieldset>
+<div class="card border-primary">
+	<div class="card-header">
+		<h5 class="card-title">Datos generales de la persona desaparecida</h5>		
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<div class="col">
+				{!! Form::label ('sexo','Género:') !!}
+				{!! Form::select ('sexo',$sexos,'', ['class' => 'form-control', 'id' => 'sexo'])!!}	
+			</div>			
 		</div>
+		<div class="row">
+			<div class="col">
+				{!! Form::label ('nombres','Nombres(s):') !!}
+				{!! Form::text ('nombres',old('Nombres(s)'), ['class' => 'form-control', 'id' => 'nombres', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Ingresa un nombre'] )!!}
+			</div>
+			<div class="col">
+				{!! Form::label ('primerAp','Apellido paterno:') !!}
+				{!! Form::text ('primerAp',old('Apellido paterno'), ['class' => 'form-control', 'id' => 'primerAp', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Ingresa un apellido'] )!!}
+			</div>
+			<div class="col">
+				{!! Form::label ('segundoAp','Apellido materno:') !!}
+				{!! Form::text ('segundoAp',old('Apellido materno'), ['class' => 'form-control', 'id' => 'segundoAp'] )!!}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				{!! Form::label ('apodo','Apodo (alias):') !!}
+				{!! Form::text ('apodo',old('apodo'), ['class' => 'form-control', 'id' => 'apodo'] )!!}
+			</div>			
+		</div>
+		<div class="row">
+			<div class="col">
+				{!! Form::label ('edad','Edad de extravío') !!}
+				{!! Form::text ('edad',old('Edad de extravío'), ['class' => 'form-control', 'id' => 'edad'] )!!}
+			</div>
+			<div class="col">
+				{!! Form::label ('edadAparente','Edad aparente') !!}
+				{!! Form::text ('edadAparente',old('Edad aparente'), ['class' => 'form-control', 'id' => 'edadAparente'] )!!}
+			</div>
+			<div class="col">
+				{!! Form::label ('fechaNacimiento','Fecha de nacimiento') !!}
+				{!! Form::text ('fechaNacimiento',old('Fecha de nacimiento'), ['class' => 'form-control', 'id' => 'fechaNacimiento'] )!!}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				{!! Form::label ('idNacionalidad','Nacionalidad') !!}
+				{!! Form::select ('idNacionalidad',$nacionalidades,'', ['class' => 'form-control', 'id' => 'idNacionalidad'] )!!}
+			</div>
+			<div class="col">
+				{!! Form::label ('idEscolaridad','Escolaridad') !!}
+				{!! Form::select ('idEscolaridad',$escolaridades,'', ['class' => 'form-control', 'id' => 'escolaridad'] )!!}
+			</div>
+			<div class="col">
+				{!! Form::label ('idOcupacion','Ocupación') !!}
+				{!! Form::select ('idOcupacion',$ocupaciones,'', ['class' => 'form-control', 'id' => 'ocupacion'] )!!}
+			</div>			
+		</div>
+		<div class="row">
+			<div class="col">
+				{!! Form::label ('idEdocivil','Estado civil') !!}
+	        	{!! Form::select ('idEdocivil',$edoscivil ,'', ['class' => 'form-control', 'id' => 'idEdocivil'] )!!}
+			</div>			
+		</div>
+		<div class="row">
+			<div class="col">
+				{!! Form::label ('nombres','Nombres(s)') !!}
+				{!! Form::text ('familiaresNombres',old('Nombres(s)'), ['class' => 'form-control', 'id' =>'familiaresNombres
+			'] )!!}
+			</div>
+			<div class="col">
+				{!! Form::label ('primerAp','Apellido paterno') !!}
+				{!! Form::text ('familiaresPrimerAp',old('Apellido paterno'), ['class' => 'form-control', 'id' => 'familiaresPrimerAp'] )!!}
+			</div>
+			<div class="col">
+				{!! Form::label ('segundoAp','Apellido materno') !!}
+				{!! Form::text ('familiaresSegundoAp',old('Apellido materno'), ['class' => 'form-control', 'id' => 'familiaresSegundoAp'] )!!}
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				{!! Form::label ('hijos','Hijos') !!}
+				{!! Form::select ('hijos',['SI'=>'SI','NO'=>'NO'],'', ['class' => 'form-control', 'id' => 'hijos'] )!!}
+			</div>
+		</div>
+	</div>
+</div>	
+
+<div class="form-horizontal">
+	<h3>DATOS DE LA PERSONA DESAPARECIDA</h3>
+	
+	<div class="form-group row">
+		<!--Genero -->
+		<div class="col-3">
+				{!! Form::label ('sexo','Género') !!}
+        		{!! Form::select ('sexo',$sexos,'', ['class' => 'form-control', 'id' => 'sexo'])!!}	
+		</div>		
 		<!--Fin Genero -->
 
 		<!--Nacionalidad -->
-		
-	</div>
+		<div class="col-6">
+			{!! Form::label ('idNacionalidad','Nacionalidad') !!}
+        	{!! Form::select ('idNacionalidad',$nacionalidades,'', ['class' => 'form-control', 'id' => 'idNacionalidad'] )!!}
+		</div>
 		<!--fin de Nacionalidad -->
 	</div>
 
 	<!--Nombre, apellidos, apodo -->
 	<div class="form-group row">
 		<div class="col-3">
-			<input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombre(s)">
+			{!! Form::label ('nombres','Nombres(s)') !!}
+        	{!! Form::text ('nombres',old('Nombres(s)'), ['class' => 'form-control', 'id' => 'nombres', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Ingresa un nombre'] )!!}
 		</div>
 		<div class="col-3">
-			<input type="text" class="form-control" id="primerAp" name="primerApp" placeholder="Apellido paterno">
+			{!! Form::label ('primerAp','Apellido paterno') !!}
+        	{!! Form::text ('primerAp',old('Apellido paterno'), ['class' => 'form-control', 'id' => 'primerAp', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Ingresa un apellido'] )!!}
 		</div>
 		<div class="col-3">
-			<input type="text" class="form-control" id="segundoAp" name="segundoAp" placeholder="Apellido materno">
+			{!! Form::label ('segundoAp','Apellido materno') !!}
+        {!! Form::text ('segundoAp',old('Apellido materno'), ['class' => 'form-control', 'id' => 'segundoAp'] )!!}
 		</div>
 		<div class="col-3">
-			<input type="text" class="form-control" id="apodo" name="apodo" placeholder="Apodo/alias">
+			{!! Form::label ('apodo','Apodo/alias') !!}
+        {!! Form::text ('apodo',old('Apodo/alias'), ['class' => 'form-control', 'id' => 'apodo'] )!!}
 		</div>
 	</div>
 	<!--Fin de Nombre, apellidos, apodo -->
 
-	<!--Fecha de nacimiento y edades -->
+	<!--Fecha de nacimiento, edades -->
 	<div class="form-group row">
-		<label class="col-1 col-form-label">Fecha de nacimiento</label>
-		<div class="col-2">
-			<input type="date" class="form-control" id="fechaNacimiento"  name="fechaNacimiento">
-		</div>
-		
 		<div class="col-3">
-			<input type="text" class="form-control" id="edad" name="edad" placeholder="Edad">
+			{!! Form::label ('fechaNacimiento','Fecha de nacimiento') !!}
+        {!! Form::text ('fechaNacimiento',old('Fecha de nacimiento'), ['class' => 'form-control', 'id' => 'fechaNacimiento'] )!!}
 		</div>
 		<div class="col-3">
-			<input type="text" class="form-control" id="edadAparente" name="edadAparente" placeholder="Edad aparente">
+			{!! Form::label ('edad','Edad de extravío') !!}
+        {!! Form::text ('edad',old('Edad de extravío'), ['class' => 'form-control', 'id' => 'edad'] )!!}
 		</div>
-	</div>
-	<!--Fin de Fecha de nacimiento y edades -->
+		<div class="col-3">
+			{!! Form::label ('edadAparente','Edad aparente') !!}
+        {!! Form::text ('edadAparente',old('Edad aparente'), ['class' => 'form-control', 'id' => 'edadAparente'] )!!}
+		</div>
+	</div><hr>
+	<!--Fin de Fecha de nacimiento, edades -->
 
 	<!--Escolaridad, ocupación y select de estado civil -->
 	<div class="form-group row">
-		
 		<div class="col-3">
-			<input type="text" class="form-control" id="idOcupacion" name="idOcupacion" placeholder="Ocupación">
+			{!! Form::label ('idEscolaridad','Escolaridad') !!}
+        	{!! Form::select ('idEscolaridad',$escolaridades,'', ['class' => 'form-control', 'id' => 'escolaridad'] )!!}
+		</div>
+		<div class="col-3">
+			{!! Form::label ('idOcupacion','Ocupación') !!}
+        		{!! Form::select ('idOcupacion',$ocupaciones,'', ['class' => 'form-control', 'id' => 'ocupacion'] )!!}
 		</div>	
 		<div class="col-3">
-			<select class="form-control" name="idEdocivil" id="idEdocivil">
-				<option selected>Estado civil</option>
-				<option value="soltero(a)">Soltero(a)</option>
-				<option id="casado" name="casado" value="casado">Casado(a)</option>
-				<option value="viudo(a)">Viudo(a)</option>
-				<option value="divorciado(a)">Divorciado(a)</option>
-				<option value="separado(a)">Separado(a)</option>
-			</select>
+			{!! Form::label ('idEdocivil','Estado civil') !!}
+        	{!! Form::select ('idEdocivil',$edoscivil ,'', ['class' => 'form-control', 'id' => 'idEdocivil'] )!!}
 		</div>	
-	</div>
+	</div><br>
 	<!--Fin de Escolaridad, ocupación y select de estado civil -->
 
 	<!--Datos de la pareja en caso de que este casado -->
-	<div class="form-group row " id="nombrePareja" style="display:none">
-		<label class="col-3 col-form-label">Nombre de la esposa o pareja</label>
+	<div class="form-group row " id="nombrePareja">
+		<label class="col-3 col-form-label">Nombre de la pareja</label>
 		<div class="col-3">
-			<input type="text" class="form-control" id="nombres" name="nombres" placeholder="Nombre">
+			{!! Form::label ('nombres','Nombres(s)') !!}
+        {!! Form::text ('familiaresNombres',old('Nombres(s)'), ['class' => 'form-control', 'id' =>'familiaresNombres
+'] )!!}
 		</div>
 		<div class="col-3">
-			<input type="text" class="form-control" id="primerAp" name="primerAp" placeholder="Apellido paterno">
+			{!! Form::label ('primerAp','Apellido paterno') !!}
+        {!! Form::text ('familiaresPrimerAp',old('Apellido paterno'), ['class' => 'form-control', 'id' => 'familiaresPrimerAp'] )!!}
 		</div>
 		<div class="col-3">
-			<input type="text" class="form-control" id="segundoAp" name="segundoAp" placeholder="Apellido materno">
+			{!! Form::label ('segundoAp','Apellido materno') !!}
+        {!! Form::text ('familiaresSegundoAp',old('Apellido materno'), ['class' => 'form-control', 'id' => 'familiaresSegundoAp'] )!!}
 		</div>
 	</div><hr>
 	<!--Fin de datos de la pareja en caso de que este casado -->
 	
 	<!--Radios buttons para preguntar si tiene hijos -->
 	<div class="form-group row" name="tieneHijos" id="tieneHijos">
-		<label class="col-1 col-form-label">Hijos</label>
-		<div class="col-1">
-			<label class="radio-inline"><input type="radio" class="form-control" name="hijos" id="hijos" value="si">Sí</label>
-		</div>
-		<div class="col-1">
-			<label class="radio-inline"><input type="radio" class="form-control" name="hijos" id="hijos" value="no">No</label>
-		</div>
+		<div class="col-2">
+			{!! Form::label ('hijos','Hijos') !!}
+        	{!! Form::select ('hijos',['SI'=>'SI','NO'=>'NO'],'', ['class' => 'form-control', 'id' => 'hijos'] )!!}
+        </div>
 	</div>
 	<!--Fin de Radios buttons para preguntar si tiene hijos -->
 
 	<!--Campos para ingresar nombre de los hijos -->
-	<div class="form-group row" id="nombreHijo" style="display:none">
+	<div class="form-group row" id="nombreHijo">
+		<label class="col-2 col-form-label">Nombre de hijo</label>
 		<div class="col-3">
-			<input type="text" class="form-control"  id="nombres" name="nombres" placeholder="Nombre">
+			{!! Form::label ('nombres','Nombres(s)') !!}
+        {!! Form::text ('familiaresNombres',old('Nombres(s)'), ['class' => 'form-control', 'id' => 'familiaresNombres'] )!!}
 		</div>
 		<div class="col-3">
-			<input type="text" class="form-control"  id="primerAp" name="primerAp" placeholder="Apellido paterno">
+			{!! Form::label ('primerAp','Apellido paterno') !!}
+        {!! Form::text ('familiaresPrimerAp',old('Apellido paterno'), ['class' => 'form-control', 'id' => 'familiaresPrimerAp'] )!!}
 		</div>
 		<div class="col-3">
-			<input type="text" class="form-control"  id="segundoAp" name="segundoAp" placeholder="Apellido materno">
+			{!! Form::label ('segundoAp','Apellido materno') !!}
+        {!! Form::text ('familiaresSegundoAp',old('Apellido materno'), ['class' => 'form-control', 'id' => 'familiaresSegundoAp'] )!!}
 		</div>
-		<div class="col-3">
-			<button type="button" class="btn btn-primary form-control">Agregar otro</button>
+		<div class="col-1">
+			{!! Form::label ('familiaresEdad', 'Edad') !!}
+			{!! Form::text ('familiaresFamiliaresEdad',old('Edad'), ['class' => 'form-control', 'id' => 'familiaresFamiliaresEdad', 'data-validation' => 'number', 'data-validation-permitted' => 'range [1; 100]', 'data-validation-error-msg-required' => '* Solo puedes ingresar números'] )!!}
 		</div>
 	</div><hr>
 	<!--Fin de Campos para ingresar nombre de los hijos -->
 
 	<!--Radio buttons para preguntar si esta embarazada -->
 	<div class="form-group row" id="estaEmbarazada">
-		<label class="col-3 col-form-label">Embarazo al desaparecer</label>
-		<div class="col-1">
-			<label class="radio-inline"><input type="radio" class="form-control" name="embarazo" id="embarazo" value="si">Sí</label>
-		</div>
-		<div class="col-1">
-			<label class="radio-inline"><input type="radio" class="form-control" name="embarazo" id="embarazo" value="no">No</label>
-		</div>
-		<div class="col-2">
-			<label class="radio-inline"><input type="radio" class="form-control" name="embarazo" id="embarazo" value="ignora">Lo ignoran</label>
-		</div>
+		<div class="col-3">
+		{!! Form::label ('embarazo','Esta embarazada') !!}
+        {!! Form::select ('embarazo',['SI'=>'SI','NO'=>'NO', 'LO IGNORAN' => 'LO IGNORAN'],'', ['class' => 'form-control', 'id' => 'embarazo'] )!!}
+        </div>
 	</div>
 	<!--Fin de Radio buttons para preguntar si esta embarazada -->
 
 	<!--Periodo de embarazo -->
-	<div class="form-group row" id="datosEmbarazo" style="display:none">
-		<label class="col-3 col-form-label">Periodo de gestación estimado al tiempo de la desaparición</label>
-		<div class="col-2">
-			<input type="text" class="form-control" name="periodoGestacion" name="periodoGestacion" placeholder="Semanas">
+	<div class="form-group row" id="datosEmbarazo">
+		<div class="col-3">
+			{!! Form::label ('periodoGestacion','Semanas') !!}
+			{!! Form::text ('periodoGestacion',old('Semanas'), ['class' => 'form-control', 'id' => 'periodoGestacion'] )!!}
 		</div>
-		<div class="col-2">
-			<input type="text" class="form-control" name="periodoGestacion" name="periodoGestacion" placeholder="Meses">
-		</div>
+		<div class="col-3">
+			{!! Form::label ('periodoGestacion','Meses') !!}
+        	{!! Form::text ('periodoGestacion',old('Meses'), ['class' => 'form-control', 'id' => 'periodoGestacion'] )!!}
+        </div>
 	</div>
 	<!--Fin de Periodo de embarazo -->
 
 	<!--Radio buttons para preguntar si conocen algun rumor -->
-	<div class="form-group row" id="rumores" style="display:none">
+	<div class="form-group row" id="rumores">
 		<label class="col-3 col-form-label">Rumores sobre el nacimiento o localización del bebé</label>
-		<div class="col-1">
-			<label class="radio-inline"><input type="radio" class="form-control" name="rumor" id="rumor" value="si">Sí</label>
-		</div>
-		<div class="col-1">
-			<label class="radio-inline"><input type="radio" class="form-control" name="rumor" id="rumor" value="no">No</label>
-		</div>
-		<div class="col-2">
-			<label class="radio-inline"><input type="radio" class="form-control" name="rumor" id="rumor">Lo ignoran</label>
+		<div class="col-3">
+			{!! Form::label ('rumoresBebe','Rumores sobre el nacimiento') !!}
+        		{!! Form::select ('rumoresBebe',['SI'=>'SI','NO'=>'NO', 'LO IGNORAN' => 'LO IGNORAN'],'', ['class' => 'form-control', 'id' => 'rumoresBebe'] )!!}
 		</div>
 	</div>
 	<!--Fin de Radio buttons para preguntar si conocen algun rumor -->
 
 	<!--Campo de texto para colocar pormenores -->
-	<div class="form-group row" id="datosEmbarazo3" style="display:none">
+	<div class="form-group row" id="datosEmbarazo3">
 		<div class="col-12">
-			<textarea class="form-control" name="pormenores" id="pormenores" placeholder="Pormenores"></textarea>
+			{!! Form::label ('pormenores','Pormenores') !!}
+        {!! Form::text ('pormenores',old('Pormenores'), ['class' => 'form-control', 'id' => 'pormenores'] )!!}
 		</div>
 	</div><hr>
 	<!--Campo de texto para colocar pormenores -->
@@ -177,13 +256,16 @@
 	<div class="form-group row">
 		<label class="col-3 col-form-label">Nombre de la madre</label>
 		<div class="col-3">
-			<input type="text" class="form-control" name="nombres" id="nombres" placeholder="Nombre">
+			{!! Form::label ('nombres','Nombres(s)') !!}
+        {!! Form::text ('familiaresNombres',old('Nombres(s)'), ['class' => 'form-control', 'id' => 'familiaresNombres'] )!!}
 		</div>
 		<div class="col-3">
-			<input type="text" class="form-control" name="primerAp" id="primerAp" placeholder="Apellido paterno">
+			{!! Form::label ('primerAp','Apellido paterno') !!}
+        {!! Form::text ('familiaresPrimerAp',old('Apellido paterno'), ['class' => 'form-control', 'id' => 'familiaresPrimerAp'] )!!}
 		</div>
 		<div class="col-3">
-			<input type="text" class="form-control" name="segundoAp" id="segundoAp" placeholder="Apellido materno">
+			{!! Form::label ('segundoAp','Apellido materno') !!}
+        {!! Form::text ('familiaresSegundoAp',old('Apellido materno'), ['class' => 'form-control', 'id' => 'familiaresSegundoAp'] )!!}
 		</div>
 	</div>
 	<!--Fin de Campo de textto para nombre y apellidos de la madre -->
@@ -192,15 +274,57 @@
 	<div class="form-group row">
 		<label class="col-3 col-form-label">Nombre del padre</label>
 		<div class="col-3">
-			<input type="text" class="form-control" name="nombres" id="nombres" placeholder="Nombre">
+			{!! Form::label ('nombres','Nombres(s)') !!}
+        {!! Form::text ('familiaresNombres',old('Nombres(s)'), ['class' => 'form-control', 'id' => 'familiaresNombres'] )!!}
 		</div>
 		<div class="col-3">
-			<input type="text" class="form-control" name="primerAp" id="primerAp" placeholder="Apellido paterno">
+			{!! Form::label ('primerAp','Apellido paterno') !!}
+        {!! Form::text ('familiaresPrimerAp',old('Apellido paterno'), ['class' => 'form-control', 'id' => 'familiaresPrimerAp'] )!!}
 		</div>
 		<div class="col-3">
-			<input type="text" class="form-control" name="segundoAp" id="segundoAp" placeholder="Apellido materno">
-		</div>
-	</div>
+			{!! Form::label ('segundoAp','Apellido materno') !!}
+        {!! Form::text ('familiaresSegundoAp',old('Apellido materno'), ['class' => 'form-control', 'id' => 'familiaresSegundoAp'] )!!}
+		</div><hr>
 	<!--Fin de Campo de textto para nombre y apellidos del padre -->
+
+	
 </div>
 
+<!--aplicando SELECT2 en los catalogos-->
+<script type="text/javascript">
+	$(document).ready(function()
+	{
+		$('#sexo').select2({
+			width : "100%",
+		});
+
+		$('#nacion').select2({
+			width : "100%",
+		});
+
+		$('#nacion').val(1).trigger('change.select2');
+
+		$('#escolaridad').select2({
+			width : "100%",
+		});
+		
+		$('#ocupacion').select2({
+			width : "100%",
+		});
+
+
+
+		$('#hijos').select2({
+			width : "100%",
+		});
+
+		$('#embarazada').select2({
+			width : "100%",
+		});
+
+		$('#rumores').select2({
+			width : "100%",
+		});
+		
+	});
+</script>
