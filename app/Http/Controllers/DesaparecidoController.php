@@ -39,8 +39,8 @@ class DesaparecidoController extends Controller
 			'Pasaporte' => 'Pasaporte',
 			'Otro(especifique)' => 'Otro(especifique)');
 		$option = array(
-			'1' => 'SI',
-			'0' => 'NO');
+			'0' => 'NO',
+			'1' => 'SI');
 		$meses = array(
 			'1' => 'ENERO',
 			'2' => 'FEBRERO',

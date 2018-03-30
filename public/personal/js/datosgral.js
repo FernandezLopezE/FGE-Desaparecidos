@@ -151,6 +151,19 @@ $(document).ready(function(){
 
 		});
 
+		$('#idNacionalidad').select2({
+			width : "100%",
+		});
+
+		$('#idNacionalidad').val(1).trigger('change.select2');
+
+		$('#escolaridad').select2({
+			width : "100%",
+		});
+		
+		$('#ocupacion').select2({
+			width : "100%",
+		});
 
 })
 

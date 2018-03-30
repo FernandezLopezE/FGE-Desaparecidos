@@ -43,31 +43,3 @@
         {!! Form::text ('observaciones',old('observaciones'), ['class' => 'form-control', 'data-validation' =>'alphanumeric','data-validation' =>'length','data-validation-length'=> '50-200', 'data-validation-error-msg' =>'Esta campo debe tener entre 50-200 caracteres.'] )!!}
     </div>
 </div>
-    <script type="text/javascript">
-    $(document).ready(function()
-    {
-        $('#identificacion').select2({
-            width : "100%",
-        });
-
-        $('#opciones').select2({
-            width : "100%",
-        });
-
-        $('#meses').select2({
-            width : "100%",
-        });
-
-        $('#anios').select2({
-            width : "100%",
-        });
-
-        $('#delitos').select2({
-            width : "100%",
-        });
-
-        $('#centro').select2({
-            width : "100%",
-        });
-    });
-    </script>
