@@ -31,7 +31,7 @@ $(document).ready(function(){
 	$('#antecedentesJudiciales').change(function(){
 		value2 = $('#antecedentesJudiciales').val();
 		console.log(value2);
-		if (value == 1) {
+		if (value2 == 1) {
                 console.log('Mostrar campos antecedentes')
                 $("#antecedentesDIV").show();
             } else {
