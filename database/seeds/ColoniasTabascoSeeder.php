@@ -99,7 +99,7 @@ class ColoniasTabascoSeeder extends Seeder
 ['idMunicipio' => 1971, 'nombre' => 'ARBOLEDAS', 'codigoPostal' => 86079],
 ['idMunicipio' => 1971, 'nombre' => 'GIL Y SAENZ (EL AGUILA)', 'codigoPostal' => 86080],
 ['idMunicipio' => 1971, 'nombre' => 'REFORMA', 'codigoPostal' => 86080],
-['idMunicipio' => 1971, 'nombre' => 'DIR GRAL. DE SERVICIOS COORDINADOS DE EDUCACION PUBLICA', 'codigoPostal' => 86086],
+['idMunicipio' => 1971, 'nombre' => 'DIR GRAL. DE SERVICIOS COORDINADOS DE EDU.PUB.', 'codigoPostal' => 86086],
 ['idMunicipio' => 1971, 'nombre' => 'SECRETARIA DE LA DEFENSA NACIONAL', 'codigoPostal' => 86087],
 ['idMunicipio' => 1971, 'nombre' => 'GAVIOTAS NORTE SECTOR EXPLANADA', 'codigoPostal' => 86090],
 ['idMunicipio' => 1971, 'nombre' => 'GUAYABAL', 'codigoPostal' => 86090],

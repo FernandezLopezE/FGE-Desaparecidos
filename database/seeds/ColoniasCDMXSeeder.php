@@ -1258,7 +1258,7 @@ class ColoniasCDMXSeeder extends Seeder
 ['idMunicipio' => 281, 'nombre' => 'LA TURBA', 'codigoPostal' => 13250],
 ['idMunicipio' => 281, 'nombre' => 'DEL MAR', 'codigoPostal' => 13270],
 ['idMunicipio' => 281, 'nombre' => 'LA DRAGA', 'codigoPostal' => 13273],
-['idMunicipio' => 281, 'nombre' => 'VILLAS TRABAJADORES DEL GOBIERNO DEL DISTRITO FEDERAL', 'codigoPostal' => 13278],
+['idMunicipio' => 281, 'nombre' => 'VILLAS TRABAJADORES DEL GOBIERNO DEL D.F.', 'codigoPostal' => 13278],
 ['idMunicipio' => 281, 'nombre' => 'VILLA CENTROAMERICANA', 'codigoPostal' => 13278],
 ['idMunicipio' => 281, 'nombre' => 'AGRICOLA METROPOLITANA', 'codigoPostal' => 13280],
 ['idMunicipio' => 281, 'nombre' => 'SANTA ANA CENTRO', 'codigoPostal' => 13300],

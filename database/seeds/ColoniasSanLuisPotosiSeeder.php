@@ -344,7 +344,7 @@ class ColoniasSanLuisPotosiSeeder extends Seeder
 ['idMunicipio'=>1847, 'nombre' => 'TEQUISQUIAPAN', 'codigoPostal' => 78250],
 ['idMunicipio'=>1847, 'nombre' => 'VISTA HERMOSA', 'codigoPostal' => 78250],
 ['idMunicipio'=>1847, 'nombre' => 'LAGO AZUL', 'codigoPostal' => 78258],
-['idMunicipio'=>1847, 'nombre' => 'SECRETARIA DE AGRICULTURA GANADERIA Y DESARROLLO RURAL', 'codigoPostal' => 78259],
+['idMunicipio'=>1847, 'nombre' => 'SECRETARIA DE AGRICULTURA GANADERIA Y DESARROLLO', 'codigoPostal' => 78259],
 ['idMunicipio'=>1847, 'nombre' => 'LAS AGUILAS', 'codigoPostal' => 78260],
 ['idMunicipio'=>1847, 'nombre' => 'RINCONADA DE LOS CIPRESES', 'codigoPostal' => 78260],
 ['idMunicipio'=>1847, 'nombre' => 'FORESTA DE TEQUIS', 'codigoPostal' => 78260],
