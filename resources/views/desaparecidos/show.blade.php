@@ -17,10 +17,8 @@
 		<div class="mb-1 text-muted"><code>Genero:</code> {!! $desaparecido->persona->sexo !!}</div>
 		<div class="mb-1 text-muted"><code>Edad de extravio:</code> Nov 12</div>
 		<div class="mb-1 text-muted"><code>Edad aparente:</code>{!! $desaparecido->edadAparente !!}</div>
-		<div class="mb-1 text-muted"><code>Fecha de nacimiento:</code>{!! $desaparecido->persona->fechaNacimiento !!}</div>
+		<div class="mb-1 text-muted"><code>Fecha de nacimiento:</code>{!! \Carbon\Carbon::parse($desaparecido->persona->fechaNacimiento)->format('d/m/Y') !!}</div>
 		<div class="mb-1 text-muted"><code>Nacionalidad: </code>{!! $desaparecido->persona->nacionalidad->nombre !!}</div>
-		<div class="mb-1 text-muted"><code>Nacionalidad: </code>{!! $desaparecido->persona->nacionalidad->nombre !!}</div>
-
 
 
 

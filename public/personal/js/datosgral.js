@@ -112,7 +112,7 @@ $(document).ready(function(){
 					console.log('No tienes hijos')
 
 					$("#datosEmbarazo").hide();
-
+					$("#datosEmbarazo3").hide();
 					$("#rumores").hide();
 
 				

@@ -127,6 +127,7 @@ class DesaparecidoController extends Controller
 						'idPersona' 				=> $persona->id,
 						'apodo' 					=> $request->input('apodo'),
 						'edadAparente' 				=> $request->input('edadAparente'),
+						'edadExtravio' 				=> $request->input('edadExtravio'),
 						'embarazo' 					=> $request->input('embarazo'),
 						'gestacionSemanas' 			=> $request->input('gestacionSemanas'),
 						'gestacionMeses' 			=> $request->input('gestacionMeses'),
