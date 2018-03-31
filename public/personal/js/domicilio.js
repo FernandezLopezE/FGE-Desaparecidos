@@ -148,6 +148,27 @@ $(document).ready(function() {
    });
 
 
+    $('#idEstado').select2({
+        width : "100%",
+    });
+
+    $('#idMunicipio').select2({
+        width : "100%",
+    });
+
+    $('#idLocalidad').select2({
+        width : "100%",
+    });
+
+    $('#idColonia').select2({
+        width : "100%",
+    });
+
+    $('#idCodigoPostal').select2({
+        width : "100%",
+    });
+
+
 });
 
 

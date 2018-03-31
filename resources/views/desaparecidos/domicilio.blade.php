@@ -13,15 +13,15 @@
 			</div>
 			<div class="form-group col">
 				{!! Form::label ('calle','Calle:') !!}
-				{!! Form::text ('calle[]','', ['class' => 'form-control', 'placeholder' => 'Calle'] )!!}
+				{!! Form::text ('calle[]','', ['class' => 'form-control'] )!!}
 			</div>
 			<div class="form-group col-2">
 				{!! Form::label ('numExterno','Número exterior:') !!}
-				{!! Form::text ('numExterno[]','', ['class' => 'form-control', 'placeholder' => 'Num. Ext.'] )!!}
+				{!! Form::text ('numExterno[]','', ['class' => 'form-control'] )!!}
 			</div>
 			<div class="form-group col-2">
 				{!! Form::label ('numInterno','Número interior:') !!}
-				{!! Form::text ('numInterno[]','', ['class' => 'form-control', 'placeholder' => 'Num. Int.'] )!!}
+				{!! Form::text ('numInterno[]','', ['class' => 'form-control'] )!!}
 			</div>
 		</div>
 		<div class="row">

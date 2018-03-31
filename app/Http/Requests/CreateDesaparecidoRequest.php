@@ -23,7 +23,7 @@ class CreateDesaparecidoRequest extends FormRequest
 	 */
 	public function rules()
 	{
-		return [
+		$rules = [
 			'sexo'						=> 'required',
 			'nombres' 					=> 'required|alpha',
 			'primerAp' 					=> 'alpha',
@@ -56,5 +56,52 @@ class CreateDesaparecidoRequest extends FormRequest
 			'idDelito' 				=> 'required',
 			'idCentroReclusion' 		=> 'required',                        
 		];
+
+		foreach($this->request->get('familiaresNombres') as $key => $val)
+		{
+			$rules['familiaresNombres.'.$key] = 'required';
+		}
+
+		foreach($this->request->get('familiaresPrimerAp') as $key => $val)
+		{
+			$rules['familiaresPrimerAp.'.$key] = 'required';
+		}
+
+		foreach($this->request->get('familiaresSegundoAp') as $key => $val)
+		{
+			$rules['familiaresSegundoAp.'.$key] = 'required';
+		}
+		
+		foreach($this->request->get('calle') as $key => $val)
+		{
+			$rules['calle.'.$key] = 'required';
+		}
+
+		foreach($this->request->get('mes') as $key => $val)
+		{
+			$rules['mes.'.$key] = 'required';
+		}
+
+		foreach($this->request->get('anio') as $key => $val)
+		{
+			$rules['anio.'.$key] = 'required';
+		}
+
+		foreach($this->request->get('idDelito') as $key => $val)
+		{
+			$rules['idDelito.'.$key] = 'required';
+		}
+
+		foreach($this->request->get('idCentroReclusion') as $key => $val)
+		{
+			$rules['idCentroReclusion.'.$key] = 'required';
+		}
+
+		foreach($this->request->get('observaciones') as $key => $val)
+		{
+			$rules['observaciones.'.$key] = 'required';
+		}
+
+		return $rules;
 	}
 }
