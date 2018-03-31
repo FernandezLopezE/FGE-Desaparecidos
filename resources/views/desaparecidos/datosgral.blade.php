@@ -103,7 +103,7 @@
 	        	{!! Form::select ('idEdocivil',$edoscivil ,'', ['class' => 'form-control', 'id' => 'idEdocivil'] )!!}
 			</div>			
 		</div>
-		<div class="row" id="nombrePareja" style="display:none" @if () @else @endif>
+		<div class="row" id="nombrePareja" style="display:none">
 			<div>
 				{{ Form::hidden('parentesco[]', 'PAREJA') }}
 			</div>			
@@ -203,6 +203,7 @@
 		</div>
 	</div>
 </div>
+
 
 <hr class="my-4">
 
