@@ -20,13 +20,7 @@
 		<div class="mb-1 text-muted"><code>Fecha de nacimiento:</code>{!! \Carbon\Carbon::parse($desaparecido->persona->fechaNacimiento)->format('d/m/Y') !!}</div>
 		<div class="mb-1 text-muted"><code>Nacionalidad: </code>{!! $desaparecido->persona->nacionalidad->nombre !!}</div>
 		<div class="mb-1 text-muted"><code>Estado civil: </code>{!! $desaparecido->edocivil->nombre !!}</div>
-		<div class="card border-primary">
-			<div class="card-header">
-				<h5 class="card-title">Datos generales de la persona desaparecida</h5>		
-			</div>
-			<div class="card-body">
-			</div>
-		</div>
+
 
 
 		<p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
