@@ -16,7 +16,8 @@ class CreateDesaparecidosPersonasTable extends Migration
 		Schema::create('desaparecidos_personas', function (Blueprint $table) {
 			$table->increments('id');
 			$table->string('apodo', 50)->nullable();
-			$table->string('edadAparente', 20)->nullable();			
+			$table->string('edadAparente', 20)->nullable();
+			$table->string('edadExtravio', 20)->nullable();		
 			$table->enum('embarazo', ['NO','SI', 'LO IGNORAN']);
 			$table->string('gestacionSemanas')->nullable();
 			$table->string('gestacionMeses')->nullable();

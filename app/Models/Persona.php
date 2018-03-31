@@ -25,7 +25,7 @@ class Persona extends Model
 	];
 
 	public function nacionalidad(){
-		return $this->belongsTo('App\Models\CatNacionalidad', 'id');
+		return $this->belongsTo('App\Models\CatNacionalidad', 'idNacionalidad');
 	}
 
 	/*public function etnia(){
