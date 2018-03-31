@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    
+
     $('#idEstado').on('change', function(){
         $("#idMunicipio").empty();
         var idMunicipio = $(this).val();
