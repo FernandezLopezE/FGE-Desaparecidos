@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Persona;
 use App\Models\Desaparecido;
+use App\Models\Familiar;
 use App\Models\Documento;
 use App\Models\Antecedente;
-use App\Models\Persona;
-use App\Models\Familiar;
+use App\Models\Domicilio;
+
 use App\Http\Requests\CreateDesaparecidoRequest;
 
 class DesaparecidoController extends Controller
@@ -104,7 +106,9 @@ class DesaparecidoController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(CreateDesaparecidoRequest $request)
-	{	
+	{
+
+		dd($request->toArray());	
 		
 		$persona = Persona::create([
 						'nombres' 			=> $request->input('nombres'),
@@ -153,6 +157,35 @@ class DesaparecidoController extends Controller
 				'segundoAp' 		=> $segundoAp[$i],
 				'edad' 				=> $familiaresEdad[$i],
 				'idDesaparecido' 	=> $desaparecido->id,
+			]);
+			$i++;
+		}
+
+		$tipoDireccion = $request->input('tipoDireccion');
+		$calle = $request->input('calle');
+		$numExterno = $request->input('numExterno');
+		$numInterno = $request->input('numInterno');
+		$telefono = $request->input('telefono');
+		$idEstado = $request->input('idEstado');
+		$idMunicipio = $request->input('idMunicipio');
+		$idLocalidad = $request->input('idLocalidad');
+		$idColonia = $request->input('idColonia');
+		$idCodigoPostal = $request->input('idCodigoPostal');
+
+		$i = 0;
+		foreach ($request->input('tipoDireccion') as $value) {
+			$domicilio = Domicilio::create([
+				'tipoDireccion' 		=> $tipoDireccion[$i],
+				'calle' 				=> $calle[$i],
+				'numExterno' 			=> $numExterno[$i],
+				'numInterno' 			=> $numInterno[$i],
+				'telefono' 				=> $telefono[$i],
+				'idEstado'	 			=> $idEstado[$i],
+				'idMunicipio' 			=> $idMunicipio[$i],
+				'idLocalidad' 			=> $idLocalidad[$i],
+				'idColonia' 			=> $idColonia[$i],
+				'idCodigoPostal'		=> $idCodigoPostal[$i],
+				'idDesaparecido' 		=> $desaparecido->id,
 			]);
 			$i++;
 		}

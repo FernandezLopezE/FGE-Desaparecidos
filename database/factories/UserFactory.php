@@ -96,9 +96,11 @@ $factory->define(App\Models\Antecedente::class, function (Faker $faker) {
 });
 
 $factory->define(App\Models\Domicilio::class, function (Faker $faker) {	
-	$municipios = App\Models\CatEstadoCivil::all()->pluck('id')->toArray();
-	$localidades = App\Models\CatOcupacion::all()->pluck('id')->toArray();
-	$colonias = App\Models\CatEscolaridad::all()->pluck('id')->toArray();
+	$estados = App\Models\CatEstado::all()->pluck('id')->toArray();
+	$municipios = App\Models\CatMunicipio::all()->pluck('id')->toArray();
+	$localidades = App\Models\CatLocalidad::all()->pluck('id')->toArray();
+	$colonias = App\Models\CatColonia::all()->pluck('id')->toArray();
+	$codigos = App\Models\CatColonia::all()->pluck('id')->toArray();
 	$desaparecidos = App\Models\Persona::all()->pluck('id')->toArray();
 
 	return [
@@ -108,8 +110,10 @@ $factory->define(App\Models\Domicilio::class, function (Faker $faker) {
 		'numInterno' => $faker->numberBetween($min = 1, $max = 1500),
 		'telefono' => $faker->phoneNumber,
 		'idMunicipio' => $faker->randomElement($municipios),
+		'idMunicipio' => $faker->randomElement($municipios),
 		'idLocalidad' => $faker->randomElement($localidades),
 		'idColonia' => $faker->randomElement($colonias),
+		'idCodigoPostal' => $faker->randomElement($codigos),
 		'idDesaparecido' => $faker->randomElement($desaparecidos)
 	];
 });
