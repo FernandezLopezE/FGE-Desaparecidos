@@ -18,7 +18,7 @@ $(document).ready(function() {
                     $.each(data, function(key, value){
                     	console.log(value);
 
-                        $("#idMunicipio").append('<option value="'+ key +'">' +  value.nombre + '</option>');
+                        $("#idMunicipio").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
 
                     });
 
@@ -49,7 +49,7 @@ $(document).ready(function() {
                     $.each(data, function(key, value){
                     	console.log(value);
 
-                        $("#idLocalidad").append('<option value="'+ key +'">' +  value.nombre + '</option>');
+                        $("#idLocalidad").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
 
                     });
 
@@ -77,7 +77,7 @@ $(document).ready(function() {
                     $.each(data, function(key, value){
                     	console.log(value);
 
-                        $("#idColonia").append('<option value="'+ key +'">' +  value.nombre + '</option>');
+                        $("#idColonia").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
 
                     });
 
@@ -104,7 +104,7 @@ $(document).ready(function() {
                     $.each(data, function(key, value){
                     	console.log(value);
 
-                        $("#idCodigoPostal").append('<option value="'+ key +'">' +  value.codigoPostal + '</option>');
+                        $("#idCodigoPostal").append('<option value="'+ value.id +'">' +  value.codigoPostal + '</option>');
 
                     });
 
@@ -115,6 +115,38 @@ $(document).ready(function() {
 
 
     });
+
+    //para Codigo Postal  seleccionando una colonia
+    $('#idColonia').on('change', function(){
+       $("#idCodigoPostal").empty();
+       var idCodigoPostal = $(this).val();
+       if(idCodigoPostal) {
+           console.log(idCodigoPostal);
+           $.ajax({
+               url: '/codigos2/'+idCodigoPostal,
+               type:"GET",
+               dataType:"json",
+
+               success:function(data) {
+                       console.log("hola");
+
+                       $("#idCodigoPostal").empty();
+
+                   $.each(data, function(key, value){
+                       console.log(value);
+
+                       $("#idCodigoPostal").append('<option value="'+ value.id +'">' +  value.codigoPostal + '</option>');
+
+                   });
+
+               },
+               
+           });
+       } else {
+           $('#idColonia').empty();
+       }
+   });
+
 
 });
 

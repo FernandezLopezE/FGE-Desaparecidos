@@ -162,7 +162,7 @@ class ColoniasOaxacaSeeder extends Seeder
             ['idMunicipio' => 1070, 'nombre' => 'HACIENDA', 'codigoPostal'=>68080],
             ['idMunicipio' => 1070, 'nombre' => 'LA NORIA', 'codigoPostal'=>68083],
             ['idMunicipio' => 1070, 'nombre' => 'SECRETARIA DE EDUCACION PUBLICA', 'codigoPostal'=>68088],
-            ['idMunicipio' => 1070, 'nombre' => 'SECRETARIA DE AGRICULTURA GANADERIA Y DESARROLLO RURAL', 'codigoPostal'=>68089],
+            ['idMunicipio' => 1070, 'nombre' => 'SECRETARIA DE AGRICULTURA GANADERIA Y DESARROLLO', 'codigoPostal'=>68089],
             ['idMunicipio' => 1070, 'nombre' => 'COSIJOEZA', 'codigoPostal'=>68090],
             ['idMunicipio' => 1070, 'nombre' => 'ARTICULO 123 PONIENTE', 'codigoPostal'=>68090],
             ['idMunicipio' => 1070, 'nombre' => 'LIBERTAD', 'codigoPostal'=>68090],
