@@ -59,19 +59,19 @@
                     <div class="col">
                         <div class="form-group">
                             {!! Form::label ('mes','Meses') !!}
-                            {!! Form::select ('mes',$meses,'', ['class' => 'form-control', 'id' => 'meses'] )!!}
+                            {!! Form::select ('mes[]',$meses,'', ['class' => 'form-control', 'id' => 'meses'] )!!}
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             {!! Form::label ('anio','Anios') !!}
-                            {!! Form::select ('anio',$anios,'', ['class' => 'form-control', 'id' => 'anios'] )!!}
+                            {!! Form::select ('anio[]',$anios,'', ['class' => 'form-control', 'id' => 'anios'] )!!}
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             {!! Form::label ('idDelito','Delito') !!}
-                            {!! Form::select ('idDelito',$delitos,'', ['class' => 'form-control', 'id' => 'delitos'] )!!}
+                            {!! Form::select ('idDelito[]',$delitos,'', ['class' => 'form-control', 'id' => 'delitos'] )!!}
                         </div>
                     </div>
             </div>
@@ -80,14 +80,14 @@
                 <div class="col">
                     <div class="form-group">
                         {!! Form::label ('idCentroReclusion','Centro de reclucion') !!}
-                        {!! Form::select ('idCentroReclusion',$centros,'', ['class' => 'form-control', 'id' => 'centro'] )!!}
+                        {!! Form::select ('idCentroReclusion[]',$centros,'', ['class' => 'form-control', 'id' => 'centro'] )!!}
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="form-group">
                         {!! Form::label ('observaciones','Observaciones') !!}
-                        {!! Form::text ('observaciones',old('observaciones'), ['class' => 'form-control', 'data-validation' =>'required','data-validation-depends-on' => 'identificacion','data-validation-depends-on-value' => '1','data-validation-error-msg-required' =>'Este campo es requerido.'] )!!}
+                        {!! Form::text ('observaciones[]',old('observaciones'), ['class' => 'form-control', 'data-validation' =>'required','data-validation-depends-on' => 'identificacion','data-validation-depends-on-value' => '1','data-validation-error-msg-required' =>'Este campo es requerido.'] )!!}
                     </div>
                 </div>
             </div>

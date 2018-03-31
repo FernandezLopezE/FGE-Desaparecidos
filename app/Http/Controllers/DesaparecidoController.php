@@ -67,10 +67,14 @@ class DesaparecidoController extends Controller
 		$ocupaciones	 	= \App\Models\CatOcupacion::all()->pluck('nombre','id');
 		$nacionalidades 	= \App\Models\CatNacionalidad::all()->pluck('nombre', 'id');
 		$estados 			= \App\Models\CatEstado::all()->pluck('nombre','id');
-		$municipios 		= array();
+		$municipios 		= \App\Models\CatMunicipio::limit(10)->pluck('nombre','id');
+		$localidades 		= \App\Models\CatLocalidad::limit(10)->pluck('nombre','id');
+		$colonias 			= \App\Models\CatColonia::limit(10)->pluck('nombre','id');
+		$codigos 			= \App\Models\CatColonia::limit(10)->pluck('codigoPostal','id');
+		/*$municipios 		= array();
 		$localidades 		= array();
 		$colonias 			= array();
-		$codigos 			= array();
+		$codigos 			= array();*/
 		$delitos 			= \App\Models\CatDelito::all()->pluck('nombre','id');
 		$centros 			= \App\Models\CatCentroReclusion::all()->pluck('nombre','id');		
 		$edoscivil 			= \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
@@ -108,7 +112,7 @@ class DesaparecidoController extends Controller
 	public function store(CreateDesaparecidoRequest $request)
 	{
 
-		dd($request->toArray());	
+		//dd($request->toArray());	
 		
 		$persona = Persona::create([
 						'nombres' 			=> $request->input('nombres'),
@@ -161,6 +165,25 @@ class DesaparecidoController extends Controller
 			$i++;
 		}
 
+		$mes = $request->input('mes');
+		$anio = $request->input('anio');
+		$observaciones = $request->input('observaciones');
+		$idDelito = $request->input('idDelito');
+		$idCentroReclusion = $request->input('idCentroReclusion');
+		
+		$i = 0;
+		foreach ($request->input('idDelito') as $value) {
+			$familia = Antecedente::create([
+				'mes' 					=> $mes[$i],
+				'anio' 					=> $anio[$i],
+				'observaciones' 		=> $observaciones[$i],
+				'idDelito' 				=> $idDelito[$i],
+				'idCentroReclusion' 	=> $idCentroReclusion[$i],
+				'idDesaparecido' 	=> $desaparecido->id,
+			]);
+			$i++;
+		}
+
 		$tipoDireccion = $request->input('tipoDireccion');
 		$calle = $request->input('calle');
 		$numExterno = $request->input('numExterno');
@@ -190,6 +213,8 @@ class DesaparecidoController extends Controller
 			$i++;
 		}
 
+		return $this->show($desaparecido->id);
+
 
 		
 	}
@@ -202,7 +227,10 @@ class DesaparecidoController extends Controller
 	 */
 	public function show($id)
 	{
-		//
+		$desaparecido = Desaparecido::find($id);
+		
+		//dd($desaparecido->persona->nombres);
+		return view('desaparecidos.show',['desaparecido' => $desaparecido]);
 	}
 
 	/**
@@ -214,15 +242,6 @@ class DesaparecidoController extends Controller
 	public function edit($id)
 	{
 		//
-		$desaparecido = Desaparecido::find($id);
-
-		$domicilio = Domicilio::where('idPersona','=',$desaparecido->id);
-
-		$documento = Documento::where('idPersonaDesaparecida','=',$desaparecido->id);
-
-		$antecedente = Antecedente::where('idPersona','=',$desaparecido->id);
-
-		return view('documentos.edit',['desaparecido' => $desaparecido, 'domicilio' => $domicilio, 'documento' => $documento, 'antecedente' => $antecendente]);
 	}
 
 	/**
@@ -234,72 +253,7 @@ class DesaparecidoController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		//Desaparecidos
-		$desaparecido = Desaparecido::find($id);
-
-		$desaparecido->nombre = $request->input('nombre');
-		$desaparecido->apellidoPaterno = $request->input('apellidoPaterno');
-		$desaparecido->apellidoMaterno = $request->input('apellidoMaterno');
-		$desaparecido->apodo = $request->input('apodo');
-		$desaparecido->edadAparente = $request->input('edadAparente');
-		$desaparecido->id_nacionalidad = $request->input('id_nacionalidad');
-		$desaparecido->fechaNacimiento = $request->input('fechaNacimiento');
-		$desaparecido->id_edoCivil = $request->input('id_edoCivil');
-		$desaparecido->genero = $request->input('genero');
-		$desaparecido->embarazo = $request->input('embarazo');
-		$desaparecido->periodoGestacion = $request->input('periodoGestacion');
-		$desaparecido->rumores = $request->input('rumores');
-		$desaparecido->pormenores = $request->input('pormenores');
-		$desaparecido->escolaridad = $request->input('escolaridad');
-		$desaparecido->ocupacion = $request->input('ocupacion');
-
-		$desaparecido->save();
-
-		//Domicilios
-		$domicilio = Domicilio::where('idPersona','=',$desaparecido->id);
-
-		$domicilio->tipoDireccion = $request->input('tipoDireccion');
-		$domicilio->idMunicipio = $request->input('idMunicipio');
-		$domicilio->idLocalidad = $request->input('idLocalidad');
-		$domicilio->idColonia = $request->input('idColonia');
-		$domicilio->calle = $request->input('calle');
-
-		$domicilio->numExterno = $request->input('numExterno');
-		$domicilio->numInterno = $request->input('numInterno');
-		$domicilio->telefono = $request->input('telefono');
-
-		$domicilio->idPersona = $request->input('idPersona');
-
-		$domicilio->save();
-
-
-
-		//Documentos identidad
-		$identificacion =  Documento::where('idPersonaDesaparecidos','=',$desaparecido->id);
-
-		$identificacion->identificacion = $request->input('identificacion');
-		$identificacion->otraIdentificacion = $request->input('otroId');
-		$identificacion->noIdentificacion = $request->input('noId');
-		$identificacion->idPersonaDesaparecidos = $request->input('idPersona');
-
-		$identificacion->save();
-
-		//Antecedentes
-
-		$antecedente = Antecedente::where('idPersona','=',$desaparecido->id);
-
-		$antecedente->antecedentes = $request->input('antecendentes');
-		$antecedente->mes = $request->input('mes');
-		$antecedente->anio = $request->input('anio');
-		$antecedente->observaciones = $request->input('observaciones');
-		$antecedente->idPersonaDesaparecidos = $request->input('idPersona');
-		$antecedente->idDelito = $request->input('idDelito');
-		$antecedente->idCentroReclusion = $request->input('idCentro');
-
-		$antecendente->save();
-
-		return ('Update Hecho');
-
+		//
 	}
 
 	/**
