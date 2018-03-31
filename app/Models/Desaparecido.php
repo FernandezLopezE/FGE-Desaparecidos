@@ -44,7 +44,7 @@ class Desaparecido extends Model
 
 	public function edocivil()
 	{
-		return $this->belongsTo('App\Models\CatEstadoCivil','id');
+		return $this->belongsTo('App\Models\CatEstadoCivil','idEdocivil');
 	}
 
 	/*public function nacionalidad()

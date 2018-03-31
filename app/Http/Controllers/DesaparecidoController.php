@@ -231,6 +231,8 @@ class DesaparecidoController extends Controller
 	public function show($id)
 	{
 		$desaparecido = Desaparecido::find($id);
+
+		//dd($desaparecido->edocivil->nombre);
 		
 		/*$anios = array();
 			for(int $i=1970; $i<=2018; $i++){
