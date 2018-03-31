@@ -18,11 +18,11 @@ class CreateDesaparecidosPersonasTable extends Migration
 			$table->string('apodo', 50)->nullable();
 			$table->string('edadAparente', 20)->nullable();			
 			$table->enum('embarazo', ['NO','SI', 'LO IGNORAN']);
-			$table->string('gestacionSemanas')->default(0);
-			$table->string('gestacionMeses')->default(0);
-			$table->enum('rumoresBebe',['SI','NO','LO IGNORAN']);
-			$table->string('pormenores');
-			$table->boolean('antecedentesJudiciales')->default(0);
+			$table->string('gestacionSemanas')->nullable();
+			$table->string('gestacionMeses')->nullable();
+			$table->enum('rumoresBebe',['SI','NO','LO IGNORAN'])->default('NO');
+			$table->string('pormenores')->nullable();
+			$table->boolean('antecedentesJudiciales')->nullable();
 
 			$table->integer('idPersona')->unsigned();			
 			$table->foreign('idPersona')->references('id')->on('persona');

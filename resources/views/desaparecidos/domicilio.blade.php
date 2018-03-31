@@ -13,15 +13,15 @@
 			</div>
 			<div class="form-group col">
 				{!! Form::label ('calle','Calle:') !!}
-				{!! Form::text ('calle[]',old('Calle'), ['class' => 'form-control', 'placeholder' => 'Calle'] )!!}
+				{!! Form::text ('calle[]','', ['class' => 'form-control', 'placeholder' => 'Calle'] )!!}
 			</div>
 			<div class="form-group col-2">
 				{!! Form::label ('numExterno','Número exterior:') !!}
-				{!! Form::text ('numExterno[]',old('numExterno'), ['class' => 'form-control', 'placeholder' => 'Num. Ext.'] )!!}
+				{!! Form::text ('numExterno[]','', ['class' => 'form-control', 'placeholder' => 'Num. Ext.'] )!!}
 			</div>
 			<div class="form-group col-2">
-				{!! Form::label ('numInterno','Número Interior:') !!}
-				{!! Form::text ('numInterno[]',old('numInterno'), ['class' => 'form-control', 'placeholder' => 'Num. Int.'] )!!}
+				{!! Form::label ('numInterno','Número interior:') !!}
+				{!! Form::text ('numInterno[]','', ['class' => 'form-control', 'placeholder' => 'Num. Int.'] )!!}
 			</div>
 		</div>
 		<div class="row">
@@ -49,7 +49,7 @@
 			</div>	
 			<div class="form-group col">
 					{!! Form::label ('telefono','Teléfono:') !!}
-					{!! Form::text ('telefono[]',old('telefono'), ['class' => 'form-control'] ) !!}
+					{!! Form::text ('telefono[]','', ['class' => 'form-control'] ) !!}
 			</div>			
 		</div>
 		<hr class="my-4">		

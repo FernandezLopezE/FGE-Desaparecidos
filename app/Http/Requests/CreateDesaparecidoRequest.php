@@ -40,7 +40,7 @@ class CreateDesaparecidoRequest extends FormRequest
 			
 			'embarazo' 				=> 'required',
 			//'periodo' 				=> 'required',
-			'pormenores' 			=> 'required',
+			//'pormenores' 			=> 'required',
 			'antecedentesJudiciales' 	=> 'required',
 			'idEdocivil' 			=> 'required',
 			'idOcupacion' 			=> 'required',
@@ -54,7 +54,7 @@ class CreateDesaparecidoRequest extends FormRequest
 			'idLocalidad' 			=> 'required',
 			'idColonia' 			=> 'required',*/
 			'identificacion' 			=> 'required',
-			'otraIdentificacion' 		=> 'required',
+			//'otraIdentificacion' 		=> 'required',
 			'numIdentificacion' 		=> 'required',
 			'mes' 				=> 'required',
 			'anio'				=> 'required',

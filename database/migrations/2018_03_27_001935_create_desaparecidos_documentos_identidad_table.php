@@ -16,7 +16,7 @@ class CreateDesaparecidosDocumentosIdentidadTable extends Migration
         Schema::create('desaparecidos_documentos_identidad', function (Blueprint $table) {
             $table->increments('id');
             $table->enum('identificacion',['IFE','Cartilla SM','Licencia','Tarjetón','Cartilla','Pasaporte','Otro(especifique)']);
-            $table->string('otraIdentificacion');
+            $table->string('otraIdentificacion')->nullable();
             $table->string('numIdentificacion');
 
             $table->integer('idDesaparecido')->unsigned();

@@ -18,7 +18,7 @@ class CreateDesaparecidosDomiciliosTable extends Migration
             $table->enum('tipoDireccion', ['Personal','Trabajo']); 
             $table->string('calle', 100)->default("SIN INFORMACION");
             $table->string('numExterno', 10)->default('S/N');
-            $table->string('numInterno', 10)->default('S/N');
+            $table->string('numInterno', 10)->nullable();
             $table->string('telefono', 30)->default('S/N');
 
             $table->integer('idEstado')->unsigned()->default(30);

@@ -123,7 +123,6 @@ class DesaparecidoController extends Controller
 						'idNacionalidad'	=> $request->input('idNacionalidad'),
 					]);
 
-
 		$desaparecido = Desaparecido::create([
 						'idPersona' 				=> $persona->id,
 						'apodo' 					=> $request->input('apodo'),
@@ -147,23 +146,26 @@ class DesaparecidoController extends Controller
 					]);
 
 
-		$parentesco = $request->input('parentesco');
-		$nombres = $request->input('familiaresNombres');
-		$primerAp = $request->input('familiaresPrimerAp');
-		$segundoAp = $request->input('familiaresSegundoAp');
-		$familiaresEdad= $request->input('familiaresEdad');
-		$i = 0;
-		foreach ($request->input('parentesco') as $value) {
-			$familia = Familiar::create([
-				'parentesco' 		=> $parentesco[$i],
-				'nombres' 			=> $nombres[$i],
-				'primerAp' 			=> $primerAp[$i],
-				'segundoAp' 		=> $segundoAp[$i],
-				'edad' 				=> $familiaresEdad[$i],
-				'idDesaparecido' 	=> $desaparecido->id,
-			]);
-			$i++;
+		if ($request->input('apodo') == 'SI') {
+			$parentesco = $request->input('parentesco');
+			$nombres = $request->input('familiaresNombres');
+			$primerAp = $request->input('familiaresPrimerAp');
+			$segundoAp = $request->input('familiaresSegundoAp');
+			$familiaresEdad= $request->input('familiaresEdad');
+			$i = 0;
+			foreach ($request->input('parentesco') as $value) {
+				$familia = Familiar::create([
+					'parentesco' 		=> $parentesco[$i],
+					'nombres' 			=> $nombres[$i],
+					'primerAp' 			=> $primerAp[$i],
+					'segundoAp' 		=> $segundoAp[$i],
+					'edad' 				=> $familiaresEdad[$i],
+					'idDesaparecido' 	=> $desaparecido->id,
+				]);
+				$i++;
+			}
 		}
+
 
 		$mes = $request->input('mes');
 		$anio = $request->input('anio');
@@ -229,6 +231,11 @@ class DesaparecidoController extends Controller
 	{
 		$desaparecido = Desaparecido::find($id);
 		
+		/*$anios = array();
+			for(int $i=1970; $i<=2018; $i++){
+			$anios = array($i=>$i);
+		}
+		dd($anios);*/
 		//dd($desaparecido->persona->nombres);
 		return view('desaparecidos.show',['desaparecido' => $desaparecido]);
 	}
