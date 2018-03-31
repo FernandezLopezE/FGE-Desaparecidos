@@ -24,23 +24,17 @@ class CreateDesaparecidoRequest extends FormRequest
 	public function rules()
 	{
 		return [
-			'sexo'					=> 'required',
-			'nombres' 				=> 'required|alpha',
-			'primerAp' 				=> 'alpha',
-			'segundoAp' 			=> 'alpha',
-			'apodo' 				=> 'required|max:30',
-			'edadExtravio' 			=> 'required|max:3|integer',
-			'edadAparente' 			=> 'required|max:3|integer',
-			'fechaNacimiento'		=> 'required|date_format:d/m/Y',
-			'idNacionalidad' 		=> 'required',			
-			'parentesco' 			=> 'required',
-
-
-			
-			
-			'embarazo' 				=> 'required',
-			//'periodo' 				=> 'required',
-			//'pormenores' 			=> 'required',
+			'sexo'						=> 'required',
+			'nombres' 					=> 'required|alpha',
+			'primerAp' 					=> 'alpha',
+			'segundoAp' 				=> 'alpha',
+			'apodo' 					=> 'required|max:30',
+			'edadExtravio' 				=> 'required|max:150|integer',
+			'edadAparente' 				=> 'required|max:150|integer',
+			'fechaNacimiento'			=> 'required|date_format:d/m/Y',
+			'idNacionalidad' 			=> 'required',			
+			'parentesco' 				=> 'required',			
+			'embarazo' 					=> 'required',
 			'antecedentesJudiciales' 	=> 'required',
 			'idEdocivil' 			=> 'required',
 			'idOcupacion' 			=> 'required',
