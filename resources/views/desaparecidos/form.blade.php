@@ -24,7 +24,7 @@
 		@include('desaparecidos.domicilio')
 
 		@include('desaparecidos.datosidentidad')
-		{!! Form::submit('Agregar datos'); !!}
+		{!! Form::submit('Agregar datos', ['class' => 'btn btn-large btn-primary openbutton']); !!}
 	{!! Form::close() !!}
 
 @endsection

@@ -18,7 +18,7 @@ class Familiar extends Model
 
 	public function desaparecido()
 	{
-		return $this->belongsTo('App\Models\Desaparecido','id');
+		return $this->belongsTo('App\Models\Desaparecido','idDesaparecido');
 	}
 
 }

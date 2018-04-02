@@ -57,7 +57,7 @@ class CreateDesaparecidoRequest extends FormRequest
 			'idCentroReclusion' 		=> 'required',                        
 		];
 
-		foreach($this->request->get('familiaresNombres') as $key => $val)
+		/*foreach($this->request->get('familiaresNombres') as $key => $val)
 		{
 			$rules['familiaresNombres.'.$key] = 'required';
 		}
@@ -100,7 +100,7 @@ class CreateDesaparecidoRequest extends FormRequest
 		foreach($this->request->get('observaciones') as $key => $val)
 		{
 			$rules['observaciones.'.$key] = 'required';
-		}
+		}*/
 
 		return $rules;
 	}

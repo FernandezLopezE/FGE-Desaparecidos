@@ -112,7 +112,7 @@ class DesaparecidoController extends Controller
 	public function store(CreateDesaparecidoRequest $request)
 	{
 
-		//dd($request->toArray());	
+		//dd(empty($request->input('familiaresNombres')));	
 		
 		$persona = Persona::create([
 						'nombres' 			=> $request->input('nombres'),
@@ -147,14 +147,15 @@ class DesaparecidoController extends Controller
 					]);
 
 
-		if ($request->input('apodo') == 'SI') {
-			$parentesco = $request->input('parentesco');
-			$nombres = $request->input('familiaresNombres');
-			$primerAp = $request->input('familiaresPrimerAp');
-			$segundoAp = $request->input('familiaresSegundoAp');
-			$familiaresEdad= $request->input('familiaresEdad');
-			$i = 0;
-			foreach ($request->input('parentesco') as $value) {
+		
+		$parentesco = $request->input('parentesco');
+		$nombres = $request->input('familiaresNombres');
+		$primerAp = $request->input('familiaresPrimerAp');
+		$segundoAp = $request->input('familiaresSegundoAp');
+		$familiaresEdad= $request->input('familiaresEdad');
+		$i = 0;
+		foreach ($request->input('parentesco') as $value) {
+			if (!is_null($nombres[$i])) {
 				$familia = Familiar::create([
 					'parentesco' 		=> $parentesco[$i],
 					'nombres' 			=> $nombres[$i],
@@ -163,9 +164,10 @@ class DesaparecidoController extends Controller
 					'edad' 				=> $familiaresEdad[$i],
 					'idDesaparecido' 	=> $desaparecido->id,
 				]);
-				$i++;
 			}
+			$i++;
 		}
+		
 
 
 		$mes = $request->input('mes');
@@ -200,19 +202,21 @@ class DesaparecidoController extends Controller
 
 		$i = 0;
 		foreach ($request->input('tipoDireccion') as $value) {
-			$domicilio = Domicilio::create([
-				'tipoDireccion' 		=> $tipoDireccion[$i],
-				'calle' 				=> $calle[$i],
-				'numExterno' 			=> $numExterno[$i],
-				'numInterno' 			=> $numInterno[$i],
-				'telefono' 				=> $telefono[$i],
-				'idEstado'	 			=> $idEstado[$i],
-				'idMunicipio' 			=> $idMunicipio[$i],
-				'idLocalidad' 			=> $idLocalidad[$i],
-				'idColonia' 			=> $idColonia[$i],
-				'idCodigoPostal'		=> $idCodigoPostal[$i],
-				'idDesaparecido' 		=> $desaparecido->id,
-			]);
+			if (!is_null($calle[$i])) {
+				$domicilio = Domicilio::create([
+					'tipoDireccion' 		=> $tipoDireccion[$i],
+					'calle' 				=> $calle[$i],
+					'numExterno' 			=> $numExterno[$i],
+					'numInterno' 			=> $numInterno[$i],
+					'telefono' 				=> $telefono[$i],
+					'idEstado'	 			=> $idEstado[$i],
+					'idMunicipio' 			=> $idMunicipio[$i],
+					'idLocalidad' 			=> $idLocalidad[$i],
+					'idColonia' 			=> $idColonia[$i],
+					'idCodigoPostal'		=> $idCodigoPostal[$i],
+					'idDesaparecido' 		=> $desaparecido->id,
+				]);
+			}
 			$i++;
 		}
 
@@ -232,7 +236,7 @@ class DesaparecidoController extends Controller
 	{
 		$desaparecido = Desaparecido::find($id);
 
-		//dd($desaparecido->edocivil->nombre);
+		//dd($desaparecido->documentos);
 		
 		/*$anios = array();
 			for(int $i=1970; $i<=2018; $i++){

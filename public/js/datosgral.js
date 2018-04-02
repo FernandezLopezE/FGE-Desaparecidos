@@ -31,9 +31,11 @@ var d;
     	if (b =='si'){
     		console.log('Mostrar form de datos de hijos')
     		$("#nombreHijo").show();
+            $('#btnAddHijo').show();
     	} else {
     			console.log('No tienes hijos')
     			$("#nombreHijo").hide();
+                $('#btnAddHijo').hide();
     	}
         
     });
@@ -74,5 +76,11 @@ var d;
     			
     		
     	} 
-    });	
+    });
+
+    $('#btnAddHijo').click(function(){
+        console.log('Entrando a los hijos');
+    })
+
+
 }); 

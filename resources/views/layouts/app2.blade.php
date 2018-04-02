@@ -79,7 +79,7 @@
 		</main>
 		<footer class="footer">
 			<div class="container">
-				<span class="text-muted">Place sticky footer content here.</span>
+				<span class="text-muted">Fiscalia General Del Estado De Veracruz</span>
 			</div>
 		</footer>
 		<!-- Bootstrap core JavaScript
