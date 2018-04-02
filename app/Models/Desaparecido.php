@@ -9,7 +9,8 @@ class Desaparecido extends Model
 	protected $table = 'desaparecidos_personas';
 	protected $fillable = [		
 		'apodo',
-		'edadAparente',		
+		'edadAparente',
+		'edadExtravio',		
 		'embarazo',
 		'gestacionSemanas',
 		'gestacionMeses',
@@ -24,17 +25,17 @@ class Desaparecido extends Model
 
 	public function familiares()
 	{
-		return $this->hasMany('App\Models\Familiar', 'idFamiliar', 'id');
+		return $this->hasMany('App\Models\Familiar', 'idDesaparecido', 'id');
 	}
 
 	public function documentos()
 	{
-		return $this->hasMany('App\Models\Documento', 'idDocumento', 'id');
+		return $this->hasMany('App\Models\Documento', 'idDesaparecido', 'id');
 	}
 
 	public function domicilios()
 	{
-		return $this->hasMany('App\Models\Domicilio', 'idDomicilio', 'id');
+		return $this->hasMany('App\Models\Domicilio', 'idDesaparecido', 'id');
 	}
 
 	public function antecedentes()
@@ -44,7 +45,7 @@ class Desaparecido extends Model
 
 	public function edocivil()
 	{
-		return $this->belongsTo('App\Models\CatEstadoCivil','id');
+		return $this->belongsTo('App\Models\CatEstadoCivil','idEdocivil');
 	}
 
 	/*public function nacionalidad()
@@ -54,12 +55,12 @@ class Desaparecido extends Model
 
 	public function ocupacion()
 	{
-		return $this->belongsTo('App\Models\CatOcupacion','id');
+		return $this->belongsTo('App\Models\CatOcupacion','idOcupacion');
 	}
 
 	public function escolaridad()
 	{
-		return $this->belongsTo('App\Models\CatEscolaridad','id');
+		return $this->belongsTo('App\Models\CatEscolaridad','idEscolaridad');
 	}
 
 	public function persona()

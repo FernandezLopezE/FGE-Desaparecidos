@@ -13,6 +13,7 @@ class Domicilio extends Model
 			'numExterno',
 			'numInterno',
 			'telefono',
+			'idEstado',
 			'idMunicipio',
 			'idLocalidad',
 			'idColonia',
@@ -21,22 +22,27 @@ class Domicilio extends Model
 
 	public function desaparecido()
 	{
-		return $this->belongsTo('App\Models\Desaparecido','id');
+		return $this->belongsTo('App\Models\Desaparecido','idDesaparecido');
+	}
+
+	public function estado()
+	{
+		return $this->belongsTo('App\Models\CatEstado','idEstado');
 	}
 
 	public function municipio()
 	{
-		return $this->belongsTo('App\Models\Municipio','id');
+		return $this->belongsTo('App\Models\CatMunicipio','idMunicipio');
 	}
 
 	public function localidad()
 	{
-		return $this->belongsTo('App\Models\Localidad','id');
+		return $this->belongsTo('App\Models\CatLocalidad','idLocalidad');
 	}
 
 	public function colonia()
 	{
-		return $this->belongsTo('App\Models\Colonia','id');
+		return $this->belongsTo('App\Models\CatColonia','idColonia');
 	}
 
 }

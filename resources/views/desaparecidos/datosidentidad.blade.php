@@ -15,13 +15,13 @@
             <div class="col">
                 <div class="form-group" id="otraIdDIV">
                     {!! Form::label ('otraIdentificacion','Otro:') !!}
-                    {!! Form::text ('otraIdentificacion',old('Otra identificacion'), ['class' => 'form-control', 'data-validation' => 'required','data-validation-help' => 'En caso de seleccionar otra identificación. Agregar aquí.', 'data-validation-depends-on' => 'identificacion','data-validation-depends-on-value' =>'Otro(especifique)','data-validation-error-msg-required' =>'Este campo es requerido.'] )!!}
+                    {!! Form::text ('otraIdentificacion',old('Otra identificacion'), ['class' => 'form-control mayuscula', 'data-validation' => 'required','data-validation-help' => 'En caso de seleccionar otra identificación. Agregar aquí.', 'data-validation-depends-on' => 'identificacion','data-validation-depends-on-value' =>'Otro(especifique)','data-validation-error-msg-required' =>'Este campo es requerido.'] )!!}
                 </div>
             </div>
             <div class="col">
                 <div class="form-group">
                     {!! Form::label ('numIdentificacion','No. Identificación:') !!}
-                    {!! Form::text ('numIdentificacion',old('Numero identificacion'), ['class' => 'form-control', 'data-validation' =>'required', 'data-validation-help' => 'Ejemplo: 117OO02AS23SPPR0.', 'data-validation-error-msg-required' =>'Este campo es requerido.','data-validation' =>'alphanumeric','data-validation-error-msg' =>'Este campo solo acepta datos alfanumericos.'] )!!}
+                    {!! Form::text ('numIdentificacion',old('Numero identificacion'), ['class' => 'form-control mayuscula', 'data-validation' =>'required', 'data-validation-help' => 'Ejemplo: 117OO02AS23SPPR0.', 'data-validation-error-msg-required' =>'Este campo es requerido.','data-validation' =>'alphanumeric','data-validation-error-msg' =>'Este campo solo acepta datos alfanumericos.'] )!!}
                 </div>
             </div>
         </div>
@@ -87,7 +87,7 @@
                 <div class="col">
                     <div class="form-group">
                         {!! Form::label ('observaciones','Observaciones:') !!}
-                        {!! Form::text ('observaciones[]','', ['class' => 'form-control', 'data-validation' =>'required','data-validation-depends-on' => 'identificacion','data-validation-depends-on-value' => '1','data-validation-error-msg-required' =>'Este campo es requerido.'] )!!}
+                        {!! Form::text ('observaciones[]','', ['class' => 'form-control mayuscula', 'data-validation' =>'required','data-validation-depends-on' => 'identificacion','data-validation-depends-on-value' => '1','data-validation-error-msg-required' =>'Este campo es requerido.'] )!!}
                     </div>
                 </div>
             </div>

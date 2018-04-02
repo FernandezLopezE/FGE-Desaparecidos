@@ -1,7 +1,7 @@
 <div class="card border-success">
 	<div class="card-header">
 		<h5 class="card-title">Domicilio actual o último del extraviado
-		<button type="button" id="btnAddDomicilio" class="btn btn-primary float-right">Agregar otro domicilio</button>
+		<!--<button type="button" id="btnAddDomicilio" class="btn btn-primary float-right">Agregar otro domicilio</button>-->
 		</h5>
 		
 	</div>
@@ -13,15 +13,15 @@
 			</div>
 			<div class="form-group col">
 				{!! Form::label ('calle','Calle:') !!}
-				{!! Form::text ('calle[]','', ['class' => 'form-control'] )!!}
+				{!! Form::text ('calle[]','', ['class' => 'form-control mayuscula'] )!!}
 			</div>
 			<div class="form-group col-2">
 				{!! Form::label ('numExterno','Número exterior:') !!}
-				{!! Form::text ('numExterno[]','', ['class' => 'form-control'] )!!}
+				{!! Form::text ('numExterno[]','', ['class' => 'form-control mayuscula'] )!!}
 			</div>
 			<div class="form-group col-2">
 				{!! Form::label ('numInterno','Número interior:') !!}
-				{!! Form::text ('numInterno[]','', ['class' => 'form-control'] )!!}
+				{!! Form::text ('numInterno[]','', ['class' => 'form-control mayuscula'] )!!}
 			</div>
 		</div>
 		<div class="row">
