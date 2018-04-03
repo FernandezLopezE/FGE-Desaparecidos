@@ -84,5 +84,6 @@ class DatabaseSeeder extends Seeder
         $this->call(CatCentroReclusionSeeder::class);
         $this->call(DocumentosSeeder::class);
         $this->call(AntecedenteSeeder::class);*/
+        $this->call(DocumentosIdentidadSeeder::class);
     }
 }
