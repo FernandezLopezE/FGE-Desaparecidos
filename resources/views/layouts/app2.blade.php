@@ -18,6 +18,8 @@
 		{!! Html::style('assets-master/style.css') !!}
 		<!-- tipografía oficial -->
 		{!! Html::style('assets-master/css/font-neosans.css') !!}
+		<!-- Jquery Form Validator Theme Default -->
+		{!! Html::style('css/theme-default.min.css') !!}
 
 		@yield('style')
 
