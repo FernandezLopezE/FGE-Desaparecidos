@@ -49,7 +49,7 @@
 			</div>	
 			<div class="form-group col">
 					{!! Form::label ('telefono','Teléfono:') !!}
-					{!! Form::text ('telefono[]','', ['class' => 'form-control'] ) !!}
+					{!! Form::text ('telefono[]','', ['class' => 'form-control','data-mask'=>"000 000 0000"] ) !!}
 			</div>			
 		</div>
 		<hr class="my-4">		

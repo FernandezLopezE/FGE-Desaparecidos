@@ -198,5 +198,15 @@ $(document).ready(function(){
 			width : "100%",
 		});
 
+	function validaNumericos(event) {
+	    if(event.charCode >= 48 && event.charCode <= 57){
+	      return true;
+	     }
+	     return false;        
+
+	     // va en la vista lo siguiente
+	     // ,onkeypress='return validaNumericos(event)'>= 48 && event.charCode <= 57'
+		}
+	$('input[name="fechaNacimiento"]').mask('00/00/0000');
 })
 
