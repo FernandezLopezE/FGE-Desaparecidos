@@ -9,7 +9,7 @@
             <div class="col">
                 <div class="form-group">
                     {!! Form::label ('identificacion','Identificación:') !!}
-                    {!! Form::select ('identificacion',$identificacion,'', ['class' => 'form-control', 'id' => 'identificacion', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Elija una opción'] )!!}
+                    {!! Form::select ('identificacion',$identificacion,'', ['class' => 'form-control', 'id' => 'identificacion'] )!!}
                 </div>
             </div>
             <div class="col">
@@ -43,7 +43,7 @@
             <div class="col">
                 <div class="form-group">
                     {!! Form::label ('antecedentesJudiciales','Antecedentes Judiciales') !!}
-                    {!! Form::select ('antecedentesJudiciales',$option,'', ['class' => 'form-control', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Elija una opción'] )!!}
+                    {!! Form::select ('antecedentesJudiciales',$option,'', ['class' => 'form-control'] )!!}
                 </div>
             </div>
             <div class="col">
@@ -59,19 +59,19 @@
                     <div class="col">
                         <div class="form-group">
                             {!! Form::label ('mes','Meses:') !!}
-                            {!! Form::select ('mes[]',$meses,'', ['class' => 'form-control', 'id' => 'meses', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Elija una opción'] )!!}
+                            {!! Form::select ('mes[]',$meses,'', ['class' => 'form-control', 'id' => 'meses'] )!!}
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             {!! Form::label ('anio','Años:') !!}
-                            {!! Form::select ('anio[]',$anios,'', ['class' => 'form-control', 'id' => 'anios', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Elija una opción'] )!!}
+                            {!! Form::select ('anio[]',$anios,'', ['class' => 'form-control', 'id' => 'anios'] )!!}
                         </div>
                     </div>
                     <div class="col">
                         <div class="form-group">
                             {!! Form::label ('idDelito','Delito:') !!}
-                            {!! Form::select ('idDelito[]',$delitos,'', ['class' => 'form-control', 'id' => 'delitos', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Elija una opción'] )!!}
+                            {!! Form::select ('idDelito[]',$delitos,'', ['class' => 'form-control', 'id' => 'delitos'] )!!}
                         </div>
                     </div>
             </div>
@@ -80,7 +80,7 @@
                 <div class="col">
                     <div class="form-group">
                         {!! Form::label ('idCentroReclusion','Centro de reclusión:') !!}
-                        {!! Form::select ('idCentroReclusion[]',$centros,'', ['class' => 'form-control', 'id' => 'centro', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Elija una opción'] )!!}
+                        {!! Form::select ('idCentroReclusion[]',$centros,'', ['class' => 'form-control', 'id' => 'centro'] )!!}
                     </div>
                 </div>
 
