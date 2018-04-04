@@ -9,7 +9,7 @@
 		<div class="row">
 			<div class="form-group col-2">
 				{!! Form::label ('tipoDireccion','Tipo de domicilio:') !!}
-				{!! Form::select ('tipoDireccion[]',$tiposDireccion,'', ['class' => 'form-control', 'id' => 'tipoDireccion', 'data-validation' =>'required'] )!!}
+				{!! Form::select ('tipoDireccion[]',$tiposDireccion,'', ['class' => 'form-control', 'id' => 'tipoDireccion'] )!!}
 			</div>
 			<div class="form-group col">
 				{!! Form::label ('calle','Calle:') !!}
@@ -27,25 +27,25 @@
 		<div class="row">
 			<div class="form-group col">
 				{!! Form::label ('idEstado','Estado:') !!}
-				{!! Form::select ('idEstado[]',$estados,'', ['class' => 'form-control', 'id' => 'idEstado', 'data-validation' =>'required'] )!!}
+				{!! Form::select ('idEstado[]',$estados,'', ['class' => 'form-control', 'id' => 'idEstado'] )!!}
 			</div>
 			<div class="form-group col">
 				{!! Form::label ('idMunicipio','Municipio:') !!}
-				{!! Form::select ('idMunicipio[]',$municipios,'', ['class' => 'form-control', 'id' => 'idMunicipio', 'data-validation' =>'required'] )!!}
+				{!! Form::select ('idMunicipio[]',$municipios,'', ['class' => 'form-control', 'id' => 'idMunicipio'] )!!}
 			</div>
 			<div class="form-group col">
 				{!! Form::label ('idLocalidad','Localidad:') !!}
-				{!! Form::select ('idLocalidad[]',$localidades,'', ['class' => 'form-control', 'id' => 'idLocalidad', 'data-validation' =>'required'] )!!}
+				{!! Form::select ('idLocalidad[]',$localidades,'', ['class' => 'form-control', 'id' => 'idLocalidad'] )!!}
 			</div>
 			<div class="form-group col">
 				{!! Form::label ('idColonia','Colonia:') !!}
-				{!! Form::select ('idColonia[]',$colonias,'', ['class' => 'form-control', 'id' => 'idColonia', 'data-validation' =>'required'] )!!}
+				{!! Form::select ('idColonia[]',$colonias,'', ['class' => 'form-control', 'id' => 'idColonia'] )!!}
 			</div>		
 		</div>
 		<div class="row">
 			<div class="form-group col">
 				{!! Form::label ('idCodigoPostal','Código postal:') !!}
-				{!! Form::select ('idCodigoPostal[]',$codigos,'', ['class' => 'form-control', 'id' => 'idCodigoPostal', 'data-validation' =>'required'] )!!}
+				{!! Form::select ('idCodigoPostal[]',$codigos,'', ['class' => 'form-control', 'id' => 'idCodigoPostal'] )!!}
 			</div>	
 			<div class="form-group col">
 					{!! Form::label ('telefono','Teléfono:') !!}
