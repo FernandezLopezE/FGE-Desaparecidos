@@ -20,10 +20,10 @@
 				</div>
 			@endif
 
-		@include('desaparecidos.datosgral')
-		@include('desaparecidos.domicilio')
+		@include('desaparecidos.seccion1')
+		@include('desaparecidos.seccion2')
 
-		@include('desaparecidos.datosidentidad')
+		@include('desaparecidos.seccion3')
 		{!! Form::submit('Agregar datos', ['class' => 'btn btn-large btn-primary openbutton']); !!}
 	{!! Form::close() !!}
 
