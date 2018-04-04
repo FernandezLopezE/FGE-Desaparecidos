@@ -32,11 +32,11 @@
 		<div class="row">
 			<div class="col">
 				{!! Form::label ('edadExtravio','Edad de extravío:') !!}
-				{!! Form::text ('edadExtravio',old('EdadExtravio'), ['class' => 'form-control', 'id' => 'edadExtravio', 'data-validation' => 'required number length' ,  'data-validation-error-msg' => '* Ingresar edad',  'data-validation-length'=>"0-3",'data-mask'=>"000"] )!!}
+				{!! Form::text ('edadExtravio',old('EdadExtravio'), ['class' => 'form-control', 'id' => 'edadExtravio', 'data-validation' => 'required number length' ,  'data-validation-error-msg' => '* Ingresar edad menor a 130',  'data-validation-length'=>"0-3",'data-validation-allowing'=>"range[1;130]",'data-mask'=>"000"] )!!}
 			</div>
 			<div class="col">
 				{!! Form::label ('edadAparente','Edad aparente:') !!}
-				{!! Form::text ('edadAparente',old('Edad aparente'), ['class' => 'form-control', 'id' => 'edadAparente', 'data-validation' => 'required number length', 'data-validation-error-msg' => '* Ingrese una edad aparente',  'data-validation-length'=>"0-3",'data-mask'=>"000"] )!!}
+				{!! Form::text ('edadAparente',old('Edad aparente'), ['class' => 'form-control', 'id' => 'edadAparente', 'data-validation' => 'required number length', 'data-validation-error-msg' => '* Ingrese una edad aparente menos a 130','data-validation-allowing'=>"range[1;130]",  'data-validation-length'=>"0-3",'data-mask'=>"000"] )!!}
 			</div>
 			<div class="col">
 				{!! Form::label ('fechaNacimiento','Fecha de nacimiento:') !!}
