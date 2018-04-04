@@ -100,7 +100,7 @@
 		<div class="row">
 			<div class="col">
 				{!! Form::label ('idEdocivil','Estado civil:') !!}
-	        	{!! Form::select ('idEdocivil',$edoscivil ,'', ['class' => 'form-control', 'id' => 'idEdocivil', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Elija una opción'] )!!}
+	        	{!! Form::select ('idEdocivil',$edoscivil ,'', ['class' => 'form-control', 'id' => 'idEdocivil'] )!!}
 			</div>			
 		</div>
 		<div class="row" id="nombrePareja" style="display:none">
@@ -138,7 +138,7 @@
 	<div class="card-header">
 		<div class="col-4">
 			{!! Form::label ('hijos','Hijos:') !!}
-			{!! Form::select ('hijos',['NO'=>'NO','SI'=>'SI'],'', ['class' => 'form-control', 'id' => 'hijos' , 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Elija una opción'] )!!}			
+			{!! Form::select ('hijos',['NO'=>'NO','SI'=>'SI'],'', ['class' => 'form-control', 'id' => 'hijos' ] )!!}			
 		</div>
 		<button type="button" style="display:none" id="btnAddHijo" class="btn btn-primary float-right">Agregar hijo</button>
 		
