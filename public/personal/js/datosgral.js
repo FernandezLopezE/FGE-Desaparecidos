@@ -1,6 +1,9 @@
 $(document).ready(function(){
 	var a,b,c,d,x;
-	//Obtener el valor de estado civil 
+	//Obtener el valor de estado civil
+	$("body").on('change', '.mayuscula', function(field){		
+		$(this).val($(this).val().toUpperCase());		
+	}); 
 
 		$('#idEdocivil').change(function() {
 
@@ -43,7 +46,7 @@ $(document).ready(function(){
 				console.log('Mostrar form de datos de hijos')
 
 				$("#nombreHijo").show();
-				$(".btnAddHijo").show();
+				$("#btnAddHijo").show();
 				
 
 			} else {
@@ -51,7 +54,7 @@ $(document).ready(function(){
 				console.log('No tienes hijos')
 
 				$("#nombreHijo").hide();
-				$(".btnAddHijo").show();
+				$("#btnAddHijo").hide();
 
 			} 
 
@@ -112,7 +115,7 @@ $(document).ready(function(){
 					console.log('No tienes hijos')
 
 					$("#datosEmbarazo").hide();
-
+					$("#datosEmbarazo3").hide();
 					$("#rumores").hide();
 
 				
@@ -151,6 +154,36 @@ $(document).ready(function(){
 
 		});
 
+    $('#btnAddHijo').click(function(){
+        console.log('Entrando a los hijos');
+        divRow = $('<div class="row">');
+        
+        divCol1 = $('<div class="">');
+        divCol2 = $('<div class="col">');
+        divCol3 = $('<div class="col">');
+        divCol4 = $('<div class="col">');
+        divCol5 = $('<div class="col">');
+
+        divCol1.append('<input name="parentesco[]" value="HIJO" type="hidden">');
+        divCol2.append('<label for="nombres">Nombres(s):</label>');
+        divCol2.append('<input class="form-control mayuscula" id="familiaresNombres" name="familiaresNombres[]" value="" type="text">');
+        divCol3.append('<label for="primerAp">Apellido paterno:</label>');
+        divCol3.append('<input class="form-control mayuscula" id="familiaresPrimerAp" name="familiaresPrimerAp[]" value="" type="text">');
+        divCol4.append('<label for="segundoAp">Apellido materno:</label>');
+        divCol4.append('<input class="form-control mayuscula" id="familiaresSegundoAp" name="familiaresSegundoAp[]" value="" type="text">');
+		divCol5.append('<label for="familiaresEdad">Edad:</label>');
+        divCol5.append('<input class="form-control" id="familiaresFamiliaresEdad" name="familiaresEdad[]" value="" type="text">');
+
+        divRow.append(divCol1);
+        divRow.append(divCol2);
+        divRow.append(divCol3);
+        divRow.append(divCol4);
+        divRow.append(divCol5);
+
+        $('#nombreHijo').append(divRow);
+        
+    })
+
 		$('#idNacionalidad').select2({
 			width : "100%",
 		});
@@ -165,5 +198,15 @@ $(document).ready(function(){
 			width : "100%",
 		});
 
+	function validaNumericos(event) {
+	    if(event.charCode >= 48 && event.charCode <= 57){
+	      return true;
+	     }
+	     return false;        
+
+	     // va en la vista lo siguiente
+	     // ,onkeypress='return validaNumericos(event)'>= 48 && event.charCode <= 57'
+		}
+	$('input[name="fechaNacimiento"]').mask('00/00/0000');
 })
 

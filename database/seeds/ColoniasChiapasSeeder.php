@@ -158,7 +158,7 @@ DB::table('cat_colonia')->insert([
 ['idMunicipio'=>181, 'nombre' => 'NUEVO EDEN', 'codigoPostal' => 29027],
 ['idMunicipio'=>181, 'nombre' => 'MUNICIPAL LAGUITOS', 'codigoPostal' => 29027],
 ['idMunicipio'=>181, 'nombre' => 'LOS LAGUITOS INFONAVIT', 'codigoPostal' => 29028],
-['idMunicipio'=>181, 'nombre' => 'SECRETARIA DE AGRICULTURA GANADERIA Y DESARROLLO RURAL', 'codigoPostal' => 29029],
+['idMunicipio'=>181, 'nombre' => 'SECRETARIA DE AGRICULTURA GANADERIA Y DESARROLLO', 'codigoPostal' => 29029],
 ['idMunicipio'=>181, 'nombre' => 'LOS CAFETALES', 'codigoPostal' => 29030],
 ['idMunicipio'=>181, 'nombre' => 'INFONAVIT LABORANTE', 'codigoPostal' => 29030],
 ['idMunicipio'=>181, 'nombre' => 'LOS SABINOS', 'codigoPostal' => 29030],

@@ -38,7 +38,7 @@ class DomiciliosController extends Controller
     }
     // select para obtener los catálogos de select dínámicos 
 
-    public function getMunicipios(Request $request, $id){
+     public function getMunicipios(Request $request, $id){
         if($request->ajax()){
             $municipios = CatMunicipio::municipios($id);
             return response()->json($municipios);

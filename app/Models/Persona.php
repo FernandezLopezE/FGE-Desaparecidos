@@ -24,14 +24,13 @@ class Persona extends Model
 				'esEmpresa',
 	];
 
-	/*public function nacionalidad(){
-		return $this->belongsTo('App\Models\CatNacionalidad');
+	public function nacionalidad(){
+		return $this->belongsTo('App\Models\CatNacionalidad', 'idNacionalidad');
 	}
 
-	public function etnia(){
+	/*public function etnia(){
 		return $this->belongsTo('App\Models\CatEtnia');
 	}
-
 	public function lengua(){
 		return $this->belongsTo('App\Models\CatLengua');
 	}

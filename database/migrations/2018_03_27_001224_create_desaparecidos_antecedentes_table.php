@@ -17,7 +17,7 @@ class CreateDesaparecidosAntecedentesTable extends Migration
             $table->increments('id');
             $table->enum('mes',[1,2,3,4,5,6,7,8,9,10,11,12]);
             $table->year('anio');
-            $table->text('observaciones');
+            $table->text('observaciones')->nullable();
 
             $table->integer('idDesaparecido')->unsigned();
             $table->foreign('idDesaparecido')->references('id')->on('desaparecidos_personas');

@@ -18,6 +18,8 @@
 		{!! Html::style('assets-master/style.css') !!}
 		<!-- tipografía oficial -->
 		{!! Html::style('assets-master/css/font-neosans.css') !!}
+		<!-- Jquery Form Validator Theme Default -->
+		{!! Html::style('css/theme-default.min.css') !!}
 
 		@yield('style')
 
@@ -79,7 +81,7 @@
 		</main>
 		<footer class="footer">
 			<div class="container">
-				<span class="text-muted">Place sticky footer content here.</span>
+				<span class="text-muted">Fiscalia General Del Estado De Veracruz</span>
 			</div>
 		</footer>
 		<!-- Bootstrap core JavaScript

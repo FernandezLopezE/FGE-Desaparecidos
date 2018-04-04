@@ -21,6 +21,6 @@ class CatNacionalidad extends Model
 
 	public function personas()
 	{
-		return $this->hasMany('App\Models\Persona', 'idPersona', 'id');
+		return $this->hasMany('App\Models\Persona', 'idNacionalidad', 'id');
 	}
 }
