@@ -9,6 +9,7 @@ use App\Models\Familiar;
 use App\Models\Documento;
 use App\Models\Antecedente;
 use App\Models\Domicilio;
+use Carbon\Carbon;
 
 use App\Http\Requests\CreateDesaparecidoRequest;
 
@@ -114,6 +115,7 @@ class DesaparecidoController extends Controller
 
 		//dd(empty($request->input('familiaresNombres')));	
 		
+		
 		$persona = Persona::create([
 						'nombres' 			=> $request->input('nombres'),
 						'primerAp' 			=> $request->input('primerAp'),
@@ -122,12 +124,15 @@ class DesaparecidoController extends Controller
 						'sexo' 				=> $request->input('sexo'),
 						'idNacionalidad'	=> $request->input('idNacionalidad'),
 					]);
-
+		//$fecha = Carbon::parse($request->fechaNacimiento);
+        //$edad = Carbon::createFromDate($fecha->year, $fecha->month, $fecha->day)->age;
+		$fecha = Carbon::parse($request->input('fechaNacimiento'));
+		$edad = Carbon::createFromDate($fecha->year, $fecha->day, $fecha->month)->diff(Carbon::now())->format('%y años, %m meses y %d dias');
 		$desaparecido = Desaparecido::create([
 						'idPersona' 				=> $persona->id,
 						'apodo' 					=> $request->input('apodo'),
 						'edadAparente' 				=> $request->input('edadAparente'),
-						'edadExtravio' 				=> $request->input('edadExtravio'),
+						'edadExtravio' 				=> $edad,
 						'embarazo' 					=> $request->input('embarazo'),
 						'gestacionSemanas' 			=> $request->input('gestacionSemanas'),
 						'gestacionMeses' 			=> $request->input('gestacionMeses'),
