@@ -50,8 +50,7 @@
 			<div class="form-group col">
 					{!! Form::label ('telefono','Teléfono:') !!}
 
-					{!! Form::text ('telefono[]','', ['class' => 'form-control'] ) !!}
-					{!! Form::text ('telefono[]','', ['class' => 'form-control','data-validation' =>'number', 'data-validation' => 'length', 'data-validation-length' => '10', 'data-validation-error-msg-length' =>'El campo teléfono debe contener 10 digitos'] ) !!}
+					{!! Form::text ('telefono[]','', ['class' => 'form-control','data-validation' =>'number', 'data-validation' => 'length', 'data-validation-length' => '14', 'data-validation-error-msg-length' =>'El campo teléfono debe contener 10 digitos', 'data-mask' =>'(000) 000 0000'] ) !!}
 
 			</div>			
 		</div>
