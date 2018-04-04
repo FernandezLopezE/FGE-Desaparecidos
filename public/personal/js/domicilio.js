@@ -171,7 +171,7 @@ $(document).ready(function() {
     });
 
     //mask de numero
-    $('input[name="telefono"]').mask('(000) 000 0000');
+    //$('#telefono').mask('(000) 000 0000');
 
 
     /*$('#btnAddHijo').click(function(){
