@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	var a,b,c,d,x;
+	var a,b,c,d,g,x;
 	//Obtener el valor de estado civil
 	$("body").on('change', '.mayuscula', function(field){		
 		$(this).val($(this).val().toUpperCase());		
@@ -208,5 +208,32 @@ $(document).ready(function(){
 	     // ,onkeypress='return validaNumericos(event)'>= 48 && event.charCode <= 57'
 		}
 	$('input[name="fechaNacimiento"]').mask('00/00/0000');
+
+	$("#1vez").change(function(){
+
+			g = $('#1vez').val();
+
+			console.log(g);
+
+			//Mostrar-ocultar formulario para agregar hijos
+
+			if (g =='NO'){
+
+				console.log('Mostrar form de cuando')
+
+				$("#cuando").show();
+				$("#cuando").show();
+				
+
+			} else {
+
+				console.log('Si es la primera vez')
+
+				$("#cuando").hide();
+				$("#cuando").hide();
+
+			} 
+
+		});
 })
 
