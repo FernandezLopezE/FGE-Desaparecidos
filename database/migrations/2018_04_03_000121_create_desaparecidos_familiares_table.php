@@ -14,13 +14,15 @@ class CreateDesaparecidosFamiliaresTable extends Migration
     public function up()
     {
         Schema::create('desaparecidos_familiares', function (Blueprint $table) {
-            $table->increments('id');
-            $table->enum('parentesco',['MADRE', 'PADRE', 'HIJO', 'PAREJA']);            
-            $table->string('nombres', 50);
-            $table->string('primerAp', 50);
-            $table->string('segundoAp', 50);            
+            $table->increments('id');           
+            $table->string('nombres', 50)->nullable();
+            $table->string('primerAp', 50)->nullable();
+            $table->string('segundoAp', 50)->nullable();
+            $table->date('fechaNacimiento');           
             $table->string('edad',3);
 
+            $table->integer('idParentesco')->unsigned();
+            $table->foreign('idParentesco')->references('id')->on('cat_parentesco')->onDelete('cascade');
             $table->integer('idDesaparecido')->unsigned();
             $table->foreign('idDesaparecido')->references('id')->on('desaparecidos_personas')->onDelete('cascade');           
 

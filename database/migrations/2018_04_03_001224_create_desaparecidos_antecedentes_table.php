@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDesaparecidosDocumentosIdentidadTable extends Migration
+class CreateDesaparecidosAntecedentesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class CreateDesaparecidosDocumentosIdentidadTable extends Migration
      */
     public function up()
     {
-        Schema::create('desaparecidos_documentos_identidad', function (Blueprint $table) {
+        Schema::create('desaparecidos_antecedentes', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('identificacion',['IFE','Cartilla SM','Licencia','Tarjetón','Cartilla','Pasaporte','Otro(especifique)']);
-            $table->string('otraIdentificacion')->nullable();
-            $table->string('numIdentificacion');
+            $table->text('fecha')->nullable();
+            $table->text('observaciones')->nullable();
 
             $table->integer('idDesaparecido')->unsigned();
             $table->foreign('idDesaparecido')->references('id')->on('desaparecidos_personas');
+            $table->integer('idDelito')->unsigned();
+            $table->foreign('idDelito')->references('id')->on('cat_delito');
+            $table->integer('idCentroReclusion')->unsigned();
+            $table->foreign('idCentroReclusion')->references('id')->on('cat_centro_reclusion');
             
             $table->timestamps();
             $table->softDeletes();
@@ -34,6 +37,6 @@ class CreateDesaparecidosDocumentosIdentidadTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('desaparecidos_documentos_identidad');
+        Schema::dropIfExists('desaparecidos_antecedentes');
     }
 }
