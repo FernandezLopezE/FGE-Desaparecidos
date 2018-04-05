@@ -170,6 +170,7 @@ $(document).ready(function() {
         width : "100%",
     });
 
+console.log('entrando');
     //mask de numero
     //$('#telefono').mask('(000) 000 0000');
 
