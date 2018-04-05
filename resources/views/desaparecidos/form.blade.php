@@ -57,6 +57,7 @@
 	{!! HTML::script('personal/js/icheck.min.js') !!}
 	{!! HTML::script('personal/js/jquery.mask.js') !!}
 	 <script type="text/javascript">
+	 	console.log("entrando")
 			$.validate();
 			 $('input[name="telefono"]').mask('(000) 000 0000');
 		</script>
