@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	var a,b,c,d,g,x;
+	var a,b,c,d,e,f,g,h,x;
 	//Obtener el valor de estado civil
 	$("body").on('change', '.mayuscula', function(field){		
 		$(this).val($(this).val().toUpperCase());		
@@ -218,31 +218,68 @@ $(document).ready(function(){
 			//Mostrar-ocultar formulario para agregar hijos
 
 			if (g =='NO'){
-
-				console.log('Mostrar form de cuando')
-
 				$("#cuando").show();
-				$("#cuando").show();
+			
 				
 
 			} else {
-
-				console.log('Si es la primera vez')
-
-				$("#cuando").hide();
 				$("#cuando").hide();
 
 			} 
 
 		});
 
-	$('#fechaNacimiento').change(function(){
-		var fechaNac=$('#fechaNacimiento').val();
-		console.log(fechaNac);
-		  .get( "obtenerEdad",{fechaNacimiento: fechaNac})
-			  .done(function( data ) {
-			    alert( "Data Loaded: " + data );
-			  });
-	});
+
+	//Mostrar campos al seleccionar otro dialecto
+    $('#dialecto').change(function() {
+        e = $('#dialecto').val();
+
+        if (e=='ESPAÑOL') {
+        	$("#otro_dialec").hide();
+        	$("#otro_dialec2").hide();
+        	$("#otro_dialec3").hide();
+        }else{
+        	$("#otro_dialec").show();
+        	$("#otro_dialec2").show();
+        	$("#otro_dialec3").show();
+        }
+    });
+
+    $('#dialecto').change(function() {
+        e = $('#dialecto').val();
+        console.log(e);
+
+        if (e=='OTRO') {
+        	$("#otro_dialec").show();
+        }else{
+        	$("#otro_dialec").hide();
+        }
+    });
+    //Fin de Mostrar campos al seleccionar otro dialecto
+
+    //ingresar otro parentesco
+    $('#informanteidParentesco').change(function() {
+    	f = $('#informanteidParentesco').val();
+    	console.log("El parentesoc es: "+f);
+
+    	if (f=='OTRO') {
+    		$("#otro_parent").show();
+    	}else{
+    		$("#otro_parent").hide();
+    	}
+    });
+
+    $('#informanteidDocumentoIdentidad').change(function(){
+    	h = $('#informanteidDocumentoIdentidad').val();
+    	
+    	if (h=='Otro(especifique)') {
+    		$("#otro_doc").show();
+    	}else{
+    		$("#otro_doc").hide();
+    	}
+    });
+
+
+
 })
 
