@@ -192,6 +192,7 @@ class DesaparecidoController extends Controller
 				'idDesaparecido' 	=> $desaparecido->id,
 			]);
 			$i++;
+
 		}
 
 		$tipoDireccion = $request->input('tipoDireccion');
