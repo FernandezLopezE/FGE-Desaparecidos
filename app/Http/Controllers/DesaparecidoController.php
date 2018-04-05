@@ -332,4 +332,9 @@ class DesaparecidoController extends Controller
 	{
 		//
 	}
+
+	public function obtenerEdad(Request $request,$fechaNac){
+		$fecha = Carbon::parse($fechaNac);
+		$edad = Carbon::createFromDate($fecha->year, $fecha->day, $fecha->month)->diff(Carbon::now())->format('%y años, %m meses y %d dias');
+	}
 }

@@ -235,5 +235,14 @@ $(document).ready(function(){
 			} 
 
 		});
+
+	$('#fechaNacimiento').change(function(){
+		var fechaNac=$('#fechaNacimiento').val();
+		console.log(fechaNac);
+		  .get( "obtenerEdad",{fechaNacimiento: fechaNac})
+			  .done(function( data ) {
+			    alert( "Data Loaded: " + data );
+			  });
+	});
 })
 
