@@ -58,11 +58,24 @@ class DesaparecidoController extends Controller
 			'10' => 'OCTUBRE',
 			'11' => 'NOVIEMBRE',
 			'12' => 'DICIEMBRE');
+		$dialectos = array(
+			'ESPAÑOL' => 'ESPAÑOL',
+			'NÁHUATL' => 'NÁHUATL',
+			'CHOL' => 'CHOL', 
+			'TOTONACA' => 'TOTONACA', 
+			'MAZATECO' => 'MAZATECO', 
+			'MIXTECO' => 'MIXTECO', 
+			'ZAPOTECO' => 'ZAPOTECO', 
+			'OTOMÍ' => 'OTOMÍ', 
+			'TZOTZIL' => 'TZOTZIL', 
+			'TZELTAL' => 'TZELTAL', 
+			'MAYA' => 'MAYA',
+			'OTRO' => 'OTRO');
 
 		$anios = array('2000' => '2000', '2001' => '2001');
 		$sexos = array('MASCULINO' => 'MASCULINO', 'FEMENINO' => 'FEMENINO');
 		$tiposDireccion = array('PERSONAL' => 'PERSONAL', 'TRABAJO' => 'TRABAJO');
-		$parentescos = array('MADRE' => 'MADRE', 'PADRE' => 'PADRE', 'HIJO' => 'HIJO');
+		$parentescos = array('MADRE' => 'MADRE', 'PADRE' => 'PADRE', 'HIJO' => 'HIJO', 'OTRO' => 'OTRO');
 
 		$escolaridades		= \App\Models\CatEscolaridad::all()->pluck('nombre','id');
 		$ocupaciones	 	= \App\Models\CatOcupacion::all()->pluck('nombre','id');
@@ -100,7 +113,8 @@ class DesaparecidoController extends Controller
 						'sexos' => $sexos,
 						'edoscivil' => $edoscivil,
 						'tiposDireccion' => $tiposDireccion,
-						'parentescos' => $parentescos
+						'parentescos' => $parentescos,
+						'dialectos' =>$dialectos
 					]);
 	}
 

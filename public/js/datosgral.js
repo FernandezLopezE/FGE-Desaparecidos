@@ -2,7 +2,7 @@ $(document).ready(function(){
 var a;
 var b;
 var c;
-var d;
+var d,e;
 
 
     $( "#prueba" ).select(function() {
@@ -82,5 +82,6 @@ var d;
         console.log('Entrando a los hijos');
     })
 
+    
 
 }); 

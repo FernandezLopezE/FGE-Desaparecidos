@@ -5,6 +5,7 @@
 	{!! Html::style('css/select2.css') !!}
 	{!! Html::style('personal/css/select2.min.css') !!}
 	{!! Html::style('css/select2-bootstrap.css') !!}
+	{!! Html::style('personal/js/icheck/skins/all.css') !!}
 @endsection
 
 @section('content')
@@ -37,12 +38,19 @@
 	{!! HTML::script('personal/js/datosgral.js') !!}
 	{!! HTML::script('personal/js/domicilio.js') !!}
 	{!! HTML::script('personal/js/select2.min.js') !!}
-	{!! HTML::script('personal/js/icheck.js') !!}
-	{!! HTML::script('personal/js/icheck.min.js') !!}
 	{!! HTML::script('personal/js/jquery.mask.js') !!}
-	 <script type="text/javascript">
+	{!! HTML::script('personal/js/icheck/icheck.js') !!}
+    {!! HTML::script('personal/js/icheck/icheck.min.js') !!}
+	<script type="text/javascript">
 	 	console.log("entrando")
 			$.validate();
 			 $('input[name="telefono"]').mask('(000) 000 0000');
-		</script>
+
+			 
+			 $('.icheck').iCheck({
+			    checkboxClass: 'icheckbox_square',
+			    radioClass: 'iradio_square',
+			    increaseArea: '20%' // optional
+			});
+	</script>
 @endsection
