@@ -61,7 +61,7 @@
 						{!! Form::label ('','Número de identificación:') !!}
 						{!! Form::text ('',Session::get('numIdentificacion'), ['class' => 'form-control mayuscula', 'id' => '', ] )!!}				
 					</div>
-=======
+
 		<div class="row" id=""  > 	
 			<div class="col-lg-3">
 				{!! Form::label ('','Nacionalidad:') !!}
@@ -70,7 +70,6 @@
 			<div class="col-lg-3">
 				{!! Form::label ('','Documento con que se identifica:') !!}
 				{!! Form::text ('',old(''), ['class' => 'form-control mayuscula', 'id' => '', ] )!!}				
->>>>>>> d83536a8bf1266ef43be0eb4429c9d00918a3c35
 			</div>
 			<div class="col">
 				{!! Form::label ('','Número de identificación:') !!}
@@ -78,7 +77,6 @@
 			</div>
 		</div><br>
 
-<<<<<<< HEAD
 			<div class="row" id=""  > 	
 					<div class="col-lg-4">
 						{!! Form::label ('','Domicilio:') !!}
@@ -92,7 +90,7 @@
 						{!! Form::label ('','Número interior:') !!}
 						{!! Form::text ('',Session::get('numInt'), ['class' => 'form-control mayuscula', 'id' => '', ] )!!}				
 					</div>
-=======
+
 		<div class="row" id=""  > 	
 			<div class="col-lg-8">
 				{!! Form::label ('','Domicilio:') !!}
@@ -101,7 +99,6 @@
 			<div class="col-lg-2">
 				{!! Form::label ('','Número exterior:') !!}
 				{!! Form::text ('',old(''), ['class' => 'form-control mayuscula', 'id' => '', ] )!!}				
->>>>>>> d83536a8bf1266ef43be0eb4429c9d00918a3c35
 			</div>
 			<div class="col-lg-2">
 				{!! Form::label ('','Número interior:') !!}
@@ -109,7 +106,6 @@
 			</div>
 		</div>
 
-<<<<<<< HEAD
 			<div class="row" id=""  > 	
 					<div class="col-lg-3">
 						{!! Form::label ('','Estado:') !!}
@@ -151,7 +147,7 @@
 						{!! Form::label ('','Otro:') !!}
 						{!! Form::text ('',old(''), ['class' => 'form-control mayuscula', 'id' => '', ] )!!}				
 					</div>
-=======
+
 		<div class="row" id=""  > 	
 			<div class="col">
 				{!! Form::label ('','Estado:') !!}
@@ -201,11 +197,9 @@
 			<div class="col-lg-4">
 				{!! Form::label ('','Correo electrónico:') !!}
 				{!! Form::text ('',old(''), ['class' => 'form-control mayuscula', 'id' => '', ] )!!}				
->>>>>>> d83536a8bf1266ef43be0eb4429c9d00918a3c35
 			</div>
 		</div><br>
 
-<<<<<<< HEAD
 			<div class="row" id=""  > 	
 					<div class="col-lg-4">
 						{!! Form::label ('','Correo electrónico:') !!}
@@ -218,12 +212,11 @@
 					<div class="col-lg-4">
 						
 					</div>
-=======
+
 		<div class="row"> 
 			<div class="col-lg-4">
 				{!! Form::label ('','Tipo de persona:') !!}
 				{!! Form::checkbox('workday[]', 'monday') !!}
->>>>>>> d83536a8bf1266ef43be0eb4429c9d00918a3c35
 			</div>
 		</div>
 	</div>
