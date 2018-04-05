@@ -17,11 +17,11 @@
 			</div>
 			<div class="form-group col-2">
 				{!! Form::label ('numExterno','Número exterior:') !!}
-				{!! Form::text ('numExterno[]','', ['class' => 'form-control mayuscula', 'data-validation' =>'required', 'data-validation-error-msg' =>'El campo número exterior es requerido', 'data-validation' => 'length', 'data-validation-length' => '1-10', 'data-validation-error-msg-length' =>'El campo número exterior debe contener 10 digitos'] )!!}
+				{!! Form::text ('numExterno[]','', ['class' => 'form-control mayuscula', 'data-validation' =>'required', 'data-validation-error-msg' =>'El campo número exterior es requerido', 'data-validation' => 'length', 'data-validation-length' => '1-10', 'data-validation-error-msg-length' =>'El campo número exterior debe contener de 1 a 10 caracteres'] )!!}
 			</div>
 			<div class="form-group col-2">
 				{!! Form::label ('numInterno','Número interior:') !!}
-				{!! Form::text ('numInterno[]','', ['class' => 'form-control mayuscula', 'data-validation' => 'length', 'data-validation-length' => '1-10', 'data-validation-error-msg-length' =>'El campo número interior debe contener 10 digitos'] )!!}
+				{!! Form::text ('numInterno[]','', ['class' => 'form-control mayuscula', 'data-validation' => 'length', 'data-validation-length' => '0-10', 'data-validation-error-msg-length' =>'El campo número interior debe contener 10 digitos'] )!!}
 			</div>
 		</div>
 		<div class="row">
@@ -50,7 +50,7 @@
 			<div class="form-group col">
 					{!! Form::label ('telefono','Teléfono:') !!}
 
-					{!! Form::text ('telefono[]','', ['class' => 'form-control','data-validation' =>'number', 'data-validation' => 'length', 'data-validation-length' => '14', 'data-validation-error-msg-length' =>'El campo teléfono debe contener 10 digitos', 'data-mask' =>'(000) 000 0000'] ) !!}
+					{!! Form::text ('telefono[]','', ['class' => 'form-control','data-validation' =>'number', 'data-validation' => 'length', 'data-validation-length' => '14', 'data-validation-error-msg-length' =>'El campo teléfono debe contener 10 digitos','id'=> 'telefono'] ) !!}
 
 			</div>			
 		</div>
