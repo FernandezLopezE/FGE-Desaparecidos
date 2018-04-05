@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-    
+    //mask de numero
+    $('#telefono').mask('(000) 000 0000');
 
     $('#idEstado').on('change', function(){
         $("#idMunicipio").empty();
@@ -170,8 +171,7 @@ $(document).ready(function() {
         width : "100%",
     });
 
-    //mask de numero
-    //$('#telefono').mask('(000) 000 0000');
+    
 
 
     /*$('#btnAddHijo').click(function(){
