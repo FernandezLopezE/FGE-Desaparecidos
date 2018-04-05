@@ -1,6 +1,5 @@
-{!! Form::label ('','Tipo de persona:') !!}
-				{!! Form::checkbox('workday[]', 'monday') !!}
-			</div>
+@extends('layouts.app2')
+
 @section('content')
 	<h1>Hola, Este es el diseño de la plantilla base.</h1>
 
