@@ -53,8 +53,6 @@
 	{!! HTML::script('personal/js/datosgral.js') !!}
 	{!! HTML::script('personal/js/domicilio.js') !!}
 	{!! HTML::script('personal/js/select2.min.js') !!}
-	{!! HTML::script('personal/js/icheck.js') !!}
-	{!! HTML::script('personal/js/icheck.min.js') !!}
 	{!! HTML::script('personal/js/jquery.mask.js') !!}
 	 <script type="text/javascript">
 	 	console.log("entrando")
