@@ -58,7 +58,7 @@ class DesaparecidoController extends Controller
 			'10' => 'OCTUBRE',
 			'11' => 'NOVIEMBRE',
 			'12' => 'DICIEMBRE');
-<<<<<<< HEAD
+
 		$dialectos = array(
 			'ESPAÑOL' => 'ESPAÑOL',
 			'NÁHUATL' => 'NÁHUATL',
@@ -72,7 +72,7 @@ class DesaparecidoController extends Controller
 			'TZELTAL' => 'TZELTAL', 
 			'MAYA' => 'MAYA',
 			'OTRO' => 'OTRO');
-=======
+
 		$vestimenta= array(
 			'CIVIL' => 'CIVIL', 
 			'FORMAL' => 'FORMAL',
