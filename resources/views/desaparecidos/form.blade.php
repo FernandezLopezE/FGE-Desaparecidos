@@ -36,10 +36,12 @@
 	{!! HTML::script('personal/js/documentosIdentidad.js') !!}
 	{!! HTML::script('personal/js/datosgral.js') !!}
 	{!! HTML::script('personal/js/domicilio.js') !!}
+	{!! HTML::script('personal/js/datosdesaparicion.js') !!}
 	{!! HTML::script('personal/js/select2.min.js') !!}
 	{!! HTML::script('personal/js/jquery.mask.js') !!}
+	{!! HTML::script('personal/js/datosvestimenta.js') !!}
 	 <script type="text/javascript">
 			$.validate();
-			 $('input[name="telefono"]').mask('(000) 000 0000');
+			
 		</script>
 @endsection

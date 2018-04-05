@@ -7,14 +7,32 @@
 	</div>
 	<div class="card-body">	
 		<div class="row">
-			<div class="col">
+			<div class="col-3">
 				{!! Form::label ('fechaDesaparicion','Fecha de la última vez que fue visto:') !!}
-				{!! Form::text ('fechaNacimiento',old('Fecha de nacimiento'), ['class' => 'form-control', 'id' => 'fechaNacimiento' , 'data-validation' => 'required date', 'data-validation-error-msg' => '* Ingrese o corrija la fecha de nacimiento','data-validation-format'=>"dd/mm/yyyy"] )!!}
+				
 			</div>
-			<div class="col">
-				Aqui va la hora.
+			<div class="col-4">
+				{!! Form::label ('horaExtravio','Hora:') !!}
+				
 			</div>
 			
+		</div>	
+		<div class="row">
+			<div class="col-2">
+				
+				{!! Form::text ('fechaNacimiento',old('Fecha de nacimiento'), ['class' => 'form-control', 'id' => 'fechaNacimiento' , 'data-validation' => 'required date', 'data-validation-error-msg' => '* Ingrese o corrija la fecha de nacimiento','data-validation-format'=>"dd/mm/yyyy"] )!!}
+			</div>
+			<div class="col-1">
+			</div>
+		
+			<div class="col-2">
+				
+				{!! Form::text ('horaExtravio',old('horaExtravio'), ['class' => 'form-control', 'id' => 'horaExtravio', 'data-validation' => 'required  time', 'data-validation-help'=>"HH:mm" ] )!!}
+			</div>
+			
+		</div>	
+		<div class="row">
+				<br/>		
 		</div>	
 
 		<div class="row">
@@ -54,32 +72,15 @@
 				{!! Form::select ('idColonia[]',$colonias,'', ['class' => 'form-control', 'id' => 'idColonia'] )!!}
 			</div>		
 		</div>
+
+		<div class="row">
+			<div class="col">
+				{!! Form::label ('descripcionTxt','Breve descripción del hecho:') !!}
+				{!! Form::textarea  ('descripcionHecho',old('Descripcion del hecho'), ['class' => 'form-control mayuscula', 'id' => 'segundoAp','size' => '30x4'])!!}
+			</div>
+		</div>
 		
-		<hr class="my-4">		
+		
+			
 	</div>
 </div>
-
-<script type="text/javascript">
-	$(document).ready(function()
-	{
-		/*$('#tipo').select2({
-			width : "100%",
-		});
-
-		$('#codigo').select2({
-			width : "100%",
-		});
-
-		$('#municipio').select2({
-			width : "100%",
-		});
-
-		$('#localidad').select2({
-			width : "100%",
-		});
-
-		$('#colonia').select2({
-			width : "100%",
-		});*/
-	});
-</script>
