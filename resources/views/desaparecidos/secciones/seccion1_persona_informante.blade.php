@@ -6,11 +6,11 @@
 		<div class="row" id=""  >
 			<div class="col">
 				{!! Form::label ('','Nombre(s):') !!}
-				{!! Form::text ('',old('Escriba el nombre'),  ['class' => 'form-control mayuscula', 'id' => ''])!!}
+				{!! Form::text ('',old('Escriba el nombre'),  ['class' => 'form-control mayuscula', 'id' => '','data-validation' =>'required', 'data-validation-error-msg-required' =>'El campo nombre es requerido'])!!}
 			</div>
 			<div class="col">
 				{!! Form::label ('','Primer apellido:') !!}
-				{!! Form::text ('',old('Escriba el primer apellido'), ['class' => 'form-control mayuscula', 'id' => '', ] )!!}
+				{!! Form::text ('',old('Escriba el primer apellido'), ['class' => 'form-control mayuscula', 'id' => '','data-validation' =>'required', 'data-validation-error-msg-required' =>'El campo primer apellido es requerido' ] )!!}
 		  	</div>
 		  	<div class="col">
 				{!! Form::label ('','Segundo apellido:') !!}
@@ -18,33 +18,33 @@
 		  	</div>
 		  	<div class="col">
 				{!! Form::label ('','Parentesco:') !!}
-				{!! Form::text ('',old(''), ['class' => 'form-control mayuscula', 'id' => '', ] )!!}				
+				{!! Form::text ('',old(''), ['class' => 'form-control mayuscula', 'id' => '', 'data-validation' =>'required', 'data-validation-error-msg-required' =>'El campo parentesco es requerido'] )!!}				
 			</div>
 		</div>
 
 		<div class="row" id=""  > 	
 			<div class="col-lg-3">
 				{!! Form::label ('','Nacionalidad:') !!}
-				{!! Form::text ('',old(''), ['class' => 'form-control mayuscula', 'id' => '', ] )!!}				
+				{!! Form::text ('',old(''), ['class' => 'form-control mayuscula', 'id' => '', 'data-validation' =>'required', 'data-validation-error-msg-required' =>'El campo nacionalidad es requerido'] )!!}				
 			</div>
 			<div class="col-lg-3">
 				{!! Form::label ('','Documento con que se identifica:') !!}
-				{!! Form::text ('',old(''), ['class' => 'form-control mayuscula', 'id' => '', ] )!!}				
+				{!! Form::text ('',old(''), ['class' => 'form-control mayuscula', 'id' => '','data-validation' =>'required', 'data-validation-error-msg-required' =>'El campo documento identidad es requerido' ] )!!}				
 			</div>
 			<div class="col">
 				{!! Form::label ('','Número de identificación:') !!}
-				{!! Form::text ('',old(''), ['class' => 'form-control mayuscula', 'id' => '', ] )!!}				
+				{!! Form::text ('',old(''), ['class' => 'form-control mayuscula', 'id' => '', 'data-validation' =>'required', 'data-validation-error-msg-required' =>'El campo número de indentificación es requerido'] )!!}				
 			</div>
 		</div><br>
 
 		<div class="row" id=""  > 	
 			<div class="col-lg-8">
 				{!! Form::label ('','Domicilio:') !!}
-				{!! Form::text ('',old(''), ['class' => 'form-control mayuscula', 'id' => '', ] )!!}				
+				{!! Form::text ('',old(''), ['class' => 'form-control mayuscula', 'id' => '', 'data-validation' =>'required', 'data-validation-error-msg-required' =>'El campo domicilio es requerido'] )!!}				
 			</div>
 			<div class="col-lg-2">
 				{!! Form::label ('','Número exterior:') !!}
-				{!! Form::text ('',old(''), ['class' => 'form-control mayuscula', 'id' => '', ] )!!}				
+				{!! Form::text ('',old(''), ['class' => 'form-control mayuscula', 'id' => '', 'data-validation' =>'required', 'data-validation-error-msg-required' =>'El campo número exterior es requerido'] )!!}				
 			</div>
 			<div class="col-lg-2">
 				{!! Form::label ('','Número interior:') !!}
