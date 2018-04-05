@@ -128,21 +128,35 @@ class DesaparecidoController extends Controller
         //$edad = Carbon::createFromDate($fecha->year, $fecha->month, $fecha->day)->age;
 		$fecha = Carbon::parse($request->input('fechaNacimiento'));
 		$edad = Carbon::createFromDate($fecha->year, $fecha->day, $fecha->month)->diff(Carbon::now())->format('%y años, %m meses y %d dias');
-		$desaparecido = Desaparecido::create([
-						'idPersona' 				=> $persona->id,
-						'apodo' 					=> $request->input('apodo'),
-						'edadAparente' 				=> $request->input('edadAparente'),
-						'edadExtravio' 				=> $edad,
-						'embarazo' 					=> $request->input('embarazo'),
-						'gestacionSemanas' 			=> $request->input('gestacionSemanas'),
-						'gestacionMeses' 			=> $request->input('gestacionMeses'),
-						'rumoresBebe' 				=> $request->input('rumoresBebe'),
-						'pormenores' 				=> $request->input('pormenores'),
-						'antecedentesJudiciales' 	=> $request->input('antecedentesJudiciales'),
-						'idEdocivil' 				=> $request->input('idEdocivil'),
-						'idOcupacion' 				=> $request->input('idOcupacion'),
-						'idEscolaridad' 			=> $request->input('idEscolaridad'),
-					]);
+		
+		if($request->input('sexo')=='FEMENINO'){
+			$desaparecido = Desaparecido::create([
+							'idPersona' 				=> $persona->id,
+							'apodo' 					=> $request->input('apodo'),
+							'edadAparente' 				=> $request->input('edadAparente'),
+							'edadExtravio' 				=> $edad,
+							'embarazo' 					=> $request->input('embarazo'),
+							'gestacionSemanas' 			=> $request->input('gestacionSemanas'),
+							'gestacionMeses' 			=> $request->input('gestacionMeses'),
+							'rumoresBebe' 				=> $request->input('rumoresBebe'),
+							'pormenores' 				=> $request->input('pormenores'),
+							'antecedentesJudiciales' 	=> $request->input('antecedentesJudiciales'),
+							'idEdocivil' 				=> $request->input('idEdocivil'),
+							'idOcupacion' 				=> $request->input('idOcupacion'),
+							'idEscolaridad' 			=> $request->input('idEscolaridad'),
+						]);
+		}else{
+			$desaparecido = Desaparecido::create([
+							'idPersona' 				=> $persona->id,
+							'apodo' 					=> $request->input('apodo'),
+							'edadAparente' 				=> $request->input('edadAparente'),
+							'edadExtravio' 				=> $edad,
+							'antecedentesJudiciales' 	=> $request->input('antecedentesJudiciales'),
+							'idEdocivil' 				=> $request->input('idEdocivil'),
+							'idOcupacion' 				=> $request->input('idOcupacion'),
+							'idEscolaridad' 			=> $request->input('idEscolaridad'),
+						]);
+		}
 
 		$documento = Documento::create([
 						'idDesaparecido' 		=> $desaparecido->id,
