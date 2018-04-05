@@ -16,7 +16,8 @@ class CatNacionalidad extends Model
 	
 	public $fillable = [
 		'id',
-		'nombre'
+		'nombre',
+		'lada'
 	];
 
 	public function personas()

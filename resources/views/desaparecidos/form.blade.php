@@ -37,8 +37,10 @@
 	{!! HTML::script('personal/js/documentosIdentidad.js') !!}
 	{!! HTML::script('personal/js/datosgral.js') !!}
 	{!! HTML::script('personal/js/domicilio.js') !!}
+	{!! HTML::script('personal/js/datosdesaparicion.js') !!}
 	{!! HTML::script('personal/js/select2.min.js') !!}
 	{!! HTML::script('personal/js/jquery.mask.js') !!}
+<<<<<<< HEAD
 	{!! HTML::script('personal/js/icheck/icheck.js') !!}
     {!! HTML::script('personal/js/icheck/icheck.min.js') !!}
 	<script type="text/javascript">
@@ -53,4 +55,12 @@
 			    increaseArea: '20%' // optional
 			});
 	</script>
+=======
+	{!! HTML::script('personal/js/datosvestimenta.js') !!}
+	 <script type="text/javascript">
+	 	console.log("entrando")
+			$.validate();
+			
+		</script>
+>>>>>>> 716afe46b4f5e18744f0ac1f3a5a5bf75bf03930
 @endsection

@@ -58,6 +58,7 @@ class DesaparecidoController extends Controller
 			'10' => 'OCTUBRE',
 			'11' => 'NOVIEMBRE',
 			'12' => 'DICIEMBRE');
+<<<<<<< HEAD
 		$dialectos = array(
 			'ESPAÑOL' => 'ESPAÑOL',
 			'NÁHUATL' => 'NÁHUATL',
@@ -71,9 +72,41 @@ class DesaparecidoController extends Controller
 			'TZELTAL' => 'TZELTAL', 
 			'MAYA' => 'MAYA',
 			'OTRO' => 'OTRO');
+=======
+		$vestimenta= array(
+			'CIVIL' => 'CIVIL', 
+			'FORMAL' => 'FORMAL',
+			'INFORMAL' => 'INFORMAL',
+			'DEPORTIVO' => 'DEPORTIVO',
+			'UNIFORME' => 'UNIFORME',
+			'MARINA' => 'MARINA',
+			'ESCOLAR' => 'ESCOLAR',
+			'BEBE' => 'BEBÉ',
+			'SIN INFORMACION' => 'SIN INFORMACION'
+		);
+		$accesoriosObjetos= array(
+			'ANTEOJOS' => 'ANTEOJOS', 
+			'BASTON' => 'BASTÓN',
+			'ANILLOS' => 'ANILLOS',
+			'MEDALLAS' => 'MEDALLAS',
+			'CREDENCIALES' => 'CREDENCIALES',
+			'CINTURON' => 'CINTURÓN',
+			'RELOJ' => 'RELOJ',
+			'COLLARES' => 'COLLARES',
+			'PULSERAS' => 'PULSERAS',
+			'CELULAR' => 'CELULAR', 
+			'SOMBRERO' => 'SOMBRERO',
+			'BOLSA' => 'BOLSA',
+			'CADENAS' => 'CADENAS',
+			'CARTERA' => 'CARTERA',
+			'TARJETADECREDITO' => 'TARJETA DE CREDITO',
+			'OTRO' => 'OTRO'			
+		);
+>>>>>>> 716afe46b4f5e18744f0ac1f3a5a5bf75bf03930
 
 		$anios = array('2000' => '2000', '2001' => '2001');
 		$sexos = array('MASCULINO' => 'MASCULINO', 'FEMENINO' => 'FEMENINO');
+		
 		$tiposDireccion = array('PERSONAL' => 'PERSONAL', 'TRABAJO' => 'TRABAJO');
 		$parentescos = array('MADRE' => 'MADRE', 'PADRE' => 'PADRE', 'HIJO' => 'HIJO', 'OTRO' => 'OTRO');
 
@@ -111,6 +144,8 @@ class DesaparecidoController extends Controller
 						'colonias' => $localidades,
 						'codigos' => $codigos,
 						'sexos' => $sexos,
+						'vestimenta'=>$vestimenta,
+						'accesoriosObjetos'=>$accesoriosObjetos,
 						'edoscivil' => $edoscivil,
 						'tiposDireccion' => $tiposDireccion,
 						'parentescos' => $parentescos,
@@ -142,21 +177,35 @@ class DesaparecidoController extends Controller
         //$edad = Carbon::createFromDate($fecha->year, $fecha->month, $fecha->day)->age;
 		$fecha = Carbon::parse($request->input('fechaNacimiento'));
 		$edad = Carbon::createFromDate($fecha->year, $fecha->day, $fecha->month)->diff(Carbon::now())->format('%y años, %m meses y %d dias');
-		$desaparecido = Desaparecido::create([
-						'idPersona' 				=> $persona->id,
-						'apodo' 					=> $request->input('apodo'),
-						'edadAparente' 				=> $request->input('edadAparente'),
-						'edadExtravio' 				=> $edad,
-						'embarazo' 					=> $request->input('embarazo'),
-						'gestacionSemanas' 			=> $request->input('gestacionSemanas'),
-						'gestacionMeses' 			=> $request->input('gestacionMeses'),
-						'rumoresBebe' 				=> $request->input('rumoresBebe'),
-						'pormenores' 				=> $request->input('pormenores'),
-						'antecedentesJudiciales' 	=> $request->input('antecedentesJudiciales'),
-						'idEdocivil' 				=> $request->input('idEdocivil'),
-						'idOcupacion' 				=> $request->input('idOcupacion'),
-						'idEscolaridad' 			=> $request->input('idEscolaridad'),
-					]);
+		
+		if($request->input('sexo')=='FEMENINO'){
+			$desaparecido = Desaparecido::create([
+							'idPersona' 				=> $persona->id,
+							'apodo' 					=> $request->input('apodo'),
+							'edadAparente' 				=> $request->input('edadAparente'),
+							'edadExtravio' 				=> $edad,
+							'embarazo' 					=> $request->input('embarazo'),
+							'gestacionSemanas' 			=> $request->input('gestacionSemanas'),
+							'gestacionMeses' 			=> $request->input('gestacionMeses'),
+							'rumoresBebe' 				=> $request->input('rumoresBebe'),
+							'pormenores' 				=> $request->input('pormenores'),
+							'antecedentesJudiciales' 	=> $request->input('antecedentesJudiciales'),
+							'idEdocivil' 				=> $request->input('idEdocivil'),
+							'idOcupacion' 				=> $request->input('idOcupacion'),
+							'idEscolaridad' 			=> $request->input('idEscolaridad'),
+						]);
+		}else{
+			$desaparecido = Desaparecido::create([
+							'idPersona' 				=> $persona->id,
+							'apodo' 					=> $request->input('apodo'),
+							'edadAparente' 				=> $request->input('edadAparente'),
+							'edadExtravio' 				=> $edad,
+							'antecedentesJudiciales' 	=> $request->input('antecedentesJudiciales'),
+							'idEdocivil' 				=> $request->input('idEdocivil'),
+							'idOcupacion' 				=> $request->input('idOcupacion'),
+							'idEscolaridad' 			=> $request->input('idEscolaridad'),
+						]);
+		}
 
 		$documento = Documento::create([
 						'idDesaparecido' 		=> $desaparecido->id,
