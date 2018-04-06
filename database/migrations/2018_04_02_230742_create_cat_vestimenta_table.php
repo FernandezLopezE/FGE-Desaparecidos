@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCatDocumentoIdentidadTable extends Migration
+class CreateCatVestimentaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateCatDocumentoIdentidadTable extends Migration
      */
     public function up()
     {
-        Schema::create('cat_documento_identidad', function (Blueprint $table) {
+        Schema::create('cat_vestimenta', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre')->unique();
+            $table->string('nombre',20);
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateCatDocumentoIdentidadTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cat_documento_identidad');
+        Schema::dropIfExists('cat_vestimenta');
     }
 }
