@@ -9,7 +9,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         
        
-		{!! Html::style('bootstrap4/css/bootstrap.css') !!}
+		{!! Html::style('bootstrap4/css/bootstrap.min.css') !!}
 		<!-- icons-fontawesome -->
 	 
 		<!-- custom style -->
@@ -111,7 +111,8 @@
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
 
-		{!! HTML::script('bootstrap4/js/popper.js') !!}
+		{!! HTML::script('bootstrap4/js/popper.min.js') !!}
+		{!! HTML::script('bootstrap4/js/jquery-3.2.1.slim.min.js') !!}
 		{!! HTML::script('assets-master/dist/js/bootstrap.js') !!}
 		{!! HTML::script('personal/js/jquery-3.3.1.js') !!}
 
