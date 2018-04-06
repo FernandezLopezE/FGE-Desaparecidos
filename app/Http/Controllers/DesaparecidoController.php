@@ -58,9 +58,39 @@ class DesaparecidoController extends Controller
 			'10' => 'OCTUBRE',
 			'11' => 'NOVIEMBRE',
 			'12' => 'DICIEMBRE');
+		$vestimenta= array(
+			'CIVIL' => 'CIVIL', 
+			'FORMAL' => 'FORMAL',
+			'INFORMAL' => 'INFORMAL',
+			'DEPORTIVO' => 'DEPORTIVO',
+			'UNIFORME' => 'UNIFORME',
+			'MARINA' => 'MARINA',
+			'ESCOLAR' => 'ESCOLAR',
+			'BEBE' => 'BEBÉ',
+			'SIN INFORMACION' => 'SIN INFORMACION'
+		);
+		$accesoriosObjetos= array(
+			'ANTEOJOS' => 'ANTEOJOS', 
+			'BASTON' => 'BASTÓN',
+			'ANILLOS' => 'ANILLOS',
+			'MEDALLAS' => 'MEDALLAS',
+			'CREDENCIALES' => 'CREDENCIALES',
+			'CINTURON' => 'CINTURÓN',
+			'RELOJ' => 'RELOJ',
+			'COLLARES' => 'COLLARES',
+			'PULSERAS' => 'PULSERAS',
+			'CELULAR' => 'CELULAR', 
+			'SOMBRERO' => 'SOMBRERO',
+			'BOLSA' => 'BOLSA',
+			'CADENAS' => 'CADENAS',
+			'CARTERA' => 'CARTERA',
+			'TARJETADECREDITO' => 'TARJETA DE CREDITO',
+			'OTRO' => 'OTRO'			
+		);
 
 		$anios = array('2000' => '2000', '2001' => '2001');
 		$sexos = array('MASCULINO' => 'MASCULINO', 'FEMENINO' => 'FEMENINO');
+		
 		$tiposDireccion = array('PERSONAL' => 'PERSONAL', 'TRABAJO' => 'TRABAJO');
 		$parentescos = array('MADRE' => 'MADRE', 'PADRE' => 'PADRE', 'HIJO' => 'HIJO');
 
@@ -98,6 +128,8 @@ class DesaparecidoController extends Controller
 						'colonias' => $localidades,
 						'codigos' => $codigos,
 						'sexos' => $sexos,
+						'vestimenta'=>$vestimenta,
+						'accesoriosObjetos'=>$accesoriosObjetos,
 						'edoscivil' => $edoscivil,
 						'tiposDireccion' => $tiposDireccion,
 						'parentescos' => $parentescos

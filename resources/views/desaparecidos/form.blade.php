@@ -2,9 +2,9 @@
 
 @section('style')
 	{!! Html::style('') !!}
-	{!! Html::style('css/select2.css') !!}
+	{!! Html::style('css/select2.css',['rel'=>"stylesheet"]) !!}
 	{!! Html::style('personal/css/select2.min.css') !!}
-	{!! Html::style('css/select2-bootstrap.css') !!}
+	{!! Html::style('css/select2-bootstrap.css',['rel'=>"stylesheet"]) !!}
 @endsection
 
 @section('content')
@@ -36,13 +36,16 @@
 	{!! HTML::script('personal/js/documentosIdentidad.js') !!}
 	{!! HTML::script('personal/js/datosgral.js') !!}
 	{!! HTML::script('personal/js/domicilio.js') !!}
+	{!! HTML::script('personal/js/datosdesaparicion.js') !!}
 	{!! HTML::script('personal/js/select2.min.js') !!}
 	{!! HTML::script('personal/js/jquery.mask.js') !!}
 	{!! HTML::script('personal/js/icheck.js') !!}
 	{!! HTML::script('personal/js/icheck.min.js') !!}
+	{!! HTML::script('personal/js/jquery.mask.js') !!}
+	{!! HTML::script('personal/js/datosvestimenta.js') !!}
 	 <script type="text/javascript">
 	 	console.log("entrando")
 			$.validate();
-			 $('input[name="telefono"]').mask('(000) 000 0000');
+			
 		</script>
 @endsection
