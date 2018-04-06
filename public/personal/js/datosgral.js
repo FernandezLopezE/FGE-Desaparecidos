@@ -308,5 +308,9 @@ $(document).ready(function(){
     	});*/
     }); 
 
+    $(".modal-body").on('click', "#informanteidParentesco")(function() {
+    	alert("Hola");
+    });
+
 });
 
