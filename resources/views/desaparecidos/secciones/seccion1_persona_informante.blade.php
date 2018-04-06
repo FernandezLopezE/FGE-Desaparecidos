@@ -118,23 +118,37 @@
 	</div><br>
 
 	<div class="row">
-		<div class="col-2">
+		<div class="col-lg-2">
 			{!! Form::label ('','Tipo de persona:') !!}
 		</div>
 		<div class="col">
 			{!! Form::checkbox('name', 'value') !!}
 			<div class="form-check">
 			  <label class="form-check-label">
-			    <input class="form-check-input icheck" type="checkbox" id="blankCheckbox" value="option1" aria-label="..."> SÓLO INFORMANTE
+			    <input class="form-check-input icheck" type="checkbox" id="informante" name="informante" value="INFORMANTE" aria-label="..."> SÓLO INFORMANTE
 			  </label>
 			</div>
 		<div class="form-check">
 		  <label class="form-check-label">
-		    <input class="form-check-input icheck" type="checkbox" name="blankRadio" id="blankRadio1" value="option1" aria-label="..."> AUTORIZADA PARA DAR, OIR Y RECIBIR INFORMES
+		    <input class="form-check-input icheck" type="checkbox"  id="recibir" value="RECIBIR" aria-label="..."> AUTORIZADA PARA DAR, OIR Y RECIBIR INFORMES
 		  </label>
 		</div>
 		</div>
+		<div class="col">
+			<select class="selec2" multiple>
+			  <option>Mustard</option>
+			  <option>Ketchup</option>
+			  <option>Relish</option>
+			</select>
+
+		</div>
 	</div>
 	</div>
+
+
+
+
+
+
 </div>
 <div class="my-4">	</div>
