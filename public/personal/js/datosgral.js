@@ -5,6 +5,7 @@ $(document).ready(function(){
 		$(this).val($(this).val().toUpperCase());		
 	}); 
 
+
 		$('#idEdocivil').change(function() {
 
 			a = $('#idEdocivil').val();

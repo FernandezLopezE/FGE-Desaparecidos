@@ -2,9 +2,11 @@
 
 @section('style')
 	{!! Html::style('') !!}
-	{!! Html::style('css/select2.css') !!}
-	{!! Html::style('personal/css/select2.min.css', ['rel'=> 'stylesheed']) !!}
 
+	
+	{!! Html::style('css/select2.css') !!}
+	{!! Html::style('personal/css/select2.min.css') !!}
+	{!! Html::style('css/select2-bootstrap.css',['rel'=>"stylesheet"]) !!}
 	{!! Html::style('personal/js/icheck/skins/all.css') !!}
 @endsection
 

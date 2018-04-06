@@ -172,7 +172,6 @@ $(document).ready(function() {
     });
 
 
-
     /*$('#btnAddHijo').click(function(){
 
         divRow = $('<div class="row">');

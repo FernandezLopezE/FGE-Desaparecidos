@@ -1,10 +1,56 @@
 $(document).ready(function() {
-    $('#vestimenta').select2();
+    $('#idVestimenta').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
+
+    });
+
+    $('#idCalzado').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
+
+    });
+    $('#idCalzadoModelo').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
+
+    });
+    $('#idCalzadoColor').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
+
+    });
+    $('#idCalzadoMarca').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
+
+    });
+    $('#idCalzadoTalla').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
+
+    });
+    
     $('#accesoriosObjetos').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
     	width: 460,
         multiple: true,
         multipleWidth: 55,
-         placeholder: "Select a state"
     });
 
 
