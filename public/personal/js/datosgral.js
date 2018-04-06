@@ -207,13 +207,13 @@ $(document).ready(function(){
 	     // va en la vista lo siguiente
 	     // ,onkeypress='return validaNumericos(event)'>= 48 && event.charCode <= 57'
 		}
-	$('input[name="fechaNacimiento"]').mask('00/00/0000');
+	$('input[name="fechaNacimiento"]').mask('00-00-0000');
+	$('input[name="fecha_visita"]').mask('00-00-0000');
 
-	$("#1vez").change(function(){
+	$("#entrevistadorPrimeraVez").change(function(){
+			g = $('#entrevistadorPrimeraVez').val();
 
-			g = $('#1vez').val();
-
-			console.log(g);
+			console.log("Hola: "+g);
 
 			//Mostrar-ocultar formulario para agregar hijos
 
@@ -231,8 +231,8 @@ $(document).ready(function(){
 
 
 	//Mostrar campos al seleccionar otro dialecto
-    $('#dialecto').change(function() {
-        e = $('#dialecto').val();
+    $('#entrevistadorIdioma').change(function() {
+        e = $('#entrevistadorIdioma').val();
 
         if (e=='ESPAÑOL') {
         	$("#otro_dialec").hide();
@@ -245,8 +245,8 @@ $(document).ready(function(){
         }
     });
 
-    $('#dialecto').change(function() {
-        e = $('#dialecto').val();
+    $('#entrevistadorIdioma').change(function() {
+        e = $('#entrevistadorIdioma').val();
         console.log(e);
 
         if (e=='OTRO') {
@@ -281,5 +281,26 @@ $(document).ready(function(){
 
   
 
+
+    $('#fechaNacimiento').change(function(){
+    	f = $('#fechaNacimiento').val();
+    	console.log('datos fecha: '+f);
+
+    	$.ajax({
+                url: '/desaparecido/edad/'+f,
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                		console.log("hola"+data);
+                		$('#edadExtravio').val(data);
+                },
+                
+            });
+    	/*$.get('/desaparecido/edad/',{fechaNacimiento: f})
+    	.done(function(data){
+    			console.log(data);
+    	});*/
+    });
 });
 
