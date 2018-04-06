@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	var a,b,c,d,g,x;
+	var a,b,c,d,e,f,g,h,x;
 	//Obtener el valor de estado civil
 	$("body").on('change', '.mayuscula', function(field){		
 		$(this).val($(this).val().toUpperCase());		
@@ -208,33 +208,128 @@ $(document).ready(function(){
 	     // va en la vista lo siguiente
 	     // ,onkeypress='return validaNumericos(event)'>= 48 && event.charCode <= 57'
 		}
-	$('input[name="fechaNacimiento"]').mask('00/00/0000');
+	$('input[name="fechaNacimiento"]').mask('00-00-0000');
+	$('input[name="fecha_visita"]').mask('00-00-0000');
 
-	$("#1vez").change(function(){
+	$("#entrevistadorPrimeraVez").change(function(){
+			g = $('#entrevistadorPrimeraVez').val();
 
-			g = $('#1vez').val();
-
-			console.log(g);
+			console.log("Hola: "+g);
 
 			//Mostrar-ocultar formulario para agregar hijos
 
 			if (g =='NO'){
-
-				console.log('Mostrar form de cuando')
-
 				$("#cuando").show();
-				$("#cuando").show();
+			
 				
 
 			} else {
-
-				console.log('Si es la primera vez')
-
-				$("#cuando").hide();
 				$("#cuando").hide();
 
 			} 
 
 		});
-})
+
+
+	//Mostrar campos al seleccionar otro dialecto
+    $('#entrevistadorIdioma').change(function() {
+        e = $('#entrevistadorIdioma').val();
+
+        if (e=='ESPAÑOL') {
+        	$("#otro_dialec").hide();
+        	$("#otro_dialec2").hide();
+        	$("#otro_dialec3").hide();
+        }else{
+        	$("#otro_dialec").show();
+        	$("#otro_dialec2").show();
+        	$("#otro_dialec3").show();
+        }
+    });
+
+    $('#entrevistadorIdioma').change(function() {
+        e = $('#entrevistadorIdioma').val();
+        console.log(e);
+
+        if (e=='OTRO') {
+        	$("#otro_dialec").show();
+        }else{
+        	$("#otro_dialec").hide();
+        }
+    });
+    //Fin de Mostrar campos al seleccionar otro dialecto
+
+    //ingresar otro parentesco
+    $('#informanteidParentesco').change(function() {
+    	f = $('#informanteidParentesco').val();
+    	console.log("El parentesoc es: "+f);
+
+    	if (f=='OTRO') {
+    		$("#otro_parent").show();
+    	}else{
+    		$("#otro_parent").hide();
+    	}
+    });
+
+    $('#informanteidDocumentoIdentidad').change(function(){
+    	h = $('#informanteidDocumentoIdentidad').val();
+    	
+    	if (h=='Otro(especifique)') {
+    		$("#otro_doc").show();
+    	}else{
+    		$("#otro_doc").hide();
+    	}
+    });
+
+  
+
+
+    $('#fechaNacimiento').change(function(){
+    	f = $('#fechaNacimiento').val();
+    	console.log('datos fecha: '+f);
+
+    	$.ajax({
+                url: '/desaparecido/edad/'+f,
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                		console.log("hola"+data);
+                		$('#edadExtravio').val(data);
+                },
+                
+            });
+    	/*$.get('/desaparecido/edad/',{fechaNacimiento: f})
+    	.done(function(data){
+    			console.log(data);
+    	});*/
+    });
+
+    $("#probar").click(function() {  
+        if($("#informante").is(':checked')) {  
+            alert("Está activado");  
+        } else {  
+            alert("No está activado");  
+        }  
+    });  
+
+
+    /*$("#informante").change(function() {
+    	var y= $("#informante").val();
+    	console.log(y);
+
+    	
+    });*/
+    console.log('entrado carlos');
+
+    $("input:checked").val(),
+
+	$('#informante').on('ifChecked', function () {
+		alert('caja seleccionada');//Do your code 
+	}) 
+
+	$('#informante').on('ifUnchecked', function () {
+		alert('caja deseleccionada'); 
+	})   
+
+});
 

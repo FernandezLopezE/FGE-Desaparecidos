@@ -39,7 +39,7 @@
 
 	<body class="bg-light">
 		@php
-
+			Session::put('region', 'POZA RICA');
             Session::put('nombreComp', 'MARÍA DE LA LUZ ESCUDERO RAMÍREZ');
             Session::put('cargo', 'FISCAL 2DA ESP. EN LA INV. DE DELITOS DE VIOLENCIA CONTRA LA FAMILIA CONTRERAS');
             Session::put('nombre', 'SELENE PATRICIA');
@@ -89,8 +89,9 @@
 							{{ HTML::image('images/perfil.png', 'profile', array('width' => '40', 'height' => '40', 'class' => 'rounded-circle'))}}
 						</a>
                 		<ul class="dropdown-menu">
-                   		 	<li>Fiscal {{ Session::get('nombre') }}</li>
-                    		<li>{{ Session::get('region') }}</li>
+                   		 	<li>{{ Session::get('nombreComp') }}</li>
+                   		 	<div class="dropdown-divider"></div>
+                    		<li>REGIÓN: {{ Session::get('region') }}</li>
                     		<div class="dropdown-divider"></div>
                     		<a class="dropdown-item" href="">Regresar a UIPJ</a>
                 		</ul>

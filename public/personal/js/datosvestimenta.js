@@ -51,7 +51,6 @@ $(document).ready(function() {
     	width: 460,
         multiple: true,
         multipleWidth: 55,
-
     });
 
 
