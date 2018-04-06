@@ -2,9 +2,11 @@
 
 @section('style')
 	{!! Html::style('') !!}
-	{!! Html::style('css/select2.css') !!}
-	{!! Html::style('personal/css/select2.min.css', ['rel'=> 'stylesheed']) !!}
 
+	
+	{!! Html::style('css/select2.css') !!}
+	{!! Html::style('personal/css/select2.min.css') !!}
+	{!! Html::style('css/select2-bootstrap.css',['rel'=>"stylesheet"]) !!}
 	{!! Html::style('personal/js/icheck/skins/all.css') !!}
 @endsection
 
@@ -36,6 +38,7 @@
 	{!! HTML::script('personal/js/jquery.form-validator.min.js') !!}
 	{!! HTML::script('personal/js/documentosIdentidad.js') !!}
 	{!! HTML::script('personal/js/datosgral.js') !!}
+	{!! HTML::script('personal/js/personasAutorizadas.js') !!}
 	{!! HTML::script('personal/js/domicilio.js') !!}
 	{!! HTML::script('personal/js/datosdesaparicion.js') !!}
 	{!! HTML::script('personal/js/select2.min.js') !!}

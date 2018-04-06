@@ -18,65 +18,61 @@
 			
 		</div>	
 		<div class="row">
-			<div class="col-2">
-				
-				{!! Form::text ('fechaNacimiento',old('Fecha de nacimiento'), ['class' => 'form-control', 'id' => 'fechaNacimiento' , 'data-validation' => 'required date', 'data-validation-error-msg' => '* Ingrese o corrija la fecha de nacimiento','data-validation-format'=>"dd/mm/yyyy"] )!!}
+			<div class="col-2">				
+				{!! Form::text ('avistoFechaHora',old('Fecha de la última vez que fue visto'), ['class' => 'form-control', 'id' => 'avistoFechaHora' , 'data-validation' => 'required date', 'data-validation-error-msg' => 'Ingrese la fecha','data-validation-format'=>"dd-mm-yyyy"] )!!}
 			</div>
 			<div class="col-1">
-			</div>
-		
+			</div>		
 			<div class="col-2">
-				
-				{!! Form::text ('horaExtravio',old('horaExtravio'), ['class' => 'form-control', 'id' => 'horaExtravio', 'data-validation' => 'required  time', 'data-validation-help'=>"HH:mm" ] )!!}
+				{!! Form::text ('avistoHoraExtravio',old('Hora'), ['class' => 'form-control', 'id' => 'avistoHoraExtravio', 'data-validation' => 'required  time', 'data-validation-error-msg' => 'Ingrese la hora HH:mm'] )!!}
 			</div>
 			
 		</div>	
 		<div class="row">
 				<br/>		
 		</div>	
-
 		<div class="row">
 			<div class="col">
-				{!! Form::label ('nombres','Nombres(s):') !!}
-				{!! Form::text ('nombres',old('Nombres(s)'), ['class' => 'form-control mayuscula', 'id' => 'nombres', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Ingresa un nombre'] )!!}
+				{!! Form::label ('nombresAvisto','Nombres(s):') !!}
+				{!! Form::text ('avistoNombres',old('Nombres(s)'), ['class' => 'form-control mayuscula', 'id' => 'avistoNombres', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese el nombre(s)'] )!!}
 			</div>
 			<div class="col">
-				{!! Form::label ('primerAp','Primer apellido:') !!}
-				{!! Form::text ('primerAp',old('Apellido materno'), ['class' => 'form-control mayuscula', 'id' => 'primerAp', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Ingresa un apellido'] )!!}
+				{!! Form::label ('primerApellidoAvisto','Primer apellido:') !!}
+				{!! Form::text ('avistoPrimerAp',old('Primer apellido'), ['class' => 'form-control mayuscula', 'id' => 'avistoPrimerAp', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese el primer apellido'] )!!}
 			</div>
 			<div class="col">
-				{!! Form::label ('segundoAp','Segundo apellido:') !!}
-				{!! Form::text ('segundoAp',old('Apellido materno'), ['class' => 'form-control mayuscula', 'id' => 'segundoAp'] )!!}
+				{!! Form::label ('segundoApellidoAvisto','Segundo apellido:') !!}
+				{!! Form::text ('avistoSegundoAp',old('Segundo apellido'), ['class' => 'form-control mayuscula', 'id' => 'avistoSegundoAp'] )!!}
 			</div>
 			<div class="col">
 				{!! Form::label ('parentescoDesaparecido','Parentesco:') !!}
-				{!! Form::select ('idEstado[]',$estados,'', ['class' => 'form-control', 'id' => 'idEstado'] )!!}
+				{!! Form::select ('avistoidParentesco[]',$parentescos,'', ['class' => 'form-control', 'id' => 'avistoidParentesco'] )!!}
 			</div>
 		</div>	
 		
 		<div class="row">
 			<div class="form-group col">
-				{!! Form::label ('idEstado','Estado:') !!}
-				{!! Form::select ('idEstado[]',$estados,'', ['class' => 'form-control', 'id' => 'idEstado'] )!!}
+				{!! Form::label ('avistoEstado','Estado:') !!}
+				{!! Form::select ('avistoidEstado[]',$estados,'', ['class' => 'form-control', 'id' => 'avistoidEstado'] )!!}
 			</div>
 			<div class="form-group col">
-				{!! Form::label ('idMunicipio','Municipio:') !!}
-				{!! Form::select ('idMunicipio[]',$municipios,'', ['class' => 'form-control', 'id' => 'idMunicipio'] )!!}
+				{!! Form::label ('avistoMunicipio','Municipio:') !!}
+				{!! Form::select ('avistoidMunicipio[]',$municipios,'', ['class' => 'form-control', 'id' => 'avistoidMunicipio'] )!!}
 			</div>
 			<div class="form-group col">
-				{!! Form::label ('idLocalidad','Localidad:') !!}
-				{!! Form::select ('idLocalidad[]',$localidades,'', ['class' => 'form-control', 'id' => 'idLocalidad'] )!!}
+				{!! Form::label ('avistoLocalidad','Localidad:') !!}
+				{!! Form::select ('avistoidLocalidad[]',$localidades,'', ['class' => 'form-control', 'id' => 'avistoidLocalidad'] )!!}
 			</div>
 			<div class="form-group col">
-				{!! Form::label ('idColonia','Colonia:') !!}
-				{!! Form::select ('idColonia[]',$colonias,'', ['class' => 'form-control', 'id' => 'idColonia'] )!!}
+				{!! Form::label ('avistoColonia','Colonia:') !!}
+				{!! Form::select ('avistoidColonia[]',$colonias,'', ['class' => 'form-control', 'id' => 'avistoidColonia'] )!!}
 			</div>		
 		</div>
 
 		<div class="row">
 			<div class="col">
 				{!! Form::label ('descripcionTxt','Breve descripción del hecho:') !!}
-				{!! Form::textarea  ('descripcionHecho',old('Descripcion del hecho'), ['class' => 'form-control mayuscula', 'id' => 'segundoAp','size' => '30x4'])!!}
+				{!! Form::textarea  ('avistoDescripcionHechos',old('Breve descripción del hecho'), ['class' => 'form-control mayuscula', 'id' => 'avistoDescripcionHechos','size' => '30x4','data-validation' =>'required','data-validation-error-msg-required' =>'Ingrese la descripción del hecho'])!!}
 			</div>
 		</div>
 		
