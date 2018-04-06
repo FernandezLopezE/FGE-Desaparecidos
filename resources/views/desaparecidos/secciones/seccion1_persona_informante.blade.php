@@ -118,35 +118,23 @@
 	</div><br>
 
 	<div class="row">
-		<div class="col-lg-2">
-			{!! Form::label ('','Tipo de persona:') !!}
-		</div>
-		<div class="col">
-			{!! Form::checkbox('name', 'value') !!}
+		<div class="col-lg-6">
 			<div class="form-check">
 			  <label class="form-check-label">
-			    <input class="form-check-input icheck" type="checkbox" id="informante" name="informante" value="INFORMANTE" aria-label="..."> SÓLO INFORMANTE
+			    <input class="form-check-input icheck" type="checkbox" id="informante" name="informante" value="INFORMANTE"> SÓLO INFORMANTE
 			  </label>
 			</div>
-		<div class="form-check">
-		  <label class="form-check-label">
-		    <input class="form-check-input icheck" type="checkbox"  id="recibir" value="RECIBIR" aria-label="..."> AUTORIZADA PARA DAR, OIR Y RECIBIR INFORMES
-		  </label>
+			<div class="form-check">
+			  <label class="form-check-label">
+			    <input class="form-check-input icheck" type="checkbox"  id="recibir" value="RECIBIR"> AUTORIZADA PARA DAR, OIR Y RECIBIR INFORMES
+			  </label>
+			</div>
 		</div>
-		</div>
-		<div class="col">
-			<select class="selec2" multiple>
-			  <option>Mustard</option>
-			  <option>Ketchup</option>
-			  <option>Relish</option>
-			</select>
-
+		<div class="col-lg-6">
+			<p align="right"><input type="button" id="probar" value="ENVIAR"></p>
 		</div>
 	</div>
 	</div>
-
-
-
 
 
 

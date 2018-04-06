@@ -3,7 +3,8 @@ $(document).ready(function() {
     $('#accesoriosObjetos').select2({
     	width: 460,
         multiple: true,
-        multipleWidth: 55
+        multipleWidth: 55,
+         placeholder: "Select a state"
     });
 
 

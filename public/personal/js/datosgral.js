@@ -302,5 +302,33 @@ $(document).ready(function(){
     			console.log(data);
     	});*/
     });
+
+    $("#probar").click(function() {  
+        if($("#informante").is(':checked')) {  
+            alert("Está activado");  
+        } else {  
+            alert("No está activado");  
+        }  
+    });  
+
+
+    /*$("#informante").change(function() {
+    	var y= $("#informante").val();
+    	console.log(y);
+
+    	
+    });*/
+    console.log('entrado carlos');
+
+    $("input:checked").val(),
+
+	$('#informante').on('ifChecked', function () {
+		alert('caja seleccionada');//Do your code 
+	}) 
+
+	$('#informante').on('ifUnchecked', function () {
+		alert('caja deseleccionada'); 
+	})   
+
 });
 
