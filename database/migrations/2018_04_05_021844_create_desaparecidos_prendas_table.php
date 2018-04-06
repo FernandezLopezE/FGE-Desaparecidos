@@ -22,8 +22,8 @@ class CreateDesaparecidosPrendasTable extends Migration
             $table->string('marcaOrigen',50);
             $table->string('talla',50);
 
-            $table->integer('idDatosdesaparicion')->unsigned();
-            $table->foreign('idDatosdesaparicion')->references('id')->on('desaparecidos_datos_desaparicion');
+            $table->integer('idCedula')->unsigned();
+            $table->foreign('idCedula')->references('id')->on('desaparecidos_cedula_investigacion');
 
             $table->timestamps();
         });

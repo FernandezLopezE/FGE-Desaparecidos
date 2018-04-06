@@ -4,10 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CatDialecto extends Model
+class CatCalzadoColor extends Model
 {
-    //cat_dialecto
-    protected $table = 'cat_dialecto';
+	protected $table = 'cat_calzado_color';
 	protected $fillable = [
 		'nombre',	
 	];

@@ -10,27 +10,35 @@ class Desaparecido extends Model
 	protected $fillable = [		
 		'apodo',
 		'edadAparente',
-		'edadExtravio',		
+		'edadExtravio',
 		'embarazo',
-		'gestacionSemanas',
-		'gestacionMeses',
+		'tipoGestacion',
+		'numGestacion',
 		'rumoresBebe',
 		'pormenores',
-		'antecedentesJudiciales',
-		'idEdocivil',				
-		'idOcupacion',		
+		'antecedentesJudiciales'
+		'organizacion'
+		'tipoPersona',
+		'otroDocIdentidad',
+		'numDocIdentidad',
+		'correoElectronico',
+		'telefonos',
+		'notificaciones',
+		'tieneHijos',
+		'idPersona',
+		'idEdocivil',
+		'idOcupacion',
 		'idEscolaridad',
-		'idPersona'	
+		'idDialecto',
+		'idCargo',
+		'idParentesco',
+		'idDocumentoIdentidad',
+		'idCedula',
 	];
 
 	public function familiares()
 	{
 		return $this->hasMany('App\Models\Familiar', 'idDesaparecido', 'id');
-	}
-
-	public function documentos()
-	{
-		return $this->hasMany('App\Models\Documento', 'idDesaparecido', 'id');
 	}
 
 	public function domicilios()
