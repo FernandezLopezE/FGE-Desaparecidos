@@ -22,6 +22,7 @@ class CreateDesaparecidosCedulaInvestigacionTable extends Migration
             $table->text('observacionesDesaparicion');
             $table->string('estatura',10);
             $table->string('peso',10);
+            $table->json('vestimentas');
 
             $table->integer('idCalzadotipo')->unsigned();           
             $table->foreign('idCalzadotipo')->references('id')->on('cat_calzado_tipo');
