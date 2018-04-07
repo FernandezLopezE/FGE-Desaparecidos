@@ -10,6 +10,6 @@ $(document).ready(function() {
 
 
 $('input[name="avistoHoraExtravio"]').mask('00:00');
-$('input[name="avistoFechaHora"]').mask('00-00.0000');
+$('input[name="avistoFechaHora"]').mask('00-00-0000');
 
 });

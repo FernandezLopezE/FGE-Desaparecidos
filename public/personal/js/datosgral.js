@@ -283,26 +283,34 @@ $(document).ready(function(){
   
 
 
-    $('#fechaNacimiento').change(function(){
-    	f = $('#fechaNacimiento').val();
-    	console.log('datos fecha: '+f);
+     $('#fechaNacimiento').change(function(){  
+        from = $("#fechaNacimiento").val().split("-");
+        fechaNacimiento = from[2] + "-" + from[1] + "-" + from[0];
+        fechaEnviada = Date.parse(fechaNacimiento);
+       
+        fechaActual= new Date();
+       
+       if (fechaEnviada > fechaActual)
+       {
+           $("#fechaNacimiento").val("");
+           $("#edadExtravio").val("");
+       }else{
+           f = $('#fechaNacimiento').val();
+       console.log('datos fecha: '+f);
 
-    	$.ajax({
-                url: '/desaparecido/edad/'+f,
-                type:"GET",
-                dataType:"json",
+       $.ajax({
+               url: '/desaparecido/edad/'+f,
+               type:"GET",
+               dataType:"json",
 
-                success:function(data) {
-                		console.log("hola"+data);
-                		$('#edadExtravio').val(data);
-                },
-                
-            });
-    	/*$.get('/desaparecido/edad/',{fechaNacimiento: f})
-    	.done(function(data){
-    			console.log(data);
-    	});*/
-    });
+               success:function(data) {
+                       console.log("hola"+data);
+                       $('#edadExtravio').val(data);
+               },
+               
+           });
+       }
+   });
 
     $("#probar").click(function() {  
         if($("#informante").is(':checked')) {  
