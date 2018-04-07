@@ -308,9 +308,11 @@ $(document).ready(function(){
     	});*/
     }); 
 
-    $(".modal-body").on('click', "#informanteidParentesco")(function() {
-    	alert("Hola");
+   $("#probar").click(function(){
+    $.get("datos.php", function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
     });
+});
 
 });
 
