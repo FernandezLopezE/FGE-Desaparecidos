@@ -9,7 +9,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
         
        
-		{!! Html::style('bootstrap4/css/bootstrap.css') !!}
+		{!! Html::style('bootstrap4/css/bootstrap.min.css') !!}
 		<!-- icons-fontawesome -->
 	 
 		<!-- custom style -->
@@ -39,7 +39,7 @@
 
 	<body class="bg-light">
 		@php
-
+			Session::put('region', 'POZA RICA');
             Session::put('nombreComp', 'MARÍA DE LA LUZ ESCUDERO RAMÍREZ');
             Session::put('cargo', 'FISCAL 2DA ESP. EN LA INV. DE DELITOS DE VIOLENCIA CONTRA LA FAMILIA CONTRERAS');
             Session::put('nombre', 'SELENE PATRICIA');
@@ -89,8 +89,9 @@
 							{{ HTML::image('images/perfil.png', 'profile', array('width' => '40', 'height' => '40', 'class' => 'rounded-circle'))}}
 						</a>
                 		<ul class="dropdown-menu">
-                   		 	<li>Fiscal {{ Session::get('nombre') }}</li>
-                    		<li>{{ Session::get('region') }}</li>
+                   		 	<li>{{ Session::get('nombreComp') }}</li>
+                   		 	<div class="dropdown-divider"></div>
+                    		<li>REGIÓN: {{ Session::get('region') }}</li>
                     		<div class="dropdown-divider"></div>
                     		<a class="dropdown-item" href="">Regresar a UIPJ</a>
                 		</ul>
@@ -110,7 +111,8 @@
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
 
-		{!! HTML::script('bootstrap4/js/popper.js') !!}
+		{!! HTML::script('bootstrap4/js/popper.min.js') !!}
+		{!! HTML::script('bootstrap4/js/jquery-3.2.1.slim.min.js') !!}
 		{!! HTML::script('assets-master/dist/js/bootstrap.js') !!}
 		{!! HTML::script('personal/js/jquery-3.3.1.js') !!}
 

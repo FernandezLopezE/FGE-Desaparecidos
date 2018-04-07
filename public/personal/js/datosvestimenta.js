@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     //funciones para las cajas en color
     
 
@@ -6,10 +7,60 @@ $(document).ready(function() {
 
     //aqui terminan las funciones del color
     $('#vestimenta').select2();
+
+    $('#idVestimenta').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
+
+    });
+
+    $('#idCalzado').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
+
+    });
+    $('#idCalzadoModelo').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
+
+    });
+    $('#idCalzadoColor').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
+
+    });
+    $('#idCalzadoMarca').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
+
+    });
+    $('#idCalzadoTalla').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
+
+    });
+    
+
     $('#accesoriosObjetos').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
     	width: 460,
         multiple: true,
-        multipleWidth: 55
+        multipleWidth: 55,
     });
     //idTipo hace referencia a tipos de calzados(combo imagen)
     $('#idTipo').select2({ 
