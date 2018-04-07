@@ -42,6 +42,7 @@
 	{!! HTML::script('personal/js/icheck.min.js') !!}
 	{!! HTML::script('personal/js/jquery.mask.js') !!}
 	{!! HTML::script('personal/js/datosvestimenta.js') !!}
+	{!! HTML::script('personal/js/jscolor.js') !!}
 	 <script type="text/javascript">
 	 	console.log("entrando")
 			$.validate();
