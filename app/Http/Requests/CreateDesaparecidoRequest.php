@@ -32,7 +32,7 @@ class CreateDesaparecidoRequest extends FormRequest
 			'apodo' 					=> 'required|max:30',
 			'edadExtravio' 				=> 'required|max:150|integer',
 			'edadAparente' 				=> 'required|max:150|integer',
-			'fechaNacimiento'			=> 'required|date_format:d/m/Y',
+			'fechaNacimiento'			=> 'required',//|date_format:d/m/Y
 			'idNacionalidad' 			=> 'required',			
 			'parentesco' 				=> 'required',			
 			'embarazo' 					=> 'required',
@@ -50,10 +50,10 @@ class CreateDesaparecidoRequest extends FormRequest
 			'identificacion' 			=> 'required',
 			//'otraIdentificacion' 		=> 'required',
 			'numIdentificacion' 		=> 'required',
-			'mes' 				=> 'required',
-			'anio'				=> 'required',
+			'mes' 						=> 'required',
+			'anio'						=> 'required',
 			'observaciones' 			=> 'required',
-			'idDelito' 				=> 'required',
+			'idDelito' 					=> 'required',
 			'idCentroReclusion' 		=> 'required',                        
 		];
 

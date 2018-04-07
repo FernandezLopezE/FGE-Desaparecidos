@@ -16,8 +16,8 @@ class Desaparecido extends Model
 		'numGestacion',
 		'rumoresBebe',
 		'pormenores',
-		'antecedentesJudiciales'
-		'organizacion'
+		'antecedentesJudiciales',
+		'organizacion',
 		'tipoPersona',
 		'otroDocIdentidad',
 		'numDocIdentidad',

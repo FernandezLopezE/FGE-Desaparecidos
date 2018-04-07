@@ -4,20 +4,10 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<meta name="description" content="">
-		<meta name="author" content="">
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        
+		<meta name="author" content="">       
        
-		{!! Html::style('bootstrap4/css/bootstrap.css') !!}
+		{!! Html::style('bootstrap4/dist/css/bootstrap.min.css') !!}
 		<!-- icons-fontawesome -->
-	 
-		<!-- custom style -->
-		{!! Html::style('assets-master/style.css') !!}
-		<!-- tipografía oficial -->
-		{!! Html::style('assets-master/css/font-neosans.css') !!}
-		<!-- Jquery Form Validator Theme Default -->
-		{!! Html::style('css/theme-default.min.css') !!}
 
 		@yield('style')
 
@@ -110,10 +100,10 @@
 		<!-- Bootstrap core JavaScript
 		================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
-
-		{!! HTML::script('bootstrap4/js/popper.js') !!}
-		{!! HTML::script('assets-master/dist/js/bootstrap.js') !!}
 		{!! HTML::script('personal/js/jquery-3.3.1.js') !!}
+		{!! HTML::script('bootstrap4/assets/js/vendor/jquery-slim.min.js') !!}
+		{!! HTML::script('bootstrap4/assets/js/vendor/popper.min.js') !!}
+		{!! HTML::script('bootstrap4/dist/js/bootstrap.min.js') !!}		
 
 		@yield('script')
 	</body>
