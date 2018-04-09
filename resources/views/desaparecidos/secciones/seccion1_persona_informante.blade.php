@@ -1,9 +1,39 @@
 <div class="card border-primary">
 	<div class="card-header">
-		<h5 class="card-title">DATOS DE LOS INFORMANTES</h5>		
+		<div class="row">
+			<div class="col-lg-9">
+				<h5 class="card-title">DATOS DE LOS INFORMANTES</h5>
+			</div>	
+		</div>	
 	</div>
 	<div class="card-body">
-		<div class="row" id=""  >
+		<table class="table table-bordered" id="tablePrueba">
+		  <thead>
+		    <tr>
+		      <th scope="col">No.</th>
+		      <th scope="col">Nombre</th>
+		      <th scope="col">Parentesco</th>
+		      <th scope="col">Télefono</th>
+		      <th scope="col">Tipo de persona</th>
+		      <th scope="col">Acciones</th>
+		    </tr>
+		  </thead>
+		  <tbody id='cuerpoT'>
+		    <tr>
+		      <th scope="row">1</th>
+		      <td>{{ Session::get('nombre')}} {{ Session::get('apellido1')}} {{Session::get('apellido2')}}</td>
+		      <td>{{Session::get('parentesco')}}</td>
+		      <td>{{Session::get('telefono')}}</td>
+		      <td>INFORMANTE / RECIBIR INFORMACIÓN</td>
+		      <td><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#mostrarModal" id="hola" value="MOSTRAR">MOSTRAR</button></td>
+		    </tr>
+		  </tbody>
+		</table>
+	<hr>
+	<p align="right"><button type="button" class="btn btn-dark"  id="nuevoInformante" value="NUEVO">NUEVO</button></p>
+	<div id="formInformante" style="display:none">
+		<h4>AGREGAR UN NUEVO INFORMANTE</h4>
+		<div class="row">
 			<div class="col-lg-3">
 				{!! Form::label ('informanteNombres','Nombre(s):') !!}
 				{!! Form::text ('informanteNombres',old('informanteNombres'), ['class' => 'form-control mayuscula', 'id' => 'informanteNombres', ] )!!}
@@ -131,12 +161,12 @@
 			</div>
 		</div>
 		<div class="col-lg-6">
-			<p align="right"><input type="button" id="probar" value="ENVIAR"></p>
+			<p align="right"><button type="button" class="btn btn-dark"  id="prueba">AGREGAR</button></p>
 		</div>
 	</div>
 	</div>
 
 
-
+</div>
 </div>
 <div class="my-4">	</div>

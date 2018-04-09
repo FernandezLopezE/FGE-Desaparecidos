@@ -312,7 +312,14 @@ $(document).ready(function(){
     $.get("datos.php", function(data, status){
         alert("Data: " + data + "\nStatus: " + status);
     });
-});
+	});
+
+   //Mostrar - ocultar form
+   $("#nuevoInformante").click(function() {
+   		$("#formInformante").toggle('slow');
+   });
+
+  
 
 });
 
