@@ -29,7 +29,7 @@
     @yield('css')
 </head>
 
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini sidebar-collapse">
     <div class="wrapper">
         
     <!-- Navbar -->
@@ -45,7 +45,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0 text-dark">Titulo</h1>
+                        <h4 class="m-0 text-dark">REGISTRO ÚNICO DE PERSONAS DESAPARECIDAS</h4>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">

@@ -1,11 +1,78 @@
 $(document).ready(function() {
+
+    //funciones para las cajas en color
+    
+
+
+
+    //aqui terminan las funciones del color
     $('#vestimenta').select2();
+
+    $('#idVestimenta').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
+
+    });
+
+    $('#idCalzado').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
+
+    });
+    $('#idCalzadoModelo').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
+
+    });
+    $('#idCalzadoColor').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
+
+    });
+    $('#idCalzadoMarca').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
+
+    });
+    $('#idCalzadoTalla').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
+
+    });
+    
+
     $('#accesoriosObjetos').select2({
+        tags:[],
+        formatNoMatches: function() {
+            return '';
+        },
     	width: 460,
         multiple: true,
         multipleWidth: 55,
-         placeholder: "Select a state"
     });
+    //idTipo hace referencia a tipos de calzados(combo imagen)
+    $('#idTipo').select2({ 
+        width : "100%",
+        height: "50%",
+        templateResult: formatState
+    });
+    $('#idMarca').select2({ 
+        width : "100%",
+        templateResult: formatState2
+    });
+
 
 
      $('#btnAddPrenda').click(function(){
@@ -40,7 +107,28 @@ $(document).ready(function() {
 
         
     })
-
+     //funcion para cargar las imagenes del catalogo Tipos de Calzados
+     function formatState(state)
+     {
+        if(!state.id){
+            return state.text;
+        }
+        var $state = $(
+                '<span><img width =20% src="/images/TiposCalzados/'+state.element.value.toLowerCase()+'.jpg" />' + state.text + '</span>'
+            );
+            return $state;
+     }
+     //funcion para cargar las imagenes del catalogo Marcas de calzados
+     function formatState2(state2)
+     {
+        if(!state2.id){
+            return state2.text;
+        }
+        var $state2 = $(
+                '<span><img width =20% src="/images/MarcasCalzados/'+state2.element.value.toLowerCase()+'.jpg" />' + state2.text + '</span>'
+            );
+            return $state2;
+     }
 
 
 });

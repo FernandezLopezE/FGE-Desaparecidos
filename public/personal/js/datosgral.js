@@ -5,6 +5,7 @@ $(document).ready(function(){
 		$(this).val($(this).val().toUpperCase());		
 	}); 
 
+
 		$('#idEdocivil').change(function() {
 
 			a = $('#idEdocivil').val();
@@ -238,10 +239,14 @@ $(document).ready(function(){
         	$("#otro_dialec").hide();
         	$("#otro_dialec2").hide();
         	$("#otro_dialec3").hide();
+        	$("#otro_dialec4").hide();
+        	$("#otro_dialec5").hide();
         }else{
         	$("#otro_dialec").show();
         	$("#otro_dialec2").show();
         	$("#otro_dialec3").show();
+        	$("#otro_dialec4").show();
+        	$("#otro_dialec5").show();
         }
     });
 
@@ -301,34 +306,20 @@ $(document).ready(function(){
     	.done(function(data){
     			console.log(data);
     	});*/
+    }); 
+
+   $("#probar").click(function(){
+    $.get("datos.php", function(data, status){
+        alert("Data: " + data + "\nStatus: " + status);
     });
+	});
 
-    $("#probar").click(function() {  
-        if($("#informante").is(':checked')) {  
-            alert("Está activado");  
-        } else {  
-            alert("No está activado");  
-        }  
-    });  
+   //Mostrar - ocultar form
+   $("#nuevoInformante").click(function() {
+   		$("#formInformante").toggle('slow');
+   });
 
-
-    /*$("#informante").change(function() {
-    	var y= $("#informante").val();
-    	console.log(y);
-
-    	
-    });*/
-    console.log('entrado carlos');
-
-    $("input:checked").val(),
-
-	$('#informante').on('ifChecked', function () {
-		alert('caja seleccionada');//Do your code 
-	}) 
-
-	$('#informante').on('ifUnchecked', function () {
-		alert('caja deseleccionada'); 
-	})   
+  
 
 });
 

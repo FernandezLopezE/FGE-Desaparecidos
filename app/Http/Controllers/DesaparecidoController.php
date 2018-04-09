@@ -11,6 +11,8 @@ use App\Models\Antecedente;
 use App\Models\Domicilio;
 use Carbon\Carbon;
 use Session;
+use App\images\TiposCalzados;
+
 
 use App\Http\Requests\CreateDesaparecidoRequest;
 
@@ -23,7 +25,7 @@ class DesaparecidoController extends Controller
 	 */
 	public function index()
 	{
-		//
+		return view('inicio');
 	}
 
 	/**
@@ -119,6 +121,8 @@ class DesaparecidoController extends Controller
 		$localidades 		= \App\Models\CatLocalidad::limit(10)->pluck('nombre','id');
 		$colonias 			= \App\Models\CatColonia::limit(10)->pluck('nombre','id');
 		$codigos 			= \App\Models\CatColonia::limit(10)->pluck('codigoPostal','id');
+		$tiposCalzados		= \App\Models\CatTiposCalzados::all()->pluck('nombre','id');
+		$marcasCalzados		= \App\Models\CatMarcasCalzados::all()->pluck('nombre','id');
 		/*$municipios 		= array();
 		$localidades 		= array();
 		$colonias 			= array();
@@ -140,6 +144,8 @@ class DesaparecidoController extends Controller
 						'delitos' => $delitos,
 						'centros' => $centros,
 						'estados' => $estados,
+						'tiposCalzados' => $tiposCalzados,
+						'marcasCalzados' => $marcasCalzados,
 						'municipios' => $municipios,
 						'localidades' => $localidades,
 						'colonias' => $localidades,

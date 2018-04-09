@@ -26,11 +26,11 @@
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 					<!-- Add icons to the links using the .nav-icon class
 						with font-awesome or any other icon font library -->
-						<li class="nav-item"><a href="#" class="nav-link"><i class=" nav-icon fa fa-home"></i> <p> Inicio</p> <span></span></a></li>
+						<li class="nav-item"><a href="{!! route('desaparecido.index') !!}" class="nav-link"><i class=" nav-icon fa fa-home"></i> <p> Inicio</p> <span></span></a></li>
 						<li class="nav-item"><a href="#" class=""><i class=" nav-icon fa fa-book"></i> <p> Libro de gobierno</p><span></span></a></li>						
 						<li class="nav-item" ><a href="#" class="active nav-link"><i class="nav-icon fa fa-folder-open"></i><p>Carpeta Abierta</p> <span></span></a></li>
 						
-						<li class="nav-item"><a href="#" class="nav-link"><i class="nav-icon fa fa-folder"></i><p>Nueva carpeta</p> <span></span></a></li>
+						<li class="nav-item"><a href="{!! route('desaparecido.create') !!}" class="nav-link"><i class="nav-icon fa fa-folder"></i><p>Nuevo reporte</p> <span></span></a></li>
 						<li class="nav-item"><a href="" class="nav-link"><i class="nav-icon fa fa-pencil-square-o"></i><p>Bitácora</p> <span></span></a></li>
 						<li class="nav-item">
 							<a href="pages/widgets.html" class="nav-link">
