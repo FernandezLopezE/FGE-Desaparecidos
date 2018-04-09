@@ -1,4 +1,4 @@
-@extends('layouts.app2')
+@extends('layouts.app_uipj')
 
 @section('style')
 	{!! Html::style('') !!}
@@ -11,8 +11,35 @@
 @endsection
 
 @section('content')
+<div id="detallehead" class="card-header">
 
-	{!! Form::model($desaparecido, ['action' => 'DesaparecidoController@store']) !!}
+	<div id="tabscarpeta">
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link active show" data-toggle="tab" href="#tseccion1">Entrevistador</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#tseccion2">Desaparecido</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#tseccion3">Desaparicion</a>
+			</li>
+		</ul>
+	</div>
+	<div class="tab-content" id="contenidotabs">
+	    <div class="tab-pane container active show" id="tseccion1">
+	    	@include('desaparecidos.seccion1')
+	    </div>
+	    <div class="tab-pane container" id="tseccion2">
+	    	
+	    </div>
+	    <div class="tab-pane container" id="tseccion3">
+	    	@include('desaparecidos.seccion3')
+	    </div>
+	</div>
+</div>
+
+	{{--!! Form::model($desaparecido, ['action' => 'DesaparecidoController@store']) !!}
 			@if(count($errors) > 0)
 				<div class="alert alert-danger">
 					<ul>
@@ -28,7 +55,7 @@
 
 		@include('desaparecidos.seccion3')
 		{!! Form::submit('Agregar datos', ['class' => 'btn btn-large btn-primary openbutton']); !!}
-	{!! Form::close() !!}
+	{!! Form::close() !!--}}
 
 @endsection
 
@@ -44,18 +71,21 @@
 	{!! HTML::script('personal/js/datosvestimenta.js') !!}
 	{!! HTML::script('personal/js/select2.min.js') !!}
 	{!! HTML::script('personal/js/jquery.mask.js') !!}
+	{!! HTML::script('personal/js/datosvestimenta.js') !!}
+	{!! HTML::script('personal/js/jscolor.js') !!}
 	{!! HTML::script('personal/js/icheck/icheck.js') !!}
-    {!! HTML::script('personal/js/icheck/icheck.min.js') !!}
+	{!! HTML::script('personal/js/icheck/icheck.min.js') !!}
 	<script type="text/javascript">
-	 	console.log("entrando")
+
+		console.log("entrando")
 			$.validate();
 			 $('input[name="telefono"]').mask('(000) 000 0000');
 
 			 
 			 $('.icheck').iCheck({
-			    checkboxClass: 'icheckbox_square',
-			    radioClass: 'iradio_square',
-			    increaseArea: '20%' // optional
+				checkboxClass: 'icheckbox_square',
+				radioClass: 'iradio_square',
+				increaseArea: '20%' // optional
 			});
 	</script>
 

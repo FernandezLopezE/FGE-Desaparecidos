@@ -21,7 +21,7 @@
 		      <td>{{Session::get('parentesco')}}</td>
 		      <td>{{Session::get('telefono')}}</td>
 		      <td>INFORMANTE / RECIBIR INFORMACIÓN</td>
-		      <td><button type="button" class="btn btn-dark"  id="prueba">MOSTRAR</button></td>
+		      <td><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#mostrarModal" id="hola">MOSTRAR</button></td>
 		    </tr>
 		  </tbody>
 		</table>
@@ -67,7 +67,7 @@
         td3.text("{{Session::get('parentesco')}}");
         td4.text("{{Session::get('telefono')}}");
         td5.text('INFORMANTE / RECIBIR INFORMACIÓN');
-        td6.append("<button type='button' class='btn btn-dark  id='prueba'>MOSTRAR</button>");
+        td6.append("<button type='button' class='btn btn-dark data-toggle='modal' data-target='#mostrarModal' id='hola' >MOSTRAR</button>");
         
 
 
