@@ -25,7 +25,7 @@ $(document).ready(function() {
        hora = int.parse(horaExtravio[0]);
        min = int.parse(horaExtravio[1]);
        
-       if (hora > 24 && min > 59)
+       if (hora > 23 || min > 59)
        {
            $("#avistoHoraExtravio").val("");
        }
