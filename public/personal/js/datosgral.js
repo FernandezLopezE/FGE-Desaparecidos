@@ -239,10 +239,14 @@ $(document).ready(function(){
         	$("#otro_dialec").hide();
         	$("#otro_dialec2").hide();
         	$("#otro_dialec3").hide();
+        	$("#otro_dialec4").hide();
+        	$("#otro_dialec5").hide();
         }else{
         	$("#otro_dialec").show();
         	$("#otro_dialec2").show();
         	$("#otro_dialec3").show();
+        	$("#otro_dialec4").show();
+        	$("#otro_dialec5").show();
         }
     });
 
@@ -282,7 +286,6 @@ $(document).ready(function(){
 
   
 
-
      $('#fechaNacimiento').change(function(){  
         from = $("#fechaNacimiento").val().split("-");
         fechaNacimiento = from[2] + "-" + from[1] + "-" + from[0];
@@ -321,23 +324,9 @@ $(document).ready(function(){
     });  
 
 
-    /*$("#informante").change(function() {
-    	var y= $("#informante").val();
-    	console.log(y);
-
-    	
-    });*/
-    console.log('entrado carlos');
-
-    $("input:checked").val(),
-
-	$('#informante').on('ifChecked', function () {
-		alert('caja seleccionada');//Do your code 
-	}) 
-
-	$('#informante').on('ifUnchecked', function () {
-		alert('caja deseleccionada'); 
-	})   
+    $(".modal-body").on('click', "#informanteidParentesco")(function() {
+    	alert("Hola");
+    });
 
 });
 

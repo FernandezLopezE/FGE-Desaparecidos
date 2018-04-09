@@ -38,6 +38,7 @@
 	{!! HTML::script('personal/js/jquery.form-validator.min.js') !!}
 	{!! HTML::script('personal/js/documentosIdentidad.js') !!}
 	{!! HTML::script('personal/js/datosgral.js') !!}
+	{!! HTML::script('personal/js/personasAutorizadas.js') !!}
 	{!! HTML::script('personal/js/domicilio.js') !!}
 	{!! HTML::script('personal/js/datosdesaparicion.js') !!}
 	{!! HTML::script('personal/js/datosvestimenta.js') !!}
