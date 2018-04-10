@@ -161,7 +161,7 @@
 			</div>
 		</div>
 		<div class="col-lg-6">
-			<p align="right"><button type="button" class="btn btn-dark"  id="prueba">AGREGAR</button></p>
+			<p align="right"><button type="button" class="btn btn-dark"  id="btnAdddInformante">AGREGAR</button></p>
 		</div>
 	</div>
 	</div>
