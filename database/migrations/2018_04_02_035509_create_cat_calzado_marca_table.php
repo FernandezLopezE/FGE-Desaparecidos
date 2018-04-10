@@ -16,6 +16,7 @@ class CreateCatCalzadoMarcaTable extends Migration
         Schema::create('cat_calzado_marca', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre',20);
+            $table->string('image');
             $table->timestamps();
         });
     }
