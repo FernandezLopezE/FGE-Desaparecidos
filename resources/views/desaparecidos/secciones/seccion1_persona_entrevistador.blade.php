@@ -112,12 +112,29 @@
 				 				] )!!}
 		  	</div>
 			<div class="col-lg-4" id="otro_dialec4" style="display:none">
-				{!! Form::label ('entrevistadorPrimerAp','Primer Apellido:') !!}
-				{!! Form::text ('entrevistadorPrimerAp',old('Nombre del intérprete'), ['class' => 'form-control mayuscula', 'placeholder' => 'Escribe el primer apellido', 'id' => 'entrevistadorPrimerAp', 'data-validation' => 'required','data-validation-depends-on' => 'entrevistadorIdioma','data-validation-depends-on-value' =>'OTRO','data-validation-error-msg-required' => 'Ingrese el primer apellido'] )!!}
+				{!! Form::label ('interpretePrimerAp','Primer Apellido:') !!}
+				{!! Form::text ('interpretePrimerAp',
+								old('Nombre del intérprete'),
+								['class' => 'form-control mayuscula',
+									'placeholder' => 'Escribe el primer apellido',
+									'id' => 'interpretePrimerAp',
+									'data-validation' => 'required',
+									'data-validation-depends-on' => 'entrevistadorIdioma',
+									'data-validation-depends-on-value' =>'OTRO',
+									'data-validation-error-msg-required' => 'Ingrese el primer apellido'
+								] )!!}
 		  	</div>
 			<div class="col-lg-4" id="otro_dialec5" style="display:none">
 				{!! Form::label ('entrevistadorSegundoAp','Segundo Apellido:') !!}
-				{!! Form::text ('entrevistadorSegundoAp',old('entrevistadorSegundoAp'), ['class' => 'form-control mayuscula', 'placeholder' => 'Escribe el segundo apellido', 'id' => 'entrevistadorSegundoAp', 'data-validation' => 'required','data-validation-depends-on' => 'entrevistadorIdioma','data-validation-depends-on-value' =>'OTRO'] )!!}
+				{!! Form::text ('entrevistadorSegundoAp',
+								old('entrevistadorSegundoAp'),
+								['class' => 'form-control mayuscula',
+									'placeholder' => 'Escribe el segundo apellido',
+									'id' => 'entrevistadorSegundoAp',
+									'data-validation' => 'required',
+									'data-validation-depends-on' => 'entrevistadorIdioma',
+									'data-validation-depends-on-value' =>'OTRO'
+								] )!!}
 		  	</div>
 		</div>
 
