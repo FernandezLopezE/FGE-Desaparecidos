@@ -88,14 +88,15 @@
 				{!! Form::label ('idTipo','Tipo:') !!}
 				{!! Form::select ('idTipo[]',$tiposCalzados,'', ['class' => 'form-control js-example-responsive', 'id' => 'idTipo', 'style'=> 'width: 50%'] )!!}
 			</div>
-			<div class="form-group col-4">
+			{{--<div class="form-group col-4">
 				{!! Form::label ('especMarca','Especificar marca:') !!}
 				{!! Form::text ('especMarca',old('Especificar marca:'), ['class' => 'form-control mayuscula', 'id' => 'prendaTipo', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese la prenda'] )!!}
-			</div>
+			</div>--}}
 			<div class="form-group col-4">
 				{!! Form::label ('idColor','Color:') !!}
-				{!! Form::select ('idColor[]',$estados,'', ['class' => 'form-control', 'id' => 'idColor' ] )!!}
-				{{--{!! Form::text ('talla',old('Talla'), ['class' => 'form-control mayuscula color', 'id' => 'primerAp', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Ingresa Talla' ,'value'='#B6BD79'] )!!}--}}
+				{!! Form::select ('idColor[]',$colores,'', ['class' => 'form-control', 'id' => 'idColor' ] )!!}
+					
+				
 				
 			</div>
 			
@@ -107,7 +108,8 @@
 			</div>
 			<div class="form-group col-4">
 				{!! Form::label ('calzadoTalla','Talla:') !!}
-				{!! Form::select ('idCalzadoTalla[]',$estados,'', ['class' => 'form-control', 'id' => 'idCalzadoTalla'] )!!}
+				{!! Form::text ('calzadoTalla',old('Especificar marca:'), ['class' => 'form-control mayuscula', 'id' => 'calzadoTalla', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese la prenda'] )!!}
+				
 			</div>
 		</div>
 		</br>

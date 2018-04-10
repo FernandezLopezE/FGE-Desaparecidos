@@ -1,4 +1,4 @@
-<center><h3>REGISTRO ÚNICO DE PERSONAS DESAPARECIDAS</h3></center>
+
 <div class="card border-primary">
 	<div class="card-header">
 		<div class="row" id=""  >	

@@ -8,6 +8,11 @@ $(document).ready(function() {
     //aqui terminan las funciones del color
     $('#vestimenta').select2();
 
+    $('#idColor1').select2(
+        {
+            theme : classic
+        });
+
     $('#idVestimenta').select2({
         tags:[],
         formatNoMatches: function() {
@@ -54,6 +59,7 @@ $(document).ready(function() {
     
 
     $('#accesoriosObjetos').select2({
+        theme: "bootstrap4"
         tags:[],
         formatNoMatches: function() {
             return '';
@@ -61,6 +67,7 @@ $(document).ready(function() {
     	width: 460,
         multiple: true,
         multipleWidth: 55,
+
     });
     //idTipo hace referencia a tipos de calzados(combo imagen)
     $('#idTipo').select2({ 
@@ -71,6 +78,10 @@ $(document).ready(function() {
     $('#idMarca').select2({ 
         width : "100%",
         templateResult: formatState2
+    });
+    $('#idColor').select2({ 
+        width : "100%",
+        templateResult: formatState3
     });
 
 
@@ -129,7 +140,18 @@ $(document).ready(function() {
             );
             return $state2;
      }
+     function formatState3(state3)
+     {
+        if(!state3.id){
+            return state3.text;
+        }
+        var $state3 = $(
+                '<span><img width =20% src="/images/Colores/'+state3.element.value.toLowerCase()+'.jpg" />' + state3.text + '</span>'
+            );
+            return $state3;
+     }
 
+     
 
 });
 

@@ -10,7 +10,9 @@ use App\Models\Documento;
 use App\Models\Antecedente;
 use App\Models\Domicilio;
 use Carbon\Carbon;
+use Session;
 use App\images\TiposCalzados;
+
 
 use App\Http\Requests\CreateDesaparecidoRequest;
 
@@ -23,7 +25,7 @@ class DesaparecidoController extends Controller
 	 */
 	public function index()
 	{
-		//
+		return view('inicio');
 	}
 
 	/**
@@ -103,6 +105,7 @@ class DesaparecidoController extends Controller
 			'TARJETADECREDITO' => 'TARJETA DE CREDITO',
 			'OTRO' => 'OTRO'			
 		);
+		
 
 
 		$anios = array('2000' => '2000', '2001' => '2001');
@@ -121,6 +124,7 @@ class DesaparecidoController extends Controller
 		$codigos 			= \App\Models\CatColonia::limit(10)->pluck('codigoPostal','id');
 		$tiposCalzados		= \App\Models\CatTiposCalzados::all()->pluck('nombre','id');
 		$marcasCalzados		= \App\Models\CatMarcasCalzados::all()->pluck('nombre','id');
+		$colores			= \App\Models\CatColores::all()->pluck('nombre','id');
 		/*$municipios 		= array();
 		$localidades 		= array();
 		$colonias 			= array();
@@ -154,7 +158,8 @@ class DesaparecidoController extends Controller
 						'edoscivil' => $edoscivil,
 						'tiposDireccion' => $tiposDireccion,
 						'parentescos' => $parentescos,
-						'dialectos' =>$dialectos
+						'dialectos' =>$dialectos,
+						'colores' => $colores
 					]);
 	}
 
@@ -167,10 +172,10 @@ class DesaparecidoController extends Controller
 	public function store(CreateDesaparecidoRequest $request)
 	{
 
-		//dd(empty($request->input('familiaresNombres')));	
+		dd($request->toArray());	
 		
 		
-		$persona = Persona::create([
+		/*$persona = Persona::create([
 						'nombres' 			=> $request->input('nombres'),
 						'primerAp' 			=> $request->input('primerAp'),
 						'segundoAp'			=> $request->input('segundoAp'),
@@ -178,8 +183,7 @@ class DesaparecidoController extends Controller
 						'sexo' 				=> $request->input('sexo'),
 						'idNacionalidad'	=> $request->input('idNacionalidad'),
 					]);
-		//$fecha = Carbon::parse($request->fechaNacimiento);
-        //$edad = Carbon::createFromDate($fecha->year, $fecha->month, $fecha->day)->age;
+
 		$fecha = Carbon::parse($request->input('fechaNacimiento'));
 		$edad = Carbon::createFromDate($fecha->year, $fecha->day, $fecha->month)->diff(Carbon::now())->format('%y años, %m meses y %d dias');
 		
@@ -294,7 +298,7 @@ class DesaparecidoController extends Controller
 			$i++;
 		}
 
-		return $this->show($desaparecido->id);
+		return $this->show($desaparecido->id);*/
 
 
 		
