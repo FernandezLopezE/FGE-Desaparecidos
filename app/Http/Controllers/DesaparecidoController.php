@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\models\Cedula;
 use App\Models\Persona;
+use App\Models\CatDialecto;
 use App\Models\Desaparecido;
 use App\Models\Familiar;
 use App\Models\Documento;
@@ -24,9 +26,8 @@ class DesaparecidoController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index()
-	{
-		//return view('inicio');
-		dd(Session::get('personas'));  
+	{		
+		//dd(Session::get('personas'));  
 	}
 
 	/**
@@ -36,9 +37,18 @@ class DesaparecidoController extends Controller
 	 */
 	public function create()
 	{
-		$desaparecido = new Desaparecido();
+		//$desaparecido = new Desaparecido();
+		$cedula = new Cedula();
 
-		$identificacion = array(
+		$dialectos = \App\Models\CatDialecto::all()->pluck('nombre','id');
+
+
+		return view('desaparecidos.form_cedula',compact(
+												'cedula',
+												'dialectos'						
+												));
+
+		/*$identificacion = array(
 			'IFE' => 'IFE',
 			'Cartilla SM' => 'Cartilla SM',
 			'Licencia' => 'Licencia',
@@ -124,10 +134,6 @@ class DesaparecidoController extends Controller
 		$codigos 			= \App\Models\CatColonia::limit(10)->pluck('codigoPostal','id');
 		$tiposCalzados		= \App\Models\CatTiposCalzados::all()->pluck('nombre','id');
 		$marcasCalzados		= \App\Models\CatMarcasCalzados::all()->pluck('nombre','id');
-		/*$municipios 		= array();
-		$localidades 		= array();
-		$colonias 			= array();
-		$codigos 			= array();*/
 		$delitos 			= \App\Models\CatDelito::all()->pluck('nombre','id');
 		$centros 			= \App\Models\CatCentroReclusion::all()->pluck('nombre','id');		
 		$edoscivil 			= \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
@@ -158,7 +164,7 @@ class DesaparecidoController extends Controller
 						'tiposDireccion' => $tiposDireccion,
 						'parentescos' => $parentescos,
 						'dialectos' =>$dialectos
-					]);
+					]);*/
 	}
 
 	/**
