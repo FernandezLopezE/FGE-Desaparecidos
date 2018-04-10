@@ -1,16 +1,14 @@
 @extends('layouts.app_uipj')
 
-<<<<<<< HEAD
 @section('style')
 	{!! Html::style('') !!}
 
+	
 	{!! Html::style('css/select2.css') !!}
-	{!! Html::style('personal/css/select2.min.css',['rel'=>"stylesheet"]) !!}
-	{!! Html::style('css/select2-bootstrap4.css',['rel'=>"stylesheet"]) !!}
+	{!! Html::style('personal/css/select2.min.css') !!}
+	{!! Html::style('css/select2-bootstrap.css',['rel'=>"stylesheet"]) !!}
 	{!! Html::style('personal/js/icheck/skins/all.css') !!}
 @endsection
-=======
->>>>>>> be40bbd95a86d9ea9fb52cfbdea9592a34b764f9
 
 @section('content')
 <div id="detallehead" class="card-header">
@@ -60,7 +58,6 @@
 	{!! Form::close() !!--}}
 
 @endsection
-<<<<<<< HEAD
 
 
 @section('script')
@@ -71,20 +68,20 @@
 	{!! HTML::script('personal/js/personasAutorizadas.js') !!}
 	{!! HTML::script('personal/js/domicilio.js') !!}
 	{!! HTML::script('personal/js/datosdesaparicion.js') !!}
-	{!! HTML::script('personal/js/select2.js') !!}
+	{!! HTML::script('personal/js/datosvestimenta.js') !!}
 	{!! HTML::script('personal/js/select2.min.js') !!}
 	{!! HTML::script('personal/js/jquery.mask.js') !!}
 	{!! HTML::script('personal/js/datosvestimenta.js') !!}
 	{!! HTML::script('personal/js/jscolor.js') !!}
 	{!! HTML::script('personal/js/icheck/icheck.js') !!}
 	{!! HTML::script('personal/js/icheck/icheck.min.js') !!}
-
-
-	 
 	<script type="text/javascript">
 
+		console.log("entrando")
 			$.validate();
-			 $('input[name="telefono"]').mask('(000) 000 0000');			 
+			 $('input[name="telefono"]').mask('(000) 000 0000');
+
+			 
 			 $('.icheck').iCheck({
 				checkboxClass: 'icheckbox_square',
 				radioClass: 'iradio_square',
@@ -93,5 +90,3 @@
 	</script>
 
 @endsection
-=======
->>>>>>> be40bbd95a86d9ea9fb52cfbdea9592a34b764f9

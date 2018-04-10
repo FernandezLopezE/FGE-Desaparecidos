@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\models\Cedula;
 use App\Models\Persona;
+use App\Models\CatDialecto;
 use App\Models\Desaparecido;
 use App\Models\Familiar;
 use App\Models\Documento;
@@ -24,8 +26,8 @@ class DesaparecidoController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function index()
-	{
-		return view('inicio');
+	{		
+		//dd(Session::get('personas'));  
 	}
 
 	/**
@@ -35,9 +37,18 @@ class DesaparecidoController extends Controller
 	 */
 	public function create()
 	{
-		$desaparecido = new Desaparecido();
+		//$desaparecido = new Desaparecido();
+		$cedula = new Cedula();
 
-		$identificacion = array(
+		$dialectos = \App\Models\CatDialecto::all()->pluck('nombre','id');
+
+
+		return view('desaparecidos.form_cedula',compact(
+												'cedula',
+												'dialectos'						
+												));
+
+		/*$identificacion = array(
 			'IFE' => 'IFE',
 			'Cartilla SM' => 'Cartilla SM',
 			'Licencia' => 'Licencia',
@@ -124,11 +135,14 @@ class DesaparecidoController extends Controller
 		$codigos 			= \App\Models\CatColonia::limit(10)->pluck('codigoPostal','id');
 		$tiposCalzados		= \App\Models\CatTiposCalzados::all()->pluck('nombre','id');
 		$marcasCalzados		= \App\Models\CatMarcasCalzados::all()->pluck('nombre','id');
+<<<<<<< HEAD
 		$colores			= \App\Models\CatColores::all()->pluck('nombre','id');
 		/*$municipios 		= array();
 		$localidades 		= array();
 		$colonias 			= array();
 		$codigos 			= array();*/
+=======
+>>>>>>> be40bbd95a86d9ea9fb52cfbdea9592a34b764f9
 		$delitos 			= \App\Models\CatDelito::all()->pluck('nombre','id');
 		$centros 			= \App\Models\CatCentroReclusion::all()->pluck('nombre','id');		
 		$edoscivil 			= \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
@@ -158,9 +172,14 @@ class DesaparecidoController extends Controller
 						'edoscivil' => $edoscivil,
 						'tiposDireccion' => $tiposDireccion,
 						'parentescos' => $parentescos,
+<<<<<<< HEAD
 						'dialectos' =>$dialectos,
 						'colores' => $colores
 					]);
+=======
+						'dialectos' =>$dialectos
+					]);*/
+>>>>>>> be40bbd95a86d9ea9fb52cfbdea9592a34b764f9
 	}
 
 	/**
@@ -368,5 +387,29 @@ class DesaparecidoController extends Controller
             return response()->json($edad2);
         
         }
+    }
+
+    public function getPersona (Request $request)
+    { 
+        Session::push('personas', $request->toArray());
+
+        return response()->json(Session::get('personas'));
+        //print_r(Session::get('personas'));
+        //dd(Session::get('personas'));        
+        /*Session::push('personas', ['nombre' => 'Ruben', 'paterno' => 'Ochoa']);
+        Session::push('personas', ['nombre' => 'Eduardo', 'paterno' => 'Colin']);
+
+        $idToDelete = 2;
+        $products = session()->pull('personas', []); // Second argument is a default value
+        foreach ($products as $key => $value) {
+            if ($key == $idToDelete) {
+                unset($products[$key]);
+            }
+        }
+    
+        Session::push('productos', $products);
+
+        print_r(Session::get('productos'));*/
+        //dd(Session::get('cart'));
     }
 }

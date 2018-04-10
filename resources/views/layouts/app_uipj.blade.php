@@ -13,7 +13,6 @@
     {{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.css">--}}
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('plugins/font-awesome/css/font-awesome.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
@@ -26,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
         <link rel="stylesheet" href="{{ asset('css/theme-jquery-validation.min.css') }}">
+        {!! Html::style('') !!}
     @yield('css')
 </head>
 
@@ -87,7 +87,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>--}}
     <script src="{{ asset('js/jquery-3.2.1.min.js')}}" ></script>
     <script src="{{ asset('js/popper.min.js')}}" ></script>
-    <script src="{{ asset('js/bootstrap.min.js')}}" ></script>
+    
     <script src="{{asset ('js/sweetalert.min.js')}}"></script>
     <script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
     <script src="{{ asset('js/toastr.min.js')}}" ></script>
@@ -116,81 +116,129 @@
     <script src="{{ asset('admin/plugins/chartjs/Chart.min.js') }}"></script>
 
     <!-- PAGE SCRIPTS -->
-    <script src="{{ asset('admin/dist/js/pages/dashboard2.js') }}"></script>
+    <!--<script src="{{ asset('admin/dist/js/pages/dashboard2.js') }}"></script>-->
 
     <script type="text/javascript" src="{{ asset('js/idle-timer.min.js') }}"></script>
     @include('template.scriptExpireSession')
-
-    <script type="text/javascript">
-
-    $(window).on("unload", function(e) {
-   //localStorage.clear();
-     localStorage.removeItem('isLiveLocal');
-      console.log('saliendio');
-    });
-
-        $("input:text").keyup(function() {
-        $(this).val($(this).val().toUpperCase());
-        });
-        $("textarea").keyup(function() {
-            $(this).val($(this).val().toUpperCase());
-        });
-        $(document).ready(function() {
-                    // var r="";
-                    // var num="";
-                    // $.get("../contador", function(response, estado){
-                    //  num=response;
-                    // });
-                    // Cookies.set('numero',num);
-                    //
-                    //
-                    // if (typeof sessionStorage.getItem('isLive') == "undefined" || sessionStorage.getItem('isLive') == null && localStorage.getItem('isLiveLocal')!=null){
-                    //      $.get("../contador", function(response, estado){
-                    //          var valor=Cookies.get('name');
-                    //          r= Math.floor((Math.random() * 100000) + 1);
-                    //          sessionStorage.setItem('isLive',r);
-                    //          localStorage.setItem('isLiveLocal',r);
-                    //          Cookies.set('isLive'+response,r);
-                    //
-                    //      });
-                    // }else if(typeof sessionStorage.getItem('isLive') == "undefined" || sessionStorage.getItem('isLive') == null){
-                    //  $.get("../contador", function(response, estado){
-                    //      r= Math.floor((Math.random() * 100000) + 1);
-                    //      sessionStorage.setItem('isLive',r);
-                    //      Cookies.set('isLive'+response,r);
-                    //  });
-                    // }
-                    //  var s = sessionStorage.getItem('isLive');
-                    //  var sLocal = localStorage.getItem('isLiveLocal');
-                    //  if(s!=sLocal){
-                    //      window.location.href = "http://127.0.0.1:8000/DONTALLLOWED";
-                    //  }
-            $('select').select2();
-            toastr.options = {
-                "closeButton": true,
-                "debug": false,
-                "newestOnTop": true,
-                "progressBar": true,
-                "positionClass": "toast-bottom-right",
-                "preventDuplicates": true,
-                "onclick": null,
-                "showDuration": "300",
-                "hideDuration": "1000",
-                "timeOut": "3000",
-                "extendedTimeOut": "1000",
-                "showEasing": "swing",
-                "hideEasing": "linear",
-                "showMethod": "fadeIn",
-                "hideMethod": "fadeOut"
-            }
-        });
-            $.validate({
-                 lang : 'es'
-            });
-    </script>
-
+    {!! HTML::script('personal/js/jquery.form-validator.min.js') !!}
+    {!! HTML::script('personal/js/jquery.mask.js') !!}
+    {!! HTML::script('personal/js/datosgral.js') !!}
     @yield('scripts')
-    
+    <script type="text/javascript">
+	$(function (){	
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+		});
+
+		$('#btnAdddInformante').click(function(){
+	        console.log('Entrando a los hijos');
+
+			var nombre =$("#informanteNombres").val();
+			var primerAp =$("#informantePrimerAp").val();
+			var segundoAp =$("#informanteSegundoAp").val();
+			var parentesco =$("#informanteidParentesco").val();
+			var otroParentesco =$("#informanteOtroParentesco").val();
+			var nacionalidad =$("#idNacionalidad").val();
+			var documento =$("#informanteidDocumentoIdentidad").val();
+			var otroDocumento =$("#informanteOtroDocIdentidad").val();
+			var numDocIdenti=$("#informanteNumDocIdentidad").val();
+			var tipoDirec=$("#informanteTipoDireccion").val();
+			var calle=$("#informanteCalle").val();
+			var numExt=$("#informanteNumExterno").val();
+			var numInt=$("#informanteNumInterno").val();
+			var estado=$("#idEstado").val();
+			var municipio=$("#informanteidMunicipio").val();
+			var localidad=$("#idLocalidad").val();
+			var colonia=$("#informanteidColonia").val();
+			var cp=$("#informanteidCodigoPostal").val();
+			var tipoTel=$("#informanteTipoTel").val();
+			var lada=$("#lada").val();
+			var telefono =$("#informanteTelefonos").val();
+			var ext=$("#ext").val();
+			var email=$("#informanteCorreoElectronico").val();
+			var informante=$("#informante").val();
+			var autorizado=$("#recibir").val();
+
+			var datos = {
+				nombre: nombre,
+				primerAp: primerAp, 
+				segundoAp: segundoAp, 
+				parentesco: parentesco, 
+				otroParen: otroParentesco, 
+				nacionalidad: nacionalidad, 
+				documento: documento, 
+				otroDocumento: otroDocumento,
+				numDocIdenti: numDocIdenti,
+				tipoDirec: tipoDirec,
+				calle: calle,
+				numExt: numExt,
+				numInt: numInt,
+				estado: estado,
+				municipio: municipio,
+				localidad: localidad,
+				colonia: colonia,
+				cp: cp,
+				tipoTel: tipoTel,
+				lada: lada,
+				telefono: telefono,
+				ext: ext,
+				email: email,
+				informante: informante,
+				autorizado: autorizado
+
+			};
+
+			console.log(datos);
+
+			$.ajax({
+				type:"POST",
+				url:"{!! route('desaparecido.getpersona') !!}",
+				data: datos,
+				dataType: 'json',
+
+				success: function(data){
+					console.log(data);
+				},
+				error:function(data){
+					//console.log(data);
+				}
+
+			});
+	        /*tr = $('<tr>');
+	        td1 =$('<td>');
+	        td2 =$('<td>');
+	        td3 =$('<td>');
+	        td4 =$('<td>');
+	        td5 =$('<td>');
+	        td6 =$('<td>');
+
+	        td1.text('*');
+	        td2.text("{{ Session::get('nombre')}} {{ Session::get('apellido1')}} {{Session::get('apellido2')}}");
+	        td3.text("{{Session::get('parentesco')}}");
+	        td4.text("{{Session::get('telefono')}}");
+	        td5.text('INFORMANTE / RECIBIR INFORMACIÓN');
+	        td6.append("<button type='button' class='btn btn-dark data-toggle='modal' data-target='#mostrarModal' id='hola' >MOSTRAR</button>");
+	        
+
+
+
+	        tr.append(td1);
+	        tr.append(td2);
+	        tr.append(td3);
+	        tr.append(td4);
+	        tr.append(td5);
+	        tr.append(td6);
+
+	        $('#cuerpoT').append(tr);*/
+
+
+	   
+	        
+	    })
+	})
+</script>
     @include('template.partials.footer')
 </body>
 </html>

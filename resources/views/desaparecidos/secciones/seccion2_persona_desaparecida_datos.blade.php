@@ -32,7 +32,7 @@
 		<div class="row">
 			<div class="col">
 				{!! Form::label ('edadExtravio','Edad de extravío:') !!}
-				{!! Form::text ('edadExtravio',old('EdadExtravio'), ['class' => 'form-control', 'id' => 'edadExtravio', 'data-validation' => 'required number length' ,  'data-validation-error-msg' => '* Ingresar edad menor a 130',  'data-validation-length'=>"0-3",'data-validation-allowing'=>"range[1;130]",'data-mask'=>"000"] )!!}
+				{!! Form::text ('edadExtravio',old('EdadExtravio'), ['class' => 'form-control', 'id' => 'edadExtravio'] )!!}
 			</div>
 			<div class="col">
 				{!! Form::label ('edadAparente','Edad aparente:') !!}
@@ -40,7 +40,7 @@
 			</div>
 			<div class="col">
 				{!! Form::label ('fechaNacimiento','Fecha de nacimiento:') !!}
-				{!! Form::text ('fechaNacimiento',old('Fecha de nacimiento'), ['class' => 'form-control', 'id' => 'fechaNacimiento' , 'data-validation' => 'required date', 'data-validation-error-msg' => '* Ingrese o corrija la fecha de nacimiento','data-validation-format'=>"dd-mm-yyyy"] )!!}
+				{!! Form::text ('fechaNacimiento',old('Fecha de nacimiento'), ['class' => 'form-control', 'id' => 'fechaNacimiento' , 'data-validation' => 'required date', 'data-validation-error-msg' => 'Ingrese una fecha valida o menor a la actual','data-validation-format'=>"dd-mm-yyyy"] )!!}
 			</div>
 		</div>
 		<div class="row">

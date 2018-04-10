@@ -35,6 +35,7 @@
 	{!! HTML::script('personal/js/jquery.form-validator.min.js') !!}
 	{!! HTML::script('personal/js/documentosIdentidad.js') !!}
 	{!! HTML::script('personal/js/datosgral.js') !!}
+	{!! HTML::script('personal/js/datosvestimenta.js') !!}
 	{!! HTML::script('personal/js/domicilio.js') !!}
 	{!! HTML::script('personal/js/select2.min.js') !!}
 	{!! HTML::script('personal/js/jquery.mask.js') !!}
