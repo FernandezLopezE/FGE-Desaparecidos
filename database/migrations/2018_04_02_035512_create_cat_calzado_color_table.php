@@ -16,6 +16,7 @@ class CreateCatCalzadoColorTable extends Migration
         Schema::create('cat_calzado_color', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre',20);
+            $table->string('image');
             $table->timestamps();
         });
     }

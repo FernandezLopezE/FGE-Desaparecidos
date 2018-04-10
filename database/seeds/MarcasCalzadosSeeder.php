@@ -11,7 +11,7 @@ class MarcasCalzadosSeeder extends Seeder
      */
     public function run()
     {
-     DB::table('cat_marcas_calzados')->insert([
+     DB::table('cat_calzado_marca')->insert([
         	['nombre' => 'Sin información',			'image' => '1.jpg'],       	
         	['nombre' => 'Converse',				'image' => '2.jpg'],
         	['nombre' => 'Vans',					'image' => '3.jpg'],

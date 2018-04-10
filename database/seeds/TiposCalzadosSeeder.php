@@ -11,7 +11,7 @@ class TiposCalzadosSeeder extends Seeder
      */
     public function run()
     {
-    	 DB::table('cat_tipos_calzados')->insert([
+    	 DB::table('cat_calzado_tipo')->insert([
         	['nombre' => 'Sin información',			'image' => '1.jpg'],        
         	['nombre' => 'Zapato casual',			'image' => '2.jpg'],
         	['nombre' => 'Botas',					'image' => '3.jpg'],
