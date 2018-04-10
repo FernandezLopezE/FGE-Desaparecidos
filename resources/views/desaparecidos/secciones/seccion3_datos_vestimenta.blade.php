@@ -11,7 +11,12 @@
 		<div class="row">
 			<div class="col">
 				{!! Form::label ('elijaVestimenta','Elija el tipo de vestimenta que el desaparecido tenía:') !!}
-				{!! Form::select('idVestimenta[]', $vestimenta, null, ['class' => 'form-control' ,'id'=>'idVestimenta']) !!}
+				{!! Form::select('idVestimenta[]',
+								$vestimenta,
+								null,
+								['class' => 'form-control',
+											'id'=>'idVestimenta'
+								]) !!}
 			</div>
 			
 		</div>	
@@ -52,22 +57,58 @@
 			</div>	
 			<div class="row"> 
 				<div class="col-2">
-					{!! Form::text ('prendaTipo',old('Nombre de la prenda'), ['class' => 'form-control mayuscula', 'id' => 'prendaTipo', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese la prenda'] )!!}
+					{!! Form::text ('prendaTipo',
+									old('Nombre de la prenda'),
+									['class' => 'form-control mayuscula',
+												'id' => 'prendaTipo',
+												'data-validation' => 'required',
+												'data-validation-error-msg-required' => 'Ingrese la prenda'
+									] )!!}
 				</div>
 				<div class="col-2">
-					{!! Form::text ('prendaMaterial',old('Material'), ['class' => 'form-control mayuscula', 'id' => 'prendaMaterial', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese el material'] )!!}
+					{!! Form::text ('prendaMaterial',
+									old('Material'),
+									['class' => 'form-control mayuscula',
+												'id' => 'prendaMaterial',
+												'data-validation' => 'required',
+												'data-validation-error-msg-required' => 'Ingrese el material'
+									] )!!}
 				</div>
 				<div class="col-2">
-					{!! Form::text ('prendaColor',old('Color'), ['class' => 'form-control mayuscula', 'id' => 'prendaColor', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese el color'] )!!}
+					{!! Form::text ('prendaColor',
+									old('Color'),
+									['class' => 'form-control mayuscula',
+												'id' => 'prendaColor',
+												'data-validation' => 'required',
+												'data-validation-error-msg-required' => 'Ingrese el color'
+									] )!!}
 				</div>
 				<div class="col-2">
-					{!! Form::text ('prendaDibujoBordadoFranjas',old('Dibujo/Bordado/Franjas'), ['class' => 'form-control mayuscula', 'id' => 'prendaDibujoBordadoFranjas', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese el bordado, dibujo o franja'] )!!}
+					{!! Form::text ('prendaDibujoBordadoFranjas',
+									old('Dibujo/Bordado/Franjas'),
+									['class' => 'form-control mayuscula',
+												'id' => 'prendaDibujoBordadoFranjas',
+												'data-validation' => 'required',
+												'data-validation-error-msg-required' => 'Ingrese el bordado, dibujo o franja'
+									] )!!}
 				</div>
 				<div class="col-2">
-					{!! Form::text ('prendaMarcaOrigen',old('Marca y origen'), ['class' => 'form-control mayuscula', 'id' => 'prendaMarcaOrigen', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese la marca y origen'] )!!}
+					{!! Form::text ('prendaMarcaOrigen',
+									old('Marca y origen'),
+									['class' => 'form-control mayuscula',
+												'id' => 'prendaMarcaOrigen',
+												'data-validation' => 'required',
+												'data-validation-error-msg-required' => 'Ingrese la marca y origen'
+									] )!!}
 				</div>
 				<div class="col-2">
-					{!! Form::text ('prendaTalla',old('Talla'), ['class' => 'form-control mayuscula', 'id' => 'prendaTalla', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese la talla'] )!!}
+					{!! Form::text ('prendaTalla',
+									old('Talla'),
+									['class' => 'form-control mayuscula',
+												'id' => 'prendaTalla',
+												'data-validation' => 'required',
+												'data-validation-error-msg-required' => 'Ingrese la talla'
+									] )!!}
 				</div>
 				
 			</div>	
@@ -86,16 +127,39 @@
 			<div class="form-group col-4">
 
 				{!! Form::label ('idTipo','Tipo:') !!}
-				{!! Form::select ('idTipo[]',$tiposCalzados,'', ['class' => 'form-control js-example-responsive', 'id' => 'idTipo', 'style'=> 'width: 50%'] )!!}
+				{!! Form::select ('idTipo[]',
+									$tiposCalzados,
+									'',
+									['class' => 'form-control js-example-responsive',
+												'id' => 'idTipo',
+												'style'=> 'width: 50%'
+									] )!!}
 			</div>
 			<div class="form-group col-4">
 				{!! Form::label ('idMarca','Marca:') !!}
-				{!! Form::select ('idMarca[]',$marcasCalzados,'', ['class' => 'form-control', 'id' => 'idMarca'] )!!}
+				{!! Form::select ('idMarca[]',
+									$marcasCalzados,
+									'',
+									['class' => 'form-control',
+												'id' => 'idMarca'
+									] )!!}
 			</div>
 			<div class="form-group col-4">
 				{!! Form::label ('idColor','Color:') !!}
-				{!! Form::select ('idColor[]',$estados,'', ['class' => 'form-control', 'id' => 'idColor' ] )!!}
-				{{--{!! Form::text ('talla',old('Talla'), ['class' => 'form-control mayuscula color', 'id' => 'primerAp', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Ingresa Talla' ,'value'='#B6BD79'] )!!}--}}
+				{!! Form::select ('idColor[]',
+									$estados,
+									'',
+									['class' => 'form-control',
+												'id' => 'idColor'
+									] )!!}
+				{{--{!! Form::text ('talla',
+									old('Talla'),
+									['class' => 'form-control mayuscula color',
+												'id' => 'primerAp',
+												'data-validation' => 'required',
+												'data-validation-error-msg-required' => '* Ingresa Talla' ,
+												'value'='#B6BD79'
+									] )!!}--}}
 				
 			</div>
 			
@@ -103,21 +167,39 @@
 		<div class="row">
 			<div class="form-group col-4">
 				{!! Form::label ('calzadoTalla','Talla:') !!}
-				{!! Form::select ('idCalzadoTalla[]',$estados,'', ['class' => 'form-control', 'id' => 'idCalzadoTalla'] )!!}
+				{!! Form::select ('idCalzadoTalla[]',
+									$estados,
+									'',
+									['class' => 'form-control',
+												'id' => 'idCalzadoTalla'
+									] )!!}
 			</div>
 		</div>
 		</br>
 		<div class="row">
 			<div class="col">
 				{!! Form::label ('elijaAccesoriosObjetos','Elija los accesorios y objetos que tenía el desaparecido:') !!}
-				{!! Form::select('accesoriosObjetos[]', $accesoriosObjetos, null, ['class' => 'form-control', 'multiple' => 'multiple' ,'id'=>'accesoriosObjetos']) !!}
+				{!! Form::select('accesoriosObjetos[]',
+									$accesoriosObjetos,
+									null,
+									['class' => 'form-control',
+												'multiple' => 'multiple' ,
+												'id'=>'accesoriosObjetos'
+									]) !!}
 			</div>
 			
 		</div>
 		<div class="row">
 			<div class="col">
 				<h5 class="card-title">Observaciones:</h5>		
-				{!! Form::textarea  ('descripcionVestimenta',old('Descripción vestimenta'), ['class' => 'form-control mayuscula', 'id' => 'descripcionVestimenta','size' => '30x4', 'data-validation' =>'required','data-validation-error-msg-required' =>'Ingrese las observaciones de la vestimenta'])!!}
+				{!! Form::textarea('descripcionVestimenta',
+									old('Descripción vestimenta'),
+									['class' => 'form-control mayuscula',
+												'id' => 'descripcionVestimenta',
+												'size' => '30x4',
+												'data-validation' =>'required',
+												'data-validation-error-msg-required' =>'Ingrese las observaciones de la vestimenta'
+									])!!}
 			</div>
 		</div>
 		
