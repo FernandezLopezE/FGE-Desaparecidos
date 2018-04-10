@@ -25,7 +25,8 @@ class DesaparecidoController extends Controller
 	 */
 	public function index()
 	{
-		return view('inicio');
+		//return view('inicio');
+		dd(Session::get('personas'));  
 	}
 
 	/**
@@ -368,7 +369,26 @@ class DesaparecidoController extends Controller
     }
 
     public function getPersona (Request $request)
-    {
-    	return response()->json($request);
+    { 
+        Session::push('personas', $request->toArray());
+
+        return response()->json(Session::get('personas'));
+        //print_r(Session::get('personas'));
+        //dd(Session::get('personas'));        
+        /*Session::push('personas', ['nombre' => 'Ruben', 'paterno' => 'Ochoa']);
+        Session::push('personas', ['nombre' => 'Eduardo', 'paterno' => 'Colin']);
+
+        $idToDelete = 2;
+        $products = session()->pull('personas', []); // Second argument is a default value
+        foreach ($products as $key => $value) {
+            if ($key == $idToDelete) {
+                unset($products[$key]);
+            }
+        }
+    
+        Session::push('productos', $products);
+
+        print_r(Session::get('productos'));*/
+        //dd(Session::get('cart'));
     }
 }
