@@ -125,96 +125,119 @@
     {!! HTML::script('personal/js/datosgral.js') !!}
     @yield('scripts')
     <script type="text/javascript">
-	$('#btnAdddInformante').click(function(){
-        console.log('Entrando a los hijos');
+	$(function (){	
+		$.ajaxSetup({
+			headers: {
+				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+			}
+		});
 
-		var nombre =$("#informanteNombres").val();
-		var primerAp =$("#informantePrimerAp").val();
-		var segundoAp =$("#informanteSegundoAp").val();
-		var parentesco =$("#informanteidParentesco").val();
-		var otroParentesco =$("#informanteOtroParentesco").val();
-		var nacionalidad =$("#idNacionalidad").val();
-		var documento =$("#informanteidDocumentoIdentidad").val();
-		var otroDocumento =$("#informanteOtroDocIdentidad").val();
-		var numDocIdenti=$("#informanteNumDocIdentidad").val();
-		var tipoDirec=$("#informanteTipoDireccion").val();
-		var calle=$("#informanteCalle").val();
-		var numExt=$("#informanteNumExterno").val();
-		var numInt=$("#informanteNumInterno").val();
-		var estado=$("#idEstado").val();
-		var municipio=$("#informanteidMunicipio").val();
-		var localidad=$("#idLocalidad").val();
-		var colonia=$("#informanteidColonia").val();
-		var cp=$("#informanteidCodigoPostal").val();
-		var tipoTel=$("#informanteTipoTel").val();
-		var lada=$("#lada").val();
-		var telefono =$("#informanteTelefonos").val();
-		var ext=$("#ext").val();
-		var email=$("#informanteCorreoElectronico").val();
-		var informante=$("#informante").val();
-		var autorizado=$("#recibir").val();
+		$('#btnAdddInformante').click(function(){
+	        console.log('Entrando a los hijos');
 
-		var datos = {
-			nombre: nombre,
-			primerAp: primerAp, 
-			segundoAp: segundoAp, 
-			parentesco: parentesco, 
-			otroParen: otroParentesco, 
-			nacionalidad: nacionalidad, 
-			documento: documento, 
-			otroDocumento: otroDocumento,
-			numDocIdenti: numDocIdenti,
-			tipoDirec: tipoDirec,
-			calle: calle,
-			numExt: numExt,
-			numInt: numInt,
-			estado: estado,
-			municipio: municipio,
-			localidad: localidad,
-			colonia: colonia,
-			cp: cp,
-			tipoTel: tipoTel,
-			lada: lada,
-			telefono: telefono,
-			ext: ext,
-			email: email,
-			informante: informante,
-			autorizado: autorizado
+			var nombre =$("#informanteNombres").val();
+			var primerAp =$("#informantePrimerAp").val();
+			var segundoAp =$("#informanteSegundoAp").val();
+			var parentesco =$("#informanteidParentesco").val();
+			var otroParentesco =$("#informanteOtroParentesco").val();
+			var nacionalidad =$("#idNacionalidad").val();
+			var documento =$("#informanteidDocumentoIdentidad").val();
+			var otroDocumento =$("#informanteOtroDocIdentidad").val();
+			var numDocIdenti=$("#informanteNumDocIdentidad").val();
+			var tipoDirec=$("#informanteTipoDireccion").val();
+			var calle=$("#informanteCalle").val();
+			var numExt=$("#informanteNumExterno").val();
+			var numInt=$("#informanteNumInterno").val();
+			var estado=$("#idEstado").val();
+			var municipio=$("#informanteidMunicipio").val();
+			var localidad=$("#idLocalidad").val();
+			var colonia=$("#informanteidColonia").val();
+			var cp=$("#informanteidCodigoPostal").val();
+			var tipoTel=$("#informanteTipoTel").val();
+			var lada=$("#lada").val();
+			var telefono =$("#informanteTelefonos").val();
+			var ext=$("#ext").val();
+			var email=$("#informanteCorreoElectronico").val();
+			var informante=$("#informante").val();
+			var autorizado=$("#recibir").val();
 
-		};
+			var datos = {
+				nombre: nombre,
+				primerAp: primerAp, 
+				segundoAp: segundoAp, 
+				parentesco: parentesco, 
+				otroParen: otroParentesco, 
+				nacionalidad: nacionalidad, 
+				documento: documento, 
+				otroDocumento: otroDocumento,
+				numDocIdenti: numDocIdenti,
+				tipoDirec: tipoDirec,
+				calle: calle,
+				numExt: numExt,
+				numInt: numInt,
+				estado: estado,
+				municipio: municipio,
+				localidad: localidad,
+				colonia: colonia,
+				cp: cp,
+				tipoTel: tipoTel,
+				lada: lada,
+				telefono: telefono,
+				ext: ext,
+				email: email,
+				informante: informante,
+				autorizado: autorizado
 
-		console.log(datos);
-        tr = $('<tr>');
-        td1 =$('<td>');
-        td2 =$('<td>');
-        td3 =$('<td>');
-        td4 =$('<td>');
-        td5 =$('<td>');
-        td6 =$('<td>');
+			};
 
-        td1.text('*');
-        td2.text("{{ Session::get('nombre')}} {{ Session::get('apellido1')}} {{Session::get('apellido2')}}");
-        td3.text("{{Session::get('parentesco')}}");
-        td4.text("{{Session::get('telefono')}}");
-        td5.text('INFORMANTE / RECIBIR INFORMACIÓN');
-        td6.append("<button type='button' class='btn btn-dark data-toggle='modal' data-target='#mostrarModal' id='hola' >MOSTRAR</button>");
-        
+			console.log(datos);
+
+			$.ajax({
+				type:"POST",
+				url:"{!! route('desaparecido.getpersona') !!}",
+				data: datos,
+				dataType: 'json',
+
+				success: function(data){
+					console.log(data);
+				},
+				error:function(data){
+					//console.log(data);
+				}
+
+			});
+	        /*tr = $('<tr>');
+	        td1 =$('<td>');
+	        td2 =$('<td>');
+	        td3 =$('<td>');
+	        td4 =$('<td>');
+	        td5 =$('<td>');
+	        td6 =$('<td>');
+
+	        td1.text('*');
+	        td2.text("{{ Session::get('nombre')}} {{ Session::get('apellido1')}} {{Session::get('apellido2')}}");
+	        td3.text("{{Session::get('parentesco')}}");
+	        td4.text("{{Session::get('telefono')}}");
+	        td5.text('INFORMANTE / RECIBIR INFORMACIÓN');
+	        td6.append("<button type='button' class='btn btn-dark data-toggle='modal' data-target='#mostrarModal' id='hola' >MOSTRAR</button>");
+	        
 
 
 
-        tr.append(td1);
-        tr.append(td2);
-        tr.append(td3);
-        tr.append(td4);
-        tr.append(td5);
-        tr.append(td6);
+	        tr.append(td1);
+	        tr.append(td2);
+	        tr.append(td3);
+	        tr.append(td4);
+	        tr.append(td5);
+	        tr.append(td6);
 
-        $('#cuerpoT').append(tr);
+	        $('#cuerpoT').append(tr);*/
 
 
-   
-        
-    })
+	   
+	        
+	    })
+	})
 </script>
     @include('template.partials.footer')
 </body>

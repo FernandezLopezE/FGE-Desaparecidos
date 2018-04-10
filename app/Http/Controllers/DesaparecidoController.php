@@ -366,4 +366,9 @@ class DesaparecidoController extends Controller
         
         }
     }
+
+    public function getPersona (Request $request)
+    {
+    	return response()->json($request);
+    }
 }

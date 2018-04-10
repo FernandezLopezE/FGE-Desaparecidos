@@ -16,6 +16,8 @@ Route::get('/', function () {
 
 });
 Route::get('/desaparecido/edad/{fecha_nacimiento}', 'DesaparecidoController@getEdad');
+Route::post('/desaparecido/getpersona', 'DesaparecidoController@getPersona')
+	->name('desaparecido.getpersona');
 Route::resource('/desaparecido','DesaparecidoController');
 
 Route::resource('domicilio','DomiciliosController');
