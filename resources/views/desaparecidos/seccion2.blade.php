@@ -1,0 +1,3 @@
+@include('desaparecidos.secciones.seccion2_persona_desaparecida_datos')
+@include('desaparecidos.secciones.seccion2_persona_desaparecida_domicilio')
+@include('desaparecidos.secciones.seccion2_persona_desaparecida_identidad_antecedentes')
