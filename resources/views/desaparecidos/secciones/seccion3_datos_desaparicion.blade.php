@@ -1,3 +1,5 @@
+<?php $hola =Session::get('hecho');?>
+
 <div class="card border-success">
 	<div class="card-header">
 		<h5 class="card-title">Datos de la desaparición
@@ -68,8 +70,21 @@
 		<div class="row">
 			<div class="col">
 				{!! Form::label ('descripcionTxt','Breve descripción del hecho:') !!}
-				{!! Form::textarea  ('avistoDescripcionHechos',old('Breve descripción del hecho'), ['class' => 'form-control mayuscula', 'id' => 'avistoDescripcionHechos','size' => '30x4','data-validation' =>'required','data-validation-error-msg-required' =>'Ingrese la descripción del hecho'])!!}
+				{!! Form::textarea  ('avistoDescripcionHechos',
+				old('Breve descripción del hecho',$hola),
+				['class' => 'form-control mayuscula', 'id' => 'avistoDescripcionHechos','size' => '30x4','data-validation' =>'required','data-validation-error-msg-required' =>'Ingrese la descripción del hecho'])!!}
+				
+
+				
+					
+
+				
 			</div>
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+
+	var a="hola";
+	$('.avistoDescripcionHechos').val("{{Session::get('hecho')}}");
+</script>
