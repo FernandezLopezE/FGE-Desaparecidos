@@ -10,12 +10,9 @@
 				{!! Form::text ('entrevistadorNombres',
 								old('entrevistadorNombres'),
 								['class' => 'form-control mayuscula',
-											'placeholder' => 'Escribe el nombre',
+											'placeholder' => 'Ingrese el nombre',
 											'id' => 'entrevistadorNombres',
 											'data-validation' => 'required',
-											'data-validation-depends-on' => 'entrevistadorIdioma',
-											'data-validation-depends-on-value' =>'OTRO',
-											'data-validation-error-msg-required' => 'Ingrese nombre del intérprete'
 								] )!!}
 		  	</div>
 			<div class="col-lg-4" id="otro_dialec4">
@@ -23,7 +20,7 @@
 				{!! Form::text ('entrevistadorPrimerAp',
 									old('entrevistadorPrimerAp'),
 									['class' => 'form-control mayuscula',
-										'placeholder' => 'Escribe el primer apellido',
+										'placeholder' => 'Ingrese el primer apellido',
 										'id' => 'entrevistadorPrimerAp',
 										'data-validation' => 'required',
 										'data-validation-depends-on' => 'entrevistadorIdioma',
@@ -36,7 +33,7 @@
 				{!! Form::text ('entrevistadorSegundoAp',
 								old('entrevistadorSegundoAp'),
 								['class' => 'form-control mayuscula',
-										 'placeholder' => 'Escribe el segundo apellido',
+										 'placeholder' => 'Ingrese el segundo apellido',
 										 'id' => 'entrevistadorSegundoAp',
 										 'data-validation' => 'required',
 										 'data-validation-depends-on' => 'entrevistadorIdioma',
@@ -74,7 +71,7 @@
 					{!! Form::text ('otroDialecto',
 									old('Nombre del intérprete'),
 									['class' => 'form-control mayuscula',
-										'placeholder' => 'Escribe el nombre del idioma o dialecto',
+										'placeholder' => 'Ingrese el nombre del idioma o dialecto',
 										'id' => 'otroDialecto',
 										'data-validation' => 'required',
 										'data-validation-error-msg-required' => 'Ingrese otro dialecto',
@@ -88,18 +85,18 @@
   		<div class="row" id="divInterpreteNombre" style="display:none">
   			<div class="col-lg-4" >
 				{!! Form::label ('interpreteNombres','Nombre del intérprete:') !!}
-				{!! Form::text ('interpreteNombres',old('interpreteNombres'), ['class' => 'form-control mayuscula', 'placeholder' => 'Escribe el nombre', 'id' => 'interpreteNombres', 'data-validation' => 'required','data-validation-depends-on' => 'entrevistadorIdioma','data-validation-depends-on-value' =>'OTRO','data-validation-error-msg-required' => 'Ingrese nombre del intérprete'] )!!}
+				{!! Form::text ('interpreteNombres',old('interpreteNombres'), ['class' => 'form-control mayuscula', 'placeholder' => 'Ingrese el nombre', 'id' => 'interpreteNombres', 'data-validation' => 'required','data-validation-depends-on' => 'entrevistadorIdioma','data-validation-depends-on-value' =>'OTRO','data-validation-error-msg-required' => 'Ingrese nombre del intérprete'] )!!}
 		  	</div>
 			<div class="col-lg-4" >
 				{!! Form::label ('interpretePrimerAp','Primer Apellido:') !!}
-				{!! Form::text ('interpretePrimerAp',old('Nombre del intérprete'), ['class' => 'form-control mayuscula', 'placeholder' => 'Escribe el primer apellido', 'id' => 'interpretePrimerAp', 'data-validation' => 'required','data-validation-depends-on' => 'entrevistadorIdioma','data-validation-depends-on-value' =>'OTRO','data-validation-error-msg-required' => 'Ingrese el primer apellido'] )!!}
+				{!! Form::text ('interpretePrimerAp',old('Nombre del intérprete'), ['class' => 'form-control mayuscula', 'placeholder' => 'Ingrese el primer apellido', 'id' => 'interpretePrimerAp', 'data-validation' => 'required','data-validation-depends-on' => 'entrevistadorIdioma','data-validation-depends-on-value' =>'OTRO','data-validation-error-msg-required' => 'Ingrese el primer apellido'] )!!}
 		  	</div>
 			<div class="col-lg-4" >
 				{!! Form::label ('interpreteSegundoAp','Segundo Apellido:') !!}
 				{!! Form::text ('interpreteSegundoAp',
 								old('interpreteSegundoAp'),
 								['class' => 'form-control mayuscula',
-									'placeholder' => 'Escribe el segundo apellido',
+									'placeholder' => 'Ingrese el segundo apellido',
 									'id' => 'interpreteSegundoAp',
 									'data-validation' => 'required',
 									'data-validation-depends-on' => 'entrevistadorIdioma',
@@ -113,7 +110,7 @@
 					{!! Form::text ('interpreteOrganizacion',
 										old('interpreteOrganizacion'),
 										['class' => 'form-control mayuscula',
-											'placeholder' => 'Escribe el nombre de la organización o institución',
+											'placeholder' => 'Ingrese el nombre de la organización o institución',
 											'id' => 'interpreteOrganizacion',
 											'data-validation' => 'required',
 											'data-validation-depends-on' => 'entrevistadorIdioma',
