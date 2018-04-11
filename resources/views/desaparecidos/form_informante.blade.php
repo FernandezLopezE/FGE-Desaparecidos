@@ -49,15 +49,15 @@
 				<div class="row">
 					<div class="col-lg-3">
 						{!! Form::label ('informanteNombres','Nombre(s):') !!}
-						{!! Form::text ('informanteNombres',old('informanteNombres'), ['class' => 'form-control mayuscula', 'id' => 'informanteNombres', ] )!!}
+						{!! Form::text ('informanteNombres',old('informanteNombres'), ['class' => 'form-control mayuscula', 'id' => 'informanteNombres', 'placeholder' => 'Ingrese el nombre'] )!!}
 					</div>
 					<div class="col-lg-3">
 						{!! Form::label ('informantePrimerAp','Primer apellido:') !!}
-						{!! Form::text ('informantePrimerAp',old('informantePrimerAp'), ['class' => 'form-control mayuscula', 'id' => 'informantePrimerAp', ] )!!}
+						{!! Form::text ('informantePrimerAp',old('informantePrimerAp'), ['class' => 'form-control mayuscula', 'id' => 'informantePrimerAp', 'placeholder' => 'Ingrese el primer apellido' ] )!!}
 					</div>
 					<div class="col-lg-3">
 						{!! Form::label ('informanteSegundoAp','Segundo apellido:') !!}
-						{!! Form::text ('informanteSegundoAp',old('informanteSegundoAp'), ['class' => 'form-control mayuscula', 'id' => 'informanteSegundoAp', ] )!!}
+						{!! Form::text ('informanteSegundoAp',old('informanteSegundoAp'), ['class' => 'form-control mayuscula', 'id' => 'informanteSegundoAp', 'placeholder' => 'Ingrese el segundo apellido' ] )!!}
 					</div>
 					<div class="col-lg-3">
 					{!! Form::label ('informanteidParentesco','Parentesco:') !!}
@@ -68,7 +68,7 @@
 			<div class="row">
 				<div class="col" id="otro_parent" style="display:none">
 					{!! Form::label ('informanteOtroParentesco','Especifique:') !!}
-					{!! Form::text ('informanteOtroParentesco',old('informanteOtroParentesco'), ['class' => 'form-control mayuscula', 'id' => 'informanteOtroParentesco', ] )!!}
+					{!! Form::text ('informanteOtroParentesco',old('informanteOtroParentesco'), ['class' => 'form-control mayuscula', 'id' => 'informanteOtroParentesco', 'placeholder' => 'Ingrese el parentesco'] )!!}
 				</div>
 			</div><br>
 
@@ -84,11 +84,11 @@
 				</div>
 				<div class="col" id="otro_doc" style="display:none">
 					{!! Form::label ('informanteOtroDocIdentidad','Especifique:') !!}
-					{!! Form::text ('informanteOtroDocIdentidad',old('informanteOtroDocIdentidad'), ['class' => 'form-control mayuscula', 'id' => 'informanteOtroDocIdentidad', ] )!!}				
+					{!! Form::text ('informanteOtroDocIdentidad',old('informanteOtroDocIdentidad'), ['class' => 'form-control mayuscula', 'id' => 'informanteOtroDocIdentidad', 'placeholder' => 'Ingrese el tipo de documento' ] )!!}				
 				</div>
 				<div class="col">
 					{!! Form::label ('informanteNumDocIdentidad','Número de identificación:') !!}
-					{!! Form::text ('informanteNumDocIdentidad',old('informanteNumDocIdentidad'), ['class' => 'form-control mayuscula', 'id' => 'informanteNumDocIdentidad', ] )!!}				
+					{!! Form::text ('informanteNumDocIdentidad',old('informanteNumDocIdentidad'), ['class' => 'form-control mayuscula', 'id' => 'informanteNumDocIdentidad', 'placeholder' => 'Ingrese el numero de la identificación'] )!!}				
 				</div>
 			</div><hr>
 
@@ -99,15 +99,15 @@
 				</div>
 				<div class="col-lg-5">
 					{!! Form::label ('informanteCalle','Calle:') !!}
-					{!! Form::text ('informanteCalle',old('informanteCalle'), ['class' => 'form-control mayuscula', 'id' => 'informanteCalle', ] )!!}				
+					{!! Form::text ('informanteCalle',old('informanteCalle'), ['class' => 'form-control mayuscula', 'id' => 'informanteCalle', 'placeholder' => 'Ingrese la calle' ] )!!}				
 				</div>
 				<div class="col">
 					{!! Form::label ('informanteNumExterno','Número exterior:') !!}
-					{!! Form::text ('informanteNumExterno',old('informanteNumExterno'), ['class' => 'form-control mayuscula', 'id' => 'informanteNumExterno', ] )!!}				
+					{!! Form::text ('informanteNumExterno',old('informanteNumExterno'), ['class' => 'form-control mayuscula', 'id' => 'informanteNumExterno', 'placeholder' => 'S/N'] )!!}				
 				</div>
 				<div class="col">
 					{!! Form::label ('informanteNumInterno','Número interior:') !!}
-					{!! Form::text ('informanteNumInterno',old('informanteNumInterno'), ['class' => 'form-control mayuscula', 'id' => 'informanteNumInterno', ] )!!}				
+					{!! Form::text ('informanteNumInterno',old('informanteNumInterno'), ['class' => 'form-control mayuscula', 'id' => 'informanteNumInterno', 'placeholder' => 'S/N'] )!!}				
 				</div>
 			</div>
 
@@ -148,7 +148,7 @@
 				</div>
 				<div class="col-lg-3">
 					{!! Form::label ('informanteTelefonos','Número:') !!}
-					{!! Form::text ('informanteTelefonos',old('informanteTelefonos'), ['class' => 'form-control mayuscula'] )!!}				
+					{!! Form::text ('informanteTelefonos',old('informanteTelefonos'), ['class' => 'form-control mayuscula', 'placeholder' => '0000000000'])!!}				
 				</div>
 				<div class="col-lg-1">
 					{!! Form::label ('ext','Ext:') !!}
@@ -156,7 +156,7 @@
 				</div>	
 				<div class="col-lg-4">
 					{!! Form::label ('informanteCorreoElectronico','Correo electrónico:') !!}
-					{!! Form::text ('informanteCorreoElectronico',old('informanteCorreoElectronico'), ['class' => 'form-control', 'id' => 'informanteCorreoElectronico', ] )!!}				
+					{!! Form::text ('informanteCorreoElectronico',old('informanteCorreoElectronico'), ['class' => 'form-control', 'id' => 'informanteCorreoElectronico', 'placeholder' => 'ejemplo@email.com' ] )!!}				
 				</div>
 			</div><br>
 
