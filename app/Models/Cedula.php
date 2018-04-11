@@ -3,13 +3,24 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Cedula extends Model
 {
 	protected $table = 'desaparecidos_cedula_investigacion';
 	protected $fillable = [		
-		'primeraVez',
-		'fecha',
+		'entrevistadorNombres',
+		'entrevistadorPrimerAp',
+		'entrevistadorSegundoAp',
+		'entrevistadorCargo',
+		'interpreteNombres' ,			
+		'interpretePrimerAp', 			
+		'interpreteSegundoAp',			
+		'interpreteOrganizacion',		
+		'otroDialecto',
+		'entrevistadorPrimeraVez',		
+		'fechaVisita',
+		'idDialecto',
 		'calzadoTalla',
 		'observacionesDesaparicion',
 		'estatura',
@@ -61,6 +72,17 @@ class Cedula extends Model
 	public function calzadocolor()
 	{
 		return $this->belongsTo('App\Models\CatCalzadoColor', 'idCalzadocolor');
+	}
+
+
+	public function setFechaVisitaAttribute($value)
+	{
+		if (empty($value)) {
+			$this->attributes['fechaVisita'] = null;
+		} else {
+			$this->attributes['fechaVisita'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+		}
+		
 	}
 
 
