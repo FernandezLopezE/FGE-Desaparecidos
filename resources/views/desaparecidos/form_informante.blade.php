@@ -3,7 +3,7 @@
 @section('content')
 
 {!! Form::model($desaparecido, ['action' => 'DesaparecidoController@store_informante']) !!}
-		{{ Form::hidden('id_cedula', '$cedula->id') }}
+		{{ Form::hidden('idCedula', $cedula->id, array('id' => 'idCedula')) }}
 
 
 		<div class="card border-primary">

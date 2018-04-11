@@ -25,6 +25,8 @@ class Desaparecido extends Model
 		'telefonos',
 		'notificaciones',
 		'tieneHijos',
+		'notificaciones',
+		'informante',
 		'idPersona',
 		'idEdocivil',
 		'idOcupacion',

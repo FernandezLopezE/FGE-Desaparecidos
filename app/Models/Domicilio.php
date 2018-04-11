@@ -20,6 +20,10 @@ class Domicilio extends Model
 			'idDesaparecido'
 	];
 
+	protected $casts = [
+		'telefono' => 'array',
+	];
+
 	public function desaparecido()
 	{
 		return $this->belongsTo('App\Models\Desaparecido','idDesaparecido');

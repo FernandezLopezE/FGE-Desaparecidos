@@ -239,17 +239,44 @@ class DesaparecidoController extends Controller
 	}
 
 	public function store_informante(Request $request)
-	{
-		
-		$cedula = Persona::created([
+	{		
+
+		$persona = Persona::create([
 			'nombre' 			=> $request->input('nombre'),
 			'primerAp' 			=> $request->input('primerAp'),
-			'segundoAp' 			=> $request->input('segundoAp'),
-			'idNacionalidad' 			=> $request->input('nacionalidad'),
-			
-
-
+			'segundoAp' 		=> $request->input('segundoAp'),
+			'idNacionalidad' 	=> $request->input('nacionalidad'),
 		]);
+
+		$desaparecido = Desaparecido::create([
+			'idPersona' 		=> $persona->id,
+			'idCedula'			=> $request->input('idCedula'),			
+			'otroDocIdentidad'	=> $request->input('otroDocumento'),
+			'numDocIdentidad'	=> $request->input('numDocIdenti'),
+			'correoElectronico'	=> $request->input('email'),
+		]);
+
+		$domicilio = Desaparecido::create([
+			'idDesaparecido' 	=> $desaparecido->id,
+			'tipoDireccion'		=> $request->input('tipoDirec'),
+			'calle'				=> $request->input('calle'),
+			'numExterno'		=> $request->input('numExt'),
+			'numInterno'		=> $request->input('numInt'),
+			'idestado'			=> $request->input('estado'),
+			'idMunicipio'		=> $request->input('municipio'),
+			'idLocalidad'		=> $request->input('localidad'),
+			'idColonia'			=> $request->input('colonia'),
+			'idCodigoPostal'	=> $request->input('cp'),
+			'telefono'			=> array('tipoTel' => 'PERSONAL',
+									 'lada' => $request->input('cp'),
+									 'telefono' => $request->input('telefono'),
+									 'ext' => $request->input('ext')),
+		]);
+
+		$datos = array($persona,$desaparecido,$domicilio);
+		return response()->json($datos);
+
+
 
 		/*'parentesco'	 		=> $request->input('parentesco'),
 		'otroParentesco' 	=> $request->input('otroParentesco'),

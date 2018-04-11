@@ -61,7 +61,10 @@ $(document).ready(function(){
 			email: $("#informanteCorreoElectronico").val(),
 			informante: $("#informante").is(":checked"),
 			autorizado: $("#recibir").is(":checked"),
+			idCedula: $("#idCedula").val(),
 		};
+
+		console.log(dataString);
 
 		$.ajax({
 			type: 'POST',
@@ -77,7 +80,7 @@ $(document).ready(function(){
 				} else {
 					messageToastr(data.tipo, data.mensaje);
 					validarDatos(data.errors);
-				}*/						
+				}*/
 												
 			},
 			error: function(data) {
