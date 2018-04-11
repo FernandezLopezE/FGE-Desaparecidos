@@ -11,7 +11,8 @@ class ColoresSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cat_colores')->insert([
+
+        DB::table('cat_calzado_color')->insert([
         	['nombre' => 'AZÚL',					'image' => '1.jpg'],        
         	['nombre' => 'ROJO',					'image' => '2.jpg'],
         	['nombre' => 'MORADO',					'image' => '3.jpg'],
