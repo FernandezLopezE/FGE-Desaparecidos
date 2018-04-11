@@ -53,7 +53,10 @@
 							'ext' => '',
 							'email' => 'NO TIENE',
 							'informante' => '1',
-							'autorizado' => '1']]);
+							'autorizado' => '1',
+							'hecho' => 'Refiere la entrevistada que el día 2 de enero del 2017, a las 9 de la noche aproximadamente su hija Briseida le dijo que saldría a lavar un poco de ropa al patio exterior de la casa, y pasado unos 20 o 30 minutos salió a verla pero ya no la encontró, buscándola por toda la colonia donde vive junto con su esposo, siendo avisados eso de las 11 de la noche por un sujeto de nombre Omar X que la menor se había ido a México con Luis Fernando vecino de la colonia.']]);
+			Session::put('hecho', 'Refiere la entrevistada que el día 2 de enero del 2017, a las 9 de la noche aproximadamente su hija Briseida le dijo que saldría a lavar un poco de ropa al patio exterior de la casa, y pasado unos 20 o 30 minutos salió a verla pero ya no la encontró, buscándola por toda la colonia donde vive junto con su esposo, siendo avisados eso de las 11 de la noche por un sujeto de nombre Omar X que la menor se había ido a México con Luis Fernando vecino de la colonia.')
+
 
             
 
