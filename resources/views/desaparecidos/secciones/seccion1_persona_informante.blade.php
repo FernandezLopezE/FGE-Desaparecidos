@@ -9,27 +9,32 @@
 	<div class="card-body">
 		<table class="table table-bordered" id="tablePrueba">
 		  <thead>
-		    <tr>
-		      <th scope="col">No.</th>
-		      <th scope="col">Nombre</th>
-		      <th scope="col">Parentesco</th>
-		      <th scope="col">Télefono</th>
-		      <th scope="col">Tipo de persona</th>
-		      <th scope="col">Acciones</th>
-		    </tr>
+			<tr>
+			  <th scope="col">No.</th>
+			  <th scope="col">Nombre</th>
+			  <th scope="col">Parentesco</th>
+			  <th scope="col">Télefono</th>
+			  <th scope="col">Tipo de persona</th>
+			  <th scope="col">Acciones</th>
+			</tr>
 		  </thead>
 		  <tbody id='cuerpoT'>
-			<?php foreach (Session::get('personas') as $key => $value): ?>
-			    <tr>
-			      <th scope="row">1</th>
-			      <td>{{$value['nombre']}} {{$value['primerAp']}} {{$value['segundoAp']}}</td>
-			      <td>{{$value['parentesco']}}</td>
-			      <td>{{ $value['telefono']}}</td>
-			      <td></td>
-			      <td></td>
-			      <td><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#mostrarModal" id="hola">MOSTRAR</button></td>
-			    </tr>
-		    <?php endforeach ?>
+			@forelse ($informantes as $informante)
+				<tr>
+				  <th scope="row">1</th>
+				  <td></td>
+				  <td></td>
+				  <td></td>
+				  <td></td>
+				  <td></td>
+				  <td><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#mostrarModal" id="hola">MOSTRAR</button></td>
+				</tr>
+			@empty
+				<tr><td colspan="7"></td></tr>
+			@endforelse
+			<?php foreach $informantes as $key => $value): ?>
+
+			<?php endforeach ?>
 		  </tbody>
 		</table>
 	<hr>
@@ -44,12 +49,12 @@
 			<div class="col-lg-3">
 				{!! Form::label ('informantePrimerAp','Primer apellido:') !!}
 				{!! Form::text ('informantePrimerAp',old('informantePrimerAp'), ['class' => 'form-control mayuscula', 'id' => 'informantePrimerAp', ] )!!}
-		  	</div>
-		  	<div class="col-lg-3">
+			</div>
+			<div class="col-lg-3">
 				{!! Form::label ('informanteSegundoAp','Segundo apellido:') !!}
 				{!! Form::text ('informanteSegundoAp',old('informanteSegundoAp'), ['class' => 'form-control mayuscula', 'id' => 'informanteSegundoAp', ] )!!}
-		  	</div>
-		  	<div class="col-lg-3">
+			</div>
+			<div class="col-lg-3">
 			{!! Form::label ('informanteidParentesco','Parentesco:') !!}
 			{!! Form::select ('informanteidParentesco',$parentescos,'', ['class' => 'form-control', 'id' => 'informanteidParentesco'] )!!}		
 		</div>
@@ -69,7 +74,7 @@
 		</div>
 		<div class="col-lg-3">
 			{!! Form::label ('informanteidDocumentoIdentidad','Documento con que se identifica:') !!}
-			{!! Form::select ('informanteidDocumentoIdentidad',$identificacion,'', ['class' => 'form-control', 'id' => 'informanteidDocumentoIdentidad'] )!!}
+			{!! Form::select ('informanteidDocumentoIdentidad',$documentos,'', ['class' => 'form-control', 'id' => 'informanteidDocumentoIdentidad'] )!!}
 			
 		</div>
 		<div class="col" id="otro_doc" style="display:none">
@@ -154,12 +159,12 @@
 		<div class="col-lg-6">
 			<div class="form-check">
 			  <label class="form-check-label">
-			    <input class="form-check-input icheck" type="checkbox" id="informante" name="informante" value="INFORMANTE"> SÓLO INFORMANTE
+				<input class="form-check-input icheck" type="checkbox" id="informante" name="informante" value="INFORMANTE"> SÓLO INFORMANTE
 			  </label>
 			</div>
 			<div class="form-check">
 			  <label class="form-check-label">
-			    <input class="form-check-input icheck" type="checkbox"  id="recibir" value="RECIBIR"> AUTORIZADA PARA DAR, OIR Y RECIBIR INFORMES
+				<input class="form-check-input icheck" type="checkbox"  id="recibir" value="RECIBIR"> AUTORIZADA PARA DAR, OIR Y RECIBIR INFORMES
 			  </label>
 			</div>
 		</div>

@@ -16,8 +16,17 @@ Route::get('/', function () {
 
 });
 Route::get('/desaparecido/edad/{fecha_nacimiento}', 'DesaparecidoController@getEdad');
+Route::get('/desaparecido/informante/{idCedula}', 'DesaparecidoController@show_informante');
+
 Route::post('/desaparecido/getpersona', 'DesaparecidoController@getPersona')
 	->name('desaparecido.getpersona');
+
+Route::post('/desaparecido/store_cedula', 'DesaparecidoController@store_cedula')
+	->name('desaparecido.store_cedula');
+
+Route::post('/desaparecido/store_informante', 'DesaparecidoController@store_informante')
+	->name('desaparecido.store_informante');
+
 Route::resource('/desaparecido','DesaparecidoController');
 
 Route::resource('domicilio','DomiciliosController');

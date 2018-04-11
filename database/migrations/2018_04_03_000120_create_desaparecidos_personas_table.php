@@ -25,7 +25,7 @@ class CreateDesaparecidosPersonasTable extends Migration
 			$table->text('pormenores')->nullable();
 			$table->boolean('antecedentesJudiciales')->nullable();
 			$table->string('organizacion')->nullable();
-			$table->enum('tipoPersona', ['NO','SI', 'LO IGNORAN']);
+			$table->enum('tipoPersona', ['ENTREVISTADOR','INTERPRETE','INFORMANTE','AUTORIZADAS', 'DESAPARECIDA', 'AVISTO']);
 			$table->string('otroDocIdentidad',20)->nullable();
 			$table->string('numDocIdentidad',20)->nullable();
 			$table->string('correoElectronico')->unique();

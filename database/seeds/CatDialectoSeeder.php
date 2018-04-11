@@ -12,13 +12,16 @@ class CatDialectoSeeder extends Seeder
     public function run()
     {
         DB::table('cat_dialecto')->insert([
-            [ 'id' => 7, 'nombre' => 'AKATEKO'],
-            [ 'id' => 1, 'nombre' => 'CUCAPA'],
-            [ 'id' => 2, 'nombre' => 'CHOCHOTELCO'],
-            [ 'id' => 3, 'nombre' => 'GUARIJIO'],
-            [ 'id' => 4, 'nombre' => 'MIXTECO'],
-            [ 'id' => 5, 'nombre' => 'MAN'],
-            [ 'id' => 6, 'nombre' => 'POPOLOCA']
+            [ 'id' => 1, 'nombre' => 'ESPAÑOL'],
+            [ 'id' => 2, 'nombre' => 'OTRO'],
+            [ 'id' => 3, 'nombre' => 'AKATEKO'],
+            [ 'id' => 4, 'nombre' => 'CUCAPA'],
+            [ 'id' => 5, 'nombre' => 'CHOCHOTELCO'],
+            [ 'id' => 6, 'nombre' => 'GUARIJIO'],
+            [ 'id' => 7, 'nombre' => 'MIXTECO'],
+            [ 'id' => 8, 'nombre' => 'MAN'],
+            [ 'id' => 9, 'nombre' => 'POPOLOCA'],
+
         ]);
     }
 }
