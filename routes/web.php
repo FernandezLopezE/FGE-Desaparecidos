@@ -31,4 +31,3 @@ Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');
 
 
 
-

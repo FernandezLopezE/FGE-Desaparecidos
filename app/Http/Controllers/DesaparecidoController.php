@@ -27,7 +27,7 @@ class DesaparecidoController extends Controller
 	 */
 	public function index()
 	{		
-		//dd(Session::get('personas'));  
+		return view('desaparecidos.form'); 
 	}
 
 	/**
