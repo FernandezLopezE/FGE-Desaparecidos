@@ -27,11 +27,11 @@
 		<div class="row">
 			<div class="form-group col">
 				{!! Form::label ('idEstado','Estado:') !!}
-				{!! Form::select ('idEstado[]',$estados,'', ['class' => 'form-control', 'id' => 'idEstado'] )!!}
+				{!! Form::select ('idEstado[]',$estados,'', ['class' => 'form-control'] )!!}
 			</div>
 			<div class="form-group col">
 				{!! Form::label ('idMunicipio','Municipio:') !!}
-				{!! Form::select ('idMunicipio[]',$municipios,'', ['class' => 'form-control', 'id' => 'idMunicipio'] )!!}
+				{!! Form::select ('idMunicipio[]',$municipios,'', ['class' => 'form-control'] )!!}
 			</div>
 			<div class="form-group col">
 				{!! Form::label ('idLocalidad','Localidad:') !!}

@@ -11,16 +11,17 @@ class TiposCalzadosSeeder extends Seeder
      */
     public function run()
     {
-    	 DB::table('cat_tipos_calzados')->insert([
-        	['nombre' => 'Sin información',			'image' => '1.jpg'],        
-        	['nombre' => 'Zapato casual',			'image' => '2.jpg'],
-        	['nombre' => 'Botas',					'image' => '3.jpg'],
-        	['nombre' => 'Zapato alto',				'image' => '4.jpg'],
-        	['nombre' => 'Tenis casual',			'image' => '5.jpg'],
-            ['nombre' => 'Tenis deportivos',        'image' => '6.jpg'],
-            ['nombre' => 'Sandalias',               'image' => '7.jpg'],
-        	['nombre' => 'Otro tipo de calzado',	'image' => '8.jpg'],
-        	['nombre' => 'No tenía calzado',		'image' => '9.jpg']    	
+
+    	 DB::table('cat_calzado_tipo')->insert([
+        	['nombre' => 'SIN INFORMACIÓN',			'image' => '1.jpg'],        
+        	['nombre' => 'ZAPATO CASUAL',			'image' => '2.jpg'],
+        	['nombre' => 'BOTAS',					'image' => '3.jpg'],
+        	['nombre' => 'ZAPATO ALTO',				'image' => '4.jpg'],
+        	['nombre' => 'TENIS CASUAL',			'image' => '5.jpg'],
+            ['nombre' => 'TENIS DEPORTIVOS',        'image' => '6.jpg'],
+            ['nombre' => 'SANDALIAS',               'image' => '7.jpg'],
+        	['nombre' => 'OTRO TIPO DE CALZADO',	'image' => '8.jpg'],
+        	['nombre' => 'NO TENÍA CALZADO',		'image' => '9.jpg']    	
         ]);
     }
 }

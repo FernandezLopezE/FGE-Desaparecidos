@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CatTiposCalzados extends Model
+class CatColores extends Model
 {
-    public $table = 'cat_calzado_tipo';
+     public $table = 'cat_calzado_color';
 
     /**
      * The attributes that are mass assignable.
@@ -20,5 +20,4 @@ class CatTiposCalzados extends Model
         'image'
         //'snVeh' se quito la columna, le corresponde al sist. de vehiculos
     ];
-
 }

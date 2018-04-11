@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCatAccesoriosObjetos extends Migration
+class CreateCatColoresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateCatAccesoriosObjetos extends Migration
      */
     public function up()
     {
-        Schema::create('cat_accesorios_objetos', function (Blueprint $table) {
+        Schema::create('cat_colores', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre',30);
+            $table->string('nombre');
+            $table->string('image');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateCatAccesoriosObjetos extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cat_accesorios_objetos');
+        Schema::dropIfExists('cat_colores');
     }
 }
