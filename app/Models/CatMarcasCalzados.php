@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CatMarcasCalzados extends Model
 {
-    public $table = 'cat_marcas_calzados';
+    public $table = 'cat_calzado_marca';
 
     /**
      * The attributes that are mass assignable.

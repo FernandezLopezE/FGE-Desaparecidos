@@ -79,9 +79,24 @@ class DatabaseSeeder extends Seeder
 
          //domicilioDesaparecidos
         $this->call(PersonaSeeder::class);
+<<<<<<< HEAD
+
+        //$this->call(ParentescoTableSeeder::class);        
+        //$this->call(DomicilioTableSeeder::class);
+        //$this->call(CatCentroReclusionSeeder::class);
+        //$this->call(DocumentosSeeder::class);
+       // $this->call(AntecedenteSeeder::class);
+        //$this->call(DocumentosIdentidadSeeder::class);
+        $this->call(TiposCalzadosSeeder::class);
+        $this->call(MarcasCalzadosSeeder::class);
+        $this->call(ColoresSeeder::class);
+
+       // $this->call(CatDialectoSeeder::class);
+=======
         $this->call(CatDialectoSeeder::class);
         $this->call(CatVestimentaSeeder::class);
         $this->call(CatAccesorioObjetoSeeder::class);
+>>>>>>> 48b4eea8656193fb29722554b42614a5002d80cd
         /*$this->call(ParentescoTableSeeder::class);        
         $this->call(DomicilioTableSeeder::class);
         $this->call(CatCentroReclusionSeeder::class);
@@ -91,6 +106,10 @@ class DatabaseSeeder extends Seeder
         $this->call(TiposCalzadosSeeder::class);
         $this->call(MarcasCalzadosSeeder::class);
         $this->call(ColoresSeeder::class);
+<<<<<<< HEAD
+
+=======
         $this->call(ParentescoSeeder::class);
+>>>>>>> 48b4eea8656193fb29722554b42614a5002d80cd
     }
 }
