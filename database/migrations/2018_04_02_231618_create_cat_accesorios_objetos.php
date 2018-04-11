@@ -15,7 +15,7 @@ class CreateCatAccesoriosObjetos extends Migration
     {
         Schema::create('cat_accesorios_objetos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre',20);
+            $table->string('nombre',30);
             $table->timestamps();
         });
     }

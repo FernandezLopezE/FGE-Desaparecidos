@@ -73,7 +73,9 @@
 	<div class="row">
 		<div class="form-group col-4">
 			{!! Form::label ('idColor','Color:') !!}
+
 			{!! Form::select ('idColor[]',$colores,'', ['class' => 'form-control', 'id' => 'idColor' ] )!!}
+
 		</div>
 		<div class="form-group col-4">
 			{!! Form::label ('idMarca','Marca:') !!}
@@ -81,7 +83,9 @@
 		</div>
 		<div class="form-group col-4">
 			{!! Form::label ('calzadoTalla','Talla:') !!}
+
 			{!! Form::text ('prendaTipo',old('Nombre de la prenda'),['class' => 'form-control mayuscula','id' => 'prendaTipo','data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese la prenda'] )!!}
+
 		</div>
 	</div>
 		<div class="row">

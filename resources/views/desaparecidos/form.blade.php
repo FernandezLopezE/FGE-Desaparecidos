@@ -1,6 +1,6 @@
 @extends('layouts.app_uipj')
 
-<<<<<<< HEAD
+
 @section('style')
 	{!! Html::style('') !!}
 
@@ -9,8 +9,7 @@
 	{!! Html::style('css/select2-bootstrap4.css',['rel'=>"stylesheet"]) !!}
 	{!! Html::style('personal/js/icheck/skins/all.css') !!}
 @endsection
-=======
->>>>>>> be40bbd95a86d9ea9fb52cfbdea9592a34b764f9
+
 
 @section('content')
 <div id="detallehead" class="card-header">
@@ -60,7 +59,7 @@
 	{!! Form::close() !!--}}
 
 @endsection
-<<<<<<< HEAD
+
 
 
 @section('script')
@@ -93,5 +92,3 @@
 	</script>
 
 @endsection
-=======
->>>>>>> be40bbd95a86d9ea9fb52cfbdea9592a34b764f9
