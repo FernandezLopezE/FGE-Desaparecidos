@@ -251,7 +251,7 @@ class DesaparecidoController extends Controller
 
 		]);
 
-		'parentesco'	 		=> $request->input('parentesco'),
+		/*'parentesco'	 		=> $request->input('parentesco'),
 		'otroParentesco' 	=> $request->input('otroParentesco'),
 		'idDocumentoIdentidad' 			=> $request->input('documento'),
 		'otroDocumento' 		=> $request->input('otroDocumento'),
@@ -273,7 +273,7 @@ class DesaparecidoController extends Controller
 		'idCodigoPostal' 		=> $request->input('cp'),		
 		'telefono' 				=> $request->input('telefono'),
 		'ext' 					=> $request->input('ext'),
-		'lada' 					=> $request->input('lada'),
+		'lada' 					=> $request->input('lada'),*/
 		
 
 
