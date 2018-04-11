@@ -136,14 +136,7 @@ class DesaparecidoController extends Controller
 		$codigos 			= \App\Models\CatColonia::limit(10)->pluck('codigoPostal','id');
 		$tiposCalzados		= \App\Models\CatTiposCalzados::all()->pluck('nombre','id');
 		$marcasCalzados		= \App\Models\CatMarcasCalzados::all()->pluck('nombre','id');
-<<<<<<< HEAD
-		$colores			= \App\Models\CatColores::all()->pluck('nombre','id');
-		/*$municipios 		= array();
-		$localidades 		= array();
-		$colonias 			= array();
-		$codigos 			= array();*/
-=======
->>>>>>> be40bbd95a86d9ea9fb52cfbdea9592a34b764f9
+
 		$delitos 			= \App\Models\CatDelito::all()->pluck('nombre','id');
 		$centros 			= \App\Models\CatCentroReclusion::all()->pluck('nombre','id');		
 		$edoscivil 			= \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
@@ -173,14 +166,9 @@ class DesaparecidoController extends Controller
 						'edoscivil' => $edoscivil,
 						'tiposDireccion' => $tiposDireccion,
 						'parentescos' => $parentescos,
-<<<<<<< HEAD
-						'dialectos' =>$dialectos,
-						'colores' => $colores
-					]);
-=======
 						'dialectos' =>$dialectos
 					]);*/
->>>>>>> be40bbd95a86d9ea9fb52cfbdea9592a34b764f9
+
 	}
 
 	/**
