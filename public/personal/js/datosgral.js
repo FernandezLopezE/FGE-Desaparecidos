@@ -512,7 +512,7 @@ $(document).ready(function(){
    });
 
    //Mostrar - ocultar form
-   $("#nuevoInformante").click(function() {
+   $("#").click(function() {
 		$("#formInformante").toggle('slow');
    });
 
