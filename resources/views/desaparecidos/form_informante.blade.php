@@ -49,11 +49,11 @@
 				<div class="row">
 					<div class="col-lg-3">
 						{!! Form::label ('informanteNombres','Nombre(s):') !!}
-						{!! Form::text ('informanteNombres',old('informanteNombres'), ['class' => 'form-control mayuscula', 'id' => 'informanteNombres', 'placeholder' => 'Ingrese el nombre'] )!!}
+						{!! Form::text ('informanteNombres',old('informanteNombres'), ['class' => 'form-control mayuscula', 'id' => 'informanteNombres', 'placeholder' => 'Ingrese el nombre', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'El campo es requerido'] )!!}
 					</div>
 					<div class="col-lg-3">
 						{!! Form::label ('informantePrimerAp','Primer apellido:') !!}
-						{!! Form::text ('informantePrimerAp',old('informantePrimerAp'), ['class' => 'form-control mayuscula', 'id' => 'informantePrimerAp', 'placeholder' => 'Ingrese el primer apellido' ] )!!}
+						{!! Form::text ('informantePrimerAp',old('informantePrimerAp'), ['class' => 'form-control mayuscula', 'id' => 'informantePrimerAp', 'placeholder' => 'Ingrese el primer apellido', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'El campo es requerido' ] )!!}
 					</div>
 					<div class="col-lg-3">
 						{!! Form::label ('informanteSegundoAp','Segundo apellido:') !!}
@@ -68,7 +68,7 @@
 			<div class="row">
 				<div class="col" id="otro_parent" style="display:none">
 					{!! Form::label ('informanteOtroParentesco','Especifique:') !!}
-					{!! Form::text ('informanteOtroParentesco',old('informanteOtroParentesco'), ['class' => 'form-control mayuscula', 'id' => 'informanteOtroParentesco', 'placeholder' => 'Ingrese el parentesco'] )!!}
+					{!! Form::text ('informanteOtroParentesco',old('informanteOtroParentesco'), ['class' => 'form-control mayuscula', 'id' => 'informanteOtroParentesco', 'placeholder' => 'Ingrese el parentesco', 'data-validation-depends-on' => 'informanteidParentesco','data-validation-depends-on-value' =>'OTRO PARENTESCO', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'El campo es requerido'] )!!}
 				</div>
 			</div><br>
 
@@ -84,11 +84,11 @@
 				</div>
 				<div class="col" id="otro_doc" style="display:none">
 					{!! Form::label ('informanteOtroDocIdentidad','Especifique:') !!}
-					{!! Form::text ('informanteOtroDocIdentidad',old('informanteOtroDocIdentidad'), ['class' => 'form-control mayuscula', 'id' => 'informanteOtroDocIdentidad', 'placeholder' => 'Ingrese el tipo de documento' ] )!!}				
+					{!! Form::text ('informanteOtroDocIdentidad',old('informanteOtroDocIdentidad'), ['class' => 'form-control mayuscula', 'id' => 'informanteOtroDocIdentidad', 'placeholder' => 'Ingrese el tipo de documento', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'El campo es requerido', 'data-validation-depends-on' => 'informanteidDocumentoIdentidad','data-validation-depends-on-value' =>'Otro (especifique)' ] )!!}				
 				</div>
 				<div class="col">
 					{!! Form::label ('informanteNumDocIdentidad','Número de identificación:') !!}
-					{!! Form::text ('informanteNumDocIdentidad',old('informanteNumDocIdentidad'), ['class' => 'form-control mayuscula', 'id' => 'informanteNumDocIdentidad', 'placeholder' => 'Ingrese el numero de la identificación'] )!!}				
+					{!! Form::text ('informanteNumDocIdentidad',old('informanteNumDocIdentidad'), ['class' => 'form-control mayuscula', 'id' => 'informanteNumDocIdentidad', 'placeholder' => 'Ingrese el numero de la identificación', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'El campo es requerido'] )!!}				
 				</div>
 			</div><hr>
 
@@ -99,11 +99,11 @@
 				</div>
 				<div class="col-lg-5">
 					{!! Form::label ('informanteCalle','Calle:') !!}
-					{!! Form::text ('informanteCalle',old('informanteCalle'), ['class' => 'form-control mayuscula', 'id' => 'informanteCalle', 'placeholder' => 'Ingrese la calle' ] )!!}				
+					{!! Form::text ('informanteCalle',old('informanteCalle'), ['class' => 'form-control mayuscula', 'id' => 'informanteCalle', 'placeholder' => 'Ingrese la calle', 'data-validation' => 'required', 'data-validation-error-msg-required' =>'Este campo es requerido.'] )!!}				
 				</div>
 				<div class="col">
 					{!! Form::label ('informanteNumExterno','Número exterior:') !!}
-					{!! Form::text ('informanteNumExterno',old('informanteNumExterno'), ['class' => 'form-control mayuscula', 'id' => 'informanteNumExterno', 'placeholder' => 'S/N'] )!!}				
+					{!! Form::text ('informanteNumExterno',old('informanteNumExterno'), ['class' => 'form-control mayuscula', 'id' => 'informanteNumExterno', 'placeholder' => 'S/N', 'data-validation' => 'required', 'data-validation-error-msg-required' =>'Este campo es requerido.'] )!!}				
 				</div>
 				<div class="col">
 					{!! Form::label ('informanteNumInterno','Número interior:') !!}
@@ -148,7 +148,7 @@
 				</div>
 				<div class="col-lg-3">
 					{!! Form::label ('informanteTelefonos','Número:') !!}
-					{!! Form::text ('informanteTelefonos',old('informanteTelefonos'), ['class' => 'form-control mayuscula', 'placeholder' => '0000000000'])!!}				
+					{!! Form::text ('informanteTelefonos',old('informanteTelefonos'), ['class' => 'form-control mayuscula', 'placeholder' => '0000000000', 'data-validation-length' => '10', 'data-validation-error-msg-length' =>'El campo teléfono debe contener 10 digitos'])!!}				
 				</div>
 				<div class="col-lg-1">
 					{!! Form::label ('ext','Ext:') !!}
