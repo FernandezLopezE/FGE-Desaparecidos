@@ -64,24 +64,13 @@ $(document).ready(function(){
 			idCedula: $("#idCedula").val(),
 		};
 
-		console.log(dataString);
-
 		$.ajax({
 			type: 'POST',
 			url: '/desaparecido/store_informante',
 			data: dataString,
 			dataType: 'json',
-			success: function(data) {						
-				console.log(data);
-				/*if (data.estatus) {
-					modal.modal('hide');
-					messageToastr(data.tipo, data.mensaje);
-					table.bootstrapTable('refresh');
-				} else {
-					messageToastr(data.tipo, data.mensaje);
-					validarDatos(data.errors);
-				}*/
-												
+			success: function(data) {
+				$('#tableInformantes').bootstrapTable('refresh');							
 			},
 			error: function(data) {
 				console.log(data);

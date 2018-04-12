@@ -15,8 +15,18 @@ Route::get('/', function () {
     return view('inicio');
 
 });
+
+Route::get('consultas/get_informantes/{idCedula}', 'ConsultasController@jsonInformantes')
+	->name('consultas.get_informantes');
+Route::resource('consultas','ConsultasController');
+
+
+Route::get('/consulta/informantes/{idCedula}', 'DesaparecidoController@jsonInformantes')
+	->name('consulta.get_informantes');
+
 Route::get('/desaparecido/edad/{fecha_nacimiento}', 'DesaparecidoController@getEdad');
 Route::get('/desaparecido/informante/{idCedula}', 'DesaparecidoController@show_informante');
+Route::get('/desaparecido/desaparecido', 'DesaparecidoController@show_desaparecido');
 
 Route::post('/desaparecido/getpersona', 'DesaparecidoController@getPersona')
 	->name('desaparecido.getpersona');
