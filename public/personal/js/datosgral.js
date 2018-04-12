@@ -506,7 +506,9 @@ $(document).ready(function(){
 		$("#formInformante").toggle('slow');
    });
 
-  
+  $('#nuevaPrenda').click(function(e){
+			alert("Hola");
+		})
 
 });
 
