@@ -39,7 +39,7 @@ class CreateDesaparecidosCedulaInvestigacionTable extends Migration
             $table->integer('idCalzadotipo')->unsigned()->nullable();           
             $table->foreign('idCalzadotipo')->references('id')->on('cat_calzado_tipo');
             $table->integer('idCalzadocolor')->unsigned()->nullable();           
-            $table->foreign('idCalzadocolor')->references('id')->on('cat_calzado_color');
+            $table->foreign('idCalzadocolor')->references('id')->on('cat_colores');
             $table->integer('idCalzadomarca')->unsigned()->nullable();           
             $table->foreign('idCalzadomarca')->references('id')->on('cat_calzado_marca');
             $table->integer('idComplexion')->unsigned()->nullable();           
