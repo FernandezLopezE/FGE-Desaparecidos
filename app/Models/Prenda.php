@@ -12,6 +12,7 @@ class Prenda extends Model
 	    'tipo',
 	    'material',
 	    'color',
+	    'otroColor',
 	    'dibujoBordadoFranja',
 	    'marcaOrigen',
 	    'talla',
