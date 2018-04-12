@@ -64,24 +64,14 @@ $(document).ready(function(){
 			idCedula: $("#idCedula").val(),
 		};
 
-		console.log(dataString);
-
 		$.ajax({
 			type: 'POST',
 			url: '/desaparecido/store_informante',
 			data: dataString,
 			dataType: 'json',
-			success: function(data) {						
-				console.log(data);
-				/*if (data.estatus) {
-					modal.modal('hide');
-					messageToastr(data.tipo, data.mensaje);
-					table.bootstrapTable('refresh');
-				} else {
-					messageToastr(data.tipo, data.mensaje);
-					validarDatos(data.errors);
-				}*/
-												
+			success: function(data) {
+				$('#modalGeneral').modal('hide');
+				$('#tableInformantes').bootstrapTable('refresh');							
 			},
 			error: function(data) {
 				console.log(data);
@@ -406,21 +396,21 @@ $(document).ready(function(){
 			width : "100%",
 		});
 
-		$('#idEstado').select2({
+		/*$('#idEstado').select2({
 			width : "100%",
-		});
+		});*/
 
-		$('#idMunicipio').select2({
+		/*$('#idMunicipio').select2({
 			width : "100%",
-		});
+		});*/
 
-		$('#idLocalidad').select2({
+		/*$('#idLocalidad').select2({
 			width : "100%",
-		});
+		});*/
 
-		$('#idColonia').select2({
+		/*$('#idColonia').select2({
 			width : "100%",
-		});
+		});*/
 
 	function validaNumericos(event) {
 		if(event.charCode >= 48 && event.charCode <= 57){

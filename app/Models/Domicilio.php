@@ -20,9 +20,9 @@ class Domicilio extends Model
 			'idDesaparecido'
 	];
 
-	protected $casts = [
+	/*protected $casts = [
 		'telefono' => 'array',
-	];
+	];*/
 
 	public function desaparecido()
 	{
