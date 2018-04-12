@@ -22,11 +22,14 @@
 				<table id="tableInformantes" ></table>
 			@include('includes.modal')
 
+
 		</div>
 		</div>
 
+
 		
 	{!! Form::submit('Atras', ['class' => 'btn btn-large btn-primary openbutton']); !!}
+
 
 	<a href="/desaparecido/desaparecido" class='btn btn-large btn-primary openbutton'>Siguiente</a>
 {!! Form::close() !!}
