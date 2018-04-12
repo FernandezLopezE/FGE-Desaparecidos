@@ -1,0 +1,50 @@
+/***********************************************************
+					DATOS DE LA VESTIMENTA
+	***********************************************************/
+	$('#btnAddPrenda').click (function(){
+		alert("hola");
+		var dataString = {
+			prendaTipo: $('#idVestimenta').val(),
+			idTipo: $('#idTipo').val(),
+			calzadoTalla: $('#calzadoTalla').val(),
+			idColor: $('#idColor').val(),
+			idMarca: $('#idMarca').val(),
+			descripcionVestimenta: $('#descripcionVestimenta').val(),
+			accesoriosObjetos: $('#accesoriosObjetos').val(),
+
+			nombrePrenda: $('#nombrePrenda').val(),
+			prendaMaterial: $('#prendaMaterial').val(),
+			prendaColor: $('#prendaColor').val(),
+			prendaDibujoBordadoFranjas: $('#prendaDibujoBordadoFranjas').val(),
+			prendaMarcaOrigen: $('#prendaMarcaOrigen').val(),
+			prendaTalla: $('#prendaTalla').val(),
+			idCedula: $("#idCedula").val()
+
+
+		};
+
+		console.log(dataString);
+		$.ajax({
+			type: 'POST',
+			url: '/desaparecido/store_vestimenta',
+			data: dataString,
+			dataType: 'json',
+			success: function(data) {						
+				console.log(data);
+				/*if (data.estatus) {
+					modal.modal('hide');
+					messageToastr(data.tipo, data.mensaje);
+					table.bootstrapTable('refresh');
+				} else {
+					messageToastr(data.tipo, data.mensaje);
+					validarDatos(data.errors);
+				}*/
+												
+			},
+			error: function(data) {
+				console.log(data);
+			}
+		});
+
+
+	})

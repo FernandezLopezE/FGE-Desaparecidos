@@ -27,6 +27,8 @@
 		{!! Form::submit('Agregar datos', ['class' => 'btn btn-large btn-primary openbutton']); !!}
 	{!! Form::close() !!}
 
+	
+
 @endsection
 
 

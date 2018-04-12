@@ -24,7 +24,12 @@
     <link rel="stylesheet" href="{{ asset('css/cssfonts.css') }}">
     <link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
     <link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/theme-jquery-validation.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/theme-jquery-validation.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/datatables/adminlte.min.css') }}">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="{{ asset('plugins/bootstrap_table/bootstrap-table.min.css') }}">
+
         {!! Html::style('') !!}
     @yield('css')
 </head>
@@ -114,6 +119,13 @@
     <script src="{{ asset('admin/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
     <!-- ChartJS 1.0.1 -->
     <script src="{{ asset('admin/plugins/chartjs/Chart.min.js') }}"></script>
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="{{ asset('plugins/bootstrap_table/bootstrap-table.min.js') }}"></script>   
+
+    <!-- Latest compiled and minified Locales -->
+    <script src="{{ asset('plugins/bootstrap_table/locale/bootstrap-table-es-MX.min.js') }}"></script>
+                        
 
     <!-- PAGE SCRIPTS -->
     <!--<script src="{{ asset('admin/dist/js/pages/dashboard2.js') }}"></script>-->
