@@ -1,5 +1,14 @@
 @extends('layouts.app_uipj')
 
+@section('css')
+<style type="text/css">
+	.modal-lg {
+		max-width: 80%;
+	}
+</style>
+	
+@endsection
+
 @section('content')
 
 {!! Form::model($desaparecido, ['action' => 'DesaparecidoController@store_informante']) !!}
@@ -12,7 +21,7 @@
 					<div class="col-lg-12">
 						<h5 class="card-title">
 							DATOS DE LOS INFORMANTES
-							<button type="button" class="btn btn-dark pull-right"  id="nuevoInformante" data-toggle="modal" data-target="modal"><i class="fa fa-plus"></i> AGREGAR PERSONA</button>
+							<button type="button" class="btn btn-dark pull-right"  id="nuevoInformante"><i class="fa fa-plus"></i> AGREGAR PERSONA</button>
 
 						</h5>
 					</div>	
@@ -47,6 +56,10 @@
 			
 			return [btn].join('');
 		};
+
+		$('#nuevoInformante').click(function(e){
+			$('#modalGeneral').modal('show');
+		})
 
 
 		table.bootstrapTable({				

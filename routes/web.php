@@ -26,7 +26,10 @@ Route::get('/consulta/informantes/{idCedula}', 'DesaparecidoController@jsonInfor
 
 Route::get('/desaparecido/edad/{fecha_nacimiento}', 'DesaparecidoController@getEdad');
 Route::get('/desaparecido/informante/{idCedula}', 'DesaparecidoController@show_informante');
+
 Route::get('/desaparecido/desaparecido', 'DesaparecidoController@show_desaparecido');
+Route::get('/desaparecido/vestimenta', 'DesaparecidoController@show_vestimenta');
+
 
 Route::post('/desaparecido/getpersona', 'DesaparecidoController@getPersona')
 	->name('desaparecido.getpersona');

@@ -148,7 +148,7 @@
                 <!-- Fin del Contenido del formulario-->
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="guardarInfo">GUARDAR</button>
+                <button type="button" class="btn btn-success" id="btnAdddInformante">GUARDAR</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
               </div>
             </div>

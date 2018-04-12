@@ -70,6 +70,7 @@ $(document).ready(function(){
 			data: dataString,
 			dataType: 'json',
 			success: function(data) {
+				$('#modalGeneral').modal('hide');
 				$('#tableInformantes').bootstrapTable('refresh');							
 			},
 			error: function(data) {
@@ -395,21 +396,21 @@ $(document).ready(function(){
 			width : "100%",
 		});
 
-		$('#idEstado').select2({
+		/*$('#idEstado').select2({
 			width : "100%",
-		});
+		});*/
 
-		$('#idMunicipio').select2({
+		/*$('#idMunicipio').select2({
 			width : "100%",
-		});
+		});*/
 
-		$('#idLocalidad').select2({
+		/*$('#idLocalidad').select2({
 			width : "100%",
-		});
+		});*/
 
-		$('#idColonia').select2({
+		/*$('#idColonia').select2({
 			width : "100%",
-		});
+		});*/
 
 	function validaNumericos(event) {
 		if(event.charCode >= 48 && event.charCode <= 57){

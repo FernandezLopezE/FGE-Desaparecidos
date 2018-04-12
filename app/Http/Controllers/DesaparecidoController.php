@@ -321,6 +321,68 @@ class DesaparecidoController extends Controller
 					]);
 	}
 
+	public function show_vestimenta(){
+		
+		$parentescos = \App\Models\CatParentesco::all()->pluck('nombre','id');
+		$estados 			= \App\Models\CatEstado::all()->pluck('nombre','id');
+		$estados 			= \App\Models\CatEstado::all()->pluck('nombre','id');
+		$municipios 		= \App\Models\CatMunicipio::limit(10)->pluck('nombre','id');
+		$localidades 		= \App\Models\CatLocalidad::limit(10)->pluck('nombre','id');
+		$colonias 			= \App\Models\CatColonia::limit(10)->pluck('nombre','id');
+		$codigos 			= \App\Models\CatColonia::limit(10)->pluck('codigoPostal','id');
+
+		$vestimenta= array(
+			'1' => 'CIVIL', 
+			'2' => 'FORMAL',
+			'3' => 'INFORMAL',
+			'4' => 'DEPORTIVO',
+			'5' => 'UNIFORME',
+			'6' => 'MARINA',
+			'7' => 'ESCOLAR',
+			'8' => 'BEBÉ',
+			'9' => 'SIN INFORMACION'
+		);
+		$accesoriosObjetos= array(
+			'ANTEOJOS' => 'ANTEOJOS', 
+			'BASTON' => 'BASTÓN',
+			'ANILLOS' => 'ANILLOS',
+			'MEDALLAS' => 'MEDALLAS',
+			'CREDENCIALES' => 'CREDENCIALES',
+			'CINTURON' => 'CINTURÓN',
+			'RELOJ' => 'RELOJ',
+			'COLLARES' => 'COLLARES',
+			'PULSERAS' => 'PULSERAS',
+			'CELULAR' => 'CELULAR', 
+			'SOMBRERO' => 'SOMBRERO',
+			'BOLSA' => 'BOLSA',
+			'CADENAS' => 'CADENAS',
+			'CARTERA' => 'CARTERA',
+			'TARJETADECREDITO' => 'TARJETA DE CREDITO',
+			'OTRO' => 'OTRO'			
+		);
+		
+		$tiposCalzados		= \App\Models\CatTiposCalzados::all()->pluck('nombre','id');
+		$marcasCalzados		= \App\Models\CatMarcasCalzados::all()->pluck('nombre','id');
+		$colores = \App\Models\CatCalzadoColor::all()->pluck('nombre','id');		
+
+		return view('desaparecidos.form_desaparicion',
+			[
+				'parentescos' => $parentescos,
+				'estados' => $estados,
+				'municipios' => $municipios,				
+				'localidades' => $localidades,
+				'colonias' => $localidades,
+				'codigos' => $codigos,
+				'vestimenta' => $vestimenta,
+				'tiposCalzados' => $tiposCalzados,
+				'marcasCalzados' => $marcasCalzados, 
+				'accesoriosObjetos' => $accesoriosObjetos, 
+				'colores' =>$colores,
+
+
+			]);		
+	}
+
 	public function store(Request $request)
 	{		
 

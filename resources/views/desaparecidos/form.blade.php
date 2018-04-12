@@ -30,6 +30,7 @@
 
 		@include('desaparecidos.domicilio')
 		{!! Form::submit('Agregar datos', ['class' => 'btn btn-large btn-primary openbutton']); !!}
+		<a href="/desaparecido/vestimenta" class='btn btn-large btn-primary openbutton'>Siguiente</a>
 	{!! Form::close() !!}
 
 @endsection
