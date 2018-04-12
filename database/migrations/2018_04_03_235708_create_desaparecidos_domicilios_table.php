@@ -15,11 +15,11 @@ class CreateDesaparecidosDomiciliosTable extends Migration
     {
         Schema::create('desaparecidos_domicilios', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('tipoDireccion', ['Personal','Trabajo']); 
+            $table->enum('tipoDireccion', ['PERSONAL','TRABAJO', 'FAMILIAR']); 
             $table->string('calle', 100)->default("SIN INFORMACION");
             $table->string('numExterno', 10)->default('S/N');
             $table->string('numInterno', 10)->nullable();
-            $table->string('telefono', 30)->default('S/N');
+            $table->json('telefono')->nullable();
 
             $table->integer('idEstado')->unsigned()->default(30);
             $table->foreign('idEstado')->references('id')->on('cat_estado')->onDelete('cascade');            

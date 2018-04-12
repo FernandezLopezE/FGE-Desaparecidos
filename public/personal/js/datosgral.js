@@ -64,24 +64,13 @@ $(document).ready(function(){
 			idCedula: $("#idCedula").val(),
 		};
 
-		console.log(dataString);
-
 		$.ajax({
 			type: 'POST',
 			url: '/desaparecido/store_informante',
 			data: dataString,
 			dataType: 'json',
-			success: function(data) {						
-				console.log(data);
-				/*if (data.estatus) {
-					modal.modal('hide');
-					messageToastr(data.tipo, data.mensaje);
-					table.bootstrapTable('refresh');
-				} else {
-					messageToastr(data.tipo, data.mensaje);
-					validarDatos(data.errors);
-				}*/
-												
+			success: function(data) {
+				$('#tableInformantes').bootstrapTable('refresh');							
 			},
 			error: function(data) {
 				console.log(data);
@@ -406,6 +395,22 @@ $(document).ready(function(){
 			width : "100%",
 		});
 
+		$('#idEstado').select2({
+			width : "100%",
+		});
+
+		$('#idMunicipio').select2({
+			width : "100%",
+		});
+
+		$('#idLocalidad').select2({
+			width : "100%",
+		});
+
+		$('#idColonia').select2({
+			width : "100%",
+		});
+
 	function validaNumericos(event) {
 		if(event.charCode >= 48 && event.charCode <= 57){
 		  return true;
@@ -447,7 +452,7 @@ $(document).ready(function(){
 		f = $('#informanteidParentesco').val();
 		console.log("El parentesoc es: "+f);
 
-		if (f=='OTRO') {
+		if (f==14) {
 			$("#otro_parent").show();
 		}else{
 			$("#otro_parent").hide();
@@ -457,12 +462,12 @@ $(document).ready(function(){
 	$('#informanteidDocumentoIdentidad').change(function(){
 		h = $('#informanteidDocumentoIdentidad').val();
 		
-		if (h=='Otro(especifique)') {
+		if (h==7) {
 			$("#otro_doc").show();
 		}else{
 			$("#otro_doc").hide();
 		}
-	});
+	})
 
   
 
@@ -494,21 +499,6 @@ $(document).ready(function(){
 		   });
 	   }
    });
-
-	$("#probar").click(function() {  
-		if($("#informante").is(':checked')) {  
-			alert("Está activado");  
-		} else {  
-			alert("No está activado");  
-		}  
-	});  
-
-
-   $("#probar").click(function(){
-	$.get("datos.php", function(data, status){
-		alert("Data: " + data + "\nStatus: " + status);
-	});
-	});
 
    //Mostrar - ocultar form
    $("#nuevoInformante").click(function() {
