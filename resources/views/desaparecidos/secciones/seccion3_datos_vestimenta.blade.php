@@ -15,6 +15,7 @@
 	</div>
 	<div class="card-body">	
 	@include('includes.modalVestimenta')
+	<table id="tableInformantes" ></table>
 	</div>
 </div>
 
@@ -23,12 +24,14 @@
 	$(document).ready(function(){
 		var otroC;
 		var otraP;
+		var tipoV;
+		var tipoCal;
 		$('#nuevaPrenda').click(function(e){
 			$('#modalVestimenta').modal('show');
 		});
 
-		$("#idColor").change(function() {
-			otroC = $('#idColor').val();
+		$("#prendaColor").change(function() {
+			otroC = $('#prendaColor').val();
 			//alert(otroC);
 
 			if (otroC==14) {
@@ -38,8 +41,8 @@
 			}
 		});
 
-		$("#idColor2").change(function() {
-			otroCo = $('#idColor2').val();
+		$("#idColor").change(function() {
+			otroCo = $('#idColor').val();
 			//alert(otroC);
 
 			if (otroCo==14) {
@@ -56,6 +59,25 @@
 				$("#otraPrenda").show();
 			}else{
 				$("#otraPrenda").hide();
+			}
+		});
+
+		$("#idVestimenta").change(function() {
+			tipoV = $('#idVestimenta').val();
+
+			if (tipoV==9) {
+				$("#FormularioVestimenta").hide();
+			}else{
+				$("#FormularioVestimenta").show();
+			}
+		});
+
+		$("#idTipo").change(function() {
+			tipoCal = $('#idTipo').val();
+			if (tipoCal==1) {
+				$("#FormularioCalzado").hide();
+			}else{
+				$("#FormularioCalzado").show();
 			}
 		});
 

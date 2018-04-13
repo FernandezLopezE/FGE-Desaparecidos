@@ -15,12 +15,12 @@
               {!! Form::label ('elijaVestimenta','Tipo de vestimenta:') !!}
               {!! Form::select('idVestimenta[]', $vestimenta, null, ['class' => 'form-control' ,'id'=>'idVestimenta']) !!}
             </div>
-          </div><br>
-
+          </div><hr>
+          <div id="FormularioVestimenta" style="display:none">
           <div class="row">
             <div class="col-4">
               {!! Form::label ('nombrePrenda','Nombre de la prenda:') !!}
-              {!! Form::text ('prendaTipo',old('Nombre de la prenda'), ['class' => 'form-control mayuscula', 'id' => 'prendaTipo', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese la prenda', 'placeholder' => 'Nombre de la prenda'] )!!}
+              {!! Form::text ('nombrePrenda',old('Nombre de la prenda'), ['class' => 'form-control mayuscula', 'id' => 'nombrePrenda', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese la prenda', 'placeholder' => 'Nombre de la prenda'] )!!}
             </div>
             <div class="col-4">
               {!! Form::label ('nombreMaterial','Material:') !!}
@@ -28,7 +28,7 @@
             </div>
             <div class="col-4">
               {!! Form::label ('nombreColor','Color:') !!}
-              {!! Form::select ('idColor[]',$colores,'', ['class' => 'form-control', 'id' => 'idColor' ] )!!}
+              {!! Form::select ('prendaColor[]',$colores,'', ['class' => 'form-control', 'id' => 'prendaColor' ] )!!}
             </div>
           </div>
 
@@ -53,18 +53,19 @@
             {!! Form::text ('prendaTalla',old('Talla'), ['class' => 'form-control mayuscula', 'id' => 'prendaTalla', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese la talla', 'placeholder' => 'Talla'] )!!}
           </div>
          </div><hr>
-
+        </div>
           <div class="row">
             <div class="col">
               {!! Form::label ('elijaCalzado','Tipo de calzado:') !!}
              {!! Form::select ('idTipo[]',$tiposCalzados,'', ['class' => 'form-control js-example-responsive', 'id' => 'idTipo'] )!!}
             </div>
-          </div><br>        
+          </div><hr>        
         
+          <div id="FormularioCalzado" style="display:none">
           <div class="row">
             <div class="col">
               {!! Form::label ('idColor','Color:') !!}
-              {!! Form::select ('idColor[]',$colores,'', ['class' => 'form-control', 'id' => 'idColor2' ] )!!}
+              {!! Form::select ('idColor[]',$colores,'', ['class' => 'form-control', 'id' => 'idColor' ] )!!}
             </div>
             <div class="col" style="display:none" id="otroColor2">
               {!! Form::label ('otroColor','Otro:') !!}
@@ -84,8 +85,9 @@
             </div>
             <div class="col-lg-2">
               {!! Form::label ('calzadoTalla','Talla:') !!}
-              {!! Form::text ('prendaTipo',old('Nombre de la prenda'),['class' => 'form-control mayuscula','id' => 'prendaTipo','data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese la prenda'] )!!}
+              {!! Form::text ('prendaTipo',old('Nombre de la prenda'),['class' => 'form-control mayuscula','id' => 'calzadoTalla','data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese la prenda'] )!!}
             </div>
+          </div>
           </div>
 
           <div class="row">
@@ -93,7 +95,7 @@
               {!! Form::label ('elijaAccesoriosObjetos','Elija los accesorios y objetos que tenía el desaparecido:') !!}
               {!! Form::select('accesoriosObjetos[]', $accesoriosObjetos, null, ['class' => 'form-control', 'multiple' => 'multiple' ,'id'=>'accesoriosObjetos']) !!}
             </div>
-          </div>
+          </div><hr>
 
           <div class="row">
             <div class="col">
@@ -101,6 +103,7 @@
               {!! Form::textarea  ('descripcionVestimenta',old('Descripción vestimenta'), ['class' => 'form-control mayuscula', 'id' => 'descripcionVestimenta','size' => '30x4', 'data-validation' =>'required','data-validation-error-msg-required' =>'Ingrese las observaciones de la vestimenta'])!!}
             </div>
           </div>
+
           <!-- Fin del Contenido del formulario-->
         </div>
         <div class="modal-footer">
