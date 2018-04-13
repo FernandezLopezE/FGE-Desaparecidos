@@ -98,6 +98,9 @@ class DesaparecidoController extends Controller
 		$localidades = array();
 		$colonias = array();
 		$codigos = array();
+		$tiposDireccion = array('PERSONAL' => 'PERSONAL',
+								'TRABAJO' => 'TRABAJO',
+								'FAMILIAR' => 'FAMILIAR');		
 
 		$informantes = Desaparecido::where('tipoPersona', 'INFORMANTE')->get();
 
@@ -113,14 +116,13 @@ class DesaparecidoController extends Controller
 											'localidades',
 											'colonias',
 											'informantes',
-											'codigos'
+											'codigos',
+											'tiposDireccion'
 										));			
 	}
 
 	public function store_informante(Request $request)
-	{		
-
-	
+	{	
 		$persona = Persona::create([
 			'nombres' 			=> $request->input('nombre'),
 			'primerAp' 			=> $request->input('primerAp'),
@@ -130,13 +132,16 @@ class DesaparecidoController extends Controller
 
 		
 		$desaparecido = Desaparecido::create([
-			'idPersona' 		=> $persona->id,
-			'idCedula'			=> $request->input('idCedula'),			
-			'otroDocIdentidad'	=> $request->input('otroDocumento'),
-			'numDocIdentidad'	=> $request->input('numDocIdenti'),
-			'correoElectronico'	=> $request->input('email'),
-			'informante'		=> $request->has('informante'),
-			'notificaciones'	=> $request->has('autorizado'),
+			'idPersona' 			=> $persona->id,
+			'idCedula'				=> $request->input('idCedula'),
+			'idParentesco'			=> $request->input('idParentesco'),
+			'idDocumentoIdentidad'	=> $request->input('idDocumentoIdentidad'),	
+			'otroDocIdentidad'		=> $request->input('otroDocumento'),
+			'numDocIdentidad'		=> $request->input('numDocIdentidad'),
+			'correoElectronico'		=> $request->input('correoElectronico'),
+			'informante'			=> $request->has('informante'),
+			'notificaciones'		=> $request->has('autorizado'),
+			'tipoPersona'			=> 'INFORMANTE',
 		]);
 
 		
@@ -165,39 +170,10 @@ class DesaparecidoController extends Controller
 		
 		return response()->json($data);
 
-
-
-		/*'parentesco'	 		=> $request->input('parentesco'),
-		'otroParentesco' 	=> $request->input('otroParentesco'),
-		'idDocumentoIdentidad' 			=> $request->input('documento'),
-		'otroDocumento' 		=> $request->input('otroDocumento'),
-		'numDocIdenti' 			=> $request->input('numDocIdenti'),
-		
-		'autorizado' 			=> $request->input('autorizado'),
-		'informante' 		=> $request->input('informante'),
-		'correoElectronico' 	=> $request->input('email'),
-		
-
-		'tipoDirec' 			=> $request->input('tipoDirec'),
-		'calle' 				=> $request->input('calle'),
-		'numExt' 				=> $request->input('numExt'),
-		'numInt' 				=> $request->input('numInt'),		
-		'idEstado' 				=> $request->input('estado'),
-		'idMunicipio' 			=> $request->input('municipio'),		
-		'idLocalidad' 			=> $request->input('localidad'),
-		'idColonia' 			=> $request->input('colonia'),
-		'idCodigoPostal' 		=> $request->input('cp'),		
-		'telefono' 				=> $request->input('telefono'),
-		'ext' 					=> $request->input('ext'),
-		'lada' 					=> $request->input('lada'),*/
-		
-
-
-
-		return response()->json($request->toArray());
+		//return response()->json($request->toArray());
 	}
 
-	public function show_desaparecido()
+	public function show_desaparecido($idCedula)
 	{
 		$desaparecido = new Desaparecido;
 		$identificacion = array(
@@ -319,6 +295,32 @@ class DesaparecidoController extends Controller
 						'parentescos' => $parentescos,
 						'dialectos' =>$dialectos
 					]);
+	}
+
+	public function show_desaparecido_domicilio($idCedula)
+	{
+		$cedula = Cedula::find($idCedula);
+		return view('desaparecidos.form_desaparecido_domicilio', compact('cedula'));		
+	}
+
+	public function store_desaparecido_domicilio(Request $request){
+
+		$domicilio = Domicilio::create([
+			'idDesaparecido' 	=> $desaparecido->id,
+			'tipoDireccion'		=> $request->input('tipoDireccionc'),
+			'calle'				=> $request->input('calle'),
+			'numExterno'		=> $request->input('numExterno'),
+			'numInterno'		=> $request->input('numInterno'),
+			'idEstado'			=> $request->input('idEstado'),
+			'idMunicipio'		=> $request->input('idMunicipio'),
+			'idLocalidad'		=> $request->input('idLocalidad'),
+			'idColonia'			=> $request->input('idColonia'),
+			'idCodigoPostal'	=> $request->input('idCodigoPostal'),
+			'telefono'			=> $request->input('telefono'),
+		]);
+
+		return response()->json($domicilio);
+
 	}
 
 	public function show_vestimenta(){
