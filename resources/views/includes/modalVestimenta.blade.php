@@ -10,6 +10,7 @@
         </div>
         <div class="modal-body">
           <!-- Contenido del formulario-->
+          {{ Form::hidden('idCedula', $id, array('id' => 'idCedula')) }}
           <div class="row">
             <div class="col">
               {!! Form::label ('elijaVestimenta','Tipo de vestimenta:') !!}
