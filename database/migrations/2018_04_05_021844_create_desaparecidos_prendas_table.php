@@ -17,11 +17,14 @@ class CreateDesaparecidosPrendasTable extends Migration
             $table->increments('id');
             $table->string('tipo',50);
             $table->string('material',50);
-            $table->string('color',50);
+            //$table->string('color',50);
+            $table->string('otroColor')->nullable();
             $table->string('dibujoBordadoFranja',50);
             $table->string('marcaOrigen',50);
             $table->string('talla',50);
 
+            $table->integer('color')->unsigned();
+            $table->foreign('color')->references('id')->on('cat_colores');
             $table->integer('idCedula')->unsigned();
             $table->foreign('idCedula')->references('id')->on('desaparecidos_cedula_investigacion');
 
