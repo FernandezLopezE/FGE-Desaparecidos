@@ -246,7 +246,7 @@
 			'click #editInformante': function (e, value, row, index) {					
 				console.log(row);
 				bodyModal.empty();
-
+				$('#informanteNombres').val(row.nombre);
 				var dataCampos = [
 					{campo:'input',idCampo:'informanteNombres',nameCampo:'Nombre(s):',typeCampo:'text',valorCampo:row.nombres ,placeholder:'Ingresa nombres',newClass:'mayuscula',divSize:'4',datos:''},
 					{campo:'input',idCampo:'informantePrimerAp',nameCampo:'Primer apellido:',typeCampo:'text',valorCampo:row.primerAp ,placeholder:'Ingresa el primer apellido',newClass:'mayuscula',divSize:'4',datos:''},
@@ -381,7 +381,7 @@
 
 
 		table.bootstrapTable({				
-			url: routeIndex+'/get_informantes/1',
+			url: routeIndex+'/get_informantes/{!! $cedula->id !!}',
 			columns: [{					
 				field: 'nombres',
 				title: 'Nombres',

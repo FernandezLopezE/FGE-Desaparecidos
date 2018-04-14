@@ -307,9 +307,13 @@ class DesaparecidoController extends Controller
 				$embarazo		= ($request->input('sexo')=='FEMENINO') ? $request->input('embarazo') : 'NO';
 				$numGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('numGestacion') : null;
 				$tipoGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('tipoGestacion') : null;
-				$rumoresBebe	= ($request->input('embarazo') == 'SI') ? $request->input('rumoresBebe') : null;
+				$rumoresBebe	= ($request->input('embarazo') == 'SI') ? $request->input('rumoresBebe') : 'NO';
 				$pormenores		= ($request->input('rumoresBebe') == 'SI') ? $request->input('pormenores') : null;
-
+				
+				$fecha = Carbon::parse($request->input('fechaNacimiento'));
+        		$edad = Carbon::createFromDate($fecha->year, $fecha->day, $fecha->month)
+        					->diff(Carbon::now())->format('%y años, %m meses y %d dias');
+			
 			$desaparecido = Desaparecido::create([
 				'idCedula'					=> $request->input('idCedula'),
 				'idPersona' 				=> $persona->id,
