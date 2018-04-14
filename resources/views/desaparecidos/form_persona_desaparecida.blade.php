@@ -133,7 +133,7 @@
 					<div class="row"  id="datosEmbarazo" style="display:none">
 						<div class="col">
 							{!! Form::label ('numGestacion','Cantidad:') !!}
-							{!! Form::text ('numGestacion',old('gestacionSemanas'), ['class' => 'form-control mayuscula', 'id' => 'NumGestacion'] )!!}
+							{!! Form::number ('numGestacion',old('gestacionSemanas'), ['class' => 'form-control mayuscula', 'id' => 'NumGestacion', 'min'=>"0" ,'max'=>"36"] )!!}
           				</div>
 						<div class="col">
 							{!! Form::label ('tipoGestacion','Periodo:') !!}
@@ -168,4 +168,18 @@
 
 @section('scripts')
 {!! HTML::script('personal/js/funciones_generales.js') !!}
+<script type="text/javascript">
+	
+$('#identificacion').change(function() {
+		f = $('#identificacion').val();
+		console.log("El parentesoc es: "+f);
+
+		if (f==7) {
+			$("#otraIdDIV").show();
+		}else{
+			$("#otraIdDIV").hide();
+		}
+	});
+
+</script>
 @endsection
