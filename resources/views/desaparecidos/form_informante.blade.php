@@ -62,14 +62,14 @@
 			bodyModal.empty();
 
 			var dataCampos = [
-				{campo:'input',idCampo:'informanteNombres',nameCampo:'Nombre(s):',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese nombres',newClass:'mayuscula',divSize:'4',datos:''},
-				{campo:'input',idCampo:'informantePrimerAp',nameCampo:'Primer apellido:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese el primer apellido',newClass:'mayuscula',divSize:'4',datos:''},
-				{campo:'input',idCampo:'informanteSegundoAp',nameCampo:'Segundo apellido:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese el segundo apellido',newClass:'mayuscula',divSize:'4',datos:''},
+				{campo:'input',idCampo:'informanteNombres',nameCampo:'Nombre(s):',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese nombres',newClass:'mayuscula sinNumeros',divSize:'4',datos:''},
+				{campo:'input',idCampo:'informantePrimerAp',nameCampo:'Primer apellido:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese el primer apellido',newClass:'mayuscula sinNumeros',divSize:'4',datos:''},
+				{campo:'input',idCampo:'informanteSegundoAp',nameCampo:'Segundo apellido:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese el segundo apellido',newClass:'mayuscula sinNumeros',divSize:'4',datos:''},
 				{campo:'select',idCampo:'idParentesco',nameCampo:'Parentesco:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
-				{campo:'input',idCampo:'informanteOtroParentesco',nameCampo:'Especifique:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese otro parentesco',newClass:'mayuscula',divSize:'4',datos:''},
+				{campo:'input',idCampo:'informanteOtroParentesco',nameCampo:'Especifique:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese otro parentesco',newClass:'mayuscula sinNumeros',divSize:'4',datos:''},
 				{campo:'select',idCampo:'idNacionalidad',nameCampo:'Nacionalidad:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
 				{campo:'select',idCampo:'idDocumentoIdentidad',nameCampo:'Identificación:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
-				{campo:'input',idCampo:'otroDocIdentidad',nameCampo:'Especifique:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese otro tipo de documento',newClass:'mayuscula',divSize:'4',datos:''},
+				{campo:'input',idCampo:'otroDocIdentidad',nameCampo:'Especifique:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese otro tipo de documento',newClass:'mayuscula sinNumeros',divSize:'4',datos:''},
 				{campo:'input',idCampo:'numDocIdentidad',nameCampo:'Número de identificación:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese número de documento',newClass:'mayuscula',divSize:'4',datos:''},
 				{campo:'select',idCampo:'informanteTipoDireccion',nameCampo:'Tipo de dirección:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
 				{campo:'input',idCampo:'informanteCalle',nameCampo:'Calle:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese el nombre de la calle',newClass:'mayuscula',divSize:'4',datos:''},
@@ -84,7 +84,7 @@
 				{campo:'select',idCampo:'lada',nameCampo:'Lada:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
 				{campo:'input',idCampo:'informanteTelefonos',nameCampo:'Número:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
 				{campo:'input',idCampo:'ext',nameCampo:'Ext:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
-				{campo:'input',idCampo:'correoElectronico',nameCampo:'Correo electrónico:',typeCampo:'text',valorCampo:'' ,placeholder:'ejemplo@email.com',newClass:'mayuscula',divSize:'4',datos:''},
+				{campo:'input',idCampo:'correoElectronico',nameCampo:'Correo electrónico:',typeCampo:'text',valorCampo:'' ,placeholder:'ejemplo@email.com',newClass:'mayuscula email',divSize:'4',datos:''},
 				{campo:'input',idCampo:'informante',nameCampo:'SÓLO INFORMANTE:',typeCampo:'checkbox',valorCampo:'' ,placeholder:'',newClass:'',divSize:'4',datos:''},
 				{campo:'input',idCampo:'notificaciones',nameCampo:'AUTORIZADA PARA DAR, OIR Y RECIBIR INFORMES:',typeCampo:'checkbox',valorCampo:'' ,placeholder:'',newClass:'',divSize:'4',datos:''},
 			];			
