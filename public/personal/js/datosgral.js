@@ -4,12 +4,52 @@ $(document).ready(function(){
 	$("body").on('change', '.mayuscula', function(field){		
 		$(this).val($(this).val().toUpperCase());		
 	});
+	//FUNCION PARA QEL SELECT2 POR SI NO ENCUENTRA RESULTADOS
+	$.fn.select2.defaults.set('language', {
+		noResults: function () {
+			return "NO HAY RESULTADO";
+		},
+		searching: function () {
+			return "BUSCANDO";
+		}
+	});
+	///
+	$("body").on('keypress', '.sinNumeros', function(event){		
+		var inputValue = event.which;
+	    // permite letras y espacios solamente.
+	    if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) { 
+	            event.preventDefault(); 
+	        }		
+	});
 
+	$("body").on('keypress', '.sinEnter', function(event){		
+		if(window.event){
+			key = window.event.keyCode; //IE
+		}else{
+			key = e.which; //firefox 
+		}
+		if(key==13){
+			return false;
+		}else{
+			return true;
+		}	
+	});
+
+	$("body").on('focusout', '.email', function(field){		
+		var valor = $(this).val();
+		expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		if (expr.test(valor)){
+   			$(this).css({"border-color":"green"});
+  		} else {
+   			$(this).css({"border-color":"red"});
+  		}
+	});
 
 	/******************************************************
 				DATOS DEL ENTREVISTADOR
 	*******************************************************/ 
 	//Mostrar campos al seleccionar otro dialecto
+	$('#entrevistadorIdioma').select2();
 	$('#entrevistadorIdioma').change(function() {
 
 		e = $('#entrevistadorIdioma').val();
@@ -28,6 +68,31 @@ $(document).ready(function(){
 			$("#divInterpreteOrganizacion").show();
 		}
 	});
+
+	$("#entrevistadorPrimeraVez").change(function(){
+		g = $('#entrevistadorPrimeraVez').val();
+			console.log("Hola: "+g);
+			if (g =='NO'){
+				$("#cuando").show();			
+			} else {
+				$("#cuando").hide();
+			} 
+
+		});
+
+	 $('#fecha_visita').change(function(){  
+		from = $("#fecha_visita").val().split("/");
+		fechaVisita= from[2] + "-" + from[1] + "-" + from[0];
+		fechaEnviada = Date.parse(fechaVisita);
+	   
+		fechaActual= new Date();
+		console.log(fechaEnviada);
+	   
+	   if (fechaEnviada > fechaActual || Number.isNaN(fechaEnviada))
+	   {
+		   $("#fecha_visita").val("");
+	   }
+   });
 
 
 	/***********************************************************
@@ -338,35 +403,6 @@ $(document).ready(function(){
 		
 	})
 
-		$('#idNacionalidad').select2({
-			width : "100%",
-		});
-
-		$('#idNacionalidad').val(1).trigger('change.select2');
-
-		$('#escolaridad').select2({
-			width : "100%",
-		});
-		
-		$('#ocupacion').select2({
-			width : "100%",
-		});
-
-		/*$('#idEstado').select2({
-			width : "100%",
-		});*/
-
-		/*$('#idMunicipio').select2({
-			width : "100%",
-		});*/
-
-		/*$('#idLocalidad').select2({
-			width : "100%",
-		});*/
-
-		/*$('#idColonia').select2({
-			width : "100%",
-		});*/
 
 	function validaNumericos(event) {
 		if(event.charCode >= 48 && event.charCode <= 57){
@@ -377,30 +413,6 @@ $(document).ready(function(){
 		 // va en la vista lo siguiente
 		 // ,onkeypress='return validaNumericos(event)'>= 48 && event.charCode <= 57'
 		}
-
-
-	$("#entrevistadorPrimeraVez").change(function(){
-			g = $('#entrevistadorPrimeraVez').val();
-
-			console.log("Hola: "+g);
-
-			//Mostrar-ocultar formulario para agregar hijos
-
-			if (g =='NO'){
-				$("#cuando").show();
-			
-				
-
-			} else {
-				$("#cuando").hide();
-
-			} 
-
-		});
-
-
-
-
 
 	//Fin de Mostrar campos al seleccionar otro dialecto
 
@@ -454,6 +466,8 @@ $(document).ready(function(){
 		   });
 	   }
    });
+
+  
 
    //Mostrar - ocultar form
    /*$("#").click(function() {
