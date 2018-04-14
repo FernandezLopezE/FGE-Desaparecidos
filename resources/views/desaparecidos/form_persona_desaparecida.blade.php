@@ -128,11 +128,11 @@
 					<div class="row"  id="datosEmbarazo" style="display:none">
 						<div class="col">
 							{!! Form::label ('numGestacion','Cantidad:') !!}
-<<<<<<< HEAD
+
 							{!! Form::number ('numGestacion',old('gestacionSemanas'), ['class' => 'form-control mayuscula', 'id' => 'NumGestacion','min'=>"0" ,'max'=>"36"] )!!}
-=======
+
 							{!! Form::number ('numGestacion',old('gestacionSemanas'), ['class' => 'form-control mayuscula', 'id' => 'NumGestacion', 'min'=>"0" ,'max'=>"36"] )!!}
->>>>>>> fbff6c61c75f30525c5c59245717a7a40e3f31db
+
           				</div>
 						<div class="col">
 							{!! Form::label ('tipoGestacion','Periodo:') !!}
@@ -151,7 +151,11 @@
 					</div>
 				</div>
 			</div>
-			{!! Form::submit('Agregar datos', ['class' => 'btn btn-large btn-primary openbutton']); !!}
+		</br>
+			<p align="right">
+			{!! Form::submit('Agregar datos', ['class' => 'btn btn-large btn-primary openbutton']); !!}	
+			</p>
+			
 		</div>
 	</div>
 
@@ -167,9 +171,9 @@
 
 @section('scripts')
 {!! HTML::script('personal/js/funciones_generales.js') !!}
-<<<<<<< HEAD
+
 {!! HTML::script('personal/js/documentosIdentidad.js') !!}
-=======
+
 <script type="text/javascript">
 	
 $('#identificacion').change(function() {
@@ -184,5 +188,5 @@ $('#identificacion').change(function() {
 	});
 
 </script>
->>>>>>> fbff6c61c75f30525c5c59245717a7a40e3f31db
+
 @endsection
