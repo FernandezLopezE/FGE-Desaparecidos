@@ -109,7 +109,7 @@
 				success: function(data) {
 					console.log(data);
 					//modalGeneral.modal('hide');
-					//table.bootstrapTable('refresh');							
+					//table.bootstrapTable('refresh');
 				},
 				error: function(data) {
 					console.log(data);

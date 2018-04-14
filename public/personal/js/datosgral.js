@@ -429,7 +429,7 @@ $(document).ready(function(){
   
 
 	 $('#fechaNacimiento').change(function(){  
-		from = $("#fechaNacimiento").val().split("-");
+		from = $("#fechaNacimiento").val().split("/");
 		fechaNacimiento = from[2] + "-" + from[1] + "-" + from[0];
 		fechaEnviada = Date.parse(fechaNacimiento);
 	   
@@ -440,11 +440,9 @@ $(document).ready(function(){
 		   $("#fechaNacimiento").val("");
 		   $("#edadExtravio").val("");
 	   }else{
-		   f = $('#fechaNacimiento').val();
-	   console.log('datos fecha: '+f);
 
 	   $.ajax({
-			   url: '/desaparecido/edad/'+f,
+			   url: '/desaparecido/edad/'+fechaNacimiento,
 			   type:"GET",
 			   dataType:"json",
 

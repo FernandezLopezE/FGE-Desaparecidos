@@ -175,15 +175,9 @@ class DesaparecidoController extends Controller
 
 	public function show_desaparecido($idCedula)
 	{
+		$cedula = Cedula::find($idCedula);
 		$desaparecido = new Desaparecido;
-		$identificacion = array(
-			'IFE' => 'IFE',
-			'Cartilla SM' => 'Cartilla SM',
-			'Licencia' => 'Licencia',
-			'Tarjetón' => 'Tarjetón',
-			'Cartilla' => 'Cartilla',
-			'Pasaporte' => 'Pasaporte',
-			'Otro(especifique)' => 'Otro(especifique)');
+
 		$option = array(
 			'0' => 'NO',
 			'1' => 'SI');
@@ -263,14 +257,16 @@ class DesaparecidoController extends Controller
 		$codigos 			= \App\Models\CatColonia::limit(10)->pluck('codigoPostal','id');
 		$tiposCalzados		= \App\Models\CatTiposCalzados::all()->pluck('nombre','id');
 		$marcasCalzados		= \App\Models\CatMarcasCalzados::all()->pluck('nombre','id');
+		$identificaciones	= \App\Models\CatDocumento::all()->pluck('nombre','id');
 
 		$delitos 			= \App\Models\CatDelito::all()->pluck('nombre','id');
 		$centros 			= \App\Models\CatCentroReclusion::all()->pluck('nombre','id');		
 		$edoscivil 			= \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
 
-		return view('desaparecidos.form',
-					[
-						'identificacion' => $identificacion,
+		return view('desaparecidos.form_persona_desaparecida',
+					[						
+						'identificaciones' => $identificaciones,
+						'cedula' => $cedula,
 						'desaparecido' => $desaparecido,
 						'option' => $option,
 						'meses' => $meses,
@@ -297,6 +293,46 @@ class DesaparecidoController extends Controller
 					]);
 	}
 
+	public function store_desaparecido(Request $request) {
+
+		$persona = Persona::create([
+						'nombres' 			=> $request->input('nombres'),
+						'primerAp' 			=> $request->input('primerAp'),
+						'segundoAp'			=> $request->input('segundoAp'),
+						'fechaNacimiento'	=> $request->input('fechaNacimiento'),
+						'sexo' 				=> $request->input('sexo'),
+						'idNacionalidad'	=> $request->input('idNacionalidad'),
+					]);
+		
+				$embarazo		= ($request->input('sexo')=='FEMENINO') ? $request->input('embarazo') : 'NO';
+				$numGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('numGestacion') : null;
+				$tipoGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('tipoGestacion') : null;
+				$rumoresBebe	= ($request->input('embarazo') == 'SI') ? $request->input('rumoresBebe') : null;
+				$pormenores		= ($request->input('rumoresBebe') == 'SI') ? $request->input('pormenores') : null;
+
+			$desaparecido = Desaparecido::create([
+				'idCedula'					=> $request->input('idCedula'),
+				'idPersona' 				=> $persona->id,
+				'apodo' 					=> $request->input('apodo'),
+				'edadAparente' 				=> $request->input('edadAparente'),
+				'edadExtravio' 				=> $edad,
+				'embarazo' 					=> $embarazo,
+				'numGestacion' 				=> $numGestacion,
+				'tipoGestacion' 			=> $tipoGestacion,
+				'rumoresBebe' 				=> $rumoresBebe,
+				'pormenores' 				=> $pormenores,
+				'antecedentesJudiciales' 	=> $request->input('antecedentesJudiciales'),
+				'otroDocIdentidad' 			=> $request->input('otroDocIdentidad'),
+				'numDocIdentidad'			=> $request->input('numDocIdentidad'),
+				'idEdocivil' 				=> $request->input('idEdocivil'),
+				'idOcupacion' 				=> $request->input('idOcupacion'),
+				'idEscolaridad' 			=> $request->input('idEscolaridad'),
+				'idDocumentoIdentidad'		=> $request->input('idDocumentoIdentidad'),
+			]);
+
+			dd($desaparecido);
+
+	}
 	public function show_desaparecido_domicilio($idCedula)
 	{
 		$cedula = Cedula::find($idCedula);
