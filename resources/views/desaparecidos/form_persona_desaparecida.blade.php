@@ -53,7 +53,7 @@
 				</div>
 				<div class="col">
 					{!! Form::label ('edadAparente','Edad aparente:') !!}
-					{!! Form::text ('edadAparente',old('Edad aparente'), ['class' => 'form-control', 'id' => 'edadAparente', 'data-validation' => 'required number length', 'data-validation-error-msg' => '* Ingrese una edad aparente menos a 130','data-validation-allowing'=>"range[1;130]",  'data-validation-length'=>"0-3",'data-mask'=>"000"] )!!}
+					{!! Form::number ('edadAparente',old('Edad aparente'), ['class' => 'form-control', 'id' => 'edadAparente', 'data-validation' => 'required number length', 'data-validation-error-msg' => '* Ingrese una edad aparente menos a 130','data-validation-allowing'=>"range[1;130]",  'data-validation-length'=>"0-3",'data-mask'=>"000",'min'=>"0" ,'max'=>"150"] )!!}
 				</div>
 				<div class="col">
 					{!! Form::label ('fechaNacimiento','Fecha de nacimiento:') !!}
@@ -75,23 +75,18 @@
 				</div>			
 			</div>
 	        <div class="row">
-	            <div class="col">
-	                <div class="form-group">
+	            <div class="col-lg-4">
 	                    {!! Form::label ('identificacion','Identificación:') !!}
-	                    {!! Form::select ('identificacion',$identificaciones,'', ['class' => 'form-control', 'id' => 'identificacion'] )!!}
-	                </div>
+	                    {!! Form::select ('identificacion',$identificaciones,'', ['class' => 'form-control', 'id' => 
+	                    'identificacion'] )!!}
 	            </div>
-	            <div class="col">
-	                <div class="form-group" id="otraIdDIV">
+	            <div class="col-lg-4" style="display: none" id="otraIdDIV">
 	                    {!! Form::label ('otraIdentificacion','Otro:') !!}
 	                    {!! Form::text ('otraIdentificacion',old('Otra identificacion'), ['class' => 'form-control mayuscula', 'data-validation' => 'required','data-validation-help' => 'En caso de seleccionar otra identificación. Agregar aquí.', 'data-validation-depends-on' => 'identificacion','data-validation-depends-on-value' =>'Otro(especifique)','data-validation-error-msg-required' =>'Este campo es requerido.'] )!!}
-	                </div>
 	            </div>
 	            <div class="col">
-	                <div class="form-group">
 	                    {!! Form::label ('numIdentificacion','No. Identificación:') !!}
 	                    {!! Form::text ('numIdentificacion',old('Numero identificacion'), ['class' => 'form-control mayuscula', 'data-validation' =>'required', 'data-validation-help' => 'Ejemplo: 117OO02AS23SPPR0.', 'data-validation-error-msg-required' =>'Este campo es requerido.','data-validation' =>'alphanumeric','data-validation-error-msg' =>'Este campo solo acepta datos alfanumericos.'] )!!}
-	                </div>
 	            </div>
 	        </div>
 			<div class="row">
@@ -133,7 +128,7 @@
 					<div class="row"  id="datosEmbarazo" style="display:none">
 						<div class="col">
 							{!! Form::label ('numGestacion','Cantidad:') !!}
-							{!! Form::text ('numGestacion',old('gestacionSemanas'), ['class' => 'form-control mayuscula', 'id' => 'NumGestacion'] )!!}
+							{!! Form::number ('numGestacion',old('gestacionSemanas'), ['class' => 'form-control mayuscula', 'id' => 'NumGestacion','min'=>"0" ,'max'=>"36"] )!!}
           				</div>
 						<div class="col">
 							{!! Form::label ('tipoGestacion','Periodo:') !!}
@@ -168,4 +163,5 @@
 
 @section('scripts')
 {!! HTML::script('personal/js/funciones_generales.js') !!}
+{!! HTML::script('personal/js/documentosIdentidad.js') !!}
 @endsection
