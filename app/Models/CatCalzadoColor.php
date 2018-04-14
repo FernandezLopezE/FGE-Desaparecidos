@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CatCalzadoColor extends Model
 {
-	protected $table = 'cat_calzado_color';
+	protected $table = 'cat_colores';
 	protected $fillable = [
 		'nombre',	
 	];
