@@ -13,7 +13,7 @@ class CreateCatCalzadoColorTable extends Migration
      */
     public function up()
     {
-        Schema::create('cat_calzado_color', function (Blueprint $table) {
+        Schema::create('cat_colores', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre',20);
             $table->string('image');
@@ -28,6 +28,6 @@ class CreateCatCalzadoColorTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cat_calzado_color');
+        Schema::dropIfExists('cat_colores');
     }
 }
