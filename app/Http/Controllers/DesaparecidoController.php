@@ -98,6 +98,9 @@ class DesaparecidoController extends Controller
 		$localidades = array();
 		$colonias = array();
 		$codigos = array();
+		$tiposDireccion = array('PERSONAL' => 'PERSONAL',
+								'TRABAJO' => 'TRABAJO',
+								'FAMILIAR' => 'FAMILIAR');		
 
 		$informantes = Desaparecido::where('tipoPersona', 'INFORMANTE')->get();
 
@@ -113,14 +116,13 @@ class DesaparecidoController extends Controller
 											'localidades',
 											'colonias',
 											'informantes',
-											'codigos'
+											'codigos',
+											'tiposDireccion'
 										));			
 	}
 
 	public function store_informante(Request $request)
-	{		
-
-	
+	{	
 		$persona = Persona::create([
 			'nombres' 			=> $request->input('nombre'),
 			'primerAp' 			=> $request->input('primerAp'),
@@ -130,13 +132,16 @@ class DesaparecidoController extends Controller
 
 		
 		$desaparecido = Desaparecido::create([
-			'idPersona' 		=> $persona->id,
-			'idCedula'			=> $request->input('idCedula'),			
-			'otroDocIdentidad'	=> $request->input('otroDocumento'),
-			'numDocIdentidad'	=> $request->input('numDocIdenti'),
-			'correoElectronico'	=> $request->input('email'),
-			'informante'		=> $request->has('informante'),
-			'notificaciones'	=> $request->has('autorizado'),
+			'idPersona' 			=> $persona->id,
+			'idCedula'				=> $request->input('idCedula'),
+			'idParentesco'			=> $request->input('idParentesco'),
+			'idDocumentoIdentidad'	=> $request->input('idDocumentoIdentidad'),	
+			'otroDocIdentidad'		=> $request->input('otroDocumento'),
+			'numDocIdentidad'		=> $request->input('numDocIdentidad'),
+			'correoElectronico'		=> $request->input('correoElectronico'),
+			'informante'			=> $request->has('informante'),
+			'notificaciones'		=> $request->has('autorizado'),
+			'tipoPersona'			=> 'INFORMANTE',
 		]);
 
 		
@@ -165,49 +170,14 @@ class DesaparecidoController extends Controller
 		
 		return response()->json($data);
 
-
-
-		/*'parentesco'	 		=> $request->input('parentesco'),
-		'otroParentesco' 	=> $request->input('otroParentesco'),
-		'idDocumentoIdentidad' 			=> $request->input('documento'),
-		'otroDocumento' 		=> $request->input('otroDocumento'),
-		'numDocIdenti' 			=> $request->input('numDocIdenti'),
-		
-		'autorizado' 			=> $request->input('autorizado'),
-		'informante' 		=> $request->input('informante'),
-		'correoElectronico' 	=> $request->input('email'),
-		
-
-		'tipoDirec' 			=> $request->input('tipoDirec'),
-		'calle' 				=> $request->input('calle'),
-		'numExt' 				=> $request->input('numExt'),
-		'numInt' 				=> $request->input('numInt'),		
-		'idEstado' 				=> $request->input('estado'),
-		'idMunicipio' 			=> $request->input('municipio'),		
-		'idLocalidad' 			=> $request->input('localidad'),
-		'idColonia' 			=> $request->input('colonia'),
-		'idCodigoPostal' 		=> $request->input('cp'),		
-		'telefono' 				=> $request->input('telefono'),
-		'ext' 					=> $request->input('ext'),
-		'lada' 					=> $request->input('lada'),*/
-		
-
-
-
-		return response()->json($request->toArray());
+		//return response()->json($request->toArray());
 	}
 
-	public function show_desaparecido()
+	public function show_desaparecido($idCedula)
 	{
+		$cedula = Cedula::find($idCedula);
 		$desaparecido = new Desaparecido;
-		$identificacion = array(
-			'IFE' => 'IFE',
-			'Cartilla SM' => 'Cartilla SM',
-			'Licencia' => 'Licencia',
-			'Tarjetón' => 'Tarjetón',
-			'Cartilla' => 'Cartilla',
-			'Pasaporte' => 'Pasaporte',
-			'Otro(especifique)' => 'Otro(especifique)');
+
 		$option = array(
 			'0' => 'NO',
 			'1' => 'SI');
@@ -287,14 +257,16 @@ class DesaparecidoController extends Controller
 		$codigos 			= \App\Models\CatColonia::limit(10)->pluck('codigoPostal','id');
 		$tiposCalzados		= \App\Models\CatTiposCalzados::all()->pluck('nombre','id');
 		$marcasCalzados		= \App\Models\CatMarcasCalzados::all()->pluck('nombre','id');
+		$identificaciones	= \App\Models\CatDocumento::all()->pluck('nombre','id');
 
 		$delitos 			= \App\Models\CatDelito::all()->pluck('nombre','id');
 		$centros 			= \App\Models\CatCentroReclusion::all()->pluck('nombre','id');		
 		$edoscivil 			= \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
 
-		return view('desaparecidos.form',
-					[
-						'identificacion' => $identificacion,
+		return view('desaparecidos.form_persona_desaparecida',
+					[						
+						'identificaciones' => $identificaciones,
+						'cedula' => $cedula,
 						'desaparecido' => $desaparecido,
 						'option' => $option,
 						'meses' => $meses,
@@ -319,6 +291,76 @@ class DesaparecidoController extends Controller
 						'parentescos' => $parentescos,
 						'dialectos' =>$dialectos
 					]);
+	}
+
+	public function store_desaparecido(Request $request) {
+
+		$persona = Persona::create([
+						'nombres' 			=> $request->input('nombres'),
+						'primerAp' 			=> $request->input('primerAp'),
+						'segundoAp'			=> $request->input('segundoAp'),
+						'fechaNacimiento'	=> $request->input('fechaNacimiento'),
+						'sexo' 				=> $request->input('sexo'),
+						'idNacionalidad'	=> $request->input('idNacionalidad'),
+					]);
+		
+				$embarazo		= ($request->input('sexo')=='FEMENINO') ? $request->input('embarazo') : 'NO';
+				$numGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('numGestacion') : null;
+				$tipoGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('tipoGestacion') : null;
+				$rumoresBebe	= ($request->input('embarazo') == 'SI') ? $request->input('rumoresBebe') : 'NO';
+				$pormenores		= ($request->input('rumoresBebe') == 'SI') ? $request->input('pormenores') : null;
+				
+				$fecha = Carbon::parse($request->input('fechaNacimiento'));
+        		$edad = Carbon::createFromDate($fecha->year, $fecha->day, $fecha->month)
+        					->diff(Carbon::now())->format('%y años, %m meses y %d dias');
+			
+			$desaparecido = Desaparecido::create([
+				'idCedula'					=> $request->input('idCedula'),
+				'idPersona' 				=> $persona->id,
+				'apodo' 					=> $request->input('apodo'),
+				'edadAparente' 				=> $request->input('edadAparente'),
+				'edadExtravio' 				=> $edad,
+				'embarazo' 					=> $embarazo,
+				'numGestacion' 				=> $numGestacion,
+				'tipoGestacion' 			=> $tipoGestacion,
+				'rumoresBebe' 				=> $rumoresBebe,
+				'pormenores' 				=> $pormenores,
+				'antecedentesJudiciales' 	=> $request->input('antecedentesJudiciales'),
+				'otroDocIdentidad' 			=> $request->input('otroDocIdentidad'),
+				'numDocIdentidad'			=> $request->input('numDocIdentidad'),
+				'idEdocivil' 				=> $request->input('idEdocivil'),
+				'idOcupacion' 				=> $request->input('idOcupacion'),
+				'idEscolaridad' 			=> $request->input('idEscolaridad'),
+				'idDocumentoIdentidad'		=> $request->input('idDocumentoIdentidad'),
+			]);
+
+			dd($desaparecido);
+
+	}
+	public function show_desaparecido_domicilio($idCedula)
+	{
+		$cedula = Cedula::find($idCedula);
+		return view('desaparecidos.form_desaparecido_domicilio', compact('cedula'));		
+	}
+
+	public function store_desaparecido_domicilio(Request $request){
+
+		$domicilio = Domicilio::create([
+			'idDesaparecido' 	=> $desaparecido->id,
+			'tipoDireccion'		=> $request->input('tipoDireccionc'),
+			'calle'				=> $request->input('calle'),
+			'numExterno'		=> $request->input('numExterno'),
+			'numInterno'		=> $request->input('numInterno'),
+			'idEstado'			=> $request->input('idEstado'),
+			'idMunicipio'		=> $request->input('idMunicipio'),
+			'idLocalidad'		=> $request->input('idLocalidad'),
+			'idColonia'			=> $request->input('idColonia'),
+			'idCodigoPostal'	=> $request->input('idCodigoPostal'),
+			'telefono'			=> $request->input('telefono'),
+		]);
+
+		return response()->json($domicilio);
+
 	}
 
 	public function show_vestimenta(){

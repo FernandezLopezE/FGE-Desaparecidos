@@ -33,51 +33,7 @@ $(document).ready(function(){
 	/***********************************************************
 					DATOS DEL INFORMANTE
 	***********************************************************/
-	$('#btnAdddInformante').click (function(){
-		
-		var dataString = {
-			nombre : $("#informanteNombres").val(),
-			primerAp : $("#informantePrimerAp").val(),
-			segundoAp : $("#informanteSegundoAp").val(),
-			parentesco : $("#informanteidParentesco").val(),
-			otroParentesco : $("#informanteOtroParentesco").val(),
-			nacionalidad : $("#idNacionalidad").val(),
-			documento : $("#informanteidDocumentoIdentidad").val(),
-			otroDocumento : $("#informanteOtroDocIdentidad").val(),
-			numDocIdenti: $("#informanteNumDocIdentidad").val(),
-			tipoDirec: $("#informanteTipoDireccion").val(),
-			calle: $("#informanteCalle").val(),
-			numExt: $("#informanteNumExterno").val(),
-			numInt: $("#informanteNumInterno").val(),
-			estado: $("#idEstado").val(),
-			municipio: $("#idMunicipio").val(),
-			localidad: $("#idLocalidad").val(),
-			colonia: $("#idColonia").val(),
-			cp: $("#idCodigoPostal").val(),
-			tipoTel: $("#informanteTipoTel").val(),
-			lada: $("#lada").val(),
-			telefono : $("#informanteTelefonos").val(),
-			ext: $("#ext").val(),
-			email: $("#informanteCorreoElectronico").val(),
-			informante: $("#informante").is(":checked"),
-			autorizado: $("#recibir").is(":checked"),
-			idCedula: $("#idCedula").val(),
-		};
 
-		$.ajax({
-			type: 'POST',
-			url: '/desaparecido/store_informante',
-			data: dataString,
-			dataType: 'json',
-			success: function(data) {
-				$('#modalGeneral').modal('hide');
-				$('#tableInformantes').bootstrapTable('refresh');							
-			},
-			error: function(data) {
-				console.log(data);
-			}
-		});
-	})
 
 	$('#idEstado').on('change', function(){
 		$("#idMunicipio").empty();
@@ -473,7 +429,7 @@ $(document).ready(function(){
   
 
 	 $('#fechaNacimiento').change(function(){  
-		from = $("#fechaNacimiento").val().split("-");
+		from = $("#fechaNacimiento").val().split("/");
 		fechaNacimiento = from[2] + "-" + from[1] + "-" + from[0];
 		fechaEnviada = Date.parse(fechaNacimiento);
 	   
@@ -484,11 +440,9 @@ $(document).ready(function(){
 		   $("#fechaNacimiento").val("");
 		   $("#edadExtravio").val("");
 	   }else{
-		   f = $('#fechaNacimiento').val();
-	   console.log('datos fecha: '+f);
 
 	   $.ajax({
-			   url: '/desaparecido/edad/'+f,
+			   url: '/desaparecido/edad/'+fechaNacimiento,
 			   type:"GET",
 			   dataType:"json",
 

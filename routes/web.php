@@ -18,16 +18,31 @@ Route::get('/', function () {
 
 Route::get('consultas/get_informantes/{idCedula}', 'ConsultasController@jsonInformantes')
 	->name('consultas.get_informantes');
+Route::get('consultas/get_parentescos', 'ConsultasController@jsonParentescos')
+	->name('consultas.get_parentescos');
+Route::get('consultas/get_nacionalidades', 'ConsultasController@jsonNacionalidades')
+	->name('consultas.get_nacionalidades');
+Route::get('consultas/get_documentos_identidad', 'ConsultasController@jsonDocumentosIdentidad')
+	->name('consultas.get_documentos_identidad');
+Route::get('consultas/get_tipos_domicilios', 'ConsultasController@jsonTiposDomicilios')
+	->name('consultas.get_tipos_domicilios');
+Route::get('consultas/get_estados', 'ConsultasController@jsonEstados')
+	->name('consultas.get_estados');
+Route::get('consultas/get_tipos_telefonos', 'ConsultasController@jsonTiposTelefonos')
+	->name('consultas.get_tipos_telefonos');
+Route::get('consultas/get_ladas', 'ConsultasController@jsonLadas')
+	->name('consultas.get_ladas');
+
+
+
 Route::resource('consultas','ConsultasController');
 
-
-Route::get('/consulta/informantes/{idCedula}', 'DesaparecidoController@jsonInformantes')
-	->name('consulta.get_informantes');
-
 Route::get('/desaparecido/edad/{fecha_nacimiento}', 'DesaparecidoController@getEdad');
-Route::get('/desaparecido/informante/{idCedula}', 'DesaparecidoController@show_informante');
 
-Route::get('/desaparecido/desaparecido', 'DesaparecidoController@show_desaparecido');
+
+
+Route::get('/desaparecido/desaparecido_domicilio/{idCedula}', 'DesaparecidoController@show_desaparecido_domicilio');
+
 Route::get('/desaparecido/vestimenta', 'DesaparecidoController@show_vestimenta');
 
 
@@ -37,9 +52,19 @@ Route::post('/desaparecido/getpersona', 'DesaparecidoController@getPersona')
 Route::post('/desaparecido/store_cedula', 'DesaparecidoController@store_cedula')
 	->name('desaparecido.store_cedula');
 
+Route::post('/desaparecido/store_desaparecido_domicilio', 'DesaparecidoController@store_desaparecido_domicilio')
+	->name('desaparecido.store_desaparecido_domicilio');
+
+Route::post('/desaparecido/store_desaparecido', 'DesaparecidoController@store_desaparecido')
+	->name('desaparecido.store_desaparecido');
+
+// Mostrar formulario de la persona desaparecida.
+Route::get('/desaparecido/persona_desaparecida/{idCedula}', 'DesaparecidoController@show_desaparecido');	
+// Guardar informante
 Route::post('/desaparecido/store_informante', 'DesaparecidoController@store_informante')
 	->name('desaparecido.store_informante');
-
+// Mostrar formulario del informante	
+Route::get('/desaparecido/informante/{idCedula}', 'DesaparecidoController@show_informante');
 Route::resource('/desaparecido','DesaparecidoController');
 
 Route::resource('domicilio','DomiciliosController');
