@@ -12,6 +12,7 @@ use App\Models\Familiar;
 use App\Models\Documento;
 use App\Models\Antecedente;
 use App\Models\Domicilio;
+use App\Models\Prenda;
 use Carbon\Carbon;
 use Session;
 use App\images\TiposCalzados;
@@ -368,51 +369,23 @@ class DesaparecidoController extends Controller
 
 	}
 
-	public function show_vestimenta(){
-		
-		$parentescos = \App\Models\CatParentesco::all()->pluck('nombre','id');
-		$estados 			= \App\Models\CatEstado::all()->pluck('nombre','id');
-		$estados 			= \App\Models\CatEstado::all()->pluck('nombre','id');
-		$municipios 		= \App\Models\CatMunicipio::limit(10)->pluck('nombre','id');
-		$localidades 		= \App\Models\CatLocalidad::limit(10)->pluck('nombre','id');
-		$colonias 			= \App\Models\CatColonia::limit(10)->pluck('nombre','id');
-		$codigos 			= \App\Models\CatColonia::limit(10)->pluck('codigoPostal','id');
-
-		$vestimenta= array(
-			'1' => 'CIVIL', 
-			'2' => 'FORMAL',
-			'3' => 'INFORMAL',
-			'4' => 'DEPORTIVO',
-			'5' => 'UNIFORME',
-			'6' => 'MARINA',
-			'7' => 'ESCOLAR',
-			'8' => 'BEBÉ',
-			'9' => 'SIN INFORMACION'
-		);
-		$accesoriosObjetos= array(
-			'ANTEOJOS' => 'ANTEOJOS', 
-			'BASTON' => 'BASTÓN',
-			'ANILLOS' => 'ANILLOS',
-			'MEDALLAS' => 'MEDALLAS',
-			'CREDENCIALES' => 'CREDENCIALES',
-			'CINTURON' => 'CINTURÓN',
-			'RELOJ' => 'RELOJ',
-			'COLLARES' => 'COLLARES',
-			'PULSERAS' => 'PULSERAS',
-			'CELULAR' => 'CELULAR', 
-			'SOMBRERO' => 'SOMBRERO',
-			'BOLSA' => 'BOLSA',
-			'CADENAS' => 'CADENAS',
-			'CARTERA' => 'CARTERA',
-			'TARJETADECREDITO' => 'TARJETA DE CREDITO',
-			'OTRO' => 'OTRO'			
-		);
-		
+		public function show_vestimenta($idCedula){
+		//dd($idCedula);
+		$cedula = Cedula::find($idCedula);
+		$vestimenta	= \App\Models\CatVestimenta::all()->pluck('nombre','id');
+		$accesoriosObjetos	= \App\Models\CatAccesorioObjeto::all()->pluck('nombre','id');
 		$tiposCalzados		= \App\Models\CatTiposCalzados::all()->pluck('nombre','id');
 		$marcasCalzados		= \App\Models\CatMarcasCalzados::all()->pluck('nombre','id');
-		$colores = \App\Models\CatCalzadoColor::all()->pluck('nombre','id');		
-
-		return view('desaparecidos.form_desaparicion',
+		$colores = \App\Models\CatCalzadoColor::all()->pluck('nombre','id');
+		return view('desaparecidos.secciones.seccion3_datos_vestimenta',
+					['vestimenta' => $vestimenta,
+					 'tiposCalzados' => $tiposCalzados,
+					 'marcasCalzados' => $marcasCalzados, 
+					 'accesoriosObjetos' => $accesoriosObjetos, 
+					 'colores' =>$colores, 
+					 'id' => $cedula->id ,
+					 ]);
+		/*return view('desaparecidos.form_desaparicion',
 			[
 				'parentescos' => $parentescos,
 				'estados' => $estados,
@@ -425,9 +398,125 @@ class DesaparecidoController extends Controller
 				'marcasCalzados' => $marcasCalzados, 
 				'accesoriosObjetos' => $accesoriosObjetos, 
 				'colores' =>$colores,
-
-
-			]);		
+			]);		*/
+	}
+	public function store_vestimenta(Request $request)
+	{
+		//dd($request->toArray());
+		$cedula = Cedula::find($request->input('idCedula'));
+		$color = $request->input('prendaColor');
+		if($color == 15){
+			$prenda = Prenda::create([
+				'tipo' => $request->input('nombrePrenda'),
+				'material' => $request->input('prendaMaterial'),
+				'color' => $request->input('prendaColor'),
+				'otroColor' => $request->input('otroColor'),
+				'dibujoBordadoFranja' => $request->input('prendaDibujoBordadoFranjas'),
+				'marcaOrigen' => $request->input('prendaMarcaOrigen'),
+				'talla' => $request->input('prendaTalla'),
+				'idCedula' => $request->input('idCedula'),
+			]);
+		}else{
+			$prenda = Prenda::create([
+				'tipo' => $request->input('nombrePrenda'),
+				'material' => $request->input('prendaMaterial'),
+				'color' => $request->input('prendaColor'),
+				'otroColor' => "",
+				'dibujoBordadoFranja' => $request->input('prendaDibujoBordadoFranjas'),
+				'marcaOrigen' => $request->input('prendaMarcaOrigen'),
+				'talla' => $request->input('prendaTalla'),
+				'idCedula' => $request->input('idCedula'),
+			]);
+		}
+		return response()->json($prenda);
+		
+	}
+	public function update_vestimenta(Request $request){
+		$prenda = Prenda::find($request->input('idPrenda'));
+		$color = $request->input('prendaColor');
+		if($color == 15){
+			$prenda->tipo = $request->input('nombrePrenda');
+			$prenda->material = $request->input('prendaMaterial');
+			$prenda->color = $request->input('prendaColor');
+			$prenda->otroColor = $request->input('otroColor');
+			$prenda->dibujoBordadoFranja = $request->input('prendaDibujoBordadoFranjas');
+			$prenda->marcaOrigen = $request->input('prendaMarcaOrigen');
+			$prenda->talla = $request->input('prendaTalla');
+		}else{
+			$prenda->tipo = $request->input('nombrePrenda');
+			$prenda->material = $request->input('prendaMaterial');
+			$prenda->color = $request->input('prendaColor');
+			$prenda->otroColor = "";
+			$prenda->dibujoBordadoFranja = $request->input('prendaDibujoBordadoFranjas');
+			$prenda->marcaOrigen = $request->input('prendaMarcaOrigen');
+			$prenda->talla = $request->input('prendaTalla');
+			
+		}
+		$prenda->save();
+		//$colorPrenda = CatColores::find($prenda->color);
+		return response()->json($prenda);
+	}
+	public function update_calzado(Request $request)
+	{
+	
+		$cedula = Cedula::find($request->input('idCedula'));
+		//dd($cedula);
+		if($request->input('idTipo') != 8){
+			$otroC = "";
+		}else{
+			$otroC = $request->input('otroCalzado');
+		}
+		if($request->input('idColor') != 15){
+			$otroColorC = "";
+		}else{
+			$otroColorC = $request->input('otroColorCalzado');
+		}
+		if($request->input('idMarca') != 26){
+			$otraM = "";
+		}else{
+			$otraM = $request->input('otraMarca');
+		}
+		
+		if($request->input('idTipo') == 1){
+			$cedula->idCalzadotipo = 1;
+			$cedula->idCalzadocolor = 1;
+			$cedula->idCalzadomarca = 1;
+			$cedula->calzadoTalla = "";
+			$cedula->modeloCalzado = "";
+			//$cedula->otroColorCalzado = $request->input('otroColorCalzado');
+			//$cedula->idVestimenta = $request->input('prendaTipo');
+			$cedula->otroColorCalzado = $otroColorC;
+			$cedula->otraMarca = $otraM;
+			$cedula->otroCalzado = $otroC;
+		}else{
+			$cedula->idCalzadotipo = $request->input('idTipo');
+			$cedula->idCalzadocolor = $request->input('idColor');
+			$cedula->idCalzadomarca = $request->input('idMarca');
+			$cedula->calzadoTalla = $request->input('calzadoTalla');
+			$cedula->modeloCalzado = $request->input('modeloCalzado');
+			//$cedula->otroColorCalzado = $request->input('otroColorCalzado');
+			//$cedula->idVestimenta = $request->input('prendaTipo');
+			$cedula->otroColorCalzado = $otroColorC;
+			$cedula->otraMarca = $otraM;
+			$cedula->otroCalzado = $otroC;
+		}
+		//$cedula->calzadoTalla = $request->input('calzadoTalla');
+			
+			
+		
+		//$cedula->observacionesDesaparicion = $request->input('descripcionVestimenta');
+		//$cedula->objetos = json_encode($request->input('accesoriosObjetos'));
+		$cedula->save();
+		return response()->json($cedula);
+		
+	}
+	public function update_accesorios(Request $request){
+		$cedula = Cedula::find($request->input('idCedula'));
+		$cedula->objetos = json_encode($request->input('accesoriosObjetos'));
+		$cedula->observacionesDesaparicion = $request->input('descripcionVestimenta');
+		$cedula->save();
+		return response()->json($cedula);
+		
 	}
 
 	public function store(Request $request)

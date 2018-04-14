@@ -47,8 +47,8 @@
               {!! Form::select ('idMarca[]',$marcasCalzados,'', ['class' => 'form-control', 'id' => 'idMarca'] )!!}
             </div>
             <div class="col" style="display:none" id="otraPrenda">
-              {!! Form::label ('otroColor','Otra marca:') !!}
-              {!! Form::text ('otroColor',old('Otro color'),['class' => 'form-control mayuscula','id' => '', 'placeholder' => 'Ingresa una descripción de la marca'] )!!}
+              {!! Form::label ('otraMarca','Otra marca:') !!}
+              {!! Form::text ('otraMarca',old('Otro color'),['class' => 'form-control mayuscula','id' => 'otraMarca', 'placeholder' => 'Ingresa una descripción de la marca'] )!!}
             </div>
             <div class="col-lg-2">
               {!! Form::label ('calzadoTalla','Talla:') !!}
@@ -62,7 +62,7 @@
           <!-- Fin del Contenido del formulario-->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" id="btnAdddInformante">GUARDAR</button>
+          <button type="button" class="btn btn-success" id="btnCalzado">GUARDAR</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
         </div>
       </div>

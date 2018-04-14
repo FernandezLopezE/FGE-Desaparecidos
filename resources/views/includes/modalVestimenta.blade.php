@@ -10,14 +10,15 @@
         </div>
         <div class="modal-body">
           {{ Form::hidden('idCedula', $id, array('id' => 'idCedula')) }}
+          {{ Form::hidden('idPrenda','', array('id' => 'idPrenda')) }}
           <!-- Contenido del formulario-->
-          <div class="row">
+          <!--<div class="row">
             <div class="col">
               {!! Form::label ('elijaVestimenta','Tipo de vestimenta:') !!}
               {!! Form::select('idVestimenta[]', $vestimenta, null, ['class' => 'form-control' ,'id'=>'idVestimenta']) !!}
             </div>
-          </div><br>
-          <div id="FormularioVestimenta" style="display:none">
+          </div><br>-->
+          <div id="FormularioVestimenta" >
           <div class="row">
             <div class="col-4">
               {!! Form::label ('nombrePrenda','Nombre de la prenda:') !!}
@@ -35,8 +36,8 @@
 
          <div class="row" style="display:none" id="otroColor">
            <div class="col">
-              {!! Form::label ('otroColor','Otro:') !!}
-              {!! Form::text ('otroColor',old('Otro color'),['class' => 'form-control mayuscula','id' => 'otroColor', 'placeholder' => 'Ingresa una descripción de los colores de la prenda. Ejemplo: cuadros rojos con azul marino'] )!!}
+              {!! Form::label ('colorPrenda','Otro:') !!}
+              {!! Form::text ('colorPrenda',old('Otro color'),['class' => 'form-control mayuscula','id' => 'colorPrenda', 'placeholder' => 'Ingresa una descripción de los colores de la prenda. Ejemplo: cuadros rojos con azul marino'] )!!}
             </div>
          </div>
 
@@ -60,7 +61,8 @@
           <!-- Fin del Contenido del formulario-->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" id="btnAdddInformante">GUARDAR</button>
+          <button type="button" class="btn btn-success" id="btnPrenda">GUARDAR</button>
+          <button type="button" class="btn btn-warning" id="btnActualizarP">ACTUALIZAR</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
         </div>
       </div>

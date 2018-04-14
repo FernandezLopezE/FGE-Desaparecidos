@@ -36,6 +36,20 @@ Route::get('consultas/get_ladas', 'ConsultasController@jsonLadas')
 	->name('consultas.get_ladas');
 
 
+//Rutas Ruben
+	//mis rutas
+Route::get('/desaparecido/vestimenta/{idCedula}', 'DesaparecidoController@show_vestimenta');
+//fin de mis rutas
+Route::post('/desaparecido/store_vestimenta', 'DesaparecidoController@store_vestimenta')
+	->name('desaparecido.store_vestimenta');
+Route::post('/desaparecido/update_calzado', 'DesaparecidoController@update_calzado')
+	->name('desaparecido.update_calzado');
+Route::post('/desaparecido/update_accesorios', 'DesaparecidoController@update_accesorios')
+	->name('desaparecido.update_accesorios');	
+Route::post('/desaparecido/update_vestimenta', 'DesaparecidoController@update_vestimenta')
+	->name('desaparecido.update_vestimenta');
+//fin de mis rutas
+
 
 Route::resource('consultas','ConsultasController');
 
@@ -45,7 +59,6 @@ Route::get('/desaparecido/edad/{fecha_nacimiento}', 'DesaparecidoController@getE
 
 Route::get('/desaparecido/desaparecido_domicilio/{idCedula}', 'DesaparecidoController@show_desaparecido_domicilio');
 
-Route::get('/desaparecido/vestimenta', 'DesaparecidoController@show_vestimenta');
 
 
 Route::post('/desaparecido/getpersona', 'DesaparecidoController@getPersona')

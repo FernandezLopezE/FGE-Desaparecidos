@@ -1,3 +1,4 @@
+@extends('layouts.app_uipj')
 @section('css')
 <style type="text/css">
 	.modal-lg {
@@ -49,6 +50,8 @@
               {!! Form::textarea  ('descripcionVestimenta',old('Descripción vestimenta'), ['class' => 'form-control mayuscula', 'id' => 'descripcionVestimenta','size' => '30x4', 'data-validation' =>'required','data-validation-error-msg-required' =>'Ingrese las observaciones de la vestimenta'])!!}
             </div>
           </div>
+          <br>
+          <input type="button" name="btnAOS" id="btnAOS" value="AGREGAR" class="btn btn-dark pull-right">
 	</div>
 	
 </div>
@@ -61,34 +64,31 @@
 		var tipoV;
 		var tipoCal;
 		var otroTipoZ;
-
+		var otroCo;
 	//Vista de datos de la vestimenta
 		$('#nuevaPrenda').click(function(e){
 			$('#modalVestimenta').modal('show');
+			$('#btnActualizarP').hide();
+			$('#btnPrenda').show();
 		});
-
 		$("#prendaColor").change(function() {
 			otroC = $('#prendaColor').val();
 			//alert(otroC);
-
-			if (otroC==14) {
+			if (otroC==15) {
 				$("#otroColor").show();
 			}else{
 				$("#otroColor").hide();
 			}
 		});
-
 		$("#idColor").change(function() {
 			otroCo = $('#idColor').val();
 			//alert(otroC);
-
-			if (otroCo==14) {
-				$("#otroColorCalzado").show();
+			if (otroCo==15) {
+				$("#otroColor2").show();
 			}else{
-				$("#otroColorCalzado").hide();
+				$("#otroColor2").hide();
 			}
 		});
-
 		$("#idMarca").change(function() {
 			otraP = $('#idMarca').val();
 			
@@ -98,62 +98,71 @@
 				$("#otraPrenda").hide();
 			}
 		});
-
-		$("#idVestimenta").change(function() {
+		/*$("#idVestimenta").change(function() {
 			tipoV = $('#idVestimenta').val();
-
 			if (tipoV==9) {
 				$("#FormularioVestimenta").hide();
 			}else{
 				$("#FormularioVestimenta").show();
 			}
-		});
-
+		});*/
 		var table = $('#tableInformantes');
 		var routeIndex = '{!! route('consultas.index') !!}';	
 		
 		var formatTableActions = function(value, row, index) {				
-
-			btn = '<button class="btn btn-info btn-xs edit"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
+			btn = '<button class="btn btn-info btn-xs edit" id="editPrenda"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
 			
 			return [btn].join('');
 		};
-
+		window.operateEvents = {
+			'click #editPrenda': function (e, value, row, index) {					
+				console.log(row);
+				//bodyModal.empty();
+				$('#idPrenda').val(row.id);
+				$('#nombrePrenda').val(row.tipo);
+				$('#prendaMaterial').val(row.material);
+				$('#prendaColor').val(row.pColor);
+				$('#colorPrenda').val(row.otroC);
+				$('#prendaDibujoBordadoFranjas').val(row.dibujo);
+				$('#prendaMarcaOrigen').val(row.marca);
+				$('#prendaTalla').val(row.talla);
+				$("#btnActualizarP").show();
+				$("#btnPrenda").hide();
+				$("#modalVestimenta").modal("show");
+			}
+		}
 		$('#nuevoInformante').click(function(e){
 			$('#modalGeneral').modal('show');
 		})
-
-
 		table.bootstrapTable({				
-			url: routeIndex+'/get_informantes/2',
+			url: routeIndex+'/get_prendas/{{$id}}',
 			columns: [{					
-				field: 'nombres',
-				title: 'Tipo',
+				field: 'id',
+				title: 'ID',
 			}, {					
-				field: 'primerAp',
+				field: 'tipo',
 				title: 'Nombre',
 			}, {					
-				field: 'segundoAp',
+				field: 'color',
 				title: 'Color',
 			}, {					
-				field: 'informante',
+				field: 'material',
 				title: 'Material',
 			}, {					
-				field: 'notificaciones',
+				field: 'dibujo',
 				title: 'Dibujo/Bordado/Franjas',
 			}, {					
 				title: 'Acciones',
 				formatter: formatTableActions,
-				//events: operateEvents
+				events: operateEvents
 			}]				
 		})
+		
 	//Fin de Vista de datos de la vestimenta
-
 	//Vista de datos de calzado
 		$('#nuevoZapato').click(function(e){
 			$('#modalCalzado').modal('show');
 		});
-
 		$("#idTipo").change(function() {
 			tipoCal = $('#idTipo').val();
 			if (tipoCal==1) {
@@ -162,7 +171,6 @@
 				$("#FormularioCalzado").show();
 			}
 		});
-
 		$("#idTipo").change(function() {
 			otroTipoZ = $('#idTipo').val();
 			if (otroTipoZ==8) {
@@ -172,48 +180,181 @@
 				$("#otroZapato").hide();
 			}
 		});
-
-		var table = $('#tableCalzado');
+		var table2 = $('#tableCalzado');
 		var routeIndex = '{!! route('consultas.index') !!}';	
 		
 		var formatTableActions = function(value, row, index) {				
-
-			btn = '<button class="btn btn-info btn-xs edit"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
+			btn = '<button class="btn btn-info btn-xs edit" id="editCalzado"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
 			
 			return [btn].join('');
 		};
-
+		window.operateEvents = {
+			'click #editCalzado': function (e, value, row, index) {					
+				console.log(row);
+				//bodyModal.empty();
+				$('#idTipo').val(row.cTipo);
+				$('#otroCalzado').val(row.oCalzado);
+				$('#idColor').val(row.cColor);
+				$('#otroColorCalzado').val(row.ocCalzado);
+				$('#modeloCalzado').val(row.modelo);
+				$('#idMarca').val(row.cMarca);
+				$('#otraMarca').val(row.oMarca);
+				$('#calzadoTalla').val(row.talla);
+				$("#modalCalzado").modal("show");
+			}
+		}
 		$('#nuevoInformante').click(function(e){
 			$('#modalGeneral').modal('show');
 		})
-
-
-		table.bootstrapTable({				
-			url: routeIndex+'/get_informantes/2',
+		table2.bootstrapTable({				
+			url: routeIndex+'/get_calzado/{{$id}}',
 			columns: [{					
-				field: 'nombres',
-				title: 'Tipo',
+				field: 'nombretipo',
+				title: 'Tipo calzado',
 			}, {					
-				field: 'primerAp',
-				title: 'Nombre',
+				field: 'nombremarca',
+				title: 'Marca',
 			}, {					
-				field: 'segundoAp',
+				field: 'modelo',
+				title: 'Modelo',
+			}, {					
+				field: 'nombrecolor',
 				title: 'Color',
 			}, {					
-				field: 'informante',
-				title: 'Material',
-			}, {					
-				field: 'notificaciones',
-				title: 'Dibujo/Bordado/Franjas',
+				field: 'talla',
+				title: 'talla',
 			}, {					
 				title: 'Acciones',
 				formatter: formatTableActions,
-				//events: operateEvents
+				events: operateEvents
 			}]				
 		})
-
 	//Fin de vista de datos de calzado
-
+	//----
+		$('#btnPrenda').click (function(){
+		//alert("hola");
+		var dataString = {
+			//prendaTipo: $('#idVestimenta').val(),
+			nombrePrenda: $('#nombrePrenda').val(),
+			prendaMaterial: $('#prendaMaterial').val(),
+			prendaColor: $('#prendaColor').val(),
+			otroColor: $('#colorPrenda').val(),
+			prendaDibujoBordadoFranjas: $('#prendaDibujoBordadoFranjas').val(),
+			prendaMarcaOrigen: $('#prendaMarcaOrigen').val(),
+			prendaTalla: $('#prendaTalla').val(),
+			idCedula: $("#idCedula").val()
+		};
+		console.log(dataString);
+		$.ajax({
+			type: 'POST',
+			url: '/desaparecido/store_vestimenta',
+			data: dataString,
+			dataType: 'json',
+			success: function(data) {						
+				console.log(data);
+				table.bootstrapTable('refresh');
+				$("#modalVestimenta").modal("hide");	
+				
+												
+			},
+			error: function(data) {
+				console.log(data);
+			}
+		});
+	});
+		//----
+		//----
+		$('.modal-footer').on('click','#btnActualizarP', function(){
+		//alert("hola");
+		var dataString = {
+			//prendaTipo: $('#idVestimenta').val(),
+			nombrePrenda: $('#nombrePrenda').val(),
+			prendaMaterial: $('#prendaMaterial').val(),
+			prendaColor: $('#prendaColor').val(),
+			otroColor: $('#colorPrenda').val(),
+			prendaDibujoBordadoFranjas: $('#prendaDibujoBordadoFranjas').val(),
+			prendaMarcaOrigen: $('#prendaMarcaOrigen').val(),
+			prendaTalla: $('#prendaTalla').val(),
+			idCedula: $("#idCedula").val(),
+			idPrenda: $("#idPrenda").val()
+		};
+		console.log(dataString);
+		$.ajax({
+			type: 'POST',
+			url: '/desaparecido/update_vestimenta',
+			data: dataString,
+			dataType: 'json',
+			success: function(data) {						
+				console.log(data);
+				table.bootstrapTable('refresh');
+				$("#modalVestimenta").modal("hide");	
+				
+												
+			},
+			error: function(data) {
+				console.log(data);
+			}
+		});
+	});
+		//----
+		//----
+		$('#btnCalzado').click (function(){
+		//alert("hola");
+		var dataString = {
+			
+			//prendaTipo: $('#idVestimenta').val(),
+			idTipo: $('#idTipo').val(),
+			calzadoTalla: $('#calzadoTalla').val(),
+			idColor: $('#idColor').val(),
+			idMarca: $('#idMarca').val(),
+			modeloCalzado: $('#modeloCalzado').val(),
+			//descripcionVestimenta: $('#descripcionVestimenta').val(),
+			//accesoriosObjetos: $('#accesoriosObjetos').val(),
+			otroColorCalzado: $('#otroColorCalzado').val(),
+			otroCalzado: $('#otroCalzado').val(),
+			otraMarca: $('#otraMarca').val(),
+			idCedula: $("#idCedula").val()
+		};
+		console.log(dataString);
+		$.ajax({
+			type: 'POST',
+			url: '/desaparecido/update_calzado',
+			data: dataString,
+			dataType: 'json',
+			success: function(data) {						
+				console.log(data);
+				table2.bootstrapTable('refresh');
+				$("#modalCalzado").modal("hide");
+				
+												
+			},
+			error: function(data) {
+				console.log(data);
+			}
+		});
+	});
+	$('#btnAOS').click (function(){
+		//alert("hola");
+		var dataString = {
+			descripcionVestimenta: $('#descripcionVestimenta').val(),
+			accesoriosObjetos: $('#accesoriosObjetos').val(),
+			idCedula: $("#idCedula").val()
+		};
+		console.log(dataString);
+		$.ajax({
+			type: 'POST',
+			url: '/desaparecido/update_accesorios',
+			data: dataString,
+			dataType: 'json',
+			success: function(data) {						
+				console.log(data);
+			},
+			error: function(data) {
+				console.log(data);
+			}
+		});
+	});
+		//----
 	});
 </script>
 @endsection

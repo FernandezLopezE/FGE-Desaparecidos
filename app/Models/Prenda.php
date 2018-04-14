@@ -1,13 +1,9 @@
 <?php
-
 namespace App\Models;
-
 use Illuminate\Database\Eloquent\Model;
-
 class Prenda extends Model
 {
-	protected $table = 'persona';
-
+	protected $table = 'desaparecidos_prendas';
 	protected $fillable = [	
 	    'tipo',
 	    'material',
@@ -17,6 +13,5 @@ class Prenda extends Model
 	    'marcaOrigen',
 	    'talla',
 	    'idCedula',
-	]
-
+	];
 }
