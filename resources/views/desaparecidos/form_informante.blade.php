@@ -62,14 +62,14 @@
 			bodyModal.empty();
 
 			var dataCampos = [
-				{campo:'input',idCampo:'informanteNombres',nameCampo:'Nombre(s):',typeCampo:'text',valorCampo:'' ,placeholder:'Ingresa nombres',newClass:'mayuscula',divSize:'4',datos:''},
-				{campo:'input',idCampo:'informantePrimerAp',nameCampo:'Primer apellido:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingresa el primer apellido',newClass:'mayuscula',divSize:'4',datos:''},
-				{campo:'input',idCampo:'informanteSegundoAp',nameCampo:'Segundo apellido:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingresa el segundo apellido',newClass:'mayuscula',divSize:'4',datos:''},
+				{campo:'input',idCampo:'informanteNombres',nameCampo:'Nombre(s):',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese nombres',newClass:'mayuscula sinNumeros',divSize:'4',datos:''},
+				{campo:'input',idCampo:'informantePrimerAp',nameCampo:'Primer apellido:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese el primer apellido',newClass:'mayuscula sinNumeros',divSize:'4',datos:''},
+				{campo:'input',idCampo:'informanteSegundoAp',nameCampo:'Segundo apellido:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese el segundo apellido',newClass:'mayuscula sinNumeros',divSize:'4',datos:''},
 				{campo:'select',idCampo:'idParentesco',nameCampo:'Parentesco:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
-				{campo:'input',idCampo:'informanteOtroParentesco',nameCampo:'Especifique:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingresa otro parentesco',newClass:'mayuscula',divSize:'4',datos:''},
+				{campo:'input',idCampo:'informanteOtroParentesco',nameCampo:'Especifique:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese otro parentesco',newClass:'mayuscula sinNumeros',divSize:'4',datos:''},
 				{campo:'select',idCampo:'idNacionalidad',nameCampo:'Nacionalidad:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
 				{campo:'select',idCampo:'idDocumentoIdentidad',nameCampo:'Identificación:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
-				{campo:'input',idCampo:'otroDocIdentidad',nameCampo:'Especifique:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese otro tipo de documento',newClass:'mayuscula',divSize:'4',datos:''},
+				{campo:'input',idCampo:'otroDocIdentidad',nameCampo:'Especifique:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese otro tipo de documento',newClass:'mayuscula sinNumeros',divSize:'4',datos:''},
 				{campo:'input',idCampo:'numDocIdentidad',nameCampo:'Número de identificación:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese número de documento',newClass:'mayuscula',divSize:'4',datos:''},
 				{campo:'select',idCampo:'informanteTipoDireccion',nameCampo:'Tipo de dirección:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
 				{campo:'input',idCampo:'informanteCalle',nameCampo:'Calle:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese el nombre de la calle',newClass:'mayuscula',divSize:'4',datos:''},
@@ -84,7 +84,7 @@
 				{campo:'select',idCampo:'lada',nameCampo:'Lada:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
 				{campo:'input',idCampo:'informanteTelefonos',nameCampo:'Número:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
 				{campo:'input',idCampo:'ext',nameCampo:'Ext:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
-				{campo:'input',idCampo:'correoElectronico',nameCampo:'Correo electrónico:',typeCampo:'text',valorCampo:'' ,placeholder:'ejemplo@email.com',newClass:'mayuscula',divSize:'4',datos:''},
+				{campo:'input',idCampo:'correoElectronico',nameCampo:'Correo electrónico:',typeCampo:'text',valorCampo:'' ,placeholder:'ejemplo@email.com',newClass:'mayuscula email',divSize:'4',datos:''},
 				{campo:'input',idCampo:'informante',nameCampo:'SÓLO INFORMANTE:',typeCampo:'checkbox',valorCampo:'' ,placeholder:'',newClass:'',divSize:'4',datos:''},
 				{campo:'input',idCampo:'notificaciones',nameCampo:'AUTORIZADA PARA DAR, OIR Y RECIBIR INFORMES:',typeCampo:'checkbox',valorCampo:'' ,placeholder:'',newClass:'',divSize:'4',datos:''},
 			];			
@@ -93,6 +93,7 @@
 			.done(function(data){
 				idParentesco = null;
 				selectedParentesco = $('#idParentesco');
+				selectedParentesco.select2();
 				selectedParentesco.append('<option value="0">[ SELECCIONE PARENTESCO ]</option>');
 				$.each(data, function(key, value){						
 					optionSelect = '<option';
@@ -106,6 +107,7 @@
 			.done(function(data){
 				idParentesco = null;
 				selectedParentesco = $('#idNacionalidad');
+				selectedParentesco.select2();
 				selectedParentesco.append('<option value="0">[ SELECCIONE NACIONALIDAD ]</option>');
 				$.each(data, function(key, value){						
 					optionSelect = '<option';
@@ -119,6 +121,7 @@
 			.done(function(data){
 				idDocumentoIdentidad = null;
 				selectedParentesco = $('#idDocumentoIdentidad');
+				selectedParentesco.select2();
 				selectedParentesco.append('<option value="0">[ SELECCIONE DOCUMENTO ]</option>');
 				$.each(data, function(key, value){						
 					optionSelect = '<option';
@@ -133,6 +136,7 @@
 				console.log(data);
 				idParentesco = null;
 				selectedParentesco = $('#informanteTipoDireccion');
+				selectedParentesco.select2();
 				selectedParentesco.append('<option value="0">[ SELECCIONE TIPO ]</option>');
 				$.each(data, function(key, value){						
 					optionSelect = '<option';
@@ -146,6 +150,7 @@
 			.done(function(data){
 				idParentesco = null;
 				selectedParentesco = $('#idEstado');
+				selectedParentesco.select2();
 				selectedParentesco.append('<option value="0">[ SELECCIONE ESTADO]</option>');
 				$.each(data, function(key, value){						
 					optionSelect = '<option';
@@ -159,6 +164,7 @@
 			.done(function(data){
 				idParentesco = null;
 				selectedParentesco = $('#informanteTipoTel');
+				selectedParentesco.select2();
 				selectedParentesco.append('<option value="0">[ SELECCIONE TIPO]</option>');
 				$.each(data, function(key, value){						
 					optionSelect = '<option';
@@ -172,6 +178,7 @@
 			.done(function(data){
 				idParentesco = null;
 				selectedParentesco = $('#lada');
+				selectedParentesco.select2();
 				selectedParentesco.append('<option value="0">[ SELECCIONE LADA]</option>');
 				$.each(data, function(key, value){						
 					optionSelect = '<option';
@@ -279,6 +286,7 @@
 				.done(function(data){
 					idParentesco = row.idParentesco;
 					selectedParentesco = $('#idParentesco');
+					selectedParentesco.select2();
 					selectedParentesco.append('<option value="0">[ SELECCIONE PARENTESCO ]</option>');
 					$.each(data, function(key, value){						
 						optionSelect = '<option';
@@ -292,6 +300,7 @@
 				.done(function(data){
 					idNacionalidad = row.idNacionalidad;
 					selectedParentesco = $('#idNacionalidad');
+					selectedParentesco.select2();
 					selectedParentesco.append('<option value="0">[ SELECCIONE NACIONALIDAD ]</option>');
 					$.each(data, function(key, value){						
 						optionSelect = '<option';
@@ -305,6 +314,7 @@
 				.done(function(data){
 					idDocumentoIdentidad = row.idDocumentoIdentidad;
 					selectedParentesco = $('#idDocumentoIdentidad');
+					selectedParentesco.select2();
 					selectedParentesco.append('<option value="0">[ SELECCIONE DOCUMENTO ]</option>');
 					$.each(data, function(key, value){						
 						optionSelect = '<option';
@@ -318,6 +328,7 @@
 				.done(function(data){
 					idTipoDireccion = row.tipoDireccion;
 					selectedParentesco = $('#informanteTipoDireccion');
+					selectedParentesco.select2();
 					selectedParentesco.append('<option value="0">[ SELECCIONE TIPO ]</option>');
 					$.each(data, function(key, value){						
 						optionSelect = '<option';
@@ -331,6 +342,7 @@
 				.done(function(data){
 					idEstado = row.idEstado;
 					selectedParentesco = $('#idEstado');
+					selectedParentesco.select2();
 					selectedParentesco.append('<option value="0">[ SELECCIONE ESTADO]</option>');
 					$.each(data, function(key, value){						
 						optionSelect = '<option';
@@ -344,6 +356,7 @@
 				.done(function(data){
 					idTiposTelefonos = null;
 					selectedParentesco = $('#informanteTipoTel');
+					selectedParentesco.select2();
 					selectedParentesco.append('<option value="0">[ SELECCIONE TIPO]</option>');
 					$.each(data, function(key, value){						
 						optionSelect = '<option';
@@ -357,6 +370,7 @@
 				.done(function(data){
 					idLadas = null;
 					selectedParentesco = $('#lada');
+					selectedParentesco.select2();
 					selectedParentesco.append('<option value="0">[ SELECCIONE LADA]</option>');
 					$.each(data, function(key, value){						
 						optionSelect = '<option';
@@ -406,6 +420,7 @@
 
 		bodyModal.on('change', '#idEstado', function(){
 			$("#idMunicipio").empty();
+			$("#idMunicipio").select2();
 			var idMunicipio = $(this).val();
 			if(idMunicipio) {
 				$.ajax({
@@ -431,6 +446,7 @@
 		// Cambios localidades
 		bodyModal.on('change', '#idMunicipio', function(){
 			$("#idLocalidad").empty();
+			$("#idLocalidad").select2();
 			var idLocalidad = $(this).val();
 			if(idLocalidad) {
 				
@@ -456,6 +472,7 @@
 
 		var idColonia = $(this).val();
 		$("#idColonia").empty();
+		$("#idColonia").select2();
 		if(idColonia) {
 			
 			$.ajax({
@@ -483,6 +500,8 @@
 		//codigo postal
 		 var idCodigo = $(this).val();
 		$("#idCodigoPostal").empty();
+		$("#idCodigoPostal").select2();
+		$("#idCodigoPostal").prop('disabled', true);
 		if(idCodigo) {
 			$.ajax({
 				url: '/colonias2/'+idCodigo,
@@ -507,6 +526,8 @@
 	//para Codigo Postal  seleccionando una colonia
 	bodyModal.on('change', '#idColonia', function(){
 	   $("#idCodigoPostal").empty();
+	   $("#idCodigoPostal").select2();
+	   $("#idCodigoPostal").prop('disabled', true);
 	   var idCodigoPostal = $(this).val();
 	   if(idCodigoPostal) {	
 		   $.ajax({
