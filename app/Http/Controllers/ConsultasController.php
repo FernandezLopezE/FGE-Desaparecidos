@@ -29,6 +29,14 @@ class ConsultasController extends Controller
 
     }
 
+    public function jsonDomiciliosPersona(Request $request, $idDesaparecido)
+    {
+        $domicilios = \App\Models\Domicilio::where('idDesaparecido', $idDesaparecido)->get();
+
+        return response()->json($domicilios);
+
+    }
+
     public function jsonParentescos(Request $request)
     {
         $parentescos = \App\Models\CatParentesco::all();

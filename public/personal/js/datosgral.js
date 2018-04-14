@@ -456,13 +456,13 @@ $(document).ready(function(){
    });
 
    //Mostrar - ocultar form
-   $("#").click(function() {
+   /*$("#").click(function() {
 		$("#formInformante").toggle('slow');
    });
 
   $('#nuevaPrenda').click(function(e){
 			alert("Hola");
-		})
+		})*/
 
 });
 

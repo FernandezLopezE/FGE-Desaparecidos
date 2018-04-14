@@ -18,6 +18,8 @@ Route::get('/', function () {
 
 Route::get('consultas/get_informantes/{idCedula}', 'ConsultasController@jsonInformantes')
 	->name('consultas.get_informantes');
+Route::get('consultas/get_domicilios_persona/{idDesaparecido}', 'ConsultasController@jsonDomiciliosPersona')
+	->name('consultas.get_domicilios_persona');
 Route::get('consultas/get_parentescos', 'ConsultasController@jsonParentescos')
 	->name('consultas.get_parentescos');
 Route::get('consultas/get_nacionalidades', 'ConsultasController@jsonNacionalidades')
@@ -55,6 +57,13 @@ Route::post('/desaparecido/store_cedula', 'DesaparecidoController@store_cedula')
 Route::post('/desaparecido/store_desaparecido_domicilio', 'DesaparecidoController@store_desaparecido_domicilio')
 	->name('desaparecido.store_desaparecido_domicilio');
 
+Route::post('/desaparecido/store_desaparecido_domicilio', 'DesaparecidoController@store_desaparecido_domicilio')
+	->name('desaparecido.store_desaparecido_domicilio');
+
+// Mostrar formulario de la persona desaparecida domicilio.
+Route::get('/desaparecido/persona_desaparecida_domicilio/{idCedula}/{idPersona}', 'DesaparecidoController@show_desaparecido_domicilio');
+
+// Guardando los datos de la persona desaparecida.
 Route::post('/desaparecido/store_desaparecido', 'DesaparecidoController@store_desaparecido')
 	->name('desaparecido.store_desaparecido');
 

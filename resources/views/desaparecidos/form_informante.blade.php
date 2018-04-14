@@ -273,7 +273,12 @@
 					{campo:'input',idCampo:'correoElectronico',nameCampo:'Correo electrónico:',typeCampo:'text',valorCampo:row.correoElectronico ,placeholder:'ejemplo@email.com',newClass:'mayuscula',divSize:'4',datos:''},
 					{campo:'input',idCampo:'informante',nameCampo:'SÓLO INFORMANTE:',typeCampo:'checkbox',valorCampo:'' ,placeholder:'',newClass:'',divSize:'4',datos:''},
 					{campo:'input',idCampo:'notificaciones',nameCampo:'AUTORIZADA PARA DAR, OIR Y RECIBIR INFORMES:',typeCampo:'checkbox',valorCampo:'' ,placeholder:'',newClass:'',divSize:'4',datos:''},
-				];					
+				];
+
+				
+				//bodyModal.parents('#div_informanteOtroParentesco').remove();
+				
+				//table.after("<p>Este párrafo tiene que salir entre el párrafo 1 y 2</p>");					
 					
 				$.getJSON(routeIndex+'/get_parentescos')
 				.done(function(data){
@@ -374,8 +379,11 @@
 
 				bodyModal.append(campos);
 
+				modalGeneral.modal('show');
 
-				modalGeneral.modal('show');			
+				$("#div_otroDocIdentidad").css("display","none")
+
+						
 			}				
 		}
 
@@ -527,9 +535,6 @@
 		   $('#idColonia').empty();
 	   }
    });
-
-
-
 
 	})
 

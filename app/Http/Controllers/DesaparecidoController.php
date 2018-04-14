@@ -296,55 +296,60 @@ class DesaparecidoController extends Controller
 	public function store_desaparecido(Request $request) {
 
 		$persona = Persona::create([
-						'nombres' 			=> $request->input('nombres'),
-						'primerAp' 			=> $request->input('primerAp'),
-						'segundoAp'			=> $request->input('segundoAp'),
-						'fechaNacimiento'	=> $request->input('fechaNacimiento'),
-						'sexo' 				=> $request->input('sexo'),
-						'idNacionalidad'	=> $request->input('idNacionalidad'),
-					]);
-		
-				$embarazo		= ($request->input('sexo')=='FEMENINO') ? $request->input('embarazo') : 'NO';
-				$numGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('numGestacion') : null;
-				$tipoGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('tipoGestacion') : null;
-				$rumoresBebe	= ($request->input('embarazo') == 'SI') ? $request->input('rumoresBebe') : 'NO';
-				$pormenores		= ($request->input('rumoresBebe') == 'SI') ? $request->input('pormenores') : null;
-				
-				$fecha = Carbon::parse($request->input('fechaNacimiento'));
-        		$edad = Carbon::createFromDate($fecha->year, $fecha->day, $fecha->month)
-        					->diff(Carbon::now())->format('%y años, %m meses y %d dias');
+					'nombres' 			=> $request->input('nombres'),
+					'primerAp' 			=> $request->input('primerAp'),
+					'segundoAp'			=> $request->input('segundoAp'),
+					'fechaNacimiento'	=> $request->input('fechaNacimiento'),
+					'sexo' 				=> $request->input('sexo'),
+					'idNacionalidad'	=> $request->input('idNacionalidad'),
+				]);
+	
+			$embarazo		= ($request->input('sexo')=='FEMENINO') ? $request->input('embarazo') : 'NO';
+			$numGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('numGestacion') : null;
+			$tipoGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('tipoGestacion') : null;
+			$rumoresBebe	= ($request->input('embarazo') == 'SI') ? $request->input('rumoresBebe') : 'NO';
+			$pormenores		= ($request->input('rumoresBebe') == 'SI') ? $request->input('pormenores') : null;
 			
-			$desaparecido = Desaparecido::create([
-				'idCedula'					=> $request->input('idCedula'),
-				'idPersona' 				=> $persona->id,
-				'apodo' 					=> $request->input('apodo'),
-				'edadAparente' 				=> $request->input('edadAparente'),
-				'edadExtravio' 				=> $edad,
-				'embarazo' 					=> $embarazo,
-				'numGestacion' 				=> $numGestacion,
-				'tipoGestacion' 			=> $tipoGestacion,
-				'rumoresBebe' 				=> $rumoresBebe,
-				'pormenores' 				=> $pormenores,
-				'antecedentesJudiciales' 	=> $request->input('antecedentesJudiciales'),
-				'otroDocIdentidad' 			=> $request->input('otroDocIdentidad'),
-				'numDocIdentidad'			=> $request->input('numDocIdentidad'),
-				'idEdocivil' 				=> $request->input('idEdocivil'),
-				'idOcupacion' 				=> $request->input('idOcupacion'),
-				'idEscolaridad' 			=> $request->input('idEscolaridad'),
-				'idDocumentoIdentidad'		=> $request->input('idDocumentoIdentidad'),
-			]);
+			$fecha = Carbon::parse($request->input('fechaNacimiento'));
+			$edad = Carbon::createFromDate($fecha->year, $fecha->day, $fecha->month)
+						->diff(Carbon::now())->format('%y años, %m meses y %d dias');
+		
+		$desaparecido = Desaparecido::create([
+			'idCedula'					=> $request->input('idCedula'),
+			'idPersona' 				=> $persona->id,
+			'apodo' 					=> $request->input('apodo'),
+			'edadAparente' 				=> $request->input('edadAparente'),
+			'edadExtravio' 				=> $edad,
+			'embarazo' 					=> $embarazo,
+			'numGestacion' 				=> $numGestacion,
+			'tipoGestacion' 			=> $tipoGestacion,
+			'rumoresBebe' 				=> $rumoresBebe,
+			'pormenores' 				=> $pormenores,
+			'antecedentesJudiciales' 	=> $request->input('antecedentesJudiciales'),
+			'otroDocIdentidad' 			=> $request->input('otroDocIdentidad'),
+			'numDocIdentidad'			=> $request->input('numDocIdentidad'),
+			'idEdocivil' 				=> $request->input('idEdocivil'),
+			'idOcupacion' 				=> $request->input('idOcupacion'),
+			'idEscolaridad' 			=> $request->input('idEscolaridad'),
+			'idDocumentoIdentidad'		=> $request->input('idDocumentoIdentidad'),
+		]);
 
-			dd($desaparecido);
+		return redirect()->action(
+			'DesaparecidoController@show_desaparecido_domicilio',
+				['idCedula' => $desaparecido->idCedula, 'idDesaparecido' => $desaparecido->id]
+		);
 
 	}
-	public function show_desaparecido_domicilio($idCedula)
+	public function show_desaparecido_domicilio($idCedula, $idDesaparecido)
 	{
 		$cedula = Cedula::find($idCedula);
-		return view('desaparecidos.form_desaparecido_domicilio', compact('cedula'));		
+		$desaparecido = Desaparecido::find($idDesaparecido);
+		return view('desaparecidos.form_desaparecido_domicilio', compact('cedula', 'desaparecido'));		
 	}
 
 	public function store_desaparecido_domicilio(Request $request){
 
+		dd($request->toArray);
 		$domicilio = Domicilio::create([
 			'idDesaparecido' 	=> $desaparecido->id,
 			'tipoDireccion'		=> $request->input('tipoDireccionc'),
