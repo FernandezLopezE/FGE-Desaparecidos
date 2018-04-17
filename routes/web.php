@@ -96,7 +96,9 @@ Route::post('/desaparecido/store_informante', 'DesaparecidoController@store_info
 	->name('desaparecido.store_informante');
 // Mostrar formulario del informante	
 Route::get('/desaparecido/informante/{idCedula}', 'DesaparecidoController@show_informante');
+Route::get('/desaparecido/senas_particulares','DesaparecidoController@show_senas_particulares');
 Route::resource('/desaparecido','DesaparecidoController');
+
 
 Route::resource('domicilio','DomiciliosController');
 Route::get('codigos/{id}', 'DomiciliosController@getCodigos');
@@ -105,7 +107,6 @@ Route::get('localidades/{id}', 'DomiciliosController@getLocalidades');
 Route::get('colonias2/{id}', 'DomiciliosController@getColonias2');
 Route::get('colonias/{id}', 'DomiciliosController@getColonias');
 Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');
-
 
 
 
