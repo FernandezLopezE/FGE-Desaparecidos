@@ -855,4 +855,8 @@ class DesaparecidoController extends Controller
 		print_r(Session::get('productos'));*/
 		//dd(Session::get('cart'));
 	}
+
+	public function show_senas_particulares(){
+		return view('desaparecidos.form_senas_particulares');
+	}
 }
