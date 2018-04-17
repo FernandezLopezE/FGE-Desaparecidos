@@ -29,6 +29,21 @@ class ConsultasController extends Controller
 
     }
 
+    public function jsonAntecedentes(Request $request, $idDesaparecido)
+    {
+        $desaparecidos = \App\Models\Antecedente::where('idDesaparecido', $idDesaparecido)->get();
+
+        return response()->json($desaparecidos);
+    }
+
+    public function jsonFamiliares(Request $request, $idDesaparecido)
+    {
+        $familiares = \App\Models\Familiar::where('idDesaparecido', $idDesaparecido)->get();
+
+        return response()->json($familiares);
+
+    }
+
     public function jsonDomiciliosPersona(Request $request, $idDesaparecido)
     {
         $domicilios = \App\Models\Domicilio::where('idDesaparecido', $idDesaparecido)->get();
@@ -72,6 +87,27 @@ class ConsultasController extends Controller
         $estados = \App\Models\CatEstado::all();
 
         return response()->json($estados);
+    }
+
+    public function jsonMunicipios(Request $request, $idEstado)
+    {
+        $municipios = \App\Models\CatMunicipio::where('idEstado',$idEstado)->get();
+
+        return response()->json($municipios);
+    }
+
+    public function jsonLocalidades(Request $request, $idMunicipio)
+    {
+        $localidades = \App\Models\CatLocalidad::where('idMunicipio',$idMunicipio)->get();
+
+        return response()->json($localidades);
+    }
+
+    public function jsonColonias(Request $request, $idMunicipio)
+    {
+        $colonias = \App\Models\CatColonia::where('idMunicipio',$idMunicipio)->get();
+
+        return response()->json($colonias);
     }
 
     public function jsonTiposTelefonos(Request $request)

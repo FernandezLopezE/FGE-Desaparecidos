@@ -18,8 +18,8 @@ class CreateDesaparecidosFamiliaresTable extends Migration
             $table->string('nombres', 50)->nullable();
             $table->string('primerAp', 50)->nullable();
             $table->string('segundoAp', 50)->nullable();
-            $table->date('fechaNacimiento');           
-            $table->string('edad',3);
+            $table->date('fechaNacimiento')->nullable();       
+            $table->string('edad',250)->nullable();
 
             $table->integer('idParentesco')->unsigned();
             $table->foreign('idParentesco')->references('id')->on('cat_parentesco')->onDelete('cascade');

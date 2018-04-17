@@ -16,7 +16,7 @@
 			</div>
 		</div>	
 	</div>
-	<div class="card-body">		
+	<div class="card-body">	
   		<div class="row">
   			<div class="col-lg-4" id="otro_dialec2" style="display:none">
 				{!! Form::label ('entrevistadorNombre','Nombre del entrevistador:') !!}

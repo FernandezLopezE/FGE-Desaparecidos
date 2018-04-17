@@ -10,96 +10,226 @@
 @endsection
 
 @section('content')
-		<div class="card border-primary">
-			<div class="card-header">
-				<h5 class="card-title">Domicilio actual o último del extraviado</h5>
-				<button type="button" class="btn btn-dark pull-right"  id="btnNuevoDomicilio"><i class="fa fa-plus"></i> AGREGAR NUEVO DOMICILIO</button>
-			</div>
-			<div class="card-body">
-				<table id="table" ></table>
-				@include('includes.modal')
-			</div>
-		</div>
+	{{ Form::hidden('idCedula', $cedula->id, array('id' => 'idCedula')) }}
+	{{ Form::hidden('idDesaparecido', $desaparecido->id, array('id' => 'idDesaparecido')) }}
 
-	<a href="/desaparecido/desaparecido" class='btn btn-large btn-primary openbutton'>Siguiente</a>
+	<!-- Inicia tabla de familiares -->
+	<div class="card border-primary">
+		<div class="card-header">
+			<div class="row">
+				<div class="col-lg-12">
+					<h5 class="card-title">
+						FAMILIARES DE LA PERSONA DESAPARECIDA
+						<button type="button" class="btn btn-dark pull-right"  id="btnAgregarFamiliares"><i class="fa fa-plus"></i> AGREGAR FAMILIARES</button>
+
+					</h5>
+				</div>	
+			</div>	
+		</div>
+		<div class="card-body">
+			<table id="tableFamiliares" ></table>
+			@include('includes.modal_desaparecido_familiares')
+		</div>
+	</div>
+	<!-- Termina tabla de familiares -->
+
+	<!-- Inicia tabla de domicilios -->
+	<div class="card border-primary">
+		<div class="card-header">
+			<div class="row">
+				<div class="col-lg-12">
+					<h5 class="card-title">
+						DOMICILIOS DE LA PERSONA DESAPARECIDA
+						<button type="button" class="btn btn-dark pull-right"  id="btnAgregarDomicilios"><i class="fa fa-plus"></i> AGREGAR DOMICILIOS</button>
+
+					</h5>
+				</div>	
+			</div>	
+		</div>
+		<div class="card-body">
+			<table id="tableDomicilios" ></table>
+			@include('includes.modal_desaparecido_domicilio')
+		</div>
+	</div>
+	<!-- Termina tabla de domicilios -->
+
+	<!-- Inicia tabla de antecedentes -->
+	<div class="card border-primary">
+		<div class="card-header">
+			<div class="row">
+				<div class="col-lg-12">
+					<h5 class="card-title">
+						ANTECEDENTES PENALES DE LA PERSONA DESAPARECIDA
+						<button type="button" class="btn btn-dark pull-right"  id="btnAgregarAntecedentes"><i class="fa fa-plus"></i> AGREGAR ANTECEDENTES</button>
+					</h5>
+				</div>	
+			</div>	
+		</div>
+		<div class="card-body">
+			<table id="tableAntecedentes" ></table>
+		</div>
+	</div>
+	<!-- Termina tabla de antecedentes -->	
+
+	<a href="/desaparecido/vestimenta/{!! $cedula->id !!}" class='btn btn-large btn-primary pull-right'>
+		Siguiente  <i class="fa fa-angle-double-right"></i>
+	</a>
 
 @endsection
 
 @section('scripts')
-{!! HTML::script('personal/js/funciones_generales.js') !!}
 <script type="text/javascript">
 	$(function (){
-		var table = $('#table');
 		var routeIndex = '{!! route('consultas.index') !!}';
-		var idCedula = '{!! $cedula->id !!}';
-		var btnAgregarDomicilio = $('#btnNuevoDomicilio');
-		var btnAgregarInformante = $('#btnAgregarInformante');
-		var modalGeneral = $('#modalGeneral');
-		var bodyModal = $('.modal-body');
+		
+		var tableFamiliares = $('#tableFamiliares');
+		var tableDomicilios = $('#tableDomicilios');
+		var tableAntecedentes = $('#tableAntecedentes');
+		
+		var btnAgregarFamiliares = $('#btnAgregarFamiliares');
+		var btnAgregarDomicilios = $('#btnAgregarDomicilios');
+		var btnAgregarAntecedentes = $('#btnAgregarAntecedentes');
+		
+		var btnGuardarFamiliares = $('#btnGuardarFamiliares');
+		var btnGuardarDomicilios = $('#btnGuardarDomicilios');
+		var btnGuardarAntecedentes = $('#btnGuardarAntecedentes');
 
-        btnAgregarDomicilio.click(function(e){
-        	console.log('Entrando al model');
-            bodyModal.empty();
-            var dataCampos = [
-                {campo:'select',idCampo:'tipoDireccion',nameCampo:'Tipo de domicilio:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
-                {campo:'input',idCampo:'calle',nameCampo:'Calle:',typeCampo:'text',valorCampo:'' ,placeholder:'Ingrese la calle',newClass:'mayuscula',divSize:'4',datos:''},
-                {campo:'input',idCampo:'numExterno',nameCampo:'Número exterior:',typeCampo:'text',valorCampo:'' ,placeholder:'S/N',newClass:'mayuscula',divSize:'4',datos:''},
-                {campo:'input',idCampo:'numInterno',nameCampo:'Número interior:',typeCampo:'text',valorCampo:'' ,placeholder:'S/N',newClass:'mayuscula',divSize:'4',datos:''},
-                {campo:'select',idCampo:'idEstado',nameCampo:'Estado:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
-                {campo:'select',idCampo:'idMunicipio',nameCampo:'Municipio:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
-                {campo:'select',idCampo:'idLocalidad',nameCampo:'Localidad:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
-                {campo:'select',idCampo:'idColonia',nameCampo:'Colonia:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
-                {campo:'select',idCampo:'idCodigoPostal',nameCampo:'CódigoPostal:',typeCampo:'text',valorCampo:'' ,placeholder:'',newClass:'mayuscula',divSize:'4',datos:''},
-                {campo:'input',idCampo:'telefono',nameCampo:'Teléfono:',typeCampo:'text',valorCampo:'' ,placeholder:'S/N',newClass:'mayuscula',divSize:'4',datos:''},
-            ];                
+		var modalDesaparecidoFamiliar = $('#modalDesaparecidoFamiliar');
+		var modalDesaparecidoDomicilio= $('#modalDesaparecidoDomicilio');
+		var modalDesaparecidoAntecedente = $('#modalDesaparecidoAntecedente');
 
-			$.getJSON(routeIndex+'/get_tipos_domicilios')
-			.done(function(data){
-				console.log(data);
-				idParentesco = null;
-				selectedParentesco = $('#tipoDireccion');
-				selectedParentesco.append('<option value="0">[ SELECCIONE TIPO ]</option>');
-				$.each(data, function(key, value){						
-					optionSelect = '<option';
-					if (idParentesco == value.id) { optionSelect = optionSelect+' selected'; }
-					optionselect = optionSelect+' value='+value.id+'>'+value.nombre+'</option>';
-					selectedParentesco.append(optionselect);
+		$('input#familiaresFechaNacimiento').mask('00/00/0000');
+
+		$('#familiaresFechaNacimiento').change(function(){  
+			console.log('Calculando edad de la pareja');
+			from = $("#familiaresFechaNacimiento").val().split("/");
+			familiaresFechaNacimiento = from[2] + "-" + from[1] + "-" + from[0];
+			fechaEnviada = Date.parse(familiaresFechaNacimiento);
+		   
+			fechaActual= new Date();
+		   
+			if (fechaEnviada > fechaActual)
+			 {
+			   $("#familiaresFechaNacimiento").val("");
+			   $("#edadExtravio").val("");
+			}else{
+
+			$.ajax({
+				   url: '/desaparecido/edad/'+familiaresFechaNacimiento,
+				   type:"GET",
+				   dataType:"json",
+
+				   success:function(data) {
+						   console.log("hola"+data);
+						   $('#familiaresEdad').val(data);
+					},
+				   
 				});
-			});
+			}
+		});
 
-			$.getJSON(routeIndex+'/get_estados')
-			.done(function(data){
-				idParentesco = null;
-				selectedParentesco = $('#idEstado');
-				selectedParentesco.append('<option value="0">[ SELECCIONE ESTADO]</option>');
-				$.each(data, function(key, value){						
-					optionSelect = '<option';
-					if (idParentesco == value.id) { optionSelect = optionSelect+' selected'; }
-					optionselect = optionSelect+' value='+value.id+'>'+value.nombre+'</option>';
-					selectedParentesco.append(optionselect);
-				});
-			});					
+		tableFamiliares.bootstrapTable({				
+			url: routeIndex+'/get_familiares/{!! $desaparecido->id !!}',
+			columns: [{					
+				field: 'nombres',
+				title: 'Nombres',
+			}, {					
+				field: 'primerAp',
+				title: 'Primer apellido',
+			}, {					
+				field: 'segundoAp',
+				title: 'Segundo apellido',
+			}, {				
+				field: 'fechaNacimiento',
+				title: 'Fecha nacimiento',				
+			}, {				
+				field: 'edad',
+				title: 'Edad',
+			}, {					
+				title: 'Acciones',
+				//formatter: formatTableActions,
+				//events: operateEvents
+			}]				
+		})
 
-			campos = estilo_modal.mostrar(dataCampos);
-			bodyModal.append(campos);
-			modalGeneral.modal('show');            
+		tableDomicilios.bootstrapTable({				
+			url: routeIndex+'/get_domicilios/{!! $desaparecido->id !!}',
+			columns: [{					
+				field: 'calle',
+				title: 'Calle',
+			}, {					
+				field: 'numExterno',
+				title: 'No Externo',
+			}, {					
+				field: 'idEstado',
+				title: 'Estado',
+			}, {				
+				field: 'idMunicipio',
+				title: 'idMunicipio',				
+			}, {				
+				field: 'idLocalidad',
+				title: 'Localidad',
+			}, {					
+				title: 'Acciones',
+				//formatter: formatTableActions,
+				//events: operateEvents
+			}]				
+		})
 
-        })
+		btnAgregarFamiliares.click(function(e){
+			modalDesaparecidoFamiliar.modal('show');
+		})
 
-		btnAgregarInformante.click (function(){
+		btnAgregarDomicilios.click(function(e){
+			console.log('hola mundo');
+			modalDesaparecidoDomicilio.modal('show');
+		})
+
+		btnGuardarFamiliares.click (function(){
 			
 			var dataString = {
-				tipoDireccion: $("#tipoDireccion").val(),
-				calle : $("#calle").val(),
-				numExterno : $("#numExterno").val(),
-				numInterno : $("#numInterno").val(),
-				idEstado : $("#idEstado").val(),
-				idMunicipio : $("#idMunicipio").val(),
-				idLocalidad : $("#idLocalidad").val(),
-				idColonia : $("#idColonia").val(),
-				idCodigoPostal : $("#idCodigoPostal").val(),
-				telefono : $("#telefono").val(),
+				nombre : $("#familiaresNombres").val(),
+				primerAp : $("#familiaresPrimerAp").val(),
+				segundoAp : $("#familiaresSegundoAp").val(),
+				idParentesco : $("#familiaresidParentesco").val(),
+				fechaNacimiento : $("#familiaresFechaNacimiento").val(),
+				edad : $("#familiaresEdad").val(),
+				idDesaparecido : $("#idDesaparecido").val(),
 			};
+
+			$.ajax({
+				type: 'POST',
+				url: '/desaparecido/store_desaparecido_familiar',
+				data: dataString,
+				dataType: 'json',
+				success: function(data) {
+					modalDesaparecidoFamiliar.modal('hide');
+					tableFamiliares.bootstrapTable('refresh');							
+				},
+				error: function(data) {
+					console.log(data);
+				}
+			});
+		})
+
+		btnGuardarDomicilios.click (function(){
+			
+			var dataString = {
+				tipoDireccion: $("#informanteTipoDireccion").val(),
+				calle: $("#informanteCalle").val(),
+				numExt: $("#informanteNumExterno").val(),
+				numInt: $("#informanteNumInterno").val(),
+				idEstado: $("#idEstado").val(),
+				idMunicipio: $("#idMunicipio").val(),
+				idLocalidad: $("#idLocalidad").val(),
+				idColonia: $("#idColonia").val(),
+				idCodigoPostal: $("#idCodigoPostal").val(),
+				tipoTel: $("#informanteTipoTel").val(),				
+				telefono : $("#informanteTelefonos").val(),				
+				idDesaparecido: {!! $desaparecido->id !!},
+			};
+
+			console.log(dataString)
 
 			$.ajax({
 				type: 'POST',
@@ -108,8 +238,8 @@
 				dataType: 'json',
 				success: function(data) {
 					console.log(data);
-					//modalGeneral.modal('hide');
-					//table.bootstrapTable('refresh');
+					modalDesaparecidoDomicilio.modal('hide');
+					tableDomicilios.bootstrapTable('refresh');							
 				},
 				error: function(data) {
 					console.log(data);
@@ -118,130 +248,8 @@
 		})
 
 
-		bodyModal.on('change', '#idEstado', function(){
-			$("#idMunicipio").empty();
-			var idMunicipio = $(this).val();
-			if(idMunicipio) {
-				$.ajax({
-					url: '/municipio/'+idMunicipio,
-					type:"GET",
-					dataType:"json",
-
-					success:function(data) {
-							$("#idMunicipio").empty();
-						$.each(data, function(key, value){
-							$("#idMunicipio").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
-
-						});
-
-					},
-					
-				});
-			} else {
-				$('#idEstado').empty();
-			}
-		});
-
-		// Cambios localidades
-		bodyModal.on('change', '#idMunicipio', function(){
-			$("#idLocalidad").empty();
-			var idLocalidad = $(this).val();
-			if(idLocalidad) {
-				
-				$.ajax({
-					url: '/localidades/'+idLocalidad,
-					type:"GET",
-					dataType:"json",
-
-					success:function(data) {
-							$("#idLocalidad").empty();
-						$.each(data, function(key, value){						
-
-							$("#idLocalidad").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
-
-						});
-
-					},
-					
-				});
-			} 
-
-		//colonias
-
-		var idColonia = $(this).val();
-		$("#idColonia").empty();
-		if(idColonia) {
-			
-			$.ajax({
-				url: '/colonias2/'+idColonia,
-				type:"GET",
-				dataType:"json",
-
-				success:function(data) {
-						
-
-						$("#idColonia").empty();
-
-					$.each(data, function(key, value){
-						
-
-						$("#idColonia").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
-
-					});
-
-				},
-				
-			});
-		}
-
-		//codigo postal
-		 var idCodigo = $(this).val();
-		$("#idCodigoPostal").empty();
-		if(idCodigo) {
-			$.ajax({
-				url: '/colonias2/'+idCodigo,
-				type:"GET",
-				dataType:"json",
-
-				success:function(data) {
-						$("#idCodigoPostal").empty();
-					$.each(data, function(key, value){
-						$("#idCodigoPostal").append('<option value="'+ value.id +'">' +  value.codigoPostal + '</option>');
-
-					});
-
-				},
-				
-			});
-		}
 
 
-	});
-
-	//para Codigo Postal  seleccionando una colonia
-	bodyModal.on('change', '#idColonia', function(){
-	   $("#idCodigoPostal").empty();
-	   var idCodigoPostal = $(this).val();
-	   if(idCodigoPostal) {	
-		   $.ajax({
-			   url: '/codigos2/'+idCodigoPostal,
-			   type:"GET",
-			   dataType:"json",
-
-			   success:function(data) {
-					   $("#idCodigoPostal").empty();
-				   $.each(data, function(key, value){
-					   $("#idCodigoPostal").append('<option value="'+ value.id +'">' +  value.codigoPostal + '</option>');
-
-				   });
-			   },
-			   
-		   });
-	   } else {
-		   $('#idColonia').empty();
-	   }
-   });        
 	})
-
 </script>
 @endsection

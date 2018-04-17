@@ -90,27 +90,51 @@ class DesaparecidoController extends Controller
 	public function show_informante($idCedula)
 	{
 		$cedula = Cedula::find($idCedula);
+		
+		$desaparecido = Desaparecido::join('persona', 'desaparecidos_personas.idPersona', '=', 'persona.id')
+										->where('idCedula', $idCedula)
+										->where('tipoPersona', 'DESAPARECIDA')
+										->get()
+										->toArray();
+
+		$sexos = array('MASCULINO' => 'MASCULINO', 'FEMENINO' => 'FEMENINO');
+		$escolaridades		= \App\Models\CatEscolaridad::all()->pluck('nombre','id');
+		$ocupaciones	 	= \App\Models\CatOcupacion::all()->pluck('nombre','id');
+		$identificaciones	= \App\Models\CatDocumento::all()->pluck('nombre','id');
+		$edoscivil 			= \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
+
 		$desaparecido = new Desaparecido();
 		$parentescos = \App\Models\CatParentesco::all()->pluck('nombre','id');
 		$nacionalidades 	= \App\Models\CatNacionalidad::all()->pluck('nombre', 'id');
+		$ladas = \App\Models\CatNacionalidad::all()->pluck('lada','id');
 		$documentos 	= \App\Models\CatDocumento::all()->pluck('nombre', 'id');
-		$estados 			= \App\Models\CatEstado::all()->pluck('nombre','id');
+		$estados 			= \App\Models\CatEstado::all()->pluck('nombre','id');		
 		$municipios = array();
 		$localidades = array();
 		$colonias = array();
 		$codigos = array();
 		$tiposDireccion = array('PERSONAL' => 'PERSONAL',
 								'TRABAJO' => 'TRABAJO',
-								'FAMILIAR' => 'FAMILIAR');		
+								'FAMILIAR' => 'FAMILIAR');
+
+		$tiposTelefonos = array('PERSONAL' => 'PERSONAL',
+								'TRABAJO' => 'TRABAJO',
+								'CELULAR' => 'CELULAR');			
 
 		$informantes = Desaparecido::where('tipoPersona', 'INFORMANTE')->get();
 
 		return view('desaparecidos.form_informante',compact(
 											'desaparecido',
 											'cedula',
+											'sexos',
+											'escolaridades',
+											'ocupaciones',
+											'identificaciones',
+											'edoscivil',
 											'dialectos',
 											'parentescos',
 											'nacionalidades',
+											'ladas',
 											'documentos',
 											'estados',
 											'municipios',
@@ -118,12 +142,16 @@ class DesaparecidoController extends Controller
 											'colonias',
 											'informantes',
 											'codigos',
-											'tiposDireccion'
+											'tiposDireccion',
+											'tiposTelefonos'
 										));			
 	}
 
 	public function store_informante(Request $request)
 	{	
+		$informante = (is_null($request->input('informante'))) ? 0 : 1 ;
+		$autorizado = (is_null($request->input('notificaciones'))) ? 0 : 1 ;
+
 		$persona = Persona::create([
 			'nombres' 			=> $request->input('nombre'),
 			'primerAp' 			=> $request->input('primerAp'),
@@ -131,7 +159,8 @@ class DesaparecidoController extends Controller
 			'idNacionalidad' 	=> $request->input('nacionalidad'),
 		]);
 
-		
+
+
 		$desaparecido = Desaparecido::create([
 			'idPersona' 			=> $persona->id,
 			'idCedula'				=> $request->input('idCedula'),
@@ -140,8 +169,8 @@ class DesaparecidoController extends Controller
 			'otroDocIdentidad'		=> $request->input('otroDocumento'),
 			'numDocIdentidad'		=> $request->input('numDocIdentidad'),
 			'correoElectronico'		=> $request->input('correoElectronico'),
-			'informante'			=> $request->has('informante'),
-			'notificaciones'		=> $request->has('autorizado'),
+			'informante'			=> $informante,
+			'notificaciones'		=> $autorizado,
 			'tipoPersona'			=> 'INFORMANTE',
 		]);
 
@@ -177,7 +206,8 @@ class DesaparecidoController extends Controller
 	public function show_desaparecido($idCedula)
 	{
 		$cedula = Cedula::find($idCedula);
-		$desaparecido = new Desaparecido;
+
+		$desaparecido = new Desaparecido;		
 
 		$option = array(
 			'0' => 'NO',
@@ -296,6 +326,8 @@ class DesaparecidoController extends Controller
 
 	public function store_desaparecido(Request $request) {
 
+		
+		
 		$persona = Persona::create([
 					'nombres' 			=> $request->input('nombres'),
 					'primerAp' 			=> $request->input('primerAp'),
@@ -311,16 +343,13 @@ class DesaparecidoController extends Controller
 			$rumoresBebe	= ($request->input('embarazo') == 'SI') ? $request->input('rumoresBebe') : 'NO';
 			$pormenores		= ($request->input('rumoresBebe') == 'SI') ? $request->input('pormenores') : null;
 			
-			$fecha = Carbon::parse($request->input('fechaNacimiento'));
-			$edad = Carbon::createFromDate($fecha->year, $fecha->day, $fecha->month)
-						->diff(Carbon::now())->format('%y años, %m meses y %d dias');
 		
 		$desaparecido = Desaparecido::create([
 			'idCedula'					=> $request->input('idCedula'),
 			'idPersona' 				=> $persona->id,
 			'apodo' 					=> $request->input('apodo'),
 			'edadAparente' 				=> $request->input('edadAparente'),
-			'edadExtravio' 				=> $edad,
+			'edadExtravio' 				=> $request->input('edadExtravio'),
 			'embarazo' 					=> $embarazo,
 			'numGestacion' 				=> $numGestacion,
 			'tipoGestacion' 			=> $tipoGestacion,
@@ -333,7 +362,30 @@ class DesaparecidoController extends Controller
 			'idOcupacion' 				=> $request->input('idOcupacion'),
 			'idEscolaridad' 			=> $request->input('idEscolaridad'),
 			'idDocumentoIdentidad'		=> $request->input('idDocumentoIdentidad'),
+			'tipoPersona'				=> 'DESAPARECIDA',
 		]);
+
+		
+		$nombres = $request->input('familiaresNombres');
+		$primerAp = $request->input('familiaresPrimerAp');
+		$segundoAp = $request->input('familiaresSegundoAp');
+		$fechaNacimiento = $request->input('familiaresFechaNacimiento');
+		$familiaresEdad= $request->input('familiaresEdad');
+		$i = 0;
+		foreach ($request->input('parentesco') as $value) {
+			if (!is_null($nombres[$i])) {
+				$familia = Familiar::create([
+					'idParentesco'		=> '3',
+					'nombres' 			=> $nombres[$i],
+					'primerAp' 			=> $primerAp[$i],
+					'segundoAp' 		=> $segundoAp[$i],
+					'fechaNacimiento' 	=> $fechaNacimiento[$i],
+					'edad' 				=> $familiaresEdad[$i],
+					'idDesaparecido' 	=> $desaparecido->id,
+				]);
+			}
+			$i++;
+		}
 
 		return redirect()->action(
 			'DesaparecidoController@show_desaparecido_domicilio',
@@ -345,24 +397,82 @@ class DesaparecidoController extends Controller
 	{
 		$cedula = Cedula::find($idCedula);
 		$desaparecido = Desaparecido::find($idDesaparecido);
-		return view('desaparecidos.form_desaparecido_domicilio', compact('cedula', 'desaparecido'));		
+		
+
+		$anios = array('2000' => '2000', '2001' => '2001');		
+		
+		$tiposDireccion = array('PERSONAL' => 'PERSONAL', 'TRABAJO' => 'TRABAJO');
+
+		$parentescos = \App\Models\CatParentesco::all()->pluck('nombre','id');
+
+		$escolaridades		= \App\Models\CatEscolaridad::all()->pluck('nombre','id');
+		$ocupaciones	 	= \App\Models\CatOcupacion::all()->pluck('nombre','id');
+		$nacionalidades 	= \App\Models\CatNacionalidad::all()->pluck('nombre', 'id');
+		$ladas 				= \App\Models\CatNacionalidad::all()->pluck('lada','id');
+		$documentos 		= \App\Models\CatDocumento::all()->pluck('nombre', 'id');
+		$estados 			= \App\Models\CatEstado::all()->pluck('nombre','id');		
+		$municipios = array();
+		$localidades = array();
+		$colonias = array();
+		$codigos = array();
+		$tiposDireccion = array('PERSONAL' => 'PERSONAL',
+								'TRABAJO' => 'TRABAJO',
+								'FAMILIAR' => 'FAMILIAR');
+
+		$tiposTelefonos = array('PERSONAL' => 'PERSONAL',
+								'TRABAJO' => 'TRABAJO',
+								'CELULAR' => 'CELULAR');
+
+		$identificaciones	= \App\Models\CatDocumento::all()->pluck('nombre','id');
+		$delitos 			= \App\Models\CatDelito::all()->pluck('nombre','id');
+		$centros 			= \App\Models\CatCentroReclusion::all()->pluck('nombre','id');		
+		$edoscivil 			= \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
+		return view('desaparecidos.form_desaparecido_domicilio',
+					compact('cedula',
+								'desaparecido',
+								'parentescos',
+								'tiposDireccion',
+								'estados',
+								'municipios',
+								'localidades',
+								'colonias',
+								'codigos',
+								'tiposTelefonos'
+							));		
 	}
 
-	public function store_desaparecido_domicilio(Request $request){
+	public function store_desaparecido_familiar(Request $request){
 
-		dd($request->toArray);
+		$familia = Familiar::create([
+			'idParentesco'		=> $request->input('idParentesco'),
+			'nombres' 			=> $request->input('nombre'),
+			'primerAp' 			=> $request->input('primerAp'),
+			'segundoAp' 		=> $request->input('segundoAp'),
+			'fechaNacimiento' 	=> $request->input('fechaNacimiento'),
+			'edad' 				=> $request->input('edad'),
+			'idDesaparecido' 	=> $request->input('idParentesco'),
+		]);
+
+		return response()->json($familia);
+
+	}
+
+	public function store_desaparecido_domicilio(Request $request)
+	{
 		$domicilio = Domicilio::create([
-			'idDesaparecido' 	=> $desaparecido->id,
-			'tipoDireccion'		=> $request->input('tipoDireccionc'),
+			'idDesaparecido' 	=> $request->input('idDesaparecido'),
+			'tipoDireccion'		=> $request->input('tipoDireccion'),
 			'calle'				=> $request->input('calle'),
-			'numExterno'		=> $request->input('numExterno'),
-			'numInterno'		=> $request->input('numInterno'),
+			'numExterno'		=> $request->input('numExt'),
+			'numInterno'		=> $request->input('numInt'),
 			'idEstado'			=> $request->input('idEstado'),
 			'idMunicipio'		=> $request->input('idMunicipio'),
 			'idLocalidad'		=> $request->input('idLocalidad'),
 			'idColonia'			=> $request->input('idColonia'),
 			'idCodigoPostal'	=> $request->input('idCodigoPostal'),
-			'telefono'			=> $request->input('telefono'),
+			'telefono'			=> json_encode(array('tipoTel' => 'PERSONAL',									 
+									 				'telefono' => $request->input('telefono'),
+									 			)),
 		]);
 
 		return response()->json($domicilio);

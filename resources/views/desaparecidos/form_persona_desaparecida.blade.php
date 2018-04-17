@@ -53,11 +53,17 @@
 				</div>
 				<div class="col">
 					{!! Form::label ('edadAparente','Edad aparente:') !!}
-					{!! Form::number ('edadAparente',old('Edad aparente'), ['class' => 'form-control', 'id' => 'edadAparente', 'data-validation' => 'required number length', 'data-validation-error-msg' => '* Ingrese una edad aparente menos a 130','data-validation-allowing'=>"range[1;130]",  'data-validation-length'=>"0-3",'data-mask'=>"000",'min'=>"0" ,'max'=>"150"] )!!}
+					{!! Form::text ('edadAparente',old('Edad aparente'), ['class' => 'form-control', 'id' => 'edadAparente', 'data-validation' => 'required number length', 'data-validation-error-msg' => '* Ingrese una edad aparente menos a 130','data-validation-allowing'=>"range[1;130]",  'data-validation-length'=>"0-3",'data-mask'=>"000",'min'=>"0" ,'max'=>"150"] )!!}
 				</div>
 				<div class="col">
 					{!! Form::label ('fechaNacimiento','Fecha de nacimiento:') !!}
-					{!! Form::text ('fechaNacimiento',old('Fecha de nacimiento'), ['class' => 'form-control', 'id' => 'fechaNacimiento' , 'data-validation' => 'required date', 'data-validation-error-msg' => 'Ingrese una fecha valida o menor a la actual','data-validation-format'=>"dd/mm/yyyy"] )!!}
+					{!! Form::text ('fechaNacimiento',
+										old('Fecha de nacimiento'),
+										['class' => 'form-control',
+										'id' => 'fechaNacimiento' ,
+										'data-validation' => 'required date',
+										'data-validation-error-msg' => 'Ingrese una fecha valida o menor a la actual',
+										'data-validation-format'=>"dd/mm/yyyy"] )!!}
 				</div>
 			</div>
 			<div class="row">
@@ -74,43 +80,57 @@
 					{!! Form::select ('idOcupacion',$ocupaciones,'', ['class' => 'form-control', 'id' => 'ocupacion', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Elija una opción'] )!!}
 				</div>			
 			</div>
-	        <div class="row">
-	            <div class="col-lg-4">
-	                    {!! Form::label ('identificacion','Identificación:') !!}
-	                    {!! Form::select ('identificacion',$identificaciones,'', ['class' => 'form-control', 'id' => 
-	                    'identificacion'] )!!}
-	            </div>
-	            <div class="col-lg-4" style="display: none" id="otraIdDIV">
-	                    {!! Form::label ('otraIdentificacion','Otro:') !!}
-	                    {!! Form::text ('otraIdentificacion',old('Otra identificacion'), ['class' => 'form-control mayuscula', 'data-validation' => 'required','data-validation-help' => 'En caso de seleccionar otra identificación. Agregar aquí.', 'data-validation-depends-on' => 'identificacion','data-validation-depends-on-value' =>'Otro(especifique)','data-validation-error-msg-required' =>'Este campo es requerido.'] )!!}
-	            </div>
-	            <div class="col">
-	                    {!! Form::label ('numIdentificacion','No. Identificación:') !!}
-	                    {!! Form::text ('numIdentificacion',old('Numero identificacion'), ['class' => 'form-control mayuscula', 'data-validation' =>'required', 'data-validation-help' => 'Ejemplo: 117OO02AS23SPPR0.', 'data-validation-error-msg-required' =>'Este campo es requerido.','data-validation' =>'alphanumeric','data-validation-error-msg' =>'Este campo solo acepta datos alfanumericos.'] )!!}
-	            </div>
-	        </div>
+			<div class="row">
+				<div class="col-lg-4">
+						{!! Form::label ('identificacion','Identificación:') !!}
+						{!! Form::select ('identificacion',$identificaciones,'', ['class' => 'form-control', 'id' => 
+						'identificacion'] )!!}
+				</div>
+				<div class="col-lg-4" style="display: none" id="otraIdDIV">
+						{!! Form::label ('otraIdentificacion','Otro:') !!}
+						{!! Form::text ('otraIdentificacion',old('Otra identificacion'), ['class' => 'form-control mayuscula', 'data-validation' => 'required','data-validation-help' => 'En caso de seleccionar otra identificación. Agregar aquí.', 'data-validation-depends-on' => 'identificacion','data-validation-depends-on-value' =>'Otro(especifique)','data-validation-error-msg-required' =>'Este campo es requerido.'] )!!}
+				</div>
+				<div class="col">
+						{!! Form::label ('numIdentificacion','No. Identificación:') !!}
+						{!! Form::text ('numIdentificacion',old('Numero identificacion'), ['class' => 'form-control mayuscula', 'data-validation' =>'required', 'data-validation-help' => 'Ejemplo: 117OO02AS23SPPR0.', 'data-validation-error-msg-required' =>'Este campo es requerido.','data-validation' =>'alphanumeric','data-validation-error-msg' =>'Este campo solo acepta datos alfanumericos.'] )!!}
+				</div>
+			</div>
 			<div class="row">
 				<div class="col">
 					{!! Form::label ('idEdocivil','Estado civil:') !!}
-		        	{!! Form::select ('idEdocivil',$edoscivil ,'', ['class' => 'form-control', 'id' => 'idEdocivil'] )!!}
+					{!! Form::select ('idEdocivil',$edoscivil ,'', ['class' => 'form-control', 'id' => 'idEdocivil'] )!!}
 				</div>			
 			</div>
 			<div class="row" id="nombrePareja" style="display:none">
 				<div>
-					{{ Form::hidden('parentesco[]', 'PAREJA') }}
+					{{ Form::hidden('parentesco[]', '3') }}
 				</div>			
-				<div class="col">
+				<div class="col-4">
 					{!! Form::label ('nombres','Nombre de la pareja:') !!}
 					{!! Form::text ('familiaresNombres[]','', ['class' => 'form-control mayuscula', 'id' =>'familiaresNombres
 				', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Ingrese un nombre'] )!!}
 				</div>
-				<div class="col">
-					{!! Form::label ('primerAp','Primer apellido:') !!}
+				<div class="col-4">
+					{!! Form::label ('familiaresPrimerAp','Primer apellido:') !!}
 					{!! Form::text ('familiaresPrimerAp[]','', ['class' => 'form-control mayuscula', 'id' => 'familiaresPrimerAp', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Ingrese el primero apellido'] )!!}
 				</div>
-				<div class="col">
-					{!! Form::label ('segundoAp','Segundo apellido:') !!}
+				<div class="col-4">
+					{!! Form::label ('familiaressegundoAp','Segundo apellido:') !!}
 					{!! Form::text ('familiaresSegundoAp[]','', ['class' => 'form-control mayuscula', 'id' => 'familiaresSegundoAp'] )!!}
+				</div>
+				<div class="col-6">
+					{!! Form::label ('familiaresFechaNacimiento','Fecha de nacimiento:') !!}
+					{!! Form::text ('familiaresFechaNacimiento[]',
+										old('Fecha de nacimiento'),
+										['class' => 'form-control',
+										'id' => 'familiaresFechaNacimiento' ,
+										'data-validation' => 'required date',
+										'data-validation-error-msg' => 'Ingrese una fecha valida o menor a la actual',
+										'data-validation-format'=>"dd/mm/yyyy"] )!!}
+				</div>
+				<div class="col-6">
+					{!! Form::label ('familiaresEdad','Edad:') !!}
+					{!! Form::text ('familiaresEdad[]','', ['class' => 'form-control mayuscula', 'id' => 'familiaresEdad'] )!!}
 				</div>
 				<div>
 					{{ Form::hidden('familiaresEdad[]', '0') }}
@@ -128,12 +148,9 @@
 					<div class="row"  id="datosEmbarazo" style="display:none">
 						<div class="col">
 							{!! Form::label ('numGestacion','Cantidad:') !!}
-
 							{!! Form::number ('numGestacion',old('gestacionSemanas'), ['class' => 'form-control mayuscula', 'id' => 'NumGestacion','min'=>"0" ,'max'=>"36"] )!!}
 
-							{!! Form::number ('numGestacion',old('gestacionSemanas'), ['class' => 'form-control mayuscula', 'id' => 'NumGestacion', 'min'=>"0" ,'max'=>"36"] )!!}
-
-          				</div>
+						</div>
 						<div class="col">
 							{!! Form::label ('tipoGestacion','Periodo:') !!}
 							{!! Form::select ('tipoGestacion',['SEMANAS'=> 'SEMANAS','MESES' => 'MESES'],'', ['class' => 'form-control ', 'id' => 'tipoGestacion'] )!!}
@@ -175,17 +192,47 @@
 {!! HTML::script('personal/js/documentosIdentidad.js') !!}
 
 <script type="text/javascript">
-	
-$('#identificacion').change(function() {
-		f = $('#identificacion').val();
-		console.log("El parentesoc es: "+f);
 
-		if (f==7) {
-			$("#otraIdDIV").show();
-		}else{
-			$("#otraIdDIV").hide();
-		}
+	$('input#familiaresFechaNacimiento').mask('00/00/0000');
+	
+	$('#identificacion').change(function() {
+			f = $('#identificacion').val();
+			console.log("El parentesoc es: "+f);
+
+			if (f==7) {
+				$("#otraIdDIV").show();
+			}else{
+				$("#otraIdDIV").hide();
+			}
 	});
+
+	 $('#familiaresFechaNacimiento').change(function(){  
+		console.log('Calculando edad de la pareja');
+		from = $("#familiaresFechaNacimiento").val().split("/");
+		familiaresFechaNacimiento = from[2] + "-" + from[1] + "-" + from[0];
+		fechaEnviada = Date.parse(familiaresFechaNacimiento);
+	   
+		fechaActual= new Date();
+	   
+	   if (fechaEnviada > fechaActual)
+	   {
+		   $("#familiaresFechaNacimiento").val("");
+		   $("#edadExtravio").val("");
+	   }else{
+
+	   $.ajax({
+			   url: '/desaparecido/edad/'+familiaresFechaNacimiento,
+			   type:"GET",
+			   dataType:"json",
+
+			   success:function(data) {
+					   console.log("hola"+data);
+					   $('#familiaresEdad').val(data);
+			   },
+			   
+		   });
+	   }
+   });
 
 </script>
 

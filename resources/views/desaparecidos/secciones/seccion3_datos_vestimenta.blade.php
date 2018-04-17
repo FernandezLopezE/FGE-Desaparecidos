@@ -7,6 +7,7 @@
 </style>
 	
 @endsection
+@section('content')
 <hr>
 <div class="card border-success">
 	<div class="card-header">
@@ -55,7 +56,7 @@
 	</div>
 	
 </div>
-
+@endsection
 @section('scripts')
 <script type="text/javascript">
 	$(document).ready(function(){

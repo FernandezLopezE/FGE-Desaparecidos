@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use Carbon\Carbon;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -12,14 +13,22 @@ class Familiar extends Model
 			'nombres',
 			'primerAp',
 			'segundoAp',
+			'fechaNacimiento',
 			'edad',
 			'idDesaparecido',
+			'idParentesco'
 	];
 
 	public function desaparecido()
 	{
 		return $this->belongsTo('App\Models\Desaparecido','idDesaparecido');
 	}
+
+	public function setFechaNacimientoAttribute($value)
+	{
+		$this->attributes['fechaNacimiento'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+	}
+
 
 }
   

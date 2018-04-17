@@ -18,8 +18,10 @@ Route::get('/', function () {
 
 Route::get('consultas/get_informantes/{idCedula}', 'ConsultasController@jsonInformantes')
 	->name('consultas.get_informantes');
-Route::get('consultas/get_domicilios_persona/{idDesaparecido}', 'ConsultasController@jsonDomiciliosPersona')
-	->name('consultas.get_domicilios_persona');
+Route::get('consultas/get_familiares/{idDesaparecido}', 'ConsultasController@jsonFamiliares')
+	->name('consultas.get_familiares');
+Route::get('consultas/get_domicilios/{idDesaparecido}', 'ConsultasController@jsonDomiciliosPersona')
+	->name('consultas.get_domicilios');
 Route::get('consultas/get_parentescos', 'ConsultasController@jsonParentescos')
 	->name('consultas.get_parentescos');
 Route::get('consultas/get_nacionalidades', 'ConsultasController@jsonNacionalidades')
@@ -30,10 +32,17 @@ Route::get('consultas/get_tipos_domicilios', 'ConsultasController@jsonTiposDomic
 	->name('consultas.get_tipos_domicilios');
 Route::get('consultas/get_estados', 'ConsultasController@jsonEstados')
 	->name('consultas.get_estados');
+Route::get('consultas/get_municipios/{idEstado}', 'ConsultasController@jsonMunicipios')
+	->name('consultas.get_municipios');
+Route::get('consultas/get_localidades/{idMunicipio}', 'ConsultasController@jsonLocalidades')
+	->name('consultas.get_localidades');
+Route::get('consultas/get_colonias/{idMunicipio}', 'ConsultasController@jsonColonias')
+	->name('consultas.get_colonias');
 Route::get('consultas/get_tipos_telefonos', 'ConsultasController@jsonTiposTelefonos')
 	->name('consultas.get_tipos_telefonos');
 Route::get('consultas/get_ladas', 'ConsultasController@jsonLadas')
 	->name('consultas.get_ladas');
+Route::resource('consultas','ConsultasController');
 
 
 //Rutas Ruben
@@ -51,7 +60,7 @@ Route::post('/desaparecido/update_vestimenta', 'DesaparecidoController@update_ve
 //fin de mis rutas
 
 
-Route::resource('consultas','ConsultasController');
+
 
 Route::get('/desaparecido/edad/{fecha_nacimiento}', 'DesaparecidoController@getEdad');
 
@@ -70,8 +79,8 @@ Route::post('/desaparecido/store_cedula', 'DesaparecidoController@store_cedula')
 Route::post('/desaparecido/store_desaparecido_domicilio', 'DesaparecidoController@store_desaparecido_domicilio')
 	->name('desaparecido.store_desaparecido_domicilio');
 
-Route::post('/desaparecido/store_desaparecido_domicilio', 'DesaparecidoController@store_desaparecido_domicilio')
-	->name('desaparecido.store_desaparecido_domicilio');
+Route::post('/desaparecido/store_desaparecido_familiar', 'DesaparecidoController@store_desaparecido_familiar')
+	->name('desaparecido.store_desaparecido_familiar');
 
 // Mostrar formulario de la persona desaparecida domicilio.
 Route::get('/desaparecido/persona_desaparecida_domicilio/{idCedula}/{idPersona}', 'DesaparecidoController@show_desaparecido_domicilio');

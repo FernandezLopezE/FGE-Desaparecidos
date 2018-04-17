@@ -466,7 +466,6 @@ $(document).ready(function(){
 		   });
 	   }
    });
-
   
 
    //Mostrar - ocultar form
