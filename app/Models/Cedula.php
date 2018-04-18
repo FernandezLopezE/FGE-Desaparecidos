@@ -76,4 +76,14 @@ class Cedula extends Model
 		}
 		
 	}
+	public function senaparticular()
+	{
+		return $this->belongsToMany('App\Models\cedula_cat_cenas')
+		->withPivot('idCatsenasParticulares');
+	}
+	public function senaparticularubicacion()
+	{
+		return $this->belongsToMany('App\Models\cedula_cat_cenas')
+		->withPivot('idCatsenas');
+	}
 }

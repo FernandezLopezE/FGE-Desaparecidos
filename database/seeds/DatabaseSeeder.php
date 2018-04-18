@@ -108,6 +108,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MarcasCalzadosSeeder::class);
         $this->call(ColoresSeeder::class);
         $this->call(ParentescoSeeder::class);
-
+        $this->call(CatSenasParticularesSeeder::class);
+        $this->call(CatSenasParticularesUbicacionesSeeder::class);
     }
 }
