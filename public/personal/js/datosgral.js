@@ -289,7 +289,7 @@ $(document).ready(function(){
 
 			console.log(x);
 
-		if (x == 'MASCULINO') {
+		if (x == 'H') {
 
 				console.log('ocultar datos de embarazo')
 

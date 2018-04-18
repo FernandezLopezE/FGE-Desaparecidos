@@ -309,7 +309,7 @@ function obtenerCURP() {
   fecha = $("#fechaNacimiento").val();
 
   sexo = $("#sexo").val();
-  if (sexo == 'HOMBRE') {
+  if (sexo == 'H') {
     sexo = "H";
   } else {
     sexo = "M";
