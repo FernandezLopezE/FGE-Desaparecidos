@@ -7,12 +7,14 @@
 @section('titulo', 'Reporte de investigación de una persona desaparecida')
 
 @section('content')
-
 {{ Form::model($cedula, ['action' => 'CedulaController@store']) }}
 <div class="card">
 	<div class="card-header">
 		<h4>Datos de la entrevista
 		<a href="{{route('cedula.edit', ['id' => $cedula->id])}}" class="btn btn-dark pull-right"><i class="fa fa-pencil-square-o"></i> EDITAR</a>
+		<a href="{{route('informante.index')}}" class="btn btn-dark pull-right">
+			<i class="fa fa-pencil-square-o"></i> SIGUIENTE
+		</a>		
 		</h4>
 	</div>
 	<div class="card-body bg-white">
@@ -35,13 +37,13 @@
 						<dd class="col-sm-8">
 							{!! $cedula->dialecto->nombre !!}
 						</dd>
-						@if ($cedula->idDialecto == 2)
+						@if ($cedula->idDialecto = 2)
 							<dt class="col-sm-4">Dialecto:</dt>
 							<dd class="col-sm-8">
 								{!! $cedula->otroDialecto !!}
 							</dd>
 						@endif
-						@if ($cedula->idDialecto > 2)
+						@if ($cedula->idDialecto > 1)
 							<dt class="col-sm-4">Interprete:</dt>
 							<dd class="col-sm-8">
 								{!! $cedula->interpreteNombres !!} 
@@ -70,4 +72,8 @@
 	</div>
 </div>	
 {!! Form::close() !!}
+@endsection
+
+@section('scripts')
+
 @endsection
