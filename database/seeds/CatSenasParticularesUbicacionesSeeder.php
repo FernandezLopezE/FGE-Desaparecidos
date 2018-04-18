@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CatSenasParticularesUbicaciones extends Seeder
+class CatSenasParticularesUbicacionesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,7 +19,7 @@ class CatSenasParticularesUbicaciones extends Seeder
             [ 'id' => 5, 'nombre' => 'CADERA/ESPINILLA'],
             [ 'id' => 6, 'nombre' => 'CEJA'],
             [ 'id' => 7, 'nombre' => 'CODO'],
-            [ 'id' => 8, 'nombre' => 'CUELLO']
+            [ 'id' => 8, 'nombre' => 'CUELLO'],
             [ 'id' => 9, 'nombre' => 'DEDO'],
             [ 'id' => 10, 'nombre' => 'ESPALDA'],
             [ 'id' => 11, 'nombre' => 'FRENTE'],
@@ -27,7 +27,7 @@ class CatSenasParticularesUbicaciones extends Seeder
             [ 'id' => 13, 'nombre' => 'LABIO'],
             [ 'id' => 14, 'nombre' => 'MANO'],
             [ 'id' => 15, 'nombre' => 'MEJILLA'],
-            [ 'id' => 16, 'nombre' => 'MENTÓN']
+            [ 'id' => 16, 'nombre' => 'MENTÓN'],
             [ 'id' => 17, 'nombre' => 'MUÑECA'],
             [ 'id' => 18, 'nombre' => 'MUSLO'],
             [ 'id' => 19, 'nombre' => 'NALGA'],
@@ -35,8 +35,8 @@ class CatSenasParticularesUbicaciones extends Seeder
             [ 'id' => 21, 'nombre' => 'NUCA'],
             [ 'id' => 22, 'nombre' => 'OMBLIGO'],
             [ 'id' => 23, 'nombre' => 'OREJA'],
-            [ 'id' => 24, 'nombre' => 'PALMA']
-            [ 'id' => 25, 'nombre' => 'PANTORRILLA']
+            [ 'id' => 24, 'nombre' => 'PALMA'],
+            [ 'id' => 25, 'nombre' => 'PANTORRILLA'],
             [ 'id' => 26, 'nombre' => 'PECHO'],
             [ 'id' => 27, 'nombre' => 'PIE'],
             [ 'id' => 28, 'nombre' => 'PIERNA'],

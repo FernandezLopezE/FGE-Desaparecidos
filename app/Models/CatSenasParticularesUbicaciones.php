@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CatSenasParticulares extends Model
+class CatSenasParticularesUbicaciones extends Model
 {
-    public $table = 'cat_senas_particulares';
+    public $table = 'cat_senas_particulares_ubicaciones';
 
 	/**
 	 * The attributes that are mass assignable.
@@ -24,7 +24,7 @@ class CatSenasParticulares extends Model
 		return $this->belongsToMany('App\Models\cedula_cat_cenas')
 		->withPivot('idCatsenasParticulares');
 	}
-	public function cenaparticularubicacion()
+	public function senaparticular()
 	{
 		return $this->belongsToMany('App\Models\cedula_cat_cenas')
 		->withPivot('idCedula');
