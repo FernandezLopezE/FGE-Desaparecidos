@@ -16,6 +16,13 @@ class ConsultasController extends Controller
         //
     }
 
+    public function jsonCedulas(Request $request)
+    {
+        $cedulas = \DB::table('desaparecidos_cedula_investigacion')::all();
+
+        return response()->json($cedulas);
+    }
+
     public function jsonInformantes(Request $request, $idCedula)
     {
         $informantes =  \DB::table('desaparecidos_personas')

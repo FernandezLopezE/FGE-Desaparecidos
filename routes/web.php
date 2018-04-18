@@ -11,11 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('inicio');
+Route::get('/', 'InicioController@index');
 
-});
+Route::resource('cedula','CedulaController');
 
+
+
+/*
+
+
+// Consultar todas la cedulas de investigación.
+Route::get('consultas/get_cedulas', 'ConsultasController@jsonCedulas');
 Route::get('consultas/get_informantes/{idCedula}', 'ConsultasController@jsonInformantes')
 	->name('consultas.get_informantes');
 Route::get('consultas/get_familiares/{idDesaparecido}', 'ConsultasController@jsonFamiliares')
@@ -104,7 +110,7 @@ Route::get('municipio/{id}', 'DomiciliosController@getMunicipios');
 Route::get('localidades/{id}', 'DomiciliosController@getLocalidades');
 Route::get('colonias2/{id}', 'DomiciliosController@getColonias2');
 Route::get('colonias/{id}', 'DomiciliosController@getColonias');
-Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');
+Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');*/
 
 
 
