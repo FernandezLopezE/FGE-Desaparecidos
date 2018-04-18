@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCatColorPielTable extends Migration
+class CreateCatSubParticularidadesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateCatColorPielTable extends Migration
      */
     public function up()
     {
-        Schema::create('cat_color_piel', function (Blueprint $table) {
+        Schema::create('cat_sub_particularidades', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre',20);
-            $table->string('image');
+            $table->string('nombre');
+            $table->integer('idParticularidadesCuerpo')->unsigned()->nullable();           
+            $table->foreign('idParticularidadesCuerpo')->references('id')->on('cat_particularidades_cuerpo');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateCatColorPielTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cat_color_piel');
+        Schema::dropIfExists('cat_sub_particularidades');
     }
 }
