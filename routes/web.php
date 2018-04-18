@@ -108,5 +108,7 @@ Route::get('colonias2/{id}', 'DomiciliosController@getColonias2');
 Route::get('colonias/{id}', 'DomiciliosController@getColonias');
 Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');
 
+Route::post('/desaparecido/store_senas', 'DesaparecidoController@store_senas')
+    ->name('desaparecido.store_informante');
 
 
