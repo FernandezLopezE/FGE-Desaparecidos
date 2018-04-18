@@ -16,6 +16,7 @@ class CreateCatComplexion extends Migration
         Schema::create('cat_complexion', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre',20);
+            $table->string('image');
             $table->timestamps();
         });
     }
