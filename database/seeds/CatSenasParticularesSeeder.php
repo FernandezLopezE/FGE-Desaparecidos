@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CatSenasParticulares extends Seeder
+class CatSenasParticularesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
