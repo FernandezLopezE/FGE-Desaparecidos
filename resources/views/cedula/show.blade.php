@@ -12,12 +12,12 @@
 <div class="card">
 	<div class="card-header">
 		<h4>Datos de la entrevista
-		<a href="{{route('cedula.edit', ['id' => $cedula->id])}}" class="btn btn-dark pull-right"><i class="fa fa-plus"></i> EDITAR</a>
+		<a href="{{route('cedula.edit', ['id' => $cedula->id])}}" class="btn btn-dark pull-right"><i class="fa fa-pencil-square-o"></i> EDITAR</a>
 		</h4>
 	</div>
 	<div class="card-body bg-white">
 		<div class="row">
-			<div class="col-8">
+			<div class="col-10">
 				<h5>Datos del fiscal</h5>
 				<dl class="row">
 					<dt class="col-sm-4">Nombre:</dt>
@@ -33,13 +33,15 @@
 					@isset($cedula->id)
 						<dt class="col-sm-4">Dialecto:</dt>
 						<dd class="col-sm-8">
-							{!! $cedula->idDialecto !!}
+							{!! $cedula->dialecto->nombre !!}
 						</dd>
 						@if ($cedula->idDialecto == 2)
 							<dt class="col-sm-4">Dialecto:</dt>
 							<dd class="col-sm-8">
 								{!! $cedula->otroDialecto !!}
 							</dd>
+						@endif
+						@if ($cedula->idDialecto > 2)
 							<dt class="col-sm-4">Interprete:</dt>
 							<dd class="col-sm-8">
 								{!! $cedula->interpreteNombres !!} 

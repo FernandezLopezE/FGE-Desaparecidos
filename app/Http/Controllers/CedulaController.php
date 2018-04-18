@@ -15,7 +15,9 @@ class CedulaController extends Controller
 	 */
 	public function index()
 	{
-		return 'Entrar';
+		$cedulas = Cedula::all();
+
+		return view('cedula.index',compact('cedulas'));
 	}
 
 	/**
@@ -25,12 +27,18 @@ class CedulaController extends Controller
 	 */
 	public function create()
 	{
-		$cedula = (object) array('idFiscal' 		=> Session::get('idFiscal'),
+		$cedula = new Cedula;
+
+		$cedula->entrevistadorNombres 		= Session::get('fiscalNombres');
+		$cedula->entrevistadorPrimerAp	 	= Session::get('fiscalPrimerAp');
+		$cedula->entrevistadorSegundoAp 	= Session::get('fiscalSegundoAp');
+		$cedula->entrevistadorCargo 		= Session::get('fiscalCargo');
+		/*$cedula = (object) array('idFiscal' 		=> Session::get('idFiscal'),
 						'entrevistadorNombres' 		=> Session::get('fiscalNombres'),
 						'entrevistadorPrimerAp' 	=> Session::get('fiscalPrimerAp'),
 						'entrevistadorSegundoAp' 	=> Session::get('fiscalSegundoAp'),
 						'entrevistadorCargo' 		=> Session::get('fiscalCargo'),
-						 );		
+						 );*/
 
 		$dialectos = \App\Models\CatDialecto::all()->pluck('nombre','id');
 
@@ -46,14 +54,13 @@ class CedulaController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(Request $request)
-	{
+	{		
 		//dd($request->toArray());
 		$cedula = Cedula::create([
 			'entrevistadorNombres' 			=> Session::get('fiscalNombres'),
 			'entrevistadorPrimerAp' 		=> Session::get('fiscalPrimerAp'),
 			'entrevistadorSegundoAp'		=> Session::get('fiscalSegundoAp'),
 			'entrevistadorCargo'			=> Session::get('fiscalCargo'),
-
 			'interpreteNombres' 			=> $request->input('interpreteNombres'),
 			'interpretePrimerAp' 			=> $request->input('interpretePrimerAp'),
 			'interpreteSegundoAp'			=> $request->input('interpreteSegundoAp'),
@@ -61,15 +68,12 @@ class CedulaController extends Controller
 			'otroDialecto'					=> $request->input('otroDialecto'),
 			'entrevistadorPrimeraVez'		=> $request->input('entrevistadorPrimeraVez'),
 			'fechaVisita'					=> $request->input('fechaVisita'),
-			'idDialecto' 					=> $request->input('entrevistadorDialecto'),
-
+			'idDialecto' 					=> $request->input('entrevistadorDialecto')
 		]);
 
 		return redirect()->action(
 			'CedulaController@show', ['id' => $cedula->id]
 		);
-
-
 	}
 
 	/**
@@ -80,7 +84,7 @@ class CedulaController extends Controller
 	 */
 	public function show($id)
 	{
-		$cedula = Cedula::find($id);
+		$cedula = Cedula::find($id);		
 		$dialectos = \App\Models\CatDialecto::all()->pluck('nombre','id');
 
 		//dd($cedula->toArray());
@@ -120,7 +124,25 @@ class CedulaController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		//
+		//dd($request);
+		$cedula = Cedula::find($id)->update([
+			'entrevistadorNombres' 			=> Session::get('fiscalNombres'),
+			'entrevistadorPrimerAp' 		=> Session::get('fiscalPrimerAp'),
+			'entrevistadorSegundoAp'		=> Session::get('fiscalSegundoAp'),
+			'entrevistadorCargo'			=> Session::get('fiscalCargo'),
+			'interpreteNombres' 			=> $request->input('interpreteNombres'),
+			'interpretePrimerAp' 			=> $request->input('interpretePrimerAp'),
+			'interpreteSegundoAp'			=> $request->input('interpreteSegundoAp'),
+			'interpreteOrganizacion'		=> $request->input('interpreteOrganizacion'),
+			'otroDialecto'					=> $request->input('otroDialecto'),
+			'entrevistadorPrimeraVez'		=> $request->input('entrevistadorPrimeraVez'),
+			'fechaVisita'					=> $request->input('fechaVisita'),
+			'idDialecto' 					=> $request->input('entrevistadorDialecto')
+            ]);
+
+		return redirect()
+				->route('cedula.show', ['cedula' => $id]);
+
 	}
 
 	/**
