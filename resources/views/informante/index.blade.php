@@ -33,13 +33,6 @@
 		</div>
 	</div>
 
-	<a href="/desaparecido/persona_desaparecida/{!! $cedula->id !!}" class='btn btn-large btn-primary'>
-		<i class="fa fa-angle-double-left"></i>  Atras
-	</a>
-	<a href="/desaparecido/persona_desaparecida/{!! $cedula->id !!}" class='btn btn-large btn-primary pull-right'>
-		Siguiente  <i class="fa fa-angle-double-right"></i>
-	</a>
-
 @endsection
 
 @section('scripts')
@@ -269,7 +262,7 @@
 
 			$.ajax({
 				type: 'POST',
-				url: routeInformante+'/',
+				url: routeInformante,
 				data: dataString,
 				dataType: 'json',
 				success: function(data) {
@@ -427,52 +420,6 @@
 			$('#idColonia').empty();
 		}
 	});
-
-		/*btnGuardarDesaparecido.click (function(){
-			var dataString = {
-				sexo: $("#sexo").val(),
-				nombres: $("#desaparecidoNombres").val(), 
-				primerAp: $("#desaparecidoPrimerAp").val(),
-				segundoAp: $("#desaparecidoSegundoAp").val(),
-				apodo: $("#apodo").val(),
-				edadExtravio: $("#edadExtravio").val(),
-				edadAparente: $("#edadAparente").val(),
-				fechaNacimiento: $("#fechaNacimiento").val(),
-				idNacionalidad: $("#idNacionalidad").val(),
-				idEscolaridad: $("#idEscolaridad").val(),
-				idOcupacion: $("#idOcupacion").val(),
-				idDocumentoIdentidad: $("#identificacion").val(),
-				otroDocIdentidad: $("#otraIdentificacion").val(),
-				numDocIdentidad: $("#numIdentificacion").val(),
-				idEdocivil: $("#idEdocivil").val(),
-				embarazo: $("#embarazo").val(),
-				numGestacion: $("#numGestacion").val(),
-				tipoGestacion: $("#tipoGestacion").val(),
-				rumoresBebe: $("#rumoresBebe").val(),
-				pormenores: $("#pormenores").val(),
-				antecedentesJudiciales: $("#antecedentesJudiciales").val(),
-				idCedula: $("#idCedula").val(),				
-			}
-
-			//console.log(dataString);
-			$.ajax({
-				type: 'POST',
-				url: '/desaparecido/store_desaparecido',
-				data: dataString,
-				dataType: 'json',
-				success: function(data) {
-					console.log(data);
-					//modalInformanteAgregar.modal('hide');
-					//table.bootstrapTable('refresh');							
-				},
-				error: function(data) {
-					console.log(data);
-				}
-			});
-
-		})*/
-
-
 
 	})
 </script>

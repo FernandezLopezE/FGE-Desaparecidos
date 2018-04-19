@@ -10,9 +10,9 @@ class InicioController extends Controller
 	public function index()
 	{			
 		Session::put('idFiscal', '1');
-		Session::put('fiscalNombres', 'RICARDO');
+		Session::put('fiscalNombres', 'FULANITO');
 		Session::put('fiscalPrimerAp', 'SANCHEZ');
-		Session::put('fiscalSegundoAp', 'CASTAÑEDA');		
+		Session::put('fiscalSegundoAp', 'MERENGANO');		
 		Session::put('fiscalCargo', 'FISCAL 2DA ESP. EN LA INV. DE DELITOS DE VIOLENCIA CONTRA LA FAMILIA CONTRERAS');
 		Session::put('fiscalRegion', 'XALAPA');
 		Session::put('nombre', 'SELENE PATRICIA');

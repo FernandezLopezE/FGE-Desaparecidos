@@ -37,7 +37,10 @@ class InformanteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {        
+        
+
+
         $informante = (is_null($request->input('informante'))) ? 0 : 1 ;
         $autorizado = (is_null($request->input('notificaciones'))) ? 0 : 1 ;
 
@@ -53,7 +56,7 @@ class InformanteController extends Controller
             'idCedula'              => $request->input('idCedula'),
             'idParentesco'          => $request->input('idParentesco'),
             'idDocumentoIdentidad'  => $request->input('idDocumentoIdentidad'), 
-            'otroDocIdentidad'      => $request->input('otroDocumento'),
+            'otroDocIdentidad'      => $request->input('otroDocIdentidad'),
             'numDocIdentidad'       => $request->input('numDocIdentidad'),
             'correoElectronico'     => $request->input('correoElectronico'),
             'informante'            => $informante,
@@ -169,7 +172,10 @@ class InformanteController extends Controller
     {       
         
        $desaparecido = Desaparecido::find($id);
-       //dd($desaparecido->domicilios[0]['id']);
+       $domicilios = Domicilio::find($desaparecido->domicilios[0]['id']);
+       
+       $noDomicilio = $desaparecido->domicilios[0]['id'];
+       
 
         $informante = (is_null($request->input('informante'))) ? 0 : 1 ;
         $autorizado = (is_null($request->input('notificaciones'))) ? 0 : 1 ;
@@ -184,8 +190,8 @@ class InformanteController extends Controller
 
         $desaparecido = Desaparecido::find($desaparecido->id)->update([
             'idParentesco'          => $request->input('idParentesco'),
-            'idDocumentoIdentidad'  => $request->input('idDocumentoIdentidad'), 
-            'otroDocIdentidad'      => $request->input('otroDocumento'),
+            'idDocumentoIdentidad'  => $request->input('idDocumentoIdentidad'),
+            'otroDocIdentidad'      => $request->input('otroDocIdentidad'),
             'numDocIdentidad'       => $request->input('numDocIdentidad'),
             'correoElectronico'     => $request->input('correoElectronico'),
             'informante'            => $informante,
@@ -193,7 +199,7 @@ class InformanteController extends Controller
             'tipoPersona'           => 'INFORMANTE',
         ]);
 
-        $domicilio = Domicilio::find($desaparecido->domicilios[0]['id'])->update([
+        $domicilio = \App\Models\Domicilio::find($noDomicilio)->update([
             'tipoDireccion'     => $request->input('tipoDirec'),
             'calle'             => $request->input('calle'),
             'numExterno'        => $request->input('numExt'),
@@ -208,13 +214,17 @@ class InformanteController extends Controller
                                      'telefono' => $request->input('telefono'),
                                      'ext' => $request->input('ext'))),
         ]);
-
-        $data = array('nombres' => $desaparecido->persona->nombres,
+        
+        if ($desaparecido) {
+                    $desaparecido = Desaparecido::find($id);                    
+                    $data = array('nombres' => $desaparecido->persona->nombres,
                         'primerAp' => $desaparecido->persona->primerAp,
                         'segundoAp' => $desaparecido->persona->segundoAp,
                         'informante' => $desaparecido->informante,
-                        'notificaciones' => $desaparecido->notificaciones, );
-        
+                        'notificaciones' => $desaparecido->notificaciones );
+            
+        }
+
         return response()->json($data);
 
 
