@@ -101,6 +101,7 @@ $(document).ready(function(){
 
 
 	$('#idEstado').on('change', function(){
+		console.log($(this).val());
 		$("#idMunicipio").empty();
 		var idMunicipio = $(this).val();
 		if(idMunicipio) {
@@ -108,16 +109,12 @@ $(document).ready(function(){
 				url: '/municipio/'+idMunicipio,
 				type:"GET",
 				dataType:"json",
-
 				success:function(data) {
 						$("#idMunicipio").empty();
 					$.each(data, function(key, value){
 						$("#idMunicipio").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
-
 					});
-
-				},
-				
+				},				
 			});
 		} else {
 			$('#idEstado').empty();

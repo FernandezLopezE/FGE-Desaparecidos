@@ -13,14 +13,11 @@
 
 Route::get('/', 'InicioController@index');
 
-Route::resource('cedula','CedulaController');
+	Route::resource('cedula','CedulaController');
+
+	Route::resource('informante','InformanteController');
 
 
-
-/*
-
-
-// Consultar todas la cedulas de investigación.
 Route::get('consultas/get_cedulas', 'ConsultasController@jsonCedulas');
 Route::get('consultas/get_informantes/{idCedula}', 'ConsultasController@jsonInformantes')
 	->name('consultas.get_informantes');
@@ -48,7 +45,27 @@ Route::get('consultas/get_tipos_telefonos', 'ConsultasController@jsonTiposTelefo
 	->name('consultas.get_tipos_telefonos');
 Route::get('consultas/get_ladas', 'ConsultasController@jsonLadas')
 	->name('consultas.get_ladas');
+// Mostrando municipios que pertenecen a un estado.
+Route::get('consultas/municipios/{idEstado}', 'ConsultasController@jsonMunicipios');
+// Mostrando localidades que pertenecen a un municipio.
+Route::get('consultas/localidades/{idMunicipio}', 'ConsultasController@jsonLocalidades');
+// Mostrando colonias que pertenecen a un municipio.
+Route::get('consultas/colonias/{idMunicipio}', 'ConsultasController@jsonColonias');
+// Mostrando codigos postales que pertenecen a un municipio.
+Route::get('consultas/codigos/{idMunicipio}', 'ConsultasController@jsonCodigos');
+// Mostrando codigos postales que pertenecen a un municipio cuando hay un cambio en colonias.
+Route::get('consultas/codigos2/{idColonia}', 'ConsultasController@jsonCodigos2');
+
+
 Route::resource('consultas','ConsultasController');
+
+
+
+/*
+
+
+// Consultar todas la cedulas de investigación.
+
 
 
 //Rutas Ruben

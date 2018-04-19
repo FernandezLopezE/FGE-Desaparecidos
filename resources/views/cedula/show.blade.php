@@ -12,7 +12,7 @@
 	<div class="card-header">
 		<h4>Datos de la entrevista
 		<a href="{{route('cedula.edit', ['id' => $cedula->id])}}" class="btn btn-dark pull-right"><i class="fa fa-pencil-square-o"></i> EDITAR</a>
-		<a href="{{route('informante.index')}}" class="btn btn-dark pull-right">
+		<a href="{{route('informante.show',['id' => $cedula->id])}}" class="btn btn-dark pull-right">
 			<i class="fa fa-pencil-square-o"></i> SIGUIENTE
 		</a>		
 		</h4>
