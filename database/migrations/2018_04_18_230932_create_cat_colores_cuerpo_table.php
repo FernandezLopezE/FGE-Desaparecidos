@@ -17,6 +17,8 @@ class CreateCatColoresCuerpoTable extends Migration
             $table->increments('id');
             $table->string('nombre',20);
             $table->string('imagen');
+            $table->integer('idPartesCuerpo')->unsigned()->nullable();           
+            $table->foreign('idPartesCuerpo')->references('id')->on('cat_partes_cuerpo');
             $table->timestamps();
         });
     }

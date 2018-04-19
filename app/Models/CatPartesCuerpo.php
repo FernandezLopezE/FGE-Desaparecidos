@@ -11,7 +11,6 @@ class CatPartesCuerpo extends Model
 	protected $fillable = [
 		'nombre',
 		'imagen',
-		'idColoresCuerpo'
 	];
 
 	/*public function coloresCuerpo(){
