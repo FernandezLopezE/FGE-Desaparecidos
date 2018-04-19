@@ -13,9 +13,12 @@ use App\Models\Documento;
 use App\Models\Antecedente;
 use App\Models\Domicilio;
 use App\Models\Prenda;
+use App\Models\CatSenasParticulares;
+use App\Models\CatSenasParticularesUbicaciones;
 use Carbon\Carbon;
 use Session;
 use App\images\TiposCalzados;
+use DB;
 
 
 use App\Http\Requests\CreateDesaparecidoRequest;
@@ -856,7 +859,29 @@ class DesaparecidoController extends Controller
 		//dd(Session::get('cart'));
 	}
 
-	public function show_senas_particulares(){
-		return view('desaparecidos.form_senas_particulares');
-	}
-}
+	public function show_senas_particulares($idCedula){
+        $cedula = Cedula::find($idCedula);
+        $senasParticulares = \App\Models\CatSenasParticulares::all()->pluck('nombre','id');
+        $senasParticularesUbica = \App\Models\CatSenasParticularesUbicaciones::all()->pluck('nombre','id');
+        
+        return view('desaparecidos.form_senas_particulares', [                        
+                        'senasParticulares' => $senasParticulares,
+                        'senasParticularesUbica' => $senasParticularesUbica,
+                        'cedula' => $cedula
+                    ]);
+    }
+
+    public function store_senas(Request $request)
+    {
+        //dd($request->toArray())
+        
+        DB::table('cedula_cat_senas')-> insert([
+                'idCatsenas' => $request->input('senaP'),
+                'cantidad' => $request->input('cantidad'),
+                'idCatsenasParticulares' => $request->input('ubicacion'),
+                'caracteristicas' => $request->input('caracteristicas'),
+                'idCedula' => $request->input('idCedula'),
+            ]);
+            return response()->json('se inserto');
+    }
+}    

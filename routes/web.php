@@ -42,6 +42,8 @@ Route::get('consultas/get_tipos_telefonos', 'ConsultasController@jsonTiposTelefo
 	->name('consultas.get_tipos_telefonos');
 Route::get('consultas/get_ladas', 'ConsultasController@jsonLadas')
 	->name('consultas.get_ladas');
+Route::get('consultas/get_senas', 'ConsultasController@jsonSenas')
+	->name('consultas.get_senas');	
 Route::resource('consultas','ConsultasController');
 
 
@@ -96,7 +98,13 @@ Route::post('/desaparecido/store_informante', 'DesaparecidoController@store_info
 	->name('desaparecido.store_informante');
 // Mostrar formulario del informante	
 Route::get('/desaparecido/informante/{idCedula}', 'DesaparecidoController@show_informante');
-Route::get('/desaparecido/senas_particulares','DesaparecidoController@show_senas_particulares');
+//mostrar vista de señas particulares 
+Route::get('/desaparecido/senas_particulares/{idCedula}','DesaparecidoController@show_senas_particulares');
+Route::post('/desaparecido/store_senas', 'DesaparecidoController@store_senas')
+	->name('desaparecido.store_senas');
+Route::get('consultas/get_senas/{idCedula}', 'ConsultasController@jsonSenas')
+	->name('consultas.get_senas');
+
 Route::resource('/desaparecido','DesaparecidoController');
 
 
@@ -108,7 +116,6 @@ Route::get('colonias2/{id}', 'DomiciliosController@getColonias2');
 Route::get('colonias/{id}', 'DomiciliosController@getColonias');
 Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');
 
-Route::post('/desaparecido/store_senas', 'DesaparecidoController@store_senas')
-    ->name('desaparecido.store_informante');
+
 
 
