@@ -99,7 +99,7 @@ class DesaparecidoController extends Controller
 										->get()
 										->toArray();
 
-		$sexos = array('MASCULINO' => 'MASCULINO', 'FEMENINO' => 'FEMENINO');
+		$sexos = array('H' => 'MASCULINO', 'M' => 'FEMENINO');
 		$escolaridades		= \App\Models\CatEscolaridad::all()->pluck('nombre','id');
 		$ocupaciones	 	= \App\Models\CatOcupacion::all()->pluck('nombre','id');
 		$identificaciones	= \App\Models\CatDocumento::all()->pluck('nombre','id');
@@ -188,10 +188,34 @@ class DesaparecidoController extends Controller
 			'idLocalidad'		=> $request->input('localidad'),
 			'idColonia'			=> $request->input('colonia'),
 			'idCodigoPostal'	=> $request->input('cp'),
-			'telefono'			=> json_encode(array('tipoTel' => 'PERSONAL',
-									 'lada' => $request->input('lada'),
-									 'telefono' => $request->input('telefono'),
-									 'ext' => $request->input('ext'))),
+			/*'telefono'			=> json_encode(array(
+								'0' =>  Array
+					            (
+									 'tipoTel' => 'PERSONAL',
+									 'lada' => '222',
+									 'telefono' => '2223',
+									 'ext' => '343'
+					            ),
+					            '1' =>  Array
+					            (
+									 'tipoTel' => 'PERSONAL',
+									 'lada' => '222',
+									 'telefono' => '2223',
+									 'ext' => '343'
+					            )*/
+			/*'telefono'			=> json_encode(array(
+							        array('tipoTel' => $request->input('tipoTel')),
+							        array('lada' => $request->input('lada')),
+							        array('telefono' => $request->input('telefono')),
+							        array('ext' => $request->input('ext'))
+							    )),	*/							
+
+			'telefono'			=> json_encode(array('tipoTel' => $request->input('tipoTel'),
+												 'lada' => $request->input('lada'),
+												 'telefono' => $request->input('telefono'),
+												 'ext' => $request->input('ext'))),
+													 
+		
 		]);
 
 		$data = array('nombres' => $desaparecido->persona->nombres,
@@ -275,7 +299,7 @@ class DesaparecidoController extends Controller
 
 
 		$anios = array('2000' => '2000', '2001' => '2001');
-		$sexos = array('MASCULINO' => 'MASCULINO', 'FEMENINO' => 'FEMENINO');
+		$sexos = array('H' => 'MASCULINO', 'M' => 'FEMENINO');
 		
 		$tiposDireccion = array('PERSONAL' => 'PERSONAL', 'TRABAJO' => 'TRABAJO');
 		$parentescos = array('MADRE' => 'MADRE', 'PADRE' => 'PADRE', 'HIJO' => 'HIJO', 'OTRO' => 'OTRO');
@@ -337,9 +361,11 @@ class DesaparecidoController extends Controller
 					'fechaNacimiento'	=> $request->input('fechaNacimiento'),
 					'sexo' 				=> $request->input('sexo'),
 					'idNacionalidad'	=> $request->input('idNacionalidad'),
+					'curp'				=> $request->input('curp'),
+					'idEstadoOrigen'	=> $request->input('idEstadoOrigen'),
 				]);
 	
-			$embarazo		= ($request->input('sexo')=='FEMENINO') ? $request->input('embarazo') : 'NO';
+			$embarazo		= ($request->input('sexo')=='M') ? $request->input('embarazo') : 'NO';
 			$numGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('numGestacion') : null;
 			$tipoGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('tipoGestacion') : null;
 			$rumoresBebe	= ($request->input('embarazo') == 'SI') ? $request->input('rumoresBebe') : 'NO';

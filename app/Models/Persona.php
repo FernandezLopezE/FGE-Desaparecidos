@@ -21,11 +21,16 @@ class Persona extends Model
 				'idEtnia',
 				'idLengua',
 				'idMunicipioOrigen',
+				'idEstadoOrigen',
 				'esEmpresa',
 	];
 
 	public function nacionalidad(){
 		return $this->belongsTo('App\Models\CatNacionalidad', 'idNacionalidad');
+	}
+
+	public function estado(){
+		return $this->belongsTo('App\Models\CatEstado', 'idEstadoOrigen');
 	}
 
 	/*public function etnia(){

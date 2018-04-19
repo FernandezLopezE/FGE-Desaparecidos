@@ -44,17 +44,17 @@
 				<div class="col">
 					{!! Form::label ('apodo','Apodo (alias):') !!}
 					{!! Form::text ('apodo',old('apodo'), ['class' => 'form-control mayuscula', 'id' => 'apodo' ] )!!}
-				</div>			
+				</div>
+				<div class="col">
+					{!! Form::label ('idNacionalidad','Nacionalidad:') !!}
+					{!! Form::select ('idNacionalidad',$nacionalidades,'', ['class' => 'form-control', 'id' => 'idNacionalidad', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Elija una opción'] )!!}
+				</div>
+				<div class="col">
+					{!! Form::label('idEstadoOrigen', 'Estado natal:') !!}
+					{!! Form::select('idEstadoOrigen', $estados, '30', ['class' => 'form-control', 'placeholder' => 'Seleccione una entidad federativa', 'required']) !!}
+				</div>				
 			</div>
-			<div class="row">
-				<div class="col">
-					{!! Form::label ('edadExtravio','Edad de extravío:') !!}
-					{!! Form::text ('edadExtravio',old('EdadExtravio'), ['class' => 'form-control', 'id' => 'edadExtravio'] )!!}
-				</div>
-				<div class="col">
-					{!! Form::label ('edadAparente','Edad aparente:') !!}
-					{!! Form::text ('edadAparente',old('Edad aparente'), ['class' => 'form-control', 'id' => 'edadAparente', 'data-validation' => 'required number length', 'data-validation-error-msg' => '* Ingrese una edad aparente menos a 130','data-validation-allowing'=>"range[1;130]",  'data-validation-length'=>"0-3",'data-mask'=>"000",'min'=>"0" ,'max'=>"150"] )!!}
-				</div>
+			<div class="row">	
 				<div class="col">
 					{!! Form::label ('fechaNacimiento','Fecha de nacimiento:') !!}
 					{!! Form::text ('fechaNacimiento',
@@ -64,13 +64,21 @@
 										'data-validation' => 'required date',
 										'data-validation-error-msg' => 'Ingrese una fecha valida o menor a la actual',
 										'data-validation-format'=>"dd/mm/yyyy"] )!!}
+				</div>			
+				<div class="col">
+					{!! Form::label ('edadExtravio','Edad de extravío:') !!}
+					{!! Form::text ('edadExtravio',old('EdadExtravio'), ['class' => 'form-control', 'id' => 'edadExtravio'] )!!}
+				</div>
+				<div class="col">
+					{!! Form::label ('edadAparente','Edad aparente:') !!}
+					{!! Form::text ('edadAparente',old('Edad aparente'), ['class' => 'form-control', 'id' => 'edadAparente', 'data-validation' => 'required number length', 'data-validation-error-msg' => '* Ingrese una edad aparente menos a 130','data-validation-allowing'=>"range[1;130]",  'data-validation-length'=>"0-3",'data-mask'=>"000",'min'=>"0" ,'max'=>"150"] )!!}
 				</div>
 			</div>
-			<div class="row">
-				<div class="col">
-					{!! Form::label ('idNacionalidad','Nacionalidad:') !!}
-					{!! Form::select ('idNacionalidad',$nacionalidades,'', ['class' => 'form-control', 'id' => 'idNacionalidad', 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Elija una opción'] )!!}
-				</div>
+				<div class="row">	
+					<div class="col-3">			
+					{!! Form::label('curp', 'C.U.R.P.') !!}
+					{!! Form::text('curp', null, ['class' => 'form-control', 'placeholder' => 'Ingrese el C.U.R.P.', 'required']) !!}
+				</div>			
 				<div class="col">
 					{!! Form::label ('idEscolaridad','Escolaridad:') !!}
 					{!! Form::select ('idEscolaridad',$escolaridades,'', ['class' => 'form-control', 'id' => 'escolaridad' , 'data-validation' => 'required', 'data-validation-error-msg-required' => '* Elija una opción'] )!!}
@@ -118,16 +126,12 @@
 					{!! Form::label ('familiaressegundoAp','Segundo apellido:') !!}
 					{!! Form::text ('familiaresSegundoAp[]','', ['class' => 'form-control mayuscula', 'id' => 'familiaresSegundoAp'] )!!}
 				</div>
-				<div class="col-6">
-					{!! Form::label ('familiaresFechaNacimiento','Fecha de nacimiento:') !!}
-					{!! Form::text ('familiaresFechaNacimiento[]',
-										old('Fecha de nacimiento'),
-										['class' => 'form-control',
-										'id' => 'familiaresFechaNacimiento' ,
-										'data-validation' => 'required date',
-										'data-validation-error-msg' => 'Ingrese una fecha valida o menor a la actual',
-										'data-validation-format'=>"dd/mm/yyyy"] )!!}
-				</div>
+				
+
+
+
+
+
 				<div class="col-6">
 					{!! Form::label ('familiaresEdad','Edad:') !!}
 					{!! Form::text ('familiaresEdad[]','', ['class' => 'form-control mayuscula', 'id' => 'familiaresEdad'] )!!}
@@ -188,7 +192,7 @@
 
 @section('scripts')
 {!! HTML::script('personal/js/funciones_generales.js') !!}
-
+{!! HTML::script('personal/js/curp.js') !!}
 {!! HTML::script('personal/js/documentosIdentidad.js') !!}
 
 <script type="text/javascript">

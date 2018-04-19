@@ -71,6 +71,10 @@ Route::resource('consultas','ConsultasController');
 //Rutas Ruben
 	//mis rutas
 Route::get('/desaparecido/vestimenta/{idCedula}', 'DesaparecidoController@show_vestimenta');
+Route::get('consultas/get_prendas/{idCedula}', 'ConsultasController@jsonPrendas')
+	->name('consultas.get_prendas');
+Route::get('consultas/get_calzado/{idCedula}', 'ConsultasController@jsonCalzado')
+	->name('consultas.get_calzado');	
 //fin de mis rutas
 Route::post('/desaparecido/store_vestimenta', 'DesaparecidoController@store_vestimenta')
 	->name('desaparecido.store_vestimenta');
