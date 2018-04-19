@@ -48,8 +48,8 @@ class CreateDesaparecidosCedulaInvestigacionTable extends Migration
             //$table->foreign('idCeja')->references('id')->on('cat_cejas');
             $table->integer('idDialecto')->unsigned()->nullable();
             $table->foreign('idDialecto')->references('id')->on('cat_dialecto')->onDelete('cascade');
-            $table->integer('idCedulaPartesCuerpo')->unsigned()->nullable();           
-            $table->foreign('idCedulaPartesCuerpo')->references('id')->on('cedula_partes_cuerpo');
+            /*$table->integer('idCedulaPartesCuerpo')->unsigned()->nullable();           
+            $table->foreign('idCedulaPartesCuerpo')->references('id')->on('cedula_partes_cuerpo');*/
             $table->timestamps();
         });
     }
