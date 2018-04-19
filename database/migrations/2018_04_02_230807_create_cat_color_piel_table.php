@@ -16,7 +16,7 @@ class CreateCatColorPielTable extends Migration
         Schema::create('cat_color_piel', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre',20);
-            $table->string('image');
+            $table->string('imagen');
             $table->timestamps();
         });
     }

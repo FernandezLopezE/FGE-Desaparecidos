@@ -16,7 +16,7 @@ class CreateCatColoresCuerpoTable extends Migration
         Schema::create('cat_colores_cuerpo', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre',20);
-            $table->string('image');
+            $table->string('imagen');
             $table->timestamps();
         });
     }
