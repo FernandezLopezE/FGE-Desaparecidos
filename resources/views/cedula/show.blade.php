@@ -38,7 +38,7 @@
 							{!! $cedula->dialecto->nombre !!}
 						</dd>
 						@if ($cedula->idDialecto = 2)
-							<dt class="col-sm-4">Dialecto:</dt>
+							<dt class="col-sm-4">Nombre de su dialecto:</dt>
 							<dd class="col-sm-8">
 								{!! $cedula->otroDialecto !!}
 							</dd>
