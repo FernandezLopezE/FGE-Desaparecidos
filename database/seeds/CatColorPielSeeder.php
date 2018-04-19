@@ -13,12 +13,12 @@ class CatColorPielSeeder extends Seeder
     {
         //
          DB::table('cat_color_piel')->insert([
-            ['nombre' => 'BLANCA',                 'image' => '1.jpg'],        
-            ['nombre' => 'MORENA CLARA',           'image' => '2.jpg'],
-            ['nombre' => 'MORENA OBSCURA',         'image' => '3.jpg'],
-            ['nombre' => 'NEGRA',                  'image' => '4.jpg'],
-            ['nombre' => 'ALBINO',                 'image' => '5.jpg'], 
-            ['nombre' => 'AMARILLO',                'image' => '5.jpg'], 
+            ['nombre' => 'BLANCA',                 'imagen' => '1.jpg'],        
+            ['nombre' => 'MORENA CLARA',           'imagen' => '2.jpg'],
+            ['nombre' => 'MORENA OBSCURA',         'imagen' => '3.jpg'],
+            ['nombre' => 'NEGRA',                  'imagen' => '4.jpg'],
+            ['nombre' => 'ALBINO',                 'imagen' => '5.jpg'], 
+            ['nombre' => 'AMARILLO',               'imagen' => '6.jpg'], 
         ]);
     }
 }

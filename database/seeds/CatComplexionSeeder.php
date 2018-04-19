@@ -12,11 +12,11 @@ class CatComplexionSeeder extends Seeder
     public function run()
     {
          DB::table('cat_complexion')->insert([
-            ['nombre' => 'DELGADO',                 'image' => '1.jpg'],        
-            ['nombre' => 'MEDIANO',                 'image' => '2.jpg'],
-            ['nombre' => 'ROBUSTO',                 'image' => '3.jpg'],
-            ['nombre' => 'OBESO',                   'image' => '4.jpg'],
-            ['nombre' => 'ATLÉTICA',                'image' => '5.jpg'], 
+            ['nombre' => 'DELGADO',                 'imagen' => '1.jpg'],        
+            ['nombre' => 'MEDIANO',                 'imagen' => '2.jpg'],
+            ['nombre' => 'ROBUSTO',                 'imagen' => '3.jpg'],
+            ['nombre' => 'OBESO',                   'imagen' => '4.jpg'],
+            ['nombre' => 'ATLÉTICA',                'imagen' => '5.jpg'], 
         ]);
     }
 }
