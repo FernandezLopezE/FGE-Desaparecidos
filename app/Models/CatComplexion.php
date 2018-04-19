@@ -8,6 +8,7 @@ class CatComplexion extends Model
 {
 	protected $table = 'cat_complexion';
 	protected $fillable = [
-		'nombre',	
+		'nombre',
+		'imagen',
 	];
 }
