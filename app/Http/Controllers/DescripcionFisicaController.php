@@ -48,6 +48,7 @@ class DescripcionFisicaController extends Controller
         //
         $desaparecido = Desaparecido::find($idDesaparecido);
 
+        $partesCuerpo = \App\Models\CatPartesCuerpo::all()->pluck('nombre','id');
         $complexiones = \App\Models\CatComplexion::all()->pluck('nombre','id');
         $coloresPiel = \App\Models\CatColorPiel::all()->pluck('nombre','id');
         $subParticularidades = \App\Models\CatSubParticularidades::all()->pluck('nombre','id');
