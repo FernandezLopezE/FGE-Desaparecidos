@@ -18,13 +18,14 @@
 			<div class ="row">
 				
 				<div class ="main-contact">
-					{!!Form::open(['route' =>'mail.store', 'method '=>'POST'])!!}
+					{!!Form::open(['route' =>'mail.store', 'method '=>'POST' , 'enctype' =>'multipart/form-data'])!!} 
 					<div class ="col-6"></div>
 					{!!Form::text('name', null,['placeholder'=>'nombre'])!!}
 					{!!Form::text('email', null,['placeholder'=>'email'])!!}
 					{!!Form::textarea('mensaje', null,['placeholder'=>'mensaje'])!!}
+					{!!Form::file('file', null,['archivo'=>'Seleccionar archivo'])!!}
 				</div>
-				{!!Form::submit('SEND')!!}
+				{!!Form::submit('ENVIAR')!!}
 				{!!Form::close()!!}
 				</div>
 

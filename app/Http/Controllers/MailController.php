@@ -12,10 +12,18 @@ class MailController extends Controller
     
 
     public function store (Request $request){
+    	$asunto = $request->input('name');
+    	$file = $request->file('file');
 
-    	Mail::send('emails.contact', $request->all(), function($msj){
-    			$msj->subject('Correo de contacto');
+    	echo ($file);
+
+    	Mail::send('emails.contact', $request->all(), function($msj) use ($file , $asunto){
+    		
+    		
+
+    			$msj->subject($asunto);
     			$msj->to('alejandro.f.toledo@gmail.com');
+    			$msj->attach($file);
 
     	});
     	Session::flash('message','Mensaje enviado correctamente');
