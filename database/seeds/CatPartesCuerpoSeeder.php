@@ -50,7 +50,7 @@ class CatPartesCuerpoSeeder extends Seeder
             ['nombre' => 'BARBA'],				//35
             ['nombre' => 'BIGOTE'],				//36
             ['nombre' => 'PATILLA'],			//37
-            ['nombre' => 'OTRO']				//38
+            
         ]);
     }
 }
