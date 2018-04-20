@@ -22,7 +22,9 @@
 					<h5 class="card-title">
 						DATOS DE LOS INFORMANTES
 						<button type="button" class="btn btn-dark pull-right"  id="btnAgregarInformante"><i class="fa fa-plus"></i> AGREGAR PERSONA</button>
-
+						<a href="{{route('extraviado.create_desaparecido',['id' => $cedula->id])}}" class="btn btn-dark pull-right">
+							<i class="fa fa-pencil-square-o"></i> SIGUIENTE
+						</a>
 					</h5>
 				</div>	
 			</div>	
@@ -43,6 +45,7 @@
 		var routeIndex = '{!! route('consultas.index') !!}';		
 		var routeInformante = '{!! route('informante.index') !!}';
 		var idCedula = '{!! $cedula->id !!}';
+		var btnAgregarTelefono = $('#btnAgregarTelefono');
 		var btnAgregarInformante = $('#btnAgregarInformante');
 		var btnAgregarFamiliarDesa = $('#btnAgregarFamiliarDesaparecido');
 		var btnGuardarInformante = $('#btnGuardarInformante');
@@ -51,8 +54,15 @@
 		var modalInformanteDetalle = $('#modalInformanteShow');
 		var modalDesaparecidoFamiliar = $('#modalDesaparecidoFamiliar');
 		var bodyModalInformante = $('#modal-body-informante');
-		var modalFooter = $('.modal-footer'); 
+		var modalFooter = $('.modal-footer');
+
+		var addCamposTelefono = function(tipoTel = null, lada=null, telefono=null, ext=null) {
+            $("#telefono2").append('<div class="row"><div class="form-group col-lg-2">{!! Form::label ("informanteTipoTel","Tipo de telefono:") !!}	            {!! Form::select ("informanteTipoTel[]", $tiposTelefonos,"'+tipoTel+'",["class" => "form-control","id" => "informanteTipoTel[]"])!!} </div> <div class="form-group col-lg-2">                                             {!! Form::label ("lada","Lada:") !!}	                                    {!! Form::select ("lada[]", $ladas,"'+lada+'",["class" => "form-control","id" => "lada[]"])!!} </div>  <div class="form-group col-lg-3">                                                                {!! Form::label ("informanteTelefonos","Número:") !!}                    {!! Form::text ("informanteTelefonos[]",old("'+telefono+'"),["class" => "form-control mayuscula valid","data-validation" => "required","data-validation-error-msg-required" => "El campo es requerido","id" => "informanteTelefonos[]"] )!!} </div>    <div class="form-group col-lg-1">                                              {!! Form::label ("ext","Ext:") !!}                                        {!! Form::text ("ext[]",old("'+ext+'"), ["class" => "form-control mayuscula","id" => "ext[]"] )!!} </div> </div>');
+		}; 
 		
+		btnAgregarTelefono.click(function(e){
+			addCamposTelefono(tipoTel = null, lada=null, telefono=null, ext=null);
+		});
 	
 		
 		$('#informante').iCheck({
@@ -163,12 +173,17 @@
 					});
 				});
 				
-				telefonos = $.parseJSON(row.telefono)
+				telefonos = $.parseJSON(row.telefonos)
+				console.log(telefonos);
+				$.each(telefonos, function(key, value){
+					console.log(value);
+					addCamposTelefono(value.tipoTel, value.lada, value.telefono, value.ext);
+				})
 
-				$('select#informanteTipoTel option[value="'+telefonos.tipoTel+'"]').attr("selected",true);
-				$('select#lada option[value="'+telefonos.lada+'"]').attr("selected",true);
-				$("#informanteTelefonos").val(telefonos.telefono);
-				$("#ext").val(telefonos.ext);
+				//$('select#informanteTipoTel option[value="'+telefonos.tipoTel+'"]').attr("selected",true);
+				//$('select#lada option[value="'+telefonos.lada+'"]').attr("selected",true);
+				//$("#informanteTelefonos").val(telefonos.telefono);
+				//$("#ext").val(telefonos.ext);
 				
 				$("#correoElectronico").val(row.correoElectronico);
 				if (row.informante == 0) {
@@ -248,15 +263,13 @@
 				localidad: $("#idLocalidad").val(),
 				colonia: $("#idColonia").val(),
 				cp: $("#idCodigoPostal").val(),
-				tipoTel: $("#informanteTipoTel").val(),
-				lada: $("#lada").val(),
-				telefono : $("#informanteTelefonos").val(),
-				ext: $("#ext").val(),
+				tipoTel: $("select[name='informanteTipoTel[]']").map(function(){return $(this).val();}).get(),
+				lada: $("select[name='lada[]']").map(function(){return $(this).val();}).get(),				
+				telefono : $("input[name='informanteTelefonos[]']").map(function(){return $(this).val();}).get(),				
+				ext: $("input[name='ext[]']").map(function(){return $(this).val();}).get(),
 				correoElectronico: $("#correoElectronico").val(),
 				informante: $("input#informante:checked").val(),
 				notificaciones: $("input#notificaciones:checked").val(),
-				//informante: $("#informante").is(":checked"),
-				//notificaciones: $("#notificaciones").is(":checked"),
 				idCedula: $("#idCedula").val(),
 			};
 

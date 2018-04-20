@@ -12,12 +12,7 @@
 <div class="card">
 	<div class="card-header">
 		<h4>Datos de la entrevista
-		<button type="submit" class="btn btn-dark pull-right"  id="btnAgregarInformante">
-			@isset($cedula->id)
-				<i class="fa fa-plus"></i> EDITAR
-			@else
-				<i class="fa fa-plus"></i> GUARDAR
-			@endisset
+		<button type="submit" class="btn btn-dark pull-right"  id="btnAgregarInformante">	<i class="fa fa-plus"></i> GUARDAR		
 		</button>		
 		</h4>
 	</div>

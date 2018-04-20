@@ -17,6 +17,10 @@ Route::get('/', 'InicioController@index');
 
 	Route::resource('informante','InformanteController');
 
+	Route::get('extraviado/create/{idCedula}', 'ExtraviadoController@create')
+		->name('extraviado.create_desaparecido');
+	Route::resource('extraviado','ExtraviadoController');
+
 
 Route::get('consultas/get_cedulas', 'ConsultasController@jsonCedulas');
 Route::get('consultas/get_informantes/{idCedula}', 'ConsultasController@jsonInformantes')
