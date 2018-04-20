@@ -45,7 +45,6 @@
 											'id' => 'colorPiel',
 										] )!!}						
 			</div>
-
   		</div>
 		<hr>
   		<div class="row">
@@ -80,7 +79,7 @@
 										] )!!}	
 					
 				</div>
-				<div class="col-lg-4" id="otro_Particularidad" >
+				<div class="col-lg-4" id="otro_Particularidad" style="display:none" >
 					{!! Form::label ('otro','Especifique:') !!}
 					{!! Form::text ('otroSubParticularidad',
 									old('otro'),
@@ -101,8 +100,7 @@
 										'placeholder' => 'Ingrese las observaciones',
 										'id' => 'observacionesParticularidad'
 									] )!!}
-			  	</div>
-				
+			  	</div>			
 		</div>
 		<hr>
 		<div class="row">
@@ -116,7 +114,7 @@
 											] )!!}	
 						
 					</div>
-					<div class="col-lg-4" id="otra_Modificacion" >
+					<div class="col-lg-4" id="otra_Modificacion" style="display:none">
 						{!! Form::label ('otroModi','Especifique:') !!}
 						{!! Form::text ('otroSubModificacion',
 										old('otroModi'),
@@ -137,21 +135,15 @@
 											'placeholder' => 'Ingrese las observaciones',
 											'id' => 'observacionesModificacion'
 										] )!!}
-				  	</div>
-
-				  	
-						
-					
+				  	</div>				 											
 		</div>
-		<div>
-				
+		<br>
+		<div>				
 			<button type="button" class="btn btn-dark pull-right"  id="nuevaPrenda"><i class="fa fa-plus"></i> AGREGAR</button>
-
 		</div>
-		
+		<br>
 	</div>
 	<div class="card-body">
-
 			<table id="tableDescripcionFisica" ></table>
 		</div>
 </div>
@@ -162,6 +154,36 @@
 
 @section('scripts')
 <script type="text/javascript">
+	$(document).ready(function(){
+		var otraP;
+		var otraM;
+
+	$("#idSubParticularidades").change(function() {
+			otraP = $('#idSubParticularidades').val();
+			console.log(otraP);
+			if (otraP >=77 && otraP <= 88) {
+				$("#otro_Particularidad").show();
+			}else{
+				$("#otro_Particularidad").hide();
+			}
+		});
+
+	$("#idSubModificaciones").change(function() {
+			otraM = $('#idSubModificaciones').val();
+			console.log(otraM);
+
+			if (otraM ==13 || otraM == 20 || otraM == 26 || otraM == 33|| otraM == 36|| otraM == 40 || otraM == 47|| otraM == 51|| otraM == 53|| otraM == 60) {
+				$("#otra_Modificacion").show();
+			}else{
+				$("#otra_Modificacion").hide();
+			}
+		});
+
+
+
+
+
+
 var tableDescripcion = $('#tableDescripcionFisica');
 		var routeIndex = '{!! route('consultas.index') !!}';	
 		
@@ -212,5 +234,6 @@ var tableDescripcion = $('#tableDescripcionFisica');
 			}]				
 		})
 	//Fin de vista de datos de calzado
+	});
 	</script>
 @endsection

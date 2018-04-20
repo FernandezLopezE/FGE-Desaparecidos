@@ -89,6 +89,19 @@ class CatSubParticularidadesSeeder extends Seeder
             ['idParticularidadesCuerpo'=>12, 'nombre' => 'POBLADA'],
             ['idParticularidadesCuerpo'=>12, 'nombre' => 'ESCASA'],
             ['idParticularidadesCuerpo'=>12, 'nombre' => 'LAMPIÑO'],
+
+            ['idParticularidadesCuerpo'=>1, 'nombre' => 'OTRO'],
+            ['idParticularidadesCuerpo'=>2, 'nombre' => 'OTRO'],
+            ['idParticularidadesCuerpo'=>3, 'nombre' => 'OTRO'],
+            ['idParticularidadesCuerpo'=>4, 'nombre' => 'OTRO'],
+            ['idParticularidadesCuerpo'=>5, 'nombre' => 'OTRO'],
+            ['idParticularidadesCuerpo'=>6, 'nombre' => 'OTRO'],
+            ['idParticularidadesCuerpo'=>7, 'nombre' => 'OTRO'],
+            ['idParticularidadesCuerpo'=>8, 'nombre' => 'OTRO'],
+            ['idParticularidadesCuerpo'=>9, 'nombre' => 'OTRO'],
+            ['idParticularidadesCuerpo'=>10, 'nombre' => 'OTRO'],
+            ['idParticularidadesCuerpo'=>11, 'nombre' => 'OTRO'],
+            ['idParticularidadesCuerpo'=>12, 'nombre' => 'OTRO'],
         ]);
     }
 }
