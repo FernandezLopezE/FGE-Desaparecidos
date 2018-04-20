@@ -135,7 +135,74 @@
 			  	</div>
 				
 		</div>
+		<hr>
+	<div class="card border-success">
+	<div class="card-header">
+		<h5 class="card-title">Descripción física
+		<button type="button" class="btn btn-dark pull-right"  id="nuevaPrenda"><i class="fa fa-plus"></i> AGREGAR</button>
+		</h5>
+	</div>
+	<div class="card-body">	
+	<table id="tableDescripcionFisica" ></table>
+	</div>
+</div><hr>
+
 	</div>
 	<!--{!! Form::submit('Nueva cédula de investigación', ['class' => 'btn btn-large btn-primary openbutton']); !!}-->
 <!--{!! Form::close() !!}-->
+@endsection
+
+@section('scripts')
+<script type="text/javascript">
+var tableDescripcion = $('#tableDescripcionFisica');
+		var routeIndex = '{!! route('consultas.index') !!}';	
+		
+		var formatTableActions = function(value, row, index) {				
+			btn = '<button class="btn btn-info btn-xs edit" id="editDescripcionFisica"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
+			
+			return [btn].join('');
+		};
+		/*window.operateEvents = {
+			'click #editCalzado': function (e, value, row, index) {					
+				console.log(row);
+				//bodyModal.empty();
+				$('#idTipo').val(row.cTipo);
+				$('#otroCalzado').val(row.oCalzado);
+				$('#idColor').val(row.cColor);
+				$('#otroColorCalzado').val(row.ocCalzado);
+				$('#modeloCalzado').val(row.modelo);
+				$('#idMarca').val(row.cMarca);
+				$('#otraMarca').val(row.oMarca);
+				$('#calzadoTalla').val(row.talla);
+				$("#modalCalzado").modal("show");
+			}
+		}
+		$('#nuevoVestimenta').click(function(e){
+			$('#modalGeneral').modal('show');
+		})*/
+		tableDescripcion.bootstrapTable({				
+			//url: routeIndex+'/get_descripcion/{{$id}}',
+			columns: [{					
+				field: 'nombre',
+				title: 'Parte del cuerpo',
+			}, {
+				field: 'lado',
+				title: 'Lado',									
+			}, {
+				field: 'nombre',
+				title: 'Particularidades',									
+			}, {					
+				field: 'nombre',
+				title: 'Modificaciones',
+			}, {					
+				field: 'observaciones',
+				title: 'Observaciones',
+			}, {					
+				title: 'Acciones',
+				formatter: formatTableActions,
+				events: operateEvents
+			}]				
+		})
+	//Fin de vista de datos de calzado
+	</script>
 @endsection
