@@ -91,7 +91,7 @@
 			<div class="row">
 				<div class="col-lg-4">
 						{!! Form::label ('identificacion','Identificación:') !!}
-						{!! Form::select ('identificacion',$identificaciones,'', ['class' => 'form-control', 'id' => 
+						{!! Form::select ('identificacion',$identificaciones,'', ['class' => 'form-control mayuscula', 'id' => 
 						'identificacion'] )!!}
 				</div>
 				<div class="col-lg-4" style="display: none" id="otraIdDIV">

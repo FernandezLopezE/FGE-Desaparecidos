@@ -294,7 +294,13 @@ class DesaparecidoController extends Controller
 			'OTRO' => 'OTRO'			
 		);
 		
+		$tiposDireccion = array('PERSONAL' => 'PERSONAL',
+								'TRABAJO' => 'TRABAJO',
+								'FAMILIAR' => 'FAMILIAR');
 
+		$tiposTelefonos = array('PERSONAL' => 'PERSONAL',
+								'TRABAJO' => 'TRABAJO',
+								'CELULAR' => 'CELULAR');
 
 		$anios = array('2000' => '2000', '2001' => '2001');
 		$sexos = array('H' => 'MASCULINO', 'M' => 'FEMENINO');
@@ -344,7 +350,8 @@ class DesaparecidoController extends Controller
 						'edoscivil' => $edoscivil,
 						'tiposDireccion' => $tiposDireccion,
 						'parentescos' => $parentescos,
-						'dialectos' =>$dialectos
+						'dialectos' =>$dialectos,
+						'tiposTelefonos' =>$tiposTelefonos
 					]);
 	}
 
@@ -390,6 +397,7 @@ class DesaparecidoController extends Controller
 			'idDocumentoIdentidad'		=> $request->input('idDocumentoIdentidad'),
 			'tipoPersona'				=> 'DESAPARECIDA',
 		]);
+
 
 		
 		$nombres = $request->input('familiaresNombres');
@@ -463,6 +471,7 @@ class DesaparecidoController extends Controller
 								'localidades',
 								'colonias',
 								'codigos',
+								'nacionalidades',
 								'tiposTelefonos'
 							));		
 	}
@@ -496,9 +505,10 @@ class DesaparecidoController extends Controller
 			'idLocalidad'		=> $request->input('idLocalidad'),
 			'idColonia'			=> $request->input('idColonia'),
 			'idCodigoPostal'	=> $request->input('idCodigoPostal'),
-			'telefono'			=> json_encode(array('tipoTel' => 'PERSONAL',									 
-									 				'telefono' => $request->input('telefono'),
-									 			)),
+			'telefono'			=> json_encode(array('tipoTel' => $request->input('tipoTel'),
+												 'lada' => $request->input('lada'),
+												 'telefono' => $request->input('telefono'),
+												 'ext' => $request->input('ext'))),
 		]);
 
 		return response()->json($domicilio);

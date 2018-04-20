@@ -78,7 +78,28 @@
 @endsection
 
 @section('scripts')
+{!! HTML::script('personal/js/lada.js') !!}
 <script type="text/javascript">
+	document.getElementById("lada").value="(+52)-";
+
+	var contador = 0;
+	$("input[name='informanteTelefonos[]']").mask('(000) 000 0000');
+	var btnAgregarTelefono = $('#btnAgregarTelefono');
+
+	btnAgregarTelefono.click(function(e) {
+			console.log("agregando")
+
+			var lada1 = document.getElementById("lada").value;
+
+            $("#telefono2").append('<div class="row"> <div class="form-group col-lg-4">{!! Form::label ("informanteTipoTel","Tipo de telefono:") !!}	                                                                                               {!! Form::select ("informanteTipoTel[]", $tiposTelefonos,"",["class" => "form-control","id" => "informanteTipoTel[]"])!!} </div> <div class="form-group col-lg-2">                                                {!! Form::label ("lada","Código del país:") !!}	                                                                           {!! Form::text ("lada[]",old(""),["class" => "form-control lada","id" => "lada[]"])!!} </div>  <div class="form-group col-lg-4">                                                                                       {!! Form::label ("informanteTelefonos","Número:") !!}                                                             {!! Form::text ("informanteTelefonos[]",old("informanteTelefonos"),["class" => "form-control mayuscula","data-validation" => "required","data-validation-error-msg-required" => "El campo es requerido","id" => "informanteTelefonos[]"] )!!} </div>    <div class="form-group col-lg-2">                                                                                                         {!! Form::label ("ext","Ext:") !!}                                                                                 {!! Form::text ("ext[]",old(""), ["class" => "form-control mayuscula","id" => "ext[]"] )!!} </div> </div>');
+            $("input[name='informanteTelefonos[]']").mask('(000) 000 0000');
+
+           var otrasLadas = document.getElementsByClassName("lada");
+		    otrasLadas[contador].value = lada1;
+		    contador = contador + 1;
+		    console.log(contador);
+				});
+
 	$(function (){
 		var routeIndex = '{!! route('consultas.index') !!}';
 		
@@ -224,8 +245,12 @@
 				idLocalidad: $("#idLocalidad").val(),
 				idColonia: $("#idColonia").val(),
 				idCodigoPostal: $("#idCodigoPostal").val(),
-				tipoTel: $("#informanteTipoTel").val(),				
-				telefono : $("#informanteTelefonos").val(),				
+				tipoTel: $("select[name='informanteTipoTel[]']").map(function(){return $(this).val();}).get(),
+				lada: $("input[name='lada[]']").map(function(){return $(this).val();}).get(),
+				//telefono : $('input[name^="informanteTelefonos"]').val(),
+				telefono : $("input[name='informanteTelefonos[]']").map(function(){return $(this).val();}).get(),
+				//telefono : $("informanteTelefonos").val(),
+				ext: $("input[name='ext[]']").map(function(){return $(this).val();}).get(),				
 				idDesaparecido: {!! $desaparecido->id !!},
 			};
 

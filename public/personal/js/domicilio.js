@@ -26,11 +26,6 @@ $(document).ready(function() {
         width : "100%",
     });
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 95101b75a7e7bf43ec9c43ac0c887a2df27f0e96
 
     /*$('#btnAddHijo').click(function(){
 

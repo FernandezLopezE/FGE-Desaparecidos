@@ -3,7 +3,7 @@
   <div class="modal-dialog modal-lg" role="document">
 	<div class="modal-content">
 	  <div class="modal-header">
-		<h5 class="modal-title" id="exampleModalLabel">DETALLE DEL INFORMANTE</h5>
+		<h5 class="modal-title" id="exampleModalLabel">DETALLE DEL DESAPARECIDO</h5>
 		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		  <span aria-hidden="true">&times;</span>
 		</button>
@@ -52,6 +52,17 @@
 
 			<div class="row" id=""  > 	
 				<div class="form-group col-lg-4">
+					{!! Form::label ('informanteidNacionalidad','Nacionalidad:') !!}
+					{!! Form::select ('informanteidNacionalidad',
+										$nacionalidades,
+										'',
+										['class' => 'form-control',
+											'id' => 'informanteidNacionalidad',
+											'data-validation' => 'required',
+											'data-validation-error-msg-required' => '* Elija una opción'
+										] )!!}				
+				</div>
+				<div class="form-group col-lg-4">
 					{!! Form::label ('idEstado','Estado:') !!}
 					{!! Form::select ('idEstado',$estados,'', ['class' => 'form-control'] )!!}				
 				</div>
@@ -63,6 +74,9 @@
 												'data-validation-error-msg-required' => 'El campo es requerido'
 											] )!!}				
 				</div>
+			</div>
+	
+			<div class="row" id=""  > 	
 				<div class="form-group col-lg-4">
 					{!! Form::label ('idLocalidad','Localidad:') !!}
 					{!! Form::select ('idLocalidad',$localidades,'',
@@ -71,10 +85,7 @@
 												'data-validation-error-msg-required' => 'El campo es requerido'
 											 ] )!!}				
 				</div>
-			</div>
-	
-			<div class="row" id=""  > 	
-				<div class="form-group col-lg-8">
+				<div class="form-group col-lg-4">
 					{!! Form::label ('idColonia','Colonia:') !!}
 					{!! Form::select ('idColonia',$colonias,'',
 											['class' => 'form-control',
@@ -92,25 +103,44 @@
 				</div>
 			</div><br>
 			<div class="row" id=""  > 
-				<div class="form-group col-lg-2">
+				<div class="form-group col-lg-4">
 					{!! Form::label ('informanteTipoTel','Tipo de telefono:') !!}
-					{!! Form::select ('informanteTipoTel',
+					{!! Form::select ('informanteTipoTel[]',
 										$tiposTelefonos,
 										'',
-										['class' => 'form-control'])!!}	
+										['class' => 'form-control',
+											'id' => 'informanteTipoTel[]'
+											])!!}	
 				</div>
-
-				<div class="form-group col-lg-3">
+				<div class="form-group col-lg-2">
+					{!! Form::label ('lada','Código del país:') !!}
+					{!! Form::text ('lada[]',
+										old(''),
+										['class' => 'form-control',
+											'id' => 'lada'
+											] )!!}	
+				</div>
+				<div class="form-group col-lg-4">
 					{!! Form::label ('informanteTelefonos','Número:') !!}
-					{!! Form::text ('informanteTelefonos',
+					{!! Form::text ('informanteTelefonos[]',
 										old('informanteTelefonos'), 
 										['class' => 'form-control mayuscula',
 											'data-validation' => 'required',
-											'data-validation-error-msg-required' => 'El campo es requerido'
+											'data-validation-error-msg-required' => 'El campo es requerido',
+											'id' => 'informanteTelefonos'
 										] )!!}				
 				</div>
-
+				<div class="form-group col-lg-2">
+					{!! Form::label ('ext','Ext:') !!}
+					{!! Form::text ('ext[]',old(''), ['class' => 'form-control mayuscula',
+											'id' => 'ext[]'
+											] )!!}				
+				</div>	
 			</div>
+			<div id="telefono2"> </div>
+			<p align="right">
+				<button type="button" class="btn btn-large btn-primary openbutton"  id="btnAgregarTelefono"><i class="fa fa-plus"></i> Agregar telefono</button>
+			</p>
 
 
 		</form>

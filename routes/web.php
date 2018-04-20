@@ -44,6 +44,9 @@ Route::get('consultas/get_ladas', 'ConsultasController@jsonLadas')
 	->name('consultas.get_ladas');
 Route::resource('consultas','ConsultasController');
 
+Route::get('lada/{id}', 'LadaController@getLadas');
+Route::resource('/lada','LadaController');
+
 
 //Rutas Ruben
 	//mis rutas

@@ -195,12 +195,11 @@
 											])!!}	
 				</div>
 				<div class="form-group col-lg-2">
-					{!! Form::label ('lada','Lada:') !!}
-					{!! Form::select ('lada[]',
-										$ladas,
-										'',
+					{!! Form::label ('lada','Código del país:') !!}
+					{!! Form::text ('lada[]',
+										old(''),
 										['class' => 'form-control',
-											'id' => 'lada[]'
+											'id' => 'lada'
 											] )!!}	
 				</div>
 				<div class="form-group col-lg-3">
@@ -210,7 +209,7 @@
 										['class' => 'form-control mayuscula',
 											'data-validation' => 'required',
 											'data-validation-error-msg-required' => 'El campo es requerido',
-											'id' => 'informanteTelefonos[]'
+											'id' => 'informanteTelefonos'
 										] )!!}				
 				</div>
 				<div class="form-group col-lg-1">
