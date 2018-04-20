@@ -21,4 +21,13 @@ class MailController extends Controller
     	Session::flash('message','Mensaje enviado correctamente');
     	return Redirect::to('/desaparecido/correo');
     }
+
+public function send()
+{
+	Mail::send(['text'=>'emails.contact'],['name','Lex'], function($message){
+		$message->to('alejandro.f.toledo@gmail.com', 'Para ti men')->subjeCt('Este es un test');
+		$message->from('alejandro.f.toledo@gmail.com');
+	});
+}
+
 }

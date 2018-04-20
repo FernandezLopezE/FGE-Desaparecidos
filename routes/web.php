@@ -111,5 +111,6 @@ Route::get('colonias/{id}', 'DomiciliosController@getColonias');
 Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');
 
 Route::resource ('mail','MailController');
+Route::get('send', 'MailController@send');
 
 
