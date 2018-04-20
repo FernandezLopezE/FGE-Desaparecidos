@@ -45,14 +45,14 @@ Route::get('consultas/get_ladas', 'ConsultasController@jsonLadas')
 Route::resource('consultas','ConsultasController');
 
 
-//Rutas Ruben
-	//mis rutas
+//Rutas Vestimenta y calzado
+
 Route::get('/desaparecido/vestimenta/{idCedula}', 'DesaparecidoController@show_vestimenta');
 Route::get('consultas/get_prendas/{idCedula}', 'ConsultasController@jsonPrendas')
 	->name('consultas.get_prendas');
 Route::get('consultas/get_calzado/{idCedula}', 'ConsultasController@jsonCalzado')
 	->name('consultas.get_calzado');	
-//fin de mis rutas
+
 Route::post('/desaparecido/store_vestimenta', 'DesaparecidoController@store_vestimenta')
 	->name('desaparecido.store_vestimenta');
 Route::post('/desaparecido/update_calzado', 'DesaparecidoController@update_calzado')
@@ -61,6 +61,11 @@ Route::post('/desaparecido/update_accesorios', 'DesaparecidoController@update_ac
 	->name('desaparecido.update_accesorios');	
 Route::post('/desaparecido/update_vestimenta', 'DesaparecidoController@update_vestimenta')
 	->name('desaparecido.update_vestimenta');
+
+//Rutas para descripcion fisica
+
+Route::get('/descripcionfisica/descripcionf/{idPersonaDesaparecida}', 'DescripcionFisicaController@show');
+Route::resource('/descripcionfisica','DescripcionFisicaController');
 //fin de mis rutas
 
 
