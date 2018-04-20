@@ -110,5 +110,12 @@ class DatabaseSeeder extends Seeder
         $this->call(ParentescoSeeder::class);
         $this->call(CatSenasParticularesSeeder::class);
         $this->call(CatSenasParticularesUbicacionesSeeder::class);
+
+        //Mios
+        $this->call(CatUbicacionDienteSeeder::class);
+        $this->call(CatTipoPerfilTableSeeder::class);
+        $this->call(CatTipoMordidaTableSeeder::class);
+        $this->call(CatMalosHabitosTableSeeder::class);
+        $this->call(CatTipoSonrisaTableSeeder::class);
     }
 }
