@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Desaparecido;
 class DescripcionFisicaController extends Controller
 {
     /**
@@ -46,7 +46,7 @@ class DescripcionFisicaController extends Controller
     public function show($idDesaparecido)
     {
         //
-        $desaparecido = Cedula::find($idDesaparecido);
+        $desaparecido = Desaparecido::find($idDesaparecido);
 
         $complexiones = \App\Models\CatComplexion::all()->pluck('nombre','id');
         $coloresPiel = \App\Models\CatColorPiel::all()->pluck('nombre','id');
