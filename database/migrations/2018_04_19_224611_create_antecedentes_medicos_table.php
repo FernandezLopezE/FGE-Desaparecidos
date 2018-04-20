@@ -17,8 +17,8 @@ class CreateAntecedentesMedicosTable extends Migration
             $table->increments('id');
             $table->string('observaciones');
             $table->string('medicamentosToma');
-            $table->integer('idCedula')->unsigned()->nullable();           
-            $table->foreign('idCedula')->references('id')->on('desaparecidos_cedula_investigacion');
+            $table->integer('idPersonaDesaparecida')->unsigned()->nullable();           
+            $table->foreign('idPersonaDesaparecida')->references('id')->on('desaparecidos_personas');
             $table->timestamps();
         });
     }

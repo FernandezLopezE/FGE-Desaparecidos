@@ -21,8 +21,8 @@ class CreateCedulaPartesCuerpoTable extends Migration
             $table->foreign('idPartesCuerpo')->references('id')->on('cat_partes_cuerpo');
             $table->integer('idColoresCuerpo')->unsigned()->nullable();           
             $table->foreign('idColoresCuerpo')->references('id')->on('cat_colores_cuerpo');
-            $table->integer('idCedula')->unsigned()->nullable();           
-            $table->foreign('idCedula')->references('id')->on('desaparecidos_cedula_investigacion');
+            $table->integer('idPersonaDesaparecida')->unsigned()->nullable();           
+            $table->foreign('idPersonaDesaparecida')->references('id')->on('desaparecidos_personas');
             $table->timestamps();
         });
     }

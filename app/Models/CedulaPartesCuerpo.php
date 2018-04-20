@@ -13,6 +13,6 @@ class CedulaPartesCuerpo extends Model
 		'observaciones',
 		'idPartesCuerpo',
 		'idColoresCuerpo',
-		'idCedula',
+		'idPersonaDesaparecida',
 	];
 }

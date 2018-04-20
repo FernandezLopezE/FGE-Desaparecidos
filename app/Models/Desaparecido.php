@@ -36,6 +36,10 @@ class Desaparecido extends Model
 		'idParentesco',
 		'idDocumentoIdentidad',
 		'idCedula',
+		'estatura',
+		'peso',
+		'idComplexion',
+		'idColorPiel',
 	];
 
 	public function familiares()
