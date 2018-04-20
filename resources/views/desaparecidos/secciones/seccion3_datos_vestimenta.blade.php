@@ -53,6 +53,8 @@
           </div>
           <br>
           <input type="button" name="btnAOS" id="btnAOS" value="AGREGAR" class="btn btn-dark pull-right">
+
+          <a href="/desaparecido/correo" class='btn btn-large btn-primary openbutton'>corrreo</a>
 	</div>
 	
 </div>

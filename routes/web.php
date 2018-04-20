@@ -67,8 +67,8 @@ Route::post('/desaparecido/update_vestimenta', 'DesaparecidoController@update_ve
 
 
 Route::get('/desaparecido/edad/{fecha_nacimiento}', 'DesaparecidoController@getEdad');
-
-
+//la siguiente ruta es la ruta de la vista correo
+Route::get('/desaparecido/correo', 'DesaparecidoController@show_correo');
 
 Route::get('/desaparecido/desaparecido_domicilio/{idCedula}', 'DesaparecidoController@show_desaparecido_domicilio');
 
@@ -110,6 +110,6 @@ Route::get('colonias2/{id}', 'DomiciliosController@getColonias2');
 Route::get('colonias/{id}', 'DomiciliosController@getColonias');
 Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');
 
-
+Route::resource ('mail','MailController');
 
 

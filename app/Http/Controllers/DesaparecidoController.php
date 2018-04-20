@@ -628,6 +628,13 @@ class DesaparecidoController extends Controller
 		return response()->json($cedula);
 		
 	}
+	public function show_correo(){
+		//dd($idCedula);
+		
+		return view('desaparecidos.contacto');
+			
+	}
+
 
 	public function store(Request $request)
 	{		
