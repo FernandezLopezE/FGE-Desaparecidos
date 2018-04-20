@@ -140,7 +140,7 @@ class ExtraviadoController extends Controller
 		]);
 
 		return redirect()->action(
-			'CedulaController@show', ['id' => $desaparecido->idCedula]
+			'ExtraviadoController@show', ['id' => $desaparecido->idCedula]
 		);
 		
 

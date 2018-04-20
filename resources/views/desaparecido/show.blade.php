@@ -28,35 +28,35 @@
 						{!! $desaparecido->apodo !!}
 					</dd>
 					<dt class="col-sm-4">Género:</dt>
-					<dd class="col-sm-8"></dd>
+					<dd class="col-sm-8">{!! $desaparecido->persona->sexo !!} </dd>
 					<dt class="col-sm-4">Nacionalildad:</dt>
-					<dd class="col-sm-8"></dd>
+					<dd class="col-sm-8">{!! $desaparecido->persona->nacionalidad->nombre !!} </dd>
 					<dt class="col-sm-4">Estado natal:</dt>
-					<dd class="col-sm-8"></dd>
+					<dd class="col-sm-8">{!! $desaparecido->persona->estado->nombre !!} </dd>
 					<dt class="col-sm-4">Fecha nacimiento:</dt>
-					<dd class="col-sm-8"></dd>
+					<dd class="col-sm-8">{!! $desaparecido->persona->fechaNacimiento !!} </dd>
 					<dt class="col-sm-4">Edad de extravio:</dt>
-					<dd class="col-sm-8"></dd>
+					<dd class="col-sm-8">{!! $desaparecido->edadExtravio !!} </dd>
 					<dt class="col-sm-4">Edad aparente:</dt>
-					<dd class="col-sm-8"></dd>
+					<dd class="col-sm-8">{!! $desaparecido->edadAparente !!} </dd>
 					<dt class="col-sm-4">CURP</dt>
-					<dd class="col-sm-8"></dd>
+					<dd class="col-sm-8">{!! $desaparecido->persona->curp !!} </dd>
 					<dt class="col-sm-4">Escolaridad</dt>
-					<dd class="col-sm-8"></dd>
+					<dd class="col-sm-8">{!! $desaparecido->escolaridad->nombre !!} </dd>
 					<dt class="col-sm-4">Ocupacion</dt>
-					<dd class="col-sm-8"></dd>
+					<dd class="col-sm-8">{!! $desaparecido->ocupacion->nombre !!}</dd>
 					<dt class="col-sm-4">Identificación:</dt>
-					<dd class="col-sm-8"></dd>
+					<dd class="col-sm-8">{!! $desaparecido->idDocumentoIdentidad!!}</dd>
 					<dt class="col-sm-4">Número de identificación:</dt>
-					<dd class="col-sm-8"></dd>
+					<dd class="col-sm-8">{!! $desaparecido->numDocIdentidad !!}</dd>
 					<dt class="col-sm-4">Otra identificación:</dt>
-					<dd class="col-sm-8"></dd>
+					<dd class="col-sm-8">{!! $desaparecido->otroDocIdentidad !!}</dd>
 					<dt class="col-sm-4">Embarazada</dt>
-					<dd class="col-sm-8"></dd>
+					<dd class="col-sm-8">{!! $desaparecido->embarazo !!}</dd>
 					<dt class="col-sm-4">Rumores</dt>
-					<dd class="col-sm-8"></dd>
+					<dd class="col-sm-8">{!! $desaparecido->rumoresBebe !!}</dd>
 					<dt class="col-sm-4">Estado civil:</dt>
-					<dd class="col-sm-8"></dd>
+					<dd class="col-sm-8">{!! $desaparecido->edocivil->nombre !!} </dd>
 				</dl>
 			</div>
 			<div class="col-2">
