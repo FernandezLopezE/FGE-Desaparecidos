@@ -62,6 +62,7 @@ class DescripcionFisicaController extends Controller
                 'coloresPiel' => $coloresPiel,
                 'particularidades' => $subParticularidades,
                 'modificaciones' => $subModificaciones,
+                'partesCuerpo' => $partesCuerpo,
             ]);
     }
 
