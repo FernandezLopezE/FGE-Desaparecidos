@@ -23,7 +23,7 @@
 			<div class="row">
 				<div class="col">
 					{!! Form::label ('sexo','Género:') !!}
-					{!! Form::select ('sexo',$sexos,'', ['class' => 'form-control', 'id' => 'sexo'])!!}	
+					{!! Form::select ('sexo',$nombreTamano,'', ['class' => 'form-control', 'id' => 'sexo'])!!}	
 				</div>			
 			</div>
 			<div class="row">

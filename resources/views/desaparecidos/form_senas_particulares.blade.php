@@ -83,31 +83,210 @@
 					<h5 class="card-title">DATOS DENTALES</h5>	
 				</div>
 				<div class="col">
-					<button type="button" class="btn btn-primary pull-right" id="senasPArticulares"><i class="fa fa-plus"></i> AGREGAR</button>
+					
 				</div>
 			</div>
 		</div>
 
 		<div class="card-body">
 			<div class="form-group row">
-				<div class="col-4">
-					{!! Form::label ('tamaño','Tamaño de los dientes:') !!}
-					{!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'PEQUEÑOS' => 'PEQUEÑOS', 'MEDIANOS' => 'MEDIANOS', 'GRANDES' => 'GRANDES'), 'SIN INFORMACIÓN', ['class' => 'form-control', 'id' => 'tamano'] ) !!}
+				<div class="col-2">
+					{!! Form::label ('nombreTamano','Tamaño de los dientes:') !!}
+					{!! Form::select ('nombreTamano',$nombreTamano, '', ['class' => 'form-control', 'id' => 'nombreTamano'])!!}	
 				</div>
-				<div class="col-4">
-					{!! Form::label ('tamaño','Los dientes estan completos:') !!}
+				<div class="col-2">
+					{!! Form::label ('tamaño','Dientes completos:') !!}
 					{!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tamano'] ) !!}
 				</div>
 				<div class="col-4">
 					{!! Form::label ('tamaño','Tuvo atención odontologíca:') !!}
 					{!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tamano'] ) !!}
 				</div>
-				<div class="col-12"><br>
-					{!! Form::label ('tamaño','Nombre, dirección y teléfono del dentista que lo atendio:') !!}
-					{!! Form::textarea ('datosExtra',old('datosExtra'), ['class' => 'form-control mayuscula', 'id' => 'datosExtra', 'rows' => '3'] )!!}
+				<div class="col-4">
+					{!! Form::label ('tamaño','Tiene información del dentista:') !!}
+					{!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tamano'] ) !!}
 				</div>
 			</div>
+			<hr>
+			<h5>Datos del dentista</h5>
+			<div class="form-group row">
+				<div class="col-md-4">
+					{!! Form::label ('nombres','Nombre del dentista:') !!}
+					{!! Form::text ('nombres',old('nombres'), ['class' => 'form-control mayuscula', 'id' => 'nombres',] )!!}
+				</div>
+				<div class="col-md-4">
+					{!! Form::label ('primerAp','Primer apellido:') !!}
+					{!! Form::text ('primerAp',old('primerAp'), ['class' => 'form-control mayuscula', 'id' => 'primerAp',] )!!}
+				</div>
+				<div class="col-md-4">
+					{!! Form::label ('segundoAp','Segundo apellido:') !!}
+					{!! Form::text ('segundoAp',old('segundoAp'), ['class' => 'form-control mayuscula', 'id' => 'segundoAp',] )!!}
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-md-8">
+					{!! Form::label ('empresa','Empresa  ó institución:') !!}
+					{!! Form::text ('empresa',old('empresa'), ['class' => 'form-control mayuscula', 'id' => 'empresa',] )!!}
+				</div>	
+				<div class="col">
+					{!! Form::label ('telefono','Teléfono de contacto:') !!}
+					{!! Form::text ('telefono',old('telefono'), ['class' => 'form-control mayuscula', 'id' => 'telefono',] )!!}
+				</div>	
+			</div>
+
+			<div class="form-group row">
+				<div class="col">
+					{!! Form::label ('direccion','Dirección/referencias de ubicación:') !!}
+					{!! Form::textarea ('direccion',old('direccion'), ['class' => 'form-control mayuscula', 'id' => 'direccion', 'rows' => '3'] )!!}
+				</div>
+			</div><hr>
 			
+			<h5>¿Qué tipo de tratamiento le realizarón?</h5>
+			<div class="form-group row">
+				<div class="col">
+					{!! Form::checkbox('AMALGAMA', '2') !!}
+					{!! Form::label ('AMALGAMA','AMALGAMA') !!}
+				</div>
+				<div class="col">
+					{!! Form::checkbox('BLANQUEAMIENTO DENTAL', '3') !!}
+					{!! Form::label ('BLANQUEAMIENTO DENTAL','BLANQUEAMIENTO DENTAL') !!}
+				</div>
+				<div class="col">
+					{!! Form::checkbox('BRACKETS', '4') !!}
+					{!! Form::label ('BRACKETS','BRACKETS') !!}
+				</div>
+				<div class="col">
+					{!! Form::checkbox('CARILLA', '5') !!}
+					{!! Form::label ('CARILLA','CARILLA') !!}
+				</div>
+				<div class="col">
+					{!! Form::checkbox('CORONA ESTETICA', '6') !!}
+					{!! Form::label ('CORONA ESTETICA','CORONA ESTETICA') !!}
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col">
+					{!! Form::checkbox('ENDODONCIA', '7') !!}
+					{!! Form::label ('ENDODONCIA','ENDODONCIA') !!}
+				</div>
+				<div class="col">
+					{!! Form::checkbox('IMPLANTE', '8') !!}
+					{!! Form::label ('IMPLANTE','IMPLANTE') !!}
+				</div>
+				<div class="col">
+					{!! Form::checkbox('OBTURACIÓN TEMPORAL', '9') !!}
+					{!! Form::label ('OBTURACIÓN TEMPORAL','OBTURACIÓN TEMPORAL') !!}
+				</div>
+				<div class="col">
+					{!! Form::checkbox('PROTESIS FINA', '10') !!}
+					{!! Form::label ('PROTESIS FINA','PROTESIS FINA') !!}
+				</div>
+				<div class="col">
+					{!! Form::checkbox('PROTESIS REMOVIBLE', '11') !!}
+					{!! Form::label ('PROTESIS REMOVIBLE','PROTESIS REMOVIBLE') !!}
+				</div>
+			</div>
+			<div class="form-group row">
+				<div class="col">
+					{!! Form::checkbox('PROTESIS TOTAL', '12') !!}
+					{!! Form::label ('PROTESIS TOTAL','PROTESIS TOTAL') !!}
+				</div>
+				<div class="col">
+					{!! Form::checkbox('RESINA', '13') !!}
+					{!! Form::label ('RESINA','RESINA') !!}
+				</div>
+				<div class="col">
+					{!! Form::checkbox('RETENEDOR', '14') !!}
+					{!! Form::label ('RETENEDOR','RETENEDOR') !!}
+				</div>
+				<div class="col">
+					{!! Form::checkbox('SELLADOR FS', '15') !!}
+					{!! Form::label ('SELLADOR FS','SELLADOR FS') !!}
+				</div>
+				<div class="col">
+					{!! Form::checkbox('OTRO', '15') !!}
+					{!! Form::label ('OTRO','OTRO') !!}
+				</div>
+			</div><hr>
+			
+			<h5>Falta de dientes</h5>
+			<div class="form-group row">
+				<div class="col-md-4">
+					{!! Form::label ('perdio','¿Perdio algún diente?') !!}
+					{!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'perdio'] ) !!}
+				</div>
+				<div class="col-md-4">
+					{!! Form::label ('nombreDiente','¿Cúal diente?') !!}
+					{!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'nombreDiente'] ) !!}
+				</div>
+				<div class="col-md-4">
+					{!! Form::label ('nombreDiente','¿Cómo lo perdio?') !!}
+					{!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'nombreDiente'] ) !!}
+				</div>
+			</div><hr>
+			<!--
+			<div class="form-group row">
+				<img src="/images/esquema-dental.jpg" alt="" id="imagenPrueba"> 
+			</div>	
+			-->
+			<h5>Higiene bucal</h5>
+			<div class="form-group row">
+				<div class="col-md-4">
+					{!! Form::label ('nombreDiente','Presenta buena higiene bucal') !!}
+					{!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'nombreDiente'] ) !!}
+				</div>
+				<div class="col">
+					{!! Form::label ('nombreDiente','Describa') !!}
+					{!! Form::text ('telefono',old('Describa'), ['class' => 'form-control mayuscula', 'id' => 'Describa',] )!!}
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-md-4">
+					{!! Form::label ('nombreDiente','¿Tiene caries?') !!}
+					{!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'nombreDiente'] ) !!}
+				</div>
+				<div class="col">
+					{!! Form::label ('nombreDiente','¿En dónde? Describa') !!}
+					{!! Form::text ('telefono',old('Describa'), ['class' => 'form-control mayuscula', 'id' => 'Describa',] )!!}
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-md-4">
+					{!! Form::label ('nombreDiente','¿Tiene abscesos?') !!}
+					{!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'nombreDiente'] ) !!}
+				</div>
+				<div class="col">
+					{!! Form::label ('nombreDiente','¿En dónde? Describa') !!}
+					{!! Form::text ('telefono',old('Describa'), ['class' => 'form-control mayuscula', 'id' => 'Describa',] )!!}
+				</div>
+			</div>
+
+			<div class="form-group">
+				<div>
+					{!! Form::label ('duda','El desaparecido presentaba:') !!}
+				</div>
+				<div class="col">
+					{!! Form::checkbox('SARRO', 'SARRO') !!}
+					{!! Form::label ('SARRO','SARRO') !!}
+				</div>
+				<div class="col">
+					{!! Form::checkbox('GINGIVITIS', 'GINGIVITIS') !!}
+					{!! Form::label ('GINGIVITIS','GINGIVITIS') !!}
+				</div>
+				<div class="col">
+					{!! Form::checkbox('PERIODONTITIS', 'PERIODONTITIS') !!}
+					{!! Form::label ('PERIODONTITIS','PERIODONTITIS') !!}
+				</div>
+			</div><hr>
+
+			<div class="form-group row">
+				<div>
+					
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -201,10 +380,15 @@
                 }
             });
         });
+
+        //mostrar imagen de nombre de dientes
+        $('#perdio').click(function(event) {
+        	//var dientes = $('#perdio').val();
+
+        	
+        });
 		
    	});
-
-   //Limpiar los campos del formulario
    
 </script>
 @endsection

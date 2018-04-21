@@ -863,11 +863,13 @@ class DesaparecidoController extends Controller
         $cedula = Cedula::find($idCedula);
         $senasParticulares = \App\Models\CatSenasParticulares::all()->pluck('nombre','id');
         $senasParticularesUbica = \App\Models\CatSenasParticularesUbicaciones::all()->pluck('nombre','id');
+        $nombreTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
         
         return view('desaparecidos.form_senas_particulares', [                        
                         'senasParticulares' => $senasParticulares,
                         'senasParticularesUbica' => $senasParticularesUbica,
-                        'cedula' => $cedula
+                        'cedula' => $cedula,
+                        'nombreTamano' => $nombreTamano
                     ]);
     }
 
