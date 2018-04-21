@@ -99,4 +99,18 @@ class DescripcionFisicaController extends Controller
     {
         //
     }
+
+    public function getParticularidades($idParteCuepo){
+         $particularidades = \DB::table('cat_partes_cuerpo as cpartes')
+                            ->join('cat_particularidades_cuerpo as cparti','cpartes.id','=','cparti.idPartesCuerpo' )
+                            ->join('cat_sub_particularidades as csubp','cparti.id','=','csubp.idParticularidadesCuerpo')
+                            ->select('csubp.nombre as nombre','csubp.id as id')
+                            ->where('cparti.idPartesCuerpo',$idParteCuepo)
+                            ->get();
+
+
+            return response()->json($particularidades);
+
+
+    }
 }

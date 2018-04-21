@@ -151,5 +151,32 @@ var tableDescripcion = $('#tableDescripcionFisica');
 		})
 	//Fin de vista de datos de calzado
 	});
+
+
+	//Obtener particularidades
+	$('#idPartesCuerpo').on('change', function(){
+        $("#idSubParticularidades").empty();
+        var idPartesCuerpo = $(this).val();
+        if(idPartesCuerpo) {
+            
+            $.ajax({
+                url: '/descripcionfisica/get_particularidades/'+idPartesCuerpo,
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                        $("#idSubParticularidades").empty();
+                    $.each(data, function(key, value){                        
+
+                        $("#idSubParticularidades").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+
+                    });
+
+                },
+                
+            });
+        }
+    });
+
 	</script>
 @endsection
