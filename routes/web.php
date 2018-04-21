@@ -44,7 +44,8 @@ Route::get('consultas/get_ladas', 'ConsultasController@jsonLadas')
 	->name('consultas.get_ladas');
 Route::resource('consultas','ConsultasController');
 
-
+////////////////////////////////////////////////////////////
+	
 //Rutas Ruben
 	//mis rutas
 Route::get('/desaparecido/vestimenta/{idCedula}', 'DesaparecidoController@show_vestimenta');
@@ -62,8 +63,9 @@ Route::post('/desaparecido/update_accesorios', 'DesaparecidoController@update_ac
 Route::post('/desaparecido/update_vestimenta', 'DesaparecidoController@update_vestimenta')
 	->name('desaparecido.update_vestimenta');
 //fin de mis rutas
-
-
+//la siguiente es una ruta para crear el pdf
+Route::post('/mail/pdf', 'MailController@pdf')
+	->name('mail.pdf');
 
 
 Route::get('/desaparecido/edad/{fecha_nacimiento}', 'DesaparecidoController@getEdad');
@@ -110,7 +112,8 @@ Route::get('colonias2/{id}', 'DomiciliosController@getColonias2');
 Route::get('colonias/{id}', 'DomiciliosController@getColonias');
 Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');
 
+
+
 Route::resource ('mail','MailController');
 Route::get('send', 'MailController@send');
-
 
