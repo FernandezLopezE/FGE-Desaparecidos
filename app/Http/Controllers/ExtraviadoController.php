@@ -100,6 +100,7 @@ class ExtraviadoController extends Controller
 	 */
 	public function store(Request $request)
 	{
+
 		$persona = \App\Models\Persona::create([
 			'nombres'           => $request->input('nombres'),
 			'primerAp'          => $request->input('primerAp'),
@@ -198,7 +199,54 @@ class ExtraviadoController extends Controller
 	 */
 	public function edit($id)
 	{
-		//
+		$desaparecido = \App\Models\Desaparecido::find($id);
+
+		$sexos = array('H' => 'MASCULINO', 'M' => 'FEMENINO');
+		$escolaridades      = \App\Models\CatEscolaridad::all()->pluck('nombre','id');
+		$ocupaciones        = \App\Models\CatOcupacion::all()->pluck('nombre','id');
+		$identificaciones   = \App\Models\CatDocumento::all()->pluck('nombre','id');
+		$edoscivil          = \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
+
+		$parentescos = \App\Models\CatParentesco::all()->pluck('nombre','id');
+		$nacionalidades     = \App\Models\CatNacionalidad::all()->pluck('nombre', 'id');
+		$ladas = \App\Models\CatNacionalidad::all()->pluck('lada','id');
+		$documentos     = \App\Models\CatDocumento::all()->pluck('nombre', 'id');
+		$estados            = \App\Models\CatEstado::all()->pluck('nombre','id');       
+		$municipios = array();
+		$localidades = array();
+		$colonias = array();
+		$codigos = array();
+		$tiposDireccion = array('PERSONAL' => 'PERSONAL',
+								'TRABAJO' => 'TRABAJO',
+								'FAMILIAR' => 'FAMILIAR');
+
+		$tiposTelefonos = array('PERSONAL' => 'PERSONAL',
+								'TRABAJO' => 'TRABAJO',
+								'CELULAR' => 'CELULAR');            
+
+		$informantes = \App\Models\Desaparecido::where('tipoPersona', 'INFORMANTE')->get();
+
+		return view('desaparecido.edit',compact(
+											'desaparecido',									
+											'sexos',
+											'escolaridades',
+											'ocupaciones',
+											'identificaciones',
+											'edoscivil',
+											'dialectos',
+											'parentescos',
+											'nacionalidades',
+											'ladas',
+											'documentos',
+											'estados',
+											'municipios',
+											'localidades',
+											'colonias',
+											'informantes',
+											'codigos',
+											'tiposDireccion',
+											'tiposTelefonos'
+										));
 	}
 
 	/**
