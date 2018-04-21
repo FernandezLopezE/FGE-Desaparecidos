@@ -13,16 +13,16 @@
   			{!! Form::label ('desaparecidoEstatura','Estatura:') !!}
 				{!! Form::text ('estatura',
 								old('estatura'),
-								['class' => 'form-control sinEnter',
+								['class' => 'form-control sinEnter soloNumeros',
 										'placeholder' => 'Ingrese la estura en cm',
-										'id' => 'estatura',
+										'id' => 'estatura', 'max' => '3'
 								] )!!}
 		  	</div>
 		  	<div class="col-lg-3">
 				{!! Form::label ('desaparecidoPeso','Peso:') !!}
 				{!! Form::text ('peso',
 									old('peso'),
-									['class' => 'form-control sinEnter',
+									['class' => 'form-control sinEnter soloNumeros',
 										'placeholder' => 'Ingrese el peso en kg',
 										'id' => 'peso',
 									] )!!}
@@ -47,103 +47,14 @@
 			</div>
   		</div>
 		<hr>
-  		<div class="row">
-			<div class="col">
-					{!! Form::label ('desaparecidoParteCuerpo','Parte del cuerpo:') !!}
-					{!! Form::select ('idPartesCuerpo',
-										$particularidades,
-										'',
-										['class' => 'form-control',
-											'id' => 'idPartesCuerpo'
-										] )!!}						
-			</div>
-			<div class="col">
-					{!! Form::label ('desaparecidoLado','Lado:') !!}
-					{!! Form::text ('lado',
-									'',
-									['class' => 'form-control mayuscula sinEnter soloLetras',
-										'id' => 'lado',
-										'placeholder' => 'Izquierdo, derecho, central'									
-									] )!!}
-			</div>
-  		</div>
-		<hr>
-  		<div class="row">
-			  	<div class="col-lg-4">
-					{!! Form::label ('desaparecidoSubParticularidades','Particularidades:') !!}
-					{!! Form::select ('idSubParticularidades',
-										$particularidades,
-										'',
-										['class' => 'form-control',
-											'id' => 'idSubParticularidades'
-										] )!!}	
-					
-				</div>
-				<div class="col-lg-4" id="otro_Particularidad" style="display:none" >
-					{!! Form::label ('otro','Especifique:') !!}
-					{!! Form::text ('otroSubParticularidad',
-									old('otro'),
-									['class' => 'form-control mayuscula sinEnter soloLetras',
-										'placeholder' => 'Ingrese otra particularidad',
-										'id' => 'otroSubParticularidad',
-										'data-validation' => 'required',
-										'data-validation-error-msg-required' => 'El campo es requerido',
-										'data-validation-depends-on' => 'otroSubParticularidad',
-										'data-validation-depends-on-value' =>'OTRO'
-									] )!!}
-			  	</div>
-			  	<div class="col-lg-4" id="observaciones">
-					{!! Form::label ('observacionesParticular','Observaciones:') !!}
-					{!! Form::text ('observacionesParticularidad',
-									old('observacionesParticular'),
-									['class' => 'form-control mayuscula sinEnter soloLetras',
-										'placeholder' => 'Ingrese las observaciones',
-										'id' => 'observacionesParticularidad'
-									] )!!}
-			  	</div>			
-		</div>
-		<hr>
-		<div class="row">
-				  	<div class="col-lg-4">
-						{!! Form::label ('desaparecidoSubModificaciones','Modificaciones:') !!}
-						{!! Form::select ('idSubModificaciones',
-											$modificaciones,
-											'',
-											['class' => 'form-control',
-												'id' => 'idSubModificaciones'
-											] )!!}	
-						
-					</div>
-					<div class="col-lg-4" id="otra_Modificacion" style="display:none">
-						{!! Form::label ('otroModi','Especifique:') !!}
-						{!! Form::text ('otroSubModificacion',
-										old('otroModi'),
-										['class' => 'form-control mayuscula sinEnter soloLetras',
-											'placeholder' => 'Ingrese otra modificación',
-											'id' => 'otroSubModificacion',
-											'data-validation' => 'required',
-											'data-validation-error-msg-required' => 'El campo es requerido',
-											'data-validation-depends-on' => 'otroSubModificacion',
-											'data-validation-depends-on-value' =>'OTRO'
-										] )!!}
-				  	</div>
-				  	<div class="col-lg-4" id="observaciones">
-						{!! Form::label ('observacionesModificar','Observaciones:') !!}
-						{!! Form::text ('observacionesModificacion',
-										old('observacionesModificacion'),
-										['class' => 'form-control mayuscula sinEnter soloLetras',
-											'placeholder' => 'Ingrese las observaciones',
-											'id' => 'observacionesModificacion'
-										] )!!}
-				  	</div>				 											
-		</div>
 		<br>
 		<div>				
-			<button type="button" class="btn btn-dark pull-right"  id="nuevaPrenda"><i class="fa fa-plus"></i> AGREGAR</button>
+			<button type="button" class="btn btn-dark pull-right"  id="nuevaParteCuerpo">Agregar</button>
 		</div>
 		<br>
 	</div>
 	<div class="card-body">
+			@include('includes.modalDescripcionFisica')
 			<table id="tableDescripcionFisica" ></table>
 		</div>
 </div>
@@ -158,9 +69,15 @@
 		var otraP;
 		var otraM;
 
+		$('#nuevaParteCuerpo').click(function(e){
+			$('#modalDescripcionFisica').modal('show');
+			$('#btnActualizarDF').hide();
+			$('#btnDescripcionFisica').show();
+		});
+
 	$("#idSubParticularidades").change(function() {
 			otraP = $('#idSubParticularidades').val();
-			console.log(otraP);
+			//console.log(otraP);
 			if (otraP >=77 && otraP <= 88) {
 				$("#otro_Particularidad").show();
 			}else{
@@ -170,7 +87,6 @@
 
 	$("#idSubModificaciones").change(function() {
 			otraM = $('#idSubModificaciones').val();
-			console.log(otraM);
 
 			if (otraM ==13 || otraM == 20 || otraM == 26 || otraM == 33|| otraM == 36|| otraM == 40 || otraM == 47|| otraM == 51|| otraM == 53|| otraM == 60) {
 				$("#otra_Modificacion").show();

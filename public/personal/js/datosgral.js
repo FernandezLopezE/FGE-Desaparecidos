@@ -56,6 +56,13 @@ $(document).ready(function(){
   		}
 	});
 
+	$("body").on('keypress', '.soloNumeros', function(event){		
+	  var key = window.event.keyCode;
+    	if (key < 48 || key > 57) {
+        	return false;
+    	}
+	});
+
 	/******************************************************
 				DATOS DEL ENTREVISTADOR
 	*******************************************************/ 
