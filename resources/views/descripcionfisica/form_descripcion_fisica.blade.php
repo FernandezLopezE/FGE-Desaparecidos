@@ -152,7 +152,10 @@ var tableDescripcion = $('#tableDescripcionFisica');
 	//Fin de vista de datos de calzado
 	});
 
-
+    if($('#idPartesCuerpo').val() == 1){
+    	$("#idSubParticularidades").empty();
+    	$("#idSubModificaciones").empty();
+    } 
 	//Obtener particularidades
 	$('#idPartesCuerpo').on('change', function(){
         $("#idSubParticularidades").empty();

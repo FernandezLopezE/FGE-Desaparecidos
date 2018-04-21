@@ -86,7 +86,7 @@ class CatSubModificacionesSeeder extends Seeder
             ['idModificacionesCuerpo'=>1, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>2, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>3, 'nombre' => 'SIN INFORMACIÓN'],
-            //['idModificacionesCuerpo'=>4, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idModificacionesCuerpo'=>4, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>5, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>6, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>7, 'nombre' => 'SIN INFORMACIÓN'],
@@ -95,7 +95,7 @@ class CatSubModificacionesSeeder extends Seeder
             ['idModificacionesCuerpo'=>10, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>11, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>12, 'nombre' => 'SIN INFORMACIÓN'],
-            /*['idModificacionesCuerpo'=>13, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idModificacionesCuerpo'=>13, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>14, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>15, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>16, 'nombre' => 'SIN INFORMACIÓN'],
@@ -119,7 +119,7 @@ class CatSubModificacionesSeeder extends Seeder
             ['idModificacionesCuerpo'=>34, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>35, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>36, 'nombre' => 'SIN INFORMACIÓN'],
-            ['idModificacionesCuerpo'=>37, 'nombre' => 'SIN INFORMACIÓN'],*/
+            ['idModificacionesCuerpo'=>37, 'nombre' => 'SIN INFORMACIÓN'],
 
         ]);
 
