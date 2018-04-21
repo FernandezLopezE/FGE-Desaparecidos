@@ -15,7 +15,7 @@
 								old('estatura'),
 								['class' => 'form-control sinEnter soloNumeros',
 										'placeholder' => 'Ingrese la estura en cm',
-										'id' => 'estatura', 'max' => '3'
+										'id' => 'estatura', 'maxlength' => 3
 								] )!!}
 		  	</div>
 		  	<div class="col-lg-3">
@@ -24,7 +24,7 @@
 									old('peso'),
 									['class' => 'form-control sinEnter soloNumeros',
 										'placeholder' => 'Ingrese el peso en kg',
-										'id' => 'peso',
+										'id' => 'peso', 'maxlength' => 3
 									] )!!}
 		  	</div>
 		  	<div class="col-lg-3">
@@ -177,6 +177,32 @@ var tableDescripcion = $('#tableDescripcionFisica');
             });
         }
     });
+
+    //Obtener particularidades
+	$('#idPartesCuerpo').on('change', function(){
+        $("#idSubModificaciones").empty();
+        var idPartesCuerpo = $(this).val();
+        if(idPartesCuerpo) {
+            
+            $.ajax({
+                url: '/descripcionfisica/get_modificaciones/'+idPartesCuerpo,
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                        $("#idSubModificaciones").empty();
+                    $.each(data, function(key, value){                        
+
+                        $("#idSubModificaciones").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+
+                    });
+
+                },
+                
+            });
+        }
+    });
+
 
 	</script>
 @endsection

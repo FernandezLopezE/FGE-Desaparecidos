@@ -107,10 +107,16 @@ class DescripcionFisicaController extends Controller
                             ->select('csubp.nombre as nombre','csubp.id as id')
                             ->where('cparti.idPartesCuerpo',$idParteCuepo)
                             ->get();
-
-
             return response()->json($particularidades);
+    }
 
-
+    public function getModificaciones($idParteCuepo){
+         $modificaciones = \DB::table('cat_partes_cuerpo as cpartes')
+                            ->join('cat_modificaciones_cuerpo as cmodi','cpartes.id','=','cmodi.idPartesCuerpo' )
+                            ->join('cat_sub_modificaciones as csubm','cmodi.id','=','csubm.idModificacionesCuerpo')
+                            ->select('csubm.nombre as nombre','csubm.id as id')
+                            ->where('cmodi.idPartesCuerpo',$idParteCuepo)
+                            ->get();
+            return response()->json($modificaciones);
     }
 }
