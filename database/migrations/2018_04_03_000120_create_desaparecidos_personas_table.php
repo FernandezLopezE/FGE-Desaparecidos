@@ -56,9 +56,9 @@ class CreateDesaparecidosPersonasTable extends Migration
 			$table->foreign('idDocumentoIdentidad')->references('id')->on('cat_documento_identidad')->onDelete('cascade');
 			$table->integer('idCedula')->unsigned();
 			$table->foreign('idCedula')->references('id')->on('desaparecidos_cedula_investigacion')->onDelete('cascade');
-			$table->integer('idComplexion')->unsigned();
+			$table->integer('idComplexion')->unsigned()->nullable();
 			$table->foreign('idComplexion')->references('id')->on('cat_complexion');
-			$table->integer('idColorPiel')->unsigned();
+			$table->integer('idColorPiel')->unsigned()->nullable();
 			$table->foreign('idColorPiel')->references('id')->on('cat_color_piel');
 
 			$table->timestamps();
