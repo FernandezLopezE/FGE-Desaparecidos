@@ -3,9 +3,10 @@
 @section('content')
 	<div class="card border-success">
 	<div class="card-header">
-		<h5 class="card-title">Descripción física
-		
+		<h5 class="card-title">Descripción física			
+			<button type="button" class="btn btn-dark pull-right"  id="nuevaParteCuerpo">Agregar</button>
 		</h5>
+
 	</div>
 	<div class="card-body">	
 		<div class="row">
@@ -44,22 +45,113 @@
 										['class' => 'form-control',
 											'id' => 'colorPiel',
 										] )!!}						
-			</div>
+			</div>		
   		</div>
-		<hr>
-		<br>
-		<div>				
-			<button type="button" class="btn btn-dark pull-right"  id="nuevaParteCuerpo">Agregar</button>
-		</div>
-		<br>
-	</div>
-	<div class="card-body">
-			@include('includes.modalDescripcionFisica')
+  		<hr>
+  		<div class="row">
+      	<div class="col">
+          {!! Form::label ('desaparecidoParteCuerpo','Parte del cuerpo:') !!}
+          {!! Form::select ('idPartesCuerpo',
+                    $partesCuerpo,
+                    '',
+                    ['class' => 'form-control',
+                      'id' => 'idPartesCuerpo'
+                    ] )!!}            
+      </div>
+      <div class="col">
+          {!! Form::label ('desaparecidoLado','Lado:') !!}
+          {!! Form::text ('lado',
+                  '',
+                  ['class' => 'form-control mayuscula sinEnter soloLetras',
+                    'id' => 'lado',
+                    'placeholder' => 'Izquierdo, derecho, central'                  
+                  ] )!!}
+      </div>
+      </div>
+    <hr>
+      <div class="row">
+          <div class="col-lg-4">
+          {!! Form::label ('desaparecidoSubParticularidades','Particularidades:') !!}
+          {!! Form::select ('idSubParticularidades',
+                    $particularidades,
+                    '',
+                    ['class' => 'form-control',
+                      'id' => 'idSubParticularidades'
+                    ] )!!}  
+          
+        </div>
+        <div class="col-lg-4" id="otro_Particularidad" style="display:none" >
+          {!! Form::label ('otro','Especifique:') !!}
+          {!! Form::text ('otroSubParticularidad',
+                  old('otro'),
+                  ['class' => 'form-control mayuscula sinEnter soloLetras',
+                    'placeholder' => 'Ingrese otra particularidad',
+                    'id' => 'otroSubParticularidad',
+                    'data-validation' => 'required',
+                    'data-validation-error-msg-required' => 'El campo es requerido',
+                    'data-validation-depends-on' => 'otroSubParticularidad',
+                    'data-validation-depends-on-value' =>'OTRO'
+                  ] )!!}
+          </div>
+          <div class="col-lg-4" id="observaciones">
+          {!! Form::label ('observacionesParticular','Observaciones:') !!}
+          {!! Form::text ('observacionesParticularidad',
+                  old('observacionesParticular'),
+                  ['class' => 'form-control mayuscula sinEnter soloLetras',
+                    'placeholder' => 'Ingrese las observaciones',
+                    'id' => 'observacionesParticularidad'
+                  ] )!!}
+          </div>      
+    </div>
+    <br>
+    <div class="row">
+            <div class="col-lg-4">
+            {!! Form::label ('desaparecidoSubModificaciones','Modificaciones:') !!}
+            {!! Form::select ('idSubModificaciones',
+                      $modificaciones,
+                      '',
+                      ['class' => 'form-control',
+                        'id' => 'idSubModificaciones'
+                      ] )!!}  
+            
+          </div>
+          <div class="col-lg-4" id="otra_Modificacion" style="display:none">
+            {!! Form::label ('otroModi','Especifique:') !!}
+            {!! Form::text ('otroSubModificacion',
+                    old('otroModi'),
+                    ['class' => 'form-control mayuscula sinEnter soloLetras',
+                      'placeholder' => 'Ingrese otra modificación',
+                      'id' => 'otroSubModificacion',
+                      'data-validation' => 'required',
+                      'data-validation-error-msg-required' => 'El campo es requerido',
+                      'data-validation-depends-on' => 'otroSubModificacion',
+                      'data-validation-depends-on-value' =>'OTRO'
+                    ] )!!}
+            </div>
+            <div class="col-lg-4" id="observaciones">
+            {!! Form::label ('observacionesModificar','Observaciones:') !!}
+            {!! Form::text ('observacionesModificacion',
+                    old('observacionesModificacion'),
+                    ['class' => 'form-control mayuscula sinEnter soloLetras',
+                      'placeholder' => 'Ingrese las observaciones',
+                      'id' => 'observacionesModificacion'
+                    ] )!!}
+            </div>                              
+    </div>  
+    <hr>
+		<h4 class="card-title"> Detalles de descipción física </h4>
+		<div class="card-body">
 			<table id="tableDescripcionFisica" ></table>
 		</div>
-</div>
+	</div>	
+</div>    
+     </div> <!-- Fin del Contenido del formulario-->
+		{!! Form::submit('Atras', ['class' => 'btn btn-large btn-primary openbutton']); !!}
+
+	<a href="/descripcionfisica/antecedentes_medicos/$desaparecido->id" class='btn btn-large btn-primary openbutton'>Siguiente</a>
   	
 </div>
+
 
 @endsection	
 
