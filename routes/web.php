@@ -119,6 +119,12 @@ Route::post('/desaparecido/store_informante', 'DesaparecidoController@store_info
 Route::get('/desaparecido/informante/{idCedula}', 'DesaparecidoController@show_informante');
 Route::resource('/desaparecido','DesaparecidoController');
 
+//Rutas para antedecedentes medicos
+Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'AntecedentesMedicosController@show');
+Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
+
+//fin de rutas AM
+
 Route::resource('domicilio','DomiciliosController');
 Route::get('codigos/{id}', 'DomiciliosController@getCodigos');
 Route::get('municipio/{id}', 'DomiciliosController@getMunicipios');
