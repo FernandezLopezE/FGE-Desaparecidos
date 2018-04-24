@@ -11,17 +11,33 @@
 |
 */
 
-Route::get('/', function () {
-    return view('inicio');
+Route::get('/', 'InicioController@index');
 
-});
+	Route::resource('cedula','CedulaController');
 
+	Route::resource('informante','InformanteController');
+
+	Route::get('extraviado/create/{idCedula}', 'ExtraviadoController@create')
+		->name('extraviado.create_desaparecido');
+	Route::resource('extraviado','ExtraviadoController');
+
+	Route::resource('familiar','FamiliarController');
+
+	Route::resource('antecedentes','AntecedenteController');
+
+
+Route::get('consultas/get_cedulas', 'ConsultasController@jsonCedulas');
 Route::get('consultas/get_informantes/{idCedula}', 'ConsultasController@jsonInformantes')
 	->name('consultas.get_informantes');
 Route::get('consultas/get_familiares/{idDesaparecido}', 'ConsultasController@jsonFamiliares')
 	->name('consultas.get_familiares');
-Route::get('consultas/get_domicilios/{idDesaparecido}', 'ConsultasController@jsonDomiciliosPersona')
+Route::get('consultas/get_domicilios/{idDesaparecido}', 'ConsultasController@jsonDomicilios')
 	->name('consultas.get_domicilios');
+Route::get('consultas/get_contactos/{idDesaparecido}', 'ConsultasController@jsonContactosPersona')
+	->name('consultas.get_contactos');
+Route::get('consultas/get_antecedentes/{idDesaparecido}', 'ConsultasController@jsonAntecedentes')
+	->name('consultas.get_antecedentes');
+
 Route::get('consultas/get_parentescos', 'ConsultasController@jsonParentescos')
 	->name('consultas.get_parentescos');
 Route::get('consultas/get_nacionalidades', 'ConsultasController@jsonNacionalidades')
@@ -42,16 +58,46 @@ Route::get('consultas/get_tipos_telefonos', 'ConsultasController@jsonTiposTelefo
 	->name('consultas.get_tipos_telefonos');
 Route::get('consultas/get_ladas', 'ConsultasController@jsonLadas')
 	->name('consultas.get_ladas');
+// Mostrando municipios que pertenecen a un estado.
+Route::get('consultas/municipios/{idEstado}', 'ConsultasController@jsonMunicipios');
+// Mostrando localidades que pertenecen a un municipio.
+Route::get('consultas/localidades/{idMunicipio}', 'ConsultasController@jsonLocalidades');
+// Mostrando colonias que pertenecen a un municipio.
+Route::get('consultas/colonias/{idMunicipio}', 'ConsultasController@jsonColonias');
+// Mostrando codigos postales que pertenecen a un municipio.
+Route::get('consultas/codigos/{idMunicipio}', 'ConsultasController@jsonCodigos');
+// Mostrando codigos postales que pertenecen a un municipio cuando hay un cambio en colonias.
+Route::get('consultas/codigos2/{idColonia}', 'ConsultasController@jsonCodigos2');
+// Calcula la edad años meses dias al día actual.
+Route::get('consultas/edad/{fecha_nacimiento}', 'ConsultasController@getEdad');
+
+
 Route::resource('consultas','ConsultasController');
+
+// Consultar todas la cedulas de investigación.
 
 //Rutas alejandro
 Route::get('/desaparecido/generarboletin/{idCedula}', 'ConsultasController@jsonBoletin')
 	->name('consultas.get_boletin');
 Route::get('/desaparecido/generarboletinPDF', 'MailController@generar_boletin');
-	
 
-////////////////////////////////////////////////////////////
-	
+//boletin controller
+
+Route::resource('boletin','BoletinController');
+
+
+
+Route::get('lada/{id}', 'LadaController@getLadas');
+Route::resource('/lada','LadaController');
+
+
+
+
+
+
+
+
+
 //Rutas Ruben
 	//mis rutas
 Route::get('/desaparecido/vestimenta/{idCedula}', 'DesaparecidoController@show_vestimenta');
@@ -70,6 +116,7 @@ Route::post('/desaparecido/update_vestimenta', 'DesaparecidoController@update_ve
 	->name('desaparecido.update_vestimenta');
 //fin de mis rutas
 //la siguiente es una ruta para crear el pdf
+
 Route::post('/mail/pdf', 'MailController@pdf')
 	->name('mail.pdf');
 
@@ -82,6 +129,9 @@ Route::get('/desaparecido/boletin', 'MailController@show_boletin');
 Route::get('/desaparecido/desaparecido_domicilio/{idCedula}', 'DesaparecidoController@show_desaparecido_domicilio');
 
 
+Route::get('/desaparecido/desaparecido_contacto/{idCedula}', 'DesaparecidoController@show_desaparecido_contacto');
+
+
 
 Route::post('/desaparecido/getpersona', 'DesaparecidoController@getPersona')
 	->name('desaparecido.getpersona');
@@ -91,6 +141,9 @@ Route::post('/desaparecido/store_cedula', 'DesaparecidoController@store_cedula')
 
 Route::post('/desaparecido/store_desaparecido_domicilio', 'DesaparecidoController@store_desaparecido_domicilio')
 	->name('desaparecido.store_desaparecido_domicilio');
+
+Route::post('/desaparecido/store_desaparecido_contacto', 'DesaparecidoController@store_desaparecido_contacto')
+	->name('desaparecido.store_desaparecido_contacto');
 
 Route::post('/desaparecido/store_desaparecido_familiar', 'DesaparecidoController@store_desaparecido_familiar')
 	->name('desaparecido.store_desaparecido_familiar');
@@ -119,7 +172,7 @@ Route::get('colonias2/{id}', 'DomiciliosController@getColonias2');
 Route::get('colonias/{id}', 'DomiciliosController@getColonias');
 Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');
 
-Route::resource('boletin', 'MailController@show_boletin');
+//Route::resource('boletin', 'BoletinController@show');
 
 Route::resource ('mail','MailController');
 Route::get('send', 'MailController@send');

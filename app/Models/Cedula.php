@@ -67,6 +67,10 @@ class Cedula extends Model
 	{
 		return $this->belongsTo('App\Models\CatCalzadoColor', 'idCalzadocolor');
 	}
+	public function dialecto()
+	{
+		return $this->belongsTo('App\Models\CatDialecto', 'idDialecto');
+	}
 	public function setFechaVisitaAttribute($value)
 	{
 		if (empty($value)) {

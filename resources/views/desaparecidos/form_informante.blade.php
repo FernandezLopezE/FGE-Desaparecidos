@@ -42,13 +42,27 @@
 @endsection
 
 @section('scripts')
+{!! HTML::script('personal/js/lada.js') !!}
 <script type="text/javascript">
+
+	document.getElementById("lada").value="(+52)-";
+
+var contador = 0;
+
+$("input[name='informanteTelefonos[]']").mask('(000) 000 0000');
+
+$("input[name='informanteTelefonos']").each(function() {
+    console.log($(this).val());
+});
+
+
 	$(function (){
 		var table = $('#tableInformantes');
 		var tableFamiliares = $('#table_familiares');
 		var routeIndex = '{!! route('consultas.index') !!}';
 		var idCedula = '{!! $cedula->id !!}';
 		var btnAgregarInformante = $('#btnAgregarInformante');
+		var btnAgregarTelefono = $('#btnAgregarTelefono');
 		var btnAgregarFamiliarDesa = $('#btnAgregarFamiliarDesaparecido');
 		var btnGuardarInformante = $('#btnGuardarInformante');
 		var btnGuardarDesaparecido = $('#btnGuardarPersonaDesaparecida');
@@ -57,6 +71,24 @@
 		var modalDesaparecidoFamiliar = $('#modalDesaparecidoFamiliar');
 		var bodyModalInformante = $('#modal-body-informante');
 		
+			btnAgregarTelefono.click(function(e) {
+			console.log("agregando")
+			//document.getElementsByName("lada").value = document.getElementById("lada").value;
+			//var xy = document.getElementById("lada").value;
+			//console.log("hey" +xy)
+			
+			var lada1 = document.getElementById("lada").value;
+
+            $("#telefono2").append('<div class="row"> <div class="form-group col-lg-2">{!! Form::label ("informanteTipoTel","Tipo de telefono:") !!}	            {!! Form::select ("informanteTipoTel[]", $tiposTelefonos,"",["class" => "form-control","id" => "informanteTipoTel[]"])!!} </div> <div class="form-group col-lg-2">                                             {!! Form::label ("lada","Código del país:") !!}	                                    {!! Form::text ("lada[]",										old(""),["class" => "form-control lada","id" => "lada[]"])!!} </div>  <div class="form-group col-lg-3">                                                                {!! Form::label ("informanteTelefonos","Número:") !!}                    {!! Form::text ("informanteTelefonos[]",old("informanteTelefonos"),["class" => "form-control mayuscula valid","data-validation" => "required","data-validation-error-msg-required" => "El campo es requerido","id" => "informanteTelefonos[]"] )!!} </div>    <div class="form-group col-lg-1">                                              {!! Form::label ("ext","Ext:") !!}                                        {!! Form::text ("ext[]",old(""), ["class" => "form-control mayuscula","id" => "ext[]"] )!!} </div> </div>');
+
+            $("input[name='informanteTelefonos[]']").mask('(000) 000 0000');
+           //document.getElementsByClassName("lada").value = "xy";
+           var otrasLadas = document.getElementsByClassName("lada");
+		    otrasLadas[contador].value = lada1;
+		    contador = contador + 1;
+		    console.log(contador);
+				});
+
 		$('#informante').iCheck({
 			checkboxClass: 'icheckbox_minimal-red',
 			radioClass: 'iradio_minimal-red',
@@ -219,6 +251,15 @@
 
 		btnGuardarInformante.click (function(){
 			
+			$('input[name^="informanteTelefonos"]').each(function() {
+			    console.log($(this).val());
+			});
+			$('input[name^="lada"]').each(function() {
+			    console.log($(this).val());
+			});
+
+
+			
 			var dataString = {
 				nombre : $("#informanteNombres").val(),
 				primerAp : $("#informantePrimerAp").val(),
@@ -238,10 +279,12 @@
 				localidad: $("#idLocalidad").val(),
 				colonia: $("#idColonia").val(),
 				cp: $("#idCodigoPostal").val(),
-				tipoTel: $("#informanteTipoTel").val(),
-				lada: $("#lada").val(),
-				telefono : $("#informanteTelefonos").val(),
-				ext: $("#ext").val(),
+				tipoTel: $("select[name='informanteTipoTel[]']").map(function(){return $(this).val();}).get(),
+				lada: $("input[name='lada[]']").map(function(){return $(this).val();}).get(),
+				//telefono : $('input[name^="informanteTelefonos"]').val(),
+				telefono : $("input[name='informanteTelefonos[]']").map(function(){return $(this).val();}).get(),
+				//telefono : $("informanteTelefonos").val(),
+				ext: $("input[name='ext[]']").map(function(){return $(this).val();}).get(),
 				correoElectronico: $("#correoElectronico").val(),
 				informante: $("input#informante:checked").val(),
 				notificaciones: $("input#notificaciones:checked").val(),
@@ -249,6 +292,8 @@
 				//notificaciones: $("#notificaciones").is(":checked"),
 				idCedula: $("#idCedula").val(),
 			};
+
+			console.log(dataString);
 
 			$.ajax({
 				type: 'POST',

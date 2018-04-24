@@ -1,36 +1,8 @@
 $(document).ready(function() {
 
-    //mask de numero
-    $('#telefono').mask('(000) 000 0000');
 
 
 
-
-    $('#idEstado').select2({
-        width : "100%",
-    });
-
-    $('#idMunicipio').select2({
-        width : "100%",
-    });
-
-    $('#idLocalidad').select2({
-        width : "100%",
-    });
-
-    $('#idColonia').select2({
-        width : "100%",
-    });
-
-    $('#idCodigoPostal').select2({
-        width : "100%",
-    });
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 95101b75a7e7bf43ec9c43ac0c887a2df27f0e96
 
     /*$('#btnAddHijo').click(function(){
 

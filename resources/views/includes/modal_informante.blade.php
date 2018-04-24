@@ -187,30 +187,36 @@
 			<div class="row" id=""  > 
 				<div class="form-group col-lg-2">
 					{!! Form::label ('informanteTipoTel','Tipo de telefono:') !!}
-					{!! Form::select ('informanteTipoTel',
+					{!! Form::select ('informanteTipoTel[]',
 										$tiposTelefonos,
 										'',
-										['class' => 'form-control'])!!}	
+										['class' => 'form-control',
+											'id' => 'informanteTipoTel[]'
+											])!!}	
 				</div>
 				<div class="form-group col-lg-2">
-					{!! Form::label ('lada','Lada:') !!}
-					{!! Form::select ('lada',
-										$ladas,
-										'',
-										['class' => 'form-control'] )!!}	
+					{!! Form::label ('lada','Código del país:') !!}
+					{!! Form::text ('lada[]',
+										old(''),
+										['class' => 'form-control',
+											'id' => 'lada'
+											] )!!}	
 				</div>
 				<div class="form-group col-lg-3">
 					{!! Form::label ('informanteTelefonos','Número:') !!}
-					{!! Form::text ('informanteTelefonos',
+					{!! Form::text ('informanteTelefonos[]',
 										old('informanteTelefonos'), 
 										['class' => 'form-control mayuscula',
 											'data-validation' => 'required',
-											'data-validation-error-msg-required' => 'El campo es requerido'
+											'data-validation-error-msg-required' => 'El campo es requerido',
+											'id' => 'informanteTelefonos'
 										] )!!}				
 				</div>
 				<div class="form-group col-lg-1">
 					{!! Form::label ('ext','Ext:') !!}
-					{!! Form::text ('ext',old(''), ['class' => 'form-control mayuscula'] )!!}				
+					{!! Form::text ('ext[]',old(''), ['class' => 'form-control mayuscula',
+											'id' => 'ext[]'
+											] )!!}				
 				</div>	
 				<div class="form-group col-lg-4">
 					{!! Form::label ('correoElectronico','Correo electrónico:') !!}
@@ -220,6 +226,10 @@
 											'id' => 'correoElectronico'
 										] )!!}				
 				</div>
+			</div>
+			<div id="telefono2"> </div>
+			<div class="row form-group">
+				<button type="button" class="btn btn-dark pull-right"  id="btnAgregarTelefono"><i class="fa fa-plus"></i> AGREGAR TELEFONO</button>
 			</div>
 			<div class="row">
 				<div class="form-check col-lg-12">
