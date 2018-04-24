@@ -47,7 +47,8 @@ Route::resource('consultas','ConsultasController');
 //Rutas alejandro
 Route::get('/desaparecido/generarboletin/{idCedula}', 'ConsultasController@jsonBoletin')
 	->name('consultas.get_boletin');
-Route::get('/desaparecido/generarboletinPDF', 'MailController@generar_boletin');
+Route::post('/desaparecido/generarboletinPDF/{idCedula}/{idPersona}', 'MailController@generar_boletin');
+//Route::get('/desaparecido/generarboletinPDF/', 'MailController@generar_boletin');
 	
 
 ////////////////////////////////////////////////////////////
@@ -76,7 +77,7 @@ Route::post('/mail/pdf', 'MailController@pdf')
 
 Route::get('/desaparecido/edad/{fecha_nacimiento}', 'DesaparecidoController@getEdad');
 //la siguiente ruta es la ruta de la vista correo
-Route::get('/desaparecido/correo/{idCedula}', 'DesaparecidoController@show_correo');
+Route::get('/desaparecido/correo/{idCedula}/{idPersona}', 'DesaparecidoController@show_correo');
 Route::get('/desaparecido/boletin', 'MailController@show_boletin');
 
 Route::get('/desaparecido/desaparecido_domicilio/{idCedula}', 'DesaparecidoController@show_desaparecido_domicilio');

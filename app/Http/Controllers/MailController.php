@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Dompdf\Dompdf;
-use Mpdf\Mpdf;
+//use Dompdf\Dompdf;
+//use Mpdf\Mpdf;
 use Illuminate\Http\Request;
 use Mail;
 use Session;
 use Redirect;
 use Barryvdh\DomPDF\Facade as PDF;
+use App\Models\Desaparecido;
 
 class MailController extends Controller
 {
@@ -28,7 +29,7 @@ class MailController extends Controller
     }
     
     	//este genera un documento, apartir de una vista
-    public function pdf(Request $request)
+   /* public function pdf(Request $request)
     {        
     	$h = $request['nombre'];
     	//return response()->json($h);
@@ -41,9 +42,29 @@ class MailController extends Controller
 	        //return $pdf->download('MiVistaContact.pdf');
 	         return $pdf->stream('pdf');
 	       
-    }
+    }*/
 	public function generar_boletin(Request $request)
-    {        
+    {   
+    	$id = $request['idPersona'];
+
+    //	$id = $idPersona;
+    	
+
+
+    	
+    	$desaparecido = Desaparecido::find($id);
+
+    	$view = view('desaparecidos.boletin', compact('desaparecido'))->render();
+    	//return $view;
+    	$pdf =\App::make('dompdf.wrapper');
+
+    	$pdf -> loadHTML($view);
+    	//return $id;
+   	    		//dd("Aqui toy");
+        $pdf->stream('boletin');
+		
+        	return "ya men";
+/*
     	//$h = $request['nombre'];
     	//return response()->json($h);
     	 $html = view('pdf.index',array('QRCode'=>$img_b64,'Folio'=>$folio))->render();
@@ -61,7 +82,7 @@ class MailController extends Controller
 	       // $pdf = PDF::loadView(['text'=>'desaparecidos.boletin'], $request->all());
 	        dd("ya entre aqui");
 	        //return $pdf->download('MiVistaContact.pdf');
-	         return $pdf->stream('pdf');
+	         return $pdf->stream('pdf');*/
 	       
     }
 
