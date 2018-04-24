@@ -63,12 +63,19 @@ Route::post('/desaparecido/update_vestimenta', 'DesaparecidoController@update_ve
 	->name('desaparecido.update_vestimenta');
 
 //Rutas para descripcion fisica
+
+Route::get('/descripcionfisica/get_coloresCuerpo/{idParteCuerpo}', 'DescripcionFisicaController@getColoresCuerpo')
+	->name('descripcionfisica.get_coloresCuerpo');
 Route::get('/descripcionfisica/get_particularidades/{idParteCuerpo}', 'DescripcionFisicaController@getParticularidades')
 	->name('descripcionfisica.get_particularidades');
 Route::get('/descripcionfisica/get_modificaciones/{idParteCuerpo}', 'DescripcionFisicaController@getModificaciones')
 	->name('descripcionfisica.get_modificaciones');
+	
 
 Route::get('/descripcionfisica/descripcionf/{idPersonaDesaparecida}', 'DescripcionFisicaController@show');
+
+Route::post('/descripcionfisica/store', 'DescripcionFisicaController@store')
+	->name('descripcionfisica.store');
 
 Route::resource('/descripcionfisica','DescripcionFisicaController');
 //fin de mis rutas
