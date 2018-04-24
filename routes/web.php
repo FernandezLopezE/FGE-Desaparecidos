@@ -21,14 +21,22 @@ Route::get('/', 'InicioController@index');
 		->name('extraviado.create_desaparecido');
 	Route::resource('extraviado','ExtraviadoController');
 
+	Route::resource('familiar','FamiliarController');
+
+	Route::resource('antecedentes','AntecedenteController');
+
 
 Route::get('consultas/get_cedulas', 'ConsultasController@jsonCedulas');
 Route::get('consultas/get_informantes/{idCedula}', 'ConsultasController@jsonInformantes')
 	->name('consultas.get_informantes');
 Route::get('consultas/get_familiares/{idDesaparecido}', 'ConsultasController@jsonFamiliares')
 	->name('consultas.get_familiares');
-Route::get('consultas/get_domicilios/{idDesaparecido}', 'ConsultasController@jsonDomiciliosPersona')
+Route::get('consultas/get_domicilios/{idDesaparecido}', 'ConsultasController@jsonDomicilios')
 	->name('consultas.get_domicilios');
+Route::get('consultas/get_antecedentes/{idDesaparecido}', 'ConsultasController@jsonAntecedentes')
+	->name('consultas.get_antecedentes');
+
+
 Route::get('consultas/get_parentescos', 'ConsultasController@jsonParentescos')
 	->name('consultas.get_parentescos');
 Route::get('consultas/get_nacionalidades', 'ConsultasController@jsonNacionalidades')
@@ -59,6 +67,8 @@ Route::get('consultas/colonias/{idMunicipio}', 'ConsultasController@jsonColonias
 Route::get('consultas/codigos/{idMunicipio}', 'ConsultasController@jsonCodigos');
 // Mostrando codigos postales que pertenecen a un municipio cuando hay un cambio en colonias.
 Route::get('consultas/codigos2/{idColonia}', 'ConsultasController@jsonCodigos2');
+// Calcula la edad años meses dias al día actual.
+Route::get('consultas/edad/{fecha_nacimiento}', 'ConsultasController@getEdad');
 
 
 Route::resource('consultas','ConsultasController');

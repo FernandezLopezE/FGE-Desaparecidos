@@ -11,6 +11,9 @@
 			<a href="{{route('informante.show',['id' => $desaparecido->idCedula])}}" class="btn btn-dark pull-right">
 				<i class="fa fa-pencil-square-o"></i> ATRAS
 			</a>
+			<a href="{{route('familiar.show',['id' => $desaparecido->id])}}" class="btn btn-dark pull-right">
+				<i class="fa fa-pencil-square-o"></i> SIGUIENTE
+			</a>
 			<a href="{{route('extraviado.edit', ['id' => $desaparecido->id])}}" class="btn btn-dark pull-right">
 				<i class="fa fa-pencil-square-o"></i> EDITAR
 			</a> 		
@@ -48,7 +51,7 @@
 					<dt class="col-sm-4">Estado natal:</dt>
 					<dd class="col-sm-8">{!! $desaparecido->persona->estado->nombre !!} </dd>
 					<dt class="col-sm-4">Fecha nacimiento:</dt>
-					<dd class="col-sm-8">{!! $desaparecido->persona->fechaNacimiento !!} </dd>
+					<dd class="col-sm-8">{!! Carbon\Carbon::parse($desaparecido->persona->fechaNacimiento)->format('d/m/Y') !!} </dd>
 					<dt class="col-sm-4">Edad de extravio:</dt>
 					<dd class="col-sm-8">{!! $desaparecido->edadExtravio !!} </dd>
 					<dt class="col-sm-4">Edad aparente:</dt>

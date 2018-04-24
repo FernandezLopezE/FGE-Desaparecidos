@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class ConsultasController extends Controller
 {
@@ -51,7 +52,7 @@ class ConsultasController extends Controller
 
 	}
 
-	public function jsonDomiciliosPersona(Request $request, $idDesaparecido)
+	public function jsonDomicilios(Request $request, $idDesaparecido)
 	{
 		$domicilios = \App\Models\Domicilio::where('idDesaparecido', $idDesaparecido)->get();
 
@@ -213,5 +214,16 @@ class ConsultasController extends Controller
 												->get();
 			return response()->json($codigos);
 		//}
+	}
+
+	public function getEdad(Request $request, $fechaNacimiento){
+		
+		if($request->ajax()){
+
+			$fecha = Carbon::parse($fechaNacimiento);
+			$edad2 = Carbon::createFromDate($fecha->year, $fecha->month,$fecha->day)->diff(Carbon::now())->format('%y años, %m meses y %d dias');
+			return response()->json($edad2);
+		
+		}
 	}
 }
