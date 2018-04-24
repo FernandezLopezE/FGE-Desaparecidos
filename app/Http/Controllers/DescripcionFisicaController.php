@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Desaparecido;
 use App\Models\CedulaPartesCuerpo;
+use App\Models\PivotSubPartiCuerpo;
+use App\Models\PivotSubModiCuerpo;
 class DescripcionFisicaController extends Controller
 {
     /**
@@ -51,13 +53,47 @@ class DescripcionFisicaController extends Controller
          $parteCuerpo->idPersonaDesaparecida = $request['idExtraviado'];
          $parteCuerpo->idPartesCuerpo = $request['parteCuerpo'];
          $parteCuerpo->lado = $request['lado'];
-         $partesCuerpo->idColoresCuerpo = $request['colorP'];
+         $parteCuerpo->idColoresCuerpo = $request['colorP'];
          $parteCuerpo->otraParticularidad =$request['otraParticularidad'];
          $parteCuerpo->otraModificacion =$request['otraModificacion'];
          $parteCuerpo->otroColor =$request['otroColor'];
          $parteCuerpo->observaciones = $request['observaciones'];
 
-         $partesCuerpo->save();
+         $parteCuerpo->save();
+
+         //particularidades
+         
+         $particularidad = $request['particularidad'];
+
+         $longitud = count($particularidad);
+
+         for($i=0; $i<$longitud; $i++){
+            /*echo $parteCuerpo->id;
+            echo "<br>";
+            echo $particularidad[$i];
+            echo "<br>";*/
+            $particularidades = new PivotSubPartiCuerpo();
+            $particularidades->idCedulaPartesCuerpo = $parteCuerpo->id;
+            $particularidades->idSubParticularidades = $particularidad[$i];
+
+            $particularidades->save();
+         }
+
+         //modificaciones
+
+         $modificacion = $request['modificacion'];
+
+         $longitud = count($modificacion);
+
+         for($i=0; $i<$longitud; $i++){
+            $modificaciones = new PivotSubModiCuerpo();
+            $modificaciones->idCedulaPartesCuerpo = $parteCuerpo->id;
+            $modificaciones->idSubModificaciones = $modificacion[$i];
+
+            $modificaciones->save();
+         }         
+
+         
 
          return response()->json($desaparecido);
     }
@@ -155,5 +191,21 @@ class DescripcionFisicaController extends Controller
                             ->get();
 
             return response()->json($coloresCuerpo);
+    }
+
+    public function getPartesCuerpo($idExtraviado){
+
+        $partes = \DB::table('cedula_partes_cuerpo as cedup')
+                    ->join('cat_partes_cuerpo as cpartes','cedup.idPartesCuerpo','=','cpartes.id')
+                    ->join('cat_colores_cuerpo as ccuerpo','cedup.idColoresCuerpo','=','ccuerpo.id')
+                    ->join('pivot_subparti_cuerpo as pivotparti','cedup.id','=','pivotparti.idCedulaPartesCuerpo')
+                    ->join('cat_sub_particularidades as parti','pivotparti.idSubParticularidades','=','parti.id')
+                    ->join('pivot_submodi_cuerpo as pivotmodi','cedup.id','=','pivotmodi.idCedulaPartesCuerpo')
+                    ->join('cat_sub_modificaciones as modi','pivotmodi.idSubModificaciones','=','modi.id')
+                    ->select('cpartes.nombre as nombreParteC','cedup.lado as lado','parti.nombre as particularidad','modi.nombre as modifiacion','cedup.observaciones as observaciones')
+                    ->where('cedup.idPersonaDesaparecida',$idExtraviado)
+                    ->get();
+
+            return response()->json($partes);
     }
 }
