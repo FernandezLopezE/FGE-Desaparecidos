@@ -11,20 +11,32 @@
 |
 */
 
-Route::get('/', function () {
-    return view('inicio');
+Route::get('/', 'InicioController@index');
 
-});
+	Route::resource('cedula','CedulaController');
 
+	Route::resource('informante','InformanteController');
+
+	Route::get('extraviado/create/{idCedula}', 'ExtraviadoController@create')
+		->name('extraviado.create_desaparecido');
+	Route::resource('extraviado','ExtraviadoController');
+
+	Route::resource('familiar','FamiliarController');
+
+	Route::resource('antecedentes','AntecedenteController');
+
+
+Route::get('consultas/get_cedulas', 'ConsultasController@jsonCedulas');
 Route::get('consultas/get_informantes/{idCedula}', 'ConsultasController@jsonInformantes')
 	->name('consultas.get_informantes');
 Route::get('consultas/get_familiares/{idDesaparecido}', 'ConsultasController@jsonFamiliares')
 	->name('consultas.get_familiares');
-Route::get('consultas/get_domicilios/{idDesaparecido}', 'ConsultasController@jsonDomiciliosPersona')
+Route::get('consultas/get_domicilios/{idDesaparecido}', 'ConsultasController@jsonDomicilios')
 	->name('consultas.get_domicilios');
-
-	Route::get('consultas/get_contactos/{idDesaparecido}', 'ConsultasController@jsonContactosPersona')
+Route::get('consultas/get_contactos/{idDesaparecido}', 'ConsultasController@jsonContactosPersona')
 	->name('consultas.get_contactos');
+Route::get('consultas/get_antecedentes/{idDesaparecido}', 'ConsultasController@jsonAntecedentes')
+	->name('consultas.get_antecedentes');
 
 Route::get('consultas/get_parentescos', 'ConsultasController@jsonParentescos')
 	->name('consultas.get_parentescos');
@@ -46,10 +58,32 @@ Route::get('consultas/get_tipos_telefonos', 'ConsultasController@jsonTiposTelefo
 	->name('consultas.get_tipos_telefonos');
 Route::get('consultas/get_ladas', 'ConsultasController@jsonLadas')
 	->name('consultas.get_ladas');
+// Mostrando municipios que pertenecen a un estado.
+Route::get('consultas/municipios/{idEstado}', 'ConsultasController@jsonMunicipios');
+// Mostrando localidades que pertenecen a un municipio.
+Route::get('consultas/localidades/{idMunicipio}', 'ConsultasController@jsonLocalidades');
+// Mostrando colonias que pertenecen a un municipio.
+Route::get('consultas/colonias/{idMunicipio}', 'ConsultasController@jsonColonias');
+// Mostrando codigos postales que pertenecen a un municipio.
+Route::get('consultas/codigos/{idMunicipio}', 'ConsultasController@jsonCodigos');
+// Mostrando codigos postales que pertenecen a un municipio cuando hay un cambio en colonias.
+Route::get('consultas/codigos2/{idColonia}', 'ConsultasController@jsonCodigos2');
+// Calcula la edad años meses dias al día actual.
+Route::get('consultas/edad/{fecha_nacimiento}', 'ConsultasController@getEdad');
+
+
 Route::resource('consultas','ConsultasController');
 
 Route::get('lada/{id}', 'LadaController@getLadas');
 Route::resource('/lada','LadaController');
+
+
+
+/*
+
+
+// Consultar todas la cedulas de investigación.
+
 
 
 //Rutas Ruben
@@ -121,7 +155,7 @@ Route::get('municipio/{id}', 'DomiciliosController@getMunicipios');
 Route::get('localidades/{id}', 'DomiciliosController@getLocalidades');
 Route::get('colonias2/{id}', 'DomiciliosController@getColonias2');
 Route::get('colonias/{id}', 'DomiciliosController@getColonias');
-Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');
+Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');*/
 
 
 

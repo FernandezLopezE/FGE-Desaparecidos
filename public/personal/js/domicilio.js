@@ -1,30 +1,7 @@
 $(document).ready(function() {
 
-    //mask de numero
-    $('#telefono').mask('(000) 000 0000');
 
 
-
-
-    $('#idEstado').select2({
-        width : "100%",
-    });
-
-    $('#idMunicipio').select2({
-        width : "100%",
-    });
-
-    $('#idLocalidad').select2({
-        width : "100%",
-    });
-
-    $('#idColonia').select2({
-        width : "100%",
-    });
-
-    $('#idCodigoPostal').select2({
-        width : "100%",
-    });
 
 
     /*$('#btnAddHijo').click(function(){

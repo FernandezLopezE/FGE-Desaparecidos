@@ -5,9 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\models\Cedula;
 use App\Models\Persona;
+use App\Models\Desaparecido;
+use App\Models\Domicilio;
+
 use App\Models\CatDialecto;
 
-use App\Models\Desaparecido;
+
 use App\Models\Familiar;
 use App\Models\Documento;
 use App\Models\Antecedente;
@@ -15,7 +18,6 @@ use App\Models\Domicilio;
 use App\Models\Contacto;
 use App\Models\Prenda;
 use Carbon\Carbon;
-use Session;
 use App\images\TiposCalzados;
 
 
@@ -30,7 +32,7 @@ class DesaparecidoController extends Controller
 	 */
 	public function index()
 	{		
-		return view('desaparecidos.form'); 
+		return view('desaparecidos.listado_cedulas'); 
 	}
 
 	/**
@@ -38,7 +40,7 @@ class DesaparecidoController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function create()
+	public function create_entrevista()
 	{
 		//$desaparecido = new Desaparecido();
 		$cedula = new Cedula();

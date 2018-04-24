@@ -101,6 +101,7 @@ $(document).ready(function(){
 
 
 	$('#idEstado').on('change', function(){
+		console.log($(this).val());
 		$("#idMunicipio").empty();
 		var idMunicipio = $(this).val();
 		if(idMunicipio) {
@@ -108,16 +109,12 @@ $(document).ready(function(){
 				url: '/municipio/'+idMunicipio,
 				type:"GET",
 				dataType:"json",
-
 				success:function(data) {
 						$("#idMunicipio").empty();
 					$.each(data, function(key, value){
 						$("#idMunicipio").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
-
 					});
-
-				},
-				
+				},				
 			});
 		} else {
 			$('#idEstado').empty();
@@ -224,29 +221,8 @@ $(document).ready(function(){
 	   }
    });
 
-		$('#idEdocivil').change(function() {
 
-			a = $('#idEdocivil').val();
-
-			console.log(a);
-
-			//Mostrar formulario de datos de la pareja
-
-			if (a == 2 || a == 3 || a == 4 || a == 5 || a == 6) {
-
-				console.log('Mostrar el campo datos de pareja')
-
-				$("#nombrePareja").show();
-
-			} else {
-
-				console.log('No tienes pareja')
-
-				$("#nombrePareja").hide();
-
-			}
-
-		});
+		
 
 
 
@@ -274,100 +250,6 @@ $(document).ready(function(){
 
 				$("#nombreHijo").hide();
 				$("#btnAddHijo").hide();
-
-			} 
-
-		});
-
-		
-
-		//Ocultar-mostrar pregunta ¿Está embarazada? en caso de que el sexo sea 'masculino'
-
-		$('#sexo').change(function() {
-
-			x = $('#sexo').val();
-
-			console.log(x);
-
-		if (x == 'H') {
-
-				console.log('ocultar datos de embarazo')
-
-				$("#estaEmbarazada").hide();
-
-	 
-
-			} else {
-
-				console.log('Mostrar datos de embarazo')
-
-				$("#estaEmbarazada").show();
-
-	   
-
-			}
-
-		});
-
-
-
-		//Mostrar formulario de embarazo
-
-		$("#embarazo").change(function(){
-
-			c = $(this).val();
-
-			console.log(c);
-
-			if (c =='SI'){
-
-				console.log('Mostrar form de datos de embarazo')
-
-				$("#datosEmbarazo").show();
-
-				$("#rumores").show();
-
-				
-
-			} else {
-
-					console.log('No tienes hijos')
-
-					$("#datosEmbarazo").hide();
-					$("#datosEmbarazo3").hide();
-					$("#rumores").hide();
-
-				
-
-			} 
-
-		});
-
-
-
-		//Rumores sobre el embarazo???
-
-		$("#rumoresBebe").change(function(){
-
-			d = $(this).val();
-
-			console.log(c);
-
-			if (d =='SI'){
-
-				console.log('Mostrar form de pormenores')
-
-				$("#datosEmbarazo3").show();
-
-				
-
-			} else {
-
-					console.log('No mostrar form de pormenores')
-
-					$("#datosEmbarazo3").hide();
-
-				
 
 			} 
 

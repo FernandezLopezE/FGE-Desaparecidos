@@ -62,10 +62,10 @@ class Desaparecido extends Model
 		return $this->belongsTo('App\Models\CatEstadoCivil','idEdocivil');
 	}
 
-	/*public function nacionalidad()
+	public function documento()
 	{
-		return $this->belongsTo('App\Models\CatNacionalidad','id');
-	}*/
+		return $this->belongsTo('App\Models\CatDocumento','idDocumentoIdentidad');
+	}
 
 	public function ocupacion()
 	{
@@ -79,7 +79,7 @@ class Desaparecido extends Model
 
 	public function persona()
 	{
-		return $this->belongsTo('App\Models\Persona','id');
+		return $this->belongsTo('App\Models\Persona','idPersona');
 	}
 
 	public function cedula()
