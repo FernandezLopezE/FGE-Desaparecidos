@@ -72,7 +72,8 @@
 	<!-- Termina tabla de antecedentes -->	
 
 	<a href="/desaparecido/vestimenta/{!! $cedula->id !!}" class='btn btn-large btn-primary pull-right'>
-		Siguiente  <i class="fa fa-angle-double-right"></i>
+		Siguiente  <i class="fa fa-angle-double-right"></i>-
+	<a href="/desaparecido/correo/{!! $cedula->id !!}" class='btn btn-large btn-primary openbutton'>corrreo</a>
 	</a>
 
 @endsection

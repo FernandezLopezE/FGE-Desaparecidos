@@ -166,4 +166,25 @@ class ConsultasController extends Controller
                 ->get();
             return response()->json($prendas);
     }
+    
+    public function jsonBoletin( Request $request,$idCedula)
+    {
+        //dd("ya entre men");
+        $datosBoletin =  \DB::table('desaparecidos_personas AS dp')
+                ->join('persona AS persona', 'dp.idPersona', '=', 'persona.id')
+                ->join('desaparecidos_cedula_investigacion AS ced', 'dp.idCedula' , '=' , 'ced.id')
+                ->select('dp.id as id',
+                         'dp.apodo as apodo',
+                         'dp.edadAparente as edadAparente',
+                         'dp.edadExtravio as edadExtravio',
+                         'persona.nombres as nombres',
+                         'persona.primerAp as primerAp',
+                         'persona.segundoAp as segundoAp',
+                         'persona.sexo as sexo',
+                         'ced.estatura as estatura',
+                         'ced.peso as peso')
+                ->where('idCedula', $idCedula)
+                ->get();
+            return response()->json($datosBoletin);
+    }
 }

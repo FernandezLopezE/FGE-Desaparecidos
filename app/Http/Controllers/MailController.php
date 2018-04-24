@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Dompdf\Dompdf;
+use Mpdf\Mpdf;
 use Illuminate\Http\Request;
 use Mail;
 use Session;
@@ -40,7 +42,28 @@ class MailController extends Controller
 	         return $pdf->stream('pdf');
 	       
     }
-	
+	public function generar_boletin(Request $request)
+    {        
+    	//$h = $request['nombre'];
+    	//return response()->json($h);
+    	 $html = view('pdf.index',array('QRCode'=>$img_b64,'Folio'=>$folio))->render();
+ 			require_once("DomPdf/dompdf_config.inc.php");
+
+ 				 $mpdf->WriteHTML($html);
+
+				$dompdf = new DOMPDF();
+				$dompdf->load_html(['text'=>'desaparecidos.boletin'], $request->all());
+				$dompdf->render();
+				$dompdf->stream("sample.pdf");
+
+           
+
+	       // $pdf = PDF::loadView(['text'=>'desaparecidos.boletin'], $request->all());
+	        dd("ya entre aqui");
+	        //return $pdf->download('MiVistaContact.pdf');
+	         return $pdf->stream('pdf');
+	       
+    }
 
 	public function send()
 		{
@@ -49,5 +72,9 @@ class MailController extends Controller
 				$message->from('alejandro.f.toledo@gmail.com');
 			});
 		}
+	public function show_boletin()
+	{
+		return view('desaparecidos.boletin');
+	}
 
 }

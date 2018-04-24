@@ -628,10 +628,10 @@ class DesaparecidoController extends Controller
 		return response()->json($cedula);
 		
 	}
-	public function show_correo(){
-		//dd($idCedula);
+	public function show_correo($idCedula){
 		
-		return view('desaparecidos.contacto');
+		$cedula = Cedula::find($idCedula);
+		return view('desaparecidos.contacto',['id' => $cedula->id] );
 			
 	}
 
