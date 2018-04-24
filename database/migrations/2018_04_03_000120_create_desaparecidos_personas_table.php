@@ -34,7 +34,7 @@ class CreateDesaparecidosPersonasTable extends Migration
 			$table->boolean('tieneHijos')->default(0);
 			$table->boolean('informante')->default(0);
 			$table->boolean('notificaciones')->default(0);	
-			$table->string('estura')->nullable();
+			$table->string('estatura')->nullable();
 			$table->string('peso')->nullable();				
 
 
