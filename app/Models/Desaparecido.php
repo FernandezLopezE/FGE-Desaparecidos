@@ -47,6 +47,10 @@ class Desaparecido extends Model
 	{
 		return $this->hasMany('App\Models\Domicilio', 'idDesaparecido', 'id');
 	}
+	public function contactos()
+	{
+		return $this->hasMany('App\Models\Contacto', 'idDesaparecido', 'id');
+	}
 
 	public function antecedentes()
 	{

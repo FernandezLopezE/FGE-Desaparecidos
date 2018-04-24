@@ -12,6 +12,7 @@ use App\Models\Familiar;
 use App\Models\Documento;
 use App\Models\Antecedente;
 use App\Models\Domicilio;
+use App\Models\Contacto;
 use App\Models\Prenda;
 use Carbon\Carbon;
 use Session;
@@ -175,7 +176,7 @@ class DesaparecidoController extends Controller
 		]);
 
 		
-		$domicilio = Domicilio::create([
+		 $domicilio= Domicilio::create([
 			'idDesaparecido' 	=> $desaparecido->id,
 			'tipoDireccion'		=> $request->input('tipoDirec'),
 			'calle'				=> $request->input('calle'),
@@ -303,7 +304,7 @@ class DesaparecidoController extends Controller
 								'CELULAR' => 'CELULAR');
 
 		$anios = array('2000' => '2000', '2001' => '2001');
-		$sexos = array('H' => 'MASCULINO', 'M' => 'FEMENINO');
+		$sexos = array('N' => 'SELECCIONE UN GENERO', 'H' => 'MASCULINO', 'M' => 'FEMENINO');
 		
 		$tiposDireccion = array('PERSONAL' => 'PERSONAL', 'TRABAJO' => 'TRABAJO');
 		$parentescos = array('MADRE' => 'MADRE', 'PADRE' => 'PADRE', 'HIJO' => 'HIJO', 'OTRO' => 'OTRO');
@@ -476,6 +477,27 @@ class DesaparecidoController extends Controller
 							));		
 	}
 
+	public function show_desaparecido_contacto($idCedula, $idDesaparecido)
+	{
+		$cedula = Cedula::find($idCedula);
+		$desaparecido = Desaparecido::find($idDesaparecido);
+		
+
+		//$ladas 				= \App\Models\CatNacionalidad::all()->pluck('lada','id');
+		
+
+		$tiposTelefonos = array('PERSONAL' => 'PERSONAL',
+								'TRABAJO' => 'TRABAJO',
+								'CELULAR' => 'CELULAR');
+
+	
+		return view('desaparecidos.form_desaparecido_domicilio',
+					compact('cedula',
+								'desaparecido',
+								'tiposTelefonos'
+							));		
+	}
+
 	public function store_desaparecido_familiar(Request $request){
 
 		$familia = Familiar::create([
@@ -491,10 +513,29 @@ class DesaparecidoController extends Controller
 		return response()->json($familia);
 
 	}
+	public function  store_desaparecido_contacto(Request $request){
+
+		$contacto = Contacto::create([
+			'idDesaparecido' 		=> $request->input('idDesaparecido'),
+			'correoElectronico'		=> $request->input('correoElectronico'),
+			'telefono'				=> json_encode(array('tipoTel' => $request->input('tipoTel'),
+												 'lada' => $request->input('lada'),
+												 'telefono' => $request->input('telefono'),
+												 'ext' => $request->input('ext'))),
+													 
+			 'redesSociales'		=> json_encode(array('redesSociales' => $request->input('redesSociales'))),
+
+		]);
+
+		return response()->json($contacto);
+
+	}
 
 	public function store_desaparecido_domicilio(Request $request)
 	{
+		dd($request);
 		$domicilio = Domicilio::create([
+
 			'idDesaparecido' 	=> $request->input('idDesaparecido'),
 			'tipoDireccion'		=> $request->input('tipoDireccion'),
 			'calle'				=> $request->input('calle'),

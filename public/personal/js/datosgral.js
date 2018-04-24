@@ -232,7 +232,7 @@ $(document).ready(function(){
 
 			//Mostrar formulario de datos de la pareja
 
-			if (a == 2 || a == 5 || a == 6) {
+			if (a == 2 || a == 3 || a == 4 || a == 5 || a == 6) {
 
 				console.log('Mostrar el campo datos de pareja')
 
@@ -431,7 +431,7 @@ $(document).ready(function(){
 	$('#informanteidDocumentoIdentidad').change(function(){
 		h = $('#informanteidDocumentoIdentidad').val();
 		
-		if (h==7) {
+		if (h==8) {
 			$("#otro_doc").show();
 		}else{
 			$("#otro_doc").hide();

@@ -44,6 +44,13 @@ class ConsultasController extends Controller
 
     }
 
+    public function jsonContactosPersona(Request $request, $idDesaparecido)
+    {
+        $contacto = \App\Models\Contacto::where('idDesaparecido', $idDesaparecido)->get();
+
+        return response()->json($contacto);
+
+    }
     public function jsonDomiciliosPersona(Request $request, $idDesaparecido)
     {
         $domicilios = \App\Models\Domicilio::where('idDesaparecido', $idDesaparecido)->get();

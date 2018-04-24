@@ -22,6 +22,10 @@ Route::get('consultas/get_familiares/{idDesaparecido}', 'ConsultasController@jso
 	->name('consultas.get_familiares');
 Route::get('consultas/get_domicilios/{idDesaparecido}', 'ConsultasController@jsonDomiciliosPersona')
 	->name('consultas.get_domicilios');
+
+	Route::get('consultas/get_contactos/{idDesaparecido}', 'ConsultasController@jsonContactosPersona')
+	->name('consultas.get_contactos');
+
 Route::get('consultas/get_parentescos', 'ConsultasController@jsonParentescos')
 	->name('consultas.get_parentescos');
 Route::get('consultas/get_nacionalidades', 'ConsultasController@jsonNacionalidades')
@@ -76,6 +80,9 @@ Route::get('/desaparecido/edad/{fecha_nacimiento}', 'DesaparecidoController@getE
 Route::get('/desaparecido/desaparecido_domicilio/{idCedula}', 'DesaparecidoController@show_desaparecido_domicilio');
 
 
+Route::get('/desaparecido/desaparecido_contacto/{idCedula}', 'DesaparecidoController@show_desaparecido_contacto');
+
+
 
 Route::post('/desaparecido/getpersona', 'DesaparecidoController@getPersona')
 	->name('desaparecido.getpersona');
@@ -85,6 +92,9 @@ Route::post('/desaparecido/store_cedula', 'DesaparecidoController@store_cedula')
 
 Route::post('/desaparecido/store_desaparecido_domicilio', 'DesaparecidoController@store_desaparecido_domicilio')
 	->name('desaparecido.store_desaparecido_domicilio');
+
+Route::post('/desaparecido/store_desaparecido_contacto', 'DesaparecidoController@store_desaparecido_contacto')
+	->name('desaparecido.store_desaparecido_contacto');
 
 Route::post('/desaparecido/store_desaparecido_familiar', 'DesaparecidoController@store_desaparecido_familiar')
 	->name('desaparecido.store_desaparecido_familiar');

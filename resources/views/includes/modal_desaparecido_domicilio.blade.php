@@ -101,7 +101,7 @@
 												'data-validation-error-msg-required' => 'El campo es requerido'
 											] )!!}				
 				</div>
-			</div><br>
+			</div>	
 			<div class="row" id=""  > 
 				<div class="form-group col-lg-4">
 					{!! Form::label ('informanteTipoTel','Tipo de telefono:') !!}
@@ -141,8 +141,6 @@
 			<p align="right">
 				<button type="button" class="btn btn-large btn-primary openbutton"  id="btnAgregarTelefono"><i class="fa fa-plus"></i> Agregar telefono</button>
 			</p>
-
-
 		</form>
 		<!-- Fin del Contenido del formulario-->
 		<!-- Fin del Contenido del formulario-->
