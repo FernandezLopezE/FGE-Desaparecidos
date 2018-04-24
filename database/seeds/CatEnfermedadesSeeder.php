@@ -13,20 +13,21 @@ class CatEnfermedadesSeeder extends Seeder
     {
         //
         DB::table('cat_enfermedades')->insert([
-            ['nombre' => 'ESQUIZOFRENIA'], 	//1
-            ['nombre' => 'MENTALES'],			//2
-            ['nombre' => 'DIABETES'],			//3
-            ['nombre' => 'HIPERTENSIÓN'],				//4
-            ['nombre' => 'ARTRITIS'],
-            ['nombre' => 'CIRROSIS'],
-            ['nombre' => 'HEPATITIS'],
-            ['nombre' => 'CÁNCER'],
-            ['nombre' => 'VIH'],
-            ['nombre' => 'DERMATITIS'],
-            ['nombre' => 'HERPES'],
-            ['nombre' => 'SORIASIS'],	//5
-            ['nombre' => 'HONGOS'],
-            ['nombre' => 'OTRO'],				//12
+            ['nombre' => 'SIN INFORMACION'], //1
+            ['nombre' => 'ESQUIZOFRENIA'], 	    //2
+            ['nombre' => 'MENTALES'],			//3
+            ['nombre' => 'DIABETES'],			//4
+            ['nombre' => 'HIPERTENSIÓN'],		//5
+            ['nombre' => 'ARTRITIS'],   //6
+            ['nombre' => 'CIRROSIS'],   //7
+            ['nombre' => 'HEPATITIS'],  //8
+            ['nombre' => 'CÁNCER'],     //9
+            ['nombre' => 'VIH'],        //10
+            ['nombre' => 'DERMATITIS'], //11
+            ['nombre' => 'HERPES'],     //12
+            ['nombre' => 'SORIASIS'],	//13
+            ['nombre' => 'HONGOS'],     //14
+            ['nombre' => 'OTRO'],		//15
             
         ]);
     }

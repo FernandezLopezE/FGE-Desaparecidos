@@ -13,18 +13,19 @@ class CatIntervencionesQuirurgicasSeeder extends Seeder
     {
         //
          DB::table('cat_intervenciones_quirurgicas')->insert([
-            ['nombre' => 'APÉNDICE'], 	//1
-            ['nombre' => 'CESÁREA'],			//2
-            ['nombre' => 'CIRCUNCISIÓN'],			//3
-            ['nombre' => 'CORAZÓN'],				//4
-            ['nombre' => 'HERNIA'],	//5
-            ['nombre' => 'HISTERECTOMÍA'],				//6
-            ['nombre' => 'POR FRACTURA'],				//7
-            ['nombre' => 'VESÍCULA'],				//8
-            ['nombre' => 'DIU'],				//9
-            ['nombre' => 'LIGADURA'],			//10
-            ['nombre' => 'VASECTOMÍA'],				//11
-            ['nombre' => 'OTRO'],				//12
+            ['nombre' => 'SIN INFORMACIÓN'],    //1
+            ['nombre' => 'APÉNDICE'], 	         //2
+            ['nombre' => 'CESÁREA'],			 //3
+            ['nombre' => 'CIRCUNCISIÓN'],		//4
+            ['nombre' => 'CORAZÓN'],			//5
+            ['nombre' => 'HERNIA'],	            //6
+            ['nombre' => 'HISTERECTOMÍA'],		//7
+            ['nombre' => 'POR FRACTURA'],		//8
+            ['nombre' => 'VESÍCULA'],			//9
+            ['nombre' => 'DIU'],				//10
+            ['nombre' => 'LIGADURA'],			//11
+            ['nombre' => 'VASECTOMÍA'],		    //12
+            ['nombre' => 'OTRO'],				//13
             
         ]);
     }

@@ -13,12 +13,13 @@ class CatImplantesSeeder extends Seeder
     {
         //
         DB::table('cat_implantes')->insert([
-            ['nombre' => 'MARCAPASOS'], 	//1
-            ['nombre' => 'GLUTEOS'],			//2
-            ['nombre' => 'SENOS'],			//3
-            ['nombre' => 'TORNILLOS'],				//4
-            ['nombre' => 'PLACA DE OSTEOSÍNTESIS'],	//5
-            ['nombre' => 'OTRO'],				//12
+            ['nombre' => 'SIN INFORMACIÓN'],    //1
+            ['nombre' => 'MARCAPASOS'], 	   //2
+            ['nombre' => 'GLUTEOS'],		  //3
+            ['nombre' => 'SENOS'],			//4
+            ['nombre' => 'TORNILLOS'],				//5
+            ['nombre' => 'PLACA DE OSTEOSÍNTESIS'],	//6
+            ['nombre' => 'OTRO'],				//7
             
         ]);
     }
