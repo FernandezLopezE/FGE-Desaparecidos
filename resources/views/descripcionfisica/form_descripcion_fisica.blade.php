@@ -1,12 +1,13 @@
 @extends('layouts.app_uipj')
 
 @section('content')
+  
 	<div class="card border-success">
 	<div class="card-header">
 		<h5 class="card-title">Descripción física			
 			<button type="button" class="btn btn-dark pull-right"  id="nuevaParteCuerpo">Agregar</button>
 		</h5>
-
+{{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}
 	</div>
 	<div class="card-body">	
 		<div class="row">
@@ -67,6 +68,29 @@
                     'placeholder' => 'Izquierdo, derecho, central'                  
                   ] )!!}
       </div>
+
+      <div class="col" id="colores" style="display:none" >
+          {!! Form::label ('color','Color:') !!}
+         {!! Form::select ('color',
+                    $coloresCuerpo,
+                    '',
+                    ['class' => 'form-control',
+                      'id' => 'color'
+                    ] )!!}
+      </div>
+      <div class="col" id="otro_color" style="display:none" >
+          {!! Form::label ('otroColor','Especifique otro color:') !!}
+          {!! Form::text ('otroColor',
+                  old('otro'),
+                  ['class' => 'form-control mayuscula sinEnter soloLetras',
+                    'placeholder' => 'Ingrese otro color',
+                    'id' => 'otroColor',
+                    
+                  ] )!!}
+          </div>
+
+
+
       </div>
     <hr>
       <div class="row">
@@ -76,7 +100,8 @@
                     $particularidades,
                     '',
                     ['class' => 'form-control',
-                      'id' => 'idSubParticularidades'
+                      'id' => 'idSubParticularidades',
+                      'multiple' => 'multiple'
                     ] )!!}  
           
         </div>
@@ -93,7 +118,7 @@
                     'data-validation-depends-on-value' =>'OTRO'
                   ] )!!}
           </div>
-          <div class="col-lg-4" id="observaciones">
+         <!-- <div class="col-lg-4" id="observaciones">
           {!! Form::label ('observacionesParticular','Observaciones:') !!}
           {!! Form::text ('observacionesParticularidad',
                   old('observacionesParticular'),
@@ -101,7 +126,7 @@
                     'placeholder' => 'Ingrese las observaciones',
                     'id' => 'observacionesParticularidad'
                   ] )!!}
-          </div>      
+          </div>  -->    
     </div>
     <br>
     <div class="row">
@@ -111,7 +136,8 @@
                       $modificaciones,
                       '',
                       ['class' => 'form-control',
-                        'id' => 'idSubModificaciones'
+                        'id' => 'idSubModificaciones',
+                        'multiple' => 'multiple'
                       ] )!!}  
             
           </div>
@@ -128,18 +154,18 @@
                       'data-validation-depends-on-value' =>'OTRO'
                     ] )!!}
             </div>
-            <div class="col-lg-4" id="observaciones">
-            {!! Form::label ('observacionesModificar','Observaciones:') !!}
-            {!! Form::text ('observacionesModificacion',
-                    old('observacionesModificacion'),
+            <div class="col-lg-4" >
+            {!! Form::label ('observaciones','Observaciones:') !!}
+            {!! Form::text ('observaciones',
+                    old('observaciones'),
                     ['class' => 'form-control mayuscula sinEnter soloLetras',
                       'placeholder' => 'Ingrese las observaciones',
-                      'id' => 'observacionesModificacion'
+                      'id' => 'observaciones'
                     ] )!!}
             </div>                              
     </div>  
     <hr>
-		<h4 class="card-title"> Detalles de descipción física </h4>
+		<h4 class="card-title"> Detalles de descripción física </h4>
 		<div class="card-body">
 			<table id="tableDescripcionFisica" ></table>
 		</div>
@@ -186,9 +212,6 @@
 				$("#otra_Modificacion").hide();
 			}
 		});
-
-
-
 
 
 
@@ -244,12 +267,46 @@ var tableDescripcion = $('#tableDescripcionFisica');
 	//Fin de vista de datos de calzado
 	});
 
+    $('#idSubParticularidades').select2();
+    $('#idSubModificaciones').select2();
+
     if($('#idPartesCuerpo').val() == 1){
     	$("#idSubParticularidades").empty();
     	$("#idSubModificaciones").empty();
-    } 
+      $("#color").empty();
+    }
+//Mostrar campo otro color
+    $('#color').on('change', function(){
+      var idColor = $('#color').val();
+      if(idColor ==7 ){
+        $('#otro_color').show();
+      }else{
+        $('#otro_color').hide();
+      }
+    });
+//fin campo otro color
+
 	//Obtener particularidades
 	$('#idPartesCuerpo').on('change', function(){
+      parteCuerpoid = $('#idPartesCuerpo').val();
+      if(parteCuerpoid == 24){
+      $('#colores').show();
+    }else{
+      $('#colores').hide();
+    }
+   //Condiciones para el multiselect
+    if( parteCuerpoid == 6 || parteCuerpoid == 13 || parteCuerpoid == 23 || parteCuerpoid == 35 || parteCuerpoid == 36 || parteCuerpoid == 37){
+      $('#idSubParticularidades').select2({
+        maximumSelectionLength: 1,       
+      });
+     }else{ 
+       $('#idSubParticularidades').select2({
+        maximumSelectionLength: 10,       
+      });
+     } 
+
+
+
         $("#idSubParticularidades").empty();
         var idPartesCuerpo = $(this).val();
         if(idPartesCuerpo) {
@@ -272,8 +329,9 @@ var tableDescripcion = $('#tableDescripcionFisica');
             });
         }
     });
+  //Fin obtener particularidades
 
-    //Obtener particularidades
+  //Obtener modificaciones
 	$('#idPartesCuerpo').on('change', function(){
         $("#idSubModificaciones").empty();
         var idPartesCuerpo = $(this).val();
@@ -297,7 +355,76 @@ var tableDescripcion = $('#tableDescripcionFisica');
             });
         }
     });
+  //fin Obtener modificaciones
 
+   //Obtener colores cuerpo
+  $('#idPartesCuerpo').on('change', function(){
+        $("#color").empty();
+        var idPartesCuerpo = $(this).val();
+        console.log('hola'+idPartesCuerpo);
+        if(idPartesCuerpo) {
+            
+            $.ajax({
+                url: '/descripcionfisica/get_coloresCuerpo/'+idPartesCuerpo,
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                        $("#color").empty();
+                        console.log("hecho");
+                    $.each(data, function(key, value){                        
+
+                        $("#color").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+
+                    });
+
+                },
+                
+            });
+        }
+    });
+  //fin Obtener colores cuerpo
+
+  //Agregar descripcion fisica
+  $('#nuevaParteCuerpo').click (function(){
+    var dataString = {
+      estatura: $('#estatura').val(),
+      peso: $('#peso').val(),
+      complexion: $('#complexion').val(),
+      colorPiel: $('#colorPiel').val(),
+      idExtraviado: $('#idExtraviado').val(),
+
+      parteCuerpo: $('#idPartesCuerpo').val(),
+      lado: $('#lado').val(),
+      colorP: $('#color').val(),
+      particularidad: $('#idSubParticularidades').val(),
+      modificacion: $('#idSubModificaciones').val(),
+      otraParticularidad: $('#otroSubParticularidad').val(),
+      otraModificacion: $('#otroSubModificacion').val(),
+      otroColor: $('#otroColor').val(),
+      observaciones: $('#observaciones').val(),
+
+
+
+    };
+    console.log(dataString);
+    /*$.ajax({
+      type: 'POST',
+      url: '/descripcionfisica/store',
+      data: dataString,
+      dataType: 'json',
+      success: function(data) {           
+        console.log("hecho");
+        console.log(data);
+        //tableDescripcion.bootstrapTable('refresh');
+                        
+      },
+      error: function(data) {
+        console.log("error");
+        console.log(data);
+      }
+    });*/
+  });
 
 	</script>
 @endsection
