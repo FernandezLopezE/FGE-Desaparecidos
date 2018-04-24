@@ -16,7 +16,10 @@ class CreateCedulaPartesCuerpoTable extends Migration
         Schema::create('cedula_partes_cuerpo', function (Blueprint $table) {
             $table->increments('id');
             $table->string('lado');
-            $table->string('observaciones');
+            $table->string('observaciones')->nullable();
+            $table->string('otraParticularidad')->nullable();
+            $table->string('otraModificacion')->nullable();
+            $table->string('otroColor')->nullable();
             $table->integer('idPartesCuerpo')->unsigned()->nullable();           
             $table->foreign('idPartesCuerpo')->references('id')->on('cat_partes_cuerpo');
             $table->integer('idColoresCuerpo')->unsigned()->nullable();           

@@ -11,6 +11,9 @@ class CedulaPartesCuerpo extends Model
 	protected $fillable = [
 		'lado',
 		'observaciones',
+		'otraParticularidad',
+		'otraModificacion',
+		'otroColor',
 		'idPartesCuerpo',
 		'idColoresCuerpo',
 		'idPersonaDesaparecida',
