@@ -20,8 +20,8 @@ class Cedula extends Model
 		'idDialecto',
 		'calzadoTalla',
 		'observacionesDesaparicion',
-		'estatura',
-		'peso',
+		//'estatura',
+		//'peso',
 		'objetos',
 		'modeloCalzado',
 		'otroColorCalzado',
@@ -31,9 +31,8 @@ class Cedula extends Model
 		'idCalzadomodelo',
 		'idCalzadocolor',
 		'idCalzadomarca',
-		'idComplexion',
-		'idColorPiel',
-		'idCeja',
+		//'idComplexion',
+		//'idColorPiel',
 	];    
 	public function desaparecidos()
 	{

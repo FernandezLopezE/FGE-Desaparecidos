@@ -13,13 +13,24 @@ $(document).ready(function(){
 			return "BUSCANDO";
 		}
 	});
-	///
-	$("body").on('keypress', '.sinNumeros', function(event){		
-		var inputValue = event.which;
-	    // permite letras y espacios solamente.
-	    if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) { 
-	            event.preventDefault(); 
-	        }		
+	/// Acepta solo letras y caracteres áéíóúü y ñ
+	$("body").on('keypress', '.soloLetras', function(event){		
+		key = (window.event) ? event.which : event.keyCode;
+       	tecla = String.fromCharCode(key).toLowerCase();
+       	letras = " áéíóúüabcdefghijklmnñopqrstuvwxyz";
+       	especiales = "8-37-39-46";
+
+       	tecla_especial = false;
+       	for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }	
 	});
 
 	$("body").on('keypress', '.sinEnter', function(event){		
@@ -43,6 +54,13 @@ $(document).ready(function(){
   		} else {
    			$(this).css({"border-color":"red"});
   		}
+	});
+
+	$("body").on('keypress', '.soloNumeros', function(event){		
+	  var key = window.event.keyCode;
+    	if (key < 48 || key > 57) {
+        	return false;
+    	}
 	});
 
 	/******************************************************
