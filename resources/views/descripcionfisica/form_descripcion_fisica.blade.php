@@ -216,7 +216,7 @@
 
 
 var tableDescripcion = $('#tableDescripcionFisica');
-		var routeIndex = '{!! route('consultas.index') !!}';	
+		var routeIndex = '{!! route('descripcionfisica.index') !!}';	
 		
 		var formatTableActions = function(value, row, index) {				
 			btn = '<button class="btn btn-info btn-xs edit" id="editDescripcionFisica"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
@@ -242,9 +242,9 @@ var tableDescripcion = $('#tableDescripcionFisica');
 			$('#modalGeneral').modal('show');
 		})*/
 		tableDescripcion.bootstrapTable({				
-			url: routeIndex+'/get_descripcion/1',
+			url: routeIndex+'/get_partes/{{$desaparecido->id}}',
 			columns: [{					
-				field: 'nombre',
+				field: 'nombreParteC',
 				title: 'Parte del cuerpo',
 			}, {
 				field: 'lado',
