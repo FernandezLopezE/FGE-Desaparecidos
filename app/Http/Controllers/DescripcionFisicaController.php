@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Desaparecido;
+use App\Models\CedulaPartesCuerpo;
 class DescripcionFisicaController extends Controller
 {
     /**
@@ -55,6 +56,8 @@ class DescripcionFisicaController extends Controller
          $parteCuerpo->otraModificacion =$request['otraModificacion'];
          $parteCuerpo->otroColor =$request['otroColor'];
          $parteCuerpo->observaciones = $request['observaciones'];
+
+         $partesCuerpo->save();
 
          return response()->json($desaparecido);
     }

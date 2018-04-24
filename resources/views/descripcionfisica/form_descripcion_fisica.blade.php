@@ -408,7 +408,7 @@ var tableDescripcion = $('#tableDescripcionFisica');
 
     };
     console.log(dataString);
-    /*$.ajax({
+    $.ajax({
       type: 'POST',
       url: '/descripcionfisica/store',
       data: dataString,
@@ -423,7 +423,7 @@ var tableDescripcion = $('#tableDescripcionFisica');
         console.log("error");
         console.log(data);
       }
-    });*/
+    });
   });
 
 	</script>
