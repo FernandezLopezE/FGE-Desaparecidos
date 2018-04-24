@@ -111,6 +111,9 @@ Route::get('/descripcionfisica/get_particularidades/{idParteCuerpo}', 'Descripci
 	->name('descripcionfisica.get_particularidades');
 Route::get('/descripcionfisica/get_modificaciones/{idParteCuerpo}', 'DescripcionFisicaController@getModificaciones')
 	->name('descripcionfisica.get_modificaciones');
+
+Route::get('/descripcionfisica/get_partes/{idExtraviado}', 'DescripcionFisicaController@getPartesCuerpo')
+	->name('descripcionfisica.get_partes');
 	
 
 Route::get('/descripcionfisica/descripcionf/{idPersonaDesaparecida}', 'DescripcionFisicaController@show');
