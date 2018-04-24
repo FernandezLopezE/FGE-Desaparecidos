@@ -1,6 +1,6 @@
 <head>
- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>  
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.js"></script>
+  <script type ="text/javascript" src ="/js/jquery.imagemapster.js"></script>
 </head>
 @extends('layouts.app_uipj')
 
@@ -225,11 +225,7 @@
 					{!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'nombreDiente'] ) !!}
 				</div>
 			</div><hr>
-			<!--
-			<div class="form-group row">
-				<img src="/images/esquema-dental.jpg" alt="" id="imagenPrueba"> 
-			</div>	
-			-->
+			
 			<h5>Higiene bucal</h5>
 			<div class="form-group row">
 				<div class="col-md-4">
@@ -289,6 +285,76 @@
 			</div>
 		</div>
 	</div>
+
+	
+	<div class="form-group row">
+		<div class="col-8">
+			<img src="/images/esquema-dental.jpg" width="560" height="474" border="0" usemap="#dientes" id="dientes" />
+		</div>
+		<div class="col-4">
+			{!! Form::label ('seleccion','Diente seleccionado') !!}
+			<input type="text" class="form-control" id="mostrar">
+			<p></p>
+		</div>
+		
+	</div>	
+
+	<map name="dientes">
+		
+		
+
+		<area shape="poly" coords="71,212,79,201,81,190,78,177,46,169,37,178,36,201,32,210,48,216,65,214" value="PRIMER MOLAR SUPERIOR IZQUIERDO" nohref="nohref" id="diente26" />
+		<area shape="poly" coords="57,135,66,134,70,135,76,138,81,141,84,143,87,151,87,156,84,163,78,168,71,172,58,170,49,168,43,160,43,151,46,143,50,140" value="SEGUNDO PREMOLAR SUPERIOR IZQUIERDO"  nohref="nohref" id="diente25" />
+		<area shape="poly" coords="70,103,80,99,86,101,90,103,92,107,95,114,93,124,90,129,87,129,81,134,77,134,71,133,67,131,60,126,59,120,60,110,66,104,68,103" value="PRIMER PREMOLAR SUPERIOR IZQUIERDO"  nohref="nohref" id="diente24" />
+		<area shape="poly" coords="92,79,102,74,108,74,111,83,114,90,119,103,113,116,104,115,97,112,94,107,91,104,84,97,82,92,82,87,94,77" value="CANINO SUPERIOR IZQUIERDA"  nohref="nohref" />
+		<area shape="poly" coords="110,66,131,57,137,56,144,59,149,71,148,85,148,94,137,99,129,99,119,92,114,89,112,84,110,74,111,68" value="INCISIVO LATERAL SUPERIOR IZQUIERDO"  nohref="nohref" />
+		<area shape="poly" coords="147,53,163,50,175,49,179,50,183,59,183,67,182,75,177,86,172,91,169,93,164,91,159,89,156,85,157,82,148,78,148,69,148,64,146,55" value="INCISIVO CENTRAL SUPERIOR IZQUIERDO"  nohref="nohref" />
+		<area shape="poly" coords="193,49,200,51,212,53,216,55,219,56,222,62,219,65,216,69,211,83,204,91,201,93,198,94,196,92,195,91,192,91,187,88,185,85,181,80,183,73,184,67,184,62,183,56,182,52,185,51,187,50" value="INCISIVO CENTRAL SUPERIOR DERECHO"  nohref="nohref" />
+		<area shape="poly" coords="262,77,269,79,277,82,280,84,283,89,286,96,286,100,281,103,273,108,268,112,261,115,256,115,250,115,249,112,251,101,250,94,250,88,252,86,255,82,257,79" value="CANINO SUPERIOR DERECHA"  nohref="nohref" />
+		<area shape="poly" coords="282,105,287,105,295,105,301,112,304,118,304,127,300,132,290,135,281,137,272,138,266,137,264,134,264,124,268,121,272,115,276,113,280,105" value="PRIMER PREMOLAR SUPERIOR DERECHO"  nohref="nohref" />
+		<area shape="poly" coords="295,137,312,142,316,147,318,156,318,163,314,169,309,171,298,172,292,173,286,174,281,173,275,169,275,164,276,157,276,150,280,146,285,142,290,138" value="SEGUNDO PREMOLAR SUPERIOR DERECHO"  nohref="nohref" />
+		<area shape="poly" coords="325,176,330,193,332,204,328,213,319,219,314,220,306,220,292,220,289,217,285,208,284,200,284,193,284,188,288,183,294,175,298,174,303,172,311,172" value="PRIMER MOLAR SUPERIOR DERECHO"  nohref="nohref" />
+		<area shape="poly" coords="37,293,36,300,39,311,47,330,58,325,69,324,82,318,83,313,81,302,76,287,73,283,67,280,49,280,37,292" value="PRIMER MOLAR INFERIOR IZQUIERDO"  nohref="nohref" />
+		<area shape="poly" coords="52,342,52,346,64,365,74,360,82,357,91,356,91,340,88,334,83,327,78,324,75,322,70,322,63,326,54,332,50,337" value="SEGUNDO PREMOLAR INFERIOR IZQUIERDO"  nohref="nohref" />
+		<area shape="poly" coords="68,374,67,381,73,392,94,391,103,382,105,375,106,368,104,364,102,359,97,357,92,357,87,357,80,357,71,363" value="PRIMER PREMOLAR INFERIOR IZQUIERDO"  nohref="nohref" />
+		<area shape="poly" coords="86,399,91,392,96,388,101,386,111,386,119,388,120,394,118,408,115,411,109,414,104,419,96,421,91,419,86,417,84,413,85,402" value="CANINO INFERIOR IZQUIERDA"  nohref="nohref" />
+		<area shape="poly" coords="116,416,119,409,130,401,136,401,140,403,141,411,142,421,141,430,139,437,138,441,131,441,120,440,115,438,113,436,114,418,115,418" value="INCISIVO LATERAL INFERIOR IZQUIERDO"  nohref="nohref" />
+		<area shape="poly" coords="156,419,162,411,166,411,171,415,176,416,174,431,174,437,174,447,166,450,158,450,151,450,146,444,145,438,146,429,162,413" value="INCISIVO CENTRAL INFERIOR IZQUIERDO"  nohref="nohref" />
+		<area shape="poly" coords="191,413,205,435,207,445,202,447,190,451,184,450,179,447,180,440,181,429,181,423,181,414,188,413" value="INCISIVO CENTRAL INFERIOR DERECHO"  nohref="nohref" />
+		<area shape="poly" coords="215,404,224,410,229,421,234,432,230,438,217,445,211,442,206,433,205,418,206,409,210,404" value="INCISIVO LATERAL INFERIOR DERECHO"  nohref="nohref" />
+		<area shape="poly" coords="233,411,244,431,248,430,259,423,265,417,267,411,266,404,263,393,255,394,244,390,238,389,233,396" value="CANINO INFERIOR DERECHA"  nohref="nohref" />
+		<area shape="poly" coords="246,372,252,384,253,388,265,394,274,399,285,394,285,382,283,376,281,371,277,368,273,364,269,361,265,361,255,360,248,367" value="PRIMER PREMOLAR INFERIOR DERECHO"  nohref="nohref" />
+		<area shape="poly" coords="264,352,280,364,286,367,298,367,303,362,305,353,303,340,301,335,297,333,290,332,282,332,274,330,266,336" value="SEGUNDO PREMOLAR INFERIOR DERECHO"  nohref="nohref" />
+		<area shape="poly" coords="276,323,300,331,310,333,314,330,315,325,318,316,321,306,320,297,315,291,307,288,299,287,293,287,286,289,280,292,275,296,274,310,276,322" value="PRIMER MOLAR INFERIOR DERECHA"  nohref="nohref" />
+		<area shape="poly" coords="215,80,216,91,219,100,229,99,239,94,250,86,255,82,256,76,251,66,243,61,235,59,224,58,221,58,220,64,217,67,217,68" value="INCISIVO LATERAL SUPERIOR DERECHO"  nohref="nohref" />
+	</map>
+
+<body>
+ 
+<div id="log"></div>
+ 
+<script>
+	 var diente26, diente25, diente24;
+
+     diente26 = $('#diente26').attr("value");
+    $('#diente26').click(function(event) {
+    	//alert("El valor es: "+$('#diente2').attr("value"));    
+    	$("#mostrar").val(diente26);
+
+	});
+
+     diente25 = $('#diente25').attr("value");
+    $('#diente25').click(function(event) {
+    	$("#mostrar").val(diente25);
+	});
+
+	diente24 = $('#diente24').attr("value");
+    $('#diente24').click(function(event) {
+    $("#mostrar").val(diente24);
+	});
+
+
+</script>
 
 @endsection
 
