@@ -4,12 +4,40 @@
 {!! Html::style('') !!}
 @endsection
 
+@section('titulo', 'Registro único de personas desaparecidas')
+
 @section('content')
 	{!! Form::model($desaparecido, ['action' => 'ExtraviadoController@store']) !!}
 
 	{{ Form::hidden('idCedula', $cedula->id, array('id' => 'idCedula')) }}
 
-	<div class="card border-primary">
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+			<a class="nav-item nav-link" href="#" aria-selected="true">
+				Entrevista
+			</a>
+			<a class="nav-item nav-link" href="{{route('informante.show',['id' => $cedula->id])}}" aria-selected="false">
+				Informantes
+			</a>
+			<a class="nav-item nav-link active" href="#" aria-selected="false">
+				Desaparecido
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Familiares
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Contacto
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Domicilios
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Antecedentes
+			</a>				
+	</div>
+</nav>
+
+<div class="card-body bg-white">
 		<div class="card-header">
 			<h5 class="card-title">Datos generales de la persona desaparecida
 				<button type="submit" class="btn btn-dark pull-right"  id="btnAgregarInformante">

@@ -106,6 +106,9 @@
 	@yield('scripts')
 	<script type="text/javascript">
 	$(function (){
+		
+		var routeIndex = '{!! route('consultas.index') !!}';
+
 		$.ajaxSetup({
 			headers: {
 				'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -113,6 +116,100 @@
 		});
 
 		$.validate({});
+
+		// Mostrando los municipios que pertenecen a determinado estado.
+		$('#idEstado').on('change', function(){		
+			$("#idMunicipio").empty();
+			var idEstado = $(this).val();
+			if(idEstado) {
+				$.ajax({
+					url: routeIndex+'/municipios/'+idEstado,
+					type:"GET",
+					dataType:"json",
+					success:function(data) {
+							$("#idMunicipio").empty();
+						$.each(data, function(key, value){
+							$("#idMunicipio").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+						});
+					},				
+				});
+			} else {
+				$('#idMunicipio').empty();
+			}
+		});
+
+		// Mostrando las localidades que pertenecen a determinado municipio.
+		 $('#idMunicipio').on('change', function(){
+			$("#idLocalidad").empty();
+			var idMunicipio = $(this).val();
+			if(idMunicipio) {			
+				$.ajax({
+					url: routeIndex+'/localidades/'+idMunicipio,
+					type:"GET",
+					dataType:"json",
+					success:function(data) {
+							$("#idLocalidad").empty();
+						$.each(data, function(key, value){
+							$("#idLocalidad").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+						});
+					},				
+				});
+			}
+			// Mostrando las colonias que pertenecen a determinado municipio.				
+			$("#idColonia").empty();
+			var idMunicipio = $(this).val();
+			if(idMunicipio) {			
+				$.ajax({
+					url: routeIndex+'/colonias/'+idMunicipio,
+					type:"GET",
+					dataType:"json",
+					success:function(data) {
+						$("#idColonia").empty();
+						$.each(data, function(key, value){
+							$("#idColonia").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+						});
+					},				
+				});
+			}
+
+			// Mostrando los codigos postales que pertenecen a determinado municipio.		
+			$("#idCodigoPostal").empty();
+			var idMunicipio = $(this).val();
+			if(idMunicipio) {
+				$.ajax({
+					url: routeIndex+'/codigos/'+idMunicipio,
+					type:"GET",
+					dataType:"json",
+					success:function(data) {
+							$("#idCodigoPostal").empty();
+						$.each(data, function(key, value){
+							$("#idCodigoPostal").append('<option value="'+ value.id +'">' +  value.codigoPostal + '</option>');
+						});
+					},				
+				});
+			}
+		});
+
+		//para Codigo Postal  seleccionando una colonia
+		$('#idColonia').on('change', function(){
+			$("#idCodigoPostal").empty();
+			var idColonia = $(this).val();
+			if(idColonia) {	
+				$.ajax({
+					url: routeIndex+'/codigos2/'+idColonia,
+					type:"GET",
+					dataType:"json",
+					success:function(data) {
+							$("#idCodigoPostal").empty();
+						$.each(data, function(key, value){
+							$("#idCodigoPostal").append('<option value="'+ value.id +'">' +  value.codigoPostal + '</option>');
+						});
+					},			   
+				});
+			} else {
+				$('#idColonia').empty();
+			}
+		});
 	})
 </script>
 	@include('template.partials.footer')
