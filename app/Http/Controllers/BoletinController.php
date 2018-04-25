@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 
 class BoletinController extends Controller
@@ -19,6 +19,10 @@ class BoletinController extends Controller
 		$view = view('desaparecidos.boletin', compact('desaparecido'))->render();
      	$pdf =\App::make('dompdf.wrapper');
     	$pdf -> loadHTML($view);
+        
+        
+        $pdf->setPaper('A5', 'landscape');
+
     	return $pdf->stream('formato_'.time().'.pdf');
 
 		//return view('desaparecido.show',compact('desaparecido'));

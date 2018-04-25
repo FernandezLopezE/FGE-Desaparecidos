@@ -1,45 +1,106 @@
-<<<<<<< HEAD
-=======
+<
 
-
-
->>>>>>> 2f6eaf846750eb9f2c515a582c1908ed2dd64f6f
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>Documento</title>
+<style type="text/css">
+
+
+@page { margin: 1px; }
+
+
+
+	body{
+		background-image: url(./images/boletin790x555.png);
+		background-size: 30%;
+		
+		}
+		
+		
+		div#foto{
+			float:right;
+			margin-right: 10px;
+			width: 280px;
+			height: 300px;
+			
+		}
+		div#informacion{
+			float:left;
+			margin-left:70px;
+			margin-right: 10px;
+			width: 400px;
+			height:300px;
+			
+		}
+		div#encabezado{
+			margin:auto;
+			width: 781px;
+			height:200px;
+			
+		}
+
+		h3{
+			font-family: Arial;
+		}
+			img{
+				width:200px; 
+				height:250px;
+				 border:10px solid #ddd;
+			}
+		
+			
+</style>
+
 </head>
+
+
 <body>
-	<h1>Persona desaparecida</h1>
-<div class="card flex-md-row mb-4 box-shadow h-md-250">
-	<img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px;" src="/personal/img/avatar.png" data-holder-rendered="true">
+		
+		<div id="encabezado"></div>
+	
+		<div id = "foto" >
+			<img src="./personal/img/avatar.png" />
+		</div>
+		<div id = "informacion" >
+			
+				<h3>
+					
+						{!! $desaparecido->persona->nombres !!} 
+						{!! $desaparecido->persona->primerAp !!} 
+						{!! $desaparecido->persona->segundoAp !!}
+					
+				</h3>
+				<strong class="d-inline-block mb-2 text-primary"><code>Apodo:</code> {!! $desaparecido->apodo !!} </strong>
+				<div class="mb-1 text-muted"><code>Genero:</code> {!! $desaparecido->persona->sexo !!}</div>
+				<div class="mb-1 text-muted"><code>Edad de extravio:</code>{!! $desaparecido->edadExtravio !!}</div>
+				<div class="mb-1 text-muted"><code>Edad aparente:</code>{!! $desaparecido->edadAparente !!}</div>
+
+				<div class="mb-1 text-muted"><code>Fecha de nacimiento:</code>{!! \Carbon\Carbon::parse($desaparecido->persona->fechaNacimiento)->format('d/m/Y') !!}</div>
+				<div class="mb-1 text-muted"><code>Estado civil: </code>{!! $desaparecido->edocivil->nombre !!}</div>
+				<div class="mb-1 text-muted"><code>Nacionalidad: </code>{!! $desaparecido->persona->nacionalidad->nombre !!}</div>
+				<div class="mb-1 text-muted"><code>Escolaridad: </code>{!! $desaparecido->escolaridad->nombre !!}</div>
+				<div class="mb-1 text-muted"><code>Ocupación: </code>{!! $desaparecido->ocupacion->nombre !!}</div>
+	
+
+		</div>
 
 	
-	<div class="card-body d-flex flex-column align-items-start">		
-		<h3 class="mb-0">
-			<a class="text-dark" href="#">
-				{!! $desaparecido->persona->nombres !!} 
-				{!! $desaparecido->persona->primerAp !!} 
-				{!! $desaparecido->persona->segundoAp !!}
-			</a>
-		</h3>
-		<strong class="d-inline-block mb-2 text-primary"><code>Apodo:</code> {!! $desaparecido->apodo !!} </strong>
-		<div class="mb-1 text-muted"><code>Genero:</code> {!! $desaparecido->persona->sexo !!}</div>
-		<div class="mb-1 text-muted"><code>Edad de extravio:</code>{!! $desaparecido->edadExtravio !!}</div>
-		<div class="mb-1 text-muted"><code>Edad aparente:</code>{!! $desaparecido->edadAparente !!}</div>
-<<<<<<< HEAD
-		<div class="mb-1 text-muted"><code>Fecha de nacimiento:</code>{!! \Carbon\Carbon::parse($desaparecido->persona->fechaNacimiento)->format('d/m/Y') !!}</div>
-		<div class="mb-1 text-muted"><code>Estado civil: </code>{!! $desaparecido->edocivil->nombre !!}</div>
-		<div class="mb-1 text-muted"><code>Nacionalidad: </code>{!! $desaparecido->persona->nacionalidad->nombre !!}</div>
-		<div class="mb-1 text-muted"><code>Escolaridad: </code>{!! $desaparecido->escolaridad->nombre !!}</div>
-		<div class="mb-1 text-muted"><code>Ocupación: </code>{!! $desaparecido->ocupacion->nombre !!}</div>
-	</div>
-</div>
-=======
-		
->>>>>>> 2f6eaf846750eb9f2c515a582c1908ed2dd64f6f
+	
 
 </body>
 
 </html>
+
+div#general{
+
+			margin:auto;
+			margin-top: 2px;
+			width: 790px;
+			height: 555px;
+			background-color: red;
+
+		}
+<img src="/personal/img/avatar.png" width="200" height="250" />
+

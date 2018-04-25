@@ -79,13 +79,13 @@ Route::resource('consultas','ConsultasController');
 //Rutas alejandro
 Route::get('/desaparecido/generarboletin/{idCedula}', 'ConsultasController@jsonBoletin')
 	->name('consultas.get_boletin');
-<<<<<<< HEAD
+
 Route::get('/desaparecido/generarboletinPDF', 'MailController@generar_boletin');
-=======
+
 Route::post('/desaparecido/generarboletinPDF/{idCedula}/{idPersona}', 'MailController@generar_boletin');
 //Route::get('/desaparecido/generarboletinPDF/', 'MailController@generar_boletin');
 	
->>>>>>> 2f6eaf846750eb9f2c515a582c1908ed2dd64f6f
+
 
 //boletin controller
 Route::resource('boletin','BoletinController');
