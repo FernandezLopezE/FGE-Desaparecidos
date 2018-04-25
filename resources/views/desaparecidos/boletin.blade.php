@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 2f6eaf846750eb9f2c515a582c1908ed2dd64f6f
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,6 +28,7 @@
 		<div class="mb-1 text-muted"><code>Genero:</code> {!! $desaparecido->persona->sexo !!}</div>
 		<div class="mb-1 text-muted"><code>Edad de extravio:</code>{!! $desaparecido->edadExtravio !!}</div>
 		<div class="mb-1 text-muted"><code>Edad aparente:</code>{!! $desaparecido->edadAparente !!}</div>
+<<<<<<< HEAD
 		<div class="mb-1 text-muted"><code>Fecha de nacimiento:</code>{!! \Carbon\Carbon::parse($desaparecido->persona->fechaNacimiento)->format('d/m/Y') !!}</div>
 		<div class="mb-1 text-muted"><code>Estado civil: </code>{!! $desaparecido->edocivil->nombre !!}</div>
 		<div class="mb-1 text-muted"><code>Nacionalidad: </code>{!! $desaparecido->persona->nacionalidad->nombre !!}</div>
@@ -29,6 +36,9 @@
 		<div class="mb-1 text-muted"><code>Ocupación: </code>{!! $desaparecido->ocupacion->nombre !!}</div>
 	</div>
 </div>
+=======
+		
+>>>>>>> 2f6eaf846750eb9f2c515a582c1908ed2dd64f6f
 
 </body>
 

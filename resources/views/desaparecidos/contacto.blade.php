@@ -15,40 +15,83 @@
 					</h5>
 				</div>	
 			</div>
-			<div class ="row">
+		</div>
+		</br>	
+		<div class ="row">
 				<div class = "md-col">
 					{{ Form::hidden('idCedula', $id, array('id' => 'idCedula')) }}
+					{{ Form::hidden('idDesaparecido', $id, array('id' => 'idDesaparecido')) }}
+
 				</div>
 				
-			</div>	
-		</br>
-			<div class ="row">
-				<div class = "col-4">
-					<p> Generar boletín de extravío :</p>
+			</div>
+		<div class ="row">
+				<div class = "col-8">
+					
+					{!!Form::label('gbe', 'Generar boletín de extravío', ['class' => 'center'])!!}
 				</div>
 				
-				<div class = "col-4">
-					{!!Form::submit('GENERAR BOLETÍN', ['id' => 'btnGenerarBoletin', 'class'=> 'btnGenerarBoletin' ])!!}
+				<div class = "col-3">
+					{!!Form::submit('GENERAR PDF', ['id' => 'btnGenerarBoletin', 'class'=> 'btnGenerarBoletin form-control btn-primary openbutton' ])!!}
+
+
+					{{--{!!link_to_action('MailController@generar_boletin', $title = 'GENERAR BOLETÍN', $parameters = ['idPersona'], $attributes = ['class'=> 'btnGenerarBoletin' ])!!}--}}
 				</div>
-				
-				
-				{{--<div class ="main-contact">
-					{!!Form::open(['route' =>'mail.store', 'method '=>'POST' , 'enctype' =>'multipart/form-data'])!!}
-					<div class ="col-6"></div>
-					{!!Form::text('name', null,['placeholder'=>'nombre' ,'id' =>'nombre'])!!}
-					{!!Form::text('email', null,['placeholder'=>'email','id' =>'email'])!!}
-					{!!Form::textarea('mensaje', null,['placeholder'=>'mensaje','id' =>'mensaje'])!!}
-					{!!Form::file('file', null,['archivo'=>'Seleccionar archivo'])!!}
-				</div>
-				{!!Form::submit('ENVIAR')!!}
-				{{--{!!Form::close()!!}
-				</div>
-				
-				{!!Form::submit('CREAR PDF', ['id' => 'btnCrearPdf', 'class'=> 'btnCrearPdf'])!!}--}}
-			</div>	
 		</div>
-		
+		</br>	
 	</div>
+				
+			
+
+	<div class="card border-primary">
+		<div class="card-header">
+			<div class="row">
+				<div class="col-lg-12">
+					<h5 class="card-title">
+						ENVÍO DE BOLETÍN
+						{{--<button type="button" class="btn btn-dark pull-right"  id="btnAgregarInformante"><i class="fa fa-plus"></i> AGREGAR PERSONA</button>--}}
+
+					</h5>
+				</div>	
+			</div>
+		</div>
+			<div class ="main-contact">
+
+				 </br>
+
+				<div class = "row">
+					<div class="col">
+					{!! Form::label ('idEdocivil','Estado civil:') !!}
+					
+					</div>
+					<div class="col">
+					{!! Form::select ('idCorreosExternos',$correosExternos ,'', ['class' => 'form-control', 'id' => 'idCorreosExternos'] )!!}
+					</div>
+				</div>
+			</br>
+				<div class ="row">
+
+					<div class="col">
+						{!!Form::open(['route' =>'mail.store', 'method '=>'POST' , 'enctype' =>'multipart/form-data', 'class' => 'form-control'])!!}
+					
+						{!!Form::file('file', null,['archivo'=>'Seleccionar archivo'])!!}
+
+
+						{!!Form::submit('ENVIAR')!!}
+						{!!Form::close()!!}
+						
+					</div>
+					
+
+				</div>
+						
+						<div class ="col-6"></div>
+						
+						
+			</div>
+
+	</div>		
+
 
 	
 
@@ -76,7 +119,7 @@ $(document).ready(function(){
 						type: 'POST',
 					url: '/mail/pdf',
 					data: dataString,
-					dataType: 'json',
+					//dataType: 'json',
 					success: function(data) {
 						console.log(data);
 					},
@@ -85,15 +128,16 @@ $(document).ready(function(){
 					}
 				});
 			});
-		$('.btnGenerarBoletin').click (function(){
+		/*$('.btnGenerarBoletin').click (function(){
 				var idCedula= $("#idCedula").val();
-			/*var dataString = {
+				var idDesaparecido= $("#idDesaparecido").val();
+			var dataString = {
 					idCed: $("#idCedula").val()
-			};*/
+			};
 			//console.log(dataString);
 			$.ajax({
 					type: 'GET',
-					url: '/desaparecido/generarboletin/'+idCedula,
+					url: '/desaparecido/generarboletin/'+idCedula+idDesaparecido,
 					//data: dataString,
 					dataType: 'json',
 					success: function(data) {						
@@ -117,7 +161,34 @@ $(document).ready(function(){
 						console.log(data);
 					}
 			});
+		})*/
+
+		$('.btnGenerarBoletin').click (function(){
+				var idCedula= $("#idCedula").val();
+				var idPersona= $("#idDesaparecido").val();
+			var dataString = {
+					idCedula: $("#idCedula").val(),
+					idPersona: $("#idDesaparecido").val()
+			};
+			console.log(dataString);
+			$.ajax({
+								type: 'POST',
+								url: '/desaparecido/generarboletinPDF/'+idCedula+'/'+idPersona,
+								data: dataString,
+								dataType: 'text',
+								success: function(data) {						
+									console.log("success");
+																		
+								},
+								error: function(data) {
+									console.log("te he fallado we");
+								}
+							});
+			
 		})
+		$('#idCorreosExternos').select2({
+			width : "100%",
+		});
 
 		
 
