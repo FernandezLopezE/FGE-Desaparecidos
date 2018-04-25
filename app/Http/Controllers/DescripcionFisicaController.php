@@ -195,17 +195,96 @@ class DescripcionFisicaController extends Controller
 
     public function getPartesCuerpo($idExtraviado){
 
-        $partes = \DB::table('cedula_partes_cuerpo as cedup')
-                    ->join('cat_partes_cuerpo as cpartes','cedup.idPartesCuerpo','=','cpartes.id')
-                    ->join('cat_colores_cuerpo as ccuerpo','cedup.idColoresCuerpo','=','ccuerpo.id')
-                    ->join('pivot_subparti_cuerpo as pivotparti','cedup.id','=','pivotparti.idCedulaPartesCuerpo')
-                    ->join('cat_sub_particularidades as parti','pivotparti.idSubParticularidades','=','parti.id')
-                    ->join('pivot_submodi_cuerpo as pivotmodi','cedup.id','=','pivotmodi.idCedulaPartesCuerpo')
-                    ->join('cat_sub_modificaciones as modi','pivotmodi.idSubModificaciones','=','modi.id')
-                    ->select('cpartes.nombre as nombreParteC','cedup.lado as lado','parti.nombre as particularidad','modi.nombre as modifiacion','cedup.observaciones as observaciones')
-                    ->where('cedup.idPersonaDesaparecida',$idExtraviado)
-                    ->get();
+        $partesCuerpo = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
+                        ->leftjoin('cat_colores_cuerpo as catcolores','catcolores.id','=','cpc.idColoresCuerpo')
+                        ->select('cpc.idPartesCuerpo',
+                                'catpc.nombre as nombreCuerpo',
+                                'cpc.lado',
+                                'cpc.observaciones',
+                                'catcolores.nombre as colorCuerpo',
+                                'cpc.otraParticularidad',
+                                'cpc.otraModificacion',
+                                'cpc.otroColor')
+                        ->where('cpc.idPersonaDesaparecida',$idExtraviado)
+                        ->get();
 
-            return response()->json($partes);
+        /*foreach ($partesCuerpo as $parte) {
+            # code...
+            $particularidades = \DB::table('cedula_partes_cuerpo as cpc')
+                                ->join('pivot_subparti_cuerpo as pspc','cpc.id','=','pspc.idCedulaPartesCuerpo')
+                                ->join('cat_sub_particularidades as csp','csp.id','=','pspc.idSubParticularidades')
+                                ->select('csp.nombre')
+                                ->where('cpc.idPartesCuerpo',$parte->idPartesCuerpo)
+                                ->get();
+            echo $particularidades;
+            echo "<br>";
+
+            $modificaciones = \DB::table('cedula_partes_cuerpo as cpc')
+                                ->join('pivot_submodi_cuerpo as psmc','cpc.id','=','psmc.idCedulaPartesCuerpo')
+                                ->join('cat_sub_modificaciones as csm','csm.id','=','psmc.idSubModificaciones')
+                                ->select('csm.nombre')
+                                ->where('cpc.idPartesCuerpo',$parte->idPartesCuerpo)
+                                ->get();
+            echo $modificaciones;
+            echo "<br>";
+        }
+        */
+        //return response()->json($particularidades);
+
+        $i = 0;
+        foreach ($partesCuerpo as $value) {
+
+             $particularidades = \DB::table('cedula_partes_cuerpo as cpc')
+                                ->join('pivot_subparti_cuerpo as pspc','cpc.id','=','pspc.idCedulaPartesCuerpo')
+                                ->join('cat_sub_particularidades as csp','csp.id','=','pspc.idSubParticularidades')
+                                ->select('csp.nombre as particularidad')
+                                ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
+                                ->get();
+
+
+            /* echo $particularidades;
+            echo "<br>";*/
+
+             $modificaciones = \DB::table('cedula_partes_cuerpo as cpc')
+                                ->join('pivot_submodi_cuerpo as psmc','cpc.id','=','psmc.idCedulaPartesCuerpo')
+                                ->join('cat_sub_modificaciones as csm','csm.id','=','psmc.idSubModificaciones')
+                                ->select('csm.nombre as modificacion')
+                                ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
+                                ->get();
+            /*echo $modificaciones;
+            echo "<br>";*/
+
+            $longitud = count($particularidades);
+            $nParticularidad = '';
+            $nModificaciones = '';
+            for($j=0;$j < $longitud; $j++){
+                $nParticularidad = $particularidades[$j]->particularidad.', '.$nParticularidad  ;
+                
+            }
+
+            $longitud = count($modificaciones);
+            for($j=0;$j < $longitud; $j++){
+                $nModificaciones = $modificaciones[$j]->modificacion.', '.$nModificaciones;
+            }
+
+            $cuerpo[$i] = array('id_cuerpo' => $value->idPartesCuerpo,
+                                'nombre' => $value->nombreCuerpo,
+                                'lado' => $value->lado,
+                                'color' => $value->colorCuerpo,
+                                'particularidades' => trim($nParticularidad,', '),
+                                'modificaciones' => trim($nModificaciones,', '),
+                                'otraParticularidad' => $value->otraParticularidad,
+                                'otraModificacion' => $value->otraModificacion,
+                                'otroColor' => $value->otroColor,
+                                'observaciones' => $value->observaciones
+
+                                 ); 
+            /*print_r( $cuerpo[$i]);
+            echo "<br>";*/
+            $i++;
+        }
+
+        return response()->json($cuerpo);        
     }
 }
