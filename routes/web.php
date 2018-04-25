@@ -82,11 +82,17 @@ Route::get('/desaparecido/generarboletin/{idCedula}', 'ConsultasController@jsonB
 Route::get('/desaparecido/generarboletinPDF', 'MailController@generar_boletin');
 
 //boletin controller
-
 Route::resource('boletin','BoletinController');
+//MailController
+Route::resource ('correo','MailController');
+//Cargar las imagenes
+Route::resource('image-view','CargarDocumentosController');
+Route::post('image-view','CargarDocumentosController@store');
 
 
 
+
+//ladas
 Route::get('lada/{id}', 'LadaController@getLadas');
 Route::resource('/lada','LadaController');
 
@@ -176,5 +182,7 @@ Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');
 
 Route::resource ('mail','MailController');
 Route::get('send', 'MailController@send');
+
+
 
 

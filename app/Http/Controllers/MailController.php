@@ -10,10 +10,53 @@ use Session;
 use Redirect;
 use Barryvdh\DomPDF\Facade as PDF;
 
+
+
+
 class MailController extends Controller
 {
     
+	public function show($id){
+		$idCedula = $id;
+		$cedula = \App\Models\Cedula::find($idCedula);
+
+			//esto es para la vista de historial dental y radiografias
+		$option = array(
+			'0' => 'SIN INFORMACION',
+			'1' => 'SI');
+		/*$meses = array(
+			'1' => 'ENERO',
+			'2' => 'FEBRERO',
+			'3' => 'MARZO',
+			'4' => 'ABRIL',
+			'5' => 'MAYO',
+			'6' => 'JUNIO',
+			'7' => 'JULIO',
+			'8' => 'AGOSTO',
+			'9' => 'SEPTIEMBRE',
+			'10' => 'OCTUBRE',
+			'11' => 'NOVIEMBRE',
+			'12' => 'DICIEMBRE');*/
+
+
+		return view('cargardocumentos.historialdental_radiografia',[
+			'id' => $cedula->id,
+			'option' =>$option
+
+		]);
+			
+	}
+	
+
+
+
+
+
 		//esta funcion envia correo electronico  a partir de una vista
+    
+
+
+
     public function store (Request $request){
     	
     	$file = $request->file('file');

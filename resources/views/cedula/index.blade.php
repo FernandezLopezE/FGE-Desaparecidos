@@ -48,7 +48,14 @@
 			</tbody>
 			
 		</table>
-
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+			<a href="{{route('image-view.show', ['id' => $cedula->id])}}">
+								CORREO
+							</a>
 	</div>
 </div>
 
