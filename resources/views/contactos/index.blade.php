@@ -11,36 +11,41 @@
 	
 @endsection
 
-@section('titulo', 'Reporte No: <code>123456789</code>')
+@section('titulo', 'Registro único de personas desaparecidas')
 
 @section('content')
 
-	<div class="card border-primary">
-		<div class="card-header">
-			<div class="row">
-				<div class="col-lg-2 pull-left">
-					<a href="{{route('extraviado.create_desaparecido',['id' => $desaparecido->idCedula])}}">
-						<i class="fa fa-chevron-circle-left gi-3x"></i>
-					</a>			
-				</div>
-				<div class="col-lg-8">
-					<h5 class="card-title">						
-						<span align="center">CONTACTOS DE LA PERSONA DESAPARECIDA</span>	
-					</h5>
-				</div>
-				<div class="col-lg-2">
-					<a href="{{route('contactos.show',['id' => $desaparecido->id])}}">
-							<i class="fa fa-chevron-circle-right gi-3x pull-right"></i>
-					</a>
-				</div>	
-			</div>	
-		</div>
-		<div class="card-body">
+
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+			<a class="nav-item nav-link" href="#" aria-selected="true">
+				Entrevista
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Informantes
+			</a>
+			<a class="nav-item nav-link" href="{{route('extraviado.show',['id' => $desaparecido->idCedula])}}" aria-selected="false">
+				Desaparecido
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Familiares
+			</a>
+			<a class="nav-item nav-link active" href="{{route('contactos.show',['id' => $desaparecido->id])}}" aria-selected="false">
+				Contacto
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Domicilios
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Antecedentes
+			</a>				
+	</div>
+</nav>
 			<button type="button" class="btn btn-dark pull-right"  id="btnAgregarContacto"><i class="fa fa-plus"></i> Agregar contacto</button>
 			<table id="tableContactos" ></table>
 			@include('contactos.modals.index')
 		</div>
-	</div>
+
 
 @endsection
 

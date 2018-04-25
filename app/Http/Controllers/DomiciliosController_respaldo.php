@@ -9,8 +9,6 @@ use App\Models\CatEstado;
 use App\Models\CatLocalidad;
 use App\Models\Domicilio;
 
-
-
 class DomiciliosController extends Controller
 {
     public function index(){

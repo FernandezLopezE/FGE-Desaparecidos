@@ -48,7 +48,10 @@ class ConsultasController extends Controller
 	{
 		$familiares = \App\Models\Familiar::where('idDesaparecido', $idDesaparecido)->get();
 
+		return response()->json($familiares);
+
     }
+
     public function jsonContactosPersona(Request $request, $idDesaparecido)
     {
         $contacto = \App\Models\Contacto::where('idDesaparecido', $idDesaparecido)->get();
