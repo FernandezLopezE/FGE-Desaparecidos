@@ -23,6 +23,8 @@ Route::get('/', 'InicioController@index');
 
 	Route::resource('familiar','FamiliarController');
 
+	Route::resource('domicilios','DomicilioController');
+
 	Route::resource('antecedentes','AntecedenteController');
 
 

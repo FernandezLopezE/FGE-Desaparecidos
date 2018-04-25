@@ -10,30 +10,42 @@
 	
 @endsection
 
-@section('titulo', 'Reporte de investigación de una persona desaparecida')
+@section('titulo', 'Registro único de personas desaparecidas')
 
 @section('content')
 	{{ Form::hidden('idCedula', $cedula->id, array('id' => 'idCedula')) }}
-
-	<div class="card border-primary">
-		<div class="card-header">
-			<div class="row">
-				<div class="col-lg-12">
-					<h5 class="card-title">
-						DATOS DE LOS INFORMANTES
-						<button type="button" class="btn btn-dark pull-right"  id="btnAgregarInformante"><i class="fa fa-plus"></i> AGREGAR PERSONA</button>
-						<a href="{{route('extraviado.create_desaparecido',['id' => $cedula->id])}}" class="btn btn-dark pull-right">
-							<i class="fa fa-pencil-square-o"></i> SIGUIENTE
-						</a>
-					</h5>
-				</div>	
-			</div>	
-		</div>
-		<div class="card-body">
-			<table id="tableInformantes" ></table>
-			@include('informante.modals.modal_informante')
-		</div>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+			<a class="nav-item nav-link" href="{{route('cedula.show',['id' => $cedula->id])}}" aria-selected="true">
+				Entrevista
+			</a>
+			<a class="nav-item nav-link active" href="#" aria-selected="false">
+				Informantes
+			</a>
+			<a class="nav-item nav-link" href="{{route('extraviado.create_desaparecido',['id' => $cedula->id])}}" aria-selected="false">
+				Desaparecido
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Familiares
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Domicilios
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Antecedentes
+			</a>				
 	</div>
+</nav>
+
+<button type="button" class="btn btn-dark pull-right"  id="btnAgregarInformante">
+	AGREGAR
+</button>	
+
+<div class="card-body bg-white">
+	<table id="tableInformantes" ></table>
+	@include('informante.modals.modal_informante')
+</div>
+	
 
 @endsection
 
@@ -334,106 +346,7 @@
 				}
 			});
 
-
-
-		})	
-
-
-
-	// Mostrando los municipios que pertenecen a determinado estado.
-	$('#idEstado').on('change', function(){		
-		$("#idMunicipio").empty();
-		var idEstado = $(this).val();
-		if(idEstado) {
-			$.ajax({
-				url: routeIndex+'/municipios/'+idEstado,
-				type:"GET",
-				dataType:"json",
-				success:function(data) {
-						$("#idMunicipio").empty();
-					$.each(data, function(key, value){
-						$("#idMunicipio").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
-					});
-				},				
-			});
-		} else {
-			$('#idMunicipio').empty();
-		}
-	});
-
-	// Mostrando las localidades que pertenecen a determinado municipio.
-	 $('#idMunicipio').on('change', function(){
-		$("#idLocalidad").empty();
-		var idMunicipio = $(this).val();
-		if(idMunicipio) {			
-			$.ajax({
-				url: routeIndex+'/localidades/'+idMunicipio,
-				type:"GET",
-				dataType:"json",
-				success:function(data) {
-						$("#idLocalidad").empty();
-					$.each(data, function(key, value){
-						$("#idLocalidad").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
-					});
-				},				
-			});
-		}
-		// Mostrando las colonias que pertenecen a determinado municipio.				
-		$("#idColonia").empty();
-		var idMunicipio = $(this).val();
-		if(idMunicipio) {			
-			$.ajax({
-				url: routeIndex+'/colonias/'+idMunicipio,
-				type:"GET",
-				dataType:"json",
-				success:function(data) {
-					$("#idColonia").empty();
-					$.each(data, function(key, value){
-						$("#idColonia").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
-					});
-				},				
-			});
-		}
-
-		// Mostrando los codigos postales que pertenecen a determinado municipio.		
-		$("#idCodigoPostal").empty();
-		var idMunicipio = $(this).val();
-		if(idMunicipio) {
-			$.ajax({
-				url: routeIndex+'/codigos/'+idMunicipio,
-				type:"GET",
-				dataType:"json",
-				success:function(data) {
-						$("#idCodigoPostal").empty();
-					$.each(data, function(key, value){
-						$("#idCodigoPostal").append('<option value="'+ value.id +'">' +  value.codigoPostal + '</option>');
-					});
-				},				
-			});
-		}
-	});
-
-	//para Codigo Postal  seleccionando una colonia
-	$('#idColonia').on('change', function(){
-		$("#idCodigoPostal").empty();
-		var idColonia = $(this).val();
-		if(idColonia) {	
-			$.ajax({
-				url: routeIndex+'/codigos2/'+idColonia,
-				type:"GET",
-				dataType:"json",
-				success:function(data) {
-						$("#idCodigoPostal").empty();
-					$.each(data, function(key, value){
-						$("#idCodigoPostal").append('<option value="'+ value.id +'">' +  value.codigoPostal + '</option>');
-					});
-				},			   
-			});
-		} else {
-			$('#idColonia').empty();
-		}
-	});
-
+		})
 	})
 </script>
 @endsection

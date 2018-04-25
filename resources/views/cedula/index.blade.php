@@ -4,7 +4,7 @@
 	{!! Html::style('') !!}
 @endsection
 
-@section('titulo', 'Reporte de investigación de una persona desaparecida')
+@section('titulo', 'Registro único de personas desaparecidas')
 
 @section('content')
 <div class="card">
