@@ -193,11 +193,12 @@
 										['class' => 'form-control'])!!}	
 				</div>
 				<div class="form-group col-lg-2">
-					{!! Form::label ('lada','Lada:') !!}
-					{!! Form::select ('lada[]',
-										$ladas,
-										'',
-										['class' => 'form-control'] )!!}	
+					{!! Form::label ('lada','Código del país:') !!}
+					{!! Form::text ('lada[]',
+										old(''),
+										['class' => 'form-control',
+											'id' => 'lada'
+											] )!!}		
 				</div>
 				<div class="form-group col-lg-3">
 					{!! Form::label ('informanteTelefonos','Número:') !!}

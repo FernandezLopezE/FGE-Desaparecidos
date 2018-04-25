@@ -25,6 +25,9 @@ Route::get('/', 'InicioController@index');
 
 	Route::resource('antecedentes','AntecedenteController');
 
+	Route::resource('contactos','ContactoController');
+
+
 
 Route::get('consultas/get_cedulas', 'ConsultasController@jsonCedulas');
 Route::get('consultas/get_informantes/{idCedula}', 'ConsultasController@jsonInformantes')

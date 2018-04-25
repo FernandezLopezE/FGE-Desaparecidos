@@ -29,7 +29,7 @@
 					</h5>
 				</div>
 				<div class="col-lg-2">
-					<a href="">
+					<a href="{{route('contactos.show',['id' => $desaparecido->id])}}">
 							<i class="fa fa-chevron-circle-right gi-3x pull-right"></i>
 					</a>
 				</div>	

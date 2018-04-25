@@ -38,6 +38,7 @@
 @endsection
 
 @section('scripts')
+{!! HTML::script('personal/js/lada.js') !!}
 <script type="text/javascript">
 	$(function (){
 		var table = $('#tableInformantes');
