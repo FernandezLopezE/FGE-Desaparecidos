@@ -358,7 +358,7 @@
 
 		$('#idDocumentoIdentidad').change(function(){
 			documento = $('#idDocumentoIdentidad').val();			
-			if (documento == "7") {					
+			if (documento == "8") {					
 					$("#otraIdDIV").show();
 			} else {					
 					$("#otraIdDIV").hide();
