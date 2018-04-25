@@ -205,7 +205,8 @@ class DescripcionFisicaController extends Controller
                                 'catcolores.nombre as colorCuerpo',
                                 'cpc.otraParticularidad',
                                 'cpc.otraModificacion',
-                                'cpc.otroColor')
+                                'cpc.otroColor',
+                                'cpc.id')
                         ->where('cpc.idPersonaDesaparecida',$idExtraviado)
                         ->get();
 
@@ -240,8 +241,15 @@ class DescripcionFisicaController extends Controller
                                 ->join('cat_sub_particularidades as csp','csp.id','=','pspc.idSubParticularidades')
                                 ->select('csp.nombre as particularidad')
                                 ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
+                                ->where('pspc.idCedulaPartesCuerpo',$value->id)
                                 ->get();
 
+            $longitud = count($particularidades);
+            $nParticularidad = '';
+            for($j=0;$j < $longitud; $j++){
+                $nParticularidad = $particularidades[$j]->particularidad.', '.$nParticularidad  ;
+                
+            }
 
             /* echo $particularidades;
             echo "<br>";*/
@@ -251,21 +259,17 @@ class DescripcionFisicaController extends Controller
                                 ->join('cat_sub_modificaciones as csm','csm.id','=','psmc.idSubModificaciones')
                                 ->select('csm.nombre as modificacion')
                                 ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
+                                ->where('psmc.idCedulaPartesCuerpo',$value->id)
                                 ->get();
             /*echo $modificaciones;
             echo "<br>";*/
 
-            $longitud = count($particularidades);
-            $nParticularidad = '';
+            
             $nModificaciones = '';
-            for($j=0;$j < $longitud; $j++){
-                $nParticularidad = $particularidades[$j]->particularidad.', '.$nParticularidad  ;
-                
-            }
-
-            $longitud = count($modificaciones);
-            for($j=0;$j < $longitud; $j++){
-                $nModificaciones = $modificaciones[$j]->modificacion.', '.$nModificaciones;
+            
+            $longitud2 = count($modificaciones);
+            for($x=0;$x < $longitud2; $x++){
+                $nModificaciones = $modificaciones[$x]->modificacion.', '.$nModificaciones;
             }
 
             $cuerpo[$i] = array('id_cuerpo' => $value->idPartesCuerpo,
@@ -283,6 +287,8 @@ class DescripcionFisicaController extends Controller
             /*print_r( $cuerpo[$i]);
             echo "<br>";*/
             $i++;
+            $nParticularidad = '';
+            $nModificaciones = '';
         }
 
         return response()->json($cuerpo);        
