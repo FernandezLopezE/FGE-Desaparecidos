@@ -244,16 +244,16 @@ var tableDescripcion = $('#tableDescripcionFisica');
 		tableDescripcion.bootstrapTable({				
 			url: routeIndex+'/get_partes/{{$desaparecido->id}}',
 			columns: [{					
-				field: 'nombreParteC',
+				field: 'nombre',
 				title: 'Parte del cuerpo',
 			}, {
 				field: 'lado',
 				title: 'Lado',									
 			}, {
-				field: 'nombre',
+				field: 'particularidades',
 				title: 'Particularidades',									
 			}, {					
-				field: 'nombre',
+				field: 'modificaciones',
 				title: 'Modificaciones',
 			}, {					
 				field: 'observaciones',
