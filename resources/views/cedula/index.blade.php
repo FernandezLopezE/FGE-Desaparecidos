@@ -35,7 +35,9 @@
 							<a href="{{route('cedula.show', ['id' => $cedula->id])}}">
 								DETALLE
 							</a>
-							<a href="{{route('cedula.show', ['id' => $cedula->id])}}">
+
+							<a href="{{route('boletin.show', ['id' => $cedula->id])}}">
+
 								BOLETIN
 							</a>
 						</th>
@@ -48,6 +50,17 @@
 			</tbody>
 			
 		</table>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+			<a href="{{route('image-view.show', ['id' => $cedula->id])}}">
+								SUBIR DOCUMENTOS
+							</a>
+			<a href="{{route('mail.show', ['id' => $cedula->id])}}">
+								CORREO
+							</a>
 
 	</div>
 </div>

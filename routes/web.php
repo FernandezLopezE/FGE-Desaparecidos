@@ -81,6 +81,32 @@ Route::get('consultas/get_senas', 'ConsultasController@jsonSenas')
 
 Route::resource('consultas','ConsultasController');
 
+// Consultar todas la cedulas de investigación.
+
+//Rutas alejandro
+Route::get('/desaparecido/generarboletin/{idCedula}', 'ConsultasController@jsonBoletin')
+	->name('consultas.get_boletin');
+
+Route::get('/desaparecido/generarboletinPDF', 'MailController@generar_boletin');
+
+Route::post('/desaparecido/generarboletinPDF/{idCedula}/{idPersona}', 'MailController@generar_boletin');
+//Route::get('/desaparecido/generarboletinPDF/', 'MailController@generar_boletin');
+//boletin controller
+Route::resource('boletin','BoletinController');
+//MailController
+Route::resource ('mail','MailController');
+Route::get ('enviar','MailController@store');
+//Cargar las imagenes
+Route::resource('image-view','CargarDocumentosController');
+Route::post('image-view','CargarDocumentosController@store');
+//ruta a controlador MailController para envio de correo
+Route::post('/enviar_correo','MailController@store');
+
+
+
+
+
+//ladas
 Route::get('lada/{id}', 'LadaController@getLadas');
 Route::resource('/lada','LadaController');
 
@@ -134,25 +160,29 @@ Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store')
 Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
 
 
+//la siguiente es una ruta para crear el pdf
+
+
+Route::post('/mail/pdf', 'MailController@pdf')
+	->name('mail.pdf');
+
+//Rutas para antedecedentes medicos
+Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'AntecedentesMedicosController@show')
+	->name('antecedentesmedicos.show');
+Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store');
+Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
+
+
 
 
 
 
 /*
-
-
 // Consultar todas la cedulas de investigación.
-
-
-
-
-
-
-
-
 Route::get('/desaparecido/edad/{fecha_nacimiento}', 'DesaparecidoController@getEdad');
-
-
+//la siguiente ruta es la ruta de la vista correo
+Route::get('/desaparecido/correo/{idCedula}/{idPersona}', 'DesaparecidoController@show_correo');
+Route::get('/desaparecido/boletin', 'MailController@show_boletin');
 
 Route::get('/desaparecido/desaparecido_domicilio/{idCedula}', 'DesaparecidoController@show_desaparecido_domicilio');
 
@@ -212,7 +242,11 @@ Route::get('municipio/{id}', 'DomiciliosController@getMunicipios');
 Route::get('localidades/{id}', 'DomiciliosController@getLocalidades');
 Route::get('colonias2/{id}', 'DomiciliosController@getColonias2');
 Route::get('colonias/{id}', 'DomiciliosController@getColonias');
-Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');*/
+Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');
+
+//Route::resource('boletin', 'BoletinController@show');
+
+
 
 
 

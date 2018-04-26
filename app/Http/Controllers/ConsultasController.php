@@ -144,6 +144,67 @@ class ConsultasController extends Controller
 	}
 
   public function jsonPrendas(Request $request, $idCedula)
+
+    {
+        $prendas =  \DB::table('desaparecidos_prendas AS dp')
+                ->join('cat_colores AS cc', 'dp.color', '=', 'cc.id')
+                ->select('dp.id as id',
+                        'dp.tipo as tipo',
+                        'dp.material as material',
+                        'dp.dibujoBordadoFranja as dibujo',
+                        'dp.color as pColor',
+                        'dp.otroColor as otroC',
+                        'dp.marcaOrigen as marca',
+                        'dp.talla as talla',
+                        'cc.nombre as color')
+                ->where('idCedula', $idCedula)
+                ->get();
+            return response()->json($prendas);
+    }
+    public function jsonCalzado(Request $request, $idCedula)
+    {
+        $prendas =  \DB::table('desaparecidos_cedula_investigacion AS dc')
+                ->join('cat_calzado_tipo AS ct', 'dc.idCalzadotipo', '=', 'ct.id')
+                ->join('cat_calzado_marca AS cm', 'dc.idCalzadomarca', '=', 'cm.id')
+                ->join('cat_colores AS cc', 'dc.idCalzadocolor', '=', 'cc.id')
+                ->select('dc.modeloCalzado as modelo',
+                    'dc.calzadoTalla as talla',
+                    'dc.idCalzadotipo as cTipo',
+                    'dc.otroCalzado as oCalzado',
+                    'dc.idCalzadocolor as cColor',
+                    'dc.otroColorCalzado as ocCalzado',
+                    'dc.idCalzadomarca as cMarca',
+                    'dc.otraMarca as oMarca',
+                    'dc.calzadoTalla as talla',
+                    'ct.nombre as nombretipo',
+                    'cm.nombre as nombremarca',
+                    'cc.nombre as nombrecolor')
+                ->where('dc.id', $idCedula)
+                ->get();
+            return response()->json($prendas);
+    }
+    
+    public function jsonBoletin( Request $request,$idCedula)
+    {
+        //dd("ya entre men");
+        $datosBoletin =  \DB::table('desaparecidos_personas AS dp')
+                ->join('persona AS persona', 'dp.idPersona', '=', 'persona.id')
+                ->join('desaparecidos_cedula_investigacion AS ced', 'dp.idCedula' , '=' , 'ced.id')
+                ->select('dp.id as id',
+                         'dp.apodo as apodo',
+                         'dp.edadAparente as edadAparente',
+                         'dp.edadExtravio as edadExtravio',
+                         'persona.nombres as nombres',
+                         'persona.primerAp as primerAp',
+                         'persona.segundoAp as segundoAp',
+                         'persona.sexo as sexo',
+                         'ced.estatura as estatura',
+                         'ced.peso as peso')
+                ->where('idCedula', $idCedula)
+                ->get();
+            return response()->json($datosBoletin);
+    }
+
 	{
 		$prendas =  \DB::table('desaparecidos_prendas AS dp')
 				->join('cat_colores AS cc', 'dp.color', '=', 'cc.id')
