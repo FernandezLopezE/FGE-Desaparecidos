@@ -43,7 +43,8 @@
 	            	{!! Form::text ('caracteristicas',
 									old('caracteristicas'),
 									['class' => 'form-control mayuscula',
-										'id' => 'caracteristicas'
+										'id' => 'caracteristicas',
+										'placeholder' => 'Tamaño, color, forma, etc ...'
 									] )!!}
 	            </div>
 	        </div>
