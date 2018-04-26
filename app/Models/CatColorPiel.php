@@ -8,6 +8,7 @@ class CatColorPiel extends Model
 {
 	protected $table = 'cat_color_piel';
 	protected $fillable = [
-		'nombre',	
+		'nombre',
+		'imagen',
 	];
 }

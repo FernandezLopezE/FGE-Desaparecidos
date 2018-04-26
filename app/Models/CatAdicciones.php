@@ -4,9 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CatCeja extends Model
+class CatAdicciones extends Model
 {
-	protected $table = 'cat_cejas';
+    //
+    protected $table = 'cat_adicciones';
 	protected $fillable = [
 		'nombre',	
 	];

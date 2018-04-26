@@ -27,8 +27,8 @@ class CreateDesaparecidosCedulaInvestigacionTable extends Migration
             $table->date('fechaVisita')->nullable();
             $table->string('calzadoTalla',50)->nullable();
             $table->text('observacionesDesaparicion')->nullable();
-            $table->string('estatura',10)->nullable();
-            $table->string('peso',10)->nullable();
+            //$table->string('estatura',10)->nullable();
+            //$table->string('peso',10)->nullable();
             $table->json('objetos')->nullable();
             $table->string('modeloCalzado', 100)->nullable();
             $table->string('otroColorCalzado', 100)->nullable();
@@ -40,14 +40,16 @@ class CreateDesaparecidosCedulaInvestigacionTable extends Migration
             $table->foreign('idCalzadocolor')->references('id')->on('cat_colores');
             $table->integer('idCalzadomarca')->unsigned()->nullable();           
             $table->foreign('idCalzadomarca')->references('id')->on('cat_calzado_marca');
-            $table->integer('idComplexion')->unsigned()->nullable();           
-            $table->foreign('idComplexion')->references('id')->on('cat_complexion');
-            $table->integer('idColorPiel')->unsigned()->nullable();           
-            $table->foreign('idColorPiel')->references('id')->on('cat_color_piel');
-            $table->integer('idCeja')->unsigned()->nullable();           
-            $table->foreign('idCeja')->references('id')->on('cat_cejas');
+            //$table->integer('idComplexion')->unsigned()->nullable();           
+            //$table->foreign('idComplexion')->references('id')->on('cat_complexion');
+            //$table->integer('idColorPiel')->unsigned()->nullable();           
+            //$table->foreign('idColorPiel')->references('id')->on('cat_color_piel');
+            //$table->integer('idCeja')->unsigned()->nullable();           
+            //$table->foreign('idCeja')->references('id')->on('cat_cejas');
             $table->integer('idDialecto')->unsigned()->nullable();
             $table->foreign('idDialecto')->references('id')->on('cat_dialecto')->onDelete('cascade');
+            /*$table->integer('idCedulaPartesCuerpo')->unsigned()->nullable();           
+            $table->foreign('idCedulaPartesCuerpo')->references('id')->on('cedula_partes_cuerpo');*/
             $table->timestamps();
         });
     }

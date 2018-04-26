@@ -33,7 +33,9 @@ class CreateDesaparecidosPersonasTable extends Migration
 			$table->json('telefonos')->nullable();			
 			$table->boolean('tieneHijos')->default(0);
 			$table->boolean('informante')->default(0);
-			$table->boolean('notificaciones')->default(0);		
+			$table->boolean('notificaciones')->default(0);	
+			$table->string('estatura')->nullable();
+			$table->string('peso')->nullable();				
 
 
 			$table->integer('idPersona')->unsigned();
@@ -54,6 +56,10 @@ class CreateDesaparecidosPersonasTable extends Migration
 			$table->foreign('idDocumentoIdentidad')->references('id')->on('cat_documento_identidad')->onDelete('cascade');
 			$table->integer('idCedula')->unsigned();
 			$table->foreign('idCedula')->references('id')->on('desaparecidos_cedula_investigacion')->onDelete('cascade');
+			$table->integer('idComplexion')->unsigned()->nullable();
+			$table->foreign('idComplexion')->references('id')->on('cat_complexion');
+			$table->integer('idColorPiel')->unsigned()->nullable();
+			$table->foreign('idColorPiel')->references('id')->on('cat_color_piel');
 
 			$table->timestamps();
 			$table->softDeletes();

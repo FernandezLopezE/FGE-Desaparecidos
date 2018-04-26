@@ -33,6 +33,18 @@
 			</a>
 			<a class="nav-item nav-link active" href="#" aria-selected="false">
 				Vestimenta
+			</a>
+			<a class="nav-item nav-link" href="{{route('descripcionfisica.show',['id' => $desaparecido->id])}}" aria-selected="false">
+				Descripción física
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Antecedentes médicos
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Señas particulares
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Datos dentales
 			</a>				
 	</div>
 </nav>
