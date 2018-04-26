@@ -133,6 +133,17 @@ Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'Antece
 Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store');
 Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
 
+//mostrar vista de señas particulares 
+Route::get('/senas_particulares/{idCedula}','SenasParticularesController@show_senas_particulares');
+Route::post('/senas_particulares/store_senas', 'SenasParticularesController@store_senas')
+	->name('senas_particulares.store_senas');
+Route::get('consultas/get_senas/{idCedula}', 'ConsultasController@jsonSenas')
+	->name('consultas.get_senas');
+
+//mostrar la vista de datos dentales
+Route::get('/datos_dentales/datos_dentales','DatosDentalesController@show_datos_dentales');
+Route::post('/datos_dentales/store_datos_dentales', 'DatosDentalesController@store_datos_dentales')
+	->name('datos_dentales.store_datos_dentales');
 
 
 
