@@ -7,6 +7,7 @@ use App\Models\Desaparecido;
 use App\Models\CedulaPartesCuerpo;
 use App\Models\PivotSubPartiCuerpo;
 use App\Models\PivotSubModiCuerpo;
+use App\Http\Requests\DescripcionFisicaRequest;
 class DescripcionFisicaController extends Controller
 {
     /**
@@ -35,9 +36,10 @@ class DescripcionFisicaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DescripcionFisicaRequest $request)
     {
         //
+    //try {
          $desaparecido = Desaparecido::find($request['idExtraviado']);
 
          $desaparecido->estatura = $request['estatura'];
@@ -93,9 +95,13 @@ class DescripcionFisicaController extends Controller
             $modificaciones->save();
          }         
 
-         
-
-         return response()->json($desaparecido);
+         //return response()->json([ 'response'=>'success', 'data'=>$desaparecido ]);
+        return response()->json($desaparecido);
+     /*} catch (Exception $e) {
+         return response()->json([  'errors'=> [ ['mensaje' => $e->getMessage()] ] ]);
+     }*/
+        
+        
     }
 
     /**
