@@ -19,6 +19,9 @@ class CatCorreosExternosSeeder extends Seeder
             [ 'nombre' => 'Ruben Ochoa Rodriguez ', 					'correo' => 'ochoa.rrub@gmail.com'],
             [ 'nombre' => 'Eduardo Fernandez López ', 					'correo' => 'efernandezl@fiscaliavercruz.gob.mx'],
             [ 'nombre' => 'Berenice Contreras Dominguez ', 				'correo' => 'bnicecd@gmail.com'],
+            [ 'nombre' => 'Alejandro Fernandez Toledo ',                'correo' => 'alejandro.f.toledo@gmail.com'],
+            [ 'nombre' => 'Araceli ',                                   'correo' => 'alejandro_nba@hotmail.com'],
+            [ 'nombre' => 'Alejandro',                                  'correo' => 'zrv101893@gmail.com'],
 
         ]);
     }

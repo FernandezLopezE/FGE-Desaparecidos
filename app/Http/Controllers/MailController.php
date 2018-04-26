@@ -16,9 +16,10 @@ use App\Models\Desaparecido;
 
 class MailController extends Controller
 {
-    
-	public function show($id){	
-		$cedula = \App\Models\Cedula::find($id);
+    //agregar dentro del show($id) porque tengo que recibir la cedula, por ahora pongo la cedula 1 para trabajar con la pantalla
+	public function show(){	
+		$cedula = \App\Models\Cedula::find(1);
+		//$cedula = \App\Models\Cedula::find($id);
 		$correosExternos		= \App\Models\CatCorreosExternos::all()->pluck('correo','id');
 		return view('desaparecidos.contacto',[
 			'id' => $cedula->id,
@@ -37,19 +38,30 @@ class MailController extends Controller
 
 
     public function store (Request $request){
-    	
+ 
+    	$correosArray=($request['correos']);
+    	//return response()->json($h);
+ 		//dd($correosArray);
+ 		$longitudArray = (count($correosArray));
+
+ 	
+
+ 		$listaCorreos=array();
+
+ 			 		foreach($correosArray as $idCorreo){
+				$getCorreo =\App\Models\CatCorreosExternos::where('id', $idCorreo)->pluck('correo');
+				$listaCorreos[] = $getCorreo[0];				
+	 		}
+
     	//$file = $request->file('file');
     	//echo ($file);
     	$contenido = "hola perro";
     	//Mail::send('emails.contact', $request->all(), function($msj) use ($file , $asunto){
-    	Mail::send('emails.contact', $request->all(), function($msj){
-    			$msj->subject('Ahí te va men');
+    	Mail::send('emails.contact', $request->all(), function($msj) use($listaCorreos){
+    			$msj->subject('PRUEBA DE MULTI ENVÍO');
     			//$msj->to('alejandro.f.toledo@gmail.com');
 
-    			$msj->setTo( array(
-						        'alejandro.f.toledo@gmail.com', 
-						        'alejandro_nba@hotmail.com'
-						    ));
+    			$msj->setTo( $listaCorreos);
 
     			//$msj->attach($file);
     	});
