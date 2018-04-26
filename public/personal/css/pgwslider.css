@@ -21,7 +21,7 @@
     float: left;
     width: 74%;
     overflow: hidden;
-    height: inherit;
+/*    height: inherit;*/
     position: relative;
     font-size: 1rem;
 }
