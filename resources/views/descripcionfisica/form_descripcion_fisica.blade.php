@@ -1,7 +1,7 @@
 @extends('layouts.app_uipj')
 
 @section('content')
-  
+
 	<div class="card border-success">
 	<div class="card-header">
 		<h5 class="card-title">Descripción física			
@@ -94,7 +94,7 @@
       </div>
     <hr>
       <div class="row">
-          <div class="col-lg-4">
+          <div class="col">
           {!! Form::label ('desaparecidoSubParticularidades','Particularidades:') !!}
           {!! Form::select ('idSubParticularidades',
                     $particularidades,
@@ -105,7 +105,7 @@
                     ] )!!}  
           
         </div>
-        <div class="col-lg-4" id="otro_Particularidad" style="display:none" >
+        <div class="col" id="otro_Particularidad" style="display:none" >
           {!! Form::label ('otro','Especifique:') !!}
           {!! Form::text ('otroSubParticularidad',
                   old('otro'),
@@ -118,19 +118,8 @@
                     'data-validation-depends-on-value' =>'OTRO'
                   ] )!!}
           </div>
-         <!-- <div class="col-lg-4" id="observaciones">
-          {!! Form::label ('observacionesParticular','Observaciones:') !!}
-          {!! Form::text ('observacionesParticularidad',
-                  old('observacionesParticular'),
-                  ['class' => 'form-control mayuscula sinEnter soloLetras',
-                    'placeholder' => 'Ingrese las observaciones',
-                    'id' => 'observacionesParticularidad'
-                  ] )!!}
-          </div>  -->    
-    </div>
-    <br>
-    <div class="row">
-            <div class="col-lg-4">
+
+          <div class="col">
             {!! Form::label ('desaparecidoSubModificaciones','Modificaciones:') !!}
             {!! Form::select ('idSubModificaciones',
                       $modificaciones,
@@ -141,7 +130,7 @@
                       ] )!!}  
             
           </div>
-          <div class="col-lg-4" id="otra_Modificacion" style="display:none">
+          <div class="col" id="otra_Modificacion" style="display:none">
             {!! Form::label ('otroModi','Especifique:') !!}
             {!! Form::text ('otroSubModificacion',
                     old('otroModi'),
@@ -154,14 +143,26 @@
                       'data-validation-depends-on-value' =>'OTRO'
                     ] )!!}
             </div>
-            <div class="col-lg-4" >
-            {!! Form::label ('observaciones','Observaciones:') !!}
-            {!! Form::text ('observaciones',
-                    old('observaciones'),
-                    ['class' => 'form-control mayuscula sinEnter soloLetras',
-                      'placeholder' => 'Ingrese las observaciones',
-                      'id' => 'observaciones'
-                    ] )!!}
+         <!-- <div class="col-lg-4" id="observaciones">
+          {!! Form::label ('observacionesParticular','Observaciones:') !!}
+          {!! Form::text ('observacionesParticularidad',
+                  old('observacionesParticular'),
+                  ['class' => 'form-control mayuscula sinEnter soloLetras',
+                    'placeholder' => 'Ingrese las observaciones',
+                    'id' => 'observacionesParticularidad'
+                  ] )!!}
+          </div>  -->    
+    </div>
+    <br>
+    <div class="row">
+            <div class="col" >
+              {!! Form::label ('observaciones','Observaciones:') !!}
+              {!! Form::textarea ('observaciones',
+                      old('observaciones'),
+                      ['class' => 'form-control mayuscula sinEnter soloLetras',
+                        'placeholder' => 'Ingrese las observaciones','size' => '70x4',
+                        'id' => 'observaciones'
+                      ] )!!}
             </div>                              
     </div>  
     <hr>
@@ -215,32 +216,9 @@
 
 
 
-var tableDescripcion = $('#tableDescripcionFisica');
+    var tableDescripcion = $('#tableDescripcionFisica');
 		var routeIndex = '{!! route('descripcionfisica.index') !!}';	
 		
-		var formatTableActions = function(value, row, index) {				
-			btn = '<button class="btn btn-info btn-xs edit" id="editDescripcionFisica"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
-			
-			return [btn].join('');
-		};
-		/*window.operateEvents = {
-			'click #editCalzado': function (e, value, row, index) {					
-				console.log(row);
-				//bodyModal.empty();
-				$('#idTipo').val(row.cTipo);
-				$('#otroCalzado').val(row.oCalzado);
-				$('#idColor').val(row.cColor);
-				$('#otroColorCalzado').val(row.ocCalzado);
-				$('#modeloCalzado').val(row.modelo);
-				$('#idMarca').val(row.cMarca);
-				$('#otraMarca').val(row.oMarca);
-				$('#calzadoTalla').val(row.talla);
-				$("#modalCalzado").modal("show");
-			}
-		}
-		$('#nuevoVestimenta').click(function(e){
-			$('#modalGeneral').modal('show');
-		})*/
 		tableDescripcion.bootstrapTable({				
 			url: routeIndex+'/get_partes/{{$desaparecido->id}}',
 			columns: [{					
@@ -258,14 +236,14 @@ var tableDescripcion = $('#tableDescripcionFisica');
 			}, {					
 				field: 'observaciones',
 				title: 'Observaciones',
-			}, {					
+			},/* {					
 				title: 'Acciones',
-				formatter: formatTableActions,
+				//formatter: formatTableActions,
 				//events: operateEvents
-			}]				
+			}*/]				
 		})
 	//Fin de vista de datos de calzado
-	});
+	
 
     $('#idSubParticularidades').select2();
     $('#idSubModificaciones').select2();
@@ -416,7 +394,7 @@ var tableDescripcion = $('#tableDescripcionFisica');
       success: function(data) {           
         console.log("hecho");
         console.log(data);
-        //tableDescripcion.bootstrapTable('refresh');
+        tableDescripcion.bootstrapTable('refresh');
                         
       },
       error: function(data) {
@@ -425,6 +403,8 @@ var tableDescripcion = $('#tableDescripcionFisica');
       }
     });
   });
+
+});
 
 	</script>
 @endsection
