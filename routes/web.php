@@ -65,12 +65,8 @@ Route::get('consultas/get_tipos_telefonos', 'ConsultasController@jsonTiposTelefo
 	->name('consultas.get_tipos_telefonos');
 Route::get('consultas/get_ladas', 'ConsultasController@jsonLadas')
 	->name('consultas.get_ladas');
-// Mostrando municipios que pertenecen a un estado.
-Route::get('consultas/municipios/{idEstado}', 'ConsultasController@jsonMunicipios');
-// Mostrando localidades que pertenecen a un municipio.
-Route::get('consultas/localidades/{idMunicipio}', 'ConsultasController@jsonLocalidades');
-// Mostrando colonias que pertenecen a un municipio.
-Route::get('consultas/colonias/{idMunicipio}', 'ConsultasController@jsonColonias');
+
+
 // Mostrando codigos postales que pertenecen a un municipio.
 Route::get('consultas/codigos/{idMunicipio}', 'ConsultasController@jsonCodigos');
 // Mostrando codigos postales que pertenecen a un municipio cuando hay un cambio en colonias.
@@ -78,6 +74,10 @@ Route::get('consultas/codigos2/{idColonia}', 'ConsultasController@jsonCodigos2')
 // Calcula la edad años meses dias al día actual.
 Route::get('consultas/edad/{fecha_nacimiento}', 'ConsultasController@getEdad');
 
+
+
+Route::get('consultas/get_senas', 'ConsultasController@jsonSenas')
+	->name('consultas.get_senas');	
 
 Route::resource('consultas','ConsultasController');
 
@@ -162,7 +162,20 @@ Route::post('/desaparecido/store_informante', 'DesaparecidoController@store_info
 	->name('desaparecido.store_informante');
 // Mostrar formulario del informante	
 Route::get('/desaparecido/informante/{idCedula}', 'DesaparecidoController@show_informante');
+//mostrar vista de señas particulares 
+Route::get('/desaparecido/senas_particulares/{idCedula}','DesaparecidoController@show_senas_particulares');
+Route::post('/desaparecido/store_senas', 'DesaparecidoController@store_senas')
+	->name('desaparecido.store_senas');
+Route::get('consultas/get_senas/{idCedula}', 'ConsultasController@jsonSenas')
+	->name('consultas.get_senas');
+
+//mostrar la vista de datos dentales
+Route::get('/desaparecido/datos_dentales','DesaparecidoController@show_datos_dentales');
+Route::post('/desaparecido/store_datos_dentales', 'DesaparecidoController@store_sdatos_dentales')
+	->name('desaparecido.store_datos_dentales');
+
 Route::resource('/desaparecido','DesaparecidoController');
+
 
 Route::resource('domicilio','DomiciliosController');
 Route::get('codigos/{id}', 'DomiciliosController@getCodigos');
