@@ -4,13 +4,7 @@
  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
 
 
-    <style type="text/css">
-        
-        .fileinput-remove,
-        .fileinput-upload{
-            display: none;
-        }
-    </style>
+    
 @endsection
 @section('content')
 	
@@ -43,6 +37,8 @@
 					                    <div class="form-group">
 					                        <div class="file-loading">
 					                            <input id="fileArchivo" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">
+
+					                            
 					                        </div>
 					                    </div>
 					                
@@ -50,6 +46,7 @@
 					        </div>
 					    </div>
 					</body>	
+					<input id="input-b9" name="input-b9[]" multiple type="file"' class="form-control">
 		</div>
 	</div>
 	
@@ -111,11 +108,13 @@
 		$(document).ready(function(){
 
 				$('#idCorreosExternos').select2();
-
+				
 		})
 
 				//file upload
 		$("#fileArchivo").fileinput({
+						showUpload: false,
+						previewFileType: 'any',
 			            theme: 'fa',
 			            uploadUrl: "/image-view",
 			            uploadExtraData: function() {
@@ -131,7 +130,16 @@
 			                return filename.replace('(', '_').replace(']', '_');
 			            }
 			        });
-
+		$(document).on('ready', function() {
+	    
+	    $("#input-b9").fileinput({
+		        showPreview: false,
+		        showUpload: false,
+		        elErrorContainer: '#kartik-file-errors',
+		        allowedFileExtensions: ["jpg", "png", "gif"]
+		        //uploadUrl: '/site/file-upload-single'
+		    });
+		});
 		$('#btnEnviar').click (function(){
 		//alert("hola");
 		var dataString = {

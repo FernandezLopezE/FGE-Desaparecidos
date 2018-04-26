@@ -104,9 +104,9 @@ Route::get ('enviar','MailController@store');
 Route::resource('image-view','CargarDocumentosController');
 Route::post('image-view','CargarDocumentosController@store');
 //ruta a controlador MailController para envio de correo
-Route::post('/enviar_correo','MailController@store');
+Route::post('/enviar_correos','MailController@store');
 
-
+Route::get('/index_mail','MailController@show');
 
 
 
@@ -193,7 +193,10 @@ Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
 
 
 
-/*
+
+
+
+
 // Consultar todas la cedulas de investigación.
 Route::get('/desaparecido/edad/{fecha_nacimiento}', 'DesaparecidoController@getEdad');
 //la siguiente ruta es la ruta de la vista correo
