@@ -886,4 +886,21 @@ class DesaparecidoController extends Controller
             ]);
             return response()->json('se inserto');
     }
-}    
+
+    public function show_datos_dentales(){
+        //$cedula = Cedula::find($idCedula);
+        $dienteTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
+        //$senasParticularesUbica = \App\Models\CatSenasParticularesUbicaciones::all()->pluck('nombre','id');
+        //$nombreTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
+        
+        /*return view('desaparecidos.form_senas_particulares', [                        
+                        'senasParticulares' => $senasParticulares,
+                        'senasParticularesUbica' => $senasParticularesUbica,
+                        'cedula' => $cedula,
+                        'nombreTamano' => $nombreTamano
+                    ]);*/
+        return view('desaparecidos.form_datos_dentales',[
+        			'dienteTamano' => $dienteTamano
+        		]);
+    }
+}

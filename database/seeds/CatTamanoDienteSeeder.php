@@ -13,10 +13,9 @@ class CatTamanoDienteSeeder extends Seeder
     {
         DB::table('cat_tamano_diente')->insert([
             [ 'id' => 1, 'nombreTamano' => 'SIN INFORMACION'],
-            [ 'id' => 2, 'nombreTamano' => 'COMPLETOS'],
-            [ 'id' => 3, 'nombreTamano' => 'GRANDES'],
-            [ 'id' => 4, 'nombreTamano' => 'MEDIANOS'],
-            [ 'id' => 5, 'nombreTamano' => 'PEQUEÑOS'],
+            [ 'id' => 2, 'nombreTamano' => 'GRANDES'],
+            [ 'id' => 3, 'nombreTamano' => 'MEDIANOS'],
+            [ 'id' => 4, 'nombreTamano' => 'PEQUEÑOS'],
         ]);
     }
 }

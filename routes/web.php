@@ -109,6 +109,11 @@ Route::post('/desaparecido/store_senas', 'DesaparecidoController@store_senas')
 Route::get('consultas/get_senas/{idCedula}', 'ConsultasController@jsonSenas')
 	->name('consultas.get_senas');
 
+//mostrar la vista de datos dentales
+Route::get('/desaparecido/datos_dentales','DesaparecidoController@show_datos_dentales');
+Route::post('/desaparecido/store_datos_dentales', 'DesaparecidoController@store_sdatos_dentales')
+	->name('desaparecido.store_datos_dentales');
+
 Route::resource('/desaparecido','DesaparecidoController');
 
 
