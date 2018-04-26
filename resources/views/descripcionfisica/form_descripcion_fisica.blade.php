@@ -98,7 +98,7 @@
           {!! Form::label ('desaparecidoLado','Lado:') !!}
           {!! Form::text ('lado',
                   '',
-                  ['class' => 'form-control mayuscula sinEnter soloLetras',
+                  ['class' => 'form-control mayuscula sinEnter',
                     'id' => 'lado',
                     'placeholder' => 'Izquierdo, derecho, central'                  
                   ] )!!}
@@ -116,7 +116,7 @@
           {!! Form::label ('otroColor','Especifique otro color:') !!}
           {!! Form::text ('otroColor',
                   old('otro'),
-                  ['class' => 'form-control mayuscula sinEnter soloLetras',
+                  ['class' => 'form-control mayuscula sinEnter',
                     'placeholder' => 'Ingrese otro color',
                     'id' => 'otroColor',
                     
@@ -139,7 +139,7 @@
           {!! Form::label ('otro','Especifique:') !!}
           {!! Form::text ('otroSubParticularidad',
                   old('otro'),
-                  ['class' => 'form-control mayuscula sinEnter soloLetras',
+                  ['class' => 'form-control mayuscula sinEnter',
                     'placeholder' => 'Ingrese otra particularidad',
                     'id' => 'otroSubParticularidad',
                     'data-validation' => 'required',
@@ -164,7 +164,7 @@
             {!! Form::label ('otroModi','Especifique:') !!}
             {!! Form::text ('otroSubModificacion',
                     old('otroModi'),
-                    ['class' => 'form-control mayuscula sinEnter soloLetras',
+                    ['class' => 'form-control mayuscula sinEnter',
                       'placeholder' => 'Ingrese otra modificación',
                       'id' => 'otroSubModificacion',
                       'data-validation' => 'required',
@@ -189,7 +189,7 @@
               {!! Form::label ('observaciones','Observaciones:') !!}
               {!! Form::textarea ('observaciones',
                       old('observaciones'),
-                      ['class' => 'form-control mayuscula sinEnter soloLetras',
+                      ['class' => 'form-control mayuscula sinEnter',
                         'placeholder' => 'Ingrese las observaciones','size' => '70x4',
                         'id' => 'observaciones'
                       ] )!!}
