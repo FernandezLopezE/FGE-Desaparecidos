@@ -381,7 +381,7 @@ $("#sinInformacionIm").change(function () {
       intevencionQ: $('#idIQuirurgica').val(),
       adiccion: $('#idAdicciones').val(),
       implante: $('#idImplantes').val(),
-      observaciones: $('#observaciones').val(),
+      observaciones: $('#observacionesAM').val(),
     };
 
     console.log(dataString);
