@@ -151,6 +151,8 @@ return [
          * Package Service Providers...
          */
         Collective\Html\HtmlServiceProvider::class,
+        //Este es el provider para generacion de PDF's
+        Barryvdh\DomPDF\ServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -159,8 +161,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        //Este es el provider para generacion de PDF's
-        Barryvdh\DomPDF\ServiceProvider::class,
+
 
     ],
 
