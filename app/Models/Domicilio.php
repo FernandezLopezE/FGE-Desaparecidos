@@ -18,6 +18,8 @@ class Domicilio extends Model
 			'idLocalidad',
 			'idColonia',
 			'idDesaparecido'
+			
+
 	];
 
 	/*protected $casts = [

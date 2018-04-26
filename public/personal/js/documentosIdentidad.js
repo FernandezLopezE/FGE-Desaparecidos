@@ -7,7 +7,7 @@ $(document).ready(function(){
 	$('#identificacion').change(function(){
 		value = $('#identificacion').val();
 		console.log(value);
-		if (value == "7") {
+		if (value == "8") {
                 console.log('Mostrar campo otra identificación')
                 $("#otraIdDIV").show();
         } else {

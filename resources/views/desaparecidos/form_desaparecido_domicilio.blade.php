@@ -53,6 +53,26 @@
 	</div>
 	<!-- Termina tabla de domicilios -->
 
+	<!-- Inicia tabla de datos de contacto -->
+	<div class="card border-primary">
+		<div class="card-header">
+			<div class="row">
+				<div class="col-lg-12">
+					<h5 class="card-title">
+						DATOS DE CONTACTO DE LA PERSONA DESAPARECIDA
+						<button type="button" class="btn btn-dark pull-right"  id="btnAgregarContacto"><i class="fa fa-plus"></i> AGREGAR DATOS</button>
+
+					</h5>
+				</div>	
+			</div>	
+		</div>
+		<div class="card-body">
+			<table id="tableContactos" ></table>
+			@include('includes.modal_desaparecido_contacto')
+		</div>
+	</div>
+	<!-- Termina tabla de datos de contacto -->
+
 	<!-- Inicia tabla de antecedentes -->
 	<div class="card border-primary">
 		<div class="card-header">
@@ -78,25 +98,86 @@
 @endsection
 
 @section('scripts')
+{!! HTML::script('personal/js/lada.js') !!}
 <script type="text/javascript">
+	document.getElementById("lada").value="(+52)-";
+
+	var contador = 0;
+	$("input[name='informanteTelefonos[]']").mask('(000) 000 0000');
+	$("input[name='informanteTelefonosC[]']").mask('(000) 000 0000');
+	var btnAgregarTelefono = $('#btnAgregarTelefono');
+	var btnAgregarTelefonoC = $('#btnAgregarTelefonoC');
+
+	btnAgregarTelefono.click(function(e) {
+			console.log("agregando")
+
+			var lada1 = document.getElementById("lada").value;
+
+            $("#telefono2").append('<div class="row"> <div class="form-group col-lg-4">{!! Form::label ("informanteTipoTel","Tipo de telefono:") !!}	                                                                                               {!! Form::select ("informanteTipoTel[]", $tiposTelefonos,"",["class" => "form-control","id" => "informanteTipoTel[]"])!!} </div> <div class="form-group col-lg-2">                                                {!! Form::label ("lada","Código del país:") !!}	                                                                           {!! Form::text ("lada[]",old(""),["class" => "form-control lada","id" => "lada[]"])!!} </div>  <div class="form-group col-lg-4">                                                                                       {!! Form::label ("informanteTelefonos","Número:") !!}                                                             {!! Form::text ("informanteTelefonos[]",old("informanteTelefonos"),["class" => "form-control mayuscula","data-validation" => "required","data-validation-error-msg-required" => "El campo es requerido","id" => "informanteTelefonos[]"] )!!} </div>    <div class="form-group col-lg-2">                                                                                                         {!! Form::label ("ext","Ext:") !!}                                                                                 {!! Form::text ("ext[]",old(""), ["class" => "form-control mayuscula","id" => "ext[]"] )!!} </div> </div>');
+            $("input[name='informanteTelefonos[]']").mask('(000) 000 0000');
+
+           var otrasLadas = document.getElementsByClassName("lada");
+		    otrasLadas[contador].value = lada1;
+		    contador = contador + 1;
+		    console.log(contador);
+				});
+	btnAgregarTelefonoC.click(function(e) {
+			console.log("agregando")
+
+			var lada2 = document.getElementById("ladaC").value;
+
+            $("#telefono3").append('<div class="row"> <div class="form-group col-lg-4">{!! Form::label ("informanteTipoTel","Tipo de telefono:") !!}	                                                                                               {!! Form::select ("informanteTipoTelC[]", $tiposTelefonos,"",["class" => "form-control","id" => "informanteTipoTelC[]"])!!} </div> <div class="form-group col-lg-2">                                                {!! Form::label ("lada","Código del país:") !!}	                                                                           {!! Form::text ("ladaC[]",old(""),["class" => "form-control lada","id" => "ladaC"])!!} </div>  <div class="form-group col-lg-4">                                                                                       {!! Form::label ("informanteTelefonos","Número:") !!}                                                             {!! Form::text ("informanteTelefonosC[]",old("informanteTelefonos"),["class" => "form-control mayuscula","data-validation" => "required","data-validation-error-msg-required" => "El campo es requerido","id" => "informanteTelefonos[]"] )!!} </div>    <div class="form-group col-lg-2">                                                                                                         {!! Form::label ("ext","Ext:") !!}                                                                                 {!! Form::text ("extC[]",old(""), ["class" => "form-control mayuscula","id" => "extC[]"] )!!} </div> </div>');
+            $("input[name='informanteTelefonos[]']").mask('(000) 000 0000');
+
+           var otrasLadas = document.getElementsByClassName("lada");
+		    otrasLadas[contador].value = lada2;
+		    contador = contador + 1;
+		    console.log(contador);
+				});
+
 	$(function (){
 		var routeIndex = '{!! route('consultas.index') !!}';
 		
 		var tableFamiliares = $('#tableFamiliares');
 		var tableDomicilios = $('#tableDomicilios');
+		var tableContactos = $('#tableContactos');
 		var tableAntecedentes = $('#tableAntecedentes');
 		
 		var btnAgregarFamiliares = $('#btnAgregarFamiliares');
 		var btnAgregarDomicilios = $('#btnAgregarDomicilios');
+		var btnAgregarContacto = $('#btnAgregarContacto');
 		var btnAgregarAntecedentes = $('#btnAgregarAntecedentes');
 		
 		var btnGuardarFamiliares = $('#btnGuardarFamiliares');
 		var btnGuardarDomicilios = $('#btnGuardarDomicilios');
+		var btnGuardarContacto = $('#btnGuardarContacto');
 		var btnGuardarAntecedentes = $('#btnGuardarAntecedentes');
 
 		var modalDesaparecidoFamiliar = $('#modalDesaparecidoFamiliar');
 		var modalDesaparecidoDomicilio= $('#modalDesaparecidoDomicilio');
+		var modalDesaparecidoContacto= $('#modalDesaparecidoContacto');
 		var modalDesaparecidoAntecedente = $('#modalDesaparecidoAntecedente');
+
+	
+
+
+		var formatContacto = function(value, row, index){
+			telefonos = $.parseJSON(row.telefono)
+				var etiqueta;
+				$.each(telefonos, function(key, value){
+					etiqueta = '<span>'+' Tipo: '+telefonos.tipoTel+' Lada: '+telefonos.lada+' Telefono: '+telefonos.telefono+ ' Ext: '+telefonos.ext+'<span>'+' - '					
+				})
+				return [etiqueta].join('');
+		}
+
+		var formatContactoRS = function(value, row, index){
+			redesS = $.parseJSON(row.redesSociales)
+				var etiqueta2;
+				$.each(redesS, function(key, value){
+					etiqueta2 = '<span>'+' Redes: '+redesS.redesSociales+'<span>'+' - '					
+				})
+				return [etiqueta2].join('');
+		}
 
 		$('input#familiaresFechaNacimiento').mask('00/00/0000');
 
@@ -175,6 +256,24 @@
 				//events: operateEvents
 			}]				
 		})
+		tableContactos.bootstrapTable({				
+			url: routeIndex+'/get_contactos/{!! $desaparecido->id !!}',
+			columns: [{					
+				field: 'correoElectronico',
+				title: 'Correo',
+			}, {					
+				field: 'telefono',
+				formatter: formatContacto,
+			}, {					
+				field: 'redesSociales',
+				formatter: formatContactoRS,
+				//title: 'Redes sociales',				
+			}, {					
+				title: 'Acciones',
+				//formatter: formatTableActions,
+				//events: operateEvents
+			}]				
+		})
 
 		btnAgregarFamiliares.click(function(e){
 			modalDesaparecidoFamiliar.modal('show');
@@ -183,6 +282,11 @@
 		btnAgregarDomicilios.click(function(e){
 			console.log('hola mundo');
 			modalDesaparecidoDomicilio.modal('show');
+		})
+
+		btnAgregarContacto.click(function(e){
+			console.log('hola mundo');
+			modalDesaparecidoContacto.modal('show');
 		})
 
 		btnGuardarFamiliares.click (function(){
@@ -224,13 +328,15 @@
 				idLocalidad: $("#idLocalidad").val(),
 				idColonia: $("#idColonia").val(),
 				idCodigoPostal: $("#idCodigoPostal").val(),
-				tipoTel: $("#informanteTipoTel").val(),				
-				telefono : $("#informanteTelefonos").val(),				
+				tipoTel: $("select[name='informanteTipoTel[]']").map(function(){return $(this).val();}).get(),
+				lada: $("input[name='lada[]']").map(function(){return $(this).val();}).get(),
+				//telefono : $('input[name^="informanteTelefonos"]').val(),
+				telefono : $("input[name='informanteTelefonos[]']").map(function(){return $(this).val();}).get(),
+				//telefono : $("informanteTelefonos").val(),
+				ext: $("input[name='ext[]']").map(function(){return $(this).val();}).get(),				
 				idDesaparecido: {!! $desaparecido->id !!},
 			};
-
 			console.log(dataString)
-
 			$.ajax({
 				type: 'POST',
 				url: '/desaparecido/store_desaparecido_domicilio',
@@ -240,6 +346,36 @@
 					console.log(data);
 					modalDesaparecidoDomicilio.modal('hide');
 					tableDomicilios.bootstrapTable('refresh');							
+				},
+				error: function(data) {
+					console.log(data);
+				}
+			});
+		})
+
+		btnGuardarContacto.click (function(){
+			
+			var dataString = {
+				correoElectronico : $("#correoElectronico").val(),
+				tipoTel: $("select[name='informanteTipoTelC[]']").map(function(){return $(this).val();}).get(),
+				lada: $("input[name='lada[]']").map(function(){return $(this).val();}).get(),
+				//telefono : $('input[name^="informanteTelefonos"]').val(),
+				telefono : $("input[name='informanteTelefonosC[]']").map(function(){return $(this).val();}).get(),
+				//telefono : $("informanteTelefonos").val(),
+				ext: $("input[name='extC[]']").map(function(){return $(this).val();}).get(),	
+				redesSociales: $("input[name='redesSociales[]']").map(function(){return $(this).val();}).get(),	
+				
+				idDesaparecido: {!! $desaparecido->id !!},
+			};
+				console.log(dataString)
+			$.ajax({
+				type: 'POST',
+				url: '/desaparecido/store_desaparecido_contacto',
+				data: dataString,
+				dataType: 'json',
+				success: function(data) {
+					modalDesaparecidoContacto.modal('hide');
+					tableContactos.bootstrapTable('refresh');							
 				},
 				error: function(data) {
 					console.log(data);

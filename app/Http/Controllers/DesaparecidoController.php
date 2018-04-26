@@ -5,17 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\models\Cedula;
 use App\Models\Persona;
+use App\Models\Desaparecido;
+use App\Models\Domicilio;
+
 use App\Models\CatDialecto;
 
-use App\Models\Desaparecido;
+
 use App\Models\Familiar;
 use App\Models\Documento;
 use App\Models\Antecedente;
-use App\Models\Domicilio;
+//use App\Models\Domicilio;
+use App\Models\Contacto;
 use App\Models\Prenda;
+use App\Models\CatSenasParticulares;
+use App\Models\CatSenasParticularesUbicaciones;
 use Carbon\Carbon;
-use Session;
 use App\images\TiposCalzados;
+use DB;
 
 
 use App\Http\Requests\CreateDesaparecidoRequest;
@@ -29,7 +35,7 @@ class DesaparecidoController extends Controller
 	 */
 	public function index()
 	{		
-		return view('desaparecidos.form'); 
+		return view('desaparecidos.listado_cedulas'); 
 	}
 
 	/**
@@ -37,7 +43,7 @@ class DesaparecidoController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-	public function create()
+	public function create_entrevista()
 	{
 		//$desaparecido = new Desaparecido();
 		$cedula = new Cedula();
@@ -97,7 +103,7 @@ class DesaparecidoController extends Controller
 										->get()
 										->toArray();
 
-		$sexos = array('MASCULINO' => 'MASCULINO', 'FEMENINO' => 'FEMENINO');
+		$sexos = array('H' => 'MASCULINO', 'M' => 'FEMENINO');
 		$escolaridades		= \App\Models\CatEscolaridad::all()->pluck('nombre','id');
 		$ocupaciones	 	= \App\Models\CatOcupacion::all()->pluck('nombre','id');
 		$identificaciones	= \App\Models\CatDocumento::all()->pluck('nombre','id');
@@ -175,7 +181,7 @@ class DesaparecidoController extends Controller
 		]);
 
 		
-		$domicilio = Domicilio::create([
+		 $domicilio= Domicilio::create([
 			'idDesaparecido' 	=> $desaparecido->id,
 			'tipoDireccion'		=> $request->input('tipoDirec'),
 			'calle'				=> $request->input('calle'),
@@ -186,10 +192,34 @@ class DesaparecidoController extends Controller
 			'idLocalidad'		=> $request->input('localidad'),
 			'idColonia'			=> $request->input('colonia'),
 			'idCodigoPostal'	=> $request->input('cp'),
-			'telefono'			=> json_encode(array('tipoTel' => 'PERSONAL',
-									 'lada' => $request->input('lada'),
-									 'telefono' => $request->input('telefono'),
-									 'ext' => $request->input('ext'))),
+			/*'telefono'			=> json_encode(array(
+								'0' =>  Array
+					            (
+									 'tipoTel' => 'PERSONAL',
+									 'lada' => '222',
+									 'telefono' => '2223',
+									 'ext' => '343'
+					            ),
+					            '1' =>  Array
+					            (
+									 'tipoTel' => 'PERSONAL',
+									 'lada' => '222',
+									 'telefono' => '2223',
+									 'ext' => '343'
+					            )*/
+			/*'telefono'			=> json_encode(array(
+							        array('tipoTel' => $request->input('tipoTel')),
+							        array('lada' => $request->input('lada')),
+							        array('telefono' => $request->input('telefono')),
+							        array('ext' => $request->input('ext'))
+							    )),	*/							
+
+			'telefono'			=> json_encode(array('tipoTel' => $request->input('tipoTel'),
+												 'lada' => $request->input('lada'),
+												 'telefono' => $request->input('telefono'),
+												 'ext' => $request->input('ext'))),
+													 
+		
 		]);
 
 		$data = array('nombres' => $desaparecido->persona->nombres,
@@ -270,10 +300,16 @@ class DesaparecidoController extends Controller
 			'OTRO' => 'OTRO'			
 		);
 		
+		$tiposDireccion = array('PERSONAL' => 'PERSONAL',
+								'TRABAJO' => 'TRABAJO',
+								'FAMILIAR' => 'FAMILIAR');
 
+		$tiposTelefonos = array('PERSONAL' => 'PERSONAL',
+								'TRABAJO' => 'TRABAJO',
+								'CELULAR' => 'CELULAR');
 
 		$anios = array('2000' => '2000', '2001' => '2001');
-		$sexos = array('MASCULINO' => 'MASCULINO', 'FEMENINO' => 'FEMENINO');
+		$sexos = array('N' => 'SELECCIONE UN GENERO', 'H' => 'MASCULINO', 'M' => 'FEMENINO');
 		
 		$tiposDireccion = array('PERSONAL' => 'PERSONAL', 'TRABAJO' => 'TRABAJO');
 		$parentescos = array('MADRE' => 'MADRE', 'PADRE' => 'PADRE', 'HIJO' => 'HIJO', 'OTRO' => 'OTRO');
@@ -320,7 +356,8 @@ class DesaparecidoController extends Controller
 						'edoscivil' => $edoscivil,
 						'tiposDireccion' => $tiposDireccion,
 						'parentescos' => $parentescos,
-						'dialectos' =>$dialectos
+						'dialectos' =>$dialectos,
+						'tiposTelefonos' =>$tiposTelefonos
 					]);
 	}
 
@@ -335,9 +372,11 @@ class DesaparecidoController extends Controller
 					'fechaNacimiento'	=> $request->input('fechaNacimiento'),
 					'sexo' 				=> $request->input('sexo'),
 					'idNacionalidad'	=> $request->input('idNacionalidad'),
+					'curp'				=> $request->input('curp'),
+					'idEstadoOrigen'	=> $request->input('idEstadoOrigen'),
 				]);
 	
-			$embarazo		= ($request->input('sexo')=='FEMENINO') ? $request->input('embarazo') : 'NO';
+			$embarazo		= ($request->input('sexo')=='M') ? $request->input('embarazo') : 'NO';
 			$numGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('numGestacion') : null;
 			$tipoGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('tipoGestacion') : null;
 			$rumoresBebe	= ($request->input('embarazo') == 'SI') ? $request->input('rumoresBebe') : 'NO';
@@ -364,6 +403,7 @@ class DesaparecidoController extends Controller
 			'idDocumentoIdentidad'		=> $request->input('idDocumentoIdentidad'),
 			'tipoPersona'				=> 'DESAPARECIDA',
 		]);
+
 
 		
 		$nombres = $request->input('familiaresNombres');
@@ -437,6 +477,28 @@ class DesaparecidoController extends Controller
 								'localidades',
 								'colonias',
 								'codigos',
+								'nacionalidades',
+								'tiposTelefonos'
+							));		
+	}
+
+	public function show_desaparecido_contacto($idCedula, $idDesaparecido)
+	{
+		$cedula = Cedula::find($idCedula);
+		$desaparecido = Desaparecido::find($idDesaparecido);
+		
+
+		//$ladas 				= \App\Models\CatNacionalidad::all()->pluck('lada','id');
+		
+
+		$tiposTelefonos = array('PERSONAL' => 'PERSONAL',
+								'TRABAJO' => 'TRABAJO',
+								'CELULAR' => 'CELULAR');
+
+	
+		return view('desaparecidos.form_desaparecido_domicilio',
+					compact('cedula',
+								'desaparecido',
 								'tiposTelefonos'
 							));		
 	}
@@ -456,10 +518,29 @@ class DesaparecidoController extends Controller
 		return response()->json($familia);
 
 	}
+	public function  store_desaparecido_contacto(Request $request){
+
+		$contacto = Contacto::create([
+			'idDesaparecido' 		=> $request->input('idDesaparecido'),
+			'correoElectronico'		=> $request->input('correoElectronico'),
+			'telefono'				=> json_encode(array('tipoTel' => $request->input('tipoTel'),
+												 'lada' => $request->input('lada'),
+												 'telefono' => $request->input('telefono'),
+												 'ext' => $request->input('ext'))),
+													 
+			 'redesSociales'		=> json_encode(array('redesSociales' => $request->input('redesSociales'))),
+
+		]);
+
+		return response()->json($contacto);
+
+	}
 
 	public function store_desaparecido_domicilio(Request $request)
 	{
+		dd($request);
 		$domicilio = Domicilio::create([
+
 			'idDesaparecido' 	=> $request->input('idDesaparecido'),
 			'tipoDireccion'		=> $request->input('tipoDireccion'),
 			'calle'				=> $request->input('calle'),
@@ -470,18 +551,24 @@ class DesaparecidoController extends Controller
 			'idLocalidad'		=> $request->input('idLocalidad'),
 			'idColonia'			=> $request->input('idColonia'),
 			'idCodigoPostal'	=> $request->input('idCodigoPostal'),
-			'telefono'			=> json_encode(array('tipoTel' => 'PERSONAL',									 
-									 				'telefono' => $request->input('telefono'),
-									 			)),
+			'telefono'			=> json_encode(array('tipoTel' => $request->input('tipoTel'),
+												 'lada' => $request->input('lada'),
+												 'telefono' => $request->input('telefono'),
+												 'ext' => $request->input('ext'))),
 		]);
 
 		return response()->json($domicilio);
 
 	}
 
-		public function show_vestimenta($idCedula){
-		//dd($idCedula);
-		$cedula = Cedula::find($idCedula);
+		public function show_vestimenta($idCedula)
+		{
+		$desaparecido = \App\Models\Desaparecido::find($idCedula);
+		
+		
+		$cedula = Cedula::find($desaparecido->idCedula);
+
+
 		$vestimenta	= \App\Models\CatVestimenta::all()->pluck('nombre','id');
 		$accesoriosObjetos	= \App\Models\CatAccesorioObjeto::all()->pluck('nombre','id');
 		$tiposCalzados		= \App\Models\CatTiposCalzados::all()->pluck('nombre','id');
@@ -493,7 +580,8 @@ class DesaparecidoController extends Controller
 					 'marcasCalzados' => $marcasCalzados, 
 					 'accesoriosObjetos' => $accesoriosObjetos, 
 					 'colores' =>$colores, 
-					 'id' => $cedula->id ,
+					 'id' => $cedula->id,
+					 'desaparecido' => $desaparecido
 					 ]);
 		/*return view('desaparecidos.form_desaparicion',
 			[
@@ -855,4 +943,49 @@ class DesaparecidoController extends Controller
 		print_r(Session::get('productos'));*/
 		//dd(Session::get('cart'));
 	}
+
+	public function show_senas_particulares($idCedula){
+        $cedula = Cedula::find($idCedula);
+        $senasParticulares = \App\Models\CatSenasParticulares::all()->pluck('nombre','id');
+        $senasParticularesUbica = \App\Models\CatSenasParticularesUbicaciones::all()->pluck('nombre','id');
+        $nombreTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
+        
+        return view('desaparecidos.form_senas_particulares', [                        
+                        'senasParticulares' => $senasParticulares,
+                        'senasParticularesUbica' => $senasParticularesUbica,
+                        'cedula' => $cedula,
+                        'nombreTamano' => $nombreTamano
+                    ]);
+    }
+
+    public function store_senas(Request $request)
+    {
+        //dd($request->toArray())
+        
+        DB::table('cedula_cat_senas')-> insert([
+                'idCatsenas' => $request->input('senaP'),
+                'cantidad' => $request->input('cantidad'),
+                'idCatsenasParticulares' => $request->input('ubicacion'),
+                'caracteristicas' => $request->input('caracteristicas'),
+                'idCedula' => $request->input('idCedula'),
+            ]);
+            return response()->json('se inserto');
+    }
+
+    public function show_datos_dentales(){
+        //$cedula = Cedula::find($idCedula);
+        $dienteTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
+        //$senasParticularesUbica = \App\Models\CatSenasParticularesUbicaciones::all()->pluck('nombre','id');
+        //$nombreTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
+        
+        /*return view('desaparecidos.form_senas_particulares', [                        
+                        'senasParticulares' => $senasParticulares,
+                        'senasParticularesUbica' => $senasParticularesUbica,
+                        'cedula' => $cedula,
+                        'nombreTamano' => $nombreTamano
+                    ]);*/
+        return view('desaparecidos.form_datos_dentales',[
+        			'dienteTamano' => $dienteTamano
+        		]);
+    }
 }

@@ -6,6 +6,8 @@ $(document).ready(function(){
 
 	$('input[name="fechaNacimiento"]').mask('00/00/0000');
 
-	
+	$('input[name="mesAnio"]').mask('00/0000');
+
+	//$('#telefono').mask('(000) 000 0000');	
 	
 })

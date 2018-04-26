@@ -6,6 +6,10 @@ $(document).ready(function(){
 	});
 	//FUNCION PARA QEL SELECT2 POR SI NO ENCUENTRA RESULTADOS
 	$.fn.select2.defaults.set('language', {
+		maximumSelected: function (args) {
+            var message = 'Solo puedes elegir ' + args.maximum + ' elemento';
+            return message;
+        },
 		noResults: function () {
 			return "NO HAY RESULTADO";
 		},
@@ -13,13 +17,24 @@ $(document).ready(function(){
 			return "BUSCANDO";
 		}
 	});
-	///
-	$("body").on('keypress', '.sinNumeros', function(event){		
-		var inputValue = event.which;
-	    // permite letras y espacios solamente.
-	    if(!(inputValue >= 65 && inputValue <= 120) && (inputValue != 32 && inputValue != 0)) { 
-	            event.preventDefault(); 
-	        }		
+	/// Acepta solo letras y caracteres áéíóúü y ñ
+	$("body").on('keypress', '.soloLetras', function(event){		
+		key = (window.event) ? event.which : event.keyCode;
+       	tecla = String.fromCharCode(key).toLowerCase();
+       	letras = " áéíóúüabcdefghijklmnñopqrstuvwxyz";
+       	especiales = "8-37-39-46";
+
+       	tecla_especial = false;
+       	for(var i in especiales){
+            if(key == especiales[i]){
+                tecla_especial = true;
+                break;
+            }
+        }
+
+        if(letras.indexOf(tecla)==-1 && !tecla_especial){
+            return false;
+        }	
 	});
 
 	$("body").on('keypress', '.sinEnter', function(event){		
@@ -44,6 +59,14 @@ $(document).ready(function(){
    			$(this).css({"border-color":"red"});
   		}
 	});
+
+	$("body").on('keypress', '.soloNumeros', function(event){		
+	  var key = window.event.keyCode;
+    	if (key < 48 || key > 57) {
+        	return false;
+    	}
+	});
+
 
 	/******************************************************
 				DATOS DEL ENTREVISTADOR
@@ -101,6 +124,7 @@ $(document).ready(function(){
 
 
 	$('#idEstado').on('change', function(){
+		console.log($(this).val());
 		$("#idMunicipio").empty();
 		var idMunicipio = $(this).val();
 		if(idMunicipio) {
@@ -108,16 +132,12 @@ $(document).ready(function(){
 				url: '/municipio/'+idMunicipio,
 				type:"GET",
 				dataType:"json",
-
 				success:function(data) {
 						$("#idMunicipio").empty();
 					$.each(data, function(key, value){
 						$("#idMunicipio").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
-
 					});
-
-				},
-				
+				},				
 			});
 		} else {
 			$('#idEstado').empty();
@@ -224,29 +244,8 @@ $(document).ready(function(){
 	   }
    });
 
-		$('#idEdocivil').change(function() {
 
-			a = $('#idEdocivil').val();
-
-			console.log(a);
-
-			//Mostrar formulario de datos de la pareja
-
-			if (a == 2 || a == 5 || a == 6) {
-
-				console.log('Mostrar el campo datos de pareja')
-
-				$("#nombrePareja").show();
-
-			} else {
-
-				console.log('No tienes pareja')
-
-				$("#nombrePareja").hide();
-
-			}
-
-		});
+		
 
 
 
@@ -274,100 +273,6 @@ $(document).ready(function(){
 
 				$("#nombreHijo").hide();
 				$("#btnAddHijo").hide();
-
-			} 
-
-		});
-
-		
-
-		//Ocultar-mostrar pregunta ¿Está embarazada? en caso de que el sexo sea 'masculino'
-
-		$('#sexo').change(function() {
-
-			x = $('#sexo').val();
-
-			console.log(x);
-
-		if (x == 'MASCULINO') {
-
-				console.log('ocultar datos de embarazo')
-
-				$("#estaEmbarazada").hide();
-
-	 
-
-			} else {
-
-				console.log('Mostrar datos de embarazo')
-
-				$("#estaEmbarazada").show();
-
-	   
-
-			}
-
-		});
-
-
-
-		//Mostrar formulario de embarazo
-
-		$("#embarazo").change(function(){
-
-			c = $(this).val();
-
-			console.log(c);
-
-			if (c =='SI'){
-
-				console.log('Mostrar form de datos de embarazo')
-
-				$("#datosEmbarazo").show();
-
-				$("#rumores").show();
-
-				
-
-			} else {
-
-					console.log('No tienes hijos')
-
-					$("#datosEmbarazo").hide();
-					$("#datosEmbarazo3").hide();
-					$("#rumores").hide();
-
-				
-
-			} 
-
-		});
-
-
-
-		//Rumores sobre el embarazo???
-
-		$("#rumoresBebe").change(function(){
-
-			d = $(this).val();
-
-			console.log(c);
-
-			if (d =='SI'){
-
-				console.log('Mostrar form de pormenores')
-
-				$("#datosEmbarazo3").show();
-
-				
-
-			} else {
-
-					console.log('No mostrar form de pormenores')
-
-					$("#datosEmbarazo3").hide();
-
-				
 
 			} 
 
@@ -431,7 +336,7 @@ $(document).ready(function(){
 	$('#informanteidDocumentoIdentidad').change(function(){
 		h = $('#informanteidDocumentoIdentidad').val();
 		
-		if (h==7) {
+		if (h==8) {
 			$("#otro_doc").show();
 		}else{
 			$("#otro_doc").hide();

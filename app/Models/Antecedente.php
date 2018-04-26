@@ -8,8 +8,7 @@ class Antecedente extends Model
 {
 	protected $table = 'desaparecidos_antecedentes';
 	protected $fillable = [
-			'mes',
-			'anio',
+			'fecha',
 			'observaciones',
 			'idDesaparecido',
 			'idDelito',

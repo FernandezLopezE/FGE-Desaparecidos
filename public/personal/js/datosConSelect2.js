@@ -9,6 +9,8 @@ $(document).ready(function(){
 		}
 	});
 
+	$.fn.select2.defaults.set("theme", "bootstrap");
+
 	/******************************************************
 				DATOS DEL ENTREVISTADOR
 	*******************************************************/ 
@@ -28,7 +30,7 @@ $(document).ready(function(){
 
 	$('#informanteTipoDireccion').select2();
 
-	$('#idEstado').select2();
+	/*$('#idEstado').select2();
 
 	$('#idMunicipio').select2();
 
@@ -38,7 +40,7 @@ $(document).ready(function(){
 
     $('#idCodigoPostal').select2();
 
-    $('#informanteTipoTel').select2();
+    $('#informanteTipoTel').select2();*/
 
 	//$('#lada').select2();
 
