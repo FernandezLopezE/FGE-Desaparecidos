@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCatComplexion extends Migration
+class CreateCatEnfermedadesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateCatComplexion extends Migration
      */
     public function up()
     {
-        Schema::create('cat_complexion', function (Blueprint $table) {
+        Schema::create('cat_enfermedades', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre',20);
+            $table->string('nombre');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateCatComplexion extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cat_complexion');
+        Schema::dropIfExists('cat_enfermedades');
     }
 }

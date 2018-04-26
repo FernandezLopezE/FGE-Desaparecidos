@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CatColorPiel extends Model
+class CatColoresCuerpo extends Model
 {
-	protected $table = 'cat_color_piel';
+    //
+    protected $table = 'cat_colores_cuerpo';
 	protected $fillable = [
 		'nombre',
 		'imagen',
+		'idPartesCuerpo',
 	];
 }
