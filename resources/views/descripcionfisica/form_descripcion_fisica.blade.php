@@ -48,6 +48,11 @@
   {{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}
 	<div class="card-body bg-white">	
   		<div class="row">
+        <div class="form-check col-lg-12">
+          <input class="form-check-input" type="checkbox" id="editComplexion" checked="">
+          <label class="form-check-label" for="complexionPersona">Editar</label>
+        </div>
+        
     			<div class="col-lg-3">
     			{!! Form::label ('desaparecidoEstatura','Estatura:') !!}
   				{!! Form::text ('estatura',
@@ -57,6 +62,7 @@
   										'id' => 'estatura', 'maxlength' => 3
   								] )!!}
   		  	</div>
+          
   		  	<div class="col-lg-3">
   				{!! Form::label ('desaparecidoPeso','Peso:') !!}
   				{!! Form::text ('peso',
@@ -81,9 +87,11 @@
   										['class' => 'form-control',
   											'id' => 'colorPiel',
   										] )!!}						
-  			</div>		
+  			</div>
+        
       </div>
   		<hr>
+      <form id="formDescripcionF">
   		<div class="row">
       	<div class="col">
           {!! Form::label ('desaparecidoParteCuerpo','Parte del cuerpo:') !!}
@@ -195,6 +203,7 @@
                       ] )!!}
             </div>                              
       </div>  
+    </form>
       <hr>
 		  <h4 class="card-title"> Detalles de descripción física </h4>
 		  <div class="card-body">
@@ -241,7 +250,15 @@
 			}
 		});
 
-
+  $("#editComplexion").change(function () {
+     $("#estatura").prop('disabled', !this.checked);
+     $("#complexion").prop('disabled', !this.checked);
+     $("#colorPiel").prop('disabled', !this.checked);
+     $("#peso").prop('disabled', !this.checked);
+     //$("#chckOtraEnfermedad").prop('disabled', this.checked);
+     //$("#chckOtraEnfermedad").prop('checked', false);
+    
+     });
 
     var tableDescripcion = $('#tableDescripcionFisica');
 		var routeIndex = '{!! route('descripcionfisica.index') !!}';	
@@ -422,7 +439,14 @@
         console.log("hecho");
         console.log(data);
         tableDescripcion.bootstrapTable('refresh');
-                        
+        $("#editComplexion").prop('checked', false);
+        $("#estatura").prop('disabled', !this.checked);
+        $("#complexion").prop('disabled', !this.checked);
+        $("#colorPiel").prop('disabled', !this.checked);
+        $("#peso").prop('disabled', !this.checked);
+        
+        $('#formDescripcionF')[0].reset();
+        $('#idPartesCuerpo').val(1).trigger('change');
       },
       error: function(data) {
         console.log("error");
