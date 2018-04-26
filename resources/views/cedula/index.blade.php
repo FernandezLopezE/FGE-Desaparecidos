@@ -4,7 +4,7 @@
 	{!! Html::style('') !!}
 @endsection
 
-@section('titulo', 'Reporte de investigación de una persona desaparecida')
+@section('titulo', 'Registro único de personas desaparecidas')
 
 @section('content')
 <div class="card">
@@ -35,7 +35,9 @@
 							<a href="{{route('cedula.show', ['id' => $cedula->id])}}">
 								DETALLE
 							</a>
+
 							<a href="{{route('boletin.show', ['id' => $cedula->id])}}">
+
 								BOLETIN
 							</a>
 						</th>

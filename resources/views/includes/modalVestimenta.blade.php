@@ -10,7 +10,7 @@
         </div>
         <div class="modal-body">
           {{ Form::hidden('idCedula', $id, array('id' => 'idCedula')) }}
-          {{ Form::hidden('idPrenda','', array('id' => 'idPrenda')) }}
+          {{ Form::hidden('idPrenda','', array('id' => 'idPrenda')) }}          
           <!-- Contenido del formulario-->
           <!--<div class="row">
             <div class="col">

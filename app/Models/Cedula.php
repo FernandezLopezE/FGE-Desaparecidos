@@ -20,8 +20,8 @@ class Cedula extends Model
 		'idDialecto',
 		'calzadoTalla',
 		'observacionesDesaparicion',
-		'estatura',
-		'peso',
+		//'estatura',
+		//'peso',
 		'objetos',
 		'modeloCalzado',
 		'otroColorCalzado',
@@ -31,9 +31,8 @@ class Cedula extends Model
 		'idCalzadomodelo',
 		'idCalzadocolor',
 		'idCalzadomarca',
-		'idComplexion',
-		'idColorPiel',
-		'idCeja',
+		//'idComplexion',
+		//'idColorPiel',
 	];    
 	public function desaparecidos()
 	{
@@ -79,5 +78,15 @@ class Cedula extends Model
 			$this->attributes['fechaVisita'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
 		}
 		
+	}
+	public function senaparticular()
+	{
+		return $this->belongsToMany('App\Models\cedula_cat_cenas')
+		->withPivot('idCatsenasParticulares');
+	}
+	public function senaparticularubicacion()
+	{
+		return $this->belongsToMany('App\Models\cedula_cat_cenas')
+		->withPivot('idCatsenas');
 	}
 }

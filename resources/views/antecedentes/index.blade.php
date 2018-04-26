@@ -11,36 +11,45 @@
 	
 @endsection
 
-@section('titulo', 'Reporte No: <code>123456789</code>')
+@section('titulo', 'Registro único de personas desaparecidas')
 
 @section('content')
-
-	<div class="card border-primary">
-		<div class="card-header">
-			<div class="row">
-				<div class="col-lg-2 pull-left">
-					<a href="{{route('extraviado.create_desaparecido',['id' => $desaparecido->idCedula])}}">
-						<i class="fa fa-chevron-circle-left gi-3x"></i>
-					</a>			
-				</div>
-				<div class="col-lg-8">
-					<h5 class="card-title">						
-						<span align="center">ANTECEDENTES DE LA PERSONA DESAPARECIDA</span>	
-					</h5>
-				</div>
-				<div class="col-lg-2">
-					<a href="">
-							<i class="fa fa-chevron-circle-right gi-3x pull-right"></i>
-					</a>
-				</div>	
-			</div>	
-		</div>
-		<div class="card-body">
-			<button type="button" class="btn btn-dark pull-right"  id="btnAgregarAntecedente"><i class="fa fa-plus"></i> Agregar antecedente</button>
-			<table id="tableAntecedentes" ></table>
-			@include('antecedentes.modals.modal_antecedente')
-		</div>
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+			<a class="nav-item nav-link" href="#" aria-selected="true">
+				Entrevista
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Informantes
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Desaparecido
+			</a>
+			<a class="nav-item nav-link" href="{{route('familiar.show',['id' => $desaparecido->id])}}" aria-selected="false">
+				Familiares
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Contacto
+			</a>
+			<a class="nav-item nav-link" href="{{route('domicilios.show',['id' => $desaparecido->id])}}" aria-selected="false">
+				Domicilios
+			</a>
+			<a class="nav-item nav-link active" href="#" aria-selected="false">
+				Antecedentes
+			</a>
+			<a class="nav-item nav-link" href="{{route('desaparecido.show_vestimenta',['id' => $desaparecido->id])}}" aria-selected="false">
+				Vestimenta
+			</a>				
 	</div>
+</nav>
+<button type="button" class="btn btn-dark pull-right"  id="btnAgregarAntecedente">
+	Agregar
+</button>
+<div class="card-body bg-white">
+	
+	<table id="tableAntecedentes" ></table>
+	@include('antecedentes.modals.modal_antecedente')
+</div>
 
 @endsection
 
