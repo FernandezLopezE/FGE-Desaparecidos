@@ -50,17 +50,7 @@
 			</tbody>
 			
 		</table>
-	</br>
-	</br>
-	</br>
-	</br>
-	</br>
-			<a href="{{route('image-view.show', ['id' => $cedula->id])}}">
-								SUBIR DOCUMENTOS
-							</a>
-			<a href="{{route('mail.show', ['id' => $cedula->id])}}">
-								CORREO
-							</a>
+			
 
 	</div>
 </div>
