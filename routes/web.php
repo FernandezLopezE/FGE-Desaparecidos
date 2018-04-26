@@ -31,6 +31,8 @@ Route::get('/', 'InicioController@index');
 
 	Route::resource('vestimentas','VestimentaController');
 
+	Route::resource('senas_particulares','SenasParticularesController');
+
 
 
 Route::get('consultas/get_cedulas', 'ConsultasController@jsonCedulas');

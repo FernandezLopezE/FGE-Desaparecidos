@@ -144,7 +144,7 @@
 
    		
    		tableSenas.bootstrapTable({				
-			url: routeIndex+'/get_senas/{!! $cedula->id !!}',
+			url: routeIndex+'/get_senas/{!! $desaparecido->id !!}',
 			columns: [{					
 				field: 'nombreSena',
 				title: 'Seña particular',

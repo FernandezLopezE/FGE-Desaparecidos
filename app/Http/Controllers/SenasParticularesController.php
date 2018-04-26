@@ -4,39 +4,98 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\models\Cedula;
-use App\Models\Persona;
-use App\Models\Desaparecido;
-use App\Models\CatSenasParticulares;
-use App\Models\CatSenasParticularesUbicaciones;
-use DB;
-
 class SenasParticularesController extends Controller
 {
-    public function show_senas_particulares($idCedula)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        $cedula = Cedula::find($idCedula);
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        DB::table('cedula_cat_senas')-> insert([
+            'idCatsenas' => $request->input('senaP'),
+            'cantidad' => $request->input('cantidad'),
+            'idCatsenasParticulares' => $request->input('ubicacion'),
+            'caracteristicas' => $request->input('caracteristicas'),
+            'idCedula' => $request->input('idCedula'),
+        ]);
+        return response()->json('se inserto');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {       
+        $desaparecido= \App\Models\Desaparecido::find($id);
         $senasParticulares = \App\Models\CatSenasParticulares::all()->pluck('nombre','id');
         $senasParticularesUbica = \App\Models\CatSenasParticularesUbicaciones::all()->pluck('nombre','id');
         $nombreTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
         
-        return view('desaparecidos.form_senas_particulares', [                        
+        return view('senasparticulares.form_senas_particulares', [                        
                         'senasParticulares' => $senasParticulares,
                         'senasParticularesUbica' => $senasParticularesUbica,
-                        'cedula' => $cedula,
+                        'desaparecido' => $desaparecido,
                         'nombreTamano' => $nombreTamano
                     ]);
     }
 
-    public function store_senas(Request $request)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
-    	DB::table('cedula_cat_senas')-> insert([
-    		'idCatsenas' => $request->input('senaP'),
-    		'cantidad' => $request->input('cantidad'),
-    		'idCatsenasParticulares' => $request->input('ubicacion'),
-    		'caracteristicas' => $request->input('caracteristicas'),
-    		'idCedula' => $request->input('idCedula'),
-    	]);
-    	return response()->json('se inserto');
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
     }
 }
