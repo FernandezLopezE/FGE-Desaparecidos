@@ -707,16 +707,7 @@ class DesaparecidoController extends Controller
 		return response()->json($cedula);
 		
 	}
-	public function show_correo($idCedula){
-		
-		$cedula = Cedula::find($idCedula);
-		$correosExternos		= \App\Models\CatCorreosExternos::all()->pluck('correo','id');
-		return view('desaparecidos.contacto',[
-			'id' => $cedula->id,
-			'correosExternos' => $correosExternos] );
-			
-	}
-
+	
 
 	public function store(Request $request)
 	{		

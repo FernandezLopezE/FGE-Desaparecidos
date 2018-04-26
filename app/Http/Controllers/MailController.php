@@ -17,35 +17,13 @@ use App\Models\Desaparecido;
 class MailController extends Controller
 {
     
-	public function show($id){
-		$idCedula = $id;
-		$cedula = \App\Models\Cedula::find($idCedula);
-
-			//esto es para la vista de historial dental y radiografias
-		$option = array(
-			'0' => 'SIN INFORMACION',
-			'1' => 'SI');
-		/*$meses = array(
-			'1' => 'ENERO',
-			'2' => 'FEBRERO',
-			'3' => 'MARZO',
-			'4' => 'ABRIL',
-			'5' => 'MAYO',
-			'6' => 'JUNIO',
-			'7' => 'JULIO',
-			'8' => 'AGOSTO',
-			'9' => 'SEPTIEMBRE',
-			'10' => 'OCTUBRE',
-			'11' => 'NOVIEMBRE',
-			'12' => 'DICIEMBRE');*/
-
-
-		return view('cargardocumentos.historialdental_radiografia',[
+	public function show($id){	
+		$cedula = \App\Models\Cedula::find($id);
+		$correosExternos		= \App\Models\CatCorreosExternos::all()->pluck('correo','id');
+		return view('desaparecidos.contacto',[
 			'id' => $cedula->id,
-			'option' =>$option
-
+			'correosExternos' => $correosExternos
 		]);
-			
 	}
 	
 
@@ -60,15 +38,23 @@ class MailController extends Controller
 
     public function store (Request $request){
     	
-    	$file = $request->file('file');
-    	echo ($file);
-    	Mail::send('emails.contact', $request->all(), function($msj) use ($file , $asunto){
-    			$msj->subject($asunto);
-    			$msj->to('alejandro.f.toledo@gmail.com');
-    			$msj->attach($file);
+    	//$file = $request->file('file');
+    	//echo ($file);
+    	$contenido = "hola perro";
+    	//Mail::send('emails.contact', $request->all(), function($msj) use ($file , $asunto){
+    	Mail::send('emails.contact', $request->all(), function($msj){
+    			$msj->subject('Ahí te va men');
+    			//$msj->to('alejandro.f.toledo@gmail.com');
+
+    			$msj->setTo( array(
+						        'alejandro.f.toledo@gmail.com', 
+						        'alejandro_nba@hotmail.com'
+						    ));
+
+    			//$msj->attach($file);
     	});
     	Session::flash('message','Mensaje enviado correctamente');
-    	return Redirect::to('/desaparecido/correo');
+    	return Redirect::to('/emails/contacto');
     }
     
     	//este genera un documento, apartir de una vista
