@@ -1,53 +1,88 @@
 @extends('layouts.app_uipj')
 
 @section('content')
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link" href="#" aria-selected="true">
+        Entrevista
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Informantes
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Desaparecido
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Familiares
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Contacto
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Domicilios
+      </a>
+      <a class="nav-item nav-link " href="{{route('antecedentes.show',['id' => $desaparecido->id])}}" aria-selected="false">
+        Antecedentes
+      </a>
+      <a class="nav-item nav-link" href="{{route('desaparecido.show_vestimenta',['id' => $desaparecido->id])}}" aria-selected="false">
+        Vestimenta
+      </a>
+      <a class="nav-item nav-link  active" href="#" aria-selected="false">
+        Descripción física
+      </a>
+      <a class="nav-item nav-link" href="{{route('antecedentesmedicos.show',['id' => $desaparecido->id])}}" aria-selected="false">
+        Antecedentes medicos
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Señas particulares
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Datos dentales
+      </a>        
+  </div>
+</nav>
+<button type="button" class="btn btn-dark pull-right"  id="nuevaParteCuerpo">
+  Agregar
+</button>
 
-	<div class="card border-success">
-	<div class="card-header">
-		<h5 class="card-title">Descripción física			
-			<button type="button" class="btn btn-dark pull-right"  id="nuevaParteCuerpo">Agregar</button>
-		</h5>
-{{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}
-	</div>
-	<div class="card-body">	
-		<div class="row">
+  {{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}
+	<div class="card-body bg-white">	
+  		<div class="row">
+    			<div class="col-lg-3">
+    			{!! Form::label ('desaparecidoEstatura','Estatura:') !!}
+  				{!! Form::text ('estatura',
+  								old('estatura'),
+  								['class' => 'form-control sinEnter soloNumeros',
+  										'placeholder' => 'Ingrese la estura en cm',
+  										'id' => 'estatura', 'maxlength' => 3
+  								] )!!}
+  		  	</div>
+  		  	<div class="col-lg-3">
+  				{!! Form::label ('desaparecidoPeso','Peso:') !!}
+  				{!! Form::text ('peso',
+  									old('peso'),
+  									['class' => 'form-control sinEnter soloNumeros',
+  										'placeholder' => 'Ingrese el peso en kg',
+  										'id' => 'peso', 'maxlength' => 3
+  									] )!!}
+  		  	</div>
+  		  	<div class="col-lg-3">
+  					{!! Form::label ('complexion','Complexión:') !!}
+  					{!! Form::select ('complexion',
+  									$complexiones,
+  									'',
+  									['class' => 'form-control', 'id' => 'complexion'] )!!}  					
+    		</div>
   			<div class="col-lg-3">
-  			{!! Form::label ('desaparecidoEstatura','Estatura:') !!}
-				{!! Form::text ('estatura',
-								old('estatura'),
-								['class' => 'form-control sinEnter soloNumeros',
-										'placeholder' => 'Ingrese la estura en cm',
-										'id' => 'estatura', 'maxlength' => 3
-								] )!!}
-		  	</div>
-		  	<div class="col-lg-3">
-				{!! Form::label ('desaparecidoPeso','Peso:') !!}
-				{!! Form::text ('peso',
-									old('peso'),
-									['class' => 'form-control sinEnter soloNumeros',
-										'placeholder' => 'Ingrese el peso en kg',
-										'id' => 'peso', 'maxlength' => 3
-									] )!!}
-		  	</div>
-		  	<div class="col-lg-3">
-					{!! Form::label ('complexion','Complexión:') !!}
-					{!! Form::select ('complexion',
-									$complexiones,
-									'',
-									['class' => 'form-control', 'id' => 'complexion'] )!!}
-					
-			</div>
-
-			<div class="col-lg-3">
-					{!! Form::label ('colorPiel','Color piel:') !!}
-					{!! Form::select ('colorPiel',
-										$coloresPiel,
-										'',
-										['class' => 'form-control',
-											'id' => 'colorPiel',
-										] )!!}						
-			</div>		
-  		</div>
+  					{!! Form::label ('colorPiel','Color piel:') !!}
+  					{!! Form::select ('colorPiel',
+  										$coloresPiel,
+  										'',
+  										['class' => 'form-control',
+  											'id' => 'colorPiel',
+  										] )!!}						
+  			</div>		
+      </div>
   		<hr>
   		<div class="row">
       	<div class="col">
@@ -68,7 +103,6 @@
                     'placeholder' => 'Izquierdo, derecho, central'                  
                   ] )!!}
       </div>
-
       <div class="col" id="colores" style="display:none" >
           {!! Form::label ('color','Color:') !!}
          {!! Form::select ('color',
@@ -88,11 +122,8 @@
                     
                   ] )!!}
           </div>
-
-
-
       </div>
-    <hr>
+      <hr>
       <div class="row">
           <div class="col">
           {!! Form::label ('desaparecidoSubParticularidades','Particularidades:') !!}
@@ -102,10 +133,9 @@
                     ['class' => 'form-control',
                       'id' => 'idSubParticularidades',
                       'multiple' => 'multiple'
-                    ] )!!}  
-          
-        </div>
-        <div class="col" id="otro_Particularidad" style="display:none" >
+                    ] )!!}            
+      </div>
+      <div class="col" id="otro_Particularidad" style="display:none" >
           {!! Form::label ('otro','Especifique:') !!}
           {!! Form::text ('otroSubParticularidad',
                   old('otro'),
@@ -152,9 +182,9 @@
                     'id' => 'observacionesParticularidad'
                   ] )!!}
           </div>  -->    
-    </div>
-    <br>
-    <div class="row">
+      </div>
+      <br>
+      <div class="row">
             <div class="col" >
               {!! Form::label ('observaciones','Observaciones:') !!}
               {!! Form::textarea ('observaciones',
@@ -164,20 +194,17 @@
                         'id' => 'observaciones'
                       ] )!!}
             </div>                              
-    </div>  
-    <hr>
-		<h4 class="card-title"> Detalles de descripción física </h4>
-		<div class="card-body">
-			<table id="tableDescripcionFisica" ></table>
-		</div>
-	</div>	
-</div>    
-     </div> <!-- Fin del Contenido del formulario-->
-		{!! Form::submit('Atras', ['class' => 'btn btn-large btn-primary openbutton']); !!}
+      </div>  
+      <hr>
+		  <h4 class="card-title"> Detalles de descripción física </h4>
+		  <div class="card-body">
+			   <table id="tableDescripcionFisica" ></table>
+		  </div>
+  </div>	
 
-	<a href="/descripcionfisica/antecedentes_medicos/$desaparecido->id" class='btn btn-large btn-primary openbutton'>Siguiente</a>
+
   	
-</div>
+
 
 
 @endsection	
