@@ -124,6 +124,7 @@ Route::resource('/desaparecido','DesaparecidoController');
 
 //Rutas para antedecedentes medicos
 Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'AntecedentesMedicosController@show');
+Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store');
 Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
 
 //fin de rutas AM

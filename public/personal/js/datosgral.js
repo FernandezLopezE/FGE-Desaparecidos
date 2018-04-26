@@ -6,6 +6,10 @@ $(document).ready(function(){
 	});
 	//FUNCION PARA QEL SELECT2 POR SI NO ENCUENTRA RESULTADOS
 	$.fn.select2.defaults.set('language', {
+		maximumSelected: function (args) {
+            var message = 'Solo puedes elegir ' + args.maximum + ' elemento';
+            return message;
+        },
 		noResults: function () {
 			return "NO HAY RESULTADO";
 		},
@@ -62,6 +66,7 @@ $(document).ready(function(){
         	return false;
     	}
 	});
+
 
 	/******************************************************
 				DATOS DEL ENTREVISTADOR

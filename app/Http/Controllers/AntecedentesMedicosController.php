@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Desaparecido;
+use App\Models\AntecedentesMedicos;
+use App\Models\PivotEnfermedadesMedicas;
+use App\Models\PivotIntervencionesMedicas;
+use App\Models\PivotAdicciones;
+use App\Models\PivotImplantesMedicos;
 
 class AntecedentesMedicosController extends Controller
 {
@@ -36,6 +41,79 @@ class AntecedentesMedicosController extends Controller
     public function store(Request $request)
     {
         //
+        $desaparecido = Desaparecido::find($request['idExtraviado']);
+
+        // antecedentes medicos
+        $antecedentesMedicos = new AntecedentesMedicos();
+
+        $antecedentesMedicos->idPersonaDesaparecida = $request['idExtraviado'];
+        $antecedentesMedicos->medicamentosToma = $request['medicamentosToma'];
+        $antecedentesMedicos->otraEnfermedad =$request['otraEnfermedad'];
+        $antecedentesMedicos->otraIQ =$request['otraIQ'];
+        $antecedentesMedicos->otraAdiccion =$request['otraAdiccion'];
+        $antecedentesMedicos->otroImplante =$request['otroImplante'];
+        $antecedentesMedicos->observaciones = $request['observaciones'];
+
+        $antecedentesMedicos->save();
+        //
+
+        //enfermedades         
+        $enfermedad = $request['enfermedad'];
+
+        $longitud = count($enfermedad);
+
+        for($i=0; $i<$longitud; $i++){
+            /*echo $antecedentesMedicos->id;
+            echo "<br>";
+            echo $enfermedad[$i];
+            echo "<br>";*/
+            $enfermedades = new PivotEnfermedadesMedicas();
+            $enfermedades->idAntecedentesMedicos = $antecedentesMedicos->id;
+            $enfermedades->idEnfermedades = $enfermedad[$i];
+
+            $enfermedades->save();
+         }
+
+         //intervenciones quirurgicas        
+         $intervencionQ = $request['intevencionQ'];
+
+         $longitud = count($intervencionQ);
+
+         for($i=0; $i<$longitud; $i++){
+            $interQuirugicas = new PivotIntervencionesMedicas();
+            $interQuirugicas->idAntecedentesMedicos = $antecedentesMedicos->id;
+            $interQuirugicas->idIntervencionesQuirurgicas = $intervencionQ[$i];
+
+            $interQuirugicas->save();
+         }
+
+         //adicciones         
+         $adiccion = $request['adiccion'];
+
+         $longitud = count($adiccion);
+
+         for($i=0; $i<$longitud; $i++){
+            $adicciones = new PivotAdicciones();
+            $adicciones->idAntecedentesMedicos = $antecedentesMedicos->id;
+            $adicciones->idAdicciones = $adiccion[$i];
+
+            $adicciones->save();
+         }
+
+        //implantes       
+         $implante = $request['implante'];
+
+         $longitud = count($implante);
+
+         for($i=0; $i<$longitud; $i++){
+            $implantes = new PivotImplantesMedicos();
+            $implantes->idAntecedentesMedicos = $antecedentesMedicos->id;
+            $implantes->idAdicciones = $implante[$i];
+
+            $implantes->save();
+         }
+
+        return response()->json($desaparecido);
     }
 
     /**

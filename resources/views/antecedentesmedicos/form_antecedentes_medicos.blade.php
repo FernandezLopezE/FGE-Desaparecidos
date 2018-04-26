@@ -4,18 +4,18 @@
 	<div class="card border-success">
 	<div class="card-header">
 		<h5 class="card-title">Antecedentes médicos		
-			<button type="button" class="btn btn-dark pull-right"  id="nuevaParteCuerpo">Agregar</button>
+			<button type="button" class="btn btn-dark pull-right"  id="nuevoAntecedenteMedico">Agregar</button>
 		</h5>
+{{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}
 	</div>
 	<div class="card-body">	
       <div class="row">
-        <div class="form-check col-lg-2">
+        <div class="form-check col-lg-8">
           <input class="form-check-input" type="checkbox" id="sinInformacionE" checked="">
           <label class="form-check-label" for="antecedentesmedicos">
               SIN INFORMACIÓN
           </label>
-        </div>
-          <div class="col-lg-6">
+          <div class="col">
           {!! Form::label ('desaparecidoEnfermedad','Enfermedad:') !!}
           {!! Form::select ('idEnfermedad',
                     $enfermedades,
@@ -27,13 +27,13 @@
                     ] )!!}  
           
         </div>
-         <div class="form-check col-lg-1">
+        </div>
+         <div class="form-check col-lg-3">
           <input class="form-check-input" type="checkbox" id="chckOtraEnfermedad"  disabled="true" checked="false">
           <label class="form-check-label" for="antecedentesmedicos">
               OTRA 
           </label>
-        </div>
-        <div class="col-lg-3" id="otra_Enfermedad" style="display:none" >
+        <div class="col" id="otra_Enfermedad" style="display:none" >
           {!! Form::label ('otro','Especifique:') !!}
           {!! Form::text ('otraEnfermedad',
                   old('otro'),
@@ -45,17 +45,17 @@
                     'data-validation-depends-on' => 'otraEnfermedad',
                     'data-validation-depends-on-value' =>'OTRO'
                   ] )!!}
-          </div>         
+          </div> 
+        </div>
     </div> 
     <br>
       <div class="row">
-        <div class="form-check col-lg-2">
+        <div class="form-check col-lg-8">
           <input class="form-check-input" type="checkbox" id="sinInformacionIQ" checked="">
           <label class="form-check-label" for="antecedentesmedicos">
               SIN INFORMACIÓN
           </label>
-        </div>
-          <div class="col-lg-6">
+          <div class="col">
            {!! Form::label ('desaparecidoIQ','Intervenciones quirúrgicas:') !!}
             {!! Form::select ('idIQuirurgica',
                       $iQuirurgicas,
@@ -66,13 +66,13 @@
                         'disabled' => 'disabled'
                       ] )!!}           
         </div>
-         <div class="form-check col-lg-1">
+      </div>
+         <div class="form-check col-lg-3">
           <input class="form-check-input" type="checkbox" id="chckOtraIQ"  disabled="true" checked="false">
           <label class="form-check-label" for="antecedentesmedicos">
               OTRA
           </label>
-        </div>
-        <div class="col-lg-3" id="otra_IQ" style="display:none" >
+        <div class="col" id="otra_IQ" style="display:none" >
          {!! Form::label ('otraIQ','Especifique:') !!}
             {!! Form::text ('otraIQuirurgica',
                     old('otraIQ'),
@@ -84,17 +84,17 @@
                       'data-validation-depends-on' => 'otraIQuirurgica',
                       'data-validation-depends-on-value' =>'OTRO'
                     ] )!!}
-          </div>                                                          
+          </div>  
+        </div>                                                        
     </div>  
     <br>
     <div class="row">
-          <div class="form-check col-lg-2">
+          <div class="form-check col-lg-8">
           <input class="form-check-input" type="checkbox" id="sinInformacionAd" checked="">
           <label class="form-check-label" for="antecedentesmedicos">
               SIN INFORMACIÓN
           </label>
-        </div>
-          <div class="col-lg-6">
+          <div class="col">
            {!! Form::label ('desaparecidoAdic','Adicciones:') !!}
             {!! Form::select ('idAdicciones',
                       $adicciones,
@@ -105,13 +105,13 @@
                         'disabled' => 'disabled'
                       ] )!!}          
         </div>
-         <div class="form-check col-lg-1">
+        </div>
+         <div class="form-check col-lg-3">
           <input class="form-check-input" type="checkbox" id="chckOtraAdiccion"  disabled="true" checked="false">
           <label class="form-check-label" for="antecedentesmedicos">
               OTRA
           </label>
-        </div>
-        <div class="col-lg-3" id="otra_Adiccion" style="display:none" >
+        <div class="col" id="otra_Adiccion" style="display:none" >
          {!! Form::label ('otraAdic','Especifique:') !!}
             {!! Form::text ('otraAdiccion',
                     old('otraAdic'),
@@ -123,17 +123,17 @@
                       'data-validation-depends-on' => 'otraAdiccion',
                       'data-validation-depends-on-value' =>'OTRO'
                     ] )!!}
-          </div>                        
+          </div>  
+        </div>                      
     </div>
     <br>
      <div class="row">
-          <div class="form-check col-lg-2">
+          <div class="form-check col-lg-8">
           <input class="form-check-input" type="checkbox" id="sinInformacionIm" checked="">
           <label class="form-check-label" for="antecedentesmedicos">
               SIN INFORMACIÓN
           </label>
-        </div>
-          <div class="col-lg-6">
+          <div class="col">
             {!! Form::label ('desaparecidoImplan','Implantes:') !!}
             {!! Form::select ('idImplantes',
                       $implantes,
@@ -144,13 +144,13 @@
                         'disabled' => 'disabled'
                       ] )!!}       
         </div>
-         <div class="form-check col-lg-1">
+      </div>
+         <div class="form-check col-lg-3">
           <input class="form-check-input" type="checkbox" id="chckOtroImplante"  disabled="true" checked="false">
           <label class="form-check-label" for="antecedentesmedicos">
               OTRO
           </label>
-        </div>
-        <div class="col-lg-3" id="otro_Implante" style="display:none" >
+        <div class="col" id="otro_Implante" style="display:none" >
            {!! Form::label ('otroImplan','Especifique:') !!}
             {!! Form::text ('otroImplante',
                     old('otroImplan'),
@@ -162,7 +162,8 @@
                       'data-validation-depends-on' => 'otroImplante',
                       'data-validation-depends-on-value' =>'OTRO'
                     ] )!!}
-          </div>                        
+          </div>  
+          </div>                      
     </div>  
     <br>
       <div class="row">
@@ -180,10 +181,6 @@
             </div>                            
     </div>       
     <hr>
-		<h4 class="card-title"> Detalles de antecedentes médicos </h4>
-		<div class="card-body">
-			<table id="tableAntecedentesMedicos" ></table>
-		</div>
 	</div>	
 </div>    
      </div> <!-- Fin del Contenido del formulario-->
@@ -204,15 +201,21 @@
     var otraA;
     var otroIm;
 
-  $('#idEnfermedad').select2().css({"background-color": "#444444"});
+//Aplicacion de select2
+$('#idEnfermedad').select2().css({"background-color": "#444444"});
   $('#idIQuirurgica').select2();
   $('#idAdicciones').select2();
-  $('#idImplantes').select2();
-	
-///////////
-    $("#sinInformacionE").change(function () { 
+  $('#idImplantes').select2();    
+ });
+
+//sección enfermedades
+$("#sinInformacionE").change(function () { 
       $("#idEnfermedad").prop('disabled', this.checked);
       $("#chckOtraEnfermedad").prop('disabled', this.checked);
+      $("#chckOtraEnfermedad").prop('checked', false);
+      if (this.checked) {
+        $("#otra_Enfermedad").hide();
+      }
       });
 
     $("#chckOtraEnfermedad").prop('checked', false);
@@ -220,7 +223,7 @@
     $("#chckOtraAdiccion").prop('checked', false);
     $("#chckOtroImplante").prop('checked', false);
 
-    $("#chckOtraEnfermedad").change(function() {
+    $("#chckOtraEnfermedad").change(function(){
       otraE = this.checked;
       if (otraE) {
         $("#otra_Enfermedad").show();
@@ -230,9 +233,14 @@
       }
     });
 
-     $("#sinInformacionIQ").change(function () { 
+//sección intervenciones quirurgicas
+ $("#sinInformacionIQ").change(function () { 
       $("#idIQuirurgica").prop('disabled', this.checked);
       $("#chckOtraIQ").prop('disabled', this.checked);
+      $("#chckOtraIQ").prop('checked', false);
+      if (this.checked) {
+        $("#otra_IQ").hide();
+      }
       });
 
     $("#chckOtraIQ").change(function() {
@@ -245,9 +253,14 @@
       }
     });
 
-     $("#sinInformacionAd").change(function () { 
+  // sección adicciones
+ $("#sinInformacionAd").change(function () { 
       $("#idAdicciones").prop('disabled', this.checked);
       $("#chckOtraAdiccion").prop('disabled', this.checked);
+      $("#chckOtraAdiccion").prop('checked', false);
+      if (this.checked) {
+        $("#otra_Adiccion").hide();
+      }
       });
 
     $("#chckOtraAdiccion").change(function() {
@@ -260,9 +273,14 @@
       }
     });
 
-     $("#sinInformacionIm").change(function () { 
+//sección implantes
+$("#sinInformacionIm").change(function () { 
       $("#idImplantes").prop('disabled', this.checked);
       $("#chckOtroImplante").prop('disabled', this.checked);
+       $("#chckOtroImplante").prop('checked', false);
+      if (this.checked) {
+        $("#otro_Implante").hide();
+      }
       });
 
     $("#chckOtroImplante").change(function() {
@@ -275,57 +293,73 @@
       }
     });
 
-
-
 //table
-var tableDescripcion = $('#tableAntecedentesMedicos');
-		var routeIndex = '{!! route('consultas.index') !!}';	
-		
-		var formatTableActions = function(value, row, index) {				
-			btn = '<button class="btn btn-info btn-xs edit" id="editAntecedentesMedicos"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
-			
-			return [btn].join('');
-		};
-		/*window.operateEvents = {
-			'click #editCalzado': function (e, value, row, index) {					
-				console.log(row);
-				//bodyModal.empty();
-				$('#idTipo').val(row.cTipo);
-				$('#otroCalzado').val(row.oCalzado);
-				$('#idColor').val(row.cColor);
-				$('#otroColorCalzado').val(row.ocCalzado);
-				$('#modeloCalzado').val(row.modelo);
-				$('#idMarca').val(row.cMarca);
-				$('#otraMarca').val(row.oMarca);
-				$('#calzadoTalla').val(row.talla);
-				$("#modalCalzado").modal("show");
-			}
-		}
-		$('#nuevoVestimenta').click(function(e){
-			$('#modalGeneral').modal('show');
-		})*/
-		tableDescripcion.bootstrapTable({				
-			url: routeIndex+'/get_antedecentesmed/1',
-			columns: [{					
-				field: 'nombre',
-				title: 'Enfermedades',
-			}, {
-				field: 'nombre',
-				title: 'Intervenciones quirúrgicas',									
-			}, {					
-				field: 'nombre',
-				title: 'Adicciones',
-			}, {					
-			  field: 'nombre',
-        title: 'Implantes',
-			}, {					
-				title: 'Acciones',
-				formatter: formatTableActions,
-				//events: operateEvents
-			}]				
-		})
+/*var tableDescripcion = $('#tableAntecedentesMedicos');
+    var routeIndex = '{!! route('consultas.index') !!}';  
     
-	});
+    var formatTableActions = function(value, row, index) {        
+      btn = '<button class="btn btn-info btn-xs edit" id="editAntecedentesMedicos"><i class="fa fa-edit"></i>&nbsp;Editar</button>';  
+      
+      return [btn].join('');
+    };
+    tableDescripcion.bootstrapTable({       
+      url: routeIndex+'/get_antedecentesmed/1',
+      columns: [{         
+        field: 'nombre',
+        title: 'Enfermedades',
+      }, {
+        field: 'nombre',
+        title: 'Intervenciones quirúrgicas',                  
+      }, {          
+        field: 'nombre',
+        title: 'Adicciones',
+      }, {          
+        field: 'nombre',
+        title: 'Implantes',
+      }, {          
+        title: 'Acciones',
+        formatter: formatTableActions,
+        //events: operateEvents
+      }]        
+    })*/
+
+//Agregar antecedentes medicos
+  $('#nuevoAntecedenteMedico').click (function(){
+
+    var dataString = {
+      idExtraviado: $('#idExtraviado').val(),
+
+      medicamentosToma: $('#medicamentosToma').val(),
+      otraEnfermedad: $('#otraEnfermedad').val(),
+      otraIQ: $('#otraIQuirurgica').val(),
+      otraAdiccion: $('#otraAdiccion').val(),
+      otroImplante: $('#otroImplante').val(),
+      enfermedad: $('#idEnfermedad').val(),
+      intevencionQ: $('#idIQuirurgica').val(),
+      adiccion: $('#idAdicciones').val(),
+      implante: $('#idImplantes').val(),
+      observaciones: $('#observaciones').val(),
+    };
+
+    console.log(dataString);
+    $.ajax({
+      type: 'POST',
+      url: '/antecedentesmedicos/store',
+      data: dataString,
+      dataType: 'json',
+      success: function(data) {           
+        console.log("hecho");
+        console.log(data);
+        //tableDescripcion.bootstrapTable('refresh');
+                        
+      },
+      error: function(data) {
+        console.log("error");
+        console.log(data);
+      }
+      });
+  });
+
 
 	</script>
 @endsection
