@@ -159,6 +159,7 @@ class ConsultasController extends Controller
 				->where('idCedula', $idCedula)
 				->get();
 			return response()->json($prendas);
+
 	}
 	public function jsonCalzado(Request $request, $idCedula)
 	{
@@ -234,4 +235,20 @@ class ConsultasController extends Controller
 		
 		}
 	}
+
+    public function jsonSenas(Request $request, $idCedula)
+    {
+        $senas =  \DB::table('cedula_cat_senas AS ccs')
+            ->join('cat_senas_particulares AS csp', 'ccs.idCatsenas', '=', 'csp.id')
+            ->join('cat_senas_particulares_ubicaciones AS cspu', 'ccs.idCatsenasParticulares', '=', 'cspu.id')
+            ->select('csp.nombre as nombreSena',
+                    'cspu.nombre as nombreUbicacion',
+                    'cantidad',
+                    'caracteristicas')
+            ->where('idCedula', $idCedula)
+            ->get();
+
+        return response()->json($senas);
+    }
+
 }
