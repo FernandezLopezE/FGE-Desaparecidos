@@ -6,10 +6,10 @@
 	<title>Documento</title>
 </head>
 <body>
-<p><strong>Nombre:</strong>{!!$nombres!!}</p>
-<p><strong>Email:</strong>{!!$email!!}</p>
-<p><strong>Mensaje:</strong>{!!$mensaje!!}</p>
 
+<p><strong>Nombre:</strong></p>
+<p><strong>Email:</strong></p>
+<p><strong>Mensaje:</strong></p>
 
 </body>
 

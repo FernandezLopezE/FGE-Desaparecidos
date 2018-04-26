@@ -84,16 +84,17 @@ Route::get('/desaparecido/generarboletinPDF', 'MailController@generar_boletin');
 
 Route::post('/desaparecido/generarboletinPDF/{idCedula}/{idPersona}', 'MailController@generar_boletin');
 //Route::get('/desaparecido/generarboletinPDF/', 'MailController@generar_boletin');
-	
-
-
 //boletin controller
 Route::resource('boletin','BoletinController');
 //MailController
-Route::resource ('correo','MailController');
+Route::resource ('mail','MailController');
+Route::get ('enviar','MailController@store');
 //Cargar las imagenes
 Route::resource('image-view','CargarDocumentosController');
 Route::post('image-view','CargarDocumentosController@store');
+//ruta a controlador MailController para envio de correo
+Route::post('/enviar_correo','MailController@store');
+
 
 
 
@@ -186,8 +187,7 @@ Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');
 
 //Route::resource('boletin', 'BoletinController@show');
 
-Route::resource ('mail','MailController');
-Route::get('send', 'MailController@send');
+
 
 
 
