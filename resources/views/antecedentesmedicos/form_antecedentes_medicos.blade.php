@@ -78,7 +78,7 @@
           {!! Form::label ('otro','Especifique:') !!}
           {!! Form::text ('otraEnfermedad',
                   old('otro'),
-                  ['class' => 'form-control mayuscula sinEnter soloLetras',
+                  ['class' => 'form-control mayuscula sinEnter',
                     'placeholder' => 'Ingrese otra enfermedad',
                     'id' => 'otraEnfermedad',
                     'data-validation' => 'required',
@@ -117,7 +117,7 @@
          {!! Form::label ('otraIQ','Especifique:') !!}
             {!! Form::text ('otraIQuirurgica',
                     old('otraIQ'),
-                    ['class' => 'form-control mayuscula sinEnter soloLetras',
+                    ['class' => 'form-control mayuscula sinEnter',
                       'placeholder' => 'Ingrese otra intervención quirúrgica',
                       'id' => 'otraIQuirurgica',
                       'data-validation' => 'required',
@@ -156,7 +156,7 @@
          {!! Form::label ('otraAdic','Especifique:') !!}
             {!! Form::text ('otraAdiccion',
                     old('otraAdic'),
-                    ['class' => 'form-control mayuscula sinEnter soloLetras',
+                    ['class' => 'form-control mayuscula sinEnter',
                       'placeholder' => 'Ingrese otra adicción',
                       'id' => 'otraAdiccion',
                       'data-validation' => 'required',
@@ -195,7 +195,7 @@
            {!! Form::label ('otroImplan','Especifique:') !!}
             {!! Form::text ('otroImplante',
                     old('otroImplan'),
-                    ['class' => 'form-control mayuscula sinEnter soloLetras',
+                    ['class' => 'form-control mayuscula sinEnter',
                       'placeholder' => 'Ingrese otro implante',
                       'id' => 'otroImplante',
                       'data-validation' => 'required',
