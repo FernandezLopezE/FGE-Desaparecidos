@@ -26,6 +26,7 @@ min-width: 100%}
     padding-right: 8px;
     padding-left: 20px; }
   .select2-container .select2-selection--multiple {
+    background-color: #444444;
     box-sizing: border-box;
     cursor: pointer;
     display: block;

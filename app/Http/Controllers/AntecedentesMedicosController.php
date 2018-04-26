@@ -1,0 +1,179 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Models\Desaparecido;
+use App\Models\AntecedentesMedicos;
+use App\Models\PivotEnfermedadesMedicas;
+use App\Models\PivotIntervencionesMedicas;
+use App\Models\PivotAdicciones;
+use App\Models\PivotImplantesMedicos;
+
+class AntecedentesMedicosController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+        $desaparecido = Desaparecido::find($request['idExtraviado']);
+
+        // antecedentes medicos
+        $antecedentesMedicos = new AntecedentesMedicos();
+
+        $antecedentesMedicos->idPersonaDesaparecida = $request['idExtraviado'];
+        $antecedentesMedicos->medicamentosToma = $request['medicamentosToma'];
+        $antecedentesMedicos->otraEnfermedad =$request['otraEnfermedad'];
+        $antecedentesMedicos->otraIQ =$request['otraIQ'];
+        $antecedentesMedicos->otraAdiccion =$request['otraAdiccion'];
+        $antecedentesMedicos->otroImplante =$request['otroImplante'];
+        $antecedentesMedicos->observaciones = $request['observaciones'];
+
+        $antecedentesMedicos->save();
+        //
+
+        //enfermedades         
+        $enfermedad = $request['enfermedad'];
+
+        $longitud = count($enfermedad);
+
+        for($i=0; $i<$longitud; $i++){
+            /*echo $antecedentesMedicos->id;
+            echo "<br>";
+            echo $enfermedad[$i];
+            echo "<br>";*/
+            $enfermedades = new PivotEnfermedadesMedicas();
+            $enfermedades->idAntecedentesMedicos = $antecedentesMedicos->id;
+            $enfermedades->idEnfermedades = $enfermedad[$i];
+
+            $enfermedades->save();
+         }
+
+         //intervenciones quirurgicas        
+         $intervencionQ = $request['intevencionQ'];
+
+         $longitud = count($intervencionQ);
+
+         for($i=0; $i<$longitud; $i++){
+            $interQuirugicas = new PivotIntervencionesMedicas();
+            $interQuirugicas->idAntecedentesMedicos = $antecedentesMedicos->id;
+            $interQuirugicas->idIntervencionesQuirurgicas = $intervencionQ[$i];
+
+            $interQuirugicas->save();
+         }
+
+         //adicciones         
+         $adiccion = $request['adiccion'];
+
+         $longitud = count($adiccion);
+
+         for($i=0; $i<$longitud; $i++){
+            $adicciones = new PivotAdicciones();
+            $adicciones->idAntecedentesMedicos = $antecedentesMedicos->id;
+            $adicciones->idAdicciones = $adiccion[$i];
+
+            $adicciones->save();
+         }
+
+        //implantes       
+         $implante = $request['implante'];
+
+         $longitud = count($implante);
+
+         for($i=0; $i<$longitud; $i++){
+            $implantes = new PivotImplantesMedicos();
+            $implantes->idAntecedentesMedicos = $antecedentesMedicos->id;
+            $implantes->idAdicciones = $implante[$i];
+
+            $implantes->save();
+         }
+
+        return response()->json($desaparecido);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($idExtraviado)
+    {
+        //
+        $desaparecido = Desaparecido::find($idExtraviado);
+
+        $enfermedades = \App\Models\CatEnfermedades::all()->pluck('nombre','id');
+        $iQuirurgicas = \App\Models\CatIntervencionesQuirurgicas::all()->pluck('nombre','id');
+        $adicciones = \App\Models\CatAdicciones::all()->pluck('nombre','id');
+        $implantes = \App\Models\CatImplantes::all()->pluck('nombre','id');
+
+
+        return view('antecedentesmedicos.form_antecedentes_medicos',
+            [
+                'desaparecido' => $desaparecido,
+                'enfermedades' => $enfermedades,
+                'iQuirurgicas' => $iQuirurgicas,
+                'adicciones' => $adicciones,
+                'implantes' => $implantes,
+            ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+}

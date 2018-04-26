@@ -108,6 +108,7 @@ class DatabaseSeeder extends Seeder
         $this->call(MarcasCalzadosSeeder::class);
         $this->call(ColoresSeeder::class);
         $this->call(ParentescoSeeder::class);
+
         $this->call(CatSenasParticularesSeeder::class);
         $this->call(CatSenasParticularesUbicacionesSeeder::class);
 
@@ -123,6 +124,23 @@ class DatabaseSeeder extends Seeder
         $this->call(CatTipoPerdidaDienteSeeder::class);
         $this->call(CatDienteSeeder::class);
         $this->call(CatEnfermedadDentalSeeder::class);
+
+
+        //Ruben
+        $this->call(CatComplexionSeeder::class);
+        $this->call(CatColorPielSeeder::class);
+        $this->call(CatPartesCuerpoSeeder::class);
+        $this->call(CatColoresCuerpoSeeder::class);
+        $this->call(CatParticularidadesCuerpoSeeder::class);
+        $this->call(CatSubParticularidadesSeeder::class);
+        $this->call(CatModificacionesCuerpoSeeder::class);
+        $this->call(CatSubModificacionesSeeder::class);
+
+        $this->call(CatIntervencionesQuirurgicasSeeder::class);
+        $this->call(CatAdiccionesSeeder::class);
+        $this->call(CatImplantesSeeder::class);
+        $this->call(CatEnfermedadesSeeder::class);
+
 
     }
 }

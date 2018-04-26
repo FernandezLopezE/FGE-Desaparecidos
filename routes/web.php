@@ -85,15 +85,17 @@ Route::get('lada/{id}', 'LadaController@getLadas');
 Route::resource('/lada','LadaController');
 
 
+
 //Rutas Ruben
 	//mis rutas
 Route::get('/desaparecido/vestimenta/{idCedula}', 'DesaparecidoController@show_vestimenta')
 	->name('desaparecido.show_vestimenta');
+
 Route::get('consultas/get_prendas/{idCedula}', 'ConsultasController@jsonPrendas')
 	->name('consultas.get_prendas');
 Route::get('consultas/get_calzado/{idCedula}', 'ConsultasController@jsonCalzado')
 	->name('consultas.get_calzado');	
-//fin de mis rutas
+
 Route::post('/desaparecido/store_vestimenta', 'DesaparecidoController@store_vestimenta')
 	->name('desaparecido.store_vestimenta');
 Route::post('/desaparecido/update_calzado', 'DesaparecidoController@update_calzado')
@@ -102,7 +104,34 @@ Route::post('/desaparecido/update_accesorios', 'DesaparecidoController@update_ac
 	->name('desaparecido.update_accesorios');	
 Route::post('/desaparecido/update_vestimenta', 'DesaparecidoController@update_vestimenta')
 	->name('desaparecido.update_vestimenta');
+
+//Rutas para descripcion fisica
+
+Route::get('/descripcionfisica/get_coloresCuerpo/{idParteCuerpo}', 'DescripcionFisicaController@getColoresCuerpo')
+	->name('descripcionfisica.get_coloresCuerpo');
+Route::get('/descripcionfisica/get_particularidades/{idParteCuerpo}', 'DescripcionFisicaController@getParticularidades')
+	->name('descripcionfisica.get_particularidades');
+Route::get('/descripcionfisica/get_modificaciones/{idParteCuerpo}', 'DescripcionFisicaController@getModificaciones')
+	->name('descripcionfisica.get_modificaciones');
+
+Route::get('/descripcionfisica/get_partes/{idExtraviado}', 'DescripcionFisicaController@getPartesCuerpo')
+	->name('descripcionfisica.get_partes');
+	
+
+Route::get('/descripcionfisica/descripcionf/{idPersonaDesaparecida}', 'DescripcionFisicaController@show')
+	->name('descripcionfisica.show');
+
+Route::post('/descripcionfisica/store', 'DescripcionFisicaController@store')
+	->name('descripcionfisica.store');
+
+Route::resource('/descripcionfisica','DescripcionFisicaController');
 //fin de mis rutas
+
+//Rutas para antedecedentes medicos
+Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'AntecedentesMedicosController@show')
+	->name('antecedentesmedicos.show');
+Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store');
+Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
 
 
 
