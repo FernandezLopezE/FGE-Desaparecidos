@@ -14,7 +14,7 @@ use App\Models\CatDialecto;
 use App\Models\Familiar;
 use App\Models\Documento;
 use App\Models\Antecedente;
-use App\Models\Domicilio;
+//use App\Models\Domicilio;
 use App\Models\Contacto;
 use App\Models\Prenda;
 use Carbon\Carbon;
@@ -558,9 +558,14 @@ class DesaparecidoController extends Controller
 
 	}
 
-		public function show_vestimenta($idCedula){
-		//dd($idCedula);
-		$cedula = Cedula::find($idCedula);
+		public function show_vestimenta($idCedula)
+		{
+		$desaparecido = \App\Models\Desaparecido::find($idCedula);
+		
+		
+		$cedula = Cedula::find($desaparecido->idCedula);
+
+
 		$vestimenta	= \App\Models\CatVestimenta::all()->pluck('nombre','id');
 		$accesoriosObjetos	= \App\Models\CatAccesorioObjeto::all()->pluck('nombre','id');
 		$tiposCalzados		= \App\Models\CatTiposCalzados::all()->pluck('nombre','id');
@@ -572,7 +577,8 @@ class DesaparecidoController extends Controller
 					 'marcasCalzados' => $marcasCalzados, 
 					 'accesoriosObjetos' => $accesoriosObjetos, 
 					 'colores' =>$colores, 
-					 'id' => $cedula->id ,
+					 'id' => $cedula->id,
+					 'desaparecido' => $desaparecido
 					 ]);
 		/*return view('desaparecidos.form_desaparicion',
 			[

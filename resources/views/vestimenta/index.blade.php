@@ -1,12 +1,18 @@
 @extends('layouts.app_uipj')
+
 @section('css')
+{!! Html::style('') !!}
 <style type="text/css">
 	.modal-lg {
 		max-width: 80%;
 	}
+	.gi-3x{font-size: 2.5em;}
 </style>
 	
 @endsection
+
+@section('titulo', 'Registro único de personas desaparecidas')
+
 @section('content')
 <nav>
 	<div class="nav nav-tabs" id="nav-tab" role="tablist">
@@ -19,16 +25,16 @@
 			<a class="nav-item nav-link" href="#" aria-selected="false">
 				Desaparecido
 			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
+			<a class="nav-item nav-link" href="{{route('familiar.show',['id' => $desaparecido->id])}}" aria-selected="false">
 				Familiares
 			</a>
 			<a class="nav-item nav-link" href="#" aria-selected="false">
 				Contacto
 			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
+			<a class="nav-item nav-link" href="{{route('domicilios.show',['id' => $desaparecido->id])}}" aria-selected="false">
 				Domicilios
 			</a>
-			<a class="nav-item nav-link " href="{{route('antecedentes.show',['id' => $desaparecido->id])}}" aria-selected="false">
+			<a class="nav-item nav-link" href="#" aria-selected="false">
 				Antecedentes
 			</a>
 			<a class="nav-item nav-link active" href="#" aria-selected="false">
@@ -85,6 +91,7 @@
 	</div>
 	
 </div>
+
 @endsection
 @section('scripts')
 <script type="text/javascript">
@@ -165,7 +172,7 @@
 			$('#modalGeneral').modal('show');
 		})
 		table.bootstrapTable({				
-			url: routeIndex+'/get_prendas/{{$id}}',
+			url: routeIndex+'/get_prendas/{{$desaparecido->idCedula}}',
 			columns: [{					
 				field: 'id',
 				title: 'ID',
@@ -384,7 +391,7 @@
 			}
 		});
 	});
-		//----
+	
 	});
 </script>
 @endsection

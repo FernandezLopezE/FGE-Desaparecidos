@@ -29,6 +29,8 @@ Route::get('/', 'InicioController@index');
 
 	Route::resource('contactos','ContactoController');
 
+	Route::resource('vestimentas','VestimentaController');
+
 
 
 Route::get('consultas/get_cedulas', 'ConsultasController@jsonCedulas');
@@ -83,17 +85,10 @@ Route::get('lada/{id}', 'LadaController@getLadas');
 Route::resource('/lada','LadaController');
 
 
-
-/*
-
-
-// Consultar todas la cedulas de investigación.
-
-
-
 //Rutas Ruben
 	//mis rutas
-Route::get('/desaparecido/vestimenta/{idCedula}', 'DesaparecidoController@show_vestimenta');
+Route::get('/desaparecido/vestimenta/{idCedula}', 'DesaparecidoController@show_vestimenta')
+	->name('desaparecido.show_vestimenta');
 Route::get('consultas/get_prendas/{idCedula}', 'ConsultasController@jsonPrendas')
 	->name('consultas.get_prendas');
 Route::get('consultas/get_calzado/{idCedula}', 'ConsultasController@jsonCalzado')
@@ -108,6 +103,20 @@ Route::post('/desaparecido/update_accesorios', 'DesaparecidoController@update_ac
 Route::post('/desaparecido/update_vestimenta', 'DesaparecidoController@update_vestimenta')
 	->name('desaparecido.update_vestimenta');
 //fin de mis rutas
+
+
+
+
+
+
+/*
+
+
+// Consultar todas la cedulas de investigación.
+
+
+
+
 
 
 
@@ -147,6 +156,7 @@ Route::post('/desaparecido/store_desaparecido', 'DesaparecidoController@store_de
 
 // Mostrar formulario de la persona desaparecida.
 Route::get('/desaparecido/persona_desaparecida/{idCedula}', 'DesaparecidoController@show_desaparecido');	
+
 // Guardar informante
 Route::post('/desaparecido/store_informante', 'DesaparecidoController@store_informante')
 	->name('desaparecido.store_informante');

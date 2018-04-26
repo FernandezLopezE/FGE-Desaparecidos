@@ -26,14 +26,21 @@
 			<a class="nav-item nav-link" href="#" aria-selected="false">
 				Desaparecido
 			</a>
-			<a class="nav-item nav-link" href="{{route('familiar.show',['id' => $desaparecido->id])}}" aria-selected="false">
+			<a class="nav-item nav-link" href="" aria-selected="false">
 				Familiares
 			</a>
+			<a class="nav-item nav-link" href="{{route('contactos.show',['id' => $desaparecido->id])}}	" aria-selected="false">
+				Contactos
+			</a>
+
 			<a class="nav-item nav-link active" href="#" aria-selected="false">
 				Domicilios
 			</a>
 			<a class="nav-item nav-link" href="{{route('antecedentes.show',['id' => $desaparecido->id])}}" aria-selected="false">
 				Antecedentes
+			</a>
+			<a class="nav-item nav-link" href="{{route('antecedentes.show',['id' => $desaparecido->id])}}" aria-selected="false">
+				Vestimenta
 			</a>				
 	</div>
 </nav>

@@ -24,28 +24,33 @@
 			<a class="nav-item nav-link" href="#" aria-selected="false">
 				Informantes
 			</a>
-			<a class="nav-item nav-link" href="{{route('extraviado.show',['id' => $desaparecido->idCedula])}}" aria-selected="false">
+			<a class="nav-item nav-link" href="#" aria-selected="false">
 				Desaparecido
 			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
+			<a class="nav-item nav-link" href="{{route('familiar.show',['id' => $desaparecido->idCedula])}}" aria-selected="false">
 				Familiares
 			</a>
-			<a class="nav-item nav-link active" href="{{route('contactos.show',['id' => $desaparecido->id])}}" aria-selected="false">
+			<a class="nav-item nav-link active" href="#" aria-selected="false">
 				Contacto
 			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
+			<a class="nav-item nav-link" href="{{route('domicilios.show',['id' => $desaparecido->id])}}" aria-selected="false">
 				Domicilios
 			</a>
 			<a class="nav-item nav-link" href="#" aria-selected="false">
 				Antecedentes
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Vestimenta
 			</a>				
 	</div>
 </nav>
-			<button type="button" class="btn btn-dark pull-right"  id="btnAgregarContacto"><i class="fa fa-plus"></i> Agregar contacto</button>
+<button type="button" class="btn btn-dark pull-right"  id="btnAgregarContacto">
+	Agregar
+</button>
+<div class="card-body bg-white">
 			<table id="tableContactos" ></table>
 			@include('contactos.modals.index')
-		</div>
-
+</div>
 
 @endsection
 
