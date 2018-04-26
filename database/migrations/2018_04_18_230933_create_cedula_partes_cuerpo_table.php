@@ -15,8 +15,8 @@ class CreateCedulaPartesCuerpoTable extends Migration
     {
         Schema::create('cedula_partes_cuerpo', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('lado');
-            $table->string('observaciones')->nullable();
+            $table->string('lado')->nullable();
+            $table->text('observaciones')->nullable();
             $table->string('otraParticularidad')->nullable();
             $table->string('otraModificacion')->nullable();
             $table->string('otroColor')->nullable();
