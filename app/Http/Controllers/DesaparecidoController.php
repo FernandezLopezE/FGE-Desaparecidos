@@ -716,6 +716,7 @@ class DesaparecidoController extends Controller
 		return response()->json($cedula);
 		
 	}
+	
 
 	public function store(Request $request)
 	{		
