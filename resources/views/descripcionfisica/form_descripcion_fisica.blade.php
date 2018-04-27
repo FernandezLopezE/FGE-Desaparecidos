@@ -224,6 +224,7 @@
 	$(document).ready(function(){
 		var otraP;
 		var otraM;
+    var otraModi;
 
 		$('#nuevaParteCuerpo').click(function(e){
 			$('#modalDescripcionFisica').modal('show');
@@ -233,22 +234,25 @@
 
 	$("#idSubParticularidades").change(function() {
 			otraP = $('#idSubParticularidades').val();
-			//console.log(otraP);
-			if (otraP >=77 && otraP <= 88) {
-				$("#otro_Particularidad").show();
-			}else{
-				$("#otro_Particularidad").hide();
-			}
+      console.log(otraP);
+      for(var i=0;i<otraP.length;i++){
+			     if (otraP[i] >=77 && otraP[i] <= 88) {
+				      $("#otro_Particularidad").show();
+			     }else{
+				      $("#otro_Particularidad").hide();
+			     }
+      }
 		});
 
 	$("#idSubModificaciones").change(function() {
 			otraM = $('#idSubModificaciones').val();
-
-			if (otraM ==13 || otraM == 20 || otraM == 26 || otraM == 33|| otraM == 36|| otraM == 40 || otraM == 47|| otraM == 51|| otraM == 53|| otraM == 60) {
-				$("#otra_Modificacion").show();
-			}else{
-				$("#otra_Modificacion").hide();
-			}
+      for(var i=0;i<otraM.length;i++){
+			   if (otraM[i] ==13 || otraM[i] == 20 || otraM[i] == 26 || otraM[i] == 33|| otraM[i] == 36|| otraM[i] == 40 || otraM[i] == 47|| otraM[i] == 51|| otraM[i] == 53|| otraM[i] == 60) {
+				      $("#otra_Modificacion").show();
+			   }else{
+				      $("#otra_Modificacion").hide();
+			   }
+      }
 		});
 
   $("#editComplexion").change(function () {
@@ -313,6 +317,8 @@
 $('#idPartesCuerpo').on('change', function(){
       parteCuerpoid = $('#idPartesCuerpo').val();
       console.log(parteCuerpoid);
+       $("#otro_Particularidad").hide();
+        $("#otra_Modificacion").hide();
        if(parteCuerpoid == 5 || parteCuerpoid >= 8 && parteCuerpoid <= 11 || parteCuerpoid == 13 || parteCuerpoid == 16 || parteCuerpoid >= 20 && parteCuerpoid <=22 || parteCuerpoid >= 33 && parteCuerpoid <=36)
       {
         $('#lado_cuerpo').hide();
