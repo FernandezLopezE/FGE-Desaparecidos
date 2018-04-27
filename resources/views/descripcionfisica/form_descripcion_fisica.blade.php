@@ -41,13 +41,19 @@
       </a>        
   </div>
 </nav>
-<button type="button" class="btn btn-dark pull-right"  id="nuevaParteCuerpo">
-  Agregar
-</button>
 
   {{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}
 	<div class="card-body bg-white">	
+    <button type="button" class="btn btn-dark pull-right"  id="nuevaParteCuerpo">
+  Agregar
+</button>
+<br>
   		<div class="row">
+        <div class="form-check col-lg-12">
+          <input class="form-check-input" type="checkbox" id="editComplexion" checked="">
+          <label class="form-check-label" for="complexionPersona">Editar</label>
+        </div>
+        
     			<div class="col-lg-3">
     			{!! Form::label ('desaparecidoEstatura','Estatura:') !!}
   				{!! Form::text ('estatura',
@@ -57,6 +63,7 @@
   										'id' => 'estatura', 'maxlength' => 3
   								] )!!}
   		  	</div>
+          
   		  	<div class="col-lg-3">
   				{!! Form::label ('desaparecidoPeso','Peso:') !!}
   				{!! Form::text ('peso',
@@ -81,12 +88,14 @@
   										['class' => 'form-control',
   											'id' => 'colorPiel',
   										] )!!}						
-  			</div>		
+  			</div>
+        
       </div>
   		<hr>
+      <form id="formDescripcionF">
   		<div class="row">
-      	<div class="col">
-          {!! Form::label ('desaparecidoParteCuerpo','Parte del cuerpo:') !!}
+      	<div class="col-lg-4">
+          {!! Form::label ('desaparecidoParteCuerpo','Partes del rostro:') !!}
           {!! Form::select ('idPartesCuerpo',
                     $partesCuerpo,
                     '',
@@ -94,7 +103,7 @@
                       'id' => 'idPartesCuerpo'
                     ] )!!}            
       </div>
-      <div class="col">
+      <div class="col" id= lado_cuerpo style="display:none">
           {!! Form::label ('desaparecidoLado','Lado:') !!}
           {!! Form::text ('lado',
                   '',
@@ -195,6 +204,7 @@
                       ] )!!}
             </div>                              
       </div>  
+    </form>
       <hr>
 		  <h4 class="card-title"> Detalles de descripción física </h4>
 		  <div class="card-body">
@@ -214,6 +224,7 @@
 	$(document).ready(function(){
 		var otraP;
 		var otraM;
+    var otraModi;
 
 		$('#nuevaParteCuerpo').click(function(e){
 			$('#modalDescripcionFisica').modal('show');
@@ -223,25 +234,36 @@
 
 	$("#idSubParticularidades").change(function() {
 			otraP = $('#idSubParticularidades').val();
-			//console.log(otraP);
-			if (otraP >=77 && otraP <= 88) {
-				$("#otro_Particularidad").show();
-			}else{
-				$("#otro_Particularidad").hide();
-			}
+      console.log(otraP);
+      for(var i=0;i<otraP.length;i++){
+			     if (otraP[i] >=77 && otraP[i] <= 88) {
+				      $("#otro_Particularidad").show();
+			     }else{
+				      $("#otro_Particularidad").hide();
+			     }
+      }
 		});
 
 	$("#idSubModificaciones").change(function() {
 			otraM = $('#idSubModificaciones').val();
-
-			if (otraM ==13 || otraM == 20 || otraM == 26 || otraM == 33|| otraM == 36|| otraM == 40 || otraM == 47|| otraM == 51|| otraM == 53|| otraM == 60) {
-				$("#otra_Modificacion").show();
-			}else{
-				$("#otra_Modificacion").hide();
-			}
+      for(var i=0;i<otraM.length;i++){
+			   if (otraM[i] ==13 || otraM[i] == 20 || otraM[i] == 26 || otraM[i] == 33|| otraM[i] == 36|| otraM[i] == 40 || otraM[i] == 47|| otraM[i] == 51|| otraM[i] == 53|| otraM[i] == 60) {
+				      $("#otra_Modificacion").show();
+			   }else{
+				      $("#otra_Modificacion").hide();
+			   }
+      }
 		});
 
-
+  $("#editComplexion").change(function () {
+     $("#estatura").prop('disabled', !this.checked);
+     $("#complexion").prop('disabled', !this.checked);
+     $("#colorPiel").prop('disabled', !this.checked);
+     $("#peso").prop('disabled', !this.checked);
+     //$("#chckOtraEnfermedad").prop('disabled', this.checked);
+     //$("#chckOtraEnfermedad").prop('checked', false);
+    
+     });
 
     var tableDescripcion = $('#tableDescripcionFisica');
 		var routeIndex = '{!! route('descripcionfisica.index') !!}';	
@@ -275,7 +297,7 @@
     $('#idSubParticularidades').select2();
     $('#idSubModificaciones').select2();
 
-    if($('#idPartesCuerpo').val() == 1){
+    if($('#idPartesCuerpo').val()== 1){
     	$("#idSubParticularidades").empty();
     	$("#idSubModificaciones").empty();
       $("#color").empty();
@@ -292,10 +314,19 @@
 //fin campo otro color
 
 	//Obtener particularidades
-	$('#idPartesCuerpo').on('change', function(){
+$('#idPartesCuerpo').on('change', function(){
       parteCuerpoid = $('#idPartesCuerpo').val();
-      if(parteCuerpoid == 24){
-      $('#colores').show();
+      console.log(parteCuerpoid);
+       $("#otro_Particularidad").hide();
+        $("#otra_Modificacion").hide();
+       if(parteCuerpoid == 5 || parteCuerpoid >= 8 && parteCuerpoid <= 11 || parteCuerpoid == 13 || parteCuerpoid == 16 || parteCuerpoid >= 20 && parteCuerpoid <=22 || parteCuerpoid >= 33 && parteCuerpoid <=36)
+      {
+        $('#lado_cuerpo').hide();
+      }else{
+        $('#lado_cuerpo').show();
+      }
+      if(parteCuerpoid == 24 || parteCuerpoid >= 34 && parteCuerpoid <= 37){
+        $('#colores').show();
     }else{
       $('#colores').hide();
     }
@@ -309,9 +340,6 @@
         maximumSelectionLength: 10,       
       });
      } 
-
-
-
         $("#idSubParticularidades").empty();
         var idPartesCuerpo = $(this).val();
         if(idPartesCuerpo) {
@@ -422,7 +450,14 @@
         console.log("hecho");
         console.log(data);
         tableDescripcion.bootstrapTable('refresh');
-                        
+        $("#editComplexion").prop('checked', false);
+        $("#estatura").prop('disabled', !this.checked);
+        $("#complexion").prop('disabled', !this.checked);
+        $("#colorPiel").prop('disabled', !this.checked);
+        $("#peso").prop('disabled', !this.checked);
+        
+        $('#formDescripcionF')[0].reset();
+        $('#idPartesCuerpo').val(1).trigger('change');
       },
       error: function(data) {
         console.log("error");
