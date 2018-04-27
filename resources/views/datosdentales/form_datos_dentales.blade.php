@@ -8,6 +8,7 @@
     	max-height: 450px;
     }
 </style>
+{!! Html::style('personal/css/pgwslider.css') !!}
 @endsection
 
 @extends('layouts.app_uipj')

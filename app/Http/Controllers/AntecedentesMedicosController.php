@@ -108,7 +108,7 @@ class AntecedentesMedicosController extends Controller
          for($i=0; $i<$longitud; $i++){
             $implantes = new PivotImplantesMedicos();
             $implantes->idAntecedentesMedicos = $antecedentesMedicos->id;
-            $implantes->idAdicciones = $implante[$i];
+            $implantes->idImplantes = $implante[$i];
 
             $implantes->save();
          }

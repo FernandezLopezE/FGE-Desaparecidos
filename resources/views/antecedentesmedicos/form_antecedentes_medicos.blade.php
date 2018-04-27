@@ -33,7 +33,7 @@
       <a class="nav-item nav-link active" href="#" aria-selected="false">
         Antecedentes médicos
       </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
+      <a class="nav-item nav-link" href="{{route('senas_particulares.show',['id' => $desaparecido->id])}}" aria-selected="false">
         Señas particulares
       </a>
       <a class="nav-item nav-link" href="#" aria-selected="false">
@@ -235,6 +235,8 @@
 @endsection	
 
 @section('scripts')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var otraE;
@@ -391,6 +393,22 @@ $("#sinInformacionIm").change(function () {
       success: function(data) {           
         console.log("hecho");
         console.log(data);
+        $.confirm({
+            title: 'Datos guardados!',
+            content: 'Antecedentes médicos guardados exitosamente.',
+            type: 'dark',
+            typeAnimated: true,
+            buttons: {
+                tryAgain: {
+                    text: 'Aceptar',
+                    btnClass: 'btn-dark',
+                    action: function(){
+                    }
+                },
+            }
+        });
+        //swal("Datos guardados exitosamente.", "Dale click en el boton ok!", "success");
+      
         //tableDescripcion.bootstrapTable('refresh');
                         
       },

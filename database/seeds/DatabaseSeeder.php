@@ -111,7 +111,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call(CatCorreosExternosSeeder::class);
 
-
         $this->call(CatSenasParticularesSeeder::class);
         $this->call(CatSenasParticularesUbicacionesSeeder::class);
 
