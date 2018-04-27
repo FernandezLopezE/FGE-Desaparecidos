@@ -190,6 +190,8 @@ Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'Antece
 Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store');
 Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
 
+Route::get('/email', 'MailController@show')->name('mail.enviar');
+
 
 
 

@@ -14,6 +14,7 @@
 @extends('layouts.app_uipj')
 
 @section('content')
+@include('navs.navs_datos',array('activar' => 'dentadura'))
 	<div class="card border-primary">
 		<div class="card-header">
 			<div class="row">
