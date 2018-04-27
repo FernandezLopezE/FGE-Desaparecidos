@@ -7,14 +7,13 @@
 @section('titulo', 'Registro único de personas desaparecidas')
 
 @section('content')
-
 {!! Form::model($cedula,
 				['method' => 'PATCH',
 				'route' => ['cedula.update',
 							 $cedula->id
 							]
 				]) !!}
-
+@include('navs.navs_datos',array('activar' => 'entrevista'))
 
 <button type="submit" class="btn btn-dark pull-right"  id="btnAgregarInformante">	
 		<i class="fa fa-plus"></i> GUARDAR			

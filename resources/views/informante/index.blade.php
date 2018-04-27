@@ -14,34 +14,7 @@
 
 @section('content')
 	{{ Form::hidden('idCedula', $cedula->id, array('id' => 'idCedula')) }}
-<nav>
-	<div class="nav nav-tabs" id="nav-tab" role="tablist">
-			<a class="nav-item nav-link" href="{{route('cedula.show',['id' => $cedula->id])}}" aria-selected="true">
-				Entrevista
-			</a>
-			<a class="nav-item nav-link active" href="#" aria-selected="false">
-				Informantes
-			</a>
-			<a class="nav-item nav-link" href="{{route('extraviado.create_desaparecido',['id' => $cedula->id])}}" aria-selected="false">
-				Desaparecido
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Familiares
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Contacto
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Domicilios
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Antecedentes
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Vestimenta
-			</a>				
-	</div>
-</nav>
+@include('navs.navs_datos',array('activar' => 'informante'))
 
 <button type="button" class="btn btn-dark pull-right"  id="btnAgregarInformante">
 	AGREGAR

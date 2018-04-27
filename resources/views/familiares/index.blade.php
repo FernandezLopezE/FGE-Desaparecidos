@@ -14,35 +14,7 @@
 @section('titulo', 'Registro único de personas desaparecidas')
 
 @section('content')
-
-<nav>
-	<div class="nav nav-tabs" id="nav-tab" role="tablist">
-			<a class="nav-item nav-link" href="#" aria-selected="true">
-				Entrevista
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Informantes
-			</a>
-			<a class="nav-item nav-link" href="{{route('extraviado.show',['id' => $desaparecido->idCedula])}}" aria-selected="false">
-				Desaparecido
-			</a>
-			<a class="nav-item nav-link active" href="#" aria-selected="false">
-				Familiares
-			</a>
-			<a class="nav-item nav-link" href="{{route('contactos.show',['id' => $desaparecido->id])}}" aria-selected="false">
-				Contacto
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Domicilios
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Antecedentes
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Vestimenta
-			</a>				
-	</div>
-</nav>
+@include('navs.navs_datos',array('activar' => 'familiar'))
 <button type="button" class="btn btn-dark pull-right"  id="btnAgregarFamiliar">
 	Agregar
 </button>
