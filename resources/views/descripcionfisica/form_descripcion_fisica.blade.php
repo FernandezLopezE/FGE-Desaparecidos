@@ -41,12 +41,13 @@
       </a>        
   </div>
 </nav>
-<button type="button" class="btn btn-dark pull-right"  id="nuevaParteCuerpo">
-  Agregar
-</button>
 
   {{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}
 	<div class="card-body bg-white">	
+    <button type="button" class="btn btn-dark pull-right"  id="nuevaParteCuerpo">
+  Agregar
+</button>
+<br>
   		<div class="row">
         <div class="form-check col-lg-12">
           <input class="form-check-input" type="checkbox" id="editComplexion" checked="">
@@ -94,7 +95,7 @@
       <form id="formDescripcionF">
   		<div class="row">
       	<div class="col-lg-4">
-          {!! Form::label ('desaparecidoParteCuerpo','Parte del cuerpo:') !!}
+          {!! Form::label ('desaparecidoParteCuerpo','Partes del rostro:') !!}
           {!! Form::select ('idPartesCuerpo',
                     $partesCuerpo,
                     '',
