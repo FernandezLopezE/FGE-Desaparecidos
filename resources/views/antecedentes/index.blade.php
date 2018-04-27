@@ -54,6 +54,8 @@
 @endsection
 
 @section('scripts')
+{!! HTML::script('personal/js/sisyphus.min.js') !!}
+{!! HTML::script('personal/js/sisyphus.js') !!}
 <script type="text/javascript">
 	$(function (){
 		var table = $('#tableAntecedentes');
@@ -64,6 +66,7 @@
 		var modalAntecedentes = $('#modalAntecedentes');
 		var modalFooter = $('.modal-footer');
 		var idDesaparecido = '{!! $desaparecido->id !!}'
+        var btnLimpiar = $('#btnLimpiar');
 		
 		table.bootstrapTable({				
 			url: routeIndex+'/get_antecedentes/{!! $desaparecido->id !!}',
@@ -78,7 +81,15 @@
 
 		btnAgregarAntecedente.click(function(e){
 			modalAntecedentes.modal('show');
+	           $( "#modalAntecedentes" ).sisyphus( {
+	           excludeFields: $('input[name=_token]')
+            });
 		})
+        
+        btnLimpiar.click(function(){
+          $('#modalAntecedentes').find('form')[0].reset();
+          $('#modalAntecedentes').removeData('modal');
+             })
 
 		btnGuardarAntecedente.click (function(){
 			

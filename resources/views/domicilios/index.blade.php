@@ -58,6 +58,8 @@
 @endsection
 
 @section('scripts')
+{!! HTML::script('personal/js/sisyphus.min.js') !!}
+{!! HTML::script('personal/js/sisyphus.js') !!}
 <script type="text/javascript">
 	$(function (){
 		var table = $('#tableDomicilios');
@@ -68,6 +70,8 @@
 		var modal = $('#modalDomicilio');
 		var modalFooter = $('.modal-footer');
 		var idDesaparecido = '{!! $desaparecido->id !!}'
+        var btnLimpiar = $('#btnLimpiar');
+
 		
 		table.bootstrapTable({				
 			url: routeIndex+'/get_domicilios/{!! $desaparecido->id !!}',
@@ -91,8 +95,16 @@
 
 		btnAgregar.click(function(e){
 			modal.modal('show');
+		  $( "#modalDomicilio" ).sisyphus( {
+	           excludeFields: $('input[name=_token]')
+            });
 		})
-
+        
+        btnLimpiar.click(function(){
+          $('#modalDomicilio').find('form')[0].reset();
+          $('#modalDomicilio').removeData('modal');
+             })
+            
 		btnGuardar.click (function(){
 			
 			var dataString = {

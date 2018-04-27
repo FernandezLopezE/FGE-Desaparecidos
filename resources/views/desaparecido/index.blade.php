@@ -48,6 +48,9 @@
 				</button>
 			</h5>		
 		</div>
+    </br>
+    <input type="reset" class="btn btn-dark pull-right" value="LIMPIAR CAMPOS">
+    </br>
 		<div class="card-body">
 			<div class="row">
 				<div class="col">
@@ -287,9 +290,16 @@
 {!! HTML::script('personal/js/funciones_generales.js') !!}
 {!! HTML::script('personal/js/curp.js') !!}
 {!! HTML::script('personal/js/documentosIdentidad.js') !!}
+{!! HTML::script('personal/js/sisyphus.min.js') !!}
+{!! HTML::script('personal/js/sisyphus.js') !!}
 
 <script type="text/javascript">
-
+var btnLimpiar = $('#btnLimpiar');
+    
+     $( "form" ).sisyphus( {
+	           excludeFields: $('input[name=_token]')
+            });
+    
 		//Ocultar-mostrar pregunta ¿Está embarazada? en caso de que el sexo sea 'masculino'
 
 			//if (a == 2 || a == 3 || a == 4 || a == 5 || a == 6) {
