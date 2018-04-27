@@ -9,7 +9,6 @@
 @section('content')
 {{ Form::model($cedula, ['action' => 'CedulaController@store']) }}
 
-@include('navs.navs_datos')
 <button type="submit" class="btn btn-dark pull-right" id="btnAgregarInformante">
 	GUARDAR		
 </button>

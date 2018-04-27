@@ -15,7 +15,7 @@
 							]
 				]) !!}
 
-@include('navs.navs_datos')
+
 <button type="submit" class="btn btn-dark pull-right"  id="btnAgregarInformante">	
 		<i class="fa fa-plus"></i> GUARDAR			
 </button>

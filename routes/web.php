@@ -32,6 +32,12 @@ Route::get('/', 'InicioController@index');
 	Route::resource('vestimentas','VestimentaController');
 
 
+	Route::resource('senas_particulares','SenasParticularesController');
+
+	Route::resource('datos_dentales','DatosDentalesController');
+
+
+
 
 Route::get('consultas/get_cedulas', 'ConsultasController@jsonCedulas');
 Route::get('consultas/get_informantes/{idCedula}', 'ConsultasController@jsonInformantes')
@@ -151,6 +157,27 @@ Route::post('/descripcionfisica/store', 'DescripcionFisicaController@store')
 
 Route::resource('/descripcionfisica','DescripcionFisicaController');
 //fin de mis rutas
+
+//Rutas para antedecedentes medicos
+Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'AntecedentesMedicosController@show')
+	->name('antecedentesmedicos.show');
+Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store');
+Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
+
+//mostrar vista de señas particulares 
+Route::get('/senas_particulares/{idDesaparecido}','SenasParticularesController@show_senas_particulares');
+Route::post('/senas_particulares/store_senas', 'SenasParticularesController@store_senas')
+	->name('senas_particulares.store_senas');
+Route::get('consultas/get_senas/{idCedula}', 'ConsultasController@jsonSenas')
+	->name('consultas.get_senas');
+
+//mostrar la vista de datos dentales
+Route::get('/datos_dentales/{idDesaparecido}','DatosDentalesController@show_datos_dentales')
+	->name('datos_dentales.show');
+Route::post('/datos_dentales/store_datos_dentales', 'DatosDentalesController@store_datos_dentales')
+	->name('datos_dentales.store_datos_dentales');
+
+
 //la siguiente es una ruta para crear el pdf
 
 
@@ -227,13 +254,13 @@ Route::post('/desaparecido/store_datos_dentales', 'DesaparecidoController@store_
 Route::resource('/desaparecido','DesaparecidoController');
 
 
-Route::resource('domicilio','DomiciliosController');
+/*Route::resource('domicilio','DomiciliosController');
 Route::get('codigos/{id}', 'DomiciliosController@getCodigos');
 Route::get('municipio/{id}', 'DomiciliosController@getMunicipios');
 Route::get('localidades/{id}', 'DomiciliosController@getLocalidades');
 Route::get('colonias2/{id}', 'DomiciliosController@getColonias2');
 Route::get('colonias/{id}', 'DomiciliosController@getColonias');
-Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');
+Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');*/
 
 //Route::resource('boletin', 'BoletinController@show');
 

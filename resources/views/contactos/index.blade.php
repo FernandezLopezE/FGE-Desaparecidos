@@ -55,7 +55,10 @@
 @endsection
 
 @section('scripts')
+{!! HTML::script('personal/js/sisyphus.min.js') !!}
+{!! HTML::script('personal/js/sisyphus.js') !!}
 <script type="text/javascript">
+    var btnLimpiar = $('#btnLimpiar');
 	document.getElementById("ladaC").value="(+52)-";
 	var contador = 0;
 	$("input[name='informanteTelefonosC[]']").mask('(000) 000 0000');
@@ -135,7 +138,16 @@ tableContactos.bootstrapTable({
 btnAgregarContacto.click(function(e){
 			console.log('hola mundo');
 			modalDesaparecidoContacto.modal('show');
+		 $( "#modalDesaparecidoContacto" ).sisyphus( {
+	           excludeFields: $('input[name=_token]')
+            });
 		})
+        
+        btnLimpiar.click(function(){
+          $('#modalDesaparecidoContacto').find('form')[0].reset();
+          $('#modalDesaparecidoContacto').removeData('modal');
+
+        })
 
 		btnGuardarContacto.click (function(){
 			

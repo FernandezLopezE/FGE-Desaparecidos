@@ -114,8 +114,8 @@ class DescripcionFisicaController extends Controller
     {
         //
         $desaparecido = Desaparecido::find($idDesaparecido);
-
-        $partesCuerpo = \App\Models\CatPartesCuerpo::all()->pluck('nombre','id');
+        $ids = array(1,6,11,13,15,16,20,23,24,34,35,36,37);
+        $partesCuerpo = \App\Models\CatPartesCuerpo::whereIn('id',$ids)->pluck('nombre','id');
         $complexiones = \App\Models\CatComplexion::all()->pluck('nombre','id');
         $coloresPiel = \App\Models\CatColorPiel::all()->pluck('nombre','id');
         $coloresCuerpo = \App\Models\CatColoresCuerpo::all()->pluck('nombre','id');

@@ -9,7 +9,7 @@
 @section('content')
 {{ Form::model($cedula, ['action' => 'CedulaController@store']) }}
 
-@include('navs.navs_datos')
+
 
 <a href="{{route('cedula.edit', ['id' => $cedula->id])}}" class="btn btn-dark pull-right">
 	EDITAR
