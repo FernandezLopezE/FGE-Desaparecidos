@@ -145,5 +145,5 @@
 		</div>
 	</div>
 	{!! Form::submit('Nueva cédula de investigación', ['class' => 'btn btn-large btn-primary openbutton']); !!}
-{!! Form::close() !!}
+{!! Form::close() !!}  
 @endsection

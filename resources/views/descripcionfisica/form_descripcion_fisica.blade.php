@@ -1,46 +1,7 @@
 @extends('layouts.app_uipj')
 
 @section('content')
-<nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link" href="#" aria-selected="true">
-        Entrevista
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Informantes
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Desaparecido
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Familiares
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Contacto
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Domicilios
-      </a>
-      <a class="nav-item nav-link " href="{{route('antecedentes.show',['id' => $desaparecido->id])}}" aria-selected="false">
-        Antecedentes
-      </a>
-      <a class="nav-item nav-link" href="{{route('desaparecido.show_vestimenta',['id' => $desaparecido->id])}}" aria-selected="false">
-        Vestimenta
-      </a>
-      <a class="nav-item nav-link  active" href="#" aria-selected="false">
-        Descripción física
-      </a>
-      <a class="nav-item nav-link" href="{{route('antecedentesmedicos.show',['id' => $desaparecido->id])}}" aria-selected="false">
-        Antecedentes medicos
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Señas particulares
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Datos dentales
-      </a>        
-  </div>
-</nav>
+@include('navs.navs_datos',array('activar' => 'desc_fisica'))
 
   {{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}
 	<div class="card-body bg-white">	
@@ -235,13 +196,15 @@
 	$("#idSubParticularidades").change(function() {
 			otraP = $('#idSubParticularidades').val();
       var aux = new Array();
-      console.log(otraP);
-      for(var i=0;i<otraP.length;i++){
-			     if (otraP[i] >=77 && otraP[i] <= 88) {
-				      $("#otro_Particularidad").show();
-			     }else{
-				      $("#otro_Particularidad").hide();
-			     }
+      if( otraP.length <=1 && otraP >= 89 && otraP <= 125){
+         aux = otraP;
+       }else{
+        for(var i=0;i<otraP.length;i++){
+           if (otraP[i] >=77 && otraP[i] <= 88) {
+              $("#otro_Particularidad").show();
+           }else{
+              $("#otro_Particularidad").hide();
+           }
 
            if(otraP[i] >= 89 && otraP[i] <= 125){
               console.log("(o.o)");
@@ -249,20 +212,25 @@
             aux[i] = otraP[i];
               console.log(aux[i]);
            }
-      }
-
+        }
+       }
+    
       $('#idSubParticularidades').val(aux);
 		});
 
 	$("#idSubModificaciones").change(function() {
 			otraM = $('#idSubModificaciones').val();
       var aux = new Array();
-      for(var i=0;i<otraM.length;i++){
-			   if (otraM[i] ==13 || otraM[i] == 20 || otraM[i] == 26 || otraM[i] == 33|| otraM[i] == 36|| otraM[i] == 40 || otraM[i] == 47|| otraM[i] == 51|| otraM[i] == 53|| otraM[i] == 60) {
-				      $("#otra_Modificacion").show();
-			   }else{
-				      $("#otra_Modificacion").hide();
-			   }
+      if( otraM.length <=1 && otraM >= 61 && otraM <= 97){
+         aux = otraM;
+      }else{
+
+        for(var i=0;i<otraM.length;i++){
+         if (otraM[i] ==13 || otraM[i] == 20 || otraM[i] == 26 || otraM[i] == 33|| otraM[i] == 36|| otraM[i] == 40 || otraM[i] == 47|| otraM[i] == 51|| otraM[i] == 53|| otraM[i] == 60) {
+              $("#otra_Modificacion").show();
+         }else{
+              $("#otra_Modificacion").hide();
+         }
 
          if(otraM[i] >= 61 && otraM[i] <= 97){
               console.log("°° ¡Hi there! °°");
@@ -271,8 +239,9 @@
             aux[i] = otraM[i];
               console.log(aux[i]);
            }
-      }
+        }
 
+      }    
       $('#idSubModificaciones').val(aux);
 		});
 
