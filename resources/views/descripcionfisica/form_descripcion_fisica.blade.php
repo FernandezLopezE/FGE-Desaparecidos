@@ -93,7 +93,7 @@
   		<hr>
       <form id="formDescripcionF">
   		<div class="row">
-      	<div class="col">
+      	<div class="col-lg-4">
           {!! Form::label ('desaparecidoParteCuerpo','Parte del cuerpo:') !!}
           {!! Form::select ('idPartesCuerpo',
                     $partesCuerpo,
@@ -102,7 +102,7 @@
                       'id' => 'idPartesCuerpo'
                     ] )!!}            
       </div>
-      <div class="col">
+      <div class="col" id= lado_cuerpo style="display:none">
           {!! Form::label ('desaparecidoLado','Lado:') !!}
           {!! Form::text ('lado',
                   '',
@@ -292,7 +292,7 @@
     $('#idSubParticularidades').select2();
     $('#idSubModificaciones').select2();
 
-    if($('#idPartesCuerpo').val() == 1){
+    if($('#idPartesCuerpo').val()== 1){
     	$("#idSubParticularidades").empty();
     	$("#idSubModificaciones").empty();
       $("#color").empty();
@@ -309,10 +309,17 @@
 //fin campo otro color
 
 	//Obtener particularidades
-	$('#idPartesCuerpo').on('change', function(){
+$('#idPartesCuerpo').on('change', function(){
       parteCuerpoid = $('#idPartesCuerpo').val();
-      if(parteCuerpoid == 24){
-      $('#colores').show();
+      console.log(parteCuerpoid);
+       if(parteCuerpoid == 5 || parteCuerpoid >= 8 && parteCuerpoid <= 11 || parteCuerpoid == 13 || parteCuerpoid == 16 || parteCuerpoid >= 20 && parteCuerpoid <=22 || parteCuerpoid >= 33 && parteCuerpoid <=36)
+      {
+        $('#lado_cuerpo').hide();
+      }else{
+        $('#lado_cuerpo').show();
+      }
+      if(parteCuerpoid == 24 || parteCuerpoid >= 34 && parteCuerpoid <= 37){
+        $('#colores').show();
     }else{
       $('#colores').hide();
     }
@@ -326,9 +333,6 @@
         maximumSelectionLength: 10,       
       });
      } 
-
-
-
         $("#idSubParticularidades").empty();
         var idPartesCuerpo = $(this).val();
         if(idPartesCuerpo) {

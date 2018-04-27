@@ -33,6 +33,8 @@ Route::get('/', 'InicioController@index');
 
 	Route::resource('senas_particulares','SenasParticularesController');
 
+	Route::resource('datos_dentales','DatosDentalesController');
+
 
 
 Route::get('consultas/get_cedulas', 'ConsultasController@jsonCedulas');
@@ -162,14 +164,15 @@ Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store')
 Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
 
 //mostrar vista de señas particulares 
-Route::get('/senas_particulares/{idCedula}','SenasParticularesController@show_senas_particulares');
+Route::get('/senas_particulares/{idDesaparecido}','SenasParticularesController@show_senas_particulares');
 Route::post('/senas_particulares/store_senas', 'SenasParticularesController@store_senas')
 	->name('senas_particulares.store_senas');
 Route::get('consultas/get_senas/{idCedula}', 'ConsultasController@jsonSenas')
 	->name('consultas.get_senas');
 
 //mostrar la vista de datos dentales
-Route::get('/datos_dentales/datos_dentales','DatosDentalesController@show_datos_dentales');
+Route::get('/datos_dentales/{idDesaparecido}','DatosDentalesController@show_datos_dentales')
+	->name('datos_dentales.show');
 Route::post('/datos_dentales/store_datos_dentales', 'DatosDentalesController@store_datos_dentales')
 	->name('datos_dentales.store_datos_dentales');
 
