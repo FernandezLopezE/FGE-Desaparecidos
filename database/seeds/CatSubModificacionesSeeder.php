@@ -121,7 +121,7 @@ class CatSubModificacionesSeeder extends Seeder
             ['idModificacionesCuerpo'=>36, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>37, 'nombre' => 'SIN INFORMACIÓN'],
 
-            ['idModificacionesCuerpo'=>24, 'nombre' => 'CIRUGÍA'],
+            ['idModificacionesCuerpo'=>4, 'nombre' => 'CIRUGÍA'],
 
         ]);
 
