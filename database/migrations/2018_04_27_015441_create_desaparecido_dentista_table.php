@@ -21,6 +21,8 @@ class CreateDesaparecidoDentistaTable extends Migration
             $table->string('empresa');
             $table->string('telefono');
             $table->string('direccion');
+            $table->integer('idDentadura')->unsigned()->nullable();           
+            $table->foreign('idDentadura')->references('id')->on('desaparecido_dentadura');
             $table->timestamps();
         });
     }

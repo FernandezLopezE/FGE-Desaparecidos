@@ -35,7 +35,7 @@
                 <h5>Dientes giradoss</h5>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur esse, labore blanditiis aut magni libero optio incidunt autem omnis, pariatur, in praesentium excepturi. Assumenda, quibusdam? Iusto, assumenda dolore nemo libero.</p>
               </div>
-              <img class="d-block w-100" src="/images/TiposDentadura/girados.jpg" alt="Dientes girados" value="Dientes girados">
+              <img class="d-block w-100" src="/images/TiposDentadura/girados.jpg" alt="Dientes girados" value="dientes_girados">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">

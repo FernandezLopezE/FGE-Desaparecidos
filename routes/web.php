@@ -164,9 +164,6 @@ Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store')
 Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
 
 //mostrar vista de señas particulares 
-Route::get('/senas_particulares/{idDesaparecido}','SenasParticularesController@show_senas_particulares');
-Route::post('/senas_particulares/store_senas', 'SenasParticularesController@store_senas')
-	->name('senas_particulares.store_senas');
 Route::get('consultas/get_senas/{idCedula}', 'ConsultasController@jsonSenas')
 	->name('consultas.get_senas');
 
@@ -255,13 +252,13 @@ Route::post('/desaparecido/store_datos_dentales', 'DesaparecidoController@store_
 Route::resource('/desaparecido','DesaparecidoController');
 
 
-Route::resource('domicilio','DomiciliosController');
+/*Route::resource('domicilio','DomiciliosController');
 Route::get('codigos/{id}', 'DomiciliosController@getCodigos');
 Route::get('municipio/{id}', 'DomiciliosController@getMunicipios');
 Route::get('localidades/{id}', 'DomiciliosController@getLocalidades');
 Route::get('colonias2/{id}', 'DomiciliosController@getColonias2');
 Route::get('colonias/{id}', 'DomiciliosController@getColonias');
-Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');
+Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');*/
 
 //Route::resource('boletin', 'BoletinController@show');
 

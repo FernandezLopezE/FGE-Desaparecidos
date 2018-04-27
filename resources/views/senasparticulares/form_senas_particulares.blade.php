@@ -149,6 +149,7 @@
    	var idCedula = 1;
    	var id = 1;
    	var routeIndex = '{!! route('consultas.index') !!}';
+    var routeSenas = '{!! route('senas_particulares.index') !!}';
    	var otraUbicacion;
    	var senasPArticulares = $('#senasPArticulares');
    	var tableSenas = $('#table_senas');
@@ -183,9 +184,9 @@
    		});
 
 
-   		
+   		console.log(routeIndex+'/get_senas/{!! $desaparecido->id !!}');
    		tableSenas.bootstrapTable({				
-			url: routeIndex+'/get_senas/{!! $desaparecido->id !!}',
+			url: routeIndex+'/get_senas/{!! $desaparecido->idCedula !!}',
 			columns: [{					
 				field: 'nombreSena',
 				title: 'Seña particular',
@@ -217,7 +218,7 @@
             };
             $.ajax({
                 type: 'POST',
-                url: '/senas_particulares/store_senas',
+                url: routeSenas,
                 data: dataString,
                 dataType: 'json',
                 success: function(data) {
