@@ -1,46 +1,7 @@
 @extends('layouts.app_uipj')
 
 @section('content')
-<nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link" href="#" aria-selected="true">
-        Entrevista
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Informantes
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Desaparecido
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Familiares
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Contacto
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Domicilios
-      </a>
-      <a class="nav-item nav-link " href="{{route('antecedentes.show',['id' => $desaparecido->id])}}" aria-selected="false">
-        Antecedentes
-      </a>
-      <a class="nav-item nav-link" href="{{route('desaparecido.show_vestimenta',['id' => $desaparecido->id])}}" aria-selected="false">
-        Vestimenta
-      </a>
-      <a class="nav-item nav-link  active" href="#" aria-selected="false">
-        Descripción física
-      </a>
-      <a class="nav-item nav-link" href="{{route('antecedentesmedicos.show',['id' => $desaparecido->id])}}" aria-selected="false">
-        Antecedentes medicos
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Señas particulares
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Datos dentales
-      </a>        
-  </div>
-</nav>
+@include('navs.navs_datos',array('activar' => 'desc_fisica'))
 
   {{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}
 	<div class="card-body bg-white">	

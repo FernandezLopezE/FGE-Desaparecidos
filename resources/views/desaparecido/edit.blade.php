@@ -167,8 +167,8 @@
 									['class' => 'form-control',
 										'id' => 'idDocumentoIdentidad'
 									] )!!}
-		</div>
-		<div class="col" @if ($desaparecido->persona->idDocumentoIdentidad === '7') style="display: none" @endif id="otraIdDIV">
+		</div>		
+		<div class="col" @if ($desaparecido->idDocumentoIdentidad = 7) style="display: none" @endif id="otraIdDIV">
 				{!! Form::label ('otroDocIdentidad','Otro:') !!}
 				{!! Form::text ('otroDocIdentidad',
 								old('otroDocIdentidad'),

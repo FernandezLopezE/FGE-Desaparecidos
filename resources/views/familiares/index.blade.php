@@ -96,8 +96,8 @@
 				data: dataString,
 				dataType: 'json',
 				success: function(data) {
-					console.log(data);
-					btnAgregarFamiliar.modal('hide');
+					console.log('El dato es:'+data);
+					modalFamiliar.modal('hide');
 					table.bootstrapTable('refresh');
 				},
 				error: function(data) {
