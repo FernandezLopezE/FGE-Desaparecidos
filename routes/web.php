@@ -255,13 +255,13 @@ Route::post('/desaparecido/store_datos_dentales', 'DesaparecidoController@store_
 Route::resource('/desaparecido','DesaparecidoController');
 
 
-Route::resource('domicilio','DomiciliosController');
+/*Route::resource('domicilio','DomiciliosController');
 Route::get('codigos/{id}', 'DomiciliosController@getCodigos');
 Route::get('municipio/{id}', 'DomiciliosController@getMunicipios');
 Route::get('localidades/{id}', 'DomiciliosController@getLocalidades');
 Route::get('colonias2/{id}', 'DomiciliosController@getColonias2');
 Route::get('colonias/{id}', 'DomiciliosController@getColonias');
-Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');
+Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');*/
 
 //Route::resource('boletin', 'BoletinController@show');
 
