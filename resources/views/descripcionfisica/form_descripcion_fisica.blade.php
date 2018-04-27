@@ -242,7 +242,6 @@
         }
 
       }    
-
       $('#idSubModificaciones').val(aux);
 		});
 
