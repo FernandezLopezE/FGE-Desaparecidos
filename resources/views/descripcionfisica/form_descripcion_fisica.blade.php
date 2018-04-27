@@ -234,6 +234,7 @@
 
 	$("#idSubParticularidades").change(function() {
 			otraP = $('#idSubParticularidades').val();
+      var aux = new Array();
       console.log(otraP);
       for(var i=0;i<otraP.length;i++){
 			     if (otraP[i] >=77 && otraP[i] <= 88) {
@@ -241,18 +242,38 @@
 			     }else{
 				      $("#otro_Particularidad").hide();
 			     }
+
+           if(otraP[i] >= 89 && otraP[i] <= 125){
+              console.log("(o.o)");
+           }else{
+            aux[i] = otraP[i];
+              console.log(aux[i]);
+           }
       }
+
+      $('#idSubParticularidades').val(aux);
 		});
 
 	$("#idSubModificaciones").change(function() {
 			otraM = $('#idSubModificaciones').val();
+      var aux = new Array();
       for(var i=0;i<otraM.length;i++){
 			   if (otraM[i] ==13 || otraM[i] == 20 || otraM[i] == 26 || otraM[i] == 33|| otraM[i] == 36|| otraM[i] == 40 || otraM[i] == 47|| otraM[i] == 51|| otraM[i] == 53|| otraM[i] == 60) {
 				      $("#otra_Modificacion").show();
 			   }else{
 				      $("#otra_Modificacion").hide();
 			   }
+
+         if(otraM[i] >= 61 && otraM[i] <= 97){
+              console.log("°° ¡Hi there! °°");
+              console.log(" °°  (o.o)   °°");
+           }else{
+            aux[i] = otraM[i];
+              console.log(aux[i]);
+           }
       }
+
+      $('#idSubModificaciones').val(aux);
 		});
 
   $("#editComplexion").change(function () {
