@@ -67,16 +67,16 @@
 		{!! Form::label ('','Primera vez que visita el servicio:') !!}
 		{!! Form::select ('entrevistadorPrimeraVez',
 							['SI'=>'SI','NO'=>'NO'],
-							'',
+							old('primeraVez'),
 							['class' => 'form-control',
 								'id' => 'entrevistadorPrimeraVez'
 							] )!!}	
 		
-	</div>
-	<div class="col-lg-4" id="cuando" @if ($cedula->entrevistadorPrimeraVez = 'NO') style="display:none" @endif>
+	</div>		
+	<div class="col-lg-4" id="cuando" @if (empty($cedula->entrevistadorPrimeraVez) || $cedula->entrevistadorPrimeraVez == 'SI') style="display:none" @endif>
 		{!! Form::label ('','¿Cuándo?') !!}
 		{!! Form::text ('fechaVisita',
-						old('fechaVisita'),
+						\Carbon\Carbon::parse($cedula->fechaVisita)->format('d/m/Y'),
 						['class' => 'form-control mayuscula',
 							'id' => 'fecha_visita',
 							'placeholder' => 'dd/mm/aaaa',

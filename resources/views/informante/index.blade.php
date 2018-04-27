@@ -10,34 +10,29 @@
 	
 @endsection
 
-@section('titulo', 'Reporte de investigación de una persona desaparecida')
+@section('titulo', 'Registro único de personas desaparecidas')
 
 @section('content')
 	{{ Form::hidden('idCedula', $cedula->id, array('id' => 'idCedula')) }}
+@include('navs.navs_datos',array('activar' => 'informante'))
 
-	<div class="card border-primary">
-		<div class="card-header">
-			<div class="row">
-				<div class="col-lg-12">
-					<h5 class="card-title">
-						DATOS DE LOS INFORMANTES
-						<button type="button" class="btn btn-dark pull-right"  id="btnAgregarInformante"><i class="fa fa-plus"></i> AGREGAR PERSONA</button>
-						<a href="{{route('extraviado.create_desaparecido',['id' => $cedula->id])}}" class="btn btn-dark pull-right">
-							<i class="fa fa-pencil-square-o"></i> SIGUIENTE
-						</a>
-					</h5>
-				</div>	
-			</div>	
-		</div>
-		<div class="card-body">
-			<table id="tableInformantes" ></table>
-			@include('informante.modals.modal_informante')
-		</div>
-	</div>
+<button type="button" class="btn btn-dark pull-right"  id="btnAgregarInformante">
+	AGREGAR
+</button>	
+
+<div class="card-body bg-white">
+	<table id="tableInformantes" ></table>
+	@include('informante.modals.modal_informante')
+</div>
+	
 
 @endsection
 
 @section('scripts')
+{!! HTML::script('personal/js/lada.js') !!}
+{!! HTML::script('personal/js/sisyphus.min.js') !!}
+{!! HTML::script('personal/js/sisyphus.js') !!}
+
 <script type="text/javascript">
 	$(function (){
 		var table = $('#tableInformantes');
@@ -55,6 +50,7 @@
 		var modalDesaparecidoFamiliar = $('#modalDesaparecidoFamiliar');
 		var bodyModalInformante = $('#modal-body-informante');
 		var modalFooter = $('.modal-footer');
+        var btnLimpiar = $('#btnLimpiar');
 
 		var addCamposTelefono = function(tipoTel = null, lada=null, telefono=null, ext=null) {
             $("#telefono2").append('<div class="row"><div class="form-group col-lg-2">{!! Form::label ("informanteTipoTel","Tipo de telefono:") !!}	            {!! Form::select ("informanteTipoTel[]", $tiposTelefonos,"'+tipoTel+'",["class" => "form-control","id" => "informanteTipoTel[]"])!!} </div> <div class="form-group col-lg-2">                                             {!! Form::label ("lada","Lada:") !!}	                                    {!! Form::select ("lada[]", $ladas,"'+lada+'",["class" => "form-control","id" => "lada[]"])!!} </div>  <div class="form-group col-lg-3">                                                                {!! Form::label ("informanteTelefonos","Número:") !!}                    {!! Form::text ("informanteTelefonos[]",old("'+telefono+'"),["class" => "form-control mayuscula valid","data-validation" => "required","data-validation-error-msg-required" => "El campo es requerido","id" => "informanteTelefonos[]"] )!!} </div>    <div class="form-group col-lg-1">                                              {!! Form::label ("ext","Ext:") !!}                                        {!! Form::text ("ext[]",old("'+ext+'"), ["class" => "form-control mayuscula","id" => "ext[]"] )!!} </div> </div>');
@@ -240,8 +236,17 @@
 			//$("#informanteOtroDocIdentidad").ocultar
 			//informanteOtroParentesco
 			modalInformanteAgregar.modal('show');
+            $( "#modalInformante" ).sisyphus( {
+	           excludeFields: $('input[name=_token]')
+            });
 		})
+        
+        btnLimpiar.click(function(){
+          $('#modalInformante').find('form')[0].reset();
+          $('#modalInformante').removeData('modal');
 
+        })
+        
 		btnGuardarInformante.click (function(){
 			
 			var dataString = {
@@ -334,106 +339,7 @@
 				}
 			});
 
-
-
-		})	
-
-
-
-	// Mostrando los municipios que pertenecen a determinado estado.
-	$('#idEstado').on('change', function(){		
-		$("#idMunicipio").empty();
-		var idEstado = $(this).val();
-		if(idEstado) {
-			$.ajax({
-				url: routeIndex+'/municipios/'+idEstado,
-				type:"GET",
-				dataType:"json",
-				success:function(data) {
-						$("#idMunicipio").empty();
-					$.each(data, function(key, value){
-						$("#idMunicipio").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
-					});
-				},				
-			});
-		} else {
-			$('#idMunicipio').empty();
-		}
-	});
-
-	// Mostrando las localidades que pertenecen a determinado municipio.
-	 $('#idMunicipio').on('change', function(){
-		$("#idLocalidad").empty();
-		var idMunicipio = $(this).val();
-		if(idMunicipio) {			
-			$.ajax({
-				url: routeIndex+'/localidades/'+idMunicipio,
-				type:"GET",
-				dataType:"json",
-				success:function(data) {
-						$("#idLocalidad").empty();
-					$.each(data, function(key, value){
-						$("#idLocalidad").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
-					});
-				},				
-			});
-		}
-		// Mostrando las colonias que pertenecen a determinado municipio.				
-		$("#idColonia").empty();
-		var idMunicipio = $(this).val();
-		if(idMunicipio) {			
-			$.ajax({
-				url: routeIndex+'/colonias/'+idMunicipio,
-				type:"GET",
-				dataType:"json",
-				success:function(data) {
-					$("#idColonia").empty();
-					$.each(data, function(key, value){
-						$("#idColonia").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
-					});
-				},				
-			});
-		}
-
-		// Mostrando los codigos postales que pertenecen a determinado municipio.		
-		$("#idCodigoPostal").empty();
-		var idMunicipio = $(this).val();
-		if(idMunicipio) {
-			$.ajax({
-				url: routeIndex+'/codigos/'+idMunicipio,
-				type:"GET",
-				dataType:"json",
-				success:function(data) {
-						$("#idCodigoPostal").empty();
-					$.each(data, function(key, value){
-						$("#idCodigoPostal").append('<option value="'+ value.id +'">' +  value.codigoPostal + '</option>');
-					});
-				},				
-			});
-		}
-	});
-
-	//para Codigo Postal  seleccionando una colonia
-	$('#idColonia').on('change', function(){
-		$("#idCodigoPostal").empty();
-		var idColonia = $(this).val();
-		if(idColonia) {	
-			$.ajax({
-				url: routeIndex+'/codigos2/'+idColonia,
-				type:"GET",
-				dataType:"json",
-				success:function(data) {
-						$("#idCodigoPostal").empty();
-					$.each(data, function(key, value){
-						$("#idCodigoPostal").append('<option value="'+ value.id +'">' +  value.codigoPostal + '</option>');
-					});
-				},			   
-			});
-		} else {
-			$('#idColonia').empty();
-		}
-	});
-
+		})
 	})
 </script>
 @endsection

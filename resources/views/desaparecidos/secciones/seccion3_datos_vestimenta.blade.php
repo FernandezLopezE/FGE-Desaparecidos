@@ -8,6 +8,8 @@
 	
 @endsection
 @section('content')
+@include('navs.navs_datos',array('activar' => 'vestimenta'))
+
 <hr>
 <div class="card border-success">
 	<div class="card-header">
@@ -53,6 +55,8 @@
           </div>
           <br>
           <input type="button" name="btnAOS" id="btnAOS" value="AGREGAR" class="btn btn-dark pull-right">
+
+          <a href="/desaparecido/correo" class='btn btn-large btn-primary openbutton'>corrreo</a>
 	</div>
 	
 </div>

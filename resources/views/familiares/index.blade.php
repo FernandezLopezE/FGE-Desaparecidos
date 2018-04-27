@@ -11,40 +11,26 @@
 	
 @endsection
 
-@section('titulo', 'Reporte No: <code>123456789</code>')
+@section('titulo', 'Registro único de personas desaparecidas')
 
 @section('content')
+@include('navs.navs_datos',array('activar' => 'familiar'))
+<button type="button" class="btn btn-dark pull-right"  id="btnAgregarFamiliar">
+	Agregar
+</button>
 
-	<div class="card border-primary">
-		<div class="card-header">
-			<div class="row">
-				<div class="col-lg-2 pull-left">
-					<a href="{{route('extraviado.create_desaparecido',['id' => $desaparecido->idCedula])}}">
-						<i class="fa fa-chevron-circle-left gi-3x"></i>
-					</a>			
-				</div>
-				<div class="col-lg-8">
-					<h5 class="card-title">						
-						<span align="center">DATOS DE LOS FAMILIARES DE LA PERSONA DESAPARECIDA</span>										
-					</h5>
-				</div>
-				<div class="col-lg-2">
-					<a href="{{route('antecedentes.show',['id' => $desaparecido->id])}}">
-							<i class="fa fa-chevron-circle-right gi-3x pull-right"></i>
-					</a>
-				</div>	
-			</div>	
-		</div>
-		<div class="card-body">
-			<button type="button" class="btn btn-dark pull-right"  id="btnAgregarFamiliar"><i class="fa fa-plus"></i> Agregar familiar</button>
-			<table id="tableFamiliares" ></table>
-			@include('familiares.modals.modal_familiar')
-		</div>
-	</div>
+<div class="card-body bg-white">
+	<table id="tableFamiliares" ></table>
+	@include('familiares.modals.modal_familiar')
+</div>
+
+
 
 @endsection
 
 @section('scripts')
+{!! HTML::script('personal/js/sisyphus.min.js') !!}
+{!! HTML::script('personal/js/sisyphus.js') !!}
 <script type="text/javascript">
 	$(function (){
 		var table = $('#tableFamiliares');
@@ -55,6 +41,9 @@
 		var modalFamiliar = $('#modalFamiliar');
 		var modalFooter = $('.modal-footer');
 		var idDesaparecido = '{!! $desaparecido->id !!}'
+        var btnLimpiar = $('#btnLimpiar');
+
+		console.log(routeIndex+'/get_familiares/{!! $desaparecido->id !!}');
 		
 		table.bootstrapTable({				
 			url: routeIndex+'/get_familiares/{!! $desaparecido->id !!}',
@@ -78,7 +67,16 @@
 
 		btnAgregarFamiliar.click(function(e){
 			modalFamiliar.modal('show');
+	            $( "#modalFamiliar" ).sisyphus( {
+	           excludeFields: $('input[name=_token]')
+            });
 		})
+        
+        btnLimpiar.click(function(){
+          $('#modalFamiliar').find('form')[0].reset();
+          $('#modalFamiliar').removeData('modal');
+
+        })
 
 		btnGuardarFamiliar.click (function(){
 			

@@ -7,6 +7,7 @@ use App\Models\Desaparecido;
 use App\Models\CedulaPartesCuerpo;
 use App\Models\PivotSubPartiCuerpo;
 use App\Models\PivotSubModiCuerpo;
+use App\Http\Requests\DescripcionFisicaRequest;
 class DescripcionFisicaController extends Controller
 {
     /**
@@ -35,9 +36,10 @@ class DescripcionFisicaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DescripcionFisicaRequest $request)
     {
         //
+    //try {
          $desaparecido = Desaparecido::find($request['idExtraviado']);
 
          $desaparecido->estatura = $request['estatura'];
@@ -93,9 +95,13 @@ class DescripcionFisicaController extends Controller
             $modificaciones->save();
          }         
 
-         
-
-         return response()->json($desaparecido);
+         //return response()->json([ 'response'=>'success', 'data'=>$desaparecido ]);
+        return response()->json($desaparecido);
+     /*} catch (Exception $e) {
+         return response()->json([  'errors'=> [ ['mensaje' => $e->getMessage()] ] ]);
+     }*/
+        
+        
     }
 
     /**
@@ -108,8 +114,8 @@ class DescripcionFisicaController extends Controller
     {
         //
         $desaparecido = Desaparecido::find($idDesaparecido);
-
-        $partesCuerpo = \App\Models\CatPartesCuerpo::all()->pluck('nombre','id');
+        $ids = array(1,6,11,13,15,16,20,23,24,34,35,36,37);
+        $partesCuerpo = \App\Models\CatPartesCuerpo::whereIn('id',$ids)->pluck('nombre','id');
         $complexiones = \App\Models\CatComplexion::all()->pluck('nombre','id');
         $coloresPiel = \App\Models\CatColorPiel::all()->pluck('nombre','id');
         $coloresCuerpo = \App\Models\CatColoresCuerpo::all()->pluck('nombre','id');
@@ -195,17 +201,102 @@ class DescripcionFisicaController extends Controller
 
     public function getPartesCuerpo($idExtraviado){
 
-        $partes = \DB::table('cedula_partes_cuerpo as cedup')
-                    ->join('cat_partes_cuerpo as cpartes','cedup.idPartesCuerpo','=','cpartes.id')
-                    ->join('cat_colores_cuerpo as ccuerpo','cedup.idColoresCuerpo','=','ccuerpo.id')
-                    ->join('pivot_subparti_cuerpo as pivotparti','cedup.id','=','pivotparti.idCedulaPartesCuerpo')
-                    ->join('cat_sub_particularidades as parti','pivotparti.idSubParticularidades','=','parti.id')
-                    ->join('pivot_submodi_cuerpo as pivotmodi','cedup.id','=','pivotmodi.idCedulaPartesCuerpo')
-                    ->join('cat_sub_modificaciones as modi','pivotmodi.idSubModificaciones','=','modi.id')
-                    ->select('cpartes.nombre as nombreParteC','cedup.lado as lado','parti.nombre as particularidad','modi.nombre as modifiacion','cedup.observaciones as observaciones')
-                    ->where('cedup.idPersonaDesaparecida',$idExtraviado)
-                    ->get();
+        $partesCuerpo = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
+                        ->leftjoin('cat_colores_cuerpo as catcolores','catcolores.id','=','cpc.idColoresCuerpo')
+                        ->select('cpc.idPartesCuerpo',
+                                'catpc.nombre as nombreCuerpo',
+                                'cpc.lado',
+                                'cpc.observaciones',
+                                'catcolores.nombre as colorCuerpo',
+                                'cpc.otraParticularidad',
+                                'cpc.otraModificacion',
+                                'cpc.otroColor',
+                                'cpc.id')
+                        ->where('cpc.idPersonaDesaparecida',$idExtraviado)
+                        ->get();
 
-            return response()->json($partes);
+        /*foreach ($partesCuerpo as $parte) {
+            # code...
+            $particularidades = \DB::table('cedula_partes_cuerpo as cpc')
+                                ->join('pivot_subparti_cuerpo as pspc','cpc.id','=','pspc.idCedulaPartesCuerpo')
+                                ->join('cat_sub_particularidades as csp','csp.id','=','pspc.idSubParticularidades')
+                                ->select('csp.nombre')
+                                ->where('cpc.idPartesCuerpo',$parte->idPartesCuerpo)
+                                ->get();
+            echo $particularidades;
+            echo "<br>";
+
+            $modificaciones = \DB::table('cedula_partes_cuerpo as cpc')
+                                ->join('pivot_submodi_cuerpo as psmc','cpc.id','=','psmc.idCedulaPartesCuerpo')
+                                ->join('cat_sub_modificaciones as csm','csm.id','=','psmc.idSubModificaciones')
+                                ->select('csm.nombre')
+                                ->where('cpc.idPartesCuerpo',$parte->idPartesCuerpo)
+                                ->get();
+            echo $modificaciones;
+            echo "<br>";
+        }
+        */
+        //return response()->json($particularidades);
+
+        $i = 0;
+        foreach ($partesCuerpo as $value) {
+
+             $particularidades = \DB::table('cedula_partes_cuerpo as cpc')
+                                ->join('pivot_subparti_cuerpo as pspc','cpc.id','=','pspc.idCedulaPartesCuerpo')
+                                ->join('cat_sub_particularidades as csp','csp.id','=','pspc.idSubParticularidades')
+                                ->select('csp.nombre as particularidad')
+                                ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
+                                ->where('pspc.idCedulaPartesCuerpo',$value->id)
+                                ->get();
+
+            $longitud = count($particularidades);
+            $nParticularidad = '';
+            for($j=0;$j < $longitud; $j++){
+                $nParticularidad = $particularidades[$j]->particularidad.', '.$nParticularidad  ;
+                
+            }
+
+            /* echo $particularidades;
+            echo "<br>";*/
+
+             $modificaciones = \DB::table('cedula_partes_cuerpo as cpc')
+                                ->join('pivot_submodi_cuerpo as psmc','cpc.id','=','psmc.idCedulaPartesCuerpo')
+                                ->join('cat_sub_modificaciones as csm','csm.id','=','psmc.idSubModificaciones')
+                                ->select('csm.nombre as modificacion')
+                                ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
+                                ->where('psmc.idCedulaPartesCuerpo',$value->id)
+                                ->get();
+            /*echo $modificaciones;
+            echo "<br>";*/
+
+            
+            $nModificaciones = '';
+            
+            $longitud2 = count($modificaciones);
+            for($x=0;$x < $longitud2; $x++){
+                $nModificaciones = $modificaciones[$x]->modificacion.', '.$nModificaciones;
+            }
+
+            $cuerpo[$i] = array('id_cuerpo' => $value->idPartesCuerpo,
+                                'nombre' => $value->nombreCuerpo,
+                                'lado' => $value->lado,
+                                'color' => $value->colorCuerpo,
+                                'particularidades' => trim($nParticularidad,', '),
+                                'modificaciones' => trim($nModificaciones,', '),
+                                'otraParticularidad' => $value->otraParticularidad,
+                                'otraModificacion' => $value->otraModificacion,
+                                'otroColor' => $value->otroColor,
+                                'observaciones' => $value->observaciones
+
+                                 ); 
+            /*print_r( $cuerpo[$i]);
+            echo "<br>";*/
+            $i++;
+            $nParticularidad = '';
+            $nModificaciones = '';
+        }
+
+        return response()->json($cuerpo);        
     }
 }

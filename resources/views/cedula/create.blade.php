@@ -4,18 +4,14 @@
 	{!! Html::style('') !!}
 @endsection
 
-@section('titulo', 'Reporte de investigación de una persona desaparecida')
+@section('titulo', 'Registro único de personas desaparecidas')
 
 @section('content')
-
 {{ Form::model($cedula, ['action' => 'CedulaController@store']) }}
-<div class="card">
-	<div class="card-header">
-		<h4>Datos de la entrevista
-		<button type="submit" class="btn btn-dark pull-right"  id="btnAgregarInformante">	<i class="fa fa-plus"></i> GUARDAR		
-		</button>		
-		</h4>
-	</div>
+@include('navs.navs_datos',array('activar' => 'entrevista'))
+<button type="submit" class="btn btn-dark pull-right" id="btnAgregarInformante">
+	GUARDAR		
+</button>
 	<div class="card-body bg-white">
 		<div class="row">
 			<div class="col-10">
@@ -31,6 +27,7 @@
 					<dd class="col-sm-8">
 						{!! $cedula->entrevistadorCargo !!}
 					</dd>
+				<h5>Datos de la entrevista</h5>
 					@isset($cedula->id)
 						<dt class="col-sm-4">Dialecto:</dt>
 						<dd class="col-sm-8">
@@ -59,7 +56,6 @@
 										<strong>(</strong>{!! $cedula->fechaVisita !!}<strong>)</strong>									
 								@endif 
 						</dd>
-
 					@endisset
 				</dl>
 			</div>
@@ -70,10 +66,7 @@
 		@if (!isset($cedula->id))
 			@include('cedula.form_cedula')
 		@endif
-
-			
-
 	</div>
-</div>	
+
 {!! Form::close() !!}
 @endsection

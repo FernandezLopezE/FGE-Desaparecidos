@@ -108,10 +108,9 @@ class CedulaController extends Controller
 
 		$dialectos = \App\Models\CatDialecto::all()->pluck('nombre','id');
 
-		return view('cedula.edit',compact('cedula',										
-										'dialectos'                     
+		return view('cedula.edit',compact('cedula',
+										'dialectos'
 									));
-
 		
 	}
 

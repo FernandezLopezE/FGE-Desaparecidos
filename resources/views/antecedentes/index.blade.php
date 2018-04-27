@@ -11,40 +11,24 @@
 	
 @endsection
 
-@section('titulo', 'Reporte No: <code>123456789</code>')
+@section('titulo', 'Registro único de personas desaparecidas')
 
 @section('content')
-
-	<div class="card border-primary">
-		<div class="card-header">
-			<div class="row">
-				<div class="col-lg-2 pull-left">
-					<a href="{{route('extraviado.create_desaparecido',['id' => $desaparecido->idCedula])}}">
-						<i class="fa fa-chevron-circle-left gi-3x"></i>
-					</a>			
-				</div>
-				<div class="col-lg-8">
-					<h5 class="card-title">						
-						<span align="center">ANTECEDENTES DE LA PERSONA DESAPARECIDA</span>	
-					</h5>
-				</div>
-				<div class="col-lg-2">
-					<a href="">
-							<i class="fa fa-chevron-circle-right gi-3x pull-right"></i>
-					</a>
-				</div>	
-			</div>	
-		</div>
-		<div class="card-body">
-			<button type="button" class="btn btn-dark pull-right"  id="btnAgregarAntecedente"><i class="fa fa-plus"></i> Agregar antecedente</button>
-			<table id="tableAntecedentes" ></table>
-			@include('antecedentes.modals.modal_antecedente')
-		</div>
-	</div>
+@include('navs.navs_datos',array('activar' => 'antecedente'))
+<button type="button" class="btn btn-dark pull-right"  id="btnAgregarAntecedente">
+	Agregar
+</button>
+<div class="card-body bg-white">
+	
+	<table id="tableAntecedentes" ></table>
+	@include('antecedentes.modals.modal_antecedente')
+</div>
 
 @endsection
 
 @section('scripts')
+{!! HTML::script('personal/js/sisyphus.min.js') !!}
+{!! HTML::script('personal/js/sisyphus.js') !!}
 <script type="text/javascript">
 	$(function (){
 		var table = $('#tableAntecedentes');
@@ -55,6 +39,7 @@
 		var modalAntecedentes = $('#modalAntecedentes');
 		var modalFooter = $('.modal-footer');
 		var idDesaparecido = '{!! $desaparecido->id !!}'
+        var btnLimpiar = $('#btnLimpiar');
 		
 		table.bootstrapTable({				
 			url: routeIndex+'/get_antecedentes/{!! $desaparecido->id !!}',
@@ -69,7 +54,15 @@
 
 		btnAgregarAntecedente.click(function(e){
 			modalAntecedentes.modal('show');
+	           $( "#modalAntecedentes" ).sisyphus( {
+	           excludeFields: $('input[name=_token]')
+            });
 		})
+        
+        btnLimpiar.click(function(){
+          $('#modalAntecedentes').find('form')[0].reset();
+          $('#modalAntecedentes').removeData('modal');
+             })
 
 		btnGuardarAntecedente.click (function(){
 			

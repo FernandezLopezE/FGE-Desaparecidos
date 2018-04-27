@@ -15,8 +15,12 @@ class CreateAntecedentesMedicosTable extends Migration
     {
         Schema::create('antecedentes_medicos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('observaciones');
-            $table->string('medicamentosToma');
+            $table->text('observaciones')->nullable();
+            $table->string('medicamentosToma')->nullable();
+            $table->string('otraEnfermedad')->nullable();
+            $table->string('otraIQ')->nullable();
+            $table->string('otraAdiccion')->nullable();
+            $table->string('otroImplante')->nullable();
             $table->integer('idPersonaDesaparecida')->unsigned()->nullable();           
             $table->foreign('idPersonaDesaparecida')->references('id')->on('desaparecidos_personas');
             $table->timestamps();

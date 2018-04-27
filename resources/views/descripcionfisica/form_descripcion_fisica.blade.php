@@ -1,57 +1,101 @@
 @extends('layouts.app_uipj')
 
 @section('content')
-  
-	<div class="card border-success">
-	<div class="card-header">
-		<h5 class="card-title">Descripción física			
-			<button type="button" class="btn btn-dark pull-right"  id="nuevaParteCuerpo">Agregar</button>
-		</h5>
-{{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}
-	</div>
-	<div class="card-body">	
-		<div class="row">
-  			<div class="col-lg-3">
-  			{!! Form::label ('desaparecidoEstatura','Estatura:') !!}
-				{!! Form::text ('estatura',
-								old('estatura'),
-								['class' => 'form-control sinEnter soloNumeros',
-										'placeholder' => 'Ingrese la estura en cm',
-										'id' => 'estatura', 'maxlength' => 3
-								] )!!}
-		  	</div>
-		  	<div class="col-lg-3">
-				{!! Form::label ('desaparecidoPeso','Peso:') !!}
-				{!! Form::text ('peso',
-									old('peso'),
-									['class' => 'form-control sinEnter soloNumeros',
-										'placeholder' => 'Ingrese el peso en kg',
-										'id' => 'peso', 'maxlength' => 3
-									] )!!}
-		  	</div>
-		  	<div class="col-lg-3">
-					{!! Form::label ('complexion','Complexión:') !!}
-					{!! Form::select ('complexion',
-									$complexiones,
-									'',
-									['class' => 'form-control', 'id' => 'complexion'] )!!}
-					
-			</div>
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link" href="#" aria-selected="true">
+        Entrevista
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Informantes
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Desaparecido
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Familiares
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Contacto
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Domicilios
+      </a>
+      <a class="nav-item nav-link " href="{{route('antecedentes.show',['id' => $desaparecido->id])}}" aria-selected="false">
+        Antecedentes
+      </a>
+      <a class="nav-item nav-link" href="{{route('desaparecido.show_vestimenta',['id' => $desaparecido->id])}}" aria-selected="false">
+        Vestimenta
+      </a>
+      <a class="nav-item nav-link  active" href="#" aria-selected="false">
+        Descripción física
+      </a>
+      <a class="nav-item nav-link" href="{{route('antecedentesmedicos.show',['id' => $desaparecido->id])}}" aria-selected="false">
+        Antecedentes medicos
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Señas particulares
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Datos dentales
+      </a>        
+  </div>
+</nav>
 
-			<div class="col-lg-3">
-					{!! Form::label ('colorPiel','Color piel:') !!}
-					{!! Form::select ('colorPiel',
-										$coloresPiel,
-										'',
-										['class' => 'form-control',
-											'id' => 'colorPiel',
-										] )!!}						
-			</div>		
-  		</div>
-  		<hr>
+  {{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}
+	<div class="card-body bg-white">	
+    <button type="button" class="btn btn-dark pull-right"  id="nuevaParteCuerpo">
+  Agregar
+</button>
+<br>
   		<div class="row">
-      	<div class="col">
-          {!! Form::label ('desaparecidoParteCuerpo','Parte del cuerpo:') !!}
+        <div class="form-check col-lg-12">
+          <input class="form-check-input" type="checkbox" id="editComplexion" checked="">
+          <label class="form-check-label" for="complexionPersona">Editar</label>
+        </div>
+        
+    			<div class="col-lg-3">
+    			{!! Form::label ('desaparecidoEstatura','Estatura:') !!}
+  				{!! Form::text ('estatura',
+  								old('estatura'),
+  								['class' => 'form-control sinEnter soloNumeros',
+  										'placeholder' => 'Ingrese la estura en cm',
+  										'id' => 'estatura', 'maxlength' => 3
+  								] )!!}
+  		  	</div>
+          
+  		  	<div class="col-lg-3">
+  				{!! Form::label ('desaparecidoPeso','Peso:') !!}
+  				{!! Form::text ('peso',
+  									old('peso'),
+  									['class' => 'form-control sinEnter soloNumeros',
+  										'placeholder' => 'Ingrese el peso en kg',
+  										'id' => 'peso', 'maxlength' => 3
+  									] )!!}
+  		  	</div>
+  		  	<div class="col-lg-3">
+  					{!! Form::label ('complexion','Complexión:') !!}
+  					{!! Form::select ('complexion',
+  									$complexiones,
+  									'',
+  									['class' => 'form-control', 'id' => 'complexion'] )!!}  					
+    		</div>
+  			<div class="col-lg-3">
+  					{!! Form::label ('colorPiel','Color piel:') !!}
+  					{!! Form::select ('colorPiel',
+  										$coloresPiel,
+  										'',
+  										['class' => 'form-control',
+  											'id' => 'colorPiel',
+  										] )!!}						
+  			</div>
+        
+      </div>
+  		<hr>
+      <form id="formDescripcionF">
+  		<div class="row">
+      	<div class="col-lg-4">
+          {!! Form::label ('desaparecidoParteCuerpo','Partes del rostro:') !!}
           {!! Form::select ('idPartesCuerpo',
                     $partesCuerpo,
                     '',
@@ -59,16 +103,15 @@
                       'id' => 'idPartesCuerpo'
                     ] )!!}            
       </div>
-      <div class="col">
+      <div class="col" id= lado_cuerpo style="display:none">
           {!! Form::label ('desaparecidoLado','Lado:') !!}
           {!! Form::text ('lado',
                   '',
-                  ['class' => 'form-control mayuscula sinEnter soloLetras',
+                  ['class' => 'form-control mayuscula sinEnter',
                     'id' => 'lado',
                     'placeholder' => 'Izquierdo, derecho, central'                  
                   ] )!!}
       </div>
-
       <div class="col" id="colores" style="display:none" >
           {!! Form::label ('color','Color:') !!}
          {!! Form::select ('color',
@@ -82,19 +125,16 @@
           {!! Form::label ('otroColor','Especifique otro color:') !!}
           {!! Form::text ('otroColor',
                   old('otro'),
-                  ['class' => 'form-control mayuscula sinEnter soloLetras',
+                  ['class' => 'form-control mayuscula sinEnter',
                     'placeholder' => 'Ingrese otro color',
                     'id' => 'otroColor',
                     
                   ] )!!}
           </div>
-
-
-
       </div>
-    <hr>
+      <hr>
       <div class="row">
-          <div class="col-lg-4">
+          <div class="col">
           {!! Form::label ('desaparecidoSubParticularidades','Particularidades:') !!}
           {!! Form::select ('idSubParticularidades',
                     $particularidades,
@@ -102,14 +142,13 @@
                     ['class' => 'form-control',
                       'id' => 'idSubParticularidades',
                       'multiple' => 'multiple'
-                    ] )!!}  
-          
-        </div>
-        <div class="col-lg-4" id="otro_Particularidad" style="display:none" >
+                    ] )!!}            
+      </div>
+      <div class="col" id="otro_Particularidad" style="display:none" >
           {!! Form::label ('otro','Especifique:') !!}
           {!! Form::text ('otroSubParticularidad',
                   old('otro'),
-                  ['class' => 'form-control mayuscula sinEnter soloLetras',
+                  ['class' => 'form-control mayuscula sinEnter',
                     'placeholder' => 'Ingrese otra particularidad',
                     'id' => 'otroSubParticularidad',
                     'data-validation' => 'required',
@@ -118,19 +157,8 @@
                     'data-validation-depends-on-value' =>'OTRO'
                   ] )!!}
           </div>
-         <!-- <div class="col-lg-4" id="observaciones">
-          {!! Form::label ('observacionesParticular','Observaciones:') !!}
-          {!! Form::text ('observacionesParticularidad',
-                  old('observacionesParticular'),
-                  ['class' => 'form-control mayuscula sinEnter soloLetras',
-                    'placeholder' => 'Ingrese las observaciones',
-                    'id' => 'observacionesParticularidad'
-                  ] )!!}
-          </div>  -->    
-    </div>
-    <br>
-    <div class="row">
-            <div class="col-lg-4">
+
+          <div class="col">
             {!! Form::label ('desaparecidoSubModificaciones','Modificaciones:') !!}
             {!! Form::select ('idSubModificaciones',
                       $modificaciones,
@@ -141,11 +169,11 @@
                       ] )!!}  
             
           </div>
-          <div class="col-lg-4" id="otra_Modificacion" style="display:none">
+          <div class="col" id="otra_Modificacion" style="display:none">
             {!! Form::label ('otroModi','Especifique:') !!}
             {!! Form::text ('otroSubModificacion',
                     old('otroModi'),
-                    ['class' => 'form-control mayuscula sinEnter soloLetras',
+                    ['class' => 'form-control mayuscula sinEnter',
                       'placeholder' => 'Ingrese otra modificación',
                       'id' => 'otroSubModificacion',
                       'data-validation' => 'required',
@@ -154,29 +182,39 @@
                       'data-validation-depends-on-value' =>'OTRO'
                     ] )!!}
             </div>
-            <div class="col-lg-4" >
-            {!! Form::label ('observaciones','Observaciones:') !!}
-            {!! Form::text ('observaciones',
-                    old('observaciones'),
-                    ['class' => 'form-control mayuscula sinEnter soloLetras',
-                      'placeholder' => 'Ingrese las observaciones',
-                      'id' => 'observaciones'
-                    ] )!!}
+         <!-- <div class="col-lg-4" id="observaciones">
+          {!! Form::label ('observacionesParticular','Observaciones:') !!}
+          {!! Form::text ('observacionesParticularidad',
+                  old('observacionesParticular'),
+                  ['class' => 'form-control mayuscula sinEnter soloLetras',
+                    'placeholder' => 'Ingrese las observaciones',
+                    'id' => 'observacionesParticularidad'
+                  ] )!!}
+          </div>  -->    
+      </div>
+      <br>
+      <div class="row">
+            <div class="col" >
+              {!! Form::label ('observaciones','Observaciones:') !!}
+              {!! Form::textarea ('observaciones',
+                      old('observaciones'),
+                      ['class' => 'form-control mayuscula sinEnter',
+                        'placeholder' => 'Ingrese las observaciones','size' => '70x4',
+                        'id' => 'observaciones'
+                      ] )!!}
             </div>                              
-    </div>  
-    <hr>
-		<h4 class="card-title"> Detalles de descripción física </h4>
-		<div class="card-body">
-			<table id="tableDescripcionFisica" ></table>
-		</div>
-	</div>	
-</div>    
-     </div> <!-- Fin del Contenido del formulario-->
-		{!! Form::submit('Atras', ['class' => 'btn btn-large btn-primary openbutton']); !!}
+      </div>  
+    </form>
+      <hr>
+		  <h4 class="card-title"> Detalles de descripción física </h4>
+		  <div class="card-body">
+			   <table id="tableDescripcionFisica" ></table>
+		  </div>
+  </div>	
 
-	<a href="/descripcionfisica/antecedentes_medicos/$desaparecido->id" class='btn btn-large btn-primary openbutton'>Siguiente</a>
+
   	
-</div>
+
 
 
 @endsection	
@@ -186,6 +224,7 @@
 	$(document).ready(function(){
 		var otraP;
 		var otraM;
+    var otraModi;
 
 		$('#nuevaParteCuerpo').click(function(e){
 			$('#modalDescripcionFisica').modal('show');
@@ -195,82 +234,100 @@
 
 	$("#idSubParticularidades").change(function() {
 			otraP = $('#idSubParticularidades').val();
-			//console.log(otraP);
-			if (otraP >=77 && otraP <= 88) {
-				$("#otro_Particularidad").show();
-			}else{
-				$("#otro_Particularidad").hide();
-			}
+      var aux = new Array();
+      if( otraP.length <=1 && otraP >= 89 && otraP <= 125){
+         aux = otraP;
+       }else{
+        for(var i=0;i<otraP.length;i++){
+           if (otraP[i] >=77 && otraP[i] <= 88) {
+              $("#otro_Particularidad").show();
+           }else{
+              $("#otro_Particularidad").hide();
+           }
+
+           if(otraP[i] >= 89 && otraP[i] <= 125){
+              console.log("(o.o)");
+           }else{
+            aux[i] = otraP[i];
+              console.log(aux[i]);
+           }
+        }
+       }
+    
+      $('#idSubParticularidades').val(aux);
 		});
 
 	$("#idSubModificaciones").change(function() {
 			otraM = $('#idSubModificaciones').val();
+      var aux = new Array();
+      if( otraM.length <=1 && otraM >= 61 && otraM <= 97){
+         aux = otraM;
+      }else{
 
-			if (otraM ==13 || otraM == 20 || otraM == 26 || otraM == 33|| otraM == 36|| otraM == 40 || otraM == 47|| otraM == 51|| otraM == 53|| otraM == 60) {
-				$("#otra_Modificacion").show();
-			}else{
-				$("#otra_Modificacion").hide();
-			}
+        for(var i=0;i<otraM.length;i++){
+         if (otraM[i] ==13 || otraM[i] == 20 || otraM[i] == 26 || otraM[i] == 33|| otraM[i] == 36|| otraM[i] == 40 || otraM[i] == 47|| otraM[i] == 51|| otraM[i] == 53|| otraM[i] == 60) {
+              $("#otra_Modificacion").show();
+         }else{
+              $("#otra_Modificacion").hide();
+         }
+
+         if(otraM[i] >= 61 && otraM[i] <= 97){
+              console.log("°° ¡Hi there! °°");
+              console.log(" °°  (o.o)   °°");
+           }else{
+            aux[i] = otraM[i];
+              console.log(aux[i]);
+           }
+        }
+
+      }    
+
+      $('#idSubModificaciones').val(aux);
 		});
 
+  $("#editComplexion").change(function () {
+     $("#estatura").prop('disabled', !this.checked);
+     $("#complexion").prop('disabled', !this.checked);
+     $("#colorPiel").prop('disabled', !this.checked);
+     $("#peso").prop('disabled', !this.checked);
+     //$("#chckOtraEnfermedad").prop('disabled', this.checked);
+     //$("#chckOtraEnfermedad").prop('checked', false);
+    
+     });
 
-
-var tableDescripcion = $('#tableDescripcionFisica');
+    var tableDescripcion = $('#tableDescripcionFisica');
 		var routeIndex = '{!! route('descripcionfisica.index') !!}';	
 		
-		var formatTableActions = function(value, row, index) {				
-			btn = '<button class="btn btn-info btn-xs edit" id="editDescripcionFisica"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
-			
-			return [btn].join('');
-		};
-		/*window.operateEvents = {
-			'click #editCalzado': function (e, value, row, index) {					
-				console.log(row);
-				//bodyModal.empty();
-				$('#idTipo').val(row.cTipo);
-				$('#otroCalzado').val(row.oCalzado);
-				$('#idColor').val(row.cColor);
-				$('#otroColorCalzado').val(row.ocCalzado);
-				$('#modeloCalzado').val(row.modelo);
-				$('#idMarca').val(row.cMarca);
-				$('#otraMarca').val(row.oMarca);
-				$('#calzadoTalla').val(row.talla);
-				$("#modalCalzado").modal("show");
-			}
-		}
-		$('#nuevoVestimenta').click(function(e){
-			$('#modalGeneral').modal('show');
-		})*/
 		tableDescripcion.bootstrapTable({				
 			url: routeIndex+'/get_partes/{{$desaparecido->id}}',
 			columns: [{					
-				field: 'nombreParteC',
+				field: 'nombre',
 				title: 'Parte del cuerpo',
 			}, {
 				field: 'lado',
 				title: 'Lado',									
 			}, {
-				field: 'nombre',
+				field: 'particularidades',
 				title: 'Particularidades',									
 			}, {					
-				field: 'nombre',
+				field: 'modificaciones',
 				title: 'Modificaciones',
 			}, {					
 				field: 'observaciones',
 				title: 'Observaciones',
-			}, {					
+			},/* {					
 				title: 'Acciones',
-				formatter: formatTableActions,
+				//formatter: formatTableActions,
 				//events: operateEvents
-			}]				
+			}*/]				
 		})
 	//Fin de vista de datos de calzado
-	});
+	
 
     $('#idSubParticularidades').select2();
     $('#idSubModificaciones').select2();
 
-    if($('#idPartesCuerpo').val() == 1){
+    if($('#idPartesCuerpo').val()== 1){
     	$("#idSubParticularidades").empty();
     	$("#idSubModificaciones").empty();
       $("#color").empty();
@@ -287,10 +344,19 @@ var tableDescripcion = $('#tableDescripcionFisica');
 //fin campo otro color
 
 	//Obtener particularidades
-	$('#idPartesCuerpo').on('change', function(){
+$('#idPartesCuerpo').on('change', function(){
       parteCuerpoid = $('#idPartesCuerpo').val();
-      if(parteCuerpoid == 24){
-      $('#colores').show();
+      console.log(parteCuerpoid);
+       $("#otro_Particularidad").hide();
+        $("#otra_Modificacion").hide();
+       if(parteCuerpoid == 5 || parteCuerpoid >= 8 && parteCuerpoid <= 11 || parteCuerpoid == 13 || parteCuerpoid == 16 || parteCuerpoid >= 20 && parteCuerpoid <=22 || parteCuerpoid >= 33 && parteCuerpoid <=36)
+      {
+        $('#lado_cuerpo').hide();
+      }else{
+        $('#lado_cuerpo').show();
+      }
+      if(parteCuerpoid == 24 || parteCuerpoid >= 34 && parteCuerpoid <= 37){
+        $('#colores').show();
     }else{
       $('#colores').hide();
     }
@@ -304,9 +370,6 @@ var tableDescripcion = $('#tableDescripcionFisica');
         maximumSelectionLength: 10,       
       });
      } 
-
-
-
         $("#idSubParticularidades").empty();
         var idPartesCuerpo = $(this).val();
         if(idPartesCuerpo) {
@@ -416,8 +479,15 @@ var tableDescripcion = $('#tableDescripcionFisica');
       success: function(data) {           
         console.log("hecho");
         console.log(data);
-        //tableDescripcion.bootstrapTable('refresh');
-                        
+        tableDescripcion.bootstrapTable('refresh');
+        $("#editComplexion").prop('checked', false);
+        $("#estatura").prop('disabled', !this.checked);
+        $("#complexion").prop('disabled', !this.checked);
+        $("#colorPiel").prop('disabled', !this.checked);
+        $("#peso").prop('disabled', !this.checked);
+        
+        $('#formDescripcionF')[0].reset();
+        $('#idPartesCuerpo').val(1).trigger('change');
       },
       error: function(data) {
         console.log("error");
@@ -425,6 +495,8 @@ var tableDescripcion = $('#tableDescripcionFisica');
       }
     });
   });
+
+});
 
 	</script>
 @endsection

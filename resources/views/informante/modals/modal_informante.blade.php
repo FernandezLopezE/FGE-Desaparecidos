@@ -193,11 +193,12 @@
 										['class' => 'form-control'])!!}	
 				</div>
 				<div class="form-group col-lg-2">
-					{!! Form::label ('lada','Lada:') !!}
-					{!! Form::select ('lada[]',
-										$ladas,
-										'',
-										['class' => 'form-control'] )!!}	
+					{!! Form::label ('lada','Código del país:') !!}
+					{!! Form::text ('lada[]',
+										old(''),
+										['class' => 'form-control',
+											'id' => 'lada'
+											] )!!}		
 				</div>
 				<div class="form-group col-lg-3">
 					{!! Form::label ('informanteTelefonos','Número:') !!}
@@ -246,7 +247,8 @@
 		<!-- Fin del Contenido del formulario-->
 	  </div>
 	  <div class="modal-footer">
-		<button type="button" class="btn btn-dark" id="btnGuardarInformante"><i class="fa fa-save"></i>  GUARDAR</button>
+	    <button type="button" class="btn btn-dark mr-auto" id="btnLimpiar"> LIMPIAR CAMPOS</button>
+		<button type="button" class="btn btn-dark" id="btnGuardarInformante">GUARDAR</button>
 		<button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
 	  </div>
 	</div>
