@@ -35,7 +35,9 @@
 							<a href="{{route('cedula.show', ['id' => $cedula->id])}}">
 								DETALLE
 							</a>
-							<a href="{{route('cedula.show', ['id' => $cedula->id])}}">
+
+							<a href="{{route('boletin.show', ['id' => $cedula->id])}}">
+
 								BOLETIN
 							</a>
 						</th>
@@ -48,6 +50,12 @@
 			</tbody>
 			
 		</table>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+
 
 	</div>
 </div>

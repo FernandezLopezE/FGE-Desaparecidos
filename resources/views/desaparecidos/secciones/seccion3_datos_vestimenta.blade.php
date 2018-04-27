@@ -8,6 +8,47 @@
 	
 @endsection
 @section('content')
+<nav>
+	<div class="nav nav-tabs" id="nav-tab" role="tablist">
+			<a class="nav-item nav-link" href="#" aria-selected="true">
+				Entrevista
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Informantes
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Desaparecido
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Familiares
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Contacto
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Domicilios
+			</a>
+			<a class="nav-item nav-link " href="{{route('antecedentes.show',['id' => $desaparecido->id])}}" aria-selected="false">
+				Antecedentes
+			</a>
+			<a class="nav-item nav-link active" href="#" aria-selected="false">
+				Vestimenta
+			</a>
+			<a class="nav-item nav-link" href="{{route('descripcionfisica.show',['id' => $desaparecido->id])}}" aria-selected="false">
+				Descripción física
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Antecedentes médicos
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Señas particulares
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Datos dentales
+			</a>				
+	</div>
+</nav>
+
 <hr>
 <div class="card border-success">
 	<div class="card-header">
@@ -53,6 +94,8 @@
           </div>
           <br>
           <input type="button" name="btnAOS" id="btnAOS" value="AGREGAR" class="btn btn-dark pull-right">
+
+          <a href="/desaparecido/correo" class='btn btn-large btn-primary openbutton'>corrreo</a>
 	</div>
 	
 </div>

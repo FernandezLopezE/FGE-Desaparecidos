@@ -29,6 +29,9 @@
 			</a>
 			<a class="nav-item nav-link" href="#" aria-selected="false">
 				Antecedentes
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Vestimenta
 			</a>				
 	</div>
 </nav>

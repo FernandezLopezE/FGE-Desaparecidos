@@ -1,5 +1,5 @@
 <!-- Modal de vestimenta-->
-  <div class="modal fade" id="modalVestimenta" rle="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="modalVestimenta" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -10,7 +10,8 @@
         </div>
         <div class="modal-body">
           {{ Form::hidden('idCedula', $id, array('id' => 'idCedula')) }}
-          {{ Form::hidden('idPrenda','', array('id' => 'idPrenda')) }}
+          {{ Form::hidden('idPrenda','', array('id' => 'idPrenda')) }}   
+          <form>     
           <!-- Contenido del formulario-->
           <!--<div class="row">
             <div class="col">
@@ -56,11 +57,12 @@
           </div>
          </div>
         </div>
-          
+          </form>  
 
           <!-- Fin del Contenido del formulario-->
         </div>
         <div class="modal-footer">
+          <button type="button" class="btn btn-dark mr-auto" id="btnLimpiar"> LIMPIAR CAMPOS</button>
           <button type="button" class="btn btn-success" id="btnPrenda">GUARDAR</button>
           <button type="button" class="btn btn-warning" id="btnActualizarP">ACTUALIZAR</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>

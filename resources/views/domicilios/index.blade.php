@@ -26,14 +26,21 @@
 			<a class="nav-item nav-link" href="#" aria-selected="false">
 				Desaparecido
 			</a>
-			<a class="nav-item nav-link" href="{{route('familiar.show',['id' => $desaparecido->id])}}" aria-selected="false">
+			<a class="nav-item nav-link" href="" aria-selected="false">
 				Familiares
 			</a>
+			<a class="nav-item nav-link" href="{{route('contactos.show',['id' => $desaparecido->id])}}	" aria-selected="false">
+				Contactos
+			</a>
+
 			<a class="nav-item nav-link active" href="#" aria-selected="false">
 				Domicilios
 			</a>
 			<a class="nav-item nav-link" href="{{route('antecedentes.show',['id' => $desaparecido->id])}}" aria-selected="false">
 				Antecedentes
+			</a>
+			<a class="nav-item nav-link" href="{{route('antecedentes.show',['id' => $desaparecido->id])}}" aria-selected="false">
+				Vestimenta
 			</a>				
 	</div>
 </nav>
@@ -51,6 +58,8 @@
 @endsection
 
 @section('scripts')
+{!! HTML::script('personal/js/sisyphus.min.js') !!}
+{!! HTML::script('personal/js/sisyphus.js') !!}
 <script type="text/javascript">
 	$(function (){
 		var table = $('#tableDomicilios');
@@ -61,6 +70,8 @@
 		var modal = $('#modalDomicilio');
 		var modalFooter = $('.modal-footer');
 		var idDesaparecido = '{!! $desaparecido->id !!}'
+        var btnLimpiar = $('#btnLimpiar');
+
 		
 		table.bootstrapTable({				
 			url: routeIndex+'/get_domicilios/{!! $desaparecido->id !!}',
@@ -84,8 +95,16 @@
 
 		btnAgregar.click(function(e){
 			modal.modal('show');
+		  $( "#modalDomicilio" ).sisyphus( {
+	           excludeFields: $('input[name=_token]')
+            });
 		})
-
+        
+        btnLimpiar.click(function(){
+          $('#modalDomicilio').find('form')[0].reset();
+          $('#modalDomicilio').removeData('modal');
+             })
+            
 		btnGuardar.click (function(){
 			
 			var dataString = {

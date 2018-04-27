@@ -123,7 +123,7 @@
 			var idEstado = $(this).val();
 			if(idEstado) {
 				$.ajax({
-					url: routeIndex+'/municipios/'+idEstado,
+					url: routeIndex+'/get_municipios/'+idEstado,
 					type:"GET",
 					dataType:"json",
 					success:function(data) {
@@ -144,7 +144,7 @@
 			var idMunicipio = $(this).val();
 			if(idMunicipio) {			
 				$.ajax({
-					url: routeIndex+'/localidades/'+idMunicipio,
+					url: routeIndex+'/get_localidades/'+idMunicipio,
 					type:"GET",
 					dataType:"json",
 					success:function(data) {
@@ -160,7 +160,7 @@
 			var idMunicipio = $(this).val();
 			if(idMunicipio) {			
 				$.ajax({
-					url: routeIndex+'/colonias/'+idMunicipio,
+					url: routeIndex+'/get_colonias/'+idMunicipio,
 					type:"GET",
 					dataType:"json",
 					success:function(data) {
@@ -177,7 +177,7 @@
 			var idMunicipio = $(this).val();
 			if(idMunicipio) {
 				$.ajax({
-					url: routeIndex+'/codigos/'+idMunicipio,
+					url: routeIndex+'/get_colonias/'+idMunicipio,
 					type:"GET",
 					dataType:"json",
 					success:function(data) {

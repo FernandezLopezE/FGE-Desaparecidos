@@ -37,6 +37,9 @@
 			</a>
 			<a class="nav-item nav-link" href="#" aria-selected="false">
 				Antecedentes
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Vestimenta
 			</a>				
 	</div>
 </nav>
@@ -54,6 +57,8 @@
 @endsection
 
 @section('scripts')
+{!! HTML::script('personal/js/sisyphus.min.js') !!}
+{!! HTML::script('personal/js/sisyphus.js') !!}
 <script type="text/javascript">
 	$(function (){
 		var table = $('#tableFamiliares');
@@ -64,6 +69,7 @@
 		var modalFamiliar = $('#modalFamiliar');
 		var modalFooter = $('.modal-footer');
 		var idDesaparecido = '{!! $desaparecido->id !!}'
+        var btnLimpiar = $('#btnLimpiar');
 
 		console.log(routeIndex+'/get_familiares/{!! $desaparecido->id !!}');
 		
@@ -89,7 +95,16 @@
 
 		btnAgregarFamiliar.click(function(e){
 			modalFamiliar.modal('show');
+	            $( "#modalFamiliar" ).sisyphus( {
+	           excludeFields: $('input[name=_token]')
+            });
 		})
+        
+        btnLimpiar.click(function(){
+          $('#modalFamiliar').find('form')[0].reset();
+          $('#modalFamiliar').removeData('modal');
+
+        })
 
 		btnGuardarFamiliar.click (function(){
 			

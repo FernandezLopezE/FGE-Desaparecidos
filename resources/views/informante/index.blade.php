@@ -36,6 +36,9 @@
 			</a>
 			<a class="nav-item nav-link" href="#" aria-selected="false">
 				Antecedentes
+			</a>
+			<a class="nav-item nav-link" href="#" aria-selected="false">
+				Vestimenta
 			</a>				
 	</div>
 </nav>
@@ -54,6 +57,9 @@
 
 @section('scripts')
 {!! HTML::script('personal/js/lada.js') !!}
+{!! HTML::script('personal/js/sisyphus.min.js') !!}
+{!! HTML::script('personal/js/sisyphus.js') !!}
+
 <script type="text/javascript">
 	$(function (){
 		var table = $('#tableInformantes');
@@ -71,6 +77,7 @@
 		var modalDesaparecidoFamiliar = $('#modalDesaparecidoFamiliar');
 		var bodyModalInformante = $('#modal-body-informante');
 		var modalFooter = $('.modal-footer');
+        var btnLimpiar = $('#btnLimpiar');
 
 		var addCamposTelefono = function(tipoTel = null, lada=null, telefono=null, ext=null) {
             $("#telefono2").append('<div class="row"><div class="form-group col-lg-2">{!! Form::label ("informanteTipoTel","Tipo de telefono:") !!}	            {!! Form::select ("informanteTipoTel[]", $tiposTelefonos,"'+tipoTel+'",["class" => "form-control","id" => "informanteTipoTel[]"])!!} </div> <div class="form-group col-lg-2">                                             {!! Form::label ("lada","Lada:") !!}	                                    {!! Form::select ("lada[]", $ladas,"'+lada+'",["class" => "form-control","id" => "lada[]"])!!} </div>  <div class="form-group col-lg-3">                                                                {!! Form::label ("informanteTelefonos","Número:") !!}                    {!! Form::text ("informanteTelefonos[]",old("'+telefono+'"),["class" => "form-control mayuscula valid","data-validation" => "required","data-validation-error-msg-required" => "El campo es requerido","id" => "informanteTelefonos[]"] )!!} </div>    <div class="form-group col-lg-1">                                              {!! Form::label ("ext","Ext:") !!}                                        {!! Form::text ("ext[]",old("'+ext+'"), ["class" => "form-control mayuscula","id" => "ext[]"] )!!} </div> </div>');
@@ -256,8 +263,17 @@
 			//$("#informanteOtroDocIdentidad").ocultar
 			//informanteOtroParentesco
 			modalInformanteAgregar.modal('show');
+            $( "#modalInformante" ).sisyphus( {
+	           excludeFields: $('input[name=_token]')
+            });
 		})
+        
+        btnLimpiar.click(function(){
+          $('#modalInformante').find('form')[0].reset();
+          $('#modalInformante').removeData('modal');
 
+        })
+        
 		btnGuardarInformante.click (function(){
 			
 			var dataString = {
