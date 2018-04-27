@@ -14,8 +14,7 @@
 	<div class="card-body bg-white">
 		<table class="table font-weight-light">
 			<thead>
-				<th>#</th>
-				<th>Nombre de la pesona</th>				
+				<th>#</th>				
 				<th>Entrevistador</th>
 				<th>Fecha creación</th>
 				<th>Acciones</th>
@@ -23,14 +22,7 @@
 			<tbody>
 				@forelse ($cedulas as $cedula)
 					<tr>
-						<th>{!! $cedula->idCedula !!}</th>
-						<th>
-							@if (isset($cedula->nombres))	
-								{!! $cedula->nombres !!} 
-								{!! $cedula->primerAp !!} 
-								{!! $cedula->segundoAp !!}
-							@endif
-						</th>
+						<th>{!! $cedula->id !!}</th>						
 						<th>							
 							{!! $cedula->entrevistadorNombres !!} 
 							{!! $cedula->entrevistadorPrimerAp !!} 
@@ -40,11 +32,11 @@
 							{!! \Carbon\Carbon::parse($cedula->created_at )->format('d/m/Y H:m')!!}
 						</th>
 						<th>
-							<a class="btn btn-secondary" href="{{route('cedula.show', ['id' => $cedula->idCedula])}}">
+							<a class="btn btn-secondary" href="{{route('cedula.show', ['id' => $cedula->id])}}">
 								DETALLE
 							</a>
 
-							<a class="btn btn-secondary" href="{{route('boletin.show', ['id' => $cedula->idCedula])}}">
+							<a class="btn btn-secondary" href="{{route('boletin.show', ['id' => $cedula->id])}}">
 
 								BOLETIN
 							</a>

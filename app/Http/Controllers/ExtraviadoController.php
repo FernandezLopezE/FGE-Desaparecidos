@@ -259,7 +259,47 @@ class ExtraviadoController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		//
+
+		$embarazo       = ($request->input('sexo')=='M') ? $request->input('embarazo') : 'NO';
+		$numGestacion   = ($request->input('embarazo') == 'SI') ? $request->input('numGestacion') : null;
+		$tipoGestacion  = ($request->input('embarazo') == 'SI') ? $request->input('tipoGestacion') : null;
+		$rumoresBebe    = ($request->input('embarazo') == 'SI') ? $request->input('rumoresBebe') : 'NO';
+		$pormenores     = ($request->input('rumoresBebe') == 'SI') ? $request->input('pormenores') : null;
+
+		$desaparecido = \App\Models\Desaparecido::find($id)->update([						
+			'apodo'                     => $request->input('apodo'),
+			'edadAparente'              => $request->input('edadAparente'),
+			'edadExtravio'              => $request->input('edadExtravio'),
+			'embarazo'                  => $embarazo,
+			'numGestacion'              => $numGestacion,
+			'tipoGestacion'             => $tipoGestacion,
+			'rumoresBebe'               => $rumoresBebe,
+			'pormenores'                => $pormenores,
+			'antecedentesJudiciales'    => $request->input('antecedentesJudiciales'),
+			'otroDocIdentidad'          => $request->input('otroDocIdentidad'),
+			'numDocIdentidad'           => $request->input('numDocIdentidad'),
+			'idEdocivil'                => $request->input('idEdocivil'),
+			'idOcupacion'               => $request->input('idOcupacion'),
+			'idEscolaridad'             => $request->input('idEscolaridad'),
+			'idDocumentoIdentidad'      => $request->input('idDocumentoIdentidad'),			
+		]);
+
+		$desaparecido = \App\Models\Desaparecido::find($id);		
+
+		$persona = \App\Models\Persona::find($desaparecido->idPersona)->update([
+			'nombres'           => $request->input('nombres'),
+			'primerAp'          => $request->input('primerAp'),
+			'segundoAp'         => $request->input('segundoAp'),
+			'fechaNacimiento'   => $request->input('fechaNacimiento'),
+			'sexo'              => $request->input('sexo'),
+			'idNacionalidad'    => $request->input('idNacionalidad'),
+			'curp'              => $request->input('curp'),
+			'idEstadoOrigen'    => $request->input('idEstadoOrigen'),
+		]);
+
+		return redirect()->action(
+			'ExtraviadoController@show', ['id' => $desaparecido->idCedula]
+		);
 	}
 
 	/**
