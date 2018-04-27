@@ -2959,9 +2959,8 @@ class OcupacionSeeder extends Seeder
             ['id'=>   2943,'nombre' => 'OFICIAL DE POLICIA ESTATAL'],
             ['id'=>   2944,'nombre' => 'OFICIAL DE POLICIA FEDERAL'],
             ['id'=>   2945,'nombre' => 'OFICIAL DE TRANSITO'],
-            ['id'=>   2946,'nombre' => 'MILITAR']
-
-
+            ['id'=>   2946,'nombre' => 'MILITAR'],
+            ['id'=>   2947,'nombre' => 'ESTUDIANTE']
             
         ]);    
             

@@ -41,15 +41,12 @@
       </a>        
   </div>
 </nav>
-
-	<div class="card border-success">
-	<div class="card-header">
-		<h5 class="card-title">Antecedentes médicos		
-			<button type="button" class="btn btn-dark pull-right"  id="nuevoAntecedenteMedico">Agregar</button>
-		</h5>
-{{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}
-	</div>
-	<div class="card-body">	
+  {{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}
+	<div class="card-body bg-white">
+    <button  type="button" class="btn btn-dark pull-right"  id="nuevoAntecedenteMedico">Agregar</button>
+    <br>
+    <br>	
+    <form id="formAntecedentesM">
       <div class="row">
         <div class="form-check col-lg-8">
           <input class="form-check-input" type="checkbox" id="sinInformacionE" checked="">
@@ -222,14 +219,10 @@
             </div>                            
     </div>       
     <hr>
+    </form>  
 	</div>	
-</div>    
-     </div> <!-- Fin del Contenido del formulario-->
-		{!! Form::submit('Atras', ['class' => 'btn btn-large btn-primary openbutton']); !!}
+ 
 
-	<a href="/descripcionfisica/antecedentes_medicos/$desaparecido->id" class='btn btn-large btn-primary openbutton'>Siguiente</a>
-  	
-</div>
 
 
 @endsection	
@@ -245,7 +238,7 @@
     var otroIm;
 
 //Aplicacion de select2
-$('#idEnfermedad').select2().css({"background-color": "#444444"});
+$('#idEnfermedad').select2();
   $('#idIQuirurgica').select2();
   $('#idAdicciones').select2();
   $('#idImplantes').select2();    
@@ -407,6 +400,29 @@ $("#sinInformacionIm").change(function () {
                 },
             }
         });
+        $('#formAntecedentesM')[0].reset();
+         $('#idEnfermedad').val(0).trigger('change');
+        $('#idIQuirurgica').val(0).trigger('change');
+        $('#idAdicciones').val(0).trigger('change');
+        $('#idImplantes').val(0).trigger('change');
+
+        $("#idEnfermedad").attr("disabled", true);
+        $("#idAdicciones").attr("disabled", true);
+        $("#idIQuirurgica").attr("disabled", true);
+        $("#idImplantes").attr("disabled", true);
+       
+   
+        $("#chckOtraEnfermedad").prop('checked', false);
+        $("#chckOtraIQ").prop('checked', false);
+        $("#chckOtraAdiccion").prop('checked', false);
+        $("#chckOtroImplante").prop('checked', false);
+
+        $("#otra_Enfermedad").hide();
+        $("#otra_IQ").hide();
+        $("#otra_Adiccion").hide();
+        $("#otro_Implante").hide();
+
+
         //swal("Datos guardados exitosamente.", "Dale click en el boton ok!", "success");
       
         //tableDescripcion.bootstrapTable('refresh');
