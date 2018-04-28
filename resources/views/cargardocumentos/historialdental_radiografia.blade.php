@@ -17,9 +17,10 @@
 
 @section('content')
 
+@include('navs.navs_datos',array('activar' => 'ant_medicos'))
 
 <hr>
-  {{ Form::hidden('idCedula', $id, array('id' => 'idCedula')) }}
+
 
 	  	<div class="card border-primary">
 	  		<div class="card border-success">

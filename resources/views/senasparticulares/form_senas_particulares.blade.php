@@ -5,7 +5,46 @@
 @extends('layouts.app_uipj')
 
 @section('content')
-@include('navs.navs_datos',array('activar' => 'senas_part'))
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link" href="#" aria-selected="true">
+        Entrevista
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Informantes
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Desaparecido
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Familiares
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Contacto
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Domicilios
+      </a>
+      <a class="nav-item nav-link " href="#" aria-selected="false">
+        Antecedentes
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Vestimenta
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Descripción física
+      </a>
+      <a class="nav-item nav-link" href="{{route('antecedentesmedicos.show',['id' => $desaparecido->id])}}" aria-selected="false">
+        Antecedentes medicos
+      </a>
+      <a class="nav-item nav-link active" href="#" aria-selected="false">
+        Señas particulares
+      </a>
+      <a class="nav-item nav-link" href="{{route('datos_dentales.show',['id' => $desaparecido->id])}}" aria-selected="false">
+        Datos dentales
+      </a>        
+  </div>
+</nav>
 	<div class="card border-primary">
 		<div class="card-header">
 			<div class="row">
@@ -44,7 +83,8 @@
 	            	{!! Form::text ('caracteristicas',
 									old('caracteristicas'),
 									['class' => 'form-control mayuscula',
-										'id' => 'caracteristicas'
+										'id' => 'caracteristicas',
+										'placeholder' => 'Tamaño, color, forma, etc ...'
 									] )!!}
 	            </div>
 	        </div>
@@ -109,6 +149,7 @@
    	var idCedula = 1;
    	var id = 1;
    	var routeIndex = '{!! route('consultas.index') !!}';
+    var routeSenas = '{!! route('senas_particulares.index') !!}';
    	var otraUbicacion;
    	var senasPArticulares = $('#senasPArticulares');
    	var tableSenas = $('#table_senas');
@@ -117,7 +158,7 @@
 			
 			return [btn].join('');
 		};
-
+console.log(routeSenas);
         //$('#senasParticulares').select2();
    		//$('#senasParticularesUbica').select2();
       	
@@ -143,9 +184,9 @@
    		});
 
 
-   		
+   		console.log(routeIndex+'/get_senas/{!! $desaparecido->id !!}');
    		tableSenas.bootstrapTable({				
-			url: routeIndex+'/get_senas/{!! $desaparecido->id !!}',
+			url: routeIndex+'/get_senas/{!! $desaparecido->idCedula !!}',
 			columns: [{					
 				field: 'nombreSena',
 				title: 'Seña particular',
@@ -177,7 +218,7 @@
             };
             $.ajax({
                 type: 'POST',
-                url: '/senas_particulares/store_senas',
+                url: routeSenas,
                 data: dataString,
                 dataType: 'json',
                 success: function(data) {

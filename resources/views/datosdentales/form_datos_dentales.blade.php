@@ -1,4 +1,8 @@
+@extends('layouts.app_uipj')
+
 @section('css')
+{!! Html::style('') !!}
+{!! Html::style('personal/css/bootstrap-toggle.min.css') !!}
 <style type="text/css">
     .modal-lg {
     	max-width: 80%;
@@ -8,13 +12,50 @@
     	max-height: 450px;
     }
 </style>
-{!! Html::style('personal/css/pgwslider.css') !!}
 @endsection
 
-@extends('layouts.app_uipj')
+
 
 @section('content')
-@include('navs.navs_datos',array('activar' => 'dentadura'))
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link" href="#" aria-selected="true">
+        Entrevista
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Informantes
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Desaparecido
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Familiares
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Contacto
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Domicilios
+      </a>
+      <a class="nav-item nav-link " href="#" aria-selected="false">
+        Antecedentes
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Vestimenta
+      </a>
+      <a class="nav-item nav-link" href="#" aria-selected="false">
+        Descripción física
+      </a>
+      <a class="nav-item nav-link" href="{{route('antecedentesmedicos.show',['id' => $desaparecido->id])}}" aria-selected="false">
+        Antecedentes medicos
+      </a>
+      <a class="nav-item nav-link" href="{{route('senas_particulares.show',['id' => $desaparecido->id])}}" aria-selected="false">
+        Señas particulares
+      </a>
+      <a class="nav-item nav-link active"" href="#" aria-selected="false">
+        Datos dentales
+      </a>        
+  </div>
 	<div class="card border-primary">
 		<div class="card-header">
 			<div class="row">
@@ -22,6 +63,7 @@
 					<h5 class="card-title">DATOS DENTALES DE LA PERSONA DESAPARECIDA</h5>	
 				</div>
 				<div class="col">
+					<button type="button" class="btn btn-primary pull-right" id="agregardatodental">GUARDAR</button>
 				</div>
 			</div>
 		</div>
@@ -80,12 +122,18 @@
 			</div><hr id="dentistahr" style="visibility: none">
 
 			<div class="form-group row">
-				<div class="col-md-12">
-					<h5>¿Tuvo algún tratamiento en los dientes?:</h5>
-				</div>
+                <div class="col-4">
+                    <h5>¿Tuvo algún tratamiento en los dientes?</h5>
+                </div>
+                <div class="col" align="right" >
+                    {!! Form::label ('direccion','Activar ayuda visual') !!}
+                    <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="SÍ" data-off="NO" data-size="small" onchange="myFunction()">
+                </div>
+            </div>
+			<div class="form-group row">
 				<div class="col">
 					{!! Form::checkbox('AMALGAMA', '2') !!}
-					{!! Form::label ('AMALGAMA','AMALGAMA') !!}
+					<a class="btn" rel="popover" data-img="{{ URL::to('/images/Dientes/amalgama.jpg')}}"><B>AMALGAMA</B></a>
 				</div>
 				<div class="col">
 					{!! Form::checkbox('BLANQUEAMIENTO DENTAL', '3') !!}
@@ -93,25 +141,25 @@
 				</div>
 				<div class="col">
 					{!! Form::checkbox('BRACKETS', '4') !!}
-					{!! Form::label ('BRACKETS','BRACKETS') !!}
+					<a  rel="popover" data-img="{{ URL::to('/images/Dientes/brackets.jpg') }}"><b>BRACKETS</b></a>
 				</div>
 				<div class="col">
 					{!! Form::checkbox('CARILLA', '5') !!}
-					{!! Form::label ('CARILLA','CARILLA') !!}
+					<a class="btn" rel="popover" data-img="{{ URL::to('/images/Dientes/carillas.jpg') }}"><b>CARILLA</b></a>
 				</div>
 				<div class="col">
 					{!! Form::checkbox('CORONA ESTETICA', '6') !!}
-					{!! Form::label ('CORONA ESTETICA','CORONA ESTETICA') !!}
+					<a class="btn" rel="popover" data-img="{{ URL::to('/images/Dientes/corona.jpg') }}"><b>CORONA ESTETICA</b></a>
 				</div>
 			</div>
 			<div class="form-group row">
 				<div class="col">
 					{!! Form::checkbox('ENDODONCIA', '7') !!}
-					{!! Form::label ('ENDODONCIA','ENDODONCIA') !!}
+					<a class="btn" rel="popover" data-img="{{ URL::to('/images/Dientes/endodoncia.jpg') }}"><b>ENDODONCIA</b></a>
 				</div>
 				<div class="col">
 					{!! Form::checkbox('IMPLANTE', '8') !!}
-					{!! Form::label ('IMPLANTE','IMPLANTE') !!}
+					<a class="btn" rel="popover" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>IMPLANTE</b></a>
 				</div>
 				<div class="col">
 					{!! Form::checkbox('OBTURACIÓN TEMPORAL', '9') !!}
@@ -133,7 +181,7 @@
 				</div>
 				<div class="col">
 					{!! Form::checkbox('RESINA', '13') !!}
-					{!! Form::label ('RESINA','RESINA') !!}
+					<a class="btn" rel="popover" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RESINA</b></a>
 				</div>
 				<div class="col">
 					{!! Form::checkbox('RETENEDOR', '14') !!}
@@ -144,7 +192,7 @@
 					{!! Form::label ('SELLADOR FS','SELLADOR FS') !!}
 				</div>
 				<div class="col">
-					{!! Form::checkbox('OTRO', '1', '16') !!}
+					{!! Form::checkbox('OTRO', '16') !!}
 					{!! Form::label ('OTRO','OTRO') !!}
 				</div>
 			</div>
@@ -213,15 +261,15 @@
 					{!! Form::label ('duda','El desaparecido presentaba:') !!}
 				</div>
 				<div class="col">
-					{!! Form::checkbox('SARRO', 'SARRO') !!}
+					{!! Form::checkbox('enfermedad[]', 'SARRO') !!}
 					{!! Form::label ('SARRO','SARRO') !!}
 				</div>
 				<div class="col">
-					{!! Form::checkbox('GINGIVITIS', 'GINGIVITIS') !!}
+					{!! Form::checkbox('enfermedad[]', 'GINGIVITIS') !!}
 					{!! Form::label ('GINGIVITIS','GINGIVITIS') !!}
 				</div>
 				<div class="col">
-					{!! Form::checkbox('PERIODONTITIS', 'PERIODONTITIS') !!}
+					{!! Form::checkbox('enfermedad[]', 'PERIODONTITIS') !!}
 					{!! Form::label ('PERIODONTITIS','PERIODONTITIS') !!}
 				</div>
 			</div><hr>
@@ -233,15 +281,15 @@
                     {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'malosHabitos'] ) !!}
                 </div><br>
                 <div class="col-md-2" id="morderuna">
-                	{!! Form::checkbox('MORDERSE LAS UÑAS', 'MORDERSE LAS UÑAS') !!}
+                	{!! Form::checkbox('malhabito[]', 'MORDERSE LAS UÑAS') !!}
                     {!! Form::label ('MORDERSE LAS UÑAS','MORDERSE LAS UÑAS') !!}
                 </div>
                 <div class="col-md-2" id="morderobjeto">
-                	{!! Form::checkbox('MORDER ALGÚN OBJETO', 'MORDER ALGÚN OBJETO') !!}
+                	{!! Form::checkbox('malhabito[]', 'MORDER ALGÚN OBJETO') !!}
                     {!! Form::label ('MORDER ALGÚN OBJETO','MORDER ALGÚN OBJETO') !!}
                 </div>
                 <div class="col-md-1" id="otrohabito">
-                	{!! Form::checkbox('OTRO', 'OTRO') !!}
+                	{!! Form::checkbox('malhabito[]', 'OTRO') !!}
                     {!! Form::label ('OTRO','OTRO') !!}
                 </div>
                 <div class="col-md-3" id="especifiquehabito">
@@ -262,7 +310,7 @@
                 </div>
                 <div class="col-md-6" id="perfilseleccionado">
                     {!! Form::label ('nombreDiente','Perfil seleccionado') !!}
-                    {!! Form::text ('nombres',old('nombres'), ['class' => 'form-control mayuscula', 'id' => 'nombres',] )!!}
+                    {!! Form::text ('nombres',old('nombres'), ['class' => 'form-control mayuscula', 'id' => 'valorPerfil',] )!!}
                 </div>
             </div><hr>
 
@@ -279,7 +327,7 @@
                 </div>
                 <div class="col-md-6" id="mordidaseleccionada">
                     {!! Form::label ('nombreDiente','Tipo de mordida seleccionada') !!}
-                    {!! Form::text ('nombres',old('nombres'), ['class' => 'form-control mayuscula', 'id' => 'nombres',] )!!}
+                    {!! Form::text ('nombres',old('nombres'), ['class' => 'form-control mayuscula', 'id' => 'valormordida',] )!!}
                 </div>
             </div><hr>            
 
@@ -296,7 +344,7 @@
                 </div>
                 <div class="col-md-6" id="sonrisaseleccionada">
                     {!! Form::label ('nombreDiente','Tipo de sonrisa seleccionada') !!}
-                    {!! Form::text ('nombres',old('nombres'), ['class' => 'form-control mayuscula', 'id' => 'nombres',] )!!}
+                    {!! Form::text ('nombres',old('nombres'), ['class' => 'form-control mayuscula', 'id' => 'dientes_girados',] )!!}
                 </div>
             </div><hr>
 		</div>
@@ -305,7 +353,84 @@
 @endsection
 
 @section('scripts')
+{!! Html::script('personal/js/bootstrap-toggle.min.js') !!}
 <script type="text/javascript">
+
+	$("img").click(function() {
+		 var diente = ($(this).attr("value"));
+		 alert(diente);
+		 console.log("input#"+diente);
+		 $("input#"+diente).val(diente);
+		 //$("#modalSonrisa").modal('hide');
+	});
+
+
+	$(function() {
+
+        $('#toggle-event').change(function() {
+
+            $('a[rel=popover]').popover({
+
+                html: true,
+
+                trigger: 'hover',
+
+                placement: 'bottom',
+
+                content: function() {
+
+                    return '<img src="' + $(this).data('img') + '" />';
+
+                }
+
+            });
+
+        })
+
+    })
+
+    function myFunction() {
+
+        var checkBox = document.getElementById("toggle-event");
+
+        if (checkBox.checked == true) {
+
+            $("a[rel=popover]").popover('enable');
+
+            $('a[rel=popover]').popover({
+
+                html: true,
+
+                trigger: 'hover',
+
+                placement: 'bottom',
+
+                content: function() {
+
+                    return '<img src="' + $(this).data('img') + '" />';
+
+                }
+
+            });
+
+            //text.style.display = "block";
+
+        } else {
+
+            $("a[rel=popover]").popover('hide');
+
+            $("a[rel=popover]").popover('disable');
+
+            // Remove the popover DIV from the DOM
+
+            //text.style.display = "none";
+
+        }
+
+    }
+
+
+
 	$(document).ready(function()
 	{
 
@@ -315,6 +440,8 @@
 
 		var atencion,infoden,higieneB, cariesB, dientePerdido, malosHabitos,
 			 perfil, tipmordida, tiposonrisa;
+
+		var routeContacto = '{!! route('contactos.index') !!}';
 
 	/**********************************************************************
 	*** Inicia segmento para ocultar y/o mostrar campos en el formulario***
@@ -616,11 +743,37 @@
 				empresa : $("#empresa").val(),
 				telefono : $("#telefono").val(),
 				direccion : $("#direccion").val(),
-				dienteTamano : $("#dienteTamano").val(),
+				
+				tratamiento : $("input[name='trata[]']").map(function(){return $(this).val();}).get(),
+
+				dientePerdido : $("#dientePerdido").val(),
+				higieneBucal : $("#higieneBucal").val(),
+				describahb : $("#describahb").val(),
+				tieneCaries : $("#tieneCaries").val(),
+				DescribaCaries : $("#DescribaCaries").val(),
+
+				nombreAbceso : $("#nombreAbceso").val(),
+				describeAbceso : $("#describeAbceso").val(),
+
+				enfermedad : $("input[name='enfermedad[]']").map(function(){return $(this).val();}).get(),
+
+				malosHabitos : $("#malosHabitos").val(),
+
+				malhabitos : $("input[name='malhabito[]']").map(function(){return $(this).val();}).get(),
+
+				perfil : $("#perfil").val(),
+				valorPerfil : $("#valorPerfil").val(),
+				
+				tipmordida : $("#tipmordida").val(),
+				valormordida : $("#valormordida").val(),
+
+				tiposonrisa : $("#tiposonrisa").val(),
+				valorsonrisa : $("#valorsonrisa").val(),
 			};
+
 			$.ajax({
 				type: 'POST',
-				url: 'desaparecido/store_datos_dentales',
+				url: 'datos_dentales/store_datos_dentales',
 				data: dataString,
 				dataType: 'json',
 				success: function(data){

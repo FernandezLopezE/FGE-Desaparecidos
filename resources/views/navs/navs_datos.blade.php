@@ -37,7 +37,7 @@
 			<a class="nav-item nav-link @if ($activar == 'dentadura') active @endif" href="{{route('datos_dentales.show',['id' => $desaparecido->id])}}" aria-selected="false">
 			Datos dentales
 			</a>
-			<a class="nav-item nav-link @if ($activar == 'anexos') active @endif" href="{{route('datos_dentales.show',['id' => $desaparecido->id])}}" aria-selected="false">
+			<a class="nav-item nav-link @if ($activar == 'anexos') active @endif" href="{{route('image-view.show',['id' => $desaparecido->id])}}" aria-selected="false">
 			Anexos
 			</a>			
 		@else

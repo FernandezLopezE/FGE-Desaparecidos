@@ -165,9 +165,7 @@ Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store')
 Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
 
 //mostrar vista de señas particulares 
-Route::get('/senas_particulares/{idDesaparecido}','SenasParticularesController@show_senas_particulares');
-Route::post('/senas_particulares/store_senas', 'SenasParticularesController@store_senas')
-	->name('senas_particulares.store_senas');
+
 Route::get('consultas/get_senas/{idCedula}', 'ConsultasController@jsonSenas')
 	->name('consultas.get_senas');
 

@@ -34,7 +34,8 @@ class SenasParticularesController extends Controller
      */
     public function store(Request $request)
     {
-        DB::table('cedula_cat_senas')-> insert([
+        
+        \DB::table('cedula_cat_senas')->insert([
             'idCatsenas' => $request->input('senaP'),
             'cantidad' => $request->input('cantidad'),
             'idCatsenasParticulares' => $request->input('ubicacion'),

@@ -34,7 +34,10 @@ class DatosDentalesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        foreach ($request->input('tratamientos') as $index => $value) {
+            $trata[] = array('tratamientos' => $trata[$index]
+                        );
+        }
     }
 
     /**
@@ -47,7 +50,7 @@ class DatosDentalesController extends Controller
     {
         $desaparecido = \App\Models\Desaparecido::find($id);
         $dienteTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
-        return view('desaparecidos.form_datos_dentales',[
+        return view('datosdentales.form_datos_dentales',[
                     'dienteTamano' => $dienteTamano,
                     'desaparecido' => $desaparecido
                 ]);
