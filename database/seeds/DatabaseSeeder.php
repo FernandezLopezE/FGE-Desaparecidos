@@ -5,12 +5,143 @@ use Illuminate\Database\Seeder;
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+         $this->call(OcupacionSeeder::class);
+         $this->call(EstadoCivilSeeder::class);
+         $this->call(EscolaridadSeeder::class);
+         //$this->call(ReligionSeeder::class);
+         $this->call(NacionalidadSeeder::class);
+         //$this->call(EtniaSeeder::class);
+         //$this->call(LenguaSeeder::class);
+         $this->call(EstadoSeeder::class);
+         //$this->call(TipoDeterminacionSeeder::class);
+         $this->call(DelitoSeeder::class);
+         //$this->call(TipoArmaSeeder::class);
+         //$this->call(ModalidadSeeder::class);
+         //$this->call(LugarSeeder::class);
+         //$this->call(ZonaSeeder::class);
+         //$this->call(PuestoSeeder::class);
+         //$this->call(ClaseVehiculoSeeder::class);
+         //$this->call(ColorSeeder::class);
+         //$this->call(MarcaSeeder::class);
+         //$this->call(AseguradoraSeeder::class);
+         //$this->call(ProcedenciaSeeder::class);
+         //$this->call(TipoUsoSeeder::class);
+
+         $this->call(MunicipioSeeder::class);
+         //$this->call(ArmaSeeder::class);
+         //$this->call(TipoVehiculoSeeder::class);
+         //$this->call(SubmarcaSeeder::class);
+         //$this->call(SubmarcaSeeder2::class);
+
+         //$this->call(ColoniaSeeder::class);
+         $this->call(ColoniasChiapasSeeder::class);
+         $this->call(ColoniasCDMXSeeder::class);
+         $this->call(ColoniasHidalgoSeeder::class);
+         $this->call(ColoniasOaxacaSeeder::class);
+         $this->call(ColoniasPueblaSeeder::class);
+         $this->call(ColoniasSanLuisPotosiSeeder::class);
+         $this->call(ColoniasTabascoSeeder::class);
+         $this->call(ColoniasTamaulipasSeeder::class);
+         $this->call(ColoniasVeracruzSeeder::class);
+
+
+
+         //$this->call(LocalidadSeeder::class);
+         //$this->call(LocalidadSeeder2::class);
+         $this->call(LocalidadesChiapasSeeder::class);
+         $this->call(LocalidadesCDMXSeeder::class);
+         $this->call(LocalidadesHidalgoSeeder::class);
+         $this->call(LocalidadesOaxacaSeeder::class);
+         $this->call(LocalidadesPueblaSeeder::class);
+         $this->call(LocalidadesSanLuisPotosiSeeder::class);
+         $this->call(LocalidadesTabascoSeeder::class);
+         $this->call(LocalidadesTamaulipasSeeder::class);
+         $this->call(LocalidadesVeracruzSeeder::class);
+
+        
+
+         /*$this->call(UnidadSeeder::class);
+
+         $this->call(RegistroPersona::class);
+
+         $this->call(SPericialesSeeder::class);
+         $this->call(PMinisterialSeeder::class);
+         $this->call(PosibleCausaSeeder::class);
+
+        $this->call(Agrupacion1Seeder::class);
+         $this->call(Agrupacion2Seeder::class);*/
+
+         //domicilioDesaparecidos
+        $this->call(PersonaSeeder::class);
+
+
+        //$this->call(ParentescoTableSeeder::class);        
+        //$this->call(DomicilioTableSeeder::class);
+        //$this->call(CatCentroReclusionSeeder::class);
+        //$this->call(DocumentosSeeder::class);
+       // $this->call(AntecedenteSeeder::class);
+        //$this->call(DocumentosIdentidadSeeder::class);
+
+
+       // $this->call(CatDialectoSeeder::class);
+
+        $this->call(CatDialectoSeeder::class);
+        $this->call(CatVestimentaSeeder::class);
+        $this->call(CatAccesorioObjetoSeeder::class);
+
+        /*$this->call(ParentescoTableSeeder::class);        
+        $this->call(DomicilioTableSeeder::class);
+        $this->call(CatCentroReclusionSeeder::class);
+        $this->call(DocumentosSeeder::class);
+        $this->call(AntecedenteSeeder::class);*/
+        $this->call(DocumentosIdentidadSeeder::class);
+
+        //$this->call(TiposCalzadosSeeder::class);
+
+        $this->call(TiposCalzadosSeeder::class);
+        $this->call(MarcasCalzadosSeeder::class);
+        $this->call(ColoresSeeder::class);
+        $this->call(ParentescoSeeder::class);
+
+        $this->call(CatCorreosExternosSeeder::class);
+
+        $this->call(CatSenasParticularesSeeder::class);
+        $this->call(CatSenasParticularesUbicacionesSeeder::class);
+
+        //Mios
+        $this->call(CatUbicacionDienteSeeder::class);
+        $this->call(CatTipoPerfilTableSeeder::class);
+        $this->call(CatTipoMordidaTableSeeder::class);
+        $this->call(CatMalosHabitosTableSeeder::class);
+        $this->call(CatTipoSonrisaTableSeeder::class);
+        //tacho
+        $this->call(CatTamanoDienteSeeder::class);
+        $this->call(CatTratamientoDienteSeeder::class);
+        $this->call(CatTipoPerdidaDienteSeeder::class);
+        $this->call(CatDienteSeeder::class);
+        $this->call(CatEnfermedadDentalSeeder::class);
+
+
+        //Ruben
+        $this->call(CatComplexionSeeder::class);
+        $this->call(CatColorPielSeeder::class);
+        $this->call(CatPartesCuerpoSeeder::class);
+        $this->call(CatColoresCuerpoSeeder::class);
+        $this->call(CatParticularidadesCuerpoSeeder::class);
+        $this->call(CatSubParticularidadesSeeder::class);
+        $this->call(CatModificacionesCuerpoSeeder::class);
+        $this->call(CatSubModificacionesSeeder::class);
+
+        $this->call(CatIntervencionesQuirurgicasSeeder::class);
+        $this->call(CatAdiccionesSeeder::class);
+        $this->call(CatImplantesSeeder::class);
+        $this->call(CatEnfermedadesSeeder::class);
+
     }
 }
