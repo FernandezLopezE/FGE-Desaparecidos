@@ -84,7 +84,7 @@
 
 <div id="area">
   Area: <span id="data"></span>
-  @include('includes.modal_tipoSonrisa')
+  @include('includes.partesCuerpo.01ModalCabello')
 </div>
 <div class="human-body">
 <!-- Parte Cabello -->
@@ -327,8 +327,8 @@
 
             var temp = document.getElementById('data').innerHTML = t.target.parentElement.getAttribute('data-position');
             if(temp == "cabello"){
-              alert("Hola mundo");
-              $("#modalSonrisa").modal("show");
+              
+              $("#modalCabello").modal("show");
             }
         }
     }
