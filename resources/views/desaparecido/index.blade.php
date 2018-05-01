@@ -7,26 +7,18 @@
 @section('titulo', 'Registro único de personas desaparecidas')
 
 @section('content')
-	{!! Form::model($desaparecido, ['action' => 'ExtraviadoController@store']) !!}
+	{--!! Form::model($desaparecido, ['action' => 'ExtraviadoController@store']) !!--}
 
 	{{ Form::hidden('idCedula', $cedula->id, array('id' => 'idCedula')) }}
 
 @include('navs.navs_datos',array('activar' => 'desaparecido'))
-
+<button type="submit" class="btn btn-dark pull-right"  id="btnAgregarDesaparecido">
+	GUARDAR		
+</button>
 <div class="card-body bg-white">
-		<div class="card-header">
-			<h5 class="card-title">Datos generales de la persona desaparecida
-				<button type="submit" class="btn btn-dark pull-right"  id="btnAgregarInformante">
-					<i class="fa fa-plus"></i> GUARDAR		
-				</button>
-			</h5>		
-		</div>
-    </br>
-    <input type="reset" class="btn btn-dark pull-right" value="LIMPIAR CAMPOS">
-    </br>
 		<div class="card-body">
 			<div class="row">
-				<div class="col">
+				<div class="form-group col-md-4">
 						{!! Form::label ('sexo','Género:') !!}
 						{!! Form::select ('sexo',
 											$sexos,
@@ -37,27 +29,23 @@
 			</div>
 			<div id ="mostrarGenero" style="display: none">
 				<div class="row">
-					<div class="col">
+					<div class="form-group col-md-4">
 						{!! Form::label ('nombres','Nombres(s):') !!}
 						{!! Form::text ('nombres',
 											'',
 											['class' => 'form-control mayuscula',
-												'id' => 'nombres',
-												'data-validation' => 'required',
-												'data-validation-error-msg-required' => '* Ingresa un nombre'
+												'id' => 'nombres'
 											] )!!}
 					</div>
-					<div class="col">
+					<div class="form-group col-md-4">
 						{!! Form::label ('primerAp','Primer apellido:') !!}
 						{!! Form::text ('primerAp',
 											'',
 											['class' => 'form-control mayuscula',
 												'id' => 'primerAp',
-												'data-validation' => 'required',
-												'data-validation-error-msg-required' => '* Ingresa un apellido'
 											] )!!}
 					</div>
-					<div class="col">
+					<div class="form-group col-md-4">
 						{!! Form::label ('segundoAp','Segundo apellido:') !!}
 						{!! Form::text ('segundoAp',
 											'',
@@ -66,47 +54,42 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col">
+					<div class="form-group col-md-4">
 						{!! Form::label ('apodo','Apodo (alias):') !!}
 						{!! Form::text ('apodo',
 											'',
 											['class' => 'form-control mayuscula',
 												'id' => 'apodo' ] )!!}
 					</div>
-					<div class="col">
+					<div class="form-group col-md-4">
 						{!! Form::label ('idNacionalidad','Nacionalidad:') !!}
 						{!! Form::select ('idNacionalidad',
 											$nacionalidades,
 											'',
 											['class' => 'form-control',
 												'id' => 'idNacionalidad',
-												'data-validation' => 'required',
-												'data-validation-error-msg-required' => '* Elija una opción'
 											] )!!}
 					</div>
-					<div class="col">
+					<div class="form-group col-md-4">
 						{!! Form::label('idEstadoOrigen', 'Estado natal:') !!}
 						{!! Form::select('idEstadoOrigen',
 											$estados,
 											'',
 											['class' => 'form-control',
 												'placeholder' => 'Seleccione una entidad federativa',
-												'required'
 											]) !!}
 					</div>				
 				</div>
 				<div class="row">	
-					<div class="col">
+					<div class="form-group col-md-4">
 						{!! Form::label ('fechaNacimiento','Fecha de nacimiento:') !!}
 						{!! Form::text ('fechaNacimiento',
 											'',
 											['class' => 'form-control',
-											'id' => 'fechaNacimiento' ,
-											'data-validation' => 'required date',
-											'data-validation-error-msg' => 'Ingrese una fecha valida o menor a la actual',
-											'data-validation-format'=>"dd/mm/yyyy"] )!!}
+												'id' => 'fechaNacimiento'
+											] )!!}
 					</div>			
-					<div class="col">
+					<div class="form-group col-md-4">
 						{!! Form::label ('edadExtravio','Edad de extravío:') !!}
 						{!! Form::text ('edadExtravio',
 										old('edadExtravio'),
@@ -114,57 +97,43 @@
 											'id' => 'edadExtravio'
 										] )!!}
 					</div>
-					<div class="col">
+					<div class="form-group col-md-4">
 						{!! Form::label ('edadAparente','Edad aparente:') !!}
 						{!! Form::text ('edadAparente',
 										old('edadAparente'),
 										['class' => 'form-control',
-											'id' => 'edadAparente',
-											'data-validation' => 'required number length',
-											'data-validation-error-msg' => '* Ingrese una edad aparente menos a 130',
-											'data-validation-allowing'=>"range[1;130]",
-											'data-validation-length'=>"0-3",
-											'data-mask'=>"000",
-											'min'=>"0",
-											'max'=>"150"
+											'id' => 'edadAparente'
 										] )!!}
 					</div>
 				</div>
 				<div class="row">	
-					<div class="col">			
+					<div class="form-group col-md-4">			
 						{!! Form::label('curp', 'C.U.R.P.') !!}
 						{!! Form::text('curp',
 										 '',
 										 ['class' => 'form-control',
-										 	'placeholder' => 'Ingrese el C.U.R.P.',
-										 	'required'
+										 	'placeholder' => 'Ingrese el C.U.R.P.'
 										 ]) !!}
 					</div>			
-					<div class="col">
+					<div class="form-group col-md-4">
 						{!! Form::label ('idEscolaridad','Escolaridad:') !!}
 						{!! Form::select ('idEscolaridad',
 											$escolaridades,
 											'',
 											['class' => 'form-control',
-												'id' => 'escolaridad',
-												'data-validation' => 'required',
-												'data-validation-error-msg-required' => '* Elija una opción'
 											] )!!}
 					</div>
-					<div class="col">
+					<div class="form-group col-md-4">
 						{!! Form::label ('idOcupacion','Ocupación:') !!}
 						{!! Form::select ('idOcupacion',
 											$ocupaciones,
 											'',
-											['class' => 'form-control',
-												'id' => 'ocupacion',
-												'data-validation' => 'required',
-												'data-validation-error-msg-required' => '* Elija una opción'
+											['class' => 'form-control'
 											] )!!}
 					</div>			
 				</div>
 				<div class="row">
-					<div class="col">
+					<div class="form-group col-md-4">
 							{!! Form::label ('idDocumentoIdentidad','Identificación:') !!}
 							{!! Form::select ('idDocumentoIdentidad',
 												$identificaciones,
@@ -173,89 +142,74 @@
 													'id' => 'idDocumentoIdentidad'
 												] )!!}
 					</div>
-					<div class="col"  style="display: none" id="otraIdDIV">
+					<div class="form-group col-md-4"  style="display: none" id="otraIdDIV">
 							{!! Form::label ('otroDocIdentidad','Otro:') !!}
 							{!! Form::text ('otroDocIdentidad',
 											old('otroDocIdentidad'),
-											['class' => 'form-control mayuscula',
-												'data-validation' => 'required',
-												'data-validation-help' => 'En caso de seleccionar otra identificación. Agregar aquí.',
-												'data-validation-depends-on' => 'identificacion',
-												'data-validation-depends-on-value' =>'Otro(especifique)',
-												'data-validation-error-msg-required' =>'Este campo es requerido.'
-											] )!!}
+											['class' => 'form-control mayuscula'])!!}
 					</div>
-					<div class="col">
+					<div class="form-group col-md-4">
 							{!! Form::label ('numDocIdentidad','No. Identificación:') !!}
 							{!! Form::text ('numDocIdentidad',
 												old('numDocIdentidad'),
-												['class' => 'form-control mayuscula',
-													'data-validation' =>'required',
-													'data-validation-error-msg-required' =>'Este campo es requerido.',
-													'data-validation' =>'alphanumeric',
-													'data-validation-error-msg' =>'Este campo solo acepta datos alfanumericos.'
+												['class' => 'form-control mayuscula'
 												] )!!}
 					</div>
 				</div>
 				<div class="row">
-					<div class="col">
+					<div class="form-group col-md-4">
 						{!! Form::label ('idEdocivil','Estado civil:') !!}
-						{!! Form::select ('idEdocivil',$edoscivil ,old('idEdocivil'), ['class' => 'form-control', 'id' => 'idEdocivil'] )!!}
-					</div>			
-				</div>
-				<div class="row" id="estaEmbarazada" style="display: none" >
-					<div class="col">
+						{!! Form::select ('idEdocivil',
+											$edoscivil ,
+											old('idEdocivil'),
+											['class' => 'form-control',
+												'id' => 'idEdocivil'
+											] )!!}
+					</div>
+					<div class="form-group col-md-4" id="estaEmbarazada" style="display: none">
 						{!! Form::label ('embarazo','Esta embarazada:') !!}
 						{!! Form::select ('embarazo',
 											['NO'=>'NO','SI'=>'SI', 'LO IGNORAN' => 'LO IGNORAN'],
 											old('embarazo'),
-											['class' => 'form-control',
-												'id' => 'embarazo'] )!!}
-					</div>				
+											['class' => 'form-control'] )!!}
+					</div>			
 				</div>
 				<div class="row"  id="datosEmbarazo" style="display: none">
-					<div class="col">
+					<div class="form-group col-md-4">
 						{!! Form::label ('numGestacion','Cantidad:') !!}
 						{!! Form::number ('numGestacion',
 											old('gestacionSemanas'),
-											['class' => 'form-control mayuscula',
-												'id' => 'NumGestacion',
-												'min'=>"0",
-												'max'=>"36"
-											] )!!}
+											['class' => 'form-control mayuscula'] )!!}
 
 					</div>
-					<div class="col">
+					<div class="form-group col-md-4">
 						{!! Form::label ('tipoGestacion','Periodo:') !!}
 						{!! Form::select ('tipoGestacion',
 											['SEMANAS'=> 'SEMANAS','MESES' => 'MESES'],
 											'',
-											['class' => 'form-control ',
-												 'id' => 'tipoGestacion'] )!!}
+											['class' => 'form-control '] )!!}
 					</div>
-					<div class="col">
+					<div class="form-group col-md-4">
 						{!! Form::label ('rumoresBebe','Rumores sobre el nacimiento:') !!}
 						{!! Form::select ('rumoresBebe',
 											['NO'=>'NO','SI'=>'SI', 'LO IGNORAN' => 'LO IGNORAN'],
 											old('rumoresBebe'),
-											['class' => 'form-control',
-												 'id' => 'rumoresBebe'] )!!}
+											['class' => 'form-control'] )!!}
 					</div>	
 				</div>
 				<div class="row" id="datosPormenores" style="display: none" >
-					<div class="col">
+					<div class="form-group col-md-12">
 						{!! Form::label ('pormenores','Pormenores:') !!}
-						{!! Form::text ('pormenores',
+						{!! Form::textarea ('pormenores',
 											old('Pormenores'),
-											['class' => 'form-control mayuscula',
-												'id' => 'pormenores'] )!!}
+											['class' => 'form-control mayuscula'] )!!}
 					</div>
 				</div>				
 			</div>
 		</div>
 	</div>
-
-{!! Form::close() !!}
+	@include('includes.modal')
+{--!! Form::close() !!--}
 
 @endsection
 
@@ -267,17 +221,77 @@
 {!! HTML::script('personal/js/sisyphus.js') !!}
 
 <script type="text/javascript">
-var btnLimpiar = $('#btnLimpiar');
+	var btnLimpiar = $('#btnLimpiar');
+	var routeIndex = '{!! route('consultas.index') !!}';		
+	var routeDesaparecido = '{!! route('extraviado.index') !!}';
+	var modalGral = $('#modalGeneral');
+	var modalTitle = $('.modal-title');
+	var modalBody = $('.modal-body');
     
-     $( "form" ).sisyphus( {
-	           excludeFields: $('input[name=_token]')
-            });
-    
-		//Ocultar-mostrar pregunta ¿Está embarazada? en caso de que el sexo sea 'masculino'
+    /*$( "form" ).sisyphus( {
+	    excludeFields: $('input[name=_token]')
+    });*/
 
-			//if (a == 2 || a == 3 || a == 4 || a == 5 || a == 6) {
-				//console.log('Mostrar el campo datos de pareja')
-				//}
+    $('#btnAgregarDesaparecido').click(function(e){
+    		
+			var dataString = {
+				sexo : $("#sexo").val(),
+				nombres : $("#nombres").val(),
+				primerAp : $("#primerAp").val(),
+				segundoAp : $("#segundoAp").val(),
+				apodo : $("#apodo").val(),
+				idNacionalidad : $("#idNacionalidad").val(),
+				idEstadoOrigen : $("#idEstadoOrigen").val(),
+				fechaNacimiento : $("#fechaNacimiento").val(),
+				edadExtravio : $("#edadExtravio").val(),
+				edadAparente : $("#edadAparente").val(),
+				curp : $("#curp").val(),
+				idEscolaridad : $("#idEscolaridad").val(),
+				idOcupacion : $("#idOcupacion").val(),
+				idDocumentoIdentidad : $("#idDocumentoIdentidad").val(),
+				otroDocIdentidad : $("#otroDocIdentidad").val(),
+				numDocIdentidad : $("#numDocIdentidad").val(),
+				idEdocivil : $("#idEdocivil").val(),
+				embarazo : $("#embarazo").val(),
+				numGestacion : $("#numGestacion").val(),
+				tipoGestacion : $("#tipoGestacion").val(),
+				rumoresBebe : $("#rumoresBebe").val(),
+				pormenores : $("#pormenores").val(),
+			}
+			console.log(dataString);
+			
+			$.ajax({
+				type: 'POST',
+				url: routeDesaparecido,
+				data: dataString,
+				dataType: 'json',
+				success: function(data) {
+					//var errors = data.responseJSON;
+        			console.log(data);
+					/*modalInformanteAgregar.modal('hide');
+					table.bootstrapTable('refresh');*/
+
+				},
+				error: function(data) {
+					var errors = data.responseJSON;
+					console.log(errors);
+					modalTitle.empty();
+					modalBody.empty();
+					modalBody.append('<ul>');
+					$.each(errors.errors, function(key, value){						
+						modalBody.append('<li><code>'+value+'</code></li>');
+					});
+					modalBody.append('</ul>');
+					
+					modalTitle.append('<i class="fa fa-warning"></i> Oups... algo salió mal');
+					modalGral.modal('show');
+
+
+
+				}
+			});
+    });
+    
 
 		var routeIndex = '{!! route('consultas.index') !!}';
 		$('#fechaNacimiento').change(function(){  
@@ -310,12 +324,16 @@ var btnLimpiar = $('#btnLimpiar');
 
 			if (g=="H") {
 				$("#mostrarGenero").show();
+				$("#estaEmbarazada").hide();
+				$("#datosEmbarazo").hide();
+				$("#datosPormenores").hide();
+				$("#rumores").hide();
 			}else{
 				if (g=="M"){
 					$("#mostrarGenero").show();
 					$("#estaEmbarazada").show();
 				}else{
-					$("#mostrarGenero").hide();
+					$("#mostrarGenero").hide();					
 				}
 				
 			}
@@ -343,7 +361,8 @@ var btnLimpiar = $('#btnLimpiar');
 		});
 
 		$('#idDocumentoIdentidad').change(function(){
-			documento = $('#idDocumentoIdentidad').val();			
+			documento = $('#idDocumentoIdentidad').val();
+			console.log(documento);			
 			if (documento == "8") {					
 					$("#otraIdDIV").show();
 			} else {					

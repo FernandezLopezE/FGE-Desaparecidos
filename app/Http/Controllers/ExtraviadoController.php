@@ -101,8 +101,11 @@ class ExtraviadoController extends Controller
 	 */
 	public function store(ExtraviadoRequest $request)
 	{
+		//return response()->json($request);
 
-		$persona = \App\Models\Persona::create([
+		return response()->json($request);
+
+		/*$persona = \App\Models\Persona::create([
 			'nombres'           => $request->input('nombres'),
 			'primerAp'          => $request->input('primerAp'),
 			'segundoAp'         => $request->input('segundoAp'),
@@ -143,7 +146,7 @@ class ExtraviadoController extends Controller
 
 		return redirect()->action(
 			'ExtraviadoController@show', ['id' => $desaparecido->idCedula]
-		);
+		);*/
 		
 
 				
