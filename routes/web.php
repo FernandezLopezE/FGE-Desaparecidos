@@ -190,7 +190,7 @@ Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
 
 Route::get('/email', 'MailController@show')->name('mail.enviar');
 
-
+Route::get('/envio_documentos', 'MailController@show');
 
 
 

@@ -90,6 +90,7 @@
 	{!! HTML::script('bootstrap4/dist/js/bootstrap.min.js') !!}
 	{!! HTML::script('personal/js/jquery.form-validator.min.js') !!}
 	{!! HTML::script('personal/js/jquery.mask.js') !!}
+	<script src="{{asset('/plugins/ckeditor/ckeditor.js') }}"></script>
 	<script src="{{asset ('js/sweetalert.min.js')}}"></script>
     <script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
     <script src="{{ asset('js/toastr.min.js')}}" ></script>
