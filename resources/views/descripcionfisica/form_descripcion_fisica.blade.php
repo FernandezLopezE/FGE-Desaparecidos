@@ -28,13 +28,13 @@
 }
 
 .human-body svg.cabeza {
-    margin-left: -23.5px;
-    top: 10px;
+    margin-left: -19.5px;
+    top: 20px;
 }
 
 .human-body svg.cuello {
-    margin-left: -13.5px;
-    top: 65px;
+    margin-left: -4.5px;
+    top: 120px;
 }
 
 
@@ -98,8 +98,8 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    class="cabello"
    viewBox="0 0 56.601999 39.058739"
-   width="56.602001"
-   height="39.058739"
+   width="99.05350175"
+   height="68.35279325"
    data-position="cabello"
    version="1.1"
    id="svg33"
@@ -172,8 +172,8 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    class="cabeza"
    viewBox="0 0 47.632998 60.387002"
-   width="47.632999"
-   height="60.387001"
+   width="83.35774825"
+   height="105.67725175"
    data-position="cabeza"
    version="1.1"
    id="svg66"
@@ -235,8 +235,8 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    class="cuello"
    viewBox="0 0 29.745381 26.534001"
-   width="29.745382"
-   height="26.534"
+   width="52.0544185"
+   height="46.4345"
    data-position="cuello"
    version="1.1"
    id="svg314"
