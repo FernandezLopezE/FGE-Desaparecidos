@@ -186,6 +186,17 @@ class InformanteController extends Controller
 
 		$informante = (is_null($request->input('informante'))) ? 0 : 1 ;
 		$autorizado = (is_null($request->input('notificaciones'))) ? 0 : 1 ;
+        
+        $tipo_telefono = $request->input('tipoTel');
+		$lada = $request->input('lada');
+		$ext = $request->input('ext');
+		foreach ($request->input('telefono') as $index => $value) {
+			$telefonos[] = array('tipoTel' => $tipo_telefono[$index],
+								'lada' => $lada[$index],
+								'telefono' => $value,
+								'ext' => $ext[$index]
+						);
+		}
 
 		$persona = Persona::find($desaparecido->persona->id)->update([
 			'nombres'           => $request->input('nombre'),
@@ -201,6 +212,7 @@ class InformanteController extends Controller
 			'otroDocIdentidad'      => $request->input('otroDocIdentidad'),
 			'numDocIdentidad'       => $request->input('numDocIdentidad'),
 			'correoElectronico'     => $request->input('correoElectronico'),
+            'telefonos'          	=> json_encode($telefonos),
 			'informante'            => $informante,
 			'notificaciones'        => $autorizado,
 			'tipoPersona'           => 'INFORMANTE',
