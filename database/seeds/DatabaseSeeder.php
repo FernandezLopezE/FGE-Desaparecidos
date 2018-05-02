@@ -123,7 +123,6 @@ class DatabaseSeeder extends Seeder
         //tacho
         $this->call(CatTamanoDienteSeeder::class);
         $this->call(CatTratamientoDienteSeeder::class);
-        $this->call(CatTipoPerdidaDienteSeeder::class);
         $this->call(CatDienteSeeder::class);
         $this->call(CatEnfermedadDentalSeeder::class);
 

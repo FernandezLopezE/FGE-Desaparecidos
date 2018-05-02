@@ -267,7 +267,7 @@ class ConsultasController extends Controller
                     'cspu.nombre as nombreUbicacion',
                     'cantidad',
                     'caracteristicas')
-            ->where('idCedula', $idCedula)
+            ->where('idCedula', 1)
             ->get();
 
         return response()->json($senas);

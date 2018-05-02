@@ -36,8 +36,6 @@ Route::get('/', 'InicioController@index');
 
 	Route::resource('datos_dentales','DatosDentalesController');
 
-	Route::resource('datos_dentales_dientes_perdidos','DatosDentalesDientesPerdidosController');
-
 
 
 
@@ -167,6 +165,7 @@ Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store')
 Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
 
 //mostrar vista de señas particulares 
+
 Route::get('consultas/get_senas/{idCedula}', 'ConsultasController@jsonSenas')
 	->name('consultas.get_senas');
 
