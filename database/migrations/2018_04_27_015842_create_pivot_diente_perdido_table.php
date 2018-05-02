@@ -19,9 +19,8 @@ class CreatePivotDientePerdidoTable extends Migration
             $table->integer('idDiente')->unsigned()->nullable();           
             $table->foreign('idDiente')->references('id')->on('cat_dientes');
 
-            $table->integer('idTipoPerdida')->unsigned()->nullable();           
-            $table->foreign('idTipoPerdida')->references('id')->on('cat_tipos_perdida_diente');
-
+            $table->string('causaPerdida')->nullable();
+            
             $table->integer('idDentadura')->unsigned()->nullable();           
             $table->foreign('idDentadura')->references('id')->on('desaparecido_dentadura');
             

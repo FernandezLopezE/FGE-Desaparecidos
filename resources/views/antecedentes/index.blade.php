@@ -14,34 +14,7 @@
 @section('titulo', 'Registro único de personas desaparecidas')
 
 @section('content')
-<nav>
-	<div class="nav nav-tabs" id="nav-tab" role="tablist">
-			<a class="nav-item nav-link" href="#" aria-selected="true">
-				Entrevista
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Informantes
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Desaparecido
-			</a>
-			<a class="nav-item nav-link" href="{{route('familiar.show',['id' => $desaparecido->id])}}" aria-selected="false">
-				Familiares
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Contacto
-			</a>
-			<a class="nav-item nav-link" href="{{route('domicilios.show',['id' => $desaparecido->id])}}" aria-selected="false">
-				Domicilios
-			</a>
-			<a class="nav-item nav-link active" href="#" aria-selected="false">
-				Antecedentes
-			</a>
-			<a class="nav-item nav-link" href="{{route('desaparecido.show_vestimenta',['id' => $desaparecido->id])}}" aria-selected="false">
-				Vestimenta
-			</a>				
-	</div>
-</nav>
+@include('navs.navs_datos',array('activar' => 'antecedente'))
 <button type="button" class="btn btn-dark pull-right"  id="btnAgregarAntecedente">
 	Agregar
 </button>
@@ -54,6 +27,8 @@
 @endsection
 
 @section('scripts')
+{!! HTML::script('personal/js/sisyphus.min.js') !!}
+{!! HTML::script('personal/js/sisyphus.js') !!}
 <script type="text/javascript">
 	$(function (){
 		var table = $('#tableAntecedentes');
@@ -64,6 +39,7 @@
 		var modalAntecedentes = $('#modalAntecedentes');
 		var modalFooter = $('.modal-footer');
 		var idDesaparecido = '{!! $desaparecido->id !!}'
+        var btnLimpiar = $('#btnLimpiar');
 		
 		table.bootstrapTable({				
 			url: routeIndex+'/get_antecedentes/{!! $desaparecido->id !!}',
@@ -78,7 +54,15 @@
 
 		btnAgregarAntecedente.click(function(e){
 			modalAntecedentes.modal('show');
+	           $( "#modalAntecedentes" ).sisyphus( {
+	           excludeFields: $('input[name=_token]')
+            });
 		})
+        
+        btnLimpiar.click(function(){
+          $('#modalAntecedentes').find('form')[0].reset();
+          $('#modalAntecedentes').removeData('modal');
+             })
 
 		btnGuardarAntecedente.click (function(){
 			

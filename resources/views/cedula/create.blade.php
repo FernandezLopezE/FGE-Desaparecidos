@@ -8,8 +8,7 @@
 
 @section('content')
 {{ Form::model($cedula, ['action' => 'CedulaController@store']) }}
-
-@include('navs.navs_datos')
+@include('navs.navs_datos',array('activar' => 'entrevista'))
 <button type="submit" class="btn btn-dark pull-right" id="btnAgregarInformante">
 	GUARDAR		
 </button>
@@ -57,7 +56,6 @@
 										<strong>(</strong>{!! $cedula->fechaVisita !!}<strong>)</strong>									
 								@endif 
 						</dd>
-
 					@endisset
 				</dl>
 			</div>

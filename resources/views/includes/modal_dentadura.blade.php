@@ -1,8 +1,10 @@
+
+
 <div class="modal fade" id="modalDientes" rle="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Seleccionar dientes</h5>
+      <div class="modal-header" style="height: 50px">
+        <h5 class="modal-title" style="margin-top: -10px" id="exampleModalLabel">Seleccionar dientes</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -14,15 +16,58 @@
             <img src="/images/esquema-dental.jpg" width="362" height="446" border="0" usemap="#dientes" id="dientes" />
           </div>
           <div class="col-4">
-            {!! Form::label ('seleccion','Diente seleccionado') !!}
-            {!! Form::text ('mostrar',old('mostrar'), ['class' => 'form-control mayuscula', 'id' => 'mostrar',] )!!}
+            <div class="col" style="text-align: center;">
+              {!! Form::label ('seleccion','Diente seleccionado') !!}
+            </div><br>
+            <div class="col" id="PMSID">
+              {!! Form::text ('PMSI',old('PMSI'), ['class' => 'form-control mayuscula', 'id' => 'PMSI', 'disabled'])!!}
+            </div>
+            <div class="col" id="SPSID" style="margin-top: 5px;">
+              {!! Form::text ('SPSI',old('SPSI'), ['class' => 'form-control mayuscula', 'id' => 'SPSI','disabled'] )!!}
+            </div>
+            <div class="col" id="PPSID" style="margin-top: 5px;">
+              {!! Form::text ('mostrar',old('mostrar'), ['class' => 'form-control mayuscula', 'id' => 'PPSI', 'disabled'] )!!}
+            </div>
+            <div class="col" id="CSID" style="margin-top: 5px;">
+              {!! Form::text ('mostrar',old('mostrar'), ['class' => 'form-control mayuscula', 'id' => 'CSI', 'disabled'] )!!}
+            </div>
+            <div class="col" id="ILSID" style="margin-top: 5px;">
+              {!! Form::text ('mostrar',old('mostrar'), ['class' => 'form-control mayuscula', 'id' => 'ILSI', 'disabled'] )!!}
+            </div>
+            <div class="col" id="ICSID" style="margin-top: 5px;">
+              {!! Form::text ('mostrar',old('mostrar'), ['class' => 'form-control mayuscula', 'id' => 'ICSI', 'disabled'] )!!}
+            </div>
+            <div class="col" id="ICSDD" style="margin-top: 5px;">
+              {!! Form::text ('mostrar',old('mostrar'), ['class' => 'form-control mayuscula', 'id' => 'ICSD', 'disabled'] )!!}
+            </div>
           </div>
           <div class="col-4">
-            {!! Form::label ('perdio','¿Cómo lo perdio?') !!}
-            {!! Form::text ('perdio',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'perdio',] )!!}
+            <div class="col" style="text-align: center;">
+              {!! Form::label ('perdio','¿Cómo lo perdio?') !!}
+            </div><br>
+            <div class="col" id="PMSIPDP">
+              {!! Form::text ('PMSIP',old('PMSIP'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PMSIP',] )!!}
+            </div>
+            <div class="col" id="SPSIPDP" style="margin-top: 5px;">
+              {!! Form::text ('perdio',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SPSIP',] )!!}
+            </div>  
+            <div class="col" id="PPSIPDP" style="margin-top: 5px;">
+              {!! Form::text ('perdio',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PPSIP',] )!!}
+            </div>
+            <div class="col" id="CSIPDP" style="margin-top: 5px;">
+              {!! Form::text ('perdio',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'CSIP',] )!!}
+            </div>
+            <div class="col" id="ILSIPD" style="margin-top: 5px;">
+              {!! Form::text ('perdio',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ILSIP',] )!!}
+            </div>
+            <div class="col" id="ICSIPDP" style="margin-top: 5px;">
+              {!! Form::text ('perdio',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ICSIP',] )!!}
+            </div>
+            <div class="col" id="ICSDPDP" style="margin-top: 5px;">
+              {!! Form::text ('perdio',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ICSDP',] )!!}
+            </div>  
           </div>
-      </div>  
-
+      </div>
       <map name="dientes">
         <area shape="poly" coords="67,186,79,176,81,162,71,149,49,142,37,150,34,165,34,180,44,186,55,189" value="PRIMER MOLAR SUPERIOR IZQUIERDO"  nohref="nohref" id="diente26" />
         <area shape="poly" coords="60,108,66,107,68,108,72,111,78,112,77,116,80,120,83,127,83,136,73,139,69,143,61,141,51,141,47,133,43,122,50,114,56,113" value="SEGUNDO PREMOLAR SUPERIOR IZQUIERDO"  nohref="nohref" id="diente25" />

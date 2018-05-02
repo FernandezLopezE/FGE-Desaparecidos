@@ -14,34 +14,7 @@
 							]
 				]) !!}
 
-<nav>
-	<div class="nav nav-tabs" id="nav-tab" role="tablist">
-			<a class="nav-item nav-link" href="#" aria-selected="true">
-				Entrevista
-			</a>
-			<a class="nav-item nav-link active" href="{{route('informante.show',['id' => $desaparecido->idCedula])}}" aria-selected="false">
-				Informantes
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Desaparecido
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Familiares
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Contacto
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Domicilios
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Antecedentes
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Vestimenta
-			</a>				
-	</div>
-</nav>
+@include('navs.navs_datos',array('activar' => 'desaparecido'))
 
 <button type="submit" class="btn btn-dark pull-right"  id="btnAgregarInformante">
 	GUARDAR		
@@ -194,8 +167,8 @@
 									['class' => 'form-control',
 										'id' => 'idDocumentoIdentidad'
 									] )!!}
-		</div>
-		<div class="col" @if ($desaparecido->persona->idDocumentoIdentidad === '7') style="display: none" @endif id="otraIdDIV">
+		</div>		
+		<div class="col" @if ($desaparecido->idDocumentoIdentidad = 7) style="display: none" @endif id="otraIdDIV">
 				{!! Form::label ('otroDocIdentidad','Otro:') !!}
 				{!! Form::text ('otroDocIdentidad',
 								old('otroDocIdentidad'),

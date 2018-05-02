@@ -1,55 +1,13 @@
 @extends('layouts.app_uipj')
 
 @section('content')
-<nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link" href="#" aria-selected="true">
-        Entrevista
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Informantes
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Desaparecido
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Familiares
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Contacto
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Domicilios
-      </a>
-      <a class="nav-item nav-link " href="" aria-selected="false">
-        Antecedentes
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Vestimenta
-      </a>
-      <a class="nav-item nav-link" href="{{route('descripcionfisica.show',['id' => $desaparecido->id])}}" aria-selected="false">
-        Descripción física
-      </a>
-      <a class="nav-item nav-link active" href="#" aria-selected="false">
-        Antecedentes médicos
-      </a>
-      <a class="nav-item nav-link" href="{{route('senas_particulares.show',['id' => $desaparecido->id])}}" aria-selected="false">
-        Señas particulares
-      </a>
-      <a class="nav-item nav-link" href="#" aria-selected="false">
-        Datos dentales
-      </a>        
-  </div>
-</nav>
-
-	<div class="card border-success">
-	<div class="card-header">
-		<h5 class="card-title">Antecedentes médicos		
-			<button type="button" class="btn btn-dark pull-right"  id="nuevoAntecedenteMedico">Agregar</button>
-		</h5>
-{{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}
-	</div>
-	<div class="card-body">	
+@include('navs.navs_datos',array('activar' => 'ant_medicos'))
+  {{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}
+	<div class="card-body bg-white">
+    <button  type="button" class="btn btn-dark pull-right"  id="nuevoAntecedenteMedico">Agregar</button>
+    <br>
+    <br>	
+    <form id="formAntecedentesM">
       <div class="row">
         <div class="form-check col-lg-8">
           <input class="form-check-input" type="checkbox" id="sinInformacionE" checked="">
@@ -222,14 +180,10 @@
             </div>                            
     </div>       
     <hr>
+    </form>  
 	</div>	
-</div>    
-     </div> <!-- Fin del Contenido del formulario-->
-		{!! Form::submit('Atras', ['class' => 'btn btn-large btn-primary openbutton']); !!}
+ 
 
-	<a href="/descripcionfisica/antecedentes_medicos/$desaparecido->id" class='btn btn-large btn-primary openbutton'>Siguiente</a>
-  	
-</div>
 
 
 @endsection	
@@ -245,7 +199,7 @@
     var otroIm;
 
 //Aplicacion de select2
-$('#idEnfermedad').select2().css({"background-color": "#444444"});
+$('#idEnfermedad').select2();
   $('#idIQuirurgica').select2();
   $('#idAdicciones').select2();
   $('#idImplantes').select2();    
@@ -407,6 +361,29 @@ $("#sinInformacionIm").change(function () {
                 },
             }
         });
+        $('#formAntecedentesM')[0].reset();
+         $('#idEnfermedad').val(0).trigger('change');
+        $('#idIQuirurgica').val(0).trigger('change');
+        $('#idAdicciones').val(0).trigger('change');
+        $('#idImplantes').val(0).trigger('change');
+
+        $("#idEnfermedad").attr("disabled", true);
+        $("#idAdicciones").attr("disabled", true);
+        $("#idIQuirurgica").attr("disabled", true);
+        $("#idImplantes").attr("disabled", true);
+       
+   
+        $("#chckOtraEnfermedad").prop('checked', false);
+        $("#chckOtraIQ").prop('checked', false);
+        $("#chckOtraAdiccion").prop('checked', false);
+        $("#chckOtroImplante").prop('checked', false);
+
+        $("#otra_Enfermedad").hide();
+        $("#otra_IQ").hide();
+        $("#otra_Adiccion").hide();
+        $("#otro_Implante").hide();
+
+
         //swal("Datos guardados exitosamente.", "Dale click en el boton ok!", "success");
       
         //tableDescripcion.bootstrapTable('refresh');

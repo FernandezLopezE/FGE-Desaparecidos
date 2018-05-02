@@ -10,22 +10,36 @@ use Session;
 use Redirect;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Models\Desaparecido;
+use App\Models\CatCorreosExternos;
+
 
 
 
 
 class MailController extends Controller
 {
-    //agregar dentro del show($id) porque tengo que recibir la cedula, por ahora pongo la cedula 1 para trabajar con la pantalla
+   
+
 	public function show(){	
-		$cedula = \App\Models\Cedula::find(1);
-		//$cedula = \App\Models\Cedula::find($id);
-		$correosExternos		= \App\Models\CatCorreosExternos::all()->pluck('correo','id');
-		return view('desaparecidos.contacto',[
-			'id' => $cedula->id,
-			'correosExternos' => $correosExternos
-		]);
-	}
+
+            $combo =CatCorreosExternos::all()->pluck('nombre','id');
+        
+
+    		$cedula = \App\Models\Cedula::find(1);
+           
+    		//$cedula = \App\Models\Cedula::find($id);
+    		$correosExternos		= CatCorreosExternos::all();
+    		return view('desaparecidos.contacto',[
+
+                    'Cedula' => $cedula,
+                    'correosExternos' => $correosExternos ,
+                    'combo' => $combo,
+
+            ]);
+            
+    			
+    	
+    }
 	
 
 
@@ -38,8 +52,13 @@ class MailController extends Controller
 
 
     public function store (Request $request){
- 
-    	$correosArray=($request['correos']);
+       // dd($request->toArray());
+
+        
+        $nombreArchivo = $request->file('file')->getClientOriginalName();
+        
+    	$correosArray=($request['idCorreosExternos']);
+        //dd($correosArray);
     	//return response()->json($h);
  		//dd($correosArray);
  		$longitudArray = (count($correosArray));
@@ -53,20 +72,20 @@ class MailController extends Controller
 				$listaCorreos[] = $getCorreo[0];				
 	 		}
 
-    	//$file = $request->file('file');
-    	//echo ($file);
+    	$file = $request->file('file');
+    	//dd($file);
     	$contenido = "hola perro";
     	//Mail::send('emails.contact', $request->all(), function($msj) use ($file , $asunto){
-    	Mail::send('emails.contact', $request->all(), function($msj) use($listaCorreos){
+    	Mail::send('emails.contact', $request->all(), function($msj) use($listaCorreos, $nombreArchivo){
     			$msj->subject('PRUEBA DE MULTI ENVÍO');
     			//$msj->to('alejandro.f.toledo@gmail.com');
 
     			$msj->setTo( $listaCorreos);
 
-    			//$msj->attach($file);
+    			$msj->attach('./upload/'.$nombreArchivo);
     	});
     	Session::flash('message','Mensaje enviado correctamente');
-    	return Redirect::to('/emails/contacto');
+    	return Redirect::to('/index_mail');
     }
     
     	//este genera un documento, apartir de una vista
@@ -84,6 +103,23 @@ class MailController extends Controller
 	         return $pdf->stream('pdf');
 	       
     }*/
+
+
+     public function store_dependencia(Request $request)
+    {        
+
+
+       
+        $familiar = CatCorreosExternos::create([
+            'nombre'               => $request->input('nombre'),
+            'correo'               => $request->input('correo')
+           
+        ]);
+
+        $estatus = ($familiar) ? true : false ;
+        return response()->json($estatus);
+    }
+
 	public function generar_boletin(Request $request)
     {   
     	$id = $request['idPersona'];

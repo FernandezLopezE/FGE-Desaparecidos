@@ -247,7 +247,8 @@
 		<!-- Fin del Contenido del formulario-->
 	  </div>
 	  <div class="modal-footer">
-		<button type="button" class="btn btn-dark" id="btnGuardarInformante"><i class="fa fa-save"></i>  GUARDAR</button>
+	    <button type="button" class="btn btn-dark mr-auto" id="btnLimpiar"> LIMPIAR CAMPOS</button>
+		<button type="button" class="btn btn-dark" id="btnGuardarInformante">GUARDAR</button>
 		<button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
 	  </div>
 	</div>

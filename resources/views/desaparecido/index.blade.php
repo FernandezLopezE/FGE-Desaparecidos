@@ -11,34 +11,7 @@
 
 	{{ Form::hidden('idCedula', $cedula->id, array('id' => 'idCedula')) }}
 
-<nav>
-	<div class="nav nav-tabs" id="nav-tab" role="tablist">
-			<a class="nav-item nav-link" href="#" aria-selected="true">
-				Entrevista
-			</a>
-			<a class="nav-item nav-link" href="{{route('informante.show',['id' => $cedula->id])}}" aria-selected="false">
-				Informantes
-			</a>
-			<a class="nav-item nav-link active" href="#" aria-selected="false">
-				Desaparecido
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Familiares
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Contacto
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Domicilios
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Antecedentes
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Vestimenta
-			</a>				
-	</div>
-</nav>
+@include('navs.navs_datos',array('activar' => 'desaparecido'))
 
 <div class="card-body bg-white">
 		<div class="card-header">
@@ -48,6 +21,9 @@
 				</button>
 			</h5>		
 		</div>
+    </br>
+    <input type="reset" class="btn btn-dark pull-right" value="LIMPIAR CAMPOS">
+    </br>
 		<div class="card-body">
 			<div class="row">
 				<div class="col">
@@ -287,9 +263,16 @@
 {!! HTML::script('personal/js/funciones_generales.js') !!}
 {!! HTML::script('personal/js/curp.js') !!}
 {!! HTML::script('personal/js/documentosIdentidad.js') !!}
+{!! HTML::script('personal/js/sisyphus.min.js') !!}
+{!! HTML::script('personal/js/sisyphus.js') !!}
 
 <script type="text/javascript">
-
+var btnLimpiar = $('#btnLimpiar');
+    
+     $( "form" ).sisyphus( {
+	           excludeFields: $('input[name=_token]')
+            });
+    
 		//Ocultar-mostrar pregunta ¿Está embarazada? en caso de que el sexo sea 'masculino'
 
 			//if (a == 2 || a == 3 || a == 4 || a == 5 || a == 6) {

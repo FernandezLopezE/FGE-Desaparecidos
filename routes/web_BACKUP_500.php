@@ -36,8 +36,6 @@ Route::get('/', 'InicioController@index');
 
 	Route::resource('datos_dentales','DatosDentalesController');
 
-	Route::resource('datos_dentales_dientes_perdidos','DatosDentalesDientesPerdidosController');
-
 
 
 

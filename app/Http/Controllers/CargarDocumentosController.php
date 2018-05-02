@@ -8,9 +8,9 @@ class CargarDocumentosController extends Controller
 {
     
 
-    public function show($id){
-		$idCedula = $id;
-		$cedula = \App\Models\Cedula::find($idCedula);
+    public function show(){
+		//$idCedula = $id;
+		//$cedula = \App\Models\Cedula::find($idCedula);
 
 			//esto es para la vista de historial dental y radiografias
 		$option = array(
@@ -32,7 +32,7 @@ class CargarDocumentosController extends Controller
 
 
 		return view('cargardocumentos.historialdental_radiografia',[
-			'id' => $cedula->id,
+			//'id' => $cedula->id,
 			'option' =>$option
 			]);		
 	}

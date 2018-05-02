@@ -17,6 +17,21 @@ class CedulaController extends Controller
 	{
 		$cedulas = Cedula::all();
 
+		/*$tipoPersona = 'DESAPARECIDA';
+		$cedulas = \DB::table('desaparecidos_cedula_investigacion')
+					->leftJoin('desaparecidos_personas', function($q) use ($tipoPersona)
+			        {
+			            $q->on('desaparecidos_personas.idCedula', '=', 'desaparecidos_cedula_investigacion.id')
+			                ->where('desaparecidos_personas.tipoPersona', '=', "$tipoPersona");
+			        })
+			        ->leftJoin('persona', 'desaparecidos_personas.idPersona', '=', 'persona.id')
+			        ->select('desaparecidos_cedula_investigacion.id as noCedula',
+
+			        		)
+			        ->get();
+
+		dd($cedulas->toArray());*/
+
 		return view('cedula.index',compact('cedulas'));
 	}
 
@@ -108,10 +123,9 @@ class CedulaController extends Controller
 
 		$dialectos = \App\Models\CatDialecto::all()->pluck('nombre','id');
 
-		return view('cedula.edit',compact('cedula',										
-										'dialectos'                     
+		return view('cedula.edit',compact('cedula',
+										'dialectos'
 									));
-
 		
 	}
 
