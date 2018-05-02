@@ -192,7 +192,9 @@ Route::get('/email', 'MailController@show')->name('mail.enviar');
 
 Route::get('/envio_documentos', 'MailController@show');
 
-
+Route::get('/generarDocs', 'CargarDocumentosController@crearDocumento')
+	->name('generarDocs.crearDocumentos');
+	
 
 
 /*

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class CargarDocumentosController extends Controller
 {
     
@@ -42,6 +42,58 @@ class CargarDocumentosController extends Controller
 	        request()->file->move(public_path('upload'), $imageName);
 	        
 	    	return response()->json(['uploaded' => '/upload/'.$imageName]);
+ 	}
+
+
+
+//DE AQUI EN ADELANTE APARECERAN LO REFERENTE A LA CREACION DE LOS WORDS
+
+ 	public function crearDocumento( Request $request)
+	    {
+	    	//dd("ya entre men");
+	    	
+	    	$nombreDestinatario = "Alejandro Fernandez";
+	    	$fechaHoy = new Carbon();
+	    	$numCarpeta = "FETA/344/SDF";
+	    	$numOficio ="123";
+	    	$anio="2018";
+	    	$articulos = "Ingresar aqui los articulos según sea el caso";
+	    	$nombreDesaparecido = "Berenice Contreras";
+	    	$lugarVisto ="Parque Juarez ";
+	    	$fechaVisto =new Carbon();
+	    	$horaVisto = "3:00 p.m.";
+	    	$descripcionVehiculo= " Tsuru II color rojo";
+	    	$nombreFiscal = "Avelardo Rodriguez";
+	    	$numFiscal = "455";
+	    	$numDistrito = "XI" ;
+	    	$distrito = "VI";
+
+
+
+	    	$phpWord = new \PhpOffice\PhpWord\TemplateProcessor('oficios-plantillas/transitoysecretariadecomunicacionesytransporte-direcciongeneraldetransitodelestado.docx');
+
+	    	$phpWord->setValue('nombreDestinatario',$nombreDestinatario);
+	    	$phpWord->setValue('fechaHoy',	$fechaHoy);
+	    	$phpWord->setValue('numCarpeta', $numCarpeta );
+	    	$phpWord->setValue('numOficio', $numOficio );
+	    	$phpWord->setValue('anio',	$anio);
+	    	$phpWord->setValue('articulos',$articulos);
+	    	$phpWord->setValue('nombreDesaparecido', $nombreDesaparecido );
+	    	$phpWord->setValue('lugarVisto',	$lugarVisto );
+	    	$phpWord->setValue('fechaVisto', 	$fechaVisto );
+	    	$phpWord->setValue('horaVisto', 	$horaVisto );
+	    	$phpWord->setValue('descripcionVehiculo',	$descripcionVehiculo);
+	    	$phpWord->setValue('nombreFiscal', $nombreFiscal );
+	    	$phpWord->setValue('numFiscal',$numFiscal);
+	    	$phpWord->setValue('numDistrito', $numDistrito);
+	    	$phpWord->setValue('distrito', $distrito);			
+
+
+			$phpWord->saveAs('../storage/oficios/direcciongeneraldetransitodelestado'.'.docx');
+			$nombreArchivo =('direcciongeneraldetransitodelestado'.'.docx');
+			return response()->json($nombreArchivo);
+			
+
  	}
 
 }

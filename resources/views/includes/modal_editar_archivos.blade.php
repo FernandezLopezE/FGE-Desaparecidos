@@ -15,7 +15,7 @@
 
                         <div class="col">
                            {!!Form::checkbox('name', 'value')!!}
-                           {!! Form::label ('ingresarnombre','Documento1') !!}
+                           {!! Form::label ('ingresarnombre1','Documento1') !!}
                         </div>
                       
                         <div class="col">
@@ -28,7 +28,7 @@
 
                         <div class="col">
                            {!!Form::checkbox('name', 'value')!!}
-                           {!! Form::label ('ingresarnombre','Documento2') !!}
+                           {!! Form::label ('ingresarnombre2','Documento2') !!}
                         </div>
 
                         <div class="col">
@@ -41,7 +41,7 @@
 
                         <div class="col">
                            {!!Form::checkbox('name', 'value')!!}
-                           {!! Form::label ('ingresarnombre','Documento3') !!}
+                           {!! Form::label ('ingresarnombre3','Documento3') !!}
                         </div>
                       
                         <div class="col">

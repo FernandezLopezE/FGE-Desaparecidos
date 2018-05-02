@@ -79,7 +79,27 @@
 				
 		})
 		$('#btnEditarArchivo').click(function(e){
-			$('#modalEditarArchivo').modal('show');
+
+			var dataString = {
+				nombre :"aqui va men"
+				
+			};
+				console.log(dataString);
+			$.ajax({
+				type: 'GET',
+				url: '/generarDocs',
+				data: dataString,
+				dataType: 'text',
+				success: function(data) {
+					console.log(data);
+					$('#modalEditarArchivo').modal('show');
+				
+				},
+				error: function(data) {
+					console.log(data);
+				}
+			});
+			
 			
 		});
 				//file upload
