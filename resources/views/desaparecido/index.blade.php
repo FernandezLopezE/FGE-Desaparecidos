@@ -227,69 +227,81 @@
 	var modalGral = $('#modalGeneral');
 	var modalTitle = $('.modal-title');
 	var modalBody = $('.modal-body');
+	var idCedula = '{!! $cedula->id !!}';
     
     /*$( "form" ).sisyphus( {
 	    excludeFields: $('input[name=_token]')
     });*/
 
-    $('#btnAgregarDesaparecido').click(function(e){
-    		
-			var dataString = {
-				sexo : $("#sexo").val(),
-				nombres : $("#nombres").val(),
-				primerAp : $("#primerAp").val(),
-				segundoAp : $("#segundoAp").val(),
-				apodo : $("#apodo").val(),
-				idNacionalidad : $("#idNacionalidad").val(),
-				idEstadoOrigen : $("#idEstadoOrigen").val(),
-				fechaNacimiento : $("#fechaNacimiento").val(),
-				edadExtravio : $("#edadExtravio").val(),
-				edadAparente : $("#edadAparente").val(),
-				curp : $("#curp").val(),
-				idEscolaridad : $("#idEscolaridad").val(),
-				idOcupacion : $("#idOcupacion").val(),
-				idDocumentoIdentidad : $("#idDocumentoIdentidad").val(),
-				otroDocIdentidad : $("#otroDocIdentidad").val(),
-				numDocIdentidad : $("#numDocIdentidad").val(),
-				idEdocivil : $("#idEdocivil").val(),
-				embarazo : $("#embarazo").val(),
-				numGestacion : $("#numGestacion").val(),
-				tipoGestacion : $("#tipoGestacion").val(),
-				rumoresBebe : $("#rumoresBebe").val(),
-				pormenores : $("#pormenores").val(),
-			}
-			console.log(dataString);
+    $('#btnAgregarDesaparecido').click(function(e)
+    {
+		var dataString = {
+			idCedula : idCedula,
+			sexo : $("#sexo").val(),
+			nombres : $("#nombres").val(),
+			primerAp : $("#primerAp").val(),
+			segundoAp : $("#segundoAp").val(),
+			apodo : $("#apodo").val(),
+			idNacionalidad : $("#idNacionalidad").val(),
+			idEstadoOrigen : $("#idEstadoOrigen").val(),
+			fechaNacimiento : $("#fechaNacimiento").val(),
+			edadExtravio : $("#edadExtravio").val(),
+			edadAparente : $("#edadAparente").val(),
+			curp : $("#curp").val(),
+			idEscolaridad : $("#idEscolaridad").val(),
+			idOcupacion : $("#idOcupacion").val(),
+			idDocumentoIdentidad : $("#idDocumentoIdentidad").val(),			
+			numDocIdentidad : $("#numDocIdentidad").val(),
+			idEdocivil : $("#idEdocivil").val(),			
+		}
+		if ($("#idDocumentoIdentidad").val() == 9){
+			dataString['otroDocIdentidad'] = $("#otroDocIdentidad").val();
+		} else {
+			dataString['otroDocIdentidad'] = null;
+		}
+		if ($("#sexo").val() == 'M') {
+			dataString['embarazo'] = $("#embarazo").val();
+			dataString['numGestacion'] = $("#numGestacion").val();
+			dataString['tipoGestacion'] = $("#tipoGestacion").val();
+			dataString['rumoresBebe'] = $("#rumoresBebe").val();
+			dataString['pormenores'] = $("#pormenores").val();
+		} else {
+			dataString['embarazo'] = 'NO';
+			dataString['numGestacion'] = null;
+			dataString['tipoGestacion'] = null;
+			dataString['rumoresBebe'] = 'NO';
+			dataString['pormenores'] = null;
+		}
 			
-			$.ajax({
-				type: 'POST',
-				url: routeDesaparecido,
-				data: dataString,
-				dataType: 'json',
-				success: function(data) {
-					//var errors = data.responseJSON;
-        			console.log(data);
-					/*modalInformanteAgregar.modal('hide');
-					table.bootstrapTable('refresh');*/
+		$.ajax({
+			type: 'POST',
+			url: routeDesaparecido,
+			data: dataString,
+			dataType: 'json',
+			success: function(data) {
+				//var errors = data.responseJSON;
+    			console.log(data);
+				/*modalInformanteAgregar.modal('hide');
+				table.bootstrapTable('refresh');*/
 
-				},
-				error: function(data) {
-					var errors = data.responseJSON;
-					console.log(errors);
-					modalTitle.empty();
-					modalBody.empty();
-					modalBody.append('<ul>');
-					$.each(errors.errors, function(key, value){						
-						modalBody.append('<li><code>'+value+'</code></li>');
-					});
-					modalBody.append('</ul>');
-					
-					modalTitle.append('<i class="fa fa-warning"></i> Oups... algo salió mal');
-					modalGral.modal('show');
+			},
+			error: function(data) {
+				var errors = data.responseJSON;
+				console.log(errors);
+				modalTitle.empty();
+				modalBody.empty();
+				modalBody.append('<ul>');
+				$.each(errors.errors, function(key, value){						
+					modalBody.append('<li><code>'+value+'</code></li>');
+				});
+				modalBody.append('</ul>');
 
-
-
-				}
-			});
+				modalBody.append('<code>'+errors.message+'</code>');
+				
+				modalTitle.append('<i class="fa fa-warning"></i> Ooops... algo salió mal');
+				modalGral.modal('show');
+			}
+		});
     });
     
 

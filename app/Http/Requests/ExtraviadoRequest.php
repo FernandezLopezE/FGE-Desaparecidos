@@ -35,7 +35,7 @@ class ExtraviadoRequest extends FormRequest
 			'fechaNacimiento'		=> 'required_unless:idDocumentoIdentidad,1',
 			'edadExtravio'			=> 'required_unless:idDocumentoIdentidad,1',
 			'edadAparente'			=> 'required',
-			'curp'					=> 'required_unless:idDocumentoIdentidad,1',
+			'curp'					=> 'required_unless:idDocumentoIdentidad,1|unique:persona,curp,'.$this->segment(3).',id',
 			'otroDocIdentidad' 		=> 'required_if:idDocumentoIdentidad,9',
 			'numDocIdentidad' 		=> 'required_unless:idDocumentoIdentidad,1',
 			
@@ -54,4 +54,27 @@ class ExtraviadoRequest extends FormRequest
 
 		return $rules;
 	}
+
+	public function attributes()
+	{
+		return [
+			'sexo'						=> 'Sexo',
+			'idDocumentoIdentidad'		=> 'Documento de identidad',
+			'primerAp'					=> 'Primer apellido',
+			'segundoAp'					=> 'Segundo apellido',
+			'apodo'						=> 'Apodo',
+			'idNacionalidad'			=> 'Nacionalidad',
+			'idEstadoOrigen'			=> 'Estado de origen',
+			'fechaNacimiento'			=> 'Fecha de nacimiento',
+			'edadExtravio'				=> 'Edad de extravio',
+			'edadAparente'				=> 'Edad aparente',
+			'curp'						=> 'CURP',
+			'otroDocIdentidad'			=> 'Otro documento de identidad',
+			'numDocIdentidad'			=> 'Número del documento de identidad',
+			'numGestacion'				=> 'Número de gestación',
+			'embarazo'					=> 'Esta embarazada',
+
+		];
+	}
+
 }
