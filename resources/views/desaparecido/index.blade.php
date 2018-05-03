@@ -18,191 +18,213 @@
 <div class="card-body bg-white">
 		<div class="card-body">
 			<div class="row">
-				<div class="form-group col-md-4">
-						{!! Form::label ('sexo','Género:') !!}
-						{!! Form::select ('sexo',
-											$sexos,
-											'',
-											['class' => 'form-control',
-												 'id' => 'sexo'])!!}	
+				<div class="form-group col-md-4" id="div_sexo">
+					{!! Form::label ('sexo','Género:',['class' => 'form-control-label']) !!}
+					{!! Form::select ('sexo',
+										$sexos,
+										'',
+										['class' => 'form-control',
+											'id' => 'sexo'])!!}
+					<div class="form-control-feedback" id="error_sexo"></div>	
 				</div>			
 			</div>
 			<div id ="mostrarGenero" style="display: none">
 				<div class="row">
-					<div class="form-group col-md-4">
-						{!! Form::label ('nombres','Nombres(s):') !!}
+					<div class="form-group col-md-4" id="div_nombres">
+						{!! Form::label ('nombres','Nombres(s):',['class' => 'form-control-label']) !!}
 						{!! Form::text ('nombres',
 											'',
 											['class' => 'form-control mayuscula',
 												'id' => 'nombres'
 											] )!!}
+						<div class="form-control-feedback" id="error_nombres"></div>
 					</div>
-					<div class="form-group col-md-4">
-						{!! Form::label ('primerAp','Primer apellido:') !!}
+					<div class="form-group col-md-4" id="div_primerAp">
+						{!! Form::label ('primerAp','Primer apellido:',['class' => 'form-control-label']) !!}
 						{!! Form::text ('primerAp',
 											'',
 											['class' => 'form-control mayuscula',
 												'id' => 'primerAp',
 											] )!!}
+						<div class="form-control-feedback" id="error_primerAp"></div>
 					</div>
-					<div class="form-group col-md-4">
-						{!! Form::label ('segundoAp','Segundo apellido:') !!}
+					<div class="form-group col-md-4" id="div_segundoAp">
+						{!! Form::label ('segundoAp','Segundo apellido:',['class' => 'form-control-label']) !!}
 						{!! Form::text ('segundoAp',
 											'',
 											['class' => 'form-control mayuscula',
 												'id' => 'segundoAp'] )!!}
+						<div class="form-control-feedback" id="error_segundoAp"></div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="form-group col-md-4">
-						{!! Form::label ('apodo','Apodo (alias):') !!}
+					<div class="form-group col-md-4" id="div_apodo">
+						{!! Form::label ('apodo','Apodo (alias):', ['class' => 'form-control-label']) !!}
 						{!! Form::text ('apodo',
 											'',
 											['class' => 'form-control mayuscula',
 												'id' => 'apodo' ] )!!}
+						<div class="form-control-feedback" id="error_apodo"></div>
 					</div>
-					<div class="form-group col-md-4">
-						{!! Form::label ('idNacionalidad','Nacionalidad:') !!}
+					<div class="form-group col-md-4" id="div_idNacionalidad">
+						{!! Form::label ('idNacionalidad','Nacionalidad:', ['class' => 'form-control-label']) !!}
 						{!! Form::select ('idNacionalidad',
 											$nacionalidades,
 											'',
 											['class' => 'form-control',
 												'id' => 'idNacionalidad',
 											] )!!}
+						<div class="form-control-feedback" id="error_idNacionalidad"></div>
 					</div>
-					<div class="form-group col-md-4">
-						{!! Form::label('idEstadoOrigen', 'Estado natal:') !!}
+					<div class="form-group col-md-4" id="div_idNacionalidad">
+						{!! Form::label('idEstadoOrigen', 'Estado natal:', ['class' => 'form-control-label']) !!}
 						{!! Form::select('idEstadoOrigen',
 											$estados,
 											'',
 											['class' => 'form-control',
 												'placeholder' => 'Seleccione una entidad federativa',
 											]) !!}
+							<div class="form-control-feedback" id="error_idNacionalidad"></div>
 					</div>				
 				</div>
 				<div class="row">	
-					<div class="form-group col-md-4">
-						{!! Form::label ('fechaNacimiento','Fecha de nacimiento:') !!}
+					<div class="form-group col-md-4" id="div_fechaNacimiento">
+						{!! Form::label ('fechaNacimiento','Fecha de nacimiento:', ['class' => 'form-control-label']) !!}
 						{!! Form::text ('fechaNacimiento',
 											'',
 											['class' => 'form-control',
 												'id' => 'fechaNacimiento'
 											] )!!}
+						<div class="form-control-feedback" id="error_fechaNacimiento"></div>
 					</div>			
-					<div class="form-group col-md-4">
-						{!! Form::label ('edadExtravio','Edad de extravío:') !!}
+					<div class="form-group col-md-4" id="div_edadExtravio">
+						{!! Form::label ('edadExtravio','Edad de extravío:', ['class' => 'form-control-label']) !!}
 						{!! Form::text ('edadExtravio',
 										old('edadExtravio'),
 										['class' => 'form-control',
 											'id' => 'edadExtravio'
 										] )!!}
+						<div class="form-control-feedback" id="error_edadExtravio"></div>
 					</div>
-					<div class="form-group col-md-4">
-						{!! Form::label ('edadAparente','Edad aparente:') !!}
+					<div class="form-group col-md-4" id="div_edadAparente">
+						{!! Form::label ('edadAparente','Edad aparente:', ['class' => 'form-control-label']) !!}
 						{!! Form::text ('edadAparente',
 										old('edadAparente'),
 										['class' => 'form-control',
 											'id' => 'edadAparente'
 										] )!!}
+						<div class="form-control-feedback" id="error_edadAparente"></div>
 					</div>
 				</div>
 				<div class="row">	
-					<div class="form-group col-md-4">			
-						{!! Form::label('curp', 'C.U.R.P.') !!}
+					<div class="form-group col-md-4" id="div_curp">			
+						{!! Form::label('curp', 'C.U.R.P.', ['class' => 'form-control-label']) !!}
 						{!! Form::text('curp',
 										 '',
 										 ['class' => 'form-control',
 										 	'placeholder' => 'Ingrese el C.U.R.P.'
 										 ]) !!}
+						<div class="form-control-feedback" id="error_curp"></div>
 					</div>			
-					<div class="form-group col-md-4">
-						{!! Form::label ('idEscolaridad','Escolaridad:') !!}
+					<div class="form-group col-md-4" id="div_idEscolaridad">
+						{!! Form::label ('idEscolaridad','Escolaridad:', ['class' => 'form-control-label']) !!}
 						{!! Form::select ('idEscolaridad',
 											$escolaridades,
 											'',
 											['class' => 'form-control',
 											] )!!}
+						<div class="form-control-feedback" id="error_idEscolaridad"></div>
 					</div>
-					<div class="form-group col-md-4">
-						{!! Form::label ('idOcupacion','Ocupación:') !!}
+					<div class="form-group col-md-4" id="div_idOcupacion">
+						{!! Form::label ('idOcupacion','Ocupación:', ['class' => 'form-control-label']) !!}
 						{!! Form::select ('idOcupacion',
 											$ocupaciones,
 											'',
 											['class' => 'form-control'
 											] )!!}
+						<div class="form-control-feedback" id="error_idOcupacion"></div>
 					</div>			
 				</div>
 				<div class="row">
-					<div class="form-group col-md-4">
-							{!! Form::label ('idDocumentoIdentidad','Identificación:') !!}
-							{!! Form::select ('idDocumentoIdentidad',
-												$identificaciones,
-												'',
-												['class' => 'form-control',
-													'id' => 'idDocumentoIdentidad'
-												] )!!}
+					<div class="form-group col-md-4" id="div_idDocumentoIdentidad">
+						{!! Form::label ('idDocumentoIdentidad','Identificación:', ['class' => 'form-control-label']) !!}
+						{!! Form::select ('idDocumentoIdentidad',
+											$identificaciones,
+											'',
+											['class' => 'form-control',
+												'id' => 'idDocumentoIdentidad'
+											] )!!}
+						<div class="form-control-feedback" id="error_idDocumentoIdentidad"></div>
 					</div>
-					<div class="form-group col-md-4"  style="display: none" id="otraIdDIV">
-							{!! Form::label ('otroDocIdentidad','Otro:') !!}
+					<div class="form-group col-md-4"  style="display: none" id="div_otroDocIdentidad">
+							{!! Form::label ('otroDocIdentidad','Otro:', ['class' => 'form-control-label']) !!}
 							{!! Form::text ('otroDocIdentidad',
 											old('otroDocIdentidad'),
 											['class' => 'form-control mayuscula'])!!}
+							<div class="form-control-feedback" id="error_otroDocIdentidad"></div>
 					</div>
-					<div class="form-group col-md-4">
-							{!! Form::label ('numDocIdentidad','No. Identificación:') !!}
+					<div class="form-group col-md-4" id="div_numDocIdentidad">
+							{!! Form::label ('numDocIdentidad','No. Identificación:', ['class' => 'form-control-label']) !!}
 							{!! Form::text ('numDocIdentidad',
 												old('numDocIdentidad'),
 												['class' => 'form-control mayuscula'
 												] )!!}
+							<div class="form-control-feedback" id="error_numDocIdentidad"></div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="form-group col-md-4">
-						{!! Form::label ('idEdocivil','Estado civil:') !!}
+					<div class="form-group col-md-4" id="div_idEdocivil">
+						{!! Form::label ('idEdocivil','Estado civil:', ['class' => 'form-control-label']) !!}
 						{!! Form::select ('idEdocivil',
 											$edoscivil ,
 											old('idEdocivil'),
 											['class' => 'form-control',
 												'id' => 'idEdocivil'
 											] )!!}
+						<div class="form-control-feedback" id="error_idEdocivil"></div>
 					</div>
-					<div class="form-group col-md-4" id="estaEmbarazada" style="display: none">
-						{!! Form::label ('embarazo','Esta embarazada:') !!}
+					<div class="form-group col-md-4" id="div_embarazo" style="display: none">
+						{!! Form::label ('embarazo','Esta embarazada:', ['class' => 'form-control-label']) !!}
 						{!! Form::select ('embarazo',
 											['NO'=>'NO','SI'=>'SI', 'LO IGNORAN' => 'LO IGNORAN'],
 											old('embarazo'),
 											['class' => 'form-control'] )!!}
+						<div class="form-control-feedback" id="error_embarazo"></div>
 					</div>			
 				</div>
 				<div class="row"  id="datosEmbarazo" style="display: none">
-					<div class="form-group col-md-4">
-						{!! Form::label ('numGestacion','Cantidad:') !!}
+					
+					<div class="form-group col-md-4" id="div_numGestacion">
+						{!! Form::label ('numGestacion','Cantidad:', ['class' => 'form-control-label']) !!}
 						{!! Form::number ('numGestacion',
 											old('gestacionSemanas'),
 											['class' => 'form-control mayuscula'] )!!}
-
+						<div class="form-control-feedback" id="error_numGestacion"></div>
 					</div>
-					<div class="form-group col-md-4">
-						{!! Form::label ('tipoGestacion','Periodo:') !!}
+					<div class="form-group col-md-4" id="div_tipoGestacion">
+						{!! Form::label ('tipoGestacion','Periodo:', ['class' => 'form-control-label']) !!}
 						{!! Form::select ('tipoGestacion',
 											['SEMANAS'=> 'SEMANAS','MESES' => 'MESES'],
 											'',
 											['class' => 'form-control '] )!!}
+						<div class="form-control-feedback" id="error_tipoGestacion"></div>
 					</div>
-					<div class="form-group col-md-4">
-						{!! Form::label ('rumoresBebe','Rumores sobre el nacimiento:') !!}
+					<div class="form-group col-md-4" id="div_rumoresBebe">
+						{!! Form::label ('rumoresBebe','Rumores sobre el nacimiento:', ['class' => 'form-control-label']) !!}
 						{!! Form::select ('rumoresBebe',
 											['NO'=>'NO','SI'=>'SI', 'LO IGNORAN' => 'LO IGNORAN'],
 											old('rumoresBebe'),
 											['class' => 'form-control'] )!!}
+						<div class="form-control-feedback" id="error_rumoresBebe"></div>
 					</div>	
 				</div>
 				<div class="row" id="datosPormenores" style="display: none" >
-					<div class="form-group col-md-12">
-						{!! Form::label ('pormenores','Pormenores:') !!}
+					<div class="form-group col-md-12" id="div_pormenores">
+						{!! Form::label ('pormenores','Pormenores:', ['class' => 'form-control-label']) !!}
 						{!! Form::textarea ('pormenores',
 											old('Pormenores'),
 											['class' => 'form-control mayuscula'] )!!}
+						<div class="form-control-feedback" id="error_pormenores"></div>
 					</div>
 				</div>				
 			</div>
@@ -232,6 +254,8 @@
     /*$( "form" ).sisyphus( {
 	    excludeFields: $('input[name=_token]')
     });*/
+
+    $('#idOcupacion').select2();
 
     $('#btnAgregarDesaparecido').click(function(e)
     {
@@ -291,7 +315,14 @@
 				modalTitle.empty();
 				modalBody.empty();
 				modalBody.append('<ul>');
-				$.each(errors.errors, function(key, value){						
+				$('.card-body div.has-danger').removeClass('has-danger');
+				$('.form-control-feedback').empty();
+				$.each(errors.errors, function(key, value){
+					//$('#'+key).addClass('text-red');
+					$('#div_'+key).addClass('has-danger');
+					$('input#'+key).addClass('form-control-danger');
+					$('#error_'+key).append(value);
+
 					modalBody.append('<li><code>'+value+'</code></li>');
 				});
 				modalBody.append('</ul>');
@@ -303,6 +334,19 @@
 			}
 		});
     });
+
+    	/*	$('.modal-body input.text-red').removeClass('text-red');
+		$('.modal-body div.has-error').removeClass('has-error');
+		$('.modal-body span').empty();
+		$.each(errors, function(i, item) {
+			console.log(i+' valor: '+item);
+			if (item) {
+				$('#'+i).addClass('text-red');
+				$('#div_'+i).addClass('has-error');
+				$('#error_'+i).append(item);
+			}							
+		});*/
+
     
 
 		var routeIndex = '{!! route('consultas.index') !!}';
@@ -336,14 +380,14 @@
 
 			if (g=="H") {
 				$("#mostrarGenero").show();
-				$("#estaEmbarazada").hide();
+				$("#div_embarazo").hide();
 				$("#datosEmbarazo").hide();
 				$("#datosPormenores").hide();
 				$("#rumores").hide();
 			}else{
 				if (g=="M"){
 					$("#mostrarGenero").show();
-					$("#estaEmbarazada").show();
+					$("#div_embarazo").show();
 				}else{
 					$("#mostrarGenero").hide();					
 				}
@@ -375,10 +419,10 @@
 		$('#idDocumentoIdentidad').change(function(){
 			documento = $('#idDocumentoIdentidad').val();
 			console.log(documento);			
-			if (documento == "8") {					
-					$("#otraIdDIV").show();
+			if (documento == "9") {					
+					$("#div_otroDocIdentidad").show();
 			} else {					
-					$("#otraIdDIV").hide();
+					$("#div_otroDocIdentidad").hide();
 			}
 		});
 
@@ -394,9 +438,9 @@
 			console.log("El parentesoc es: "+f);
 
 			if (f==7) {
-				$("#otraIdDIV").show();
+				$("#div_idDocumentoIdentidad").show();
 			}else{
-				$("#otraIdDIV").hide();
+				$("#div_idDocumentoIdentidad").hide();
 			}
 	});
 

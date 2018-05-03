@@ -29,6 +29,7 @@ $(document).ready(function(){
 	$('#informanteidDocumentoIdentidad').select2();
 
 	$('#informanteTipoDireccion').select2();
+	
 
 	/*$('#idEstado').select2();
 
