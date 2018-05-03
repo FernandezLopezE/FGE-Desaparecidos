@@ -709,12 +709,9 @@ class DesaparecidoController extends Controller
 		return response()->json($cedula);
 		
 	}
-<<<<<<< HEAD
-	public function store_accesorios(Request $request)
-=======
-    
+
     	public function store_accesorios(Request $request)
->>>>>>> 48bcee7842b3edbb5899d62b06ea3391a8bbb38e
+
 	{
 		//dd($request->toArray());
 		$cedula = Cedula::find($request->input('idCedula'));

@@ -117,11 +117,7 @@
 	  </div>
 	  <div class="modal-footer">
 	    <button type="button" class="btn btn-dark mr-auto" id="btnLimpiar"> LIMPIAR CAMPOS</button>
-<<<<<<< HEAD
-	   <button type="button" class="btn btn-dark" id="btnActualizarD">ACTUALIZAR</button>
-=======
 	    <button type="button" class="btn btn-dark" id="btnActualizarD">ACTUALIZAR</button>
->>>>>>> 48bcee7842b3edbb5899d62b06ea3391a8bbb38e
 		<button type="button" class="btn btn-dark" id="btnGuardarDomicilio">GUARDAR</button>
 		<button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
 	  </div>

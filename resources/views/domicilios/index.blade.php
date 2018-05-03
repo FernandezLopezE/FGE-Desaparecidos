@@ -146,17 +146,6 @@
                 
                 $("#btnActualizarD").val(idDesaparecido);
                 
-                
-//				//bodyModal.empty();
-//				$('#idAccesorio').val(row.id);
-//				$('#accesoriosObjetos').val(row.tipo);
-//				$('#accesorioMaterial').val(row.material);
-//				$('#accesorioColor').val(row.pColor);
-//				$('#accesorioColorOtro').val(row.otroC);
-//				$('#accesorioMarcaOrigen').val(row.marca);
-//				$("#btnActualizarA").show();
-//				$("#btnGuardarDomicilio").hide();
-//				$("#modalAccesorios").modal("show");
 			}
 		}
 		table.bootstrapTable({				
@@ -217,13 +206,7 @@
 				idCodigoPostal : $("#idCodigoPostal").val(),
 				telefonos : $("#telefonos").val(),
 				ext : $("#ext").val(),
-<<<<<<< HEAD
-	            idDesaparecido: idDesaparecido,  
-                
-=======
                 idDesaparecido,
-	
->>>>>>> 48bcee7842b3edbb5899d62b06ea3391a8bbb38e
 			};
 
 			$.ajax({
@@ -281,15 +264,13 @@
 			success: function(data) {						
 				console.log(data);
 				table.bootstrapTable('refresh');
-<<<<<<< HEAD
-=======
                      modal.find('form')[0].reset();
                     modal.removeData('modal');
                     municipio.empty();
                     localidad.empty();
                     colonia.empty();
                     cp.empty();
->>>>>>> 48bcee7842b3edbb5899d62b06ea3391a8bbb38e
+
 				$("#modalDomicilio").modal("hide");	
 				
 												
