@@ -21,21 +21,21 @@
                 <h5>Perfil recto</h5>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur esse, labore blanditiis aut magni libero optio incidunt autem omnis, pariatur, in praesentium excepturi. Assumenda, quibusdam? Iusto, assumenda dolore nemo libero.</p>
               </div>
-              <img class="d-block w-100" src="/images/TiposPerfil/recto.png" alt="Perfil recto">
+              <img class="d-block w-100" src="/images/TiposPerfil/recto.png" alt="Perfil recto" id="perfilRecto" value="2">
             </div>
             <div class="carousel-item">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Perfil cóncavo</h5>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur esse, labore blanditiis aut magni libero optio incidunt autem omnis, pariatur, in praesentium excepturi. Assumenda, quibusdam? Iusto, assumenda dolore nemo libero.</p>
               </div>
-              <img class="d-block w-100" src="/images/TiposPerfil/concavo.png" alt="Perfil cóncavo">
+              <img class="d-block w-100" src="/images/TiposPerfil/concavo.png" alt="Perfil cóncavo" id="perfilConcavo" value="3">
             </div>
             <div class="carousel-item">
               <div class="carousel-caption d-none d-md-block">
                 <h5>Perfil convexo</h5>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur esse, labore blanditiis aut magni libero optio incidunt autem omnis, pariatur, in praesentium excepturi. Assumenda, quibusdam? Iusto, assumenda dolore nemo libero.</p>
               </div>
-              <img class="d-block w-100" src="/images/TiposPerfil/convexo.png" alt="Perfil convexo">
+              <img class="d-block w-100" src="/images/TiposPerfil/convexo.png" alt="Perfil convexo" id="perfilConvexo" value="4">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselPDiente" role="button" data-slide="prev">
