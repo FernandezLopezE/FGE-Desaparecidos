@@ -1,9 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+//require __DIR__.'/vendor/autoload.php';
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
+use PhpOffice\PhpWord\IOFactory;
+use \PhpOffice\PhpWord\Settings;
+
 class CargarDocumentosController extends Controller
 {
     
@@ -50,6 +54,8 @@ class CargarDocumentosController extends Controller
 
  	public function crearDocumento( Request $request)
 	    {
+
+
 	    	//dd("ya entre men");
 	    	
 	    	$nombreDestinatario = "Alejandro Fernandez";
@@ -90,10 +96,60 @@ class CargarDocumentosController extends Controller
 
 
 			$phpWord->saveAs('../storage/oficios/direcciongeneraldetransitodelestado'.'.docx');
+
+		//prueba de conversion pdf
+
+				// Make sure you have `dompdf/dompdf` in your composer dependencies.
+				Settings::setPdfRendererName(Settings::PDF_RENDERER_DOMPDF);
+				// Any writable directory here. It will be ignored.
+				Settings::setPdfRendererPath('.');
+
+				$phpWordPDF = IOFactory::load('../storage/oficios/direcciongeneraldetransitodelestado.docx', 'Word2007');
+				$phpWordPDF ->save('../storage/oficios/direcciongeneraldetransitodelestado.pdf', 'PDF');
+
+
 			$nombreArchivo =('direcciongeneraldetransitodelestado'.'.docx');
 			return response()->json($nombreArchivo);
 			
 
  	}
 
+ 	 public function create()
+    {        
+
+          /*  $datos = \App\Models\Desaparecido::where('idCedula', $id)
+                                            ->where('tipoPersona', 'DESAPARECIDA')
+                                            ->limit(1)
+                                            ->get();*/
+        
+        //$desaparecido = \App\Models\Desaparecido::find($datos[0]->id);
+        $view = view('plantillas.24-albergues'/*, compact('desaparecido')*/)->render();
+        $pdf =\App::make('dompdf.wrapper');
+        $pdf -> loadHTML($view);
+        
+        
+        $pdf->setPaper([0, 0, 1424, 864], 'landscape');
+
+        return $pdf->stream('formato_'.time().'.pdf');
+
+        //return view('desaparecido.show',compact('desaparecido'));
+
+        //dd($desaparecido);
+        //$h = $request['nombre'];
+        //return response()->json($h);
+
+        //return $id;
+                //dd("Aqui toy");
+       // $pdf->stream('boletin');
+ // $pdf = PDF::loadView(['text'=>'desaparecidos.boletin'], $request->all());
+       // dd("ya entre aqui");
+            //return $pdf->download('MiVistaContact.pdf');
+         
+           
+    }
+
+
+
 }
+
+

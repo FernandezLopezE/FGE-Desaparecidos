@@ -19,7 +19,15 @@
 				<div class = "col">
 					<h4>Destinatarios</h4>
 				</div>
+				<div class="col">
+						<a class="btn btn-secondary" href="{{route('image-view.create')}}">
+
+								PDF MUESTRA
+							</a>
+
+				</div>
 				<div class = "col">
+					
 			{{ Form::button('<i class="fa fa-send "></i>', ['type' => 'submit', 'class' => 'btn btn-dark btn-lg pull-right'] )  }}			
 			{{--<button type="button" class="btn btn-dark pull-right" id="btnAgregarDependencia"> AGREGAR</button>--}}
 			@include('includes.modal_editar_archivos')
