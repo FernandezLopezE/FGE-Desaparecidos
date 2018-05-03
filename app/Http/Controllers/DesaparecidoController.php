@@ -17,6 +17,7 @@ use App\Models\Antecedente;
 //use App\Models\Domicilio;
 use App\Models\Contacto;
 use App\Models\Prenda;
+use App\Models\Accesorio;
 use App\Models\CatSenasParticulares;
 use App\Models\CatSenasParticularesUbicaciones;
 use Carbon\Carbon;
@@ -708,12 +709,62 @@ class DesaparecidoController extends Controller
 		return response()->json($cedula);
 		
 	}
-	public function update_accesorios(Request $request){
+    
+    	public function store_accesorios(Request $request)
+	{
+		//dd($request->toArray());
 		$cedula = Cedula::find($request->input('idCedula'));
-		$cedula->objetos = json_encode($request->input('accesoriosObjetos'));
-		$cedula->observacionesDesaparicion = $request->input('descripcionVestimenta');
-		$cedula->save();
-		return response()->json($cedula);
+		$color = $request->input('accesorioColor');
+		if($color == 15){
+			$accesorio = Accesorio::create([
+            'tipo' => $request->input('accesoriosObjetos'),
+			'material' => $request->input('accesorioMaterial'),
+			'color' => $request->input('accesorioColor'),
+			'otroColor' => $request->input('accesorioColorOtro'),
+			'marcaOrigen' => $request->input('accesorioMarcaOrigen'),
+            'idCedula' => $request->input('idCedula'),
+			]);
+		}else{
+			$accesorio = Accesorio::create([
+            'tipo' => $request->input('accesoriosObjetos'),
+			'material' => $request->input('accesorioMaterial'),
+			'color' => $request->input('accesorioColor'),
+			'otroColor' => "",
+			'marcaOrigen' => $request->input('accesorioMarcaOrigen'),
+            'idCedula' => $request->input('idCedula'),
+			]);
+		}
+		return response()->json($accesorio);
+		
+	}
+    
+	public function update_accesorios(Request $request){
+        
+        
+        $accesorio = Accesorio::find($request->input('idAccesorio'));
+		$color = $request->input('accesorioColor');
+		if($color == 15){
+			$accesorio->tipo = $request->input('accesoriosObjetos');
+			$accesorio->material = $request->input('accesorioMaterial');
+			$accesorio->color = $request->input('accesorioColor');
+			$accesorio->otroColor = $request->input('accesorioColorOtro');
+			$accesorio->marcaOrigen = $request->input('accesorioMarcaOrigen');
+		}else{
+			$accesorio->tipo = $request->input('accesoriosObjetos');
+			$accesorio->material = $request->input('accesorioMaterial');
+			$accesorio->color = $request->input('accesorioColor');
+			$accesorio->otroColor = "";
+			$accesorio->marcaOrigen = $request->input('accesorioMarcaOrigen');	
+		}
+		$accesorio->save();
+		//$colorPrenda = CatColores::find($prenda->color);
+		return response()->json($accesorio);
+
+//		$cedula = Cedula::find($request->input('idCedula'));
+//		$cedula->objetos = json_encode($request->input('accesoriosObjetos'));
+//		$cedula->observacionesDesaparicion = $request->input('descripcionVestimenta');
+//		$cedula->save();
+//		return response()->json($cedula);
 		
 	}
 	

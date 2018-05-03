@@ -29,7 +29,7 @@
 			Descripción física
 			</a>		
 			<a class="nav-item nav-link @if ($activar == 'ant_medicos') active @endif" href="{{route('antecedentesmedicos.show',['id' => $desaparecido->id])}}" aria-selected="false">
-			Antecedentes medicos
+			Antecedentes médicos
 			</a>
 			<a class="nav-item nav-link @if ($activar == 'senas_part') active @endif" href="{{route('senas_particulares.show',['id' => $desaparecido->id])}}" aria-selected="false">
 			Señas particulares

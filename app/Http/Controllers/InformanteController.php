@@ -126,7 +126,7 @@ class InformanteController extends Controller
 								'TRABAJO' => 'TRABAJO',
 								'FAMILIAR' => 'FAMILIAR');
 
-		$tiposTelefonos = array('PERSONAL' => 'PERSONAL',
+		$tiposTelefonos = array('CASA' => 'CASA',
 								'TRABAJO' => 'TRABAJO',
 								'CELULAR' => 'CELULAR');            
 
