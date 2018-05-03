@@ -11,55 +11,6 @@
 @section('content')
 	
 
-	<div class="card border-primary">
-	{!!Form::open(['route' =>'mail.store', 'method '=>'POST' , 'enctype' =>'multipart/form-data', 'class' => 'form-control' , 'multiple' => 'multiple'])!!}
-						
-							
-		<div class="card-header">
-			<div class="row">
-				<div class="col-lg-12">
-					<h5 class="card-title">
-						ENVIAR CORREO
-							{{ Form::button('<i class="fa fa-send "></i>', ['type' => 'submit', 'class' => 'btn btn-dark btn-lg pull-right'] )  }}
-					</h5>
-				</div>	
-			</div>
-		</div>	
-		<div class = "card-body">
-			<div class ="row">
-				<div class = "md-col">
-					
-				</div>			
-			</div>
-					<body class="bg-danger col ">
-					   
-					        <div class="row">
-					        	<div class = "col-4">
-					        		{!! Form::label ('idEdocivil','Adjuntar documento:') !!}						        		
-					        	</div>
-					            <div class="col-lg-8 col-sm-12 col-11 main-section">  	
-					                    {!! csrf_field() !!}
-					                    <div class="form-group">
-					                        <div class="file-loading">
-					                            <input id="fileArchivo" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">                  
-					                        </div>
-					                    </div>					                
-					            </div>
-					        </div>					   
-					</body>						
-					<div class = "row">
-						<div class="col">
-						{!! Form::label ('idEdocivil','Seleccionar destinatarios:') !!}	<br></br>				
-						{!! Form::select ('idCorreosExternos[]',$combo,'', 
-									                   ['class' => 'form-control',
-									                     'id' => 'idCorreosExternos',
-									                     'multiple' => 'multiple'
-	                   									] )!!}  
-						</div>
-				</div>	
-		</div>
-		{!!Form::close()!!}	
-	</div>
 	
 
 	<div class="card border-primary">
@@ -68,10 +19,18 @@
 				<div class = "col">
 					<h4>Destinatarios</h4>
 				</div>
+				<div class="col">
+						<a class="btn btn-secondary" href="{{route('image-view.create')}}">
+
+								PDF MUESTRA
+							</a>
+
+				</div>
 				<div class = "col">
-						
-			<button type="button" class="btn btn-dark pull-right" id="btnAgregarDependencia"> AGREGAR</button>
-			@include('includes.modal_agregar_dependencia')
+					
+			{{ Form::button('<i class="fa fa-send "></i>', ['type' => 'submit', 'class' => 'btn btn-dark btn-lg pull-right'] )  }}			
+			{{--<button type="button" class="btn btn-dark pull-right" id="btnAgregarDependencia"> AGREGAR</button>--}}
+			@include('includes.modal_editar_archivos')
 				</div>
 
 			</div>
@@ -82,16 +41,21 @@
 			<div class="card-body bg-white">
 				<table class="table" id ="correosTable">
 					<thead>
-						<th>NUMERO</th>
-						<th>NOMBRE</th>
-						<th>CORREO</th>					
+						<th> </th>
+						<th>DEPENDENCIA</th>
+					
+						<th>ACCIÓN</th>
+
 					</thead>
 					<tbody>
 						@foreach ( $correosExternos as $tabla)
 							<tr>
-								<th>{{ $tabla->id }} </th>
-								<th>{!! $tabla->nombre!!}</th>
-								<th>{!! $tabla->correo !!}</th>
+								<th>{!!Form::checkbox('name', 'value')!!}</th>
+								<th>{!! $tabla->nombre!!}</th>						
+								<th>
+									{{ Form::button('<i class="fa fa-edit "></i>', ['type' => 'submit', 'class' => 'btn btn-dark btn-md ' , 'id'=>'btnEditarArchivo'] )  }}
+								</th>
+
 							</tr>					
 						
 						@endforeach			
@@ -122,7 +86,30 @@
 
 				
 		})
+		$('#btnEditarArchivo').click(function(e){
 
+			var dataString = {
+				nombre :"aqui va men"
+				
+			};
+				console.log(dataString);
+			$.ajax({
+				type: 'GET',
+				url: '/generarDocs',
+				data: dataString,
+				dataType: 'text',
+				success: function(data) {
+					console.log(data);
+					$('#modalEditarArchivo').modal('show');
+				
+				},
+				error: function(data) {
+					console.log(data);
+				}
+			});
+			
+			
+		});
 				//file upload
 		$("#fileArchivo").fileinput({
 						showUpload: false,
@@ -187,6 +174,7 @@
 	    
 	   
 		});
+		
 		
 		 
 

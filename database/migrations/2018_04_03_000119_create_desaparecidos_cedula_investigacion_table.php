@@ -26,7 +26,8 @@ class CreateDesaparecidosCedulaInvestigacionTable extends Migration
             $table->enum('entrevistadorPrimeraVez', ['SI','NO']);
             $table->date('fechaVisita')->nullable();
             $table->string('calzadoTalla',50)->nullable();
-            $table->text('observacionesDesaparicion')->nullable();
+            $table->text('desaparicionObservaciones')->nullable();
+            $table->datetime('desaparicionFecha')->nullable();
             //$table->string('estatura',10)->nullable();
             //$table->string('peso',10)->nullable();
             $table->json('objetos')->nullable();

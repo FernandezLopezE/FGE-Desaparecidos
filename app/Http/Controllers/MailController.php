@@ -20,16 +20,16 @@ class MailController extends Controller
 {
    
 
-	public function show(){	
+    public function show(){ 
 
             $combo =CatCorreosExternos::all()->pluck('nombre','id');
         
 
-    		$cedula = \App\Models\Cedula::find(1);
+            $cedula = \App\Models\Cedula::find(1);
            
-    		//$cedula = \App\Models\Cedula::find($id);
-    		$correosExternos		= CatCorreosExternos::all();
-    		return view('desaparecidos.contacto',[
+            //$cedula = \App\Models\Cedula::find($id);
+            $correosExternos        = CatCorreosExternos::all();
+            return view('desaparecidos.contacto',[
 
                     'Cedula' => $cedula,
                     'correosExternos' => $correosExternos ,
@@ -37,16 +37,16 @@ class MailController extends Controller
 
             ]);
             
-    			
-    	
+                
+        
     }
-	
+    
 
 
 
 
 
-		//esta funcion envia correo electronico  a partir de una vista
+        //esta funcion envia correo electronico  a partir de una vista
     
 
 
@@ -57,51 +57,51 @@ class MailController extends Controller
         
         $nombreArchivo = $request->file('file')->getClientOriginalName();
         
-    	$correosArray=($request['idCorreosExternos']);
+        $correosArray=($request['idCorreosExternos']);
         //dd($correosArray);
-    	//return response()->json($h);
- 		//dd($correosArray);
- 		$longitudArray = (count($correosArray));
+        //return response()->json($h);
+        //dd($correosArray);
+        $longitudArray = (count($correosArray));
 
- 	
+    
 
- 		$listaCorreos=array();
+        $listaCorreos=array();
 
- 			 		foreach($correosArray as $idCorreo){
-				$getCorreo =\App\Models\CatCorreosExternos::where('id', $idCorreo)->pluck('correo');
-				$listaCorreos[] = $getCorreo[0];				
-	 		}
+                    foreach($correosArray as $idCorreo){
+                $getCorreo =\App\Models\CatCorreosExternos::where('id', $idCorreo)->pluck('correo');
+                $listaCorreos[] = $getCorreo[0];                
+            }
 
-    	$file = $request->file('file');
-    	//dd($file);
-    	$contenido = "hola perro";
-    	//Mail::send('emails.contact', $request->all(), function($msj) use ($file , $asunto){
-    	Mail::send('emails.contact', $request->all(), function($msj) use($listaCorreos, $nombreArchivo){
-    			$msj->subject('PRUEBA DE MULTI ENVÍO');
-    			//$msj->to('alejandro.f.toledo@gmail.com');
+        $file = $request->file('file');
+        //dd($file);
+        $contenido = "hola perro";
+        //Mail::send('emails.contact', $request->all(), function($msj) use ($file , $asunto){
+        Mail::send('emails.contact', $request->all(), function($msj) use($listaCorreos, $nombreArchivo){
+                $msj->subject('PRUEBA DE MULTI ENVÍO');
+                //$msj->to('alejandro.f.toledo@gmail.com');
 
-    			$msj->setTo( $listaCorreos);
+                $msj->setTo( $listaCorreos);
 
-    			$msj->attach('./upload/'.$nombreArchivo);
-    	});
-    	Session::flash('message','Mensaje enviado correctamente');
-    	return Redirect::to('/index_mail');
+                $msj->attach('./upload/'.$nombreArchivo);
+        });
+        Session::flash('message','Mensaje enviado correctamente');
+        return Redirect::to('/index_mail');
     }
     
-    	//este genera un documento, apartir de una vista
+        //este genera un documento, apartir de una vista
    /* public function pdf(Request $request)
     {        
-    	$h = $request['nombre'];
-    	//return response()->json($h);
- 		dd("ya entre aqui");
+        $h = $request['nombre'];
+        //return response()->json($h);
+        dd("ya entre aqui");
 
            
 
-	        $pdf = PDF::loadView('emails.contact', $request->all());
+            $pdf = PDF::loadView('emails.contact', $request->all());
 
-	        //return $pdf->download('MiVistaContact.pdf');
-	         return $pdf->stream('pdf');
-	       
+            //return $pdf->download('MiVistaContact.pdf');
+             return $pdf->stream('pdf');
+           
     }*/
 
 
@@ -120,59 +120,59 @@ class MailController extends Controller
         return response()->json($estatus);
     }
 
-	public function generar_boletin(Request $request)
+    public function generar_boletin(Request $request)
     {   
-    	$id = $request['idPersona'];
+        $id = $request['idPersona'];
 
-    //	$id = $idPersona;
-    	
+    //  $id = $idPersona;
+        
 
 
-    	
-    	$desaparecido = Desaparecido::find($id);
+        
+        $desaparecido = Desaparecido::find($id);
 
-    	$view = view('desaparecidos.boletin', compact('desaparecido'))->render();
-    	//return $view;
-    	$pdf =\App::make('dompdf.wrapper');
+        $view = view('desaparecidos.boletin', compact('desaparecido'))->render();
+        //return $view;
+        $pdf =\App::make('dompdf.wrapper');
 
-    	$pdf -> loadHTML($view);
-    	//return $id;
-   	    		//dd("Aqui toy");
+        $pdf -> loadHTML($view);
+        //return $id;
+                //dd("Aqui toy");
         $pdf->stream('boletin');
-		
-        	return "ya men";
+        
+            return "ya men";
 /*
-    	//$h = $request['nombre'];
-    	//return response()->json($h);
-    	 $html = view('pdf.index',array('QRCode'=>$img_b64,'Folio'=>$folio))->render();
- 			require_once("DomPdf/dompdf_config.inc.php");
+        //$h = $request['nombre'];
+        //return response()->json($h);
+         $html = view('pdf.index',array('QRCode'=>$img_b64,'Folio'=>$folio))->render();
+            require_once("DomPdf/dompdf_config.inc.php");
 
- 				 $mpdf->WriteHTML($html);
+                 $mpdf->WriteHTML($html);
 
-				$dompdf = new DOMPDF();
-				$dompdf->load_html(['text'=>'desaparecidos.boletin'], $request->all());
-				$dompdf->render();
-				$dompdf->stream("sample.pdf");
+                $dompdf = new DOMPDF();
+                $dompdf->load_html(['text'=>'desaparecidos.boletin'], $request->all());
+                $dompdf->render();
+                $dompdf->stream("sample.pdf");
 
            
 
-	       // $pdf = PDF::loadView(['text'=>'desaparecidos.boletin'], $request->all());
-	        dd("ya entre aqui");
-	        //return $pdf->download('MiVistaContact.pdf');
-	         return $pdf->stream('pdf');*/
-	       
+           // $pdf = PDF::loadView(['text'=>'desaparecidos.boletin'], $request->all());
+            dd("ya entre aqui");
+            //return $pdf->download('MiVistaContact.pdf');
+             return $pdf->stream('pdf');*/
+           
     }
 
-	public function send()
-		{
-			Mail::send(['text'=>'emails.contact'],['name','Lex'], function($message){
-				$message->to('alejandro.f.toledo@gmail.com', 'Para ti men')->subjeCt('Este es un test');
-				$message->from('alejandro.f.toledo@gmail.com');
-			});
-		}
-	public function show_boletin()
-	{
-		return view('desaparecidos.boletin');
-	}
+    public function send()
+        {
+            Mail::send(['text'=>'emails.contact'],['name','Lex'], function($message){
+                $message->to('alejandro.f.toledo@gmail.com', 'Para ti men')->subjeCt('Este es un test');
+                $message->from('alejandro.f.toledo@gmail.com');
+            });
+        }
+    public function show_boletin()
+    {
+        return view('desaparecidos.boletin');
+    }
 
 }
