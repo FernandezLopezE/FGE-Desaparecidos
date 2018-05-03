@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DatosDentalesController extends Controller
+class DatosDentalesDientesPerdidosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,8 +34,12 @@ class DatosDentalesController extends Controller
      */
     public function store(Request $request)
     {
-        
-        return response()->json('se inserto');
+        \DB::table('pivot_diente_perdido')->insert([
+            'idDiente' => $request->input('idDiente'),
+            'causaPerdida' => $request->input('causaPerdida'),
+            'idDentadura' => $request->input('idDentadura'),
+        ]);
+        return response()->json('exito');
     }
 
     /**
@@ -46,12 +50,7 @@ class DatosDentalesController extends Controller
      */
     public function show($id)
     {
-        $desaparecido = \App\Models\Desaparecido::find($id);
-        $dienteTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
-        return view('datosdentales.form_datos_dentales',[
-                    'dienteTamano' => $dienteTamano,
-                    'desaparecido' => $desaparecido
-                ]);
+        //
     }
 
     /**

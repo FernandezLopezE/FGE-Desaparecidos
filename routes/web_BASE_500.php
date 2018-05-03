@@ -31,13 +31,9 @@ Route::get('/', 'InicioController@index');
 
 	Route::resource('vestimentas','VestimentaController');
 
-
 	Route::resource('senas_particulares','SenasParticularesController');
 
 	Route::resource('datos_dentales','DatosDentalesController');
-
-	Route::resource('datos_dentales_dientes_perdidos','DatosDentalesDientesPerdidosController');
-
 
 
 
@@ -108,15 +104,16 @@ Route::get ('enviar','MailController@store');
 Route::resource('image-view','CargarDocumentosController');
 Route::post('image-view','CargarDocumentosController@store');
 //ruta a controlador MailController para envio de correo
-Route::post('/enviar_correo','MailController@store');
+Route::post('/enviar_correos','MailController@store');
 
-
+Route::get('/index_mail','MailController@show');
 
 
 
 //ladas
 Route::get('lada/{id}', 'LadaController@getLadas');
 Route::resource('/lada','LadaController');
+
 
 
 //Rutas Ruben
@@ -167,6 +164,9 @@ Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store')
 Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
 
 //mostrar vista de señas particulares 
+Route::get('/senas_particulares/{idDesaparecido}','SenasParticularesController@show_senas_particulares');
+Route::post('/senas_particulares/store_senas', 'SenasParticularesController@store_senas')
+	->name('senas_particulares.store_senas');
 Route::get('consultas/get_senas/{idCedula}', 'ConsultasController@jsonSenas')
 	->name('consultas.get_senas');
 
@@ -175,7 +175,6 @@ Route::get('/datos_dentales/{idDesaparecido}','DatosDentalesController@show_dato
 	->name('datos_dentales.show');
 Route::post('/datos_dentales/store_datos_dentales', 'DatosDentalesController@store_datos_dentales')
 	->name('datos_dentales.store_datos_dentales');
-
 
 //la siguiente es una ruta para crear el pdf
 
@@ -189,14 +188,15 @@ Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'Antece
 Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store');
 Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
 
-Route::get('/email', 'MailController@show')->name('mail.enviar');
 
 
 
 
 
 
-/*
+
+
+
 // Consultar todas la cedulas de investigación.
 Route::get('/desaparecido/edad/{fecha_nacimiento}', 'DesaparecidoController@getEdad');
 //la siguiente ruta es la ruta de la vista correo
@@ -255,13 +255,13 @@ Route::post('/desaparecido/store_datos_dentales', 'DesaparecidoController@store_
 Route::resource('/desaparecido','DesaparecidoController');
 
 
-/*Route::resource('domicilio','DomiciliosController');
+Route::resource('domicilio','DomiciliosController');
 Route::get('codigos/{id}', 'DomiciliosController@getCodigos');
 Route::get('municipio/{id}', 'DomiciliosController@getMunicipios');
 Route::get('localidades/{id}', 'DomiciliosController@getLocalidades');
 Route::get('colonias2/{id}', 'DomiciliosController@getColonias2');
 Route::get('colonias/{id}', 'DomiciliosController@getColonias');
-Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');*/
+Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');
 
 //Route::resource('boletin', 'BoletinController@show');
 
