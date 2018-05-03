@@ -94,59 +94,59 @@
 			<div class="form-group row">
 				<div class="col">
 					<!--{!! Form::checkbox('AMALGAMA', '2') !!}-->
-					<input class="form-check-input" type="checkbox" id="AMALGAMA" value=2 style="margin-top: 12px; margin-left: 0px">
-					<a class="btn" rel="popover" style="margin-left: 10px" data-img="{{ URL::to('/images/Dientes/amalgama.jpg')}}"><B>AMALGAMA</B></a>
+					<input class="form-check-input" type="checkbox" id="AMALGAMA" value=2 style="margin-top: 5px; margin-left: 0px">
+					<a  rel="popover" style="margin-left: 20px" data-img="{{ URL::to('/images/Dientes/amalgama.jpg')}}"><B>AMALGAMA</B></a>
 				</div>
 				<div class="col">
 					<!--{!! Form::checkbox('BLANQUEAMIENTO DENTAL', '3') !!}-->
-					<input class="form-check-input" style="margin-top: 11px" type="checkbox" id="BLANQUEAMIENTO_DENTAL" value=3>
-					<a class="btn" rel="popover" data-img="{{ URL::to('/images/Dientes/amalgama.jpg')}}"><B>BLANQUEAMIENTO DENTAL</B></a>
+					<input class="form-check-input" style="margin-top: 6px" type="checkbox" id="BLANQUEAMIENTO_DENTAL" value=3>
+					<a  rel="popover" data-img="{{ URL::to('/images/Dientes/amalgama.jpg')}}"><B>BLANQUEAMIENTO DENTAL</B></a>
 					<!--{!! Form::label ('BLANQUEAMIENTO DENTAL','BLANQUEAMIENTO DENTAL') !!}-->
 				</div>
 				<div class="col">
 					<!--{!! Form::checkbox('BRACKETS', '4') !!}-->
-					<input class="form-check-input" style="margin-top: 11px" type="checkbox" id="BRACKETS" value=4>
-					<a class="btn" rel="popover" style="margin-left: -10px" data-img="{{ URL::to('/images/Dientes/brackets.jpg') }}"><b>BRACKETS</b></a>
+					<input class="form-check-input" style="margin-top: 6px" type="checkbox" id="BRACKETS" value=4>
+					<a  rel="popover" data-img="{{ URL::to('/images/Dientes/brackets.jpg') }}"><b>BRACKETS</b></a>
 				</div>
 				<div class="col">
 					<!--{!! Form::checkbox('CARILLA', '5') !!}-->
-					<input class="form-check-input" style="margin-top: 11px" type="checkbox" id="CARILLA" value=5>
-					<a class="btn" rel="popover" style="margin-left: -10px" data-img="{{ URL::to('/images/Dientes/carillas.jpg') }}"><b>CARILLA</b></a>
+					<input class="form-check-input" style="margin-top: 6px" type="checkbox" id="CARILLA" value=5>
+					<a  rel="popover" data-img="{{ URL::to('/images/Dientes/carillas.jpg') }}"><b>CARILLA</b></a>
 				</div>
 				<div class="col">
 					<!--{!! Form::checkbox('CORONA ESTETICA', '6') !!}-->
-					<input class="form-check-input" style="margin-top: 11px" type="checkbox" id="CORONA_ESTETICA" value=6>
-					<a class="btn" rel="popover" style="margin-left: -10px" data-img="{{ URL::to('/images/Dientes/corona.jpg') }}"><b>CORONA ESTETICA</b></a>
+					<input class="form-check-input" style="margin-top: 6px" type="checkbox" id="CORONA_ESTETICA" value=6>
+					<a  rel="popover" style="margin-left: -2px" data-img="{{ URL::to('/images/Dientes/corona.jpg') }}"><b>CORONA ESTETICA</b></a>
 				</div>
 			</div>
 			<div class="form-group row">
 				<div class="col">
 					<!--{!! Form::checkbox('ENDODONCIA', '7') !!}-->
 					<input class="form-check-input" style="margin-left: 0px" type="checkbox" id="ENDODONCIA" value=7>
-					<a class="btn" rel="popover" style="margin-top: -8px; margin-left: 10px;" data-img="{{ URL::to('/images/Dientes/endodoncia.jpg') }}"><b>ENDODONCIA</b></a>
+					<a  rel="popover" style="margin-top: -8px; margin-left: 20px;" data-img="{{ URL::to('/images/Dientes/endodoncia.jpg') }}"><b>ENDODONCIA</b></a>
 				</div>
 				<div class="col">
 					<!--{!! Form::checkbox('IMPLANTE', '8') !!}-->
 					<input class="form-check-input" type="checkbox" id="IMPLANTE" value=8>
-					<a class="btn" rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>IMPLANTE</b></a>
+					<a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>IMPLANTE</b></a>
 				</div>
 				<div class="col">
 					<!--{!! Form::checkbox('OBTURACIÓN TEMPORAL', '9') !!}-->
 					<!--{!! Form::label ('OBTURACIÓN TEMPORAL','OBTURACIÓN TEMPORAL') !!}-->
 					<input class="form-check-input" type="checkbox" id="OBTURACION_TEMPORAL" value=9>
-					<a class="btn" rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>OBTURACIÓN TEMPORAL</b></a>
+					<a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>OBTURACIÓN TEMPORAL</b></a>
 				</div>
 				<div class="col">
 					<!--{!! Form::checkbox('PROTESIS FIJA', '10') !!}-->
 					<!--{!! Form::label ('PROTESIS FIJA','PROTESIS FIJA') !!}-->
 					<input class="form-check-input" type="checkbox" id="PROTESIS_FIJA" value=10>
-					<a class="btn" rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>PROTESIS FIJA</b></a>
+					<a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>PROTESIS FIJA</b></a>
 				</div>
 				<div class="col">
 					<!--{!! Form::checkbox('PROTESIS REMOVIBLE', '11') !!}-->
 					<!--{!! Form::label ('PROTESIS REMOVIBLE','PROTESIS REMOVIBLE') !!}-->
 					<input class="form-check-input" type="checkbox" id="PROTESIS_REMOVIBLE" value=11>
-					<a class="btn" rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>PROTESIS REMOVIBLE</b></a>
+					<a  rel="popover" style="margin-top: -10px; margin-left: 0px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>PROTESIS REMOVIBLE</b></a>
 				</div>
 			</div>
 			<div class="form-group row">
@@ -154,30 +154,31 @@
 					<!--{!! Form::checkbox('PROTESIS TOTAL', '12') !!}-->
 					<!--{!! Form::label ('PROTESIS TOTAL','PROTESIS TOTAL') !!}-->
 					<input class="form-check-input" style="margin-left: -0px;" type="checkbox" id="PROTESIS_TOTAL" value=12>
-					<a class="btn" rel="popover" style="margin-top: -8px; margin-left: 8px" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>PROTESIS TOTAL</b></a>
+					<a  rel="popover" style="margin-top: -8px; margin-left: 20px" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>PROTESIS TOTAL</b></a>
 				</div>
 				<div class="col">
 					<!--{!! Form::checkbox('RESINA', '13') !!}-->
 					<input class="form-check-input" type="checkbox" id="RESINA" value=13>
-					<a class="btn" rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RESINA</b></a>
+					<a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RESINA</b></a>
 				</div>
 				<div class="col">
 					<!--{!! Form::checkbox('RETENEDOR', '14') !!}-->
 					<!--{!! Form::label ('RETENEDOR','RETENEDOR') !!}-->
 					<input class="form-check-input" type="checkbox" id="RETENEDOR" value=14>
-					<a class="btn" rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RETENEDOR</b></a>
+					<a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RETENEDOR</b></a>
 				</div>
 				<div class="col">
 					<!--{!! Form::checkbox('SELLADOR FS', '15') !!}-->
 					<!--{!! Form::label ('SELLADOR FS','SELLADOR FS') !!}-->
 					<input class="form-check-input" type="checkbox" id="SELLADOR" value=15>
-					<a class="btn" rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>SELLADOR FS</b></a>
+					<a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>SELLADOR FS</b></a>
 				</div>
 				<div class="col">
 					<!--{!! Form::checkbox('OTRO', '16') !!}-->
 					<!--{!! Form::label ('OTRO','OTRO') !!}-->
 					<input class="form-check-input" type="checkbox" id="OTRO" value=16>
-					<a class="btn" rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>OTRO</b></a>
+					{!! Form::label ('OTRO','OTRO') !!}
+					<!--<a  rel="popover" style="margin-top: -8px;"><b>OTRO</b></a>-->
 				</div>
 			</div>
 			<div id="otroTrata" class="form-group row">
@@ -301,6 +302,9 @@
                     {!! Form::label ('nombreDiente','Perfil seleccionado') !!}
                     {!! Form::text ('nombres',old('nombres'), ['class' => 'form-control mayuscula', 'id' => 'valorPerfil',] )!!}
                 </div>
+                <div class="col">
+                    {{ Form::hidden('idperfilselec','', array('id' => 'idperfilselec')) }}
+                </div>
             </div><hr>
 
             <h5>Tipo de mordida</h5>
@@ -317,6 +321,9 @@
                 <div class="col-md-6" id="mordidaseleccionada">
                     {!! Form::label ('nombreDiente','Tipo de mordida seleccionada') !!}
                     {!! Form::text ('nombres',old('nombres'), ['class' => 'form-control mayuscula', 'id' => 'valormordida',] )!!}
+                </div>
+                <div class="col">
+                    {{ Form::hidden('idmordidaselec','', array('id' => 'idmordidaselec')) }}
                 </div>
             </div><hr>            
 
@@ -335,6 +342,9 @@
                     {!! Form::label ('nombreDiente','Tipo de sonrisa seleccionada') !!}
                     {!! Form::text ('nombres',old('nombres'), ['class' => 'form-control mayuscula', 'id' => 'dientes_girados',] )!!}
                 </div>
+                <div class="col">
+                    {{ Form::hidden('idsonrisaselec','', array('id' => 'idsonrisaselec')) }}
+                </div>
             </div><hr>
 		</div>
 	</div>
@@ -346,17 +356,6 @@
 {!! Html::script('personal/js/jquery.mapify.js') !!}
 
 <script type="text/javascript">
-
-	
-
-	$("img").click(function() {
-		 var diente = ($(this).attr("value"));
-		 alert(diente);
-		 console.log("input#"+diente);
-		 $("input#"+diente).val(diente);
-		 //$("#modalSonrisa").modal('hide');
-	});
-
 
 	$(function() {
         $('#toggle-event').change(function() {
@@ -427,25 +426,18 @@
 		$('#dentistahr').hide();
 
 		$('#PMSID').hide();
-		$('#PMSIPDP').hide();
-
+		
 		$('#SPSID').hide();
-		$('#SPSIPDP').hide();
 
 		$('#PPSID').hide();
-		$('#PPSIPDP').hide();
 
 		$('#CSID').hide();
-		$('#CSIPDP').hide();
 
 		$('#ILSID').hide();
-		$('#ILSIPD').hide();
 
 		$('#ICSID').hide();
-		$('#ICSIPDP').hide();
 
 		$('#ICSDD').hide();
-		$('#ICSDPDP').hide();
 
 		$('#atencionOdonto').change(function() {
 			atencion = $('#atencionOdonto').val();
@@ -606,13 +598,12 @@
 			cont1 = cont1 + 1;
 			if (cont1 == 1) {
 				$('#PMSID').show();
-				$('#PMSIPDP').show();
 				$("#PMSI").val(diente26);
 			}else{
 				cont1 = 0;
 				$('#PMSID').hide();
-				$('#PMSIPDP').hide();
 				$("#PMSI").val('');
+				$("#PMSIP").val('');
 			}
 		});  
 
@@ -622,13 +613,12 @@
 			cont2 = cont2 + 1;
 			if (cont2 == 1) {
 				$('#SPSID').show();
-				$('#SPSIPDP').show();
 				$("#SPSI").val(diente25);
 			}else{
 				cont2 = 0;
 				$('#SPSID').hide();
-				$('#SPSIPDP').hide();
 				$("#SPSI").val('');
+				$("#SPSIP").val('');
 			}
 		});    
 
@@ -638,13 +628,12 @@
 			cont3 = cont3 + 1;
 			if (cont3 == 1) {
 				$('#PPSID').show();
-				$('#PPSIPDP').show();
    				$("#PPSI").val(diente24);
 			}else{
 				cont3 = 0;
 				$('#PPSID').hide();
-				$('#PPSIPDP').hide();
    				$("#PPSI").val('');
+   				$("#PPSIP").val('');
 			}
    		});    
 
@@ -654,13 +643,12 @@
    			cont4 = cont4 + 1;
    			if (cont4 == 1) {
    				$('#CSID').show();
-				$('#CSIPDP').show();
    				$("#CSI").val(diente23);
    			}else{
    				cont4 = 0;
    				$('#CSID').hide();
-				$('#CSIPDP').hide();
    				$("#CSI").val('');
+   				$("#CSIP").val('');
    			}
    		});    
 
@@ -670,13 +658,12 @@
    			cont5 = cont5 + 1;
    			if (cont5 == 1) {
    				$('#ILSID').show();
-				$('#ILSIPD').show();
    				$("#ILSI").val(diente22);
    			}else{
    				cont5 = 0;
    				$('#ILSID').hide();
-				$('#ILSIPD').hide();
    				$("#ILSI").val('');
+   				$("#ILSIP").val('');
    			}
    		});    
 
@@ -686,13 +673,12 @@
    			cont6 = cont6 + 1;
    			if (cont6 == 1) {
    				$('#ICSID').show();
-				$('#ICSIPDP').show();
    				$("#ICSI").val(diente21);
    			}else{
    				cont6 = 0;
    				$('#ICSID').hide();
-				$('#ICSIPDP').hide();
    				$("#ICSI").val('');
+   				$("#ICSIP").val('');
    			}
    		});    
 
@@ -702,13 +688,12 @@
    			cont7 = cont7 +1;
    			if (cont7 == 1) {
    				$('#ICSDD').show();
-				$('#ICSDPDP').show();
    				$("#ICSD").val(diente11);	
    			}else{
    				cont7 = 0;
    				$('#ICSDD').hide();
-				$('#ICSDPDP').hide();
    				$("#ICSD").val('');
+   				$("#ICSDP").val('');
    			}
    		});    
 
@@ -810,17 +795,102 @@
 		});
 
 		/************************************************************************
+		**** funciones para los slider's de Tipo de perfil **********************
+		************************************************************************/
+
+		tipoperfilrecto = $('#perfilRecto').attr("value");
+		tipoperfilrec = $('#perfilRecto').attr("alt");
+		$('#perfilRecto').click(function(){
+			$('#idperfilselec').val(tipoperfilrecto);
+			$('#valorPerfil').val(tipoperfilrec);
+			$("#modalPerfil").modal('hide');
+		});
+
+		tipoperfilconcavo = $('#perfilConcavo').attr("value");
+		tipoperfilconca = $('#perfilConcavo').attr("alt");
+		$('#perfilConcavo').click(function(){
+			$('#idperfilselec').val(tipoperfilconcavo);
+			$('#valorPerfil').val(tipoperfilconca);
+			$("#modalPerfil").modal('hide');
+		});
+
+		tipoperfilconvexo = $('#perfilConvexo').attr("value");
+		tipoperfilconvex = $('#perfilConvexo').attr("alt");
+		$('#perfilConvexo').click(function(){
+			$('#idperfilselec').val(tipoperfilconvexo);
+			$('#valorPerfil').val(tipoperfilconvex);
+			$("#modalPerfil").modal('hide');
+		});
+
+		/************************************************************************
+		**** funciones para los slider's de Tipo de mordida *********************
+		************************************************************************/
+
+		tipomordidaAbierta = $('#mordidaAbierta').attr("value");
+		tipomordidaAbi = $('#mordidaAbierta').attr("alt");
+		$('#mordidaAbierta').click(function(){
+			$('#idmordidaselec').val(tipomordidaAbierta);
+			$('#valormordida').val(tipomordidaAbi);
+			$("#modalMordida").modal('hide');
+		});
+
+		tipomordidaCerrada = $('#mordidaCerrada').attr("value");
+		tipomordidaCerra = $('#mordidaCerrada').attr("alt");
+		$('#mordidaCerrada').click(function(){
+			$('#idmordidaselec').val(tipomordidaCerrada);
+			$('#valormordida').val(tipomordidaCerra);
+			$("#modalMordida").modal('hide');
+		});
+
+		tipomordidaCruzada = $('#mordidaCruzada').attr("value");
+		tipomordidaCruz = $('#mordidaCruzada').attr("alt");
+		$('#mordidaCruzada').click(function(){
+			$('#idmordidaselec').val(tipomordidaCruzada);
+			$('#valormordida').val(tipomordidaCruz);
+			$("#modalMordida").modal('hide');
+		});
+
+		/************************************************************************
+		**** funciones para los slider's de Tipo de sonrisa *********************
+		************************************************************************/
+
+		tipodienteSeparado = $('#DientesSeparados').attr("value");
+		tipodienteSepa = $('#DientesSeparados').attr("alt");
+		$('#DientesSeparados').click(function(){
+			$('#idsonrisaselec').val(tipodienteSeparado);
+			$('#dientes_girados').val(tipodienteSepa);
+			$("#modalSonrisa").modal('hide');
+		});
+
+		tipodienteGirados = $('#DientesGirados').attr("value");
+		tipodienteGira = $('#DientesGirados').attr("alt");
+		$('#DientesGirados').click(function(){
+			$('#idsonrisaselec').val(tipodienteGirados);
+			$('#dientes_girados').val(tipodienteGira);
+			$("#modalSonrisa").modal('hide');
+		});
+
+		tipodienteApinado = $('#DientesApinados').attr("value");
+		tipodienteApi = $('#DientesApinados').attr("alt");
+		$('#DientesApinados').click(function(){
+			$('#idsonrisaselec').val(tipodienteApinado);
+			$('#dientes_girados').val(tipodienteApi);
+			$("#modalSonrisa").modal('hide');
+		});
+
+
+
+		/************************************************************************
 		**** función para guardar los datos del form de dientes seleccionados ***
 		************************************************************************/
 
 		$('#btnDiente').click(function()
 		{
 			var dataString = {
-				idDiente : $('#14').val(),
+				idDiente : $('#dienteselec26').val(),
 				causaPerdida : $('#PMSIP').val(),
-				idDentadura   : 1,
+				idDentadura  : 1,
 			}
-			console.log(dataString);
 			$.ajax({
 				type: 'POST',
 				url:  routedientesPerdidos,

@@ -7,255 +7,231 @@
 @section('titulo', 'Registro único de personas desaparecidas')
 
 @section('content')
-	{!! Form::model($desaparecido, ['action' => 'ExtraviadoController@store']) !!}
+	{--!! Form::model($desaparecido, ['action' => 'ExtraviadoController@store']) !!--}
 
 	{{ Form::hidden('idCedula', $cedula->id, array('id' => 'idCedula')) }}
 
 @include('navs.navs_datos',array('activar' => 'desaparecido'))
-
+<button type="submit" class="btn btn-dark pull-right"  id="btnAgregarDesaparecido">
+	GUARDAR		
+</button>
 <div class="card-body bg-white">
-		<div class="card-header">
-			<h5 class="card-title">Datos generales de la persona desaparecida
-				<button type="submit" class="btn btn-dark pull-right"  id="btnAgregarInformante">
-					<i class="fa fa-plus"></i> GUARDAR		
-				</button>
-			</h5>		
-		</div>
-    </br>
-    <input type="reset" class="btn btn-dark pull-right" value="LIMPIAR CAMPOS">
-    </br>
 		<div class="card-body">
 			<div class="row">
-				<div class="col">
-						{!! Form::label ('sexo','Género:') !!}
-						{!! Form::select ('sexo',
-											$sexos,
-											'',
-											['class' => 'form-control',
-												 'id' => 'sexo'])!!}	
+				<div class="form-group col-md-4" id="div_sexo">
+					{!! Form::label ('sexo','Género:',['class' => 'form-control-label']) !!}
+					{!! Form::select ('sexo',
+										$sexos,
+										'',
+										['class' => 'form-control',
+											'id' => 'sexo'])!!}
+					<div class="form-control-feedback" id="error_sexo"></div>	
 				</div>			
 			</div>
 			<div id ="mostrarGenero" style="display: none">
 				<div class="row">
-					<div class="col">
-						{!! Form::label ('nombres','Nombres(s):') !!}
+					<div class="form-group col-md-4" id="div_nombres">
+						{!! Form::label ('nombres','Nombres(s):',['class' => 'form-control-label']) !!}
 						{!! Form::text ('nombres',
 											'',
 											['class' => 'form-control mayuscula',
-												'id' => 'nombres',
-												'data-validation' => 'required',
-												'data-validation-error-msg-required' => '* Ingresa un nombre'
+												'id' => 'nombres'
 											] )!!}
+						<div class="form-control-feedback" id="error_nombres"></div>
 					</div>
-					<div class="col">
-						{!! Form::label ('primerAp','Primer apellido:') !!}
+					<div class="form-group col-md-4" id="div_primerAp">
+						{!! Form::label ('primerAp','Primer apellido:',['class' => 'form-control-label']) !!}
 						{!! Form::text ('primerAp',
 											'',
 											['class' => 'form-control mayuscula',
 												'id' => 'primerAp',
-												'data-validation' => 'required',
-												'data-validation-error-msg-required' => '* Ingresa un apellido'
 											] )!!}
+						<div class="form-control-feedback" id="error_primerAp"></div>
 					</div>
-					<div class="col">
-						{!! Form::label ('segundoAp','Segundo apellido:') !!}
+					<div class="form-group col-md-4" id="div_segundoAp">
+						{!! Form::label ('segundoAp','Segundo apellido:',['class' => 'form-control-label']) !!}
 						{!! Form::text ('segundoAp',
 											'',
 											['class' => 'form-control mayuscula',
 												'id' => 'segundoAp'] )!!}
+						<div class="form-control-feedback" id="error_segundoAp"></div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col">
-						{!! Form::label ('apodo','Apodo (alias):') !!}
+					<div class="form-group col-md-4" id="div_apodo">
+						{!! Form::label ('apodo','Apodo (alias):', ['class' => 'form-control-label']) !!}
 						{!! Form::text ('apodo',
 											'',
 											['class' => 'form-control mayuscula',
 												'id' => 'apodo' ] )!!}
+						<div class="form-control-feedback" id="error_apodo"></div>
 					</div>
-					<div class="col">
-						{!! Form::label ('idNacionalidad','Nacionalidad:') !!}
+					<div class="form-group col-md-4" id="div_idNacionalidad">
+						{!! Form::label ('idNacionalidad','Nacionalidad:', ['class' => 'form-control-label']) !!}
 						{!! Form::select ('idNacionalidad',
 											$nacionalidades,
 											'',
 											['class' => 'form-control',
 												'id' => 'idNacionalidad',
-												'data-validation' => 'required',
-												'data-validation-error-msg-required' => '* Elija una opción'
 											] )!!}
+						<div class="form-control-feedback" id="error_idNacionalidad"></div>
 					</div>
-					<div class="col">
-						{!! Form::label('idEstadoOrigen', 'Estado natal:') !!}
+					<div class="form-group col-md-4" id="div_idNacionalidad">
+						{!! Form::label('idEstadoOrigen', 'Estado natal:', ['class' => 'form-control-label']) !!}
 						{!! Form::select('idEstadoOrigen',
 											$estados,
 											'',
 											['class' => 'form-control',
 												'placeholder' => 'Seleccione una entidad federativa',
-												'required'
 											]) !!}
+							<div class="form-control-feedback" id="error_idNacionalidad"></div>
 					</div>				
 				</div>
 				<div class="row">	
-					<div class="col">
-						{!! Form::label ('fechaNacimiento','Fecha de nacimiento:') !!}
+					<div class="form-group col-md-4" id="div_fechaNacimiento">
+						{!! Form::label ('fechaNacimiento','Fecha de nacimiento:', ['class' => 'form-control-label']) !!}
 						{!! Form::text ('fechaNacimiento',
 											'',
 											['class' => 'form-control',
-											'id' => 'fechaNacimiento' ,
-											'data-validation' => 'required date',
-											'data-validation-error-msg' => 'Ingrese una fecha valida o menor a la actual',
-											'data-validation-format'=>"dd/mm/yyyy"] )!!}
+												'id' => 'fechaNacimiento'
+											] )!!}
+						<div class="form-control-feedback" id="error_fechaNacimiento"></div>
 					</div>			
-					<div class="col">
-						{!! Form::label ('edadExtravio','Edad de extravío:') !!}
+					<div class="form-group col-md-4" id="div_edadExtravio">
+						{!! Form::label ('edadExtravio','Edad de extravío:', ['class' => 'form-control-label']) !!}
 						{!! Form::text ('edadExtravio',
 										old('edadExtravio'),
 										['class' => 'form-control',
 											'id' => 'edadExtravio'
 										] )!!}
+						<div class="form-control-feedback" id="error_edadExtravio"></div>
 					</div>
-					<div class="col">
-						{!! Form::label ('edadAparente','Edad aparente:') !!}
+					<div class="form-group col-md-4" id="div_edadAparente">
+						{!! Form::label ('edadAparente','Edad aparente:', ['class' => 'form-control-label']) !!}
 						{!! Form::text ('edadAparente',
 										old('edadAparente'),
 										['class' => 'form-control',
-											'id' => 'edadAparente',
-											'data-validation' => 'required number length',
-											'data-validation-error-msg' => '* Ingrese una edad aparente menos a 130',
-											'data-validation-allowing'=>"range[1;130]",
-											'data-validation-length'=>"0-3",
-											'data-mask'=>"000",
-											'min'=>"0",
-											'max'=>"150"
+											'id' => 'edadAparente'
 										] )!!}
+						<div class="form-control-feedback" id="error_edadAparente"></div>
 					</div>
 				</div>
 				<div class="row">	
-					<div class="col">			
-						{!! Form::label('curp', 'C.U.R.P.') !!}
+					<div class="form-group col-md-4" id="div_curp">			
+						{!! Form::label('curp', 'C.U.R.P.', ['class' => 'form-control-label']) !!}
 						{!! Form::text('curp',
 										 '',
 										 ['class' => 'form-control',
-										 	'placeholder' => 'Ingrese el C.U.R.P.',
-										 	'required'
+										 	'placeholder' => 'Ingrese el C.U.R.P.'
 										 ]) !!}
+						<div class="form-control-feedback" id="error_curp"></div>
 					</div>			
-					<div class="col">
-						{!! Form::label ('idEscolaridad','Escolaridad:') !!}
+					<div class="form-group col-md-4" id="div_idEscolaridad">
+						{!! Form::label ('idEscolaridad','Escolaridad:', ['class' => 'form-control-label']) !!}
 						{!! Form::select ('idEscolaridad',
 											$escolaridades,
 											'',
 											['class' => 'form-control',
-												'id' => 'escolaridad',
-												'data-validation' => 'required',
-												'data-validation-error-msg-required' => '* Elija una opción'
 											] )!!}
+						<div class="form-control-feedback" id="error_idEscolaridad"></div>
 					</div>
-					<div class="col">
-						{!! Form::label ('idOcupacion','Ocupación:') !!}
+					<div class="form-group col-md-4" id="div_idOcupacion">
+						{!! Form::label ('idOcupacion','Ocupación:', ['class' => 'form-control-label']) !!}
 						{!! Form::select ('idOcupacion',
 											$ocupaciones,
 											'',
-											['class' => 'form-control',
-												'id' => 'ocupacion',
-												'data-validation' => 'required',
-												'data-validation-error-msg-required' => '* Elija una opción'
+											['class' => 'form-control'
 											] )!!}
+						<div class="form-control-feedback" id="error_idOcupacion"></div>
 					</div>			
 				</div>
 				<div class="row">
-					<div class="col">
-							{!! Form::label ('idDocumentoIdentidad','Identificación:') !!}
-							{!! Form::select ('idDocumentoIdentidad',
-												$identificaciones,
-												'',
-												['class' => 'form-control',
-													'id' => 'idDocumentoIdentidad'
-												] )!!}
+					<div class="form-group col-md-4" id="div_idDocumentoIdentidad">
+						{!! Form::label ('idDocumentoIdentidad','Identificación:', ['class' => 'form-control-label']) !!}
+						{!! Form::select ('idDocumentoIdentidad',
+											$identificaciones,
+											'',
+											['class' => 'form-control',
+												'id' => 'idDocumentoIdentidad'
+											] )!!}
+						<div class="form-control-feedback" id="error_idDocumentoIdentidad"></div>
 					</div>
-					<div class="col"  style="display: none" id="otraIdDIV">
-							{!! Form::label ('otroDocIdentidad','Otro:') !!}
+					<div class="form-group col-md-4"  style="display: none" id="div_otroDocIdentidad">
+							{!! Form::label ('otroDocIdentidad','Otro:', ['class' => 'form-control-label']) !!}
 							{!! Form::text ('otroDocIdentidad',
 											old('otroDocIdentidad'),
-											['class' => 'form-control mayuscula',
-												'data-validation' => 'required',
-												'data-validation-help' => 'En caso de seleccionar otra identificación. Agregar aquí.',
-												'data-validation-depends-on' => 'identificacion',
-												'data-validation-depends-on-value' =>'Otro(especifique)',
-												'data-validation-error-msg-required' =>'Este campo es requerido.'
-											] )!!}
+											['class' => 'form-control mayuscula'])!!}
+							<div class="form-control-feedback" id="error_otroDocIdentidad"></div>
 					</div>
-					<div class="col">
-							{!! Form::label ('numDocIdentidad','No. Identificación:') !!}
+					<div class="form-group col-md-4" id="div_numDocIdentidad">
+							{!! Form::label ('numDocIdentidad','No. Identificación:', ['class' => 'form-control-label']) !!}
 							{!! Form::text ('numDocIdentidad',
 												old('numDocIdentidad'),
-												['class' => 'form-control mayuscula',
-													'data-validation' =>'required',
-													'data-validation-error-msg-required' =>'Este campo es requerido.',
-													'data-validation' =>'alphanumeric',
-													'data-validation-error-msg' =>'Este campo solo acepta datos alfanumericos.'
+												['class' => 'form-control mayuscula'
 												] )!!}
+							<div class="form-control-feedback" id="error_numDocIdentidad"></div>
 					</div>
 				</div>
 				<div class="row">
-					<div class="col">
-						{!! Form::label ('idEdocivil','Estado civil:') !!}
-						{!! Form::select ('idEdocivil',$edoscivil ,old('idEdocivil'), ['class' => 'form-control', 'id' => 'idEdocivil'] )!!}
-					</div>			
-				</div>
-				<div class="row" id="estaEmbarazada" style="display: none" >
-					<div class="col">
-						{!! Form::label ('embarazo','Esta embarazada:') !!}
+					<div class="form-group col-md-4" id="div_idEdocivil">
+						{!! Form::label ('idEdocivil','Estado civil:', ['class' => 'form-control-label']) !!}
+						{!! Form::select ('idEdocivil',
+											$edoscivil ,
+											old('idEdocivil'),
+											['class' => 'form-control',
+												'id' => 'idEdocivil'
+											] )!!}
+						<div class="form-control-feedback" id="error_idEdocivil"></div>
+					</div>
+					<div class="form-group col-md-4" id="div_embarazo" style="display: none">
+						{!! Form::label ('embarazo','Esta embarazada:', ['class' => 'form-control-label']) !!}
 						{!! Form::select ('embarazo',
 											['NO'=>'NO','SI'=>'SI', 'LO IGNORAN' => 'LO IGNORAN'],
 											old('embarazo'),
-											['class' => 'form-control',
-												'id' => 'embarazo'] )!!}
-					</div>				
+											['class' => 'form-control'] )!!}
+						<div class="form-control-feedback" id="error_embarazo"></div>
+					</div>			
 				</div>
 				<div class="row"  id="datosEmbarazo" style="display: none">
-					<div class="col">
-						{!! Form::label ('numGestacion','Cantidad:') !!}
+					
+					<div class="form-group col-md-4" id="div_numGestacion">
+						{!! Form::label ('numGestacion','Cantidad:', ['class' => 'form-control-label']) !!}
 						{!! Form::number ('numGestacion',
 											old('gestacionSemanas'),
-											['class' => 'form-control mayuscula',
-												'id' => 'NumGestacion',
-												'min'=>"0",
-												'max'=>"36"
-											] )!!}
-
+											['class' => 'form-control mayuscula'] )!!}
+						<div class="form-control-feedback" id="error_numGestacion"></div>
 					</div>
-					<div class="col">
-						{!! Form::label ('tipoGestacion','Periodo:') !!}
+					<div class="form-group col-md-4" id="div_tipoGestacion">
+						{!! Form::label ('tipoGestacion','Periodo:', ['class' => 'form-control-label']) !!}
 						{!! Form::select ('tipoGestacion',
 											['SEMANAS'=> 'SEMANAS','MESES' => 'MESES'],
 											'',
-											['class' => 'form-control ',
-												 'id' => 'tipoGestacion'] )!!}
+											['class' => 'form-control '] )!!}
+						<div class="form-control-feedback" id="error_tipoGestacion"></div>
 					</div>
-					<div class="col">
-						{!! Form::label ('rumoresBebe','Rumores sobre el nacimiento:') !!}
+					<div class="form-group col-md-4" id="div_rumoresBebe">
+						{!! Form::label ('rumoresBebe','Rumores sobre el nacimiento:', ['class' => 'form-control-label']) !!}
 						{!! Form::select ('rumoresBebe',
 											['NO'=>'NO','SI'=>'SI', 'LO IGNORAN' => 'LO IGNORAN'],
 											old('rumoresBebe'),
-											['class' => 'form-control',
-												 'id' => 'rumoresBebe'] )!!}
+											['class' => 'form-control'] )!!}
+						<div class="form-control-feedback" id="error_rumoresBebe"></div>
 					</div>	
 				</div>
 				<div class="row" id="datosPormenores" style="display: none" >
-					<div class="col">
-						{!! Form::label ('pormenores','Pormenores:') !!}
-						{!! Form::text ('pormenores',
+					<div class="form-group col-md-12" id="div_pormenores">
+						{!! Form::label ('pormenores','Pormenores:', ['class' => 'form-control-label']) !!}
+						{!! Form::textarea ('pormenores',
 											old('Pormenores'),
-											['class' => 'form-control mayuscula',
-												'id' => 'pormenores'] )!!}
+											['class' => 'form-control mayuscula'] )!!}
+						<div class="form-control-feedback" id="error_pormenores"></div>
 					</div>
 				</div>				
 			</div>
 		</div>
 	</div>
-
-{!! Form::close() !!}
+	@include('includes.modal')
+{--!! Form::close() !!--}
 
 @endsection
 
@@ -266,29 +242,114 @@
 {!! HTML::script('personal/js/sisyphus.min.js') !!}
 {!! HTML::script('personal/js/sisyphus.js') !!}
 
-<script type="text/javascript">
-    
-    
-//    window.addEventListener("beforeunload", function (e) {
-//  var confirmationMessage = "\o/";
-//
-//  (e || window.event).returnValue = confirmationMessage; //Gecko + IE
-//  return confirmationMessage;                            //Webkit, Safari, Chrome
-//});
-    
-    
+<script type="text/javascript">   
     
 var btnLimpiar = $('#btnLimpiar');
     
      $( "form" ).sisyphus( {
 	           excludeFields: $('input[name=_token]')
             });
-    
-		//Ocultar-mostrar pregunta ¿Está embarazada? en caso de que el sexo sea 'masculino'
 
-			//if (a == 2 || a == 3 || a == 4 || a == 5 || a == 6) {
-				//console.log('Mostrar el campo datos de pareja')
-				//}
+	var btnLimpiar = $('#btnLimpiar');
+	var routeIndex = '{!! route('consultas.index') !!}';		
+	var routeDesaparecido = '{!! route('extraviado.index') !!}';
+	var modalGral = $('#modalGeneral');
+	var modalTitle = $('.modal-title');
+	var modalBody = $('.modal-body');
+	var idCedula = '{!! $cedula->id !!}';
+    $('#idOcupacion').select2();
+
+    $('#btnAgregarDesaparecido').click(function(e)
+    {
+		var dataString = {
+			idCedula : idCedula,
+			sexo : $("#sexo").val(),
+			nombres : $("#nombres").val(),
+			primerAp : $("#primerAp").val(),
+			segundoAp : $("#segundoAp").val(),
+			apodo : $("#apodo").val(),
+			idNacionalidad : $("#idNacionalidad").val(),
+			idEstadoOrigen : $("#idEstadoOrigen").val(),
+			fechaNacimiento : $("#fechaNacimiento").val(),
+			edadExtravio : $("#edadExtravio").val(),
+			edadAparente : $("#edadAparente").val(),
+			curp : $("#curp").val(),
+			idEscolaridad : $("#idEscolaridad").val(),
+			idOcupacion : $("#idOcupacion").val(),
+			idDocumentoIdentidad : $("#idDocumentoIdentidad").val(),			
+			numDocIdentidad : $("#numDocIdentidad").val(),
+			idEdocivil : $("#idEdocivil").val(),			
+		}
+		if ($("#idDocumentoIdentidad").val() == 9){
+			dataString['otroDocIdentidad'] = $("#otroDocIdentidad").val();
+		} else {
+			dataString['otroDocIdentidad'] = null;
+		}
+		if ($("#sexo").val() == 'M') {
+			dataString['embarazo'] = $("#embarazo").val();
+			dataString['numGestacion'] = $("#numGestacion").val();
+			dataString['tipoGestacion'] = $("#tipoGestacion").val();
+			dataString['rumoresBebe'] = $("#rumoresBebe").val();
+			dataString['pormenores'] = $("#pormenores").val();
+		} else {
+			dataString['embarazo'] = 'NO';
+			dataString['numGestacion'] = null;
+			dataString['tipoGestacion'] = null;
+			dataString['rumoresBebe'] = 'NO';
+			dataString['pormenores'] = null;
+		}
+			
+		$.ajax({
+			type: 'POST',
+			url: routeDesaparecido,
+			data: dataString,
+			dataType: 'json',
+			success: function(data) {
+				//var errors = data.responseJSON;
+    			console.log(data);
+				/*modalInformanteAgregar.modal('hide');
+				table.bootstrapTable('refresh');*/
+
+			},
+			error: function(data) {
+				var errors = data.responseJSON;
+				console.log(errors);
+				modalTitle.empty();
+				modalBody.empty();
+				modalBody.append('<ul>');
+				$('.card-body div.has-danger').removeClass('has-danger');
+				$('.form-control-feedback').empty();
+				$.each(errors.errors, function(key, value){
+					//$('#'+key).addClass('text-red');
+					$('#div_'+key).addClass('has-danger');
+					$('input#'+key).addClass('form-control-danger');
+					$('#error_'+key).append(value);
+
+					modalBody.append('<li><code>'+value+'</code></li>');
+				});
+				modalBody.append('</ul>');
+
+				modalBody.append('<code>'+errors.message+'</code>');
+				
+				modalTitle.append('<i class="fa fa-warning"></i> Ooops... algo salió mal');
+				modalGral.modal('show');
+			}
+		});
+    });
+
+    	/*	$('.modal-body input.text-red').removeClass('text-red');
+		$('.modal-body div.has-error').removeClass('has-error');
+		$('.modal-body span').empty();
+		$.each(errors, function(i, item) {
+			console.log(i+' valor: '+item);
+			if (item) {
+				$('#'+i).addClass('text-red');
+				$('#div_'+i).addClass('has-error');
+				$('#error_'+i).append(item);
+			}							
+		});*/
+
+    
 
 		var routeIndex = '{!! route('consultas.index') !!}';
 		$('#fechaNacimiento').change(function(){  
@@ -321,12 +382,16 @@ var btnLimpiar = $('#btnLimpiar');
 
 			if (g=="H") {
 				$("#mostrarGenero").show();
+				$("#div_embarazo").hide();
+				$("#datosEmbarazo").hide();
+				$("#datosPormenores").hide();
+				$("#rumores").hide();
 			}else{
 				if (g=="M"){
 					$("#mostrarGenero").show();
-					$("#estaEmbarazada").show();
+					$("#div_embarazo").show();
 				}else{
-					$("#mostrarGenero").hide();
+					$("#mostrarGenero").hide();					
 				}
 				
 			}
@@ -354,11 +419,12 @@ var btnLimpiar = $('#btnLimpiar');
 		});
 
 		$('#idDocumentoIdentidad').change(function(){
-			documento = $('#idDocumentoIdentidad').val();			
-			if (documento == "8") {					
-					$("#otraIdDIV").show();
+			documento = $('#idDocumentoIdentidad').val();
+			console.log(documento);			
+			if (documento == "9") {					
+					$("#div_otroDocIdentidad").show();
 			} else {					
-					$("#otraIdDIV").hide();
+					$("#div_otroDocIdentidad").hide();
 			}
 		});
 
@@ -374,9 +440,9 @@ var btnLimpiar = $('#btnLimpiar');
 			console.log("El parentesoc es: "+f);
 
 			if (f==7) {
-				$("#otraIdDIV").show();
+				$("#div_idDocumentoIdentidad").show();
 			}else{
-				$("#otraIdDIV").hide();
+				$("#div_idDocumentoIdentidad").hide();
 			}
 	});
 

@@ -3,7 +3,7 @@
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-address-card"></i>   DATOS DE LA PERSONA</h5>
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -13,7 +13,6 @@
                 <!-- Fin del Contenido del formulario-->
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-dark" id="btnAgregarInformante"><i class="fa fa-save"></i>  GUARDAR</button>
                 <button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
               </div>
             </div>
