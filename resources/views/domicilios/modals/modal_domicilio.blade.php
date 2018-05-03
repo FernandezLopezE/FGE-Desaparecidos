@@ -123,6 +123,7 @@
 	  </div>
 	  <div class="modal-footer">
 	    <button type="button" class="btn btn-dark mr-auto" id="btnLimpiar"> LIMPIAR CAMPOS</button>
+	   <button type="button" class="btn btn-dark" id="btnActualizarD">ACTUALIZAR</button>
 		<button type="button" class="btn btn-dark" id="btnGuardarDomicilio">GUARDAR</button>
 		<button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
 	  </div>

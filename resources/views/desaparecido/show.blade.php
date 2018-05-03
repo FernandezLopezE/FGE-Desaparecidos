@@ -53,7 +53,7 @@
 				<dd class="col-sm-8">{!! $desaparecido->persona->curp !!} </dd>
 				<dt class="col-sm-4">Escolaridad:</dt>
 				<dd class="col-sm-8">{!! $desaparecido->escolaridad->nombre !!} </dd>
-				<dt class="col-sm-4">Ocupacion:</dt>
+				<dt class="col-sm-4">Ocupación:</dt>
 				<dd class="col-sm-8">{!! $desaparecido->ocupacion->nombre !!}</dd>
 				<dt class="col-sm-4">Identificación:</dt>
 				<dd class="col-sm-8">{!! $desaparecido->documento->nombre !!}</dd>
