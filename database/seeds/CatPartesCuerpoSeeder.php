@@ -35,7 +35,7 @@ class CatPartesCuerpoSeeder extends Seeder
             ['nombre' => 'LABIO SUPERIOR', 'partePadre' => '60'],		//20
             ['nombre' => 'MANO IZQUIERDA', 'partePadre' => '0'],     //21
             ['nombre' => 'MANO DERECHA', 'partePadre' => '0'],		//22
-            ['nombre' => 'MEJILLA', 'partePadre' => '0'],			//23
+            ['nombre' => 'MEJILLAS', 'partePadre' => '0'],			//23
             ['nombre' => 'MENTÓN', 'partePadre' => '60'],				//24
             ['nombre' => 'MUÑECA DERECHA', 'partePadre' => '22'],		//25
             ['nombre' => 'MUÑECA IZQUIERDA', 'partePadre' => '21'],   //26
@@ -54,7 +54,7 @@ class CatPartesCuerpoSeeder extends Seeder
             ['nombre' => 'PALMA IZQUIERDA', 'partePadre' => '21'],    //39
             ['nombre' => 'PANTORRILLA DERECHA', 'partePadre' => '46'],//40
             ['nombre' => 'PANTORRILLA IZQUIERDA', 'partePadre' => '47'],	//41
-            ['nombre' => 'PECHO', 'partePadre' => '0'],			//42
+            ['nombre' => 'PECHO DERECHO', 'partePadre' => '0'],			//42
             ['nombre' => 'PECHO IZQUIERDO', 'partePadre' => '0'],        //43
             ['nombre' => 'PIE DERECHO', 'partePadre' => '0'],			//44
             ['nombre' => 'PIE IZQUIERDO', 'partePadre' => '0'],          //45
@@ -70,17 +70,19 @@ class CatPartesCuerpoSeeder extends Seeder
             ['nombre' => 'CABELLO', 'partePadre' => '0'],			//55
             ['nombre' => 'BARBA', 'partePadre' => '60'],				//56
             ['nombre' => 'BIGOTE', 'partePadre' => '60'],				//57
-            ['nombre' => 'PATILLA', 'partePadre' => '60'],			//58
+            ['nombre' => 'PATILLAS', 'partePadre' => '60'],			//58
             ['nombre' => 'UÑA', 'partePadre' => '0'],                //59
             ['nombre' => 'CABEZA', 'partePadre' => '0'],             //60
             ['nombre' => 'BRAZO DERECHO', 'partePadre' => '0'],      //61
-            ['nombre' => 'ANTEBRAZO DERECHO', 'partePadre' => '61'],
-            ['nombre' => 'DEDO MENIQUE DERECHO', 'partePadre' => '22'],       //11
-            ['nombre' => 'DEDO ANULAR DERECHO', 'partePadre' => '22'],        //12
-            ['nombre' => 'DEDO MEDIO DERECHO', 'partePadre' => '22'],         //13
-            ['nombre' => 'DEDO ÍNDICE DERECHO', 'partePadre' => '22'],
-            ['nombre' => 'ESPINILLA DERECHA', 'partePadre' => '46'],
-            ['nombre' => 'ESPINILLA IZQUIERDA', 'partePadre' => '47'],
+            ['nombre' => 'ANTEBRAZO DERECHO', 'partePadre' => '61'],    //62
+            ['nombre' => 'DEDO MENIQUE DERECHO', 'partePadre' => '22'],       //63
+            ['nombre' => 'DEDO ANULAR DERECHO', 'partePadre' => '22'],        //64
+            ['nombre' => 'DEDO MEDIO DERECHO', 'partePadre' => '22'],         //65
+            ['nombre' => 'DEDO ÍNDICE DERECHO', 'partePadre' => '22'],//66
+            ['nombre' => 'ESPINILLA DERECHA', 'partePadre' => '46'],//67
+            ['nombre' => 'ESPINILLA IZQUIERDA', 'partePadre' => '47'],//68
+            ['nombre' => 'DEDO PULGAR DERECHO', 'partePadre' => '22'],//69
+            ['nombre' => 'DEDO PULGAR IZQUIERDO', 'partePadre' => '21'],//70
             
             
         ]);
