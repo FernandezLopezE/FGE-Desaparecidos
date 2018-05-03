@@ -92,14 +92,8 @@
 			</div><br>
 
 			<div class="row" id=""  > 
-				<div class="form-group col-lg-2">
-					{!! Form::label ('tipoTel','Tipo de telefono:') !!}
-					{!! Form::select ('tipoTel',
-										$tiposTelefonos,
-										'',
-										['class' => 'form-control'])!!}	
-				</div>
-				<div class="form-group col-lg-3">
+
+				<div class="form-group col-lg-6">
 					{!! Form::label ('telefonos','Número:') !!}
 					{!! Form::text ('telefonos',
 										old('telefonos'), 
@@ -108,7 +102,7 @@
 											'data-validation-error-msg-required' => 'El campo es requerido'
 										] )!!}				
 				</div>
-				<div class="form-group col-lg-1">
+				<div class="form-group col-lg-2">
 					{!! Form::label ('ext','Ext:') !!}
 					{!! Form::text ('ext',old(''), ['class' => 'form-control mayuscula'] )!!}				
 				</div>	
@@ -123,7 +117,11 @@
 	  </div>
 	  <div class="modal-footer">
 	    <button type="button" class="btn btn-dark mr-auto" id="btnLimpiar"> LIMPIAR CAMPOS</button>
+<<<<<<< HEAD
 	   <button type="button" class="btn btn-dark" id="btnActualizarD">ACTUALIZAR</button>
+=======
+	    <button type="button" class="btn btn-dark" id="btnActualizarD">ACTUALIZAR</button>
+>>>>>>> 48bcee7842b3edbb5899d62b06ea3391a8bbb38e
 		<button type="button" class="btn btn-dark" id="btnGuardarDomicilio">GUARDAR</button>
 		<button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
 	  </div>

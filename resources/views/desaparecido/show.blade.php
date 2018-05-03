@@ -39,14 +39,14 @@
 							NO DEFINIDO
 					@endswitch
 				</dd>
-				<dt class="col-sm-4">Nacionalildad:</dt>
+				<dt class="col-sm-4">Nacionalidad:</dt>
 				<dd class="col-sm-8">{!! $desaparecido->persona->nacionalidad->nombre !!} </dd>
 				<dt class="col-sm-4">Estado natal:</dt>
 				<dd class="col-sm-8">{!! $desaparecido->persona->estado->nombre !!} </dd>
 				<dt class="col-sm-4">Fecha nacimiento:</dt>
 				<dd class="col-sm-8">{!! Carbon\Carbon::parse($desaparecido->persona->fechaNacimiento)->format('d/m/Y') !!} </dd>
 				<dt class="col-sm-4">Edad de extravio:</dt>
-				<dd class="col-sm-8">{!! $desaparecido->edadExtravio !!} </dd>
+				<dd class="col-sm-8">{!! $desaparecido->edadExtravío !!} </dd>
 				<dt class="col-sm-4">Edad aparente:</dt>
 				<dd class="col-sm-8">{!! $desaparecido->edadAparente !!} </dd>
 				<dt class="col-sm-4">CURP:</dt>

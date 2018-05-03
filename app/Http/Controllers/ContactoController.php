@@ -46,6 +46,7 @@ public function create($id)
 
 			$sexos = array('H' => 'MASCULINO', 'M' => 'FEMENINO');
 			$escolaridades      = \App\Models\CatEscolaridad::all()->pluck('nombre','id');
+            $redes              = \App\Models\CatRedesSociales::all()->pluck('nombre','nombre');
 			$ocupaciones        = \App\Models\CatOcupacion::all()->pluck('nombre','id');
 			$identificaciones   = \App\Models\CatDocumento::all()->pluck('nombre','id');
 			$edoscivil          = \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
@@ -63,6 +64,9 @@ public function create($id)
 			$tiposDireccion = array('PERSONAL' => 'PERSONAL',
 									'TRABAJO' => 'TRABAJO',
 									'FAMILIAR' => 'FAMILIAR');
+            $tiposContacto = array('TELEFONO' => 'TELEFONO',
+									'CORREO' => 'CORREO ELECTRÓNICO',
+									'REDSOCIAL' => 'RED SOCIAL');
 
 			$tiposTelefonos = array('PERSONAL' => 'PERSONAL',
 									'TRABAJO' => 'TRABAJO',
@@ -75,6 +79,7 @@ public function create($id)
 												'cedula',
 												'sexos',
 												'escolaridades',
+                                                'redes',                
 												'ocupaciones',
 												'identificaciones',
 												'edoscivil',
@@ -90,7 +95,9 @@ public function create($id)
 												'informantes',
 												'codigos',
 												'tiposDireccion',
+                                                'tiposContacto',
 												'tiposTelefonos'
+                
 											));
 		} 
 	}
@@ -105,7 +112,12 @@ public function create($id)
 	{
 
 
-		$tipo_telefono = $request->input('tipoTel');
+	
+        $tipoContacto = $request->input('tipoContacto');
+        
+        if ($tipoContacto == 'TELEFONO'){
+            
+       	$tipo_telefono = $request->input('tipoTel');
 		$lada = $request->input('lada');
 		$ext = $request->input('ext');
 		foreach ($request->input('telefono') as $index => $value) {
@@ -115,16 +127,45 @@ public function create($id)
 								'ext' => $ext[$index]
 						);
 		}
-
+        
 		$contactos = \App\Models\Contacto::create([
+            
+            'idDesaparecido' 		=> $request->input('idDesaparecido'),
+			'tipoContacto'		=> $request->input('tipoContacto'),
+			'datos'          	=> json_encode($telefonos),	
+            
+		
 
-			'idDesaparecido' 		=> $request->input('idDesaparecido'),
-			'correoElectronico'		=> $request->input('correoElectronico'),
-			'telefono'          	=> json_encode($telefonos),		 
-			 'redesSociales'		=> json_encode(array(
-			 									'redesSociales' => $request->input('redesSociales'))),
+//			'idDesaparecido' 		=> $request->input('idDesaparecido'),
+//			'correoElectronico'		=> $request->input('correoElectronico'),
+//			'telefono'          	=> json_encode($telefonos),		 
+//			 'redesSociales'		=> json_encode(array(
+//			 									'redesSociales' => $request->input('redesSociales'))),
 
 		]);
+             }else{
+            if ($tipoContacto == 'CORREO'){
+            	$contactos = \App\Models\Contacto::create([
+            
+            'idDesaparecido' 		=> $request->input('idDesaparecido'),
+			'tipoContacto'		=> $request->input('tipoContacto'),
+			'datos'          	=> json_encode($request->input('correoElectronico')),	
+            
+		]);
+        } else{
+               if ($tipoContacto == 'REDSOCIAL'){
+            	$contactos = \App\Models\Contacto::create([
+            
+            'idDesaparecido' 		=> $request->input('idDesaparecido'),
+			'tipoContacto'		    => $request->input('tipoContacto'),
+			'datos'          	    => json_encode(array( 'RED SOCIAL' => $request->input('redesSociales'), 'NOMBRE DE USUARIO' =>$request->input('nombreUsuario') )),	
+            
+		]);
+        } 
+            }
+            
+        }
+       
 
 		return response()->json($contactos);
 		
@@ -153,7 +194,8 @@ public function create($id)
 
 		
 		$contactos = Contacto::find($idDesaparecido);
-		
+        $redes     = \App\Models\CatRedesSociales::all()->pluck('nombre','nombre');
+
 
 		//$ladas 				= \App\Models\CatNacionalidad::all()->pluck('lada','id');
 		
@@ -161,12 +203,19 @@ public function create($id)
 		$tiposTelefonos = array('PERSONAL' => 'PERSONAL',
 								'TRABAJO' => 'TRABAJO',
 								'CELULAR' => 'CELULAR');
+        $tiposContacto = array(     'SELECCIONE' => 'SELECCIONE UN TIPO',
+                                    'TELEFONO' => 'TELEFONO',
+									'CORREO' => 'CORREO ELECTRÓNICO',
+									'REDSOCIAL' => 'RED SOCIAL');
 
 	
 		return view('contactos.index',
 					compact('cedula',
 								'desaparecido',
+                                'tiposContacto',
+                                'redes',
 								'tiposTelefonos'
+                            
 							));		
 	}
 

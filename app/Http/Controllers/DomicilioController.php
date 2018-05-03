@@ -36,8 +36,7 @@ class DomicilioController extends Controller
      */
     public function store(Request $request)
     {        
-        $telefonos[] = array('tipoTel' => $request->input('tipoTel'),
-                            'telefono' => $request->input('telefonos'),
+        $telefonos[] = array('telefono' => $request->input('telefonos'),
                             'ext' => $request->input('ext')
                     );
         
@@ -79,9 +78,9 @@ class DomicilioController extends Controller
         $tiposDireccion = array('PERSONAL' => 'PERSONAL',
                                 'TRABAJO' => 'TRABAJO',
                                 'FAMILIAR' => 'FAMILIAR');
-        $tiposTelefonos = array('PERSONAL' => 'PERSONAL',
-                                'TRABAJO' => 'TRABAJO',
-                                'CELULAR' => 'CELULAR');
+//        $tiposTelefonos = array('PERSONAL' => 'PERSONAL',
+//                                'TRABAJO' => 'TRABAJO',
+//                                'CELULAR' => 'CELULAR');
 
         return view('domicilios.index', compact('desaparecido',
                                                 'estados',
@@ -90,7 +89,7 @@ class DomicilioController extends Controller
                                                 'colonias',
                                                 'codigos',
                                                 'tiposDireccion',
-                                                'tiposTelefonos',
+                                                //'tiposTelefonos',
                                                 'ladas'
                                                 ));
     }
