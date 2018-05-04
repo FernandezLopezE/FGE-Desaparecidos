@@ -71,15 +71,13 @@
 
 <body>
 
-{{-- PAGINA 1--}}
-
 <div id="encabezado"></div>
 		
 <div id="cuerpo">
 	
 	<p class="fuente"><strong> LIC. </strong>	<strong> {{--{!! $datos->nombreRemitente !!}--}} </strong>
 	</p>
-	<p class="fuente"><strong> DELEGADO REGIONAL DE LA POLICÍA MINISTERIAL</strong>
+	<p class="fuente"><strong> Director General de Tránsito del Estado</strong>
 	</p>
 	
 	
@@ -114,33 +112,16 @@
 
 	<div id="sangria">
 
-		<p class="fuente" align="justify">
-			Lo anterior para que comisione personal bajo su mando, que realice labores de investigación para que estén en condiciones de informar lo siguiente:
+		<p align="justify" class="fuente">
+			Lo anterior a efecto de que las documentales antes señaladas sean distribuidas en los distintas Delegaciones y/o puntos de revisión a su digno cargo, debiendo informar a esta Representación Social, de las acciones implementadas para dar cumplimiento  a lo solicitado, en un término no mayor a 24 horas.
 		</p>
 		<br>
-
-		<p class="fuente">
-			1.- Confirmar la ubicación exacta del lugar de los hechos;
-		</p>
-		<p class="fuente" align="justify">
-			2.- Si dentro de las últimas veinticuatro horas se ha suscitado alguna otra desaparición que pudiera estar relacionada con los hechos que se investigan;
-		</p>
-		<p class="fuente">
-			3.- Informe si en las últimas veinticuatro horas se han llevado a cabo operativos por parte de elementos de la SSP, Marina, Ejército, Policía Federal y/o Policía Ministerial;
-		</p>
-		<p class="fuente" align="justify">
-			4.- Indague en corrales de la localidad si se ha llevado a cabo el aseguramiento e ingreso de  vehículo que coincida con las descritas líneas arriba;
-		</p>
-		<p class="fuente">
-			5.- Informe nombre y domicilio de testigos;
+		<p align="justify" class="fuente">
+			De igual manera deberá informar de manera inmediata sobre el aseguramiento de vehículo que coincida con el descrito anteriormente.
 		</p>
 		<br>
-		<p class="fuente" align="justify">
-			Así también deberán indagar si en alguno de los distinto Centros de Detención, o si en alguno de los Hospitales de la Localidad ha sido ingresado persona alguna que coincida con las características Fiscas del ciudadano <strong>{{--{!! $datos->desaparecidoNombre !!} --}}</strong>.
-		</p>
-		<br>
-		<p class="fuente" align="justify">
-			La información solicitada deberá ser remitida en un término no mayor a 24 horas. Sin más por el momento aprovecho la ocasión para enviarle un cordial saludo.
+		<p  align="justify" class="fuente">
+			Sin más por el momento aprovecho la ocasión para enviarle un cordial saludo.
 		</p>
 	</div>
 </div>
@@ -161,15 +142,12 @@
 
 <div id="firma">
 	
-	
 	<p align="right" ><strong> FD :</strong>	<strong> ASDFAS651FG5135df351g3d135df1g13f51gd1hjt35896{{--{!! $datos->firma !!}--}} </strong>
 	</p>
 
 </div>
 
-
-
-{{-- PAGINA 2--}}
+<!--SEGUNDA HOJA-->
 
 <div id="encabezado"></div>
 		
@@ -177,7 +155,7 @@
 	
 	<p class="fuente"><strong> LIC. </strong>	<strong> {{--{!! $datos->nombreRemitente !!}--}} </strong>
 	</p>
-	<p class="fuente"><strong> Secretario de Salud del Estado de Veracruz</strong>
+	<p class="fuente"><strong> Secretario de Comunicaciones y Transporte del Estado</strong>
 	</p>
 	
 	
@@ -212,96 +190,24 @@
 
 	<div id="sangria">
 
-		<p class="fuente" align="justify">
-				Lo anterior a efecto de que las documentales antes señaladas sean distribuidas en los distintos Centros Médicos, ya sea Hospitales Públicos y Privados de Medicina General y/o Especializados, así como Unidades Médicas, salas de Urgencia y Anexos AA y NA, sean colocadas en lugares visibles al público en general, ya que estas acciones contribuyen a la búsqueda eficiente del ciudadano  <strong>{{--{!! $datos->desaparecidoNombre !!} --}}</strong>.
-		</p>
-		<br>
-		<p class="fuente" align="justify">
-			Así también deberá informar si existe ingreso de persona que coincida con el nombre y/o Características Fiscas del ciudadano <strong>{{--{!! $datos->desaparecidoNombre !!} --}}</strong>, en cualquiera de los distintos Centros Médicos, ya sea Hospitales Públicos y Privados de Medicina General y/o Especializados, así como Unidades Médicas , Salas de Urgencia y Anexos AA y NA durante las últimas 24 horas.
-		</p>
-		<br>
-		<p class="fuente">
-			La información solicitada deberá ser remitida en un término no mayor a 24 horas contadas a partir de la recepción del presente oficio. Sin más por el momento aprovecho la ocasión para enviarle un cordial saludo.
-		</p>
-		
-	</div>
-</div>
-	<br>
-
-<div id="atentamente">
-	
-	<p align="center" class="fuente"><strong> ATENTAMENTE</strong></p>
-	
-	<p align="center" class="fuente"><strong> LIC. </strong>	<strong> {{--{!! $datos->fiscalNombre !!}--}} </strong>
-	</p>
-	<p align="center" class="fuente"><strong> FISCAL {{--{!! $datos->fiscalNumero !!}--}} DE LA UNIDAD INTEGRAL DE PROCURACIÓN</strong></p>
-	<p align="center" class="fuente"><strong> DE JUSTICIA DEL {{--{!! $datos->numDistrito !!}--}}  DISTRITO JUDICIAL DE {{--{!! $datos->fiscalLugar !!}--}}, VERACRUZ</strong></p>
-
-</div>
-
-<div id="firma">
-	
-	
-	<p align="right" ><strong> FD :</strong>	<strong> ASDFAS651FG5135df351g3d135df1g13f51gd1hjt35896{{--{!! $datos->firma !!}--}} </strong>
-	</p>
-
-</div>
-
-{{-- PAGINA 3--}}
-
-<div id="encabezado"></div>
-		
-<div id="cuerpo">
-	
-	<p class="fuente"><strong> LIC. </strong>	<strong> {{--{!! $datos->nombreRemitente !!}--}} </strong>
-	</p>
-	<p class="fuente"><strong>Delegado del instituto Mexicano del Seguro Social</strong>
-	</p>
-	
-	
-	
-	 <p class="fuente"><strong> Xalapa, Ver. </strong>	<strong> {{--{!! $datos->fechaHoy !!}--}}  </strong></p>
-	
-	
-	
-	<p class="fuente"> <strong> No. de Inv. </strong><strong> {{--{!! $datos->numCarpeta !!} --}} </strong></p>
-	
-	
-	
-	<p class="fuente"><strong> OFICIO NO. FGE/FIM/FEADPD/</strong>	<strong> {{--{!! $datos->numOficio !!}/{!! $datos->anio !!} --}} </strong></p>
-	
-	<br>
-	<p class="fuente" align="left"><strong> PRESENTE</strong></p>	
-	
-	<div id="sangria">
-
-		<p align="justify"  class="fuente">
-			Con fundamento en lo que disponen el artículo 19, 20 y 21 de la Constitución General de la República; 67 Fracción I apartado A de la Constitución Política Local; <strong>{{--{!! $datos->articulos !!} --}} </strong></p>
-		<br>	
 		<p align="justify" class="fuente">
-			El Protocolo Homologado para la Búsqueda de Personas Desaparecidas y la Investigación del Delito de Desaparición Forzada; los acuerdos 025/2011, 01/2013, 023/2013, emitidos por el Procurador General de Justicia del Estado; acuerdo General número 07/2017 signado por el Fiscal General del Estado de Veracruz; I, II, V, VI y XVII, de la Declaración Americana de los Derechos y Deberes del Hombre; 1, 2, 3, 7 y 8 de la Declaración Universal de Derechos Humanos; 1, 3, 6 numero 1; 9 numero 1; 27 y 26 del Pacto Internacional de Derechos Civiles y Políticos; 3 y 5 del Pacto Internacional de Derechos Económicos, Sociales y Culturales; 8, 27 núm. 1, 9, 24 y 25 de la Convención Americana sobre Derechos Humanos, “Pacto San José”; 1, 8, 12 incisos a) y b) y 27) de los Principios y directrices básicas sobre el derecho de las víctimas de violaciones manifiestas de las normas Internacionales de Derechos Humanos y de violaciones graves del derecho internacional humanitario a interponer recursos y obtener reparaciones; 1, 2 y 3 de la Declaración Sobre los Principios Fundamentales  de justicia para las víctimas del delito y del abuso de poder; así como el artículo 7 Fracción X, de la Ley General de Victimas, le solicito su colaboración para con esta Representación Social, en la búsqueda y localización y presentación del ciudadano(a) <strong>{{--{!! $datos->desaparecidoNombre !!} --}}</strong>, quien se encuentra desaparecido, siendo visto por última vez en <strong>{{--{!! $datos->desaparecidoLugar !!} --}}</strong>, el día <strong>{{--{!! $datos->desaparecidoFecha !!} --}}</strong>, a las <strong>{{--{!! $datos->desaparecidoHora !!} --}}</strong>  horas, así como del vehículo en el que viajaba siendo un: <strong>{{--{!! $datos->vehiculoDescripcion !!} --}}</strong> para lo cual anexo al presente:
-		
-		</p>
-	</div>
-	<div>
-		<p class="fuente"> Cedula de Boletín de Persona Extraviada; y</p>		
-		<p class="fuente">	Registro Único de Persona Desaparecida;</p>
-	</div>
-
-	<div id="sangria">
-
-		<p class="fuente" align="justify">
-				Lo anterior a efecto de que las documentales antes señaladas sean distribuidas en los distintos Centros Médicos de Medicina General y/o Especializados, así como Unidades Médicas, salas de Urgencia y sean colocadas en lugares visibles al público en general, ya que estas acciones contribuyen a la búsqueda eficiente del ciudadano   <strong>{{--{!! $datos->desaparecidoNombre !!} --}}</strong>.
+			Lo anterior para que las documentales antes descritas sean distribuidas en las Casetas Carreteras de Peaje que se encuentran a lo largo del estado, debiendo informar a esta Representación Social, instruyéndoles que en caso de avistar al ciudadano <strong>{{--{!! $datos->desaparecidoNombre !!} --}}</strong> o al vehículo <strong>{{--{!! $datos->vehiculoDescripcion !!} --}}</strong>, deberá informar a esta Fiscalía de manera inmediata, proporcionando: 
 		</p>
 		<br>
-		<p class="fuente" align="justify">
-			Así también deberá informar si existe ingreso de persona que coincida con el nombre y/o Características Fiscas del ciudadano <strong>{{--{!! $datos->desaparecidoNombre !!} --}}</strong>, en cualquiera de los distintos Centros Médicos, ya sea Hospitales Públicos y Privados de Medicina General y/o Especializados, así como Unidades Médicas , Salas de Urgencia y Anexos AA y NA durante las últimas 24 horas.
+		<p align="justify" class="fuente">
+			•	Fecha y hora de avistamiento;
+		</p>
+		<p align="justify" class="fuente">
+			•	Lugar;
 		</p>
 		<br>
-		<p class="fuente">
-			La información solicitada deberá ser remitida en un término no mayor a 24 horas contadas a partir de la recepción del presente oficio. Sin más por el momento aprovecho la ocasión para enviarle un cordial saludo.
+		<p align="justify" class="fuente">
+			Así también por su parte deberá informar de las acciones implementadas para dar cumplimiento  a lo solicitado, en un término no mayor a 24 horas.	 
 		</p>
-		
+		<br>
+		<p align="justify" class="fuente">
+			Sin más por el momento aprovecho la ocasión para enviarle un cordial saludo.
+		</p>
 	</div>
 </div>
 	<br>
@@ -315,18 +221,16 @@
 	<p align="center" class="fuente"><strong> FISCAL {{--{!! $datos->fiscalNumero !!}--}} DE LA UNIDAD INTEGRAL DE PROCURACIÓN</strong></p>
 	<p align="center" class="fuente"><strong> DE JUSTICIA DEL {{--{!! $datos->numDistrito !!}--}}  DISTRITO JUDICIAL DE {{--{!! $datos->fiscalLugar !!}--}}, VERACRUZ</strong></p>
 
+
+
 </div>
 
 <div id="firma">
-	
 	
 	<p align="right" ><strong> FD :</strong>	<strong> ASDFAS651FG5135df351g3d135df1g13f51gd1hjt35896{{--{!! $datos->firma !!}--}} </strong>
 	</p>
 
 </div>
-
-
-
 
 
 
