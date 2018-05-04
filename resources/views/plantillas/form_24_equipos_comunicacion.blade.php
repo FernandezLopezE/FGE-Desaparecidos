@@ -79,7 +79,7 @@
 	
 	<p class="fuente"><strong> LIC. </strong>	<strong> {{--{!! $datos->nombreRemitente !!}--}} </strong>
 	</p>
-	<p class="fuente"><strong> Director del DIF municipal</strong>
+	<p class="fuente"><strong>Secretario de Seguridad Pública del Estado de Veracruz y/o Director de la Policía Ministerial y/o Encargado de la Región XXXI Xalapa, de la Policía Federal, y/o Encargado de la 26/A Zona Militar</strong>
 	</p>
 	
 	
@@ -103,7 +103,7 @@
 			Con fundamento en lo que disponen el artículo 19, 20 y 21 de la Constitución General de la República; 67 Fracción I apartado A de la Constitución Política Local; <strong>{{--{!! $datos->articulos !!} --}} </strong></p>
 		<br>	
 		<p align="justify" class="fuente">
-			El Protocolo Homologado para la Búsqueda de Personas Desaparecidas y la Investigación del Delito de Desaparición Forzada; los acuerdos 025/2011, 01/2013, 023/2013, emitidos por el Procurador General de Justicia del Estado; acuerdo General número 07/2017 signado por el Fiscal General del Estado de Veracruz; I, II, V, VI y XVII, de la Declaración Americana de los Derechos y Deberes del Hombre; 1, 2, 3, 7 y 8 de la Declaración Universal de Derechos Humanos; 1, 3, 6 numero 1; 9 numero 1; 27 y 26 del Pacto Internacional de Derechos Civiles y Políticos; 3 y 5 del Pacto Internacional de Derechos Económicos, Sociales y Culturales; 8, 27 núm. 1, 9, 24 y 25 de la Convención Americana sobre Derechos Humanos, “Pacto San José”; 1, 8, 12 incisos a) y b) y 27) de los Principios y directrices básicas sobre el derecho de las víctimas de violaciones manifiestas de las normas Internacionales de Derechos Humanos y de violaciones graves del derecho internacional humanitario a interponer recursos y obtener reparaciones; 1, 2 y 3 de la Declaración Sobre los Principios Fundamentales  de justicia para las víctimas del delito y del abuso de poder; así como el artículo 7 Fracción X, de la Ley General de Victimas, le solicito su colaboración para con esta Representación Social, en la búsqueda y localización y presentación del ciudadano(a) <strong>{{--{!! $datos->desaparecidoNombre !!} --}}</strong>, quien se encuentra desaparecido, siendo visto por última vez en <strong>{{--{!! $datos->desaparecidoLugar !!} --}}</strong>, el día <strong>{{--{!! $datos->desaparecidoFecha !!} --}}</strong>, a las <strong>{{--{!! $datos->desaparecidoHora !!} --}}</strong>  horas, así como del vehículo en el que viajaba siendo un: <strong>{{--{!! $datos->vehiculoDescripcion !!} --}}</strong> para lo cual anexo al presente:
+			El Protocolo Homologado para la Búsqueda de Personas Desaparecidas y la Investigación del Delito de Desaparición Forzada; los acuerdos 025/2011, 01/2013, 023/2013, emitidos por el Procurador General de Justicia del Estado; acuerdo General número 07/2017 signado por el Fiscal General del Estado de Veracruz; I, II, V, VI y XVII, de la Declaración Americana de los Derechos y Deberes del Hombre; 1, 2, 3, 7 y 8 de la Declaración Universal de Derechos Humanos; 1, 3, 6 numero 1; 9 numero 1; 27 y 26 del Pacto Internacional de Derechos Civiles y Políticos; 3 y 5 del Pacto Internacional de Derechos Económicos, Sociales y Culturales; 8, 27 núm. 1, 9, 24 y 25 de la Convención Americana sobre Derechos Humanos, “Pacto San José”; 1, 8, 12 incisos a) y b) y 27) de los Principios y directrices básicas sobre el derecho de las víctimas de violaciones manifiestas de las normas Internacionales de Derechos Humanos y de violaciones graves del derecho internacional humanitario a interponer recursos y obtener reparaciones; 1, 2 y 3 de la Declaración Sobre los Principios Fundamentales  de justicia para las víctimas del delito y del abuso de poder; así como el artículo 7 Fracción X, de la Ley General de Victimas, le solicito su colaboración para con esta Representación Social, gire las instrucciones al personal bajo su mando y:
 		
 		</p>
 	</div>
@@ -115,19 +115,33 @@
 	<div id="sangria">
 
 		<p class="fuente" align="justify">
-			Lo anterior a efecto de que las documentales antes señaladas sean distribuidas en los distintos DIF municipales, casas de Protección Social, Albergues, orfanatos según sea el caso, de este Estado y sean colocadas en lugares visibles al público en general, ya que estas acciones contribuyen a la búsqueda eficiente del ciudadano(a)  <strong>{{--{!! $datos->desaparecidoNombre !!} --}}</strong>.
-		</p>
 
-		<p class="fuente">
-			Así también deberá informar lo siguiente:
+			
+				1.	Ponga a la vista de esta Fiscalía ubicada en <strong>{{--{!! $datos->fiscaliaDireccion !!} --}}</strong>, los equipos de comunicación (radios, celulares, tablets, cualquier otro análogo), así como Cámaras de Video y/o Fotografía y/o grabadoras de voz asignados para el cumplimiento de sus funciones a los elementos:			
+		</p>
+			<br>
+
+		<p class="fuente" align="justify">
+			<strong>{{--{!! $datos->elemento1 !!} --}}</strong>
+		</p>
+		<p class="fuente" align="justify">
+			<strong>{{--{!! $datos->elemento2 !!} --}}</strong>
+		</p>
+		<p class="fuente" align="justify">
+			<strong>{{--{!! $datos->elemento3 !!} --}}</strong>
+		</p>
+		<p class="fuente" align="justify">
+			<strong>{{--{!! $datos->elemento4 !!} --}}</strong>
+		</p>
+		<p class="fuente" align="justify">
+			<strong>{{--{!! $datos->elemento5 !!} --}}</strong>
 		</p>
 
 		<p class="fuente" align="justify">
-			1.- Si a partir día <strong>{{--{!! $datos->desaparecidoFecha !!} --}}</strong>, a la fecha de recepción del presente oficio, en alguno de los DIF municipales, casas de Protección Social, Albergues, orfanatos según sea el caso, de este Estado, existe registro sobre el  ingreso del ciudadano(a) <strong>{{--{!! $datos->desaparecidoNombre !!} --}}</strong> o de personas que coincida con sus características físicas;
+			2.	Presentando además los resguardas por cada una de las equipos de comunicación asignadas a los elementos policiacos antes mencionados;
 		</p>
-		<p class="fuente" align="justify">
-			2.- Para el caso de ser afirmativo, deberá informar el nombre y domicilio de la institución; fecha de ingreso, el motivo del ingreso y la fecha en que se retiraron de la institución.
-		</p>
+
+		<br><br>
 		<p class="fuente" align="justify">
 			La información solicitada deberá ser remitida en un término no mayor a 24 horas contadas a partir de la recepción del presente oficio. Sin más por el momento aprovecho la ocasión para enviarle un cordial saludo.
 		</p>
