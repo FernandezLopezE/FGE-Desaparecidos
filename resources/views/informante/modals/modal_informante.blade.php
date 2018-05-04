@@ -248,7 +248,8 @@
 	  </div>
 	  <div class="modal-footer">
 	    <button type="button" class="btn btn-dark mr-auto" id="btnLimpiar"> LIMPIAR CAMPOS</button>
-		<button type="button" class="btn btn-dark" id="btnGuardarInformante">GUARDAR</button>
+	    <button type="button" class="btn btn-dark" id="btnEditarInformante" style="display:none">EDITAR</button>
+		<button type="button" class="btn btn-dark" id="btnGuardarInformante" >GUARDAR</button>
 		<button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
 	  </div>
 	</div>

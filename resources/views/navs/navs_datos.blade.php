@@ -38,8 +38,10 @@
 				@if ($activar == 'desc_fisica') Descripción física @endif
 			</a>		
 			<a class="nav-item nav-link @if ($activar == 'ant_medicos') active @endif" href="{{route('antecedentesmedicos.show',['id' => $desaparecido->id])}}" aria-selected="false">
+
 				<i class="fa fa-heartbeat" aria-hidden="true"></i>
-				@if ($activar == 'ant_medicos') Antecedentes medicos @endif			
+				@if ($activar == 'ant_medicos') Antecedentes médicos @endif			
+
 			</a>
 			<a class="nav-item nav-link @if ($activar == 'senas_part') active @endif" href="{{route('senas_particulares.show',['id' => $desaparecido->id])}}" aria-selected="false">
 				<i class="fa fa-sign-language" aria-hidden="true"></i>

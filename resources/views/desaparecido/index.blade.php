@@ -242,7 +242,14 @@
 {!! HTML::script('personal/js/sisyphus.min.js') !!}
 {!! HTML::script('personal/js/sisyphus.js') !!}
 
-<script type="text/javascript">
+<script type="text/javascript">   
+    
+var btnLimpiar = $('#btnLimpiar');
+    
+     $( "form" ).sisyphus( {
+	           excludeFields: $('input[name=_token]')
+            });
+
 	var btnLimpiar = $('#btnLimpiar');
 	var routeIndex = '{!! route('consultas.index') !!}';		
 	var routeDesaparecido = '{!! route('extraviado.index') !!}';
@@ -250,11 +257,6 @@
 	var modalTitle = $('.modal-title');
 	var modalBody = $('.modal-body');
 	var idCedula = '{!! $cedula->id !!}';
-    
-    /*$( "form" ).sisyphus( {
-	    excludeFields: $('input[name=_token]')
-    });*/
-
     $('#idOcupacion').select2();
 
     $('#btnAgregarDesaparecido').click(function(e)

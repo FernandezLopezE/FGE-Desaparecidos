@@ -120,12 +120,18 @@ class DatabaseSeeder extends Seeder
         $this->call(CatTipoMordidaTableSeeder::class);
         $this->call(CatMalosHabitosTableSeeder::class);
         $this->call(CatTipoSonrisaTableSeeder::class);
+        
+         //Lalo
+        $this->call(CatRedesSocialesSeeder::class);
+        
         //tacho
         $this->call(CatTamanoDienteSeeder::class);
         $this->call(CatTratamientoDienteSeeder::class);
         $this->call(CatDienteSeeder::class);
         $this->call(CatEnfermedadDentalSeeder::class);
-
+        $this->call(CatEnfermedadDentalSeeder::class);
+        
+       
 
         //Ruben
         $this->call(CatComplexionSeeder::class);

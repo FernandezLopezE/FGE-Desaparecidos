@@ -14,15 +14,6 @@
 		<form>	
 			<div class="row" id=""  > 
 				<div class="form-group col-lg-6">
-					{!! Form::label ('tipoContacto','Tipo de contacto:') !!}
-					{!! Form::select ('tipoContacto',
-										$tiposContacto,
-										'',
-										['class' => 'form-control',
-											'id' => 'tipoContacto'
-											])!!}	
-				</div>
-				<div class="form-group col-lg-6" id="divCorreo" style="display:none">
 					{!! Form::label ('correoElectronico','Correo electrónico:') !!}
 					{!! Form::text ('email',
 										old(''),
@@ -31,7 +22,7 @@
 											] )!!}	
 				</div>
 			</div>
-			<div id="divTelefono" class="row" id="" style="display:none"> 
+			<div class="row" id=""  > 
 				<div class="form-group col-lg-4">
 					{!! Form::label ('informanteTipoTel','Tipo de telefono:') !!}
 					{!! Form::select ('informanteTipoTelC[]',
@@ -66,25 +57,63 @@
 											] )!!}				
 				</div>	
 			</div>
-			<div id="divRedSocial" class="row" style="display:none">
-				
-				<div class="col-lg-6">
-				    {!! Form::label ('redesSociales','Red social:') !!}
-					{!! Form::select ('redesSociales',
-										$redes,
-										'',
-										['class' => 'form-control',
-											'id' => 'redesSociales'
-											])!!}
+			<div id="telefono3"> </div>
+			<p align="right">
+				<button type="button" class="btn btn-large btn-primary openbutton"  id="btnAgregarTelefonoC"><i class="fa fa-plus"></i> Agregar telefono</button>
+			</p>
+
+			<div>
+				<div class="form-group col">
+								
 				</div>
-				<div class="col-lg-6">
-				    {!! Form::label ('nombreUsuario','Nombre de usuario:') !!}
-				    {!! Form::text ('nombreUsuario',old(''), ['class' => 'form-control mayuscula',
-											'id' => 'nombreUsuario'
+			</div>
+			<div class="row">
+				<div class="col-lg-1">
+					<p align="right">
+					<span class="btn btn-primary " title="Facebook">
+                	<i class="fa fa-facebook" style="color:white"></i>
+            	</span> </p>
+				</div>
+				<div class="col">
+					{!! Form::text ('redesSociales[]',old(''), ['class' => 'form-control mayuscula',
+											'id' => 'redesSociales[]'
 											] )!!}
-					
 				</div>
-				
+				<div class="col-lg-1">
+					<p align="right">
+					<span class="btn btn-primary " title="Twitter">
+	            	<i class="fa fa-twitter" style="color:white"></i>
+	        	</span> </p>
+				</div>
+				<div class="col">
+					{!! Form::text ('redesSociales[]',old(''), ['class' => 'form-control mayuscula',
+											'id' => 'redesSociales[]'
+											] )!!}
+				</div>
+				<div class="col-lg-1">
+					<p align="right">
+					<span class="btn btn-primary  " title="Instagram">
+	           		 <i class="fa fa-instagram" style="color:white"></i>
+	        	</span>
+	        	</p>
+				</div>
+				<div class="col">
+					{!! Form::text ('redesSociales[]',old(''), ['class' => 'form-control mayuscula',
+											'id' => 'redesSociales[]'
+											] )!!}
+				</div>	
+				<div class="col-lg-1">
+					<p align="right">
+					<button type="button" id="btnOtraRed" class="btn btn-primary">
+	           		 Otra
+	        	</button>
+	        	</p>
+				</div>
+				<div id="divOtraRed" class="col-lg-2" style="display: none">
+					{!! Form::text ('redesSociales[]',old(''), ['class' => 'form-control mayuscula',
+											'id' => 'redesSociales[]'
+											] )!!}
+				</div>
 
 			</div>
 	        
