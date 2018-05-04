@@ -196,7 +196,7 @@ Route::get('/generarDocs', 'CargarDocumentosController@crearDocumento')
 	->name('generarDocs.crearDocumentos');
 
 	//esta es la ruta .
-Route::resource('docsPDF','CargarDocumentosController');	
+
 
 
 /*

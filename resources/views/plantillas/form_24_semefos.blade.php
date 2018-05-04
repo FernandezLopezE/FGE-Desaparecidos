@@ -71,7 +71,7 @@
 
 <body>
 
-
+{{-- PAGINA 1--}}
 
 <div id="encabezado"></div>
 		
@@ -79,7 +79,7 @@
 	
 	<p class="fuente"><strong> LIC. </strong>	<strong> {{--{!! $datos->nombreRemitente !!}--}} </strong>
 	</p>
-	<p class="fuente"><strong> Director del DIF municipal</strong>
+	<p class="fuente"><strong> Director General de los Servicios Periciales</strong>
 	</p>
 	
 	
@@ -115,21 +115,27 @@
 	<div id="sangria">
 
 		<p class="fuente" align="justify">
-			Lo anterior a efecto de que las documentales antes señaladas sean distribuidas en los distintos DIF municipales, casas de Protección Social, Albergues, orfanatos según sea el caso, de este Estado y sean colocadas en lugares visibles al público en general, ya que estas acciones contribuyen a la búsqueda eficiente del ciudadano(a)  <strong>{{--{!! $datos->desaparecidoNombre !!} --}}</strong>.
+			Lo anterior para que informe a esta Representación Social, si a partir del día <strong>{{--{!! $datos->desaparecidoFecha !!} --}}</strong>, a la fecha de recepción del presente, ha sido ingresado cuerpo de persona del sexo <strong>{{--{!! $datos->desaparecidoSexo !!} --}}</strong>, en cualquiera de los SEMEFO a sus digno cargo, que coincida con las características del ciudadano(a) <strong>{{--{!! $datos->desaparecidoNombre !!} --}}</strong>.
 		</p>
+		<br>
 
 		<p class="fuente">
-			Así también deberá informar lo siguiente:
+			En caso de ser afirmativo deberá proporcionar:
 		</p>
-
+		<br>
 		<p class="fuente" align="justify">
-			1.- Si a partir día <strong>{{--{!! $datos->desaparecidoFecha !!} --}}</strong>, a la fecha de recepción del presente oficio, en alguno de los DIF municipales, casas de Protección Social, Albergues, orfanatos según sea el caso, de este Estado, existe registro sobre el  ingreso del ciudadano(a) <strong>{{--{!! $datos->desaparecidoNombre !!} --}}</strong> o de personas que coincida con sus características físicas;
+			1.- Lugar, fecha y condiciones del hallazgo;
+		</p>
+		<p class="fuente">
+			2.- Numero de Investigación;
 		</p>
 		<p class="fuente" align="justify">
-			2.- Para el caso de ser afirmativo, deberá informar el nombre y domicilio de la institución; fecha de ingreso, el motivo del ingreso y la fecha en que se retiraron de la institución.
+			3.- Fiscal a cargo de la investigación consecuencia del hallazgo;
 		</p>
+		<br>
+		
 		<p class="fuente" align="justify">
-			La información solicitada deberá ser remitida en un término no mayor a 24 horas contadas a partir de la recepción del presente oficio. Sin más por el momento aprovecho la ocasión para enviarle un cordial saludo.
+			La información solicitada deberá ser remitida en un término no mayor a 24 horas. Sin más por el momento aprovecho la ocasión para enviarle un cordial saludo.
 		</p>
 	</div>
 </div>
@@ -156,14 +162,7 @@
 
 </div>
 
-
-
-
-
-
-
-
-		
+	
 </body>
 
 </html>
