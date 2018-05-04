@@ -20,7 +20,7 @@
 	<link rel="stylesheet" href="{{ asset('css/theme-jquery-validation.min.css') }}">
 
 	<link rel="stylesheet" href="{{ asset('plugins/bootstrap_table/bootstrap-table.min.css') }}">
-	{!! Html::style('personal/js/icheck/skins/all.css') !!}
+	{!! Html::style('plugins/icheck/skins/all.css') !!}
 	<!-- CSS para personalizar la plantilla -->
 	<!--<link rel="stylesheet" href="{{ asset('css/estilos.css') }}"> -->
 
@@ -103,8 +103,8 @@
 
     {!! HTML::script('personal/js/datosgral.js') !!}
     {!! HTML::script('personal/js/style_mask.js') !!}
-    {!! HTML::script('personal/js/icheck/icheck.js') !!}
-	{!! HTML::script('personal/js/icheck/icheck.min.js') !!}
+    {!! HTML::script('plugins/icheck/icheck.js') !!}
+	{!! HTML::script('plugins/icheck/icheck.min.js') !!}
 	
 	@yield('scripts')
 	<script type="text/javascript">
