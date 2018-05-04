@@ -34,12 +34,18 @@ class DatosDentalesDientesPerdidosController extends Controller
      */
     public function store(Request $request)
     {
-        \DB::table('pivot_diente_perdido')->insert([
-            'idDiente' => $request->input('idDiente'),
-            'causaPerdida' => $request->input('causaPerdida'),
-            'idDentadura' => $request->input('idDentadura'),
-        ]);
-        return response()->json('exito');
+        $dientes = $request->input('idDiente');
+        foreach ($request->input('causaPerdida') as $index => $value) {
+            if (!empty($value)) {
+                $dientesPer[] = array(
+                                    'idDiente' => $dientes[$index],
+                                    'causaPerdida' => $value,
+                                    'idDentadura' => $request->input('idDentadura')
+                                );
+            }
+        }
+        //dd($dientesPer);
+        \DB::table('pivot_diente_perdido')->insert($dientesPer);
     }
 
     /**
