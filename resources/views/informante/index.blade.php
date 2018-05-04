@@ -10,7 +10,7 @@
 	
 @endsection
 
-@section('titulo', 'Registro único de personas desaparecidas')
+@section('titulo', '')
 
 @section('content')
 	{{ Form::hidden('idCedula', $cedula->id, array('id' => 'idCedula')) }}
@@ -61,6 +61,10 @@ var contador=0;
 
         }
 
+        /*$('.nav-link').click(function(e){
+        	 e.preventDefault();
+        	 console.log('Evitamos el redireccionamiento');
+        })*/
 
 		var addCamposTelefono = function(tipoTel = null, lada=null, telefono=null, ext=null) {
                         

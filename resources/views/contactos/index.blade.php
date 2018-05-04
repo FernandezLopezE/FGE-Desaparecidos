@@ -11,7 +11,7 @@
 	
 @endsection
 
-@section('titulo', 'Registro único de personas desaparecidas')
+@section('titulo', '')
 
 @section('content')
 @include('navs.navs_datos',array('activar' => 'contacto'))

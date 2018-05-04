@@ -4,7 +4,7 @@
 {!! Html::style('') !!}
 @endsection
 
-@section('titulo', 'Registro único de personas desaparecidas')
+@section('titulo', '')
 
 @section('content')
 @include('navs.navs_datos',array('activar' => 'desaparecido'))
@@ -46,7 +46,7 @@
 				<dt class="col-sm-4">Fecha nacimiento:</dt>
 				<dd class="col-sm-8">{!! Carbon\Carbon::parse($desaparecido->persona->fechaNacimiento)->format('d/m/Y') !!} </dd>
 				<dt class="col-sm-4">Edad de extravio:</dt>
-				<dd class="col-sm-8">{!! $desaparecido->edadExtravío !!} </dd>
+				<dd class="col-sm-8">{!! $desaparecido->edadExtravio !!} </dd>
 				<dt class="col-sm-4">Edad aparente:</dt>
 				<dd class="col-sm-8">{!! $desaparecido->edadAparente !!} </dd>
 				<dt class="col-sm-4">CURP:</dt>

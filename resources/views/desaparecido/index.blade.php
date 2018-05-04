@@ -4,11 +4,9 @@
 {!! Html::style('') !!}
 @endsection
 
-@section('titulo', 'Registro único de personas desaparecidas')
+@section('titulo', '')
 
 @section('content')
-	{--!! Form::model($desaparecido, ['action' => 'ExtraviadoController@store']) !!--}
-
 	{{ Form::hidden('idCedula', $cedula->id, array('id' => 'idCedula')) }}
 
 @include('navs.navs_datos',array('activar' => 'desaparecido'))
@@ -231,7 +229,6 @@
 		</div>
 	</div>
 	@include('includes.modal')
-{--!! Form::close() !!--}
 
 @endsection
 
@@ -304,11 +301,8 @@ var btnLimpiar = $('#btnLimpiar');
 			url: routeDesaparecido,
 			data: dataString,
 			dataType: 'json',
-			success: function(data) {
-				//var errors = data.responseJSON;
-    			console.log(data);
-				/*modalInformanteAgregar.modal('hide');
-				table.bootstrapTable('refresh');*/
+			success: function(data) {				
+				window.location.replace(routeDesaparecido+'/'+data.desaparecido.id);
 
 			},
 			error: function(data) {

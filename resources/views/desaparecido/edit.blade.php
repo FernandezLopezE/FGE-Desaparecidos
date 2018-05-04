@@ -4,15 +4,9 @@
 {!! Html::style('') !!}
 @endsection
 
-@section('titulo', 'Registro único de personas desaparecidas')
+@section('titulo', '')
 
 @section('content')
-{--!! Form::model($desaparecido,
-				['method' => 'PATCH',
-				'route' => ['extraviado.update',
-							 $desaparecido->id
-							]
-				]) !!--}
 
 @include('navs.navs_datos',array('activar' => 'desaparecido'))
 
@@ -235,9 +229,6 @@
 		</div>
 	</div>
 
-
-{--!! Form::close() !!--}
-
 @endsection
 
 @section('scripts')
@@ -302,20 +293,14 @@
 			dataString['rumoresBebe'] = 'NO';
 			dataString['pormenores'] = null;
 		}
-
-		console.log(dataString);
 			
-		/*$.ajax({
+		$.ajax({
 			type: 'PUT',
-			url: routeDesaparecido,
+			url: routeDesaparecido+'/{!! $desaparecido->id !!}',
 			data: dataString,
 			dataType: 'json',
 			success: function(data) {
-				//var errors = data.responseJSON;
-    			console.log(data);
-				/*modalInformanteAgregar.modal('hide');
-				table.bootstrapTable('refresh');*/
-
+				window.location.replace(routeDesaparecido+'/'+data.desaparecido.id);
 			},
 			error: function(data) {
 				var errors = data.responseJSON;
@@ -340,7 +325,7 @@
 				modalTitle.append('<i class="fa fa-warning"></i> Ooops... algo salió mal');
 				modalGral.modal('show');
 			}
-		});*/
+		});
     });
 
     	/*	$('.modal-body input.text-red').removeClass('text-red');
@@ -433,10 +418,6 @@
 					$("#div_otroDocIdentidad").hide();
 			}
 		});
-
-
-
-
 
 
 	$('input#familiaresFechaNacimiento').mask('00/00/0000');

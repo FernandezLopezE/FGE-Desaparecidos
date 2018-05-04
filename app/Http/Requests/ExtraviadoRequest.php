@@ -35,7 +35,7 @@ class ExtraviadoRequest extends FormRequest
 			'fechaNacimiento'		=> 'required_unless:idDocumentoIdentidad,1',
 			'edadExtravio'			=> 'required_unless:idDocumentoIdentidad,1',
 			'edadAparente'			=> 'required',
-			'curp'					=> 'required_unless:idDocumentoIdentidad,1|unique:persona,curp,'.$this->segment(3).',id',
+			'curp'					=> 'required_unless:idDocumentoIdentidad,1|unique:persona,curp,'.$this->segment(2).',id',
 			'otroDocIdentidad' 		=> 'required_if:idDocumentoIdentidad,9',
 			'numDocIdentidad' 		=> 'required_unless:idDocumentoIdentidad,1',
 			

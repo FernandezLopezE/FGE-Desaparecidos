@@ -11,7 +11,7 @@
 	
 @endsection
 
-@section('titulo', 'Registro único de personas desaparecidas')
+@section('titulo', '')
 
 @section('content')
 @include('navs.navs_datos',array('activar' => 'familiar'))
@@ -40,10 +40,15 @@
 		var btnGuardarFamiliar = $('#btnGuardarFamiliar');
 		var modalFamiliar = $('#modalFamiliar');
 		var modalFooter = $('.modal-footer');
-		var idDesaparecido = '{!! $desaparecido->id !!}'
-        var btnLimpiar = $('#btnLimpiar');
-
-		console.log(routeIndex+'/get_familiares/{!! $desaparecido->id !!}');
+		var idDesaparecido = '{!! $desaparecido->id !!}';
+        var btnLimpiar = $('#btnLimpiar');        
+		
+		// Al momento de cargar la página valida el estado civil
+		// si la persona tuvo o tiene una pareja.
+		
+		if($.inArray('{!! $desaparecido->idEdocivil !!}',[ '2','3','4','5','6']) >= 0){
+			modalFamiliar.modal('show');
+		}
 		
 		table.bootstrapTable({				
 			url: routeIndex+'/get_familiares/{!! $desaparecido->id !!}',

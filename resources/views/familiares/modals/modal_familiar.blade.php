@@ -13,6 +13,15 @@
 		<form id="formDesaparecido">
 			<div class="row">
 				<div class="form-group col-lg-3">
+				{!! Form::label ('idParentesco','Parentesco:') !!}
+				{!! Form::select ('idParentesco',
+									$parentescos,
+									'',
+									['class' => 'form-control',
+										'id' => 'idParentesco'
+									] )!!}		
+				</div>
+				<div class="form-group col-lg-3">
 					{!! Form::label ('nombres','Nombre(s):') !!}
 					{!! Form::text ('nombres',
 									old('nombres'),
@@ -57,15 +66,7 @@
 										'id' => 'edad',
 									] )!!}
 				</div>
-				<div class="form-group col-lg-3">
-				{!! Form::label ('idParentesco','Parentesco:') !!}
-				{!! Form::select ('idParentesco',
-									$parentescos,
-									'',
-									['class' => 'form-control',
-										'id' => 'idParentesco'
-									] )!!}		
-				</div>
+
 			</div>
 		</form>
 		<!-- Fin del Contenido del formulario-->
