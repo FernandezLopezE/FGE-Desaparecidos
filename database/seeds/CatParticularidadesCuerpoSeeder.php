@@ -83,10 +83,8 @@ class CatParticularidadesCuerpoSeeder extends Seeder
             ['idPartesCuerpo'=>40, 'nombre' => 'PARTICULARIDADES PANTORRILLA DERECHA'],//63    
             ['idPartesCuerpo'=>53, 'nombre' => 'PARTICULARIDADES TOBILLO IZQUIERDO'],   //64
             ['idPartesCuerpo'=>52, 'nombre' => 'PARTICULARIDADES TOBILLO DERECHO'],//65
-            ['idPartesCuerpo'=>1, 'nombre' => 'SIN INFORMACION'],   //66
-            ['idPartesCuerpo'=>59, 'nombre' => 'PARTICULARIDADES UÑA'],//67
-            ['idPartesCuerpo'=>2, 'nombre' => 'PARTICULARIDADES ABDOMEN'],//68
-            ['idPartesCuerpo'=>60, 'nombre' => 'PARTICULARIDADES CABEZA'],//69
+            ['idPartesCuerpo'=>59, 'nombre' => 'PARTICULARIDADES UÑA'],//66
+            ['idPartesCuerpo'=>60, 'nombre' => 'PARTICULARIDADES CABEZA'],//68
 
 
     ]);
