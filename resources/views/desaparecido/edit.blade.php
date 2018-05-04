@@ -300,7 +300,7 @@
 			data: dataString,
 			dataType: 'json',
 			success: function(data) {
-				window.location.replace(routeDesaparecido+'/'+data.desaparecido.id);
+				window.location.replace(routeDesaparecido+'/'+data.desaparecido.idCedula);
 			},
 			error: function(data) {
 				var errors = data.responseJSON;
