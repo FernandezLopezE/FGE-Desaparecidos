@@ -31,8 +31,8 @@ class CatPartesCuerpoSeeder extends Seeder
             ['nombre' => 'FRENTE', 'partePadre' => '60'],				//16
             ['nombre' => 'HOMBRO DERECHO', 'partePadre' => '0'],		//17
             ['nombre' => 'HOMBRO IZQUIERDO', 'partePadre' => '0'],   //18
-            ['nombre' => 'LABIO INFERIOR', 'partePadre' => '60'],     //19
-            ['nombre' => 'LABIO SUPERIOR', 'partePadre' => '60'],		//20
+            ['nombre' => 'LABIO INFERIOR', 'partePadre' => '72'],     //19
+            ['nombre' => 'LABIO SUPERIOR', 'partePadre' => '72'],		//20
             ['nombre' => 'MANO IZQUIERDA', 'partePadre' => '0'],     //21
             ['nombre' => 'MANO DERECHA', 'partePadre' => '0'],		//22
             ['nombre' => 'MEJILLAS', 'partePadre' => '0'],			//23
@@ -83,6 +83,8 @@ class CatPartesCuerpoSeeder extends Seeder
             ['nombre' => 'ESPINILLA IZQUIERDA', 'partePadre' => '47'],//68
             ['nombre' => 'DEDO PULGAR DERECHO', 'partePadre' => '22'],//69
             ['nombre' => 'DEDO PULGAR IZQUIERDO', 'partePadre' => '21'],//70
+            ['nombre' => 'BOCA', 'partePadre' => '60'],//71
+            ['nombre' => 'LABIOS', 'partePadre' => '71'],//72
             
             
         ]);
