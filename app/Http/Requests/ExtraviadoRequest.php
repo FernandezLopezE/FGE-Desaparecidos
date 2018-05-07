@@ -23,8 +23,6 @@ class ExtraviadoRequest extends FormRequest
 	 */
 	public function rules()
 	{
-		
-		dd($this->segment(3));
 		$rules = [
 			'sexo'					=> 'required|in:H,M',
 			'idDocumentoIdentidad'	=> 'required',

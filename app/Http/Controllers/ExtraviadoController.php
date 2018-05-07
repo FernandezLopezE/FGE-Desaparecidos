@@ -113,6 +113,7 @@ class ExtraviadoController extends Controller
 	 */
 	public function store(ExtraviadoRequest $request)
 	{
+		dd($request->toArray());
 
 		$otroDocumento = ($request->input('idDocumentoIdentidad') == 9) ? $request->input('otroDocIdentidad') : null ;
 

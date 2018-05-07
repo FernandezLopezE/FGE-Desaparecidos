@@ -295,7 +295,7 @@ var btnLimpiar = $('#btnLimpiar');
 			dataString['rumoresBebe'] = 'NO';
 			dataString['pormenores'] = null;
 		}
-			
+					
 		$.ajax({
 			type: 'POST',
 			url: routeDesaparecido,
