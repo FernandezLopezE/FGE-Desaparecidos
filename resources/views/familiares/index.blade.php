@@ -47,6 +47,8 @@
 		// si la persona tuvo o tiene una pareja.
 		
 		if($.inArray('{!! $desaparecido->idEdocivil !!}',[ '2','3','4','5','6']) >= 0){
+			parentesco = '{!! $desaparecido->idEdocivil !!}';
+			$('select#idParentesco option[value="'+parentesco+'"]').attr("selected",true);
 			modalFamiliar.modal('show');
 		}
 		
