@@ -53,8 +53,6 @@ class CatSubParticularidadesSeeder extends Seeder
             ['idParticularidadesCuerpo'=>5, 'nombre' => 'CIEGO'],
             ['idParticularidadesCuerpo'=>5, 'nombre' => 'BIZCO'],
             ['idParticularidadesCuerpo'=>5, 'nombre' => 'OJO DE VIDRIO'],
-            ['idParticularidadesCuerpo'=>5, 'nombre' => 'LENTES DE CONTACTO'],
-            ['idParticularidadesCuerpo'=>5, 'nombre' => 'ANTEOJOS/GAFAS'],
             ['idParticularidadesCuerpo'=>5, 'nombre' => 'FALTA OJO'],
             ['idParticularidadesCuerpo'=>5, 'nombre' => 'LUNARES'],
             ['idParticularidadesCuerpo'=>5, 'nombre' => 'OTRO'],
@@ -119,6 +117,7 @@ class CatSubParticularidadesSeeder extends Seeder
             ['idParticularidadesCuerpo'=>11, 'nombre' => 'DEFORMACIÓN'],
             ['idParticularidadesCuerpo'=>11, 'nombre' => 'NEVO'],
             ['idParticularidadesCuerpo'=>11, 'nombre' => 'QUEMADURA'],
+            ['idParticularidadesCuerpo'=>11, 'nombre' => 'DESVIADA'],
             ['idParticularidadesCuerpo'=>11, 'nombre' => 'OTRO'],
 
 
