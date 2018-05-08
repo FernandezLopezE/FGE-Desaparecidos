@@ -32,10 +32,10 @@ class ExtraviadoRequest extends FormRequest
 			'apodo'					=> 'required_without:nombres,segundoAp,primerAp',
 			'idNacionalidad'		=> 'required_unless:idDocumentoIdentidad,1',
 			'idEstadoOrigen'		=> 'required_unless:idDocumentoIdentidad,1',
-			'fechaNacimiento'		=> 'required_unless:idDocumentoIdentidad,1',
+			'fechaNacimiento'		=> 'required_unless:idDocumentoIdentidad,1|date_format:d/m/Y|before_or_equal:'.date('Y-m-d'),
 			'edadExtravio'			=> 'required_unless:idDocumentoIdentidad,1',
 			'edadAparente'			=> 'required',
-			'curp'					=> 'required_unless:idDocumentoIdentidad,1|unique:persona,curp,'.$this->segment(2).',id',
+			'curp'					=> 'required_unless:idDocumentoIdentidad,1|unique:persona,curp,'.$this->request->get('idPersona').',id',
 			'otroDocIdentidad' 		=> 'required_if:idDocumentoIdentidad,9',
 			'numDocIdentidad' 		=> 'required_unless:idDocumentoIdentidad,1',
 			

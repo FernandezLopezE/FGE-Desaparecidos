@@ -14,6 +14,7 @@
 	GUARDAR		
 </button>
 <div class="card-body bg-white">
+	<form>
 		<div class="card-body">
 			<div class="row">
 				<div class="form-group col-md-4" id="div_sexo">
@@ -91,11 +92,14 @@
 						{!! Form::text ('fechaNacimiento',
 											'',
 											['class' => 'form-control',
-												'id' => 'fechaNacimiento'
+												'id' => 'fechaNacimiento',
+												'data-validation' =>'date',
+												'data-validation-format'=>"dd/mm/yyyy",
+												'data-validation-error-msg-date' => 'Ingrese fecha correcta',
 											] )!!}
 						<div class="form-control-feedback" id="error_fechaNacimiento"></div>
 					</div>			
-					<div class="form-group col-md-4" id="div_edadExtravio">
+					<div class="form-group col-md-4" id="div_edadExtravio">				
 						{!! Form::label ('edadExtravio','Edad de extravío:', ['class' => 'form-control-label']) !!}
 						{!! Form::text ('edadExtravio',
 										old('edadExtravio'),
@@ -227,7 +231,8 @@
 				</div>				
 			</div>
 		</div>
-	</div>
+	</form>
+</div>
 	@include('includes.modal')
 
 @endsection
@@ -307,7 +312,6 @@ var btnLimpiar = $('#btnLimpiar');
 			},
 			error: function(data) {
 				var errors = data.responseJSON;
-				console.log(errors);
 				modalTitle.empty();
 				modalBody.empty();
 				modalBody.append('<ul>');
@@ -372,8 +376,6 @@ var btnLimpiar = $('#btnLimpiar');
 
 		$('#sexo').change(function() {
 			g = $('#sexo').val();
-			console.log("El género es: "+g);
-
 			if (g=="H") {
 				$("#mostrarGenero").show();
 				$("#div_embarazo").hide();
@@ -413,8 +415,7 @@ var btnLimpiar = $('#btnLimpiar');
 		});
 
 		$('#idDocumentoIdentidad').change(function(){
-			documento = $('#idDocumentoIdentidad').val();
-			console.log(documento);			
+			documento = $('#idDocumentoIdentidad').val();		
 			if (documento == "9") {					
 					$("#div_otroDocIdentidad").show();
 			} else {					
@@ -431,8 +432,6 @@ var btnLimpiar = $('#btnLimpiar');
 	
 	$('#identificacion').change(function() {
 			f = $('#identificacion').val();
-			console.log("El parentesoc es: "+f);
-
 			if (f==7) {
 				$("#div_idDocumentoIdentidad").show();
 			}else{
@@ -441,7 +440,6 @@ var btnLimpiar = $('#btnLimpiar');
 	});
 
 	 $('#familiaresFechaNacimiento').change(function(){  
-		console.log('Calculando edad de la pareja');
 		from = $("#familiaresFechaNacimiento").val().split("/");
 		familiaresFechaNacimiento = from[2] + "-" + from[1] + "-" + from[0];
 		fechaEnviada = Date.parse(familiaresFechaNacimiento);
@@ -460,7 +458,6 @@ var btnLimpiar = $('#btnLimpiar');
 			   dataType:"json",
 
 			   success:function(data) {
-					   console.log("hola"+data);
 					   $('#familiaresEdad').val(data);
 			   },
 			   

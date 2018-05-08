@@ -65,7 +65,7 @@ class ExtraviadoController extends Controller
 			$nacionalidades     = \App\Models\CatNacionalidad::all()->pluck('nombre', 'id');
 			$ladas = \App\Models\CatNacionalidad::all()->pluck('lada','id');
 			$documentos     = \App\Models\CatDocumento::all()->pluck('nombre', 'id');
-			$estados            = \App\Models\CatEstado::all()->pluck('nombre','id');       
+			$estados            = \App\Models\CatEstado::all()->pluck('nombre','id');			       
 			$municipios = array();
 			$localidades = array();
 			$colonias = array();

@@ -91,17 +91,20 @@
 						{!! Form::text ('fechaNacimiento',
 											Carbon\Carbon::parse($desaparecido->persona->fechaNacimiento)->format('d/m/Y'),
 											['class' => 'form-control',
-												'id' => 'fechaNacimiento'
+												'id' => 'fechaNacimiento',
+												'data-validation-format'=>"dd/mm/yyyy",
 											] )!!}
 						<div class="form-control-feedback" id="error_fechaNacimiento"></div>
 					</div>			
 					<div class="form-group col-md-4" id="div_edadExtravio">
+
 						{!! Form::label ('edadExtravio','Edad de extravío:', ['class' => 'form-control-label']) !!}
 						{!! Form::text ('edadExtravio',
 										$desaparecido->edadExtravio,
 										['class' => 'form-control',
 											'id' => 'edadExtravio'
 										] )!!}
+						<!--<i class="fa fa-spinner fa-spin" style="font-size:24px"></i>-->
 						<div class="form-control-feedback" id="error_edadExtravio"></div>
 					</div>
 					<div class="form-group col-md-4" id="div_edadAparente">
@@ -256,7 +259,6 @@
 
     $('#btnGuardar').click(function(e)
     {
-		console.log('entrando');
 		var dataString = {
 			sexo : $("#sexo").val(),
 			nombres : $("#nombres").val(),
@@ -273,7 +275,8 @@
 			idOcupacion : $("#idOcupacion").val(),
 			idDocumentoIdentidad : $("#idDocumentoIdentidad").val(),			
 			numDocIdentidad : $("#numDocIdentidad").val(),
-			idEdocivil : $("#idEdocivil").val(),			
+			idEdocivil : $("#idEdocivil").val(),
+			idPersona : '{!! $desaparecido->persona->id !!}',			
 		}
 		if ($("#idDocumentoIdentidad").val() == 9){
 			dataString['otroDocIdentidad'] = $("#otroDocIdentidad").val();
@@ -304,7 +307,6 @@
 			},
 			error: function(data) {
 				var errors = data.responseJSON;
-				console.log(errors);
 				modalTitle.empty();
 				modalBody.empty();
 				modalBody.append('<ul>');
@@ -343,7 +345,7 @@
     
 
 		var routeIndex = '{!! route('consultas.index') !!}';
-		$('#fechaNacimiento').change(function(){  
+		$('#fechaNacimiento').change(function(){ 
 			from = $("#fechaNacimiento").val().split("/");
 			fechaNacimiento = from[2] + "-" + from[1] + "-" + from[0];
 			fechaEnviada = Date.parse(fechaNacimiento);	   
@@ -353,12 +355,10 @@
 				$("#fechaNacimiento").val("");
 				$("#edadExtravio").val("");
 			}else{
-
 			$.ajax({
 				   url: routeIndex+'/edad/'+fechaNacimiento,
 				   type:"GET",
 				   dataType:"json",
-
 				   success:function(data) {
 						   $('#edadExtravio').val(data);
 				   },
@@ -369,7 +369,6 @@
 
 		$('#sexo').change(function() {
 			g = $('#sexo').val();
-			console.log("El género es: "+g);
 
 			if (g=="H") {
 				$("#mostrarGenero").show();
@@ -410,8 +409,7 @@
 		});
 
 		$('#idDocumentoIdentidad').change(function(){
-			documento = $('#idDocumentoIdentidad').val();
-			console.log(documento);			
+			documento = $('#idDocumentoIdentidad').val();		
 			if (documento == "9") {					
 					$("#div_otroDocIdentidad").show();
 			} else {					
@@ -424,7 +422,6 @@
 	
 	$('#identificacion').change(function() {
 			f = $('#identificacion').val();
-			console.log("El parentesoc es: "+f);
 
 			if (f==7) {
 				$("#div_idDocumentoIdentidad").show();
@@ -434,7 +431,6 @@
 	});
 
 	 $('#familiaresFechaNacimiento').change(function(){  
-		console.log('Calculando edad de la pareja');
 		from = $("#familiaresFechaNacimiento").val().split("/");
 		familiaresFechaNacimiento = from[2] + "-" + from[1] + "-" + from[0];
 		fechaEnviada = Date.parse(familiaresFechaNacimiento);
@@ -453,7 +449,6 @@
 			   dataType:"json",
 
 			   success:function(data) {
-					   console.log("hola"+data);
 					   $('#familiaresEdad').val(data);
 			   },
 			   
