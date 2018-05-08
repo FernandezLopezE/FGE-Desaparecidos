@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCatCorreosExternosTable extends Migration
+class CreateCatDependenciasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCatCorreosExternosTable extends Migration
      */
     public function up()
     {
-        Schema::create('cat_correos_externos', function (Blueprint $table) {
+        Schema::create('cat_dependencias', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
             $table->string('correo');
@@ -28,6 +28,6 @@ class CreateCatCorreosExternosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cat_correos_externos');
+        Schema::dropIfExists('cat_dependencias');
     }
 }

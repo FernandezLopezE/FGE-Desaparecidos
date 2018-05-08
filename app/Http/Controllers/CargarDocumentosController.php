@@ -123,7 +123,7 @@ class CargarDocumentosController extends Controller
                                             ->get();*/
         
         //$desaparecido = \App\Models\Desaparecido::find($datos[0]->id);
-        $view = view('plantillas.form_24a72_retrato_hablado'/*, compact('desaparecido')*/)->render();
+        $view = view('plantillas.form_72_informe_inicios'/*, compact('desaparecido')*/)->render();
         $pdf =\App::make('dompdf.wrapper');
         $pdf -> loadHTML($view);
         
