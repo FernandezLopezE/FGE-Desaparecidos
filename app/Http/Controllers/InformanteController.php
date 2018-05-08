@@ -7,6 +7,7 @@ use App\models\Cedula;
 use App\Models\Persona;
 use App\Models\Desaparecido;
 use App\Models\Domicilio;
+use App\Http\Requests\InformanteRequest;
 
 class InformanteController extends Controller
 {
@@ -36,16 +37,16 @@ class InformanteController extends Controller
 	 * @param  \Illuminate\Http\Request  $request
 	 * @return \Illuminate\Http\Response
 	 */
-	public function store(Request $request)
+	public function store(InformanteRequest $request)
 	{
 		$informante = (is_null($request->input('informante'))) ? 0 : 1 ;
 		$autorizado = (is_null($request->input('notificaciones'))) ? 0 : 1 ;
 
-		$tipo_telefono = $request->input('tipoTel');
+		$tipo_telefono = $request->input('tipoTelefono');
 		$lada = $request->input('lada');
 		$ext = $request->input('ext');
 		foreach ($request->input('telefono') as $index => $value) {
-			$telefonos[] = array('tipoTel' => $tipo_telefono[$index],
+			$telefonos[] = array('tipoTelefono' => $tipo_telefono[$index],
 								'lada' => $lada[$index],
 								'telefono' => $value,
 								'ext' => $ext[$index]
@@ -54,10 +55,10 @@ class InformanteController extends Controller
 
 
 		$persona = Persona::create([
-			'nombres'           => $request->input('nombre'),
+			'nombres'           => $request->input('nombres'),
 			'primerAp'          => $request->input('primerAp'),
 			'segundoAp'         => $request->input('segundoAp'),
-			'idNacionalidad'    => $request->input('nacionalidad'),
+			'idNacionalidad'    => $request->input('idNacionalidad'),
 		]);
 
 		$desaparecido = Desaparecido::create([
@@ -76,15 +77,15 @@ class InformanteController extends Controller
 		
 		$domicilio = Domicilio::create([
 			'idDesaparecido'    => $desaparecido->id,
-			'tipoDireccion'     => $request->input('tipoDirec'),
+			'tipoDireccion'     => $request->input('tipoDireccion'),
 			'calle'             => $request->input('calle'),
-			'numExterno'        => $request->input('numExt'),
-			'numInterno'        => $request->input('numInt'),
-			'idestado'          => $request->input('estado'),
-			'idMunicipio'       => $request->input('municipio'),
-			'idLocalidad'       => $request->input('localidad'),
-			'idColonia'         => $request->input('colonia'),
-			'idCodigoPostal'    => $request->input('cp'),			
+			'numExterno'        => $request->input('numExterno'),
+			'numInterno'        => $request->input('numInterno'),
+			'idestado'          => $request->input('idEstado'),
+			'idMunicipio'       => $request->input('idMunicipio'),
+			'idLocalidad'       => $request->input('idLocalidad'),
+			'idColonia'         => $request->input('idColonia'),
+			'idCodigoPostal'    => $request->input('idCodigoPostal'),
 		]);
 
 
@@ -117,7 +118,8 @@ class InformanteController extends Controller
 		$nacionalidades     = \App\Models\CatNacionalidad::all()->pluck('nombre', 'id');
 		$ladas = \App\Models\CatNacionalidad::all()->pluck('lada','id');
 		$documentos     = \App\Models\CatDocumento::all()->pluck('nombre', 'id');
-		$estados            = \App\Models\CatEstado::all()->pluck('nombre','id');       
+		$estados            = \App\Models\CatEstado::all()->pluck('nombre','id');
+
 		$municipios = array();
 		$localidades = array();
 		$colonias = array();
@@ -175,7 +177,7 @@ class InformanteController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id)
+	public function update(InformanteRequest $request, $id)
 	{       
 		
 	   $desaparecido = Desaparecido::find($id);
@@ -187,11 +189,11 @@ class InformanteController extends Controller
 		$informante = (is_null($request->input('informante'))) ? 0 : 1 ;
 		$autorizado = (is_null($request->input('notificaciones'))) ? 0 : 1 ;
         
-        $tipo_telefono = $request->input('tipoTel');
+        $tipo_telefono = $request->input('tipoTelefono');
 		$lada = $request->input('lada');
 		$ext = $request->input('ext');
 		foreach ($request->input('telefono') as $index => $value) {
-			$telefonos[] = array('tipoTel' => $tipo_telefono[$index],
+			$telefonos[] = array('tipoTelefono' => $tipo_telefono[$index],
 								'lada' => $lada[$index],
 								'telefono' => $value,
 								'ext' => $ext[$index]
@@ -199,10 +201,10 @@ class InformanteController extends Controller
 		}
 
 		$persona = Persona::find($desaparecido->persona->id)->update([
-			'nombres'           => $request->input('nombre'),
+			'nombres'           => $request->input('nombres'),
 			'primerAp'          => $request->input('primerAp'),
 			'segundoAp'         => $request->input('segundoAp'),
-			'idNacionalidad'    => $request->input('nacionalidad'),
+			'idNacionalidad'    => $request->input('idNacionalidad'),
 		]);
 
 
@@ -219,16 +221,16 @@ class InformanteController extends Controller
 		]);
 
 		$domicilio = \App\Models\Domicilio::find($noDomicilio)->update([
-			'tipoDireccion'     => $request->input('tipoDirec'),
+			'tipoDireccion'     => $request->input('tipoDireccion'),
 			'calle'             => $request->input('calle'),
-			'numExterno'        => $request->input('numExt'),
+			'numExterno'        => $request->input('numExterno'),
 			'numInterno'        => $request->input('numInt'),
-			'idestado'          => $request->input('estado'),
-			'idMunicipio'       => $request->input('municipio'),
-			'idLocalidad'       => $request->input('localidad'),
-			'idColonia'         => $request->input('colonia'),
-			'idCodigoPostal'    => $request->input('cp'),
-			'telefono'          => json_encode(array('tipoTel' => 'PERSONAL',
+			'idestado'          => $request->input('idEstado'),
+			'idMunicipio'       => $request->input('idMunicipio'),
+			'idLocalidad'       => $request->input('idLocalidad'),
+			'idColonia'         => $request->input('idColonia'),
+			'idCodigoPostal'    => $request->input('idCodigoPostal'),
+			'telefono'          => json_encode(array('tipoTelefono' => 'PERSONAL',
 									 'lada' => $request->input('lada'),
 									 'telefono' => $request->input('telefono'),
 									 'ext' => $request->input('ext'))),
