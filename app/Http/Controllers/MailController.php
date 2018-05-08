@@ -13,12 +13,13 @@ use App\Models\Desaparecido;
 use App\Models\CatCorreosExternos;
 
 
-
-
-
 class MailController extends Controller
 {
    
+    public function index()
+    {
+        //
+    }
 
     public function show(){ 
 
@@ -28,16 +29,14 @@ class MailController extends Controller
             $cedula = \App\Models\Cedula::find(1);
            
             //$cedula = \App\Models\Cedula::find($id);
-            $correosExternos        = CatCorreosExternos::all();
+            $correosExternos = CatCorreosExternos::all();
             return view('desaparecidos.contacto',[
 
                     'Cedula' => $cedula,
                     'correosExternos' => $correosExternos ,
                     'combo' => $combo,
 
-            ]);
-            
-                
+            ]);                
         
     }
     
@@ -173,6 +172,18 @@ class MailController extends Controller
     public function show_boletin()
     {
         return view('desaparecidos.boletin');
+    }
+
+     public function getDependencias(Request $request){
+
+        $dependencias = \DB::table('cat_correos_externos as cce')
+                        ->select('cce.id',
+                                'cce.nombre',
+                                'cce.correo')
+                        ->get();
+
+
+        return response()->json($dependencias);        
     }
 
 }

@@ -4,25 +4,30 @@
  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>  
 @endsection
 
-@section('content')	
+
+@section('content')
+	
 	<div class="card border-primary">
 		<div class="card-header">
 			<div class = "row"> 
 				<div class = "col">
-					<h4>Destinatarios</h4>
+					<h4>Dependencias</h4>
 				</div>
-				<div class = "col">				
-				{{ Form::button('<i class="fa fa-send "></i>', ['type' => 'submit', 'class' => 'btn btn-dark btn-lg pull-right'] )  }}			
-				{{--<button type="button" class="btn btn-dark pull-right" id="btnAgregarDependencia"> AGREGAR</button>--}}
-				@include('includes.modal_editar_archivos')
-			</div>
-
+				<div class = "col">					
+			{{ Form::button('<i class="fa fa-send "></i>', ['type' => 'submit', 'class' => 'btn btn-dark btn-lg pull-right'] )  }}			
+			{{--<button type="button" class="btn btn-dark pull-right" id="btnAgregarDependencia"> AGREGAR</button>--}}
+			@include('includes.modal_editar_archivos')
+				</div>
 			</div>
 		</div>
 			<div class="card-body bg-white">
 				<table id="tableDependencias" ></table>
 			</div>
 	</div>	
+
+
+	
+
 @endsection
 
 @section('scripts')
@@ -37,40 +42,34 @@
 
 		$(document).ready(function(){
 
+				$('#idCorreosExternos').select2();
 
-		var table = $('#tableDependencias');
+
+		var table = $('#tabledependencias');
 		var routeIndex = '{!! route('dependencias.index') !!}';	
-
-		/*var formatTableActions = function(value, row, index) {				
-			btn = '<button class="btn btn-info btn-xs edit" id="editPrenda"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
-			check = '<input class="form-check-input" type="checkbox" id="chkDepedencias">'
-			
-			return [btn].join('');
-		};*/
+		
 
 		table.bootstrapTable({				
-			url: routeIndex+'/get_dependencias',
+			url: routeIndex+'/get_desaparecidos/{{$id}}',
 			columns: [{					
-				field: 'id',
-				title: 'No.',
-			},
-			{					
 				field: 'nombre',
 				title: 'Dependencia',
 			}, 
 			{					
 				field: 'correo',
 				title: 'Correo',
-			}, /*{					
+			}, {					
 				title: 'Acciones',
 				formatter: formatTableActions,
 				events: operateEvents
-			}*/]				
+			}]				
 		})
 				
 		});
 		
-	 
+		
+		
+		 
 
 </script>
 
