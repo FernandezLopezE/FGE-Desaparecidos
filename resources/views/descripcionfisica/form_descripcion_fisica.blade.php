@@ -60,6 +60,8 @@
         <div class="row">
             <div class="col-3">
             @include('descripcionfisica.avatar')
+<br><br><br>
+            <button type="button" class="btn btn-primary" id="prueba">prueba</button>
             </div>
 
             <div class="col-9">
@@ -72,16 +74,16 @@
 </div>
 
 
-
-
-
-
 @endsection 
 
 @section('scripts')
 <script type="text/javascript">
-  $("#cabello").div("hide");
+  //$("#cabello").div("hide");
 
+  $("#prueba").click(function(){
+    //alert("Hola");
+    $(".cabello").toggle();
+    });
 
   window.onload = function () {
     const pieces = document.getElementsByTagName('g');
