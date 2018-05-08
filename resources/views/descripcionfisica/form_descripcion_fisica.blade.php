@@ -52,65 +52,27 @@
 
 @section('content')
 @include('includes.partesCuerpo.01Talla')
+<div class="card border-success">
+    <div class="card-header">
+        <h5 class="card-title">Descripción física y señas particulares</h5>
+    </div>
+    <div class="card-body"> 
+        <div class="row">
+            <div class="col-3">
+            @include('descripcionfisica.avatar')
+            </div>
 
-<div class="form-group row">
-    <div class="col-lg-3">
-        {!! Form::label ('desaparecidoEstatura','Estatura:') !!}
-        {!! Form::text ('estatura',
-                        old('estatura'),
-                        ['class' => 'form-control sinEnter soloNumeros',
-                                'placeholder' => 'Ingrese la estura en cm',
-                                'id' => 'estatura', 'maxlength' => 3
-                        ] )!!}
-    </div>
-    <div class="col-lg-3">
-        {!! Form::label ('desaparecidoPeso','Peso:') !!}
-        {!! Form::text ('peso',
-                            old('peso'),
-                            ['class' => 'form-control sinEnter soloNumeros',
-                                'placeholder' => 'Ingrese el peso en kg',
-                                'id' => 'peso', 'maxlength' => 3
-                            ] )!!}
-    </div>
-    <div class="col-lg-3">
-        {!! Form::label ('complexion','Complexión:') !!}
-        {!! Form::select ('complexion',
-                        $complexiones,
-                        '',
-                        ['class' => 'form-control', 'id' => 'complexion'] )!!}                      
-    </div>
-    <div class="col-lg-3">
-        {!! Form::label ('colorPiel','Color piel:') !!}
-        {!! Form::select ('colorPiel',
-                            $coloresPiel,
-                            '',
-                            ['class' => 'form-control',
-                                'id' => 'colorPiel',
-                            ] )!!}                      
+            <div class="col-9">
+             @include('descripcionfisica.seccion_Cabello')
+
+
+            </div>
+        </div>
     </div>
 </div>
 
-<div class="form-group row">
-    <div class="col">
-        {!! Form::label ('perdio','¿Tenía barba?') !!}
-        {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
-    </div>
-    <div class="col">
-                    {!! Form::label ('perdio','¿Tenía barba?') !!}
-                    {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
-    </div>
-</div>
-
-<div class="row">
-  <div class="col-3">
-    @include('descripcionfisica.avatar')
-  </div>
-  <div class="col-9">Formulario Descripción
-    
 
 
-  </div>
-</div>
 
 
 
@@ -118,7 +80,7 @@
 
 @section('scripts')
 <script type="text/javascript">
-  $("#talla").modal("show");
+  $("#cabello").div("hide");
 
 
   window.onload = function () {

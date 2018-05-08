@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Titulo aqui</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Ingrese los siguientes datos</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -15,7 +15,7 @@
               {!! Form::text ('estatura',
                               old('estatura'),
                               ['class' => 'form-control sinEnter soloNumeros',
-                                      'placeholder' => 'Ingrese la estura en cm',
+                                      'placeholder' => 'CENTÍMETROS',
                                       'id' => 'estatura', 'maxlength' => 3
                               ] )!!}
           </div>
@@ -24,7 +24,7 @@
               {!! Form::text ('peso',
                                   old('peso'),
                                   ['class' => 'form-control sinEnter soloNumeros',
-                                      'placeholder' => 'Ingrese el peso en kg',
+                                      'placeholder' => 'KILOGRAMOS',
                                       'id' => 'peso', 'maxlength' => 3
                                   ] )!!}
           </div>
@@ -48,6 +48,7 @@
         <!-- Fin del Contenido del formulario-->
       </div>
       <div class="modal-footer">
+        <button type="button" class="btn btn-primary">GUARDAR</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
       </div>
     </div>
