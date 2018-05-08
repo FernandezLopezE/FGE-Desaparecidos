@@ -16,8 +16,8 @@
     transform: scale(1.5);
 
 }
-.human-body svg:hover path {
-    fill: #ff7d16;
+.human-body g:hover path {
+    fill: #17a4da;
 }
 /*.human-body svg {
     position: absolute;
@@ -29,7 +29,7 @@
 .human-body svg g path{
     position: absolute;
     left: 50%;
-    fill: black;
+    fill: #a8a8a8;
 }
 
 
@@ -51,6 +51,8 @@
 @endsection
 
 @section('content')
+@include('includes.partesCuerpo.01Talla')
+
 <div class="form-group row">
     <div class="col-lg-3">
         {!! Form::label ('desaparecidoEstatura','Estatura:') !!}
@@ -116,6 +118,9 @@
 
 @section('scripts')
 <script type="text/javascript">
+  $("#talla").modal("show");
+
+
   window.onload = function () {
     const pieces = document.getElementsByTagName('g');
     console.log(pieces);
