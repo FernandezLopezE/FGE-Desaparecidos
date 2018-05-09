@@ -174,7 +174,8 @@ class MailController extends Controller
         return view('desaparecidos.boletin');
     }
 
-     public function getDependencias(Request $request){
+    
+    public function getDependencias(){
 
         $dependencias = \DB::table('cat_correos_externos as cce')
                         ->select('cce.id',
@@ -183,7 +184,8 @@ class MailController extends Controller
                         ->get();
 
 
-        return response()->json($dependencias);        
+        return response()->json($dependencias);   
+
     }
 
 }

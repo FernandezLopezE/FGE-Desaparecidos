@@ -20,6 +20,7 @@
 			</div>
 		</div>
 			<div class="card-body bg-white">
+				 <h4 class="card-title"> Detalles de dependencias </h4>
 				<table id="tableDependencias" ></table>
 			</div>
 	</div>	
@@ -143,7 +144,7 @@
 			$('#modalDependencia').modal('show');
 			
 			return [btn].join('');
-		};	
+		});	
 						
 
 
@@ -238,24 +239,41 @@
 
 
 
-	 
+	 	var table = $('#tableDependencias');
+		//var routeIndex = '{!! route('dependencias.index') !!}';	
+		var checkedRows = [];
 
-		var table = $('#tableDependencias');
-		var routeIndex = '{!! route('dependencias.index') !!}';	
+		$('#tableDependencias').on('check.bs.table', function (e, row) {
+  			checkedRows.push({id: row.id, nombre: row.nombre, correo: row.correo});
+  			console.log(checkedRows);
+			});
 
+		var formatTableActions = function(value, row, index) {				
+			btn = '<button class="btn btn-info btn-xs edit" id="editDependencia"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
+			
+			return [btn].join('');
+		};
+		window.operateEvents = {
+			'click #editDependencia': function (e, value, row, index) {					
+				console.log(row);
+				//bodyModal.empty();
+			}
+		}
 
-		/*var formatTableActions = function(value, row, index) {				
-			btn = '<button class="btn btn-info btn-xs edit" id="editPrenda"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
-			check = '<input class="form-check-input" type="checkbox" id="chkDepedencias">'
+		var formatCheckDependencia = function(value, row, index){
+			icon = '';
+			//if (row.nombre) {
+				icon = '<i class="fa fa-check" id="chkRows">'
+			//}
 
-				
-		})*/
+			return [icon].join('');
+		}
 
 		table.bootstrapTable({				
-			url: routeIndex+'/get_dependencias',
+			url:'/get_dependencias',
 			columns: [{					
-				field: 'id',
 				title: 'No.',
+				formatter: formatCheckDependencia,
 			},
 			{					
 				field: 'nombre',
@@ -264,13 +282,13 @@
 			{					
 				field: 'correo',
 				title: 'Correo',
-			}, /*{					
+			}, {					
 				title: 'Acciones',
 				formatter: formatTableActions,
 				events: operateEvents
-			}*/]				
-		})
-
+			}]				
+		});
+		
 	});
 </script>
 
