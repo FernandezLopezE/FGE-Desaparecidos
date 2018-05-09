@@ -16,6 +16,7 @@ class CreateCatRedesSocialesTable extends Migration
         Schema::create('cat_redes_sociales', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre',20);
+            $table->string('icono',20);
             $table->timestamps();
         });
     }

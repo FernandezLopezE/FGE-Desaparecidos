@@ -47,8 +47,7 @@
 {!! HTML::script('personal/js/sisyphus.js') !!}
 
 <script type="text/javascript">    
-   // document.getElementById("lada[]").value="(+52)-";
-var contador=0;
+	var contador=0;
   
 	$(function (){
 		var table = $('#tableInformantes');
@@ -72,19 +71,12 @@ var contador=0;
         
         
         var valueCamposTelefono = function(tipoTel, lada, telefono, ext) {
-                                 console.log("valor de los campos telefono");
-
+			console.log("valor de los campos telefono");
         }
-
-        /*$('.nav-link').click(function(e){
-        	 e.preventDefault();
-        	 console.log('Evitamos el redireccionamiento');
-        })*/
 
 		var addCamposTelefono = function(tipoTel = null, lada=null, telefono=null, ext=null) {
                         
 			var lada1 = $("#lada").val();
-			console.log(lada1);
             $("#telefono2").append('<div class="row"><div class="form-group col-md-2">{!! Form::label ("tipoTelefono","Tipo de telefono:") !!}	            {!! Form::select ("tipoTelefono[]", $tiposTelefonos,"'+tipoTel+'",["class" => "form-control","id" => "tipoTelefono[]"])!!} </div> <div class="form-group col-md-2">                                             {!! Form::label ("lada","Lada:") !!}	                                    {!! Form::text ("lada[]",old(""),["class" => "form-control lada","id" =>"lada[]"])!!} </div>  <div class="form-group col-md-4">                                                                {!! Form::label ("telefonos","Número:") !!}                    {!! Form::text ("telefonos[]",old("'+telefono+'"),["class" => "form-control mayuscula valid","data-validation" => "required","data-validation-error-msg-required" => "El campo es requerido","id" => "telefonos[]"] )!!} </div>    <div class="form-group col-md-1">                                              {!! Form::label ("ext","Ext:") !!}                                        {!! Form::text ("ext[]",old("'+ext+'"), ["class" => "form-control mayuscula","id" => "ext[]"] )!!} </div> </div>');
              var otrasLadas = document.getElementsByClassName("lada");
 		    otrasLadas[contador].value = lada1;
@@ -232,20 +224,13 @@ var contador=0;
 				$.each(telefonos, function(key, value){
                     //console.log(row.lenght);
 					console.log(value.telefono);
-                    informanteTipo[etiqueta2].value = value.tipoTel;
+                    informanteTipo[etiqueta2].value = value.tipoTelefono;
                     informanteLada[etiqueta2].value = value.lada;
                     informanteTele[etiqueta2].value = value.telefono;
                     informanteExt[etiqueta2].value = value.ext;
-                    etiqueta2 = etiqueta2 +1;
-                    
-                    
+                    etiqueta2 = etiqueta2 +1;                    
 				})
 
-				//$('select#tipoTelefono option[value="'+telefonos.tipoTel+'"]').attr("selected",true);
-				//$('select#lada option[value="'+telefonos.lada+'"]').attr("selected",true);
-				//$("#telefonos").val(telefonos.telefono);
-				//$("#ext").val(telefonos.ext);
-				
 				$("#correoElectronico").val(row.correoElectronico);
 				if (row.informante == 0) {
 					$("input#informante").iCheck('uncheck');
@@ -256,16 +241,11 @@ var contador=0;
 				}                
                 
 				//modalFooter.empty();
-                	$("#btnEditarInformante").show();
-					$("#btnGuardarInformante").hide();
+				$("#btnEditarInformante").show();
+				$("#btnGuardarInformante").hide();
                     
                 $("#btnEditarInformante").val(row.idDesaparecido);
-                
-                
-            //btnEditarInformante.value = row.idDesaparecido;
-            
-				//modalFooter.append('<button type="button" class="btn btn-dark" id="btnEditarInformante" value="'+row.idDesaparecido+'"><i class="fa fa-save"></i> EDITAR</button>		<button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>');
-
+				
 				modalInformanteAgregar.modal('show');
 			}
 		}
