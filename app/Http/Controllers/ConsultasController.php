@@ -46,7 +46,7 @@ class ConsultasController extends Controller
 
 	public function jsonFamiliares(Request $request, $idDesaparecido)
 	{
-		$familiares = \App\Models\Familiar::where('idDesaparecido', $idDesaparecido)->get();
+		$familiares = \App\Models\Familiar::where('idDesaparecido', $idDesaparecido)->with('parentesco')->get();
 
 		return response()->json($familiares);
 
