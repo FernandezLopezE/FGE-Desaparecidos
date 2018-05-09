@@ -62,7 +62,9 @@ data-search="true">
         <th data-field="username" 
             data-sortable="true">User</th>
         <th data-field="desactivate" 
-            data-sortable="true">Desactivate</th>      
+            data-sortable="true">Desactivate</th>
+        <th data-field="desactivate" 
+            data-sortable="true">Desactivate2</th>       
         <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents">Action</th>
     </tr>
     </thead>
@@ -103,7 +105,9 @@ data-search="true">
         <th data-field="username" 
             data-sortable="true">User</th>
         <th data-field="desactivate" 
-            data-sortable="true">Desactivate</th>      
+            data-sortable="true">Desactivate</th>
+            <th data-field="desactivate" 
+            data-sortable="true">Desactivate2</th>      
         <th data-field="action" data-formatter="actionFormatter" data-events="actionEvents">Action</th>
     </tr>
     </thead>
