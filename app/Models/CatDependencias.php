@@ -10,6 +10,7 @@ class CatDependencias extends Model
 	protected $fillable = [	
 	    'nombre',
 	    'correo',
+        'documento',
 	];
     
    public function destinatarios()

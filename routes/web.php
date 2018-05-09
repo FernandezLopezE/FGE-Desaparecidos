@@ -35,7 +35,8 @@ Route::get('/', 'InicioController@index');
 	Route::resource('senas_particulares','SenasParticularesController');
 
 	Route::resource('datos_dentales','DatosDentalesController');
-
+    
+    Route::resource('dependencia_destinatario','AgregarDependenciaController');
 
 
 
@@ -71,6 +72,11 @@ Route::get('consultas/get_tipos_telefonos', 'ConsultasController@jsonTiposTelefo
 	->name('consultas.get_tipos_telefonos');
 Route::get('consultas/get_ladas', 'ConsultasController@jsonLadas')
 	->name('consultas.get_ladas');
+
+Route::get('consultas/get_dependencias', 'ConsultasController@jsonDependecias')
+	->name('consultas.get_dependencias');
+Route::get('consultas/get_destinatarios', 'ConsultasController@jsonDestinatarios')
+	->name('consultas.get_destinatarios');
 
 
 // Mostrando codigos postales que pertenecen a un municipio.
@@ -200,6 +206,13 @@ Route::get('/generarDocs', 'CargarDocumentosController@crearDocumento')
 Route::get('index_agregar_dependencias', 'AgregarDependenciaController@show');
 Route::post('/index_agregar_dependencias/store_destinatario', 'AgregarDependenciaController@store_destinatario')
 	->name('index_agregar_dependencias.store_destinatario');
+Route::post('/index_agregar_dependencias/store_dependencia', 'AgregarDependenciaController@store_dependencia')
+	->name('index_agregar_dependencias.store_dependencia');
+Route::post('/index_agregar_dependencias/update_dependencia', 'AgregarDependenciaController@update_dependencia')
+	->name('index_agregar_dependencias.update_dependencia');
+Route::post('/index_agregar_dependencias/update_destinatario', 'AgregarDependenciaController@update_destinatario')
+	->name('index_agregar_dependencias.update_destinatario');
+
 
 
 /*

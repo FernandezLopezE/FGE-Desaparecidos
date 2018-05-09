@@ -272,5 +272,35 @@ class ConsultasController extends Controller
 
         return response()->json($senas);
     }
+    
+    public function jsonDependecias(Request $request)
+
+    {
+        $dependencias =  \DB::table('cat_dependencias AS cd')
+                ->join('cat_documentos AS cdoc', 'cd.documento', '=', 'cdoc.id')
+                ->select('cd.id as id',
+                        'cd.nombre as nombre',
+                        'cd.correo as correo',
+                        'cd.documento as dDocumento',
+                         'cdoc.nombre as documento')
+                //->where('idCedula', $idCedula)
+                ->get();
+            return response()->json($dependencias);
+    }
+    
+    public function jsonDestinatarios(Request $request)
+
+    {
+        $destinatarios =  \DB::table('cat_destinatarios AS cd')
+                ->join('cat_dependencias AS cdep', 'cd.id_dependencia', '=', 'cdep.id')
+                ->select('cd.id as id',
+                        'cd.nombre as nombre',
+                        'cd.cargo as cargo',
+                        'cd.id_dependencia as dDependencia',
+                         'cdep.nombre as dependencia')
+                //->where('idCedula', $idCedula)
+                ->get();
+            return response()->json($destinatarios);
+    }
 
 }

@@ -9,14 +9,18 @@
           </button>
         </div>
         <div class="modal-body">
-             
+             {{ Form::hidden('idDependencia','', array('id' => 'idDependencia')) }}
           <form>     
    
-          <div id="FormularioVestimenta" >
+          <div id="FormularioDependencia" >
           <div class="row">
             <div class="col">
               {!! Form::label ('nombreDependencia','Dependencia:') !!}
-              {!! Form::select ('dependencias[]',$dependencias,'', ['class' => 'form-control', 'id' => 'idDependenciaD' ] )!!}
+              {!! Form::text ('nombreDependencia',old('nombreDependencia'),['class' => 'form-control mayuscula','id' => 'nombreDependencia', 'placeholder' => 'Ingresa el nombre de la dependencia'] )!!}
+            </div>
+            <div class="col">
+              {!! Form::label ('nombreDocumento','Documento:') !!}
+              {!! Form::select ('documentos[]',$documentos,'', ['class' => 'form-control', 'id' => 'idDocumento' ] )!!}
             </div>
             <div class="col">
               {!! Form::label ('correo','Correo electrónico:') !!}
@@ -33,8 +37,8 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-dark mr-auto" id="btnLimpiar"> LIMPIAR CAMPOS</button>
-          <button type="button" class="btn btn-dark" id="btnPrenda">GUARDAR</button>
-          <button type="button" class="btn btn-dark" id="btnActualizarP" style="display:none">ACTUALIZAR</button>
+          <button type="button" class="btn btn-dark" id="btnDependencia">GUARDAR</button>
+          <button type="button" class="btn btn-dark" id="btnActualizarDependencia" >ACTUALIZAR</button>
           <button type="button" class="btn btn-dark" data-dismiss="modal">CERRAR</button>
         </div>
       </div>

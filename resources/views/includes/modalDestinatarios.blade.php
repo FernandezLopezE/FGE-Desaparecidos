@@ -9,7 +9,7 @@
           </button>
         </div>
         <div class="modal-body">
-             
+             {{ Form::hidden('idDestinatario','', array('id' => 'idDestinatario')) }}
           <form>     
    
           <div id="FormularioVestimenta" >
@@ -19,12 +19,12 @@
               {!! Form::select ('dependencias[]',$dependencias,'', ['class' => 'form-control', 'id' => 'idDependenciaDest' ] )!!}
             </div>
             <div class="col">
-              {!! Form::label ('correo','Correo electrónico:') !!}
-              {!! Form::text ('correo',old('correo'),['class' => 'form-control mayuscula','id' => 'correoDest', 'placeholder' => 'Ingresa el correo electrónico'] )!!}
+              {!! Form::label ('nombreDestinatario','Nombre del destinatario:') !!}
+              {!! Form::text ('correo',old('correo'),['class' => 'form-control mayuscula','id' => 'nombreDest', 'placeholder' => 'Ingresa el nombre del destinatario'] )!!}
             </div>
             <div class="col">
-              {!! Form::label ('numHojas','Hoja:') !!}
-              {!! Form::select ('hojas[]',$hojas,'', ['class' => 'form-control', 'id' => 'hoja' ] )!!}
+              {!! Form::label ('cargoDestinatario','Cargo del destinatario:') !!}
+              {!! Form::text ('cargo',old('correo'),['class' => 'form-control mayuscula','id' => 'cargo', 'placeholder' => 'Ingresa el cargo del destinatario'] )!!}
             </div>
             
           </div><br>
@@ -38,7 +38,7 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-dark mr-auto" id="btnLimpiar"> LIMPIAR CAMPOS</button>
           <button type="button" class="btn btn-dark" id="btnDestinatario">GUARDAR</button>
-          <button type="button" class="btn btn-dark" id="btnActualizarD" style="display:none">ACTUALIZAR</button>
+          <button type="button" class="btn btn-dark" id="btnActualizarDestinatario" >ACTUALIZAR</button>
           <button type="button" class="btn btn-dark" data-dismiss="modal">CERRAR</button>
         </div>
       </div>

@@ -17,6 +17,11 @@ class CreateCatDependenciasTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('correo');
+            $table->integer('documento')->unsigned();
+            $table->foreign('documento')->references('id')->on('cat_documentos');
+            
+            //$table->integer('color')->unsigned();
+            //$table->foreign('color')->references('id')->on('cat_colores');
             $table->timestamps();
         });
     }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCatDestinatariosTable extends Migration
+class CreateCatDocumentosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateCatDestinatariosTable extends Migration
      */
     public function up()
     {
-        Schema::create('cat_destinatarios', function (Blueprint $table) {
+        Schema::create('cat_documentos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');            
-            $table->string('cargo');
-            $table->integer('id_dependencia')->unsigned();
-            $table->foreign('id_dependencia')->references('id')->on('cat_dependencias')->onDelete('cascade');
+            $table->string('nombre');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateCatDestinatariosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cat_destinatarios');
+        Schema::dropIfExists('cat_documentos');
     }
 }

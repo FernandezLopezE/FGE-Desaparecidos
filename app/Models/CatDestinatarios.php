@@ -9,7 +9,7 @@ class CatDestinatarios extends Model
    protected $table = 'cat_destinatarios';
 	protected $fillable = [	
 	    'nombre',
-	    'hoja',
+	    'cargo',
         'id_dependencia',
 	];
 
