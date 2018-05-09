@@ -40,6 +40,10 @@
 
 								BOLETIN
 							</a>
+							<a class="btn btn-secondary" href="{{route('mail.enviar', ['id' => $cedula->id])}}">
+
+								CORREO
+							</a>
 						</th>
 					</tr>					
 				@empty
