@@ -34,6 +34,7 @@ class CatColoresCuerpoSeeder extends Seeder
 
 
             //CABELLO
+            ['idPartesCuerpo'=>55, 'nombre' => 'SIN INFORMACIÓN',         'imagen' => '8.jpg'],
             ['idPartesCuerpo'=>55, 'nombre' => 'CASTAÑO CLARO',         'imagen' => '8.jpg'],
             ['idPartesCuerpo'=>55, 'nombre' => 'CASTAÑO OSCURO',        'imagen' => '8.jpg'],
             ['idPartesCuerpo'=>55, 'nombre' => 'NEGRO',                 'imagen' => '9.jpg'],
@@ -41,27 +42,34 @@ class CatColoresCuerpoSeeder extends Seeder
             ['idPartesCuerpo'=>55, 'nombre' => 'PELIRROJO',             'imagen' => '11.jpg'],
             ['idPartesCuerpo'=>55, 'nombre' => 'ENTRECANO',             'imagen' => '12.jpg'], 
             ['idPartesCuerpo'=>55, 'nombre' => 'BLANCO/CANOSO',         'imagen' => '13.jpg'],
+            ['idPartesCuerpo'=>55, 'nombre' => 'OTRO',         'imagen' => '8.jpg'],
             //BARBA
+            ['idPartesCuerpo'=>56, 'nombre' => 'SIN INFORMACIÓN',         'imagen' => '8.jpg'],
             ['idPartesCuerpo'=>56, 'nombre' => 'CASTAÑO CLARO',         'imagen' => '14.jpg'],
             ['idPartesCuerpo'=>56, 'nombre' => 'CASTAÑO OSCURO',        'imagen' => '15.jpg'],
             ['idPartesCuerpo'=>56, 'nombre' => 'NEGRO',                 'imagen' => '16.jpg'],
             ['idPartesCuerpo'=>56, 'nombre' => 'RUBIO',          	   'imagen' => '17.jpg'],
             ['idPartesCuerpo'=>56, 'nombre' => 'PELIRROJO',             'imagen' => '18.jpg'],
             ['idPartesCuerpo'=>56, 'nombre' => 'ENTRECANO',             'imagen' => '19.jpg'],
+            ['idPartesCuerpo'=>56, 'nombre' => 'OTRO',         'imagen' => '8.jpg'],
             //BIGOTE
+            ['idPartesCuerpo'=>57, 'nombre' => 'SIN INFORMACIÓN',         'imagen' => '8.jpg'],
             ['idPartesCuerpo'=>57, 'nombre' => 'CASTAÑO CLARO',         'imagen' => '20.jpg'],
             ['idPartesCuerpo'=>57, 'nombre' => 'CASTAÑO OSCURO',        'imagen' => '21.jpg'],
             ['idPartesCuerpo'=>57, 'nombre' => 'NEGRO',                 'imagen' => '22.jpg'],
             ['idPartesCuerpo'=>57, 'nombre' => 'RUBIO',          	   'imagen' => '23.jpg'],
             ['idPartesCuerpo'=>57, 'nombre' => 'PELIRROJO',             'imagen' => '24.jpg'],
             ['idPartesCuerpo'=>57, 'nombre' => 'ENTRECANO',             'imagen' => '25.jpg'],
+            ['idPartesCuerpo'=>57, 'nombre' => 'OTRO',         'imagen' => '8.jpg'],
             //PATILLAS
+            ['idPartesCuerpo'=>58, 'nombre' => 'SIN INFORMACIÓN',         'imagen' => '8.jpg'],
             ['idPartesCuerpo'=>58, 'nombre' => 'CASTAÑO CLARO',         'imagen' => '26.jpg'],
             ['idPartesCuerpo'=>58, 'nombre' => 'CASTAÑO OSCURO',        'imagen' => '27.jpg'],
             ['idPartesCuerpo'=>58, 'nombre' => 'NEGRO',                 'imagen' => '28.jpg'],
             ['idPartesCuerpo'=>58, 'nombre' => 'RUBIO',          	   'imagen' => '29.jpg'],
             ['idPartesCuerpo'=>58, 'nombre' => 'PELIRROJO',             'imagen' => '30.jpg'],
             ['idPartesCuerpo'=>58, 'nombre' => 'ENTRECANO',             'imagen' => '31.jpg'],  
+            ['idPartesCuerpo'=>58, 'nombre' => 'OTRO',         'imagen' => '8.jpg'],
         ]);
     }
 }

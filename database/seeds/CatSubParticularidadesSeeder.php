@@ -16,6 +16,8 @@ class CatSubParticularidadesSeeder extends Seeder
          	//CABELLO
             ['idParticularidadesCuerpo'=>1, 'nombre' => 'SIN INFORMACION'],
             ['idParticularidadesCuerpo'=>1, 'nombre' => 'CALVO'],
+            ['idParticularidadesCuerpo'=>1, 'nombre' => 'CORTE TIPO MILITAR'],
+            ['idParticularidadesCuerpo'=>1, 'nombre' => 'CORTE TIPO MOHICANO'],
             ['idParticularidadesCuerpo'=>1, 'nombre' => 'ALOPECIA FRONTAL'],
             ['idParticularidadesCuerpo'=>1, 'nombre' => 'ALOPECIA CORONAL'],
             ['idParticularidadesCuerpo'=>1, 'nombre' => 'ALOPECIA TONSURAL'],

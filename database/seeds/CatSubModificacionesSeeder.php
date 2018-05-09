@@ -21,7 +21,6 @@ class CatSubModificacionesSeeder extends Seeder
             ['idModificacionesCuerpo'=>1, 'nombre' => 'EXTENSIONES'],
             ['idModificacionesCuerpo'=>1, 'nombre' => 'TRENZADO'],
             ['idModificacionesCuerpo'=>1, 'nombre' => 'RASTAS'],
-            ['idModificacionesCuerpo'=>1, 'nombre' => 'TEÑIDO'],
             ['idModificacionesCuerpo'=>1, 'nombre' => 'PELUCA'],
             ['idModificacionesCuerpo'=>1, 'nombre' => 'BISOÑE'],
             ['idModificacionesCuerpo'=>1, 'nombre' => 'OTRO'],
@@ -75,7 +74,7 @@ class CatSubModificacionesSeeder extends Seeder
 
 
             //PATILLAS
-            ['idModificacionesCuerpo'=>9, 'nombre' => 'TEÑIDA'],
+            ['idModificacionesCuerpo'=>9, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>9, 'nombre' => 'LARGA'],
             ['idModificacionesCuerpo'=>9, 'nombre' => 'RASURADA'],
             ['idModificacionesCuerpo'=>9, 'nombre' => 'CERRADA'],
@@ -83,7 +82,7 @@ class CatSubModificacionesSeeder extends Seeder
             ['idModificacionesCuerpo'=>9, 'nombre' => 'OTRO'],
 
             //BIGOTE
-            ['idModificacionesCuerpo'=>12, 'nombre' => 'TEÑIDA'],
+            ['idModificacionesCuerpo'=>12, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>12, 'nombre' => 'LARGA'],
             ['idModificacionesCuerpo'=>12, 'nombre' => 'RASURADA'],
             ['idModificacionesCuerpo'=>12, 'nombre' => 'CERRADA'],
@@ -91,7 +90,7 @@ class CatSubModificacionesSeeder extends Seeder
             ['idModificacionesCuerpo'=>12, 'nombre' => 'OTRO'],
 
             //BARBA
-            ['idModificacionesCuerpo'=>16, 'nombre' => 'TEÑIDA'],
+            ['idModificacionesCuerpo'=>16, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>16, 'nombre' => 'LARGA'],
             ['idModificacionesCuerpo'=>16, 'nombre' => 'RASURADA'],
             ['idModificacionesCuerpo'=>16, 'nombre' => 'CERRADA'],
