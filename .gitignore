@@ -12,3 +12,16 @@ npm-debug.log
 yarn-error.log
 .env
 public/personal/js/selects2-desaparecidos.js
+public/personal/js/bootstrap-toggle.min.js
+public/personal/css/popover.css
+public/personal/css/bootstrap-toggle.min.css
+public/images/Dientes/corona.jpg
+public/images/Dientes/carillas.jpg
+public/images/Dientes/brackets3.jpg
+resources/views/includes/modal_senasP.blade.php
+public/images/Dientes/resina.jpg
+public/images/Dientes/implante.jpg
+public/images/Dientes/endodoncia.jpg
+public/images/Dientes/brackets2.png
+public/images/Dientes/brackets.jpg
+public/images/Dientes/amalgama.jpg

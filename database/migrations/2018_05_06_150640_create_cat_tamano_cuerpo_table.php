@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCatPartesCuerpoTable extends Migration
+class CreateCatTamanoCuerpoTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateCatPartesCuerpoTable extends Migration
      */
     public function up()
     {
-        Schema::create('cat_partes_cuerpo', function (Blueprint $table) {
+        Schema::create('cat_tamano_cuerpo', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->integer('partePadre')->nullabel();
-            //$table->string('imagen');
+            $table->integer('idPartesCuerpo')->unsigned()->nullable();           
+            $table->foreign('idPartesCuerpo')->references('id')->on('cat_partes_cuerpo');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateCatPartesCuerpoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cat_partes_cuerpo');
+        Schema::dropIfExists('cat_tamano_cuerpo');
     }
 }

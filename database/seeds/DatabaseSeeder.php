@@ -149,5 +149,11 @@ class DatabaseSeeder extends Seeder
         $this->call(CatImplantesSeeder::class);
         $this->call(CatEnfermedadesSeeder::class);        
 
+
+        //Descripcion fisica
+        $this->call(CatTamanoCuerpoSeeder::class);
+        $this->call(CatTiposCuerpoSeeder::class);
+        $this->call(CatTiposCorteSeeder::class);
+
     }
 }
