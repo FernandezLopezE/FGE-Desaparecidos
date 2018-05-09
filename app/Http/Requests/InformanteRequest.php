@@ -42,19 +42,14 @@ class InformanteRequest extends FormRequest
 			'idLocalidad'				=> 'required',
 			'idColonia'					=> 'required',
 			'idCodigoPostal'			=> 'required',
-			'tipoTelefono'				=> 'required',
-			'lada'						=> 'required' ,            
-			'telefono'					=> 'required',          
-			'correoElectronico'			=> 'required|unique:desaparecidos_personas,correoElectronico,'.$this->segment(2).',id',
-			'informante'				=> 'required',
-			'notificaciones'			=> 'required',
+			//'tipoTelefono'				=> 'required',
+			//'lada'						=> 'required' ,            
+			//'telefono'					=> 'required',          
+			//'correoElectronico'			=> 'unique:desaparecidos_personas,correoElectronico,'.$this->segment(2).',id',
+			'informante'				=> '',
+			'notificaciones'			=> '',
 		];
 
 		return $rules;
-
-
-		return [
-			
-		];
 	}
 }

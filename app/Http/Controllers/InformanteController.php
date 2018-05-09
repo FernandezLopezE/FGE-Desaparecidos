@@ -52,8 +52,7 @@ class InformanteController extends Controller
 								'ext' => $ext[$index]
 						);
 		}
-
-
+		
 		$persona = Persona::create([
 			'nombres'           => $request->input('nombres'),
 			'primerAp'          => $request->input('primerAp'),

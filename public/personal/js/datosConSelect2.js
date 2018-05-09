@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	$.fn.modal.Constructor.prototype.enforceFocus = function() {};
 
 	$.fn.select2.defaults.set('language', {
 		noResults: function () {
@@ -31,15 +32,9 @@ $(document).ready(function(){
 	$('#informanteTipoDireccion').select2();
 	
 
-	/*$('#idEstado').select2();
 
-	$('#idMunicipio').select2();
 
-    $('#idLocalidad').select2();
-
-    $('#idColonia').select2();
-
-    $('#idCodigoPostal').select2();
+   /* $('#idCodigoPostal').select2();
 
     $('#informanteTipoTel').select2();*/
 
@@ -60,9 +55,8 @@ $(document).ready(function(){
 	/***********************************************************
 				DOMICILIO PERSONA DESAPARECIDA
 	***********************************************************/
-	$('#tipoDireccion').select2();
 
-	/*$('#idEstado').select2();
+	$('#idEstado').select2();
 
 	$('#idMunicipio').select2();
 
@@ -70,7 +64,7 @@ $(document).ready(function(){
 
     $('#idColonia').select2();
 
-    $('#idCodigoPostal').select2();*/
+    $('#idCodigoPostal').select2();
 
 	/***********************************************************
 				DOCUMENTOS DE IDENTIDAD Y ANTECEDES JUDICIALES

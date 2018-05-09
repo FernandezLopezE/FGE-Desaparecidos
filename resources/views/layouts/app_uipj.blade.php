@@ -22,7 +22,7 @@
 	<link rel="stylesheet" href="{{ asset('plugins/bootstrap_table/bootstrap-table.min.css') }}">
 	{!! Html::style('plugins/icheck/skins/all.css') !!}
 	<!-- CSS para personalizar la plantilla -->
-	<!--<link rel="stylesheet" href="{{ asset('css/estilos.css') }}"> -->
+	<!--<link rel="stylesheet" href="{{ asset('css/estilos.css') }}">--> 
 
 
 
@@ -106,15 +106,9 @@
     {!! HTML::script('plugins/icheck/icheck.js') !!}
 	{!! HTML::script('plugins/icheck/icheck.min.js') !!}
 	
+	
 	@yield('scripts')
 	<script type="text/javascript">
-        
-//window.addEventListener("beforeunload", function (e) {
-//  var confirmationMessage = "\o/";
-//
-//  (e || window.event).returnValue = confirmationMessage; //Gecko + IE
-//  return confirmationMessage;                            //Webkit, Safari, Chrome
-//});
         
 	$(function (){
 		
