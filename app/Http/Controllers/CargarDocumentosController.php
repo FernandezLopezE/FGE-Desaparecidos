@@ -127,6 +127,7 @@ class CargarDocumentosController extends Controller
            
 	        $desaparecido = \App\Models\Desaparecido::find($datos[0]->id);
 	       
+
 	      
 	        $estado = "Veracruz";
 	        $municipio  = "Xalapa";
@@ -157,6 +158,19 @@ class CargarDocumentosController extends Controller
     		
 	    	
 	    	//$numCarpeta = "FETA/344/SDF";
+
+
+        $fechaInv =new Carbon::parse($desaparecido->persona->fechaNacimiento)->format('d/m/Y');
+         dd($fechaInv);
+      
+    		$desaparecidoNombre  = $desaparecido->persona->nombres  ." ". $desaparecido->persona->primerAp. " ". $desaparecido->persona->segundoAp;
+    		$numCarpeta = "FEADPD/zCX/".$id.""
+
+    		//$desaparecidoLugar = 
+    		
+	    	$fechaHoy = new Carbon();
+	    	$numCarpeta = "FETA/344/SDF";
+
 	    	$numOficio ="123";
 	    	$anio="2018";
 	    	$articulos = "Ingresar aqui los articulos según sea el caso";
