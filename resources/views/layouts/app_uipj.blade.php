@@ -48,6 +48,7 @@
 					<div class="col-sm-6">
 						<h4 class="m-0 text-dark">
 							<i class="fa fa-male" aria-hidden="true"></i>
+							Cedula de investigación de la persona no lozalizada.
 							@yield('titulo')
 						</h4>
 					</div><!-- /.col -->
