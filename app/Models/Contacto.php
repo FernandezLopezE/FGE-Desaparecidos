@@ -9,9 +9,8 @@ class Contacto extends Model
 	protected $table = 'desaparecidos_contacto';
 	protected $fillable = [
 
-			'correoElectronico',
-			'telefono',
-			'redesSociales',
+			'tipoContacto',
+			'datos',
 			'idDesaparecido'
 		
 		
