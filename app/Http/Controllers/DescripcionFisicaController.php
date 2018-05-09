@@ -104,6 +104,99 @@ class DescripcionFisicaController extends Controller
         
     }
 
+    //Store para cabello,barba, bigote y patilla
+    public function storeVelloFacial(Request $request){
+
+        //CABELLO
+        $parteCuerpo = new CedulaPartesCuerpo();
+
+        $parteCuerpo->idPersonaDesaparecida = $request['idExtraviado'];
+        $parteCuerpo->idPartesCuerpo = $request['parteCuerpo'];
+        $parteCuerpo->idTamanoCuerpo = $request['tamanoCabello'];
+        $parteCuerpo->idTipoCuerpo = $request['tipoCabello'];
+        $parteCuerpo->idColoresCuerpo = $request['colorCabello'];
+        $parteCuerpo->otraParticularidad =$request['otraPartiC'];
+        $parteCuerpo->otraModificacion =$request['otraModiC'];
+        $parteCuerpo->otroColor =$request['otroColorC'];
+        $parteCuerpo->observaciones = $request['observacionesCabello'];
+
+        $parteCuerpo->save();
+
+        //particularidades
+        $particularidadC = $request['particularidadCabello'];
+
+        $longitud = count($particularidadC);
+
+        for($i=0; $i<$longitud; $i++){
+            $particularidades = new PivotSubPartiCuerpo();
+            $particularidades->idCedulaPartesCuerpo = $parteCuerpo->id;
+            $particularidades->idSubParticularidades = $particularidadC[$i];
+
+            $particularidades->save();
+        }
+
+         //modificaciones
+
+         $modificacion = $request['modificacion'];
+
+         $longitud = count($modificacion);
+
+         for($i=0; $i<$longitud; $i++){
+            $modificaciones = new PivotSubModiCuerpo();
+            $modificaciones->idCedulaPartesCuerpo = $parteCuerpo->id;
+            $modificaciones->idSubModificaciones = $modificacion[$i];
+
+            $modificaciones->save();
+         }         
+
+        //barba
+        $parteCuerpo = new CedulaPartesCuerpo();
+
+        $parteCuerpo->idPersonaDesaparecida = $request['idExtraviado'];
+        $parteCuerpo->idPartesCuerpo = $request['parteCuerpo'];
+        $parteCuerpo->idTamanoCuerpo = $request['tamanoBarba'];
+        $parteCuerpo->idTipoCuerpo = $request['tipoBarba'];
+        $parteCuerpo->idColoresCuerpo = $request['colorBarba'];
+        $parteCuerpo->otraParticularidad =$request['otraPartiBa'];
+        $parteCuerpo->otraModificacion =$request['otraModiBa'];
+        $parteCuerpo->otroColor =$request['otroColorBa'];
+        $parteCuerpo->observaciones = $request['observacionesBarba'];
+
+        $parteCuerpo->save();
+
+        //bigote
+        $parteCuerpo = new CedulaPartesCuerpo();
+
+        $parteCuerpo->idPersonaDesaparecida = $request['idExtraviado'];
+        $parteCuerpo->idPartesCuerpo = $request['parteCuerpo'];
+        $parteCuerpo->idTamanoCuerpo = $request['tamanoBigote'];
+        $parteCuerpo->idTipoCuerpo = $request['tipoBigote'];
+        $parteCuerpo->idColoresCuerpo = $request['colorBigote'];
+        $parteCuerpo->otraParticularidad =$request['otraPartiBi'];
+        $parteCuerpo->otraModificacion =$request['otraModiBi'];
+        $parteCuerpo->otroColor =$request['otroColorBi'];
+        $parteCuerpo->observaciones = $request['observacionesBigote'];
+
+        $parteCuerpo->save();
+
+
+        //patilla
+        $parteCuerpo = new CedulaPartesCuerpo();
+
+        $parteCuerpo->idPersonaDesaparecida = $request['idExtraviado'];
+        $parteCuerpo->idPartesCuerpo = $request['parteCuerpo'];
+        $parteCuerpo->idTamanoCuerpo = $request['tamanoPatilla'];
+        $parteCuerpo->idTipoCuerpo = $request['tipoPatilla'];
+        $parteCuerpo->idColoresCuerpo = $request['colorPatilla'];
+        $parteCuerpo->otraParticularidad =$request['otraPartiP'];
+        $parteCuerpo->otraModificacion =$request['otraModiP'];
+        $parteCuerpo->otroColor =$request['otroColorP'];
+        $parteCuerpo->observaciones = $request['observacionesPatilla'];
+
+        $parteCuerpo->save();
+
+    }
+
     /**
      * Display the specified resource.
      *
@@ -121,6 +214,34 @@ class DescripcionFisicaController extends Controller
         $coloresCuerpo = \App\Models\CatColoresCuerpo::all()->pluck('nombre','id');
         $subParticularidades = \App\Models\CatSubParticularidades::all()->pluck('nombre','id');
         $subModificaciones = \App\Models\CatSubModificaciones::all()->pluck('nombre','id');
+        //Datos para cabello
+        $tipoCabello = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','55')->pluck('nombre','id');
+        $tamanoCabello = \App\Models\CatTamanoCuerpo::where('idPartesCuerpo','55')->pluck('nombre','id');
+        $coloresCabello = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','55')->pluck('nombre','id');
+        $partiCabello = \App\Models\CatSubParticularidades::where('idParticularidadesCuerpo','1')->pluck('nombre','id');
+        $modiCabello = \App\Models\CatSubModificaciones::where('idModificacionesCuerpo','1')->pluck('nombre','id');
+
+        //Datos Barba
+        $tipoBarba = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','56')->pluck('nombre','id');
+        
+        $coloresBarba = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','56')->pluck('nombre','id');
+        $partiBarba = \App\Models\CatSubParticularidades::where('idParticularidadesCuerpo','16')->pluck('nombre','id');
+        $modiBarba = \App\Models\CatSubModificaciones::where('idModificacionesCuerpo','16')->pluck('nombre','id');
+
+        //Datos Bigote
+        $tipoBigote = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','57')->pluck('nombre','id');
+        
+        $coloresBigote = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','57')->pluck('nombre','id');
+        $partiBigote = \App\Models\CatSubParticularidades::where('idParticularidadesCuerpo','12')->pluck('nombre','id');
+        $modiBigote = \App\Models\CatSubModificaciones::where('idModificacionesCuerpo','12')->pluck('nombre','id');
+
+        //Datos Patilla
+        $tipoPatilla = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','58')->pluck('nombre','id');
+        
+        $coloresPatilla = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','58')->pluck('nombre','id');
+        $partiPatilla = \App\Models\CatSubParticularidades::where('idParticularidadesCuerpo','9')->pluck('nombre','id');
+        $modiPatilla = \App\Models\CatSubModificaciones::where('idModificacionesCuerpo','9')->pluck('nombre','id');
+
 
 
         return view('descripcionfisica.form_descripcion_fisica',
@@ -128,10 +249,24 @@ class DescripcionFisicaController extends Controller
                 'desaparecido' => $desaparecido,
                 'complexiones' => $complexiones,
                 'coloresPiel' => $coloresPiel,
-                'coloresCuerpo' => $coloresCuerpo,
-                'particularidades' => $subParticularidades,
-                'modificaciones' => $subModificaciones,
                 'partesCuerpo' => $partesCuerpo,
+                'tipoCabello' => $tipoCabello,
+                'tamanoCabello' => $tamanoCabello,
+                'coloresCabello' => $coloresCabello,
+                'partiCabello' => $partiCabello,
+                'modiCabello' => $modiCabello,
+                'tipoBarba' => $tipoBarba,
+                'coloresBarba' => $coloresBarba,
+                'partiBarba' => $partiBarba,
+                'modiBarba' => $modiBarba,
+                'tipoBigote' => $tipoBigote,
+                'coloresBigote' => $coloresBigote,
+                'partiBigote' => $partiBigote,
+                'modiBigote' => $modiBigote,
+                'tipoPatilla' => $tipoPatilla,
+                'coloresPatilla' => $coloresPatilla,
+                'partiPatilla' => $partiPatilla,
+                'modiPatilla' => $modiPatilla,
             ]);
     }
 

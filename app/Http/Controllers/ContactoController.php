@@ -24,76 +24,35 @@ class ContactoController extends Controller
 	 *
 	 * @return \Illuminate\Http\Response
 	 */
-public function create($id)
+	public function create($id)
 	{
-		$datos = \App\Models\Desaparecido::where('idCedula', $id)
-											->where('tipoPersona', 'DESAPARECIDA')
-											->get();
+		$desaparecido = \App\Models\Desaparecido::find($id);
 
-		if (count($datos)) {
-			return redirect()->action(
-				'ExtraviadoController@show', ['id' => $id]
-			);
-		} else {
+		$redes 		= \App\Models\CatRedesSociales::all()->pluck('nombre','nombre');
+		$ladas 		= \App\Models\CatNacionalidad::all()->pluck('lada','id');
 
-			$cedula = \App\Models\Cedula::find($id);
+		$tiposDireccion = array('PERSONAL' => 'PERSONAL',
+								'TRABAJO' => 'TRABAJO',
+								'FAMILIAR' => 'FAMILIAR');
+        $tiposContacto = array('TELEFONO' => 'TELEFONO',
+								'CORREO' => 'CORREO ELECTRÓNICO',
+								'REDSOCIAL' => 'RED SOCIAL');
 
-			$desaparecido = \App\Models\Desaparecido::join('persona', 'desaparecidos_personas.idPersona', '=', 'persona.id')
-											->where('idCedula', $id)
-											->where('tipoPersona', 'DESAPARECIDA')
-											->get()
-											->toArray();
+		$tiposTelefonos = array('PERSONAL' => 'PERSONAL',
+								'TRABAJO' => 'TRABAJO',
+								'CELULAR' => 'CELULAR');            
 
-			$sexos = array('H' => 'MASCULINO', 'M' => 'FEMENINO');
-			$escolaridades      = \App\Models\CatEscolaridad::all()->pluck('nombre','id');
-			$ocupaciones        = \App\Models\CatOcupacion::all()->pluck('nombre','id');
-			$identificaciones   = \App\Models\CatDocumento::all()->pluck('nombre','id');
-			$edoscivil          = \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
-
-			$desaparecido = new \App\Models\Desaparecido();
-			$parentescos = \App\Models\CatParentesco::all()->pluck('nombre','id');
-			$nacionalidades     = \App\Models\CatNacionalidad::all()->pluck('nombre', 'id');
-			$ladas = \App\Models\CatNacionalidad::all()->pluck('lada','id');
-			$documentos     = \App\Models\CatDocumento::all()->pluck('nombre', 'id');
-			$estados            = \App\Models\CatEstado::all()->pluck('nombre','id');       
-			$municipios = array();
-			$localidades = array();
-			$colonias = array();
-			$codigos = array();
-			$tiposDireccion = array('PERSONAL' => 'PERSONAL',
-									'TRABAJO' => 'TRABAJO',
-									'FAMILIAR' => 'FAMILIAR');
-
-			$tiposTelefonos = array('PERSONAL' => 'PERSONAL',
-									'TRABAJO' => 'TRABAJO',
-									'CELULAR' => 'CELULAR');            
-
-			$informantes = \App\Models\Desaparecido::where('tipoPersona', 'INFORMANTE')->get();
-
-			return view('desaparecido.index',compact(
-												'desaparecido',
-												'cedula',
-												'sexos',
-												'escolaridades',
-												'ocupaciones',
-												'identificaciones',
-												'edoscivil',
-												'dialectos',
-												'parentescos',
-												'nacionalidades',
-												'ladas',
-												'documentos',
-												'estados',
-												'municipios',
-												'localidades',
-												'colonias',
-												'informantes',
-												'codigos',
+		return view('desaparecido.index',compact(
+												'desaparecido',							
+                                                'redes',												
+												'ladas',												
 												'tiposDireccion',
-												'tiposTelefonos'
+                                                'tiposContacto',
+												'tiposTelefonos'                
 											));
-		} 
 	}
+		
+	
 
 	/**
 	 * Store a newly created resource in storage.
@@ -105,7 +64,12 @@ public function create($id)
 	{
 
 
-		$tipo_telefono = $request->input('tipoTel');
+	
+        $tipoContacto = $request->input('tipoContacto');
+        
+        if ($tipoContacto == 'TELEFONO'){
+            
+       	$tipo_telefono = $request->input('tipoTel');
 		$lada = $request->input('lada');
 		$ext = $request->input('ext');
 		foreach ($request->input('telefono') as $index => $value) {
@@ -115,16 +79,45 @@ public function create($id)
 								'ext' => $ext[$index]
 						);
 		}
-
+        
 		$contactos = \App\Models\Contacto::create([
+            
+            'idDesaparecido' 		=> $request->input('idDesaparecido'),
+			'tipoContacto'		=> $request->input('tipoContacto'),
+			'datos'          	=> json_encode($telefonos),	
+            
+		
 
-			'idDesaparecido' 		=> $request->input('idDesaparecido'),
-			'correoElectronico'		=> $request->input('correoElectronico'),
-			'telefono'          	=> json_encode($telefonos),		 
-			 'redesSociales'		=> json_encode(array(
-			 									'redesSociales' => $request->input('redesSociales'))),
+//			'idDesaparecido' 		=> $request->input('idDesaparecido'),
+//			'correoElectronico'		=> $request->input('correoElectronico'),
+//			'telefono'          	=> json_encode($telefonos),		 
+//			 'redesSociales'		=> json_encode(array(
+//			 									'redesSociales' => $request->input('redesSociales'))),
 
 		]);
+             }else{
+            if ($tipoContacto == 'CORREO'){
+            	$contactos = \App\Models\Contacto::create([
+            
+            'idDesaparecido' 		=> $request->input('idDesaparecido'),
+			'tipoContacto'		=> $request->input('tipoContacto'),
+			'datos'          	=> json_encode($request->input('correoElectronico')),	
+            
+		]);
+        } else{
+               if ($tipoContacto == 'REDSOCIAL'){
+            	$contactos = \App\Models\Contacto::create([
+            
+            'idDesaparecido' 		=> $request->input('idDesaparecido'),
+			'tipoContacto'		    => $request->input('tipoContacto'),
+			'datos'          	    => json_encode(array( 'RED SOCIAL' => $request->input('redesSociales'), 'NOMBRE DE USUARIO' =>$request->input('nombreUsuario') )),	
+            
+		]);
+        } 
+            }
+            
+        }
+       
 
 		return response()->json($contactos);
 		
@@ -149,24 +142,25 @@ public function create($id)
 
 	public function show($idDesaparecido)
 	{
-		$desaparecido = \App\Models\Desaparecido::find($idDesaparecido);
-
-		
-		$contactos = Contacto::find($idDesaparecido);
-		
-
-		//$ladas 				= \App\Models\CatNacionalidad::all()->pluck('lada','id');
-		
+		$desaparecido = \App\Models\Desaparecido::find($idDesaparecido);		
+        $redes     = \App\Models\CatRedesSociales::all()->pluck('nombre','nombre');
+        
+		//$ladas 				= \App\Models\CatNacionalidad::all()->pluck('lada','id');	
 
 		$tiposTelefonos = array('PERSONAL' => 'PERSONAL',
 								'TRABAJO' => 'TRABAJO',
 								'CELULAR' => 'CELULAR');
-
+        $tiposContacto = array(     'SELECCIONE' => 'SELECCIONE UN TIPO',
+                                    'TELEFONO' => 'TELEFONO',
+									'CORREO' => 'CORREO ELECTRÓNICO',
+									'REDSOCIAL' => 'RED SOCIAL');
 	
 		return view('contactos.index',
 					compact('cedula',
 								'desaparecido',
-								'tiposTelefonos'
+                                'tiposContacto',
+                                'redes',
+								'tiposTelefonos'                            
 							));		
 	}
 

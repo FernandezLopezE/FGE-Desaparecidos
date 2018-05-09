@@ -24,9 +24,19 @@ class Familiar extends Model
 		return $this->belongsTo('App\Models\Desaparecido','idDesaparecido');
 	}
 
+	public function parentesco()
+	{
+		return $this->belongsTo('App\Models\CatParentesco','idParentesco');
+	}
+
 	public function setFechaNacimientoAttribute($value)
 	{
-		$this->attributes['fechaNacimiento'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
+		if(empty($value)){
+			$this->attributes['fechaNacimiento'] = null;	
+		} else {
+			$this->attributes['fechaNacimiento'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');			
+		}
+		
 	}
 
 

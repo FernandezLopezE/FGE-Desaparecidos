@@ -322,65 +322,24 @@ $(document).ready(function(){
 	//Fin de Mostrar campos al seleccionar otro dialecto
 
 	//ingresar otro parentesco
-	$('#informanteidParentesco').change(function() {
-		f = $('#informanteidParentesco').val();
-		console.log("El parentesoc es: "+f);
-
+	$('#idParentesco').change(function() {
+		f = $('#idParentesco').val();
 		if (f==14) {
-			$("#otro_parent").show();
+			$("#div_otroParentesco").show();
 		}else{
-			$("#otro_parent").hide();
+			$("#div_otroParentesco").hide();
 		}
 	});
 
-	$('#informanteidDocumentoIdentidad').change(function(){
-		h = $('#informanteidDocumentoIdentidad').val();
-		
-		if (h==8) {
-			$("#otro_doc").show();
+	$('#idDocumentoIdentidad').change(function(){
+		h = $('#idDocumentoIdentidad').val();
+		console.log('documento: '+h);		
+		if (h==9) {
+			$("#div_otroDocIdentidad").show();
 		}else{
-			$("#otro_doc").hide();
+			$("#div_otroDocIdentidad").hide();
 		}
 	})
-
-  
-
-	 $('#fechaNacimiento').change(function(){  
-		from = $("#fechaNacimiento").val().split("/");
-		fechaNacimiento = from[2] + "-" + from[1] + "-" + from[0];
-		fechaEnviada = Date.parse(fechaNacimiento);
-	   
-		fechaActual= new Date();
-	   
-	   if (fechaEnviada > fechaActual)
-	   {
-		   $("#fechaNacimiento").val("");
-		   $("#edadExtravio").val("");
-	   }else{
-
-	   $.ajax({
-			   url: '/desaparecido/edad/'+fechaNacimiento,
-			   type:"GET",
-			   dataType:"json",
-
-			   success:function(data) {
-					   console.log("hola"+data);
-					   $('#edadExtravio').val(data);
-			   },
-			   
-		   });
-	   }
-   });
-  
-
-   //Mostrar - ocultar form
-   /*$("#").click(function() {
-		$("#formInformante").toggle('slow');
-   });
-
-  $('#nuevaPrenda').click(function(e){
-			alert("Hola");
-		})*/
 
 });
 

@@ -72,7 +72,7 @@
 							<a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="{!! route('desaparecido.create') !!}">Formulario</a>
+							<a class="nav-link" href="">Formulario</a>
 						</li>
 					</ul>
 					<div class="dropdown dropdown-toggle">
