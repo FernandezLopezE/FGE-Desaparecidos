@@ -1,8 +1,13 @@
-<form class="cabello" style="display:none;">
+<div class="cabello" style="display:none;" id="acordion">
 <div class="card border-success" >
-    <div class="card-header">
-        <h5 class="card-title">Cabello, barba, bigote y patillas</h5>
+    <div class="card-header" id="headingOne">
+        <h5 class="card-title">Cabello, barba, bigote y patillas  
+        	<i class="fa fa-times-circle" style="float: right; margin-left: 10px;" id="cerrar"></i>
+        	<i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"></i>
+        	
+        </h5>
     </div>
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">    
     <div class="card-body"> 
         <div class="form-group row" id="cabello">
 		    <div class="col-3">
@@ -108,6 +113,8 @@
                 {!! Form::textarea('size', '', ['class' => 'form-control', 'id' => 'dientePerdido', 'rows' => '1', 'placeholder' => 'Observaciones'] ) !!}
 		    </div>
 		</div>
+		<button type="button" class="btn btn-primary" style="float: right;">GUARDAR</button>
     </div>
 </div>
-</form>
+</div>
+</div>

@@ -1,52 +1,52 @@
 @extends('layouts.app_uipj')
 @section('css')
 <style type="text/css">
-.human-body {
-    width: 207px;
-    position: relative;
-    margin-left: 40px;
-    /*padding-top: 240px;*/
-    /*height: 260px;*/
-    display: block;
-    /*margin: 40px auto;*/
-}
-.human-body svg:hover {
-    cursor: pointer;
-    transition: transform .2s;
-    transform: scale(1.5);
+    .human-body {
+        width: 207px;
+        position: relative;
+        margin-left: 40px;
+        /*padding-top: 240px;*/
+        /*height: 260px;*/
+        display: block;
+        /*margin: 40px auto;*/
+    }
+    .human-body svg:hover {
+        cursor: pointer;
+        transition: transform .2s;
+        transform: scale(1.5);
 
-}
-.human-body g:hover path {
-    fill: #17a4da;
-}
-/*.human-body svg {
-    position: absolute;
-    left: 50%;
-    fill: #57c9d5;
-}*/
-
-
-.human-body svg g path{
-    position: absolute;
-    left: 50%;
-    fill: #a8a8a8;
-}
+    }
+    .human-body g:hover path {
+        fill: #17a4da;
+    }
+    /*.human-body svg {
+        position: absolute;
+        left: 50%;
+        fill: #57c9d5;
+    }*/
 
 
-#area {
-    display: block;
-    width: 100%;
-    clear: both;
-    padding: 10px;
-    text-align: center;
-    font-size: 25px;
-    font-family: Courier New;
-    color: #a5a5a5;
-}
+    .human-body svg g path{
+        position: absolute;
+        left: 50%;
+        fill: #a8a8a8;
+    }
 
-#area #data {
-    color: black;
-}
+
+    #area {
+        display: block;
+        width: 100%;
+        clear: both;
+        padding: 10px;
+        text-align: center;
+        font-size: 25px;
+        font-family: Courier New;
+        color: #a5a5a5;
+    }
+
+    #area #data {
+        color: black;
+    }
 </style>
 @endsection
 
@@ -60,48 +60,38 @@
         <div class="row">
             <div class="col-3">
             @include('descripcionfisica.avatar')
-<br><br><br>
-            <button type="button" class="btn btn-primary" id="prueba">prueba</button>
             </div>
 
             <div class="col-9">
              @include('descripcionfisica.seccion_Cabello')
-
-
             </div>
         </div>
     </div>
 </div>
 
-
 @endsection 
 
 @section('scripts')
 <script type="text/javascript">
-  //$("#cabello").div("hide");
-
-  $("#prueba").click(function(){
-    //alert("Hola");
+$("#cerrar").click(function(event) {
     $(".cabello").toggle();
     });
+    window.onload = function () {
+        const pieces = document.getElementsByTagName('g');
+        console.log(pieces);
+        for (var i = 0; pieces.length; i++) {
+            let _piece = pieces[i];
+            _piece.onclick = function(t) {
+                if (t.target.getAttribute('id') != null) document.getElementById('data').innerHTML = t.target.getAttribute('id');
+                if (t.target.parentElement.getAttribute('id') != null) document.getElementById('data').innerHTML = t.target.parentElement.getAttribute('id');
 
-  window.onload = function () {
-    const pieces = document.getElementsByTagName('g');
-    console.log(pieces);
-    for (var i = 0; pieces.length; i++) {
-        let _piece = pieces[i];
-        _piece.onclick = function(t) {
-            if (t.target.getAttribute('id') != null) document.getElementById('data').innerHTML = t.target.getAttribute('id');
-            if (t.target.parentElement.getAttribute('id') != null) document.getElementById('data').innerHTML = t.target.parentElement.getAttribute('id');
-
-            var temp = document.getElementById('data').innerHTML = t.target.parentElement.getAttribute('id');
-            if(temp == "cabello"){
-              
-              $("#modalCabello").modal("show");
+                var temp = document.getElementById('data').innerHTML = t.target.parentElement.getAttribute('id');
+                if(temp == "cabello"){
+                  $(".cabello").toggle();
+                }
             }
         }
     }
-}
 </script>
 
 
