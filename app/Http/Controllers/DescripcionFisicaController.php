@@ -121,6 +121,34 @@ class DescripcionFisicaController extends Controller
         $coloresCuerpo = \App\Models\CatColoresCuerpo::all()->pluck('nombre','id');
         $subParticularidades = \App\Models\CatSubParticularidades::all()->pluck('nombre','id');
         $subModificaciones = \App\Models\CatSubModificaciones::all()->pluck('nombre','id');
+        //Datos para cabello
+        $tipoCabello = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','55')->pluck('nombre','id');
+        $tamanoCabello = \App\Models\CatTamanoCuerpo::where('idPartesCuerpo','55')->pluck('nombre','id');
+        $coloresCabello = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','55')->pluck('nombre','id');
+        $partiCabello = \App\Models\CatSubParticularidades::where('idParticularidadesCuerpo','1')->pluck('nombre','id');
+        $modiCabello = \App\Models\CatSubModificaciones::where('idModificacionesCuerpo','1')->pluck('nombre','id');
+
+        //Datos Barba
+        $tipoBarba = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','56')->pluck('nombre','id');
+        
+        $coloresBarba = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','56')->pluck('nombre','id');
+        $partiBarba = \App\Models\CatSubParticularidades::where('idParticularidadesCuerpo','16')->pluck('nombre','id');
+        $modiBarba = \App\Models\CatSubModificaciones::where('idModificacionesCuerpo','16')->pluck('nombre','id');
+
+        //Datos Bigote
+        $tipoBigote = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','57')->pluck('nombre','id');
+        
+        $coloresBigote = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','57')->pluck('nombre','id');
+        $partiBigote = \App\Models\CatSubParticularidades::where('idParticularidadesCuerpo','12')->pluck('nombre','id');
+        $modiBigote = \App\Models\CatSubModificaciones::where('idModificacionesCuerpo','12')->pluck('nombre','id');
+
+        //Datos Patilla
+        $tipoPatilla = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','58')->pluck('nombre','id');
+        
+        $coloresPatilla = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','58')->pluck('nombre','id');
+        $partiPatilla = \App\Models\CatSubParticularidades::where('idParticularidadesCuerpo','9')->pluck('nombre','id');
+        $modiPatilla = \App\Models\CatSubModificaciones::where('idModificacionesCuerpo','9')->pluck('nombre','id');
+
 
 
         return view('descripcionfisica.form_descripcion_fisica',
@@ -128,10 +156,24 @@ class DescripcionFisicaController extends Controller
                 'desaparecido' => $desaparecido,
                 'complexiones' => $complexiones,
                 'coloresPiel' => $coloresPiel,
-                'coloresCuerpo' => $coloresCuerpo,
-                'particularidades' => $subParticularidades,
-                'modificaciones' => $subModificaciones,
                 'partesCuerpo' => $partesCuerpo,
+                'tipoCabello' => $tipoCabello,
+                'tamanoCabello' => $tamanoCabello,
+                'coloresCabello' => $coloresCabello,
+                'partiCabello' => $partiCabello,
+                'modiCabello' => $modiCabello,
+                'tipoBarba' => $tipoBarba,
+                'coloresBarba' => $coloresBarba,
+                'partiBarba' => $partiBarba,
+                'modiBarba' => $modiBarba,
+                'tipoBigote' => $tipoBigote,
+                'coloresBigote' => $coloresBigote,
+                'partiBigote' => $partiBigote,
+                'modiBigote' => $modiBigote,
+                'tipoPatilla' => $tipoPatilla,
+                'coloresPatilla' => $coloresPatilla,
+                'partiPatilla' => $partiPatilla,
+                'modiPatilla' => $modiPatilla,
             ]);
     }
 
