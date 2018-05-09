@@ -10,7 +10,7 @@ use Session;
 use Redirect;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Models\Desaparecido;
-use App\Models\CatCorreosExternos;
+use App\Models\CatDependencias;
 
 
 class MailController extends Controller
@@ -23,13 +23,13 @@ class MailController extends Controller
 
     public function show(){ 
 
-            $combo =CatCorreosExternos::all()->pluck('nombre','id');
+            $combo =CatDependencias::all()->pluck('nombre','id');
         
 
             $cedula = \App\Models\Cedula::find(1);
            
             //$cedula = \App\Models\Cedula::find($id);
-            $correosExternos = CatCorreosExternos::all();
+            $correosExternos = CatDependencias::all();
             return view('desaparecidos.contacto',[
 
                     'Cedula' => $cedula,
@@ -109,7 +109,7 @@ class MailController extends Controller
 
 
        
-        $familiar = CatCorreosExternos::create([
+        $familiar = CatDependencias::create([
             'nombre'               => $request->input('nombre'),
             'correo'               => $request->input('correo')
            
@@ -177,7 +177,7 @@ class MailController extends Controller
     
     public function getDependencias(){
 
-        $dependencias = \DB::table('cat_correos_externos as cce')
+        $dependencias = \DB::table('cat_dependencias as cce')
                         ->select('cce.id',
                                 'cce.nombre',
                                 'cce.correo')
