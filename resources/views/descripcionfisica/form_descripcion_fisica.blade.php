@@ -47,6 +47,15 @@
     #area #data {
         color: black;
     }
+
+    #cerrar:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+
+    #colapsar:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+
 </style>
 @endsection
 
@@ -76,6 +85,7 @@
 $("#cerrar").click(function(event) {
     $(".cabello").toggle();
     });
+
     window.onload = function () {
         const pieces = document.getElementsByTagName('g');
         console.log(pieces);
