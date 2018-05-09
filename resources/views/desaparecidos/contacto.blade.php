@@ -114,12 +114,14 @@
 				console.log( " ya entre men")
 				modalTitle.empty();
 				modalBody.empty();//limpia el contenido del body
+				modalBody.append('<p align ="center"><strong>PARA:  DIF MUNICIPAL </strong></p>');
+				modalBody.append('<br>');
+				modalBody.append('<div class="row"><div class="form-group col-md-12">    	 {!! Form::label ("destin","Elija el destinatario:") !!}		{!! Form::select ("idDestinatarios[]", $combo,"",["class" => "form-control","id" => "idDestinatarios[]"])!!} </div> ');	
 
-				modalBody.append('<p><strong>Para:   Director del DIF municipal </strong></p>');
-
-				modalBody.append('<p> Descripción de vehículo</p>');
-				modalBody.append('<input type="text" class ="form-control" placeholder =" Ingrese la descripción del vehículo" >');
+				modalBody.append(' <div class = "row">		<div class="form-group col-md-12">   {!! Form::label ("ext","Ingrese la descripción del vehículo") !!}        {!! Form::text ("vehiculoDescripcion",old("Ingrese la descripción del vehículo"), ["class" => "form-control mayuscula","id" => "vehiculoDescripcion" ,"placeholder" => "Ingrese la descripción"] )!!} </div> </div></div> </div>	');		
 				modalBody.append('<br>');	
+				modalBody.append('<input id="fileArchivo" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">');	
+				modalBody.append('<br>');
 				modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
 				modalTitle.append('<i class="fa fa-file"></i>  Albergues ');
 				modalGral.modal('show');
@@ -128,16 +130,21 @@
 			else if(nombreDependencia == 'Alerta migratoria'){
 				console.log( " ya entre men")
 				modalTitle.empty();
-				modalBody.empty();//limpia el contenido del body
+				modalBody.empty();
+				//limpia el contenido
+				modalBody.append('<p align ="center"><strong>PARA:  FISCAL GENERAL DEL ESTADO </strong></p>');
+				modalBody.append('<br>');
+				modalBody.append('<div class="row"><div class="form-group col-md-12">    	 {!! Form::label ("destin","Elija el destinatario:") !!}		{!! Form::select ("idDestinatarios[]", $combo,"",["class" => "form-control","id" => "idDestinatarios[]"])!!} </div> ');	
 
-				modalBody.append('<p><strong>Para:   Director del DIF municipal </strong></p>');
-
-				modalBody.append('<p> Descripción de vehículo</p>');
-				modalBody.append('<input type="text" class ="form-control" placeholder =" Ingrese la descripción del vehículo" >');
+				modalBody.append(' <div class = "row">		<div class="form-group col-md-12">   {!! Form::label ("ext","Ingrese la descripción del vehículo") !!}        {!! Form::text ("vehiculoDescripcion",old("Ingrese la descripción del vehículo"), ["class" => "form-control mayuscula","id" => "vehiculoDescripcion" ,"placeholder" => "Ingrese la descripción"] )!!} </div> </div></div> </div>	');		
 				modalBody.append('<br>');	
+				modalBody.append('<input id="fileArchivo" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">');	
+				modalBody.append('<br>');
 				modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
-				modalTitle.append('<i class="fa fa-file"></i>  Albergues ');
+				modalTitle.append('<i class="fa fa-file"></i>  Alerta migratoria ');
 				modalGral.modal('show');
+				
+
 			}
 
 			/*
@@ -147,7 +154,7 @@
 			};
 				console.log(dataString);
 			$.ajax({
-				type: 'GET',
+				type: 'POST',
 				url: '/generarDocs',
 				data: dataString,
 				dataType: 'text',
@@ -163,6 +170,10 @@
 			*/
 			
 		});
+
+			//BOTON PARA GUARDAR DOCUMENTO
+		 	
+
 				//file upload
 		$("#fileArchivo").fileinput({
 						showUpload: false,
@@ -222,6 +233,34 @@
 				}
 			});
 		})
+
+		$("#btnAgregarInformante").click (function(){
+			console.log("hola perrito ya entre");
+			var dataString = {
+				nombre : $("#idDestinatarios").val(),
+				vehiculoDescripcion : $("#vehiculoDescripcion").val(),
+				nombreDependencia: nombreDependencia ,
+
+			};
+
+				console.log(dataString);
+			$.ajax({
+				type: 'POST',
+				url: '/guardarDocumento',
+				data: dataString,
+				dataType: 'json',
+				success: function(data) {
+					console.log(data);
+					$('#modalGeneral').modal('hide');
+
+					//$("#correosTable").bootstrapTable('refresh');
+				
+				},
+				error: function(data) {
+					console.log(data);
+				}
+			});
+		});
 
 		$(document).on('ready', function() {
 	    

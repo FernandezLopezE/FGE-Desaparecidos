@@ -114,10 +114,61 @@ class CargarDocumentosController extends Controller
 
  	}
 
- 	 public function create()
+ 	 public function create(Request $request)
 
     {        
 
+    	
+    		$id = '1';
+            $datos = \App\Models\Desaparecido::where('idCedula', $id)
+                                            ->where('tipoPersona', 'DESAPARECIDA')
+                                            ->limit(1)
+                                            ->get();
+           
+	        $desaparecido = \App\Models\Desaparecido::find($datos[0]->id);
+	       
+	      
+	        $estado = "Veracruz";
+	        $municipio  = "Xalapa";
+	        $localidad = "Xalapa";
+	        $referenciaLugar = "Lazaro cardenas, Plaza Cryztal";
+
+
+
+	        $fechaHoy = new Carbon();//entra en todos los documentos
+	        $hora =Carbon::parse($fechaHoy)->format('H:i');
+	        dd($hora);
+
+       		$anio =Carbon::parse($fechaHoy)->format('Y');//estas variables se ocupan en la carpeta Inv. hace referencia al año actual y mes actual
+        	$mes =Carbon::parse($fechaHoy)->format('m');
+         	
+      		//Variables que entran en cada uno de los documentos
+    		$desaparecidoNombre  = $desaparecido->persona->nombres  ." ". $desaparecido->persona->primerAp. " ". $desaparecido->persona->segundoAp;
+    		$numCarpeta = "FEADPD/ZCX/".$id."/".$anio."-".$mes;
+    		$numOficio = $id;
+    		$vehiculoDescjripcion =($request['vehiculoDescripcion']);
+    		$fiscalNombre  = $desaparecido->cedula->entrevistadorNombres  ." ". $desaparecido->cedula->entrevistadorPrimerAp. " ". $desaparecido->cedula->entrevistadorSegundoAp;
+    		$fiscalCargo = $desaparecido->cedula->entrevistadorCargo;
+    		$desaparecidoLugar = $referenciaLugar.", ".$localidad.", ".$municipio.", ". $estado;
+    		
+
+    		dd($desaparecidoLugar);
+    	
+    		
+	    	
+	    	//$numCarpeta = "FETA/344/SDF";
+	    	$numOficio ="123";
+	    	$anio="2018";
+	    	$articulos = "Ingresar aqui los articulos según sea el caso";
+	    	$nombreDesaparecido = "Berenice Contreras";
+	    	$lugarVisto ="Parque Juarez ";
+	    	$fechaVisto =new Carbon();
+	    	$horaVisto = "3:00 p.m.";
+	    	$descripcionVehiculo= " Tsuru II color rojo";
+	    	$nombreFiscal = "Avelardo Rodriguez";
+	    	$numFiscal = "455";
+	    	$numDistrito = "XI" ;
+	    	$distrito = "VI";
 
 
           /*  $datos = \App\Models\Desaparecido::where('idCedula', $id)
@@ -126,140 +177,25 @@ class CargarDocumentosController extends Controller
                                             ->get();*/
         
         //$desaparecido = \App\Models\Desaparecido::find($datos[0]->id);
-        $view = view('plantillas.form_24_albergues'/*, compact('desaparecido')*/)->render();
-        $pdf =\App::make('dompdf.wrapper');
-        $pdf -> loadHTML($view);
-        
-        
+       // $view = view('plantillas.form_24_albergues'/*, compact('desaparecido')*/)->render();
+        /*$pdf =\App::make('dompdf.wrapper');
+        $pdf -> loadHTML($view);    
         $pdf->setPaper([0, 0, 1424, 864], 'landscape');
-
        	$pdf->stream('formato_'.time().'.pdf');
       	$output = $pdf->output();
       	//cada que se crea en esta ruta este PDF se remplaza por el existente por lo que no  satura el servidor con archivos. solo se ocupa uno a la vez
       	file_put_contents('pdftemporal.pdf', $output);
-        return $pdf->stream('formato_'.time().'.pdf',array('Attachment'=>0));
+        return $pdf->stream('formato_'.time().'.pdf',array('Attachment'=>0));*/
+        
 
-       	
-       
-        //return view('desaparecido.show',compact('desaparecido'));
-
-        //dd($desaparecido);
-        //$h = $request['nombre'];
-        //return response()->json($h);
-
-        //return $id;
-                //dd("Aqui toy");
-       // $pdf->stream('boletin');
- // $pdf = PDF::loadView(['text'=>'desaparecidos.boletin'], $request->all());
-       // dd("ya entre aqui");
-            //return $pdf->download('MiVistaContact.pdf');
-         
-           
-    	//METODOS PARA GENERAR LOS PDFS
-
-
-    	if( $nombreDocumento == "form_24_albergues"){
-	    	$view = view('plantillas.form_24_albergues', compact('datos'))->render();
+    	//METODOS PARA GENERAR LOS PDFS, se hacen en funcion del nombre del documento que reciba en el Request
+	    	$view = view($nombreDocumento, compact('datos'))->render();
 	        $pdf =\App::make('dompdf.wrapper');
 	        $pdf -> loadHTML($view); 
 	        $pdf->setPaper([0, 0, 1424, 864], 'landscape');
 	        //cada que se crea en esta ruta este PDF se remplaza por el existente por lo que no  satura el servidor con archivos. solo se ocupa uno a la vez
-	        file_put_contents('form_24_albergues.pdf', $output);
-	        return "form_24_albergues.pdf";
-		}
-		else if( $nombreDocumento == "form_24_alerta_migratoria"){
-	    	$view = view('plantillas.form_24_alerta_migratoria', compact('datos'))->render();
-	        $pdf =\App::make('dompdf.wrapper');
-	        $pdf -> loadHTML($view); 
-	        $pdf->setPaper([0, 0, 1424, 864], 'landscape');
-	        //cada que se crea en esta ruta este PDF se remplaza por el existente por lo que no  satura el servidor con archivos. solo se ocupa uno a la vez
-	        file_put_contents('form_24_alerta_migratoria.pdf', $output);
-	        return "form_24_alerta_migratoria.pdf";
-		}
-		else if( $nombreDocumento == "form_24_bestaciones_migratorias"){
-	    	$view = view('plantillas.form_24_bestaciones_migratorias', compact('datos'))->render();
-	        $pdf =\App::make('dompdf.wrapper');
-	        $pdf -> loadHTML($view); 
-	        $pdf->setPaper([0, 0, 1424, 864], 'landscape');
-	        //cada que se crea en esta ruta este PDF se remplaza por el existente por lo que no  satura el servidor con archivos. solo se ocupa uno a la vez
-	        file_put_contents('form_24_bestaciones_migratorias.pdf', $output);
-	        return "form_24_bestaciones_migratorias.pdf";
-		}
-		else if( $nombreDocumento == "form_24_centro_informacion"){
-	    	$view = view('plantillas.form_24_centro_informacion', compact('datos'))->render();
-	        $pdf =\App::make('dompdf.wrapper');
-	        $pdf -> loadHTML($view); 
-	        $pdf->setPaper([0, 0, 1424, 864], 'landscape');
-	        //cada que se crea en esta ruta este PDF se remplaza por el existente por lo que no  satura el servidor con archivos. solo se ocupa uno a la vez
-	        file_put_contents('form_24_centro_informacion.pdf', $output);
-	        return "form_24_centro_informacion.pdf";
-		}
-		else if( $nombreDocumento == "form_24_centros_detencion"){
-	    	$view = view('plantillas.form_24_centros_detencion', compact('datos'))->render();
-	        $pdf =\App::make('dompdf.wrapper');
-	        $pdf -> loadHTML($view); 
-	        $pdf->setPaper([0, 0, 1424, 864], 'landscape');
-	        //cada que se crea en esta ruta este PDF se remplaza por el existente por lo que no  satura el servidor con archivos. solo se ocupa uno a la vez
-	        file_put_contents('form_24_centros_detencion.pdf', $output);
-	        return "form_24_centros_detencion.pdf";
-		}
-		else if( $nombreDocumento == "form_24_entradas_salidas_vehiculos"){
-	    	$view = view('plantillas.form_24_entradas_salidas_vehiculos', compact('datos'))->render();
-	        $pdf =\App::make('dompdf.wrapper');
-	        $pdf -> loadHTML($view); 
-	        $pdf->setPaper([0, 0, 1424, 864], 'landscape');
-	        //cada que se crea en esta ruta este PDF se remplaza por el existente por lo que no  satura el servidor con archivos. solo se ocupa uno a la vez
-	        file_put_contents('form_24_entradas_salidas_vehiculos.pdf', $output);
-	        return "form_24_entradas_salidas_vehiculos.pdf";
-		}
-		else if( $nombreDocumento == "form_24_equip_tel"){
-	    	$view = view('plantillas.form_24_equip_tel', compact('datos'))->render();
-	        $pdf =\App::make('dompdf.wrapper');
-	        $pdf -> loadHTML($view); 
-	        $pdf->setPaper([0, 0, 1424, 864], 'landscape');
-	        //cada que se crea en esta ruta este PDF se remplaza por el existente por lo que no  satura el servidor con archivos. solo se ocupa uno a la vez
-	        file_put_contents('form_24_equip_tel.pdf', $output);
-	        return "form_24_equip_tel.pdf";
-		}
-		else if( $nombreDocumento == "form_24_equipos_comunicacion"){
-	    	$view = view('plantillas.form_24_equipos_comunicacion', compact('datos'))->render();
-	        $pdf =\App::make('dompdf.wrapper');
-	        $pdf -> loadHTML($view); 
-	        $pdf->setPaper([0, 0, 1424, 864], 'landscape');
-	        //cada que se crea en esta ruta este PDF se remplaza por el existente por lo que no  satura el servidor con archivos. solo se ocupa uno a la vez
-	        file_put_contents('form_24_equipos_comunicacion.pdf', $output);
-	        return "form_24_equipos_comunicacion.pdf";
-		}
-		else if( $nombreDocumento == "form_24_expediente_laboral"){
-	    	$view = view('plantillas.form_24_expediente_laboral', compact('datos'))->render();
-	        $pdf =\App::make('dompdf.wrapper');
-	        $pdf -> loadHTML($view); 
-	        $pdf->setPaper([0, 0, 1424, 864], 'landscape');
-	        //cada que se crea en esta ruta este PDF se remplaza por el existente por lo que no  satura el servidor con archivos. solo se ocupa uno a la vez
-	        file_put_contents('form_24_expediente_laboral.pdf', $output);
-	        return "form_24_expediente_laboral.pdf";
-		}
-		else if( $nombreDocumento == "form_24_hospitales"){
-	    	$view = view('plantillas.form_24_hospitales', compact('datos'))->render();
-	        $pdf =\App::make('dompdf.wrapper');
-	        $pdf -> loadHTML($view); 
-	        $pdf->setPaper([0, 0, 1424, 864], 'landscape');
-	        //cada que se crea en esta ruta este PDF se remplaza por el existente por lo que no  satura el servidor con archivos. solo se ocupa uno a la vez
-	        file_put_contents('form_24_hospitales.pdf', $output);
-	        return "form_24_hospitales.pdf";
-		}
-		
-
-
-
-
-
-
-
-
-
-
-
+	        file_put_contents($nombreDocumento.'.pdf', $output);
+	        return $nombreDocumento.'.pdf';
     }//acaba el create
 
 

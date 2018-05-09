@@ -269,7 +269,8 @@ Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');*/
 //Route::resource('boletin', 'BoletinController@show');
 
 
-
+Route::POST('/guardarDocumento','CargarDocumentosController@create')
+	->name('guardarDocumento.create');
 
 
 
