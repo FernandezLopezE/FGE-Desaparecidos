@@ -144,7 +144,7 @@ class ContactoController extends Controller
 	{
 		$desaparecido = \App\Models\Desaparecido::find($idDesaparecido);		
         $redes     = \App\Models\CatRedesSociales::all()->pluck('nombre','nombre');
-        dd($redes->toArray());
+        
 		//$ladas 				= \App\Models\CatNacionalidad::all()->pluck('lada','id');	
 
 		$tiposTelefonos = array('PERSONAL' => 'PERSONAL',

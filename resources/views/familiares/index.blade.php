@@ -75,11 +75,17 @@
 				
 				$('.modal-body div.has-danger').removeClass('has-danger');
 				$('.form-control-feedback').empty();
+				if(row.fechaNacimiento){
+					fecha = row.fechaNacimiento.split('-');
+                   	fechaNacimiento = fecha[2]+'/'+fecha[1]+'/'+fecha[0];	
+				} else {
+					fechaNacimiento = '';
+				}
 
 				$("#nombres").val(row.nombres);
 				$("#primerAp").val(row.primerAp);
 				$("#segundoAp").val(row.segundoAp);
-				$("#fechaNacimiento").val(row.fechaNacimiento);
+				$("#fechaNacimiento").val(fechaNacimiento);
 				$("#edad").val(row.edad);
 				$('select#idParentesco option[value="'+row.idParentesco+'"]').attr("selected",true);
                 
