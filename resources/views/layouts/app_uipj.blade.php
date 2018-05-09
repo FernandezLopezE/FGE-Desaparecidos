@@ -22,7 +22,7 @@
 	<link rel="stylesheet" href="{{ asset('plugins/bootstrap_table/bootstrap-table.min.css') }}">
 	{!! Html::style('plugins/icheck/skins/all.css') !!}
 	<!-- CSS para personalizar la plantilla -->
-	<!--<link rel="stylesheet" href="{{ asset('css/estilos.css') }}">--> 
+	<link rel="stylesheet" href="{{ asset('css/estilos.css') }}"> 
 
 
 
