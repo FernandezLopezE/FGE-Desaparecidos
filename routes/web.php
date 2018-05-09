@@ -195,6 +195,10 @@ Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store')
 Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
 
 Route::get('/email', 'MailController@show')->name('mail.enviar');
+// Rutas de la dependencias
+Route::resource('/dependencias','MailController');
+Route::get('/get_dependencias', 'MailController@getDependencias')
+	->name('dependencias.get_dependencias');
 
 Route::get('/envio_documentos', 'MailController@show');
 

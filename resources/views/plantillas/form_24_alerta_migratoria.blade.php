@@ -159,33 +159,3 @@ b
 </body>
 
 </html>
-
-div#general{
-
-			margin:auto;
-			margin-top: 2px;
-			width: 790px;
-			height: 555px;
-			background-color: red;
-
-		}
-<img src="/personal/img/avatar.png" width="1148" height="1894" />
-body{
-		background-image: url(./images/boletin555x790.png);
-		background-size: 30%;
-		font-family: Arial;
-		
-		}
-
-
-
-
-		div#fondo{
-			margin:auto;
-			margin-left: 1px;
-			margin-top: 1px;
-			width: 1148px;
-			height:1894px;
-			background-color: green;
-			
-		}

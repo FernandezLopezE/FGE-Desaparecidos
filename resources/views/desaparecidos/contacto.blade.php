@@ -1,73 +1,29 @@
 @extends('layouts.app_uipj')
 
 @section ('css')
- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
-
-
-    
+ <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/css/fileinput.css" media="all" rel="stylesheet" type="text/css"/>  
 @endsection
 
-
-@section('content')
-	
-
-	
-
+@section('content')	
 	<div class="card border-primary">
 		<div class="card-header">
 			<div class = "row"> 
 				<div class = "col">
 					<h4>Destinatarios</h4>
 				</div>
-				<div class="col">
-						<a class="btn btn-secondary" href="{{route('image-view.create')}}">
-
-								PDF MUESTRA
-							</a>
-
-				</div>
-				<div class = "col">
-					
-			{{ Form::button('<i class="fa fa-send "></i>', ['type' => 'submit', 'class' => 'btn btn-dark btn-lg pull-right'] )  }}			
-			{{--<button type="button" class="btn btn-dark pull-right" id="btnAgregarDependencia"> AGREGAR</button>--}}
-			@include('includes.modal')
-			@include('includes.modal_editar_archivos')
-				</div>
+				<div class = "col">				
+				{{ Form::button('<i class="fa fa-send "></i>', ['type' => 'submit', 'class' => 'btn btn-dark btn-lg pull-right'] )  }}			
+				{{--<button type="button" class="btn btn-dark pull-right" id="btnAgregarDependencia"> AGREGAR</button>--}}
+				@include('includes.modal_editar_archivos')
+			</div>
 
 			</div>
-			
-
-
 		</div>
 			<div class="card-body bg-white">
-				<table class="table" id ="correosTable">
-					<thead>
-						<th> </th>
-						<th>DEPENDENCIA</th>
-					
-						<th>ACCIÓN</th>
-
-					</thead>
-					<tbody>
-						@foreach ( $correosExternos as $tabla)
-							<tr>
-								<th>{!!Form::checkbox('name', 'value')!!}</th>
-								<th>{!! $tabla->nombre!!}</th>						
-								<th>
-									{{ Form::button('<i class="fa fa-edit "></i>', ['type' => 'submit', 'class' => 'btn btn-dark btn-md ' , 'id'=>'btnEditarArchivo'] )  }}
-								</th>
-
-							</tr>					
-						
-						@endforeach			
-					</tbody>				
-				</table>
+				 <h4 class="card-title"> Detalles de dependencias </h4>
+				<table id="tableDependencias" ></table>
 			</div>
 	</div>	
-
-
-	
-
 @endsection
 
 @section('scripts')
@@ -79,7 +35,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
-
+	$(document).ready(function(){
 
 	var modalGral = $('#modalGeneral');
 	var modalTitle = $('.modal-title');
@@ -87,15 +43,7 @@
 	var modalFooter = $('.modal-footer');
 	var nombreDependencia = "Alerta migratoria";
 
-		$(document).ready(function(){
-
-				$('#idCorreosExternos').select2();
-
-
-				
-		})
-
-
+		
 		$('#modalGeneral').on('show.bs.modal', function (event) {
 		  var button = $(event.relatedTarget), // Button that triggered the modal
 		      content = button.siblings('.read-more').html(),
@@ -195,42 +143,153 @@
 		 $('#btnAgregarDependencia').click(function(e){
 			$('#modalDependencia').modal('show');
 			
-		});
+			return [btn].join('');
+		});	
+						
 
-		 	$("#btnGuardarDependencia").click (function(){
-			
-			var dataString = {
-				nombre : $("#idDependencia").val(),
-				correo : $("#correoElectronico").val(),
-				
-			};
-				console.log(dataString);
-			$.ajax({
-				type: 'POST',
-				url: '/mail/store_dependencia',
-				data: dataString,
-				dataType: 'json',
-				success: function(data) {
-					console.log(data);
-					$('#modalDependencia').modal('hide');
 
-					$("#correosTable").bootstrapTable('refresh');
-				
-				},
-				error: function(data) {
-					console.log(data);
-				}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	 	var table = $('#tableDependencias');
+		//var routeIndex = '{!! route('dependencias.index') !!}';	
+		var checkedRows = [];
+
+		$('#tableDependencias').on('check.bs.table', function (e, row) {
+  			checkedRows.push({id: row.id, nombre: row.nombre, correo: row.correo});
+  			console.log(checkedRows);
 			});
-		})
 
-		$(document).on('ready', function() {
-	    
-	   
+		var formatTableActions = function(value, row, index) {				
+			btn = '<button class="btn btn-info btn-xs edit" id="editDependencia"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
+			
+			return [btn].join('');
+		};
+		window.operateEvents = {
+			'click #editDependencia': function (e, value, row, index) {					
+				console.log(row);
+				//bodyModal.empty();
+			}
+		}
+
+		var formatCheckDependencia = function(value, row, index){
+			icon = '';
+			//if (row.nombre) {
+				icon = '<i class="fa fa-check" id="chkRows">'
+			//}
+
+			return [icon].join('');
+		}
+
+		table.bootstrapTable({				
+			url:'/get_dependencias',
+			columns: [{					
+				title: 'No.',
+				formatter: formatCheckDependencia,
+			},
+			{					
+				field: 'nombre',
+				title: 'Dependencia',
+			}, 
+			{					
+				field: 'correo',
+				title: 'Correo',
+			}, {					
+				title: 'Acciones',
+				formatter: formatTableActions,
+				events: operateEvents
+			}]				
 		});
 		
-		
-		 
-
+	});
 </script>
 
 @endsection
