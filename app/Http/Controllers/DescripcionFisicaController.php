@@ -104,6 +104,99 @@ class DescripcionFisicaController extends Controller
         
     }
 
+    //Store para cabello,barba, bigote y patilla
+    public function storeVelloFacial(Request $request){
+
+        //CABELLO
+        $parteCuerpo = new CedulaPartesCuerpo();
+
+        $parteCuerpo->idPersonaDesaparecida = $request['idExtraviado'];
+        $parteCuerpo->idPartesCuerpo = $request['parteCuerpo'];
+        $parteCuerpo->idTamanoCuerpo = $request['tamanoCabello'];
+        $parteCuerpo->idTipoCuerpo = $request['tipoCabello'];
+        $parteCuerpo->idColoresCuerpo = $request['colorCabello'];
+        $parteCuerpo->otraParticularidad =$request['otraPartiC'];
+        $parteCuerpo->otraModificacion =$request['otraModiC'];
+        $parteCuerpo->otroColor =$request['otroColorC'];
+        $parteCuerpo->observaciones = $request['observacionesCabello'];
+
+        $parteCuerpo->save();
+
+        //particularidades
+        $particularidadC = $request['particularidadCabello'];
+
+        $longitud = count($particularidadC);
+
+        for($i=0; $i<$longitud; $i++){
+            $particularidades = new PivotSubPartiCuerpo();
+            $particularidades->idCedulaPartesCuerpo = $parteCuerpo->id;
+            $particularidades->idSubParticularidades = $particularidadC[$i];
+
+            $particularidades->save();
+        }
+
+         //modificaciones
+
+         $modificacion = $request['modificacion'];
+
+         $longitud = count($modificacion);
+
+         for($i=0; $i<$longitud; $i++){
+            $modificaciones = new PivotSubModiCuerpo();
+            $modificaciones->idCedulaPartesCuerpo = $parteCuerpo->id;
+            $modificaciones->idSubModificaciones = $modificacion[$i];
+
+            $modificaciones->save();
+         }         
+
+        //barba
+        $parteCuerpo = new CedulaPartesCuerpo();
+
+        $parteCuerpo->idPersonaDesaparecida = $request['idExtraviado'];
+        $parteCuerpo->idPartesCuerpo = $request['parteCuerpo'];
+        $parteCuerpo->idTamanoCuerpo = $request['tamanoBarba'];
+        $parteCuerpo->idTipoCuerpo = $request['tipoBarba'];
+        $parteCuerpo->idColoresCuerpo = $request['colorBarba'];
+        $parteCuerpo->otraParticularidad =$request['otraPartiBa'];
+        $parteCuerpo->otraModificacion =$request['otraModiBa'];
+        $parteCuerpo->otroColor =$request['otroColorBa'];
+        $parteCuerpo->observaciones = $request['observacionesBarba'];
+
+        $parteCuerpo->save();
+
+        //bigote
+        $parteCuerpo = new CedulaPartesCuerpo();
+
+        $parteCuerpo->idPersonaDesaparecida = $request['idExtraviado'];
+        $parteCuerpo->idPartesCuerpo = $request['parteCuerpo'];
+        $parteCuerpo->idTamanoCuerpo = $request['tamanoBigote'];
+        $parteCuerpo->idTipoCuerpo = $request['tipoBigote'];
+        $parteCuerpo->idColoresCuerpo = $request['colorBigote'];
+        $parteCuerpo->otraParticularidad =$request['otraPartiBi'];
+        $parteCuerpo->otraModificacion =$request['otraModiBi'];
+        $parteCuerpo->otroColor =$request['otroColorBi'];
+        $parteCuerpo->observaciones = $request['observacionesBigote'];
+
+        $parteCuerpo->save();
+
+
+        //patilla
+        $parteCuerpo = new CedulaPartesCuerpo();
+
+        $parteCuerpo->idPersonaDesaparecida = $request['idExtraviado'];
+        $parteCuerpo->idPartesCuerpo = $request['parteCuerpo'];
+        $parteCuerpo->idTamanoCuerpo = $request['tamanoPatilla'];
+        $parteCuerpo->idTipoCuerpo = $request['tipoPatilla'];
+        $parteCuerpo->idColoresCuerpo = $request['colorPatilla'];
+        $parteCuerpo->otraParticularidad =$request['otraPartiP'];
+        $parteCuerpo->otraModificacion =$request['otraModiP'];
+        $parteCuerpo->otroColor =$request['otroColorP'];
+        $parteCuerpo->observaciones = $request['observacionesPatilla'];
+
+        $parteCuerpo->save();
+
+    }
+
     /**
      * Display the specified resource.
      *
