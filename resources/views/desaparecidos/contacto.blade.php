@@ -34,19 +34,222 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
+	$(document).ready(function(){
 
-		$(document).ready(function(){
+	var modalGral = $('#modalGeneral');
+	var modalTitle = $('.modal-title');
+	var modalBody = $('.modal-body');
+	var modalFooter = $('.modal-footer');
+	var nombreDependencia = "Alerta migratoria";
 
+		
+		$('#modalGeneral').on('show.bs.modal', function (event) {
+		  var button = $(event.relatedTarget), // Button that triggered the modal
+		      content = button.siblings('.read-more').html(),
+		      modal = $(this);
+
+		  modal.find('.modal-body').html(content);
+		});
+
+
+		$('#btnEditarArchivo').click(function(e){
+
+			//variables estaticas para crear el modal adecuado, estas variables estaticas se sacaran de un Json en base al ROW seleccionado
+				
+
+			if(nombreDependencia == 'Albergues'){
+				console.log( " ya entre men")
+				modalTitle.empty();
+				modalBody.empty();//limpia el contenido del body
+
+				modalBody.append('<p><strong>Para:   Director del DIF municipal </strong></p>');
+
+				modalBody.append('<p> Descripción de vehículo</p>');
+				modalBody.append('<input type="text" class ="form-control" placeholder =" Ingrese la descripción del vehículo" >');
+				modalBody.append('<br>');	
+				modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
+				modalTitle.append('<i class="fa fa-file"></i>  Albergues ');
+				modalGral.modal('show');
+			}
+
+			else if(nombreDependencia == 'Alerta migratoria'){
+				console.log( " ya entre men")
+				modalTitle.empty();
+				modalBody.empty();//limpia el contenido del body
+
+				modalBody.append('<p><strong>Para:   Director del DIF municipal </strong></p>');
+
+				modalBody.append('<p> Descripción de vehículo</p>');
+				modalBody.append('<input type="text" class ="form-control" placeholder =" Ingrese la descripción del vehículo" >');
+				modalBody.append('<br>');	
+				modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
+				modalTitle.append('<i class="fa fa-file"></i>  Albergues ');
+				modalGral.modal('show');
+			}
+
+			/*
+			var dataString = {
+				nombre :"aqui va men"
+				
+			};
+				console.log(dataString);
+			$.ajax({
+				type: 'GET',
+				url: '/generarDocs',
+				data: dataString,
+				dataType: 'text',
+				success: function(data) {
+					console.log(data);
+					$('#modalGeneral').modal('show');
+				
+				},
+				error: function(data) {
+					console.log(data);
+				}
+			});
+			*/
+			
+		});
+				//file upload
+		$("#fileArchivo").fileinput({
+						showUpload: false,
+						showPreview:false,
+						previewFileType: 'any',
+			            theme: 'fa',
+			            uploadUrl: "/image-view",
+			            uploadExtraData: function() {
+			                return {
+			                    _token: $("input[name='_token']").val(),
+			                };
+			            },
+			            allowedFileExtensions: ['jpg', 'png', 'gif', 'pdf'],
+			            overwriteInitial: false,
+			            maxFileSize:2000,
+			            maxFilesNum: 10,
+			            slugCallback: function (filename) {
+			                return filename.replace('(', '_').replace(']', '_');
+			            }
+			        });
+
+		 $("#input-b9").fileinput({
+		        showPreview: false,
+		        showUpload: false,
+		        elErrorContainer: '#kartik-file-errors',
+		        allowedFileExtensions: ["jpg", "png", "gif"]
+		        //uploadUrl: '/site/file-upload-single'
+		    });
+
+		 $('#btnAgregarDependencia').click(function(e){
+			$('#modalDependencia').modal('show');
+			
+			return [btn].join('');
+		};	
+						
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	 
 
 		var table = $('#tableDependencias');
 		var routeIndex = '{!! route('dependencias.index') !!}';	
 
+
 		/*var formatTableActions = function(value, row, index) {				
 			btn = '<button class="btn btn-info btn-xs edit" id="editPrenda"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
 			check = '<input class="form-check-input" type="checkbox" id="chkDepedencias">'
-			
-			return [btn].join('');
-		};*/
+
+				
+		})*/
 
 		table.bootstrapTable({				
 			url: routeIndex+'/get_dependencias',
@@ -67,11 +270,8 @@
 				events: operateEvents
 			}*/]				
 		})
-				
-		});
-		
-	 
 
+	});
 </script>
 
 @endsection
