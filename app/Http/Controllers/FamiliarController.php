@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Familiar;
+use App\Http\Requests\FamiliarRequest;
 
 class FamiliarController extends Controller
 {
@@ -33,10 +34,10 @@ class FamiliarController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FamiliarRequest $request)
     {        
         $familiar = Familiar::create([
-            'nombres'               => $request->input('nombre'),
+            'nombres'               => $request->input('nombres'),
             'primerAp'              => $request->input('primerAp'),
             'segundoAp'             => $request->input('segundoAp'),
             'fechaNacimiento'       => $request->input('fechaNacimiento'),
@@ -81,9 +82,19 @@ class FamiliarController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(FamiliarRequest $request, $id)
     {
-        //
+        
+        $familiar = Familiar::find($id)->update([
+            'nombres'               => $request->input('nombres'),
+            'primerAp'              => $request->input('primerAp'),
+            'segundoAp'             => $request->input('segundoAp'),
+            'fechaNacimiento'       => $request->input('fechaNacimiento'),
+            'edad'                  => $request->input('edad'),
+            'idParentesco'          => $request->input('idParentesco'),
+        ]);
+
+        return response()->json($familiar);
     }
 
     /**
