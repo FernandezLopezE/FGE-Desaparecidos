@@ -81,7 +81,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PersonaSeeder::class);
 
 
-        //$this->call(ParentescoTableSeeder::class);        
+        $this->call(CatDocumentosSeeder::class);        
         //$this->call(DomicilioTableSeeder::class);
         //$this->call(CatCentroReclusionSeeder::class);
         //$this->call(DocumentosSeeder::class);
