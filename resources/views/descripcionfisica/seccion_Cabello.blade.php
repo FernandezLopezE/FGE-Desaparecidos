@@ -28,10 +28,29 @@
 		    </div>
 		</div>
 
+		<div class="form-group row" id="cabello">
+		    <div class="col-3">
+		        {!! Form::text('tamanoCabello', '', ['class' => 'form-control', 'id' => 'otroTamanoC', 'placeholder' => 'Especifique'] ) !!}
+		    </div>
+		    <div class="col-3">
+                {!! Form::text('tipoCabello', '', ['class' => 'form-control', 'id' => 'otroTipoC', 'placeholder' => 'Especifique'] ) !!}
+		    </div>
+		    <div class="col-3">
+                {!! Form::text('colorCabello', '', ['class' => 'form-control', 'id' => 'otroColorC', 'placeholder' => 'Especifique'] ) !!}
+		    </div>
+		    <div class="col-3">
+                {!! Form::text('partiCabello', '', ['class' => 'form-control', 'id' => 'otroPartiC', 'placeholder' => 'Especifique'] ) !!}
+		    </div>
+		</div>
+
 		<div class="form-group row">
 		    <div class="col-3">
                 {!! Form::label ('modiCabello','Modificación') !!}
                 {!! Form::select('modiCabello', $modiCabello, '', ['class' => 'form-control', 'id' => 'modiCabello'] ) !!}
+		    </div>
+		    <div class="col-3">
+		    	{!! Form::label ('Especifique','Especifique') !!}
+		    	{!! Form::text('partiCabello', '', ['class' => 'form-control', 'id' => 'otroModificacionC', 'placeholder' => 'Especifique'] ) !!}
 		    </div>
 		    <div class="col">
                 {!! Form::label ('observacionesCabello','Observaciones') !!}
@@ -57,6 +76,16 @@
                 {!! Form::select('modiBarba', $modiBarba, '', ['class' => 'form-control', 'id' => 'modiBarba'] ) !!}
 		    </div>
 		</div>
+
+		<div class="form-group row">
+		    <div class="col">
+                {!! Form::text('colorCabello', '', ['class' => 'form-control', 'id' => 'otroColorBar', 'placeholder' => 'Especifique otro color'] ) !!}
+		    </div>
+		    <div class="col">
+                {!! Form::text('partiCabello', '', ['class' => 'form-control', 'id' => 'otroPartiBar', 'placeholder' => 'Especifique otro estilo'] ) !!}
+		    </div>
+		</div>
+
 		<div class="form-group row">
 			<div class="col">
                 {!! Form::label ('observacionesBarba','Observaciones') !!}
@@ -80,6 +109,15 @@
 		    <div class="col-3">
                 {!! Form::label ('modiBigote','Estilo') !!}
                 {!! Form::select('modiBigote', $modiBigote, '', ['class' => 'form-control', 'id' => 'modiBigote'] ) !!}
+		    </div>
+		</div>
+
+		<div class="form-group row">
+		    <div class="col">
+                {!! Form::text('colorCabello', '', ['class' => 'form-control', 'id' => 'otroColorBig', 'placeholder' => 'Especifique otro color'] ) !!}
+		    </div>
+		    <div class="col">
+                {!! Form::text('partiCabello', '', ['class' => 'form-control', 'id' => 'otroPartiBig', 'placeholder' => 'Especifique otro estilo'] ) !!}
 		    </div>
 		</div>
 		<div class="form-group row">
@@ -107,6 +145,16 @@
                 {!! Form::select('modiPatilla', $modiPatilla, '', ['class' => 'form-control', 'id' => 'modiPatilla'] ) !!}
 		    </div>
 		</div>
+
+		<div class="form-group row">
+		    <div class="col">
+                {!! Form::text('colorCabello', '', ['class' => 'form-control', 'id' => 'otroColorPat', 'placeholder' => 'Especifique otro color'] ) !!}
+		    </div>
+		    <div class="col">
+                {!! Form::text('partiCabello', '', ['class' => 'form-control', 'id' => 'otroPartiPat', 'placeholder' => 'Especifique otro estilo'] ) !!}
+		    </div>
+		</div>
+
 		<div class="form-group row">
 			<div class="col">
                 {!! Form::label ('observacionesPatilla','Observaciones') !!}
