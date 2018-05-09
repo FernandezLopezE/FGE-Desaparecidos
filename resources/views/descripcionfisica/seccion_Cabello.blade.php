@@ -30,7 +30,7 @@
 
 		<div class="form-group row" id="cabello">
 		    <div class="col-3">
-		        {!! Form::text('tamanoCabello', '', ['class' => 'form-control', 'id' => 'otroTamanoC', 'placeholder' => 'Especifique'] ) !!}
+		        
 		    </div>
 		    <div class="col-3">
                 {!! Form::text('tipoCabello', '', ['class' => 'form-control', 'id' => 'otroTipoC', 'placeholder' => 'Especifique'] ) !!}
