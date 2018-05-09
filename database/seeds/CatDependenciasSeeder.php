@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CatCorreosExternosSeeder extends Seeder
+class CatDependenciasSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +11,7 @@ class CatCorreosExternosSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('cat_correos_externos')->insert([
+        DB::table('cat_dependencias')->insert([
             [ 'nombre' => 'Alfredo Ramirez Anastacio', 					'correo' => 'xbox.07@hotmail.com'],
             [ 'nombre' => 'Carlos Avila Aguilar', 						'correo' => 'cavila@fiscaliaveracruz.gob.mx'],
             [ 'nombre' => 'Edgar Santiago Jimenez Alarcon', 			'correo' => 'esjimenez@fiscaliaveracruz.gob.mx'],

@@ -201,6 +201,9 @@ Route::get('/generarDocs', 'CargarDocumentosController@crearDocumento')
 
 	//esta es la ruta .
 
+Route::get('index_agregar_dependencias', 'AgregarDependenciaController@show');
+Route::post('/index_agregar_dependencias/store_destinatario', 'AgregarDependenciaController@store_destinatario')
+	->name('index_agregar_dependencias.store_destinatario');
 
 
 /*
