@@ -363,4 +363,42 @@ class ConsultasController extends Controller
             return response()->json($destinatarios);
     }
 
+    public function jsonDep(Request $request)//me consulta el nombre del documento
+
+    {
+
+    	$idDep  =($request['idDependencia']);
+
+    	//dd($idDep);
+
+    	 $dDocumento=  \DB::table('cat_dependencias AS cd')
+                ->join('cat_documentos AS cdoc', 'cd.documento', '=', 'cdoc.id')
+                ->select(
+                        'cd.documento as dDocumento',
+                         'cdoc.nombre as documento')
+                ->where('cd.id', $idDep)
+                ->get();
+            return response()->json($dDocumento);
+    }
+
+    public function jsonDes(Request $request)
+
+    {
+
+    	$idDep  =($request['idDependencia']);
+
+    	//dd($idDep);
+
+        $destinatarios =  \DB::table('cat_destinatarios AS cd')
+                ->join('cat_dependencias AS cdep', 'cd.id_dependencia', '=', 'cdep.id')
+                ->select('cd.id as id',
+                        'cd.nombre as nombre',
+                        'cd.cargo as cargo',
+                        'cd.id_dependencia as dDependencia',
+                         'cdep.nombre as dependencia')
+                ->where('cd.id_dependencia', $idDep)
+                ->get();
+            return response()->json($destinatarios);
+    }
+
 }

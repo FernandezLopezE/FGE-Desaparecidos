@@ -14,7 +14,7 @@
 				<div class = "col">				
 				{{ Form::button('<i class="fa fa-send "></i>', ['type' => 'submit', 'class' => 'btn btn-dark btn-lg pull-right'] )  }}			
 				{{--<button type="button" class="btn btn-dark pull-right" id="btnAgregarDependencia"> AGREGAR</button>--}}
-				@include('includes.modal_editar_archivos')
+				@include('includes.modal')
 			</div>
 
 			</div>
@@ -37,11 +37,8 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 
-	var modalGral = $('#modalGeneral');
-	var modalTitle = $('.modal-title');
-	var modalBody = $('.modal-body');
-	var modalFooter = $('.modal-footer');
-	var nombreDependencia = "Alerta migratoria";
+	
+			
 
 		
 		$('#modalGeneral').on('show.bs.modal', function (event) {
@@ -53,64 +50,10 @@
 		});
 
 
-		$('#btnEditarArchivo').click(function(e){
 
-			//variables estaticas para crear el modal adecuado, estas variables estaticas se sacaran de un Json en base al ROW seleccionado
-				
+			//BOTON PARA GUARDAR DOCUMENTO
+		 	
 
-			if(nombreDependencia == 'Albergues'){
-				console.log( " ya entre men")
-				modalTitle.empty();
-				modalBody.empty();//limpia el contenido del body
-
-				modalBody.append('<p><strong>Para:   Director del DIF municipal </strong></p>');
-
-				modalBody.append('<p> Descripción de vehículo</p>');
-				modalBody.append('<input type="text" class ="form-control" placeholder =" Ingrese la descripción del vehículo" >');
-				modalBody.append('<br>');	
-				modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
-				modalTitle.append('<i class="fa fa-file"></i>  Albergues ');
-				modalGral.modal('show');
-			}
-
-			else if(nombreDependencia == 'Alerta migratoria'){
-				console.log( " ya entre men")
-				modalTitle.empty();
-				modalBody.empty();//limpia el contenido del body
-
-				modalBody.append('<p><strong>Para:   Director del DIF municipal </strong></p>');
-
-				modalBody.append('<p> Descripción de vehículo</p>');
-				modalBody.append('<input type="text" class ="form-control" placeholder =" Ingrese la descripción del vehículo" >');
-				modalBody.append('<br>');	
-				modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
-				modalTitle.append('<i class="fa fa-file"></i>  Albergues ');
-				modalGral.modal('show');
-			}
-
-			/*
-			var dataString = {
-				nombre :"aqui va men"
-				
-			};
-				console.log(dataString);
-			$.ajax({
-				type: 'GET',
-				url: '/generarDocs',
-				data: dataString,
-				dataType: 'text',
-				success: function(data) {
-					console.log(data);
-					$('#modalGeneral').modal('show');
-				
-				},
-				error: function(data) {
-					console.log(data);
-				}
-			});
-			*/
-			
-		});
 				//file upload
 		$("#fileArchivo").fileinput({
 						showUpload: false,
@@ -151,94 +94,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	 	var table = $('#tableDependencias');
 		//var routeIndex = '{!! route('dependencias.index') !!}';	
 		var checkedRows = [];
@@ -248,17 +103,171 @@
   			console.log(checkedRows);
 			});
 
+		$("#btnAgregarInformante").click (function(){
+			console.log("hola perrito ya entre");
+			var dataString = {
+				nombre : $("#idDestinatarios").val(),
+				vehiculoDescripcion : $("#vehiculoDescripcion").val(),
+				nombreDependencia: nombreDependencia ,
+
+			};
+
+				console.log(dataString);
+			$.ajax({
+				type: 'POST',
+				url: '/guardarDocumento',
+				data: dataString,
+				dataType: 'json',
+				success: function(data) {
+					console.log(data);
+					$('#modalGeneral').modal('hide');
+
+					//$("#correosTable").bootstrapTable('refresh');
+				
+				},
+				error: function(data) {
+					console.log(data);
+				}
+			});
+		});
+
+	
+
+
+
+
+		 //	LO QUE SIGUE ES LO DE BERE ////////////////////////////////////////////////////////////////////////////////////////77
+
+		  	var modalGral = $('#modalGeneral');
+			//$modalTitle = $('.modal-title');
+			var modalTitle = $('.modal-title');
+			var modalBody = $('.modal-body');
+			var modalFooter = $('.modal-footer');
+			var vnombreDependencia = "Alerta migratoria";
+	    
+
 		var formatTableActions = function(value, row, index) {				
 			btn = '<button class="btn btn-info btn-xs edit" id="editDependencia"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
 			
 			return [btn].join('');
 		};
+
+	
+													
+
+		//fUNCION PARA CUANDO LE DOY CLIC AL BOTON EDITAR
 		window.operateEvents = {
-			'click #editDependencia': function (e, value, row, index) {					
+		
+		//$('#btnEditarArchivo').click(function(e, value, row, index){
+			'click #editDependencia': function (e, value, row, index) {
+
+					
+
 				console.log(row);
+
+				$dependenciaId = row.id;
+				$dependenciaNombre = row.nombre;
+				$dependenciaCorreo= row.correo;
+				$dependenciaDoc = row.dDocumento;
+				$destinatarios = "";
+				console.log($dependenciaId);
+				console.log($dependenciaNombre);
+				console.log($dependenciaCorreo);
+
+				var dataString = {
+				idDependencia : $dependenciaId,
+			};
+
+				console.log(dataString);
+			$.ajax({
+				type: 'GET',
+				url: '/get_dep',
+				data: dataString,
+				dataType: 'json',
+				success: function(data) {
+						$nombreDocumento = data;
+						console.log(data );
+							$.ajax({
+								type: 'GET',
+								url: '/get_des',
+								data: dataString,
+								dataType: 'json',
+								success: function(data) {
+									
+								//WEY YA ME TRAJE LO NECESARIO , SOLO FALTA METER LOS DESTINATARIOS EN UN ARREGLO O TRATAR DE MANEJARLO PARA PODER PASARLO A UN PLUCK
+								$destinatarios = data;
+								console.log($destinatarios)
+
+								
+										if($dependenciaNombre== 'SEMEFO'){
+											console.log("ya entre perro");
+												
+												$("select[name='idDestinatarios[]']").append("<option value=''>Seleccione un destinatario</option>");	
+												
+												modalBody.empty();//limpia el contenido del body
+												modalTitle.empty();
+
+												modalBody.append('<p align ="center"><strong>PARA:  SEMEFO </strong></p>');
+												modalBody.append('<br>');
+												modalBody.append('<div class="row"><div class="form-group col-md-12">    	 {!! Form::label ("destin","Elija el destinatario:") !!}		{!! Form::select ("idDestinatarios[]",$combo ,"",["class" => "form-control","id" => "idDestinatarios[]"])!!} </div> ');	
+												//$("#idMunicipio").empty();
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).empty();})
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value=''>Seleccione un destinatario</option>");})
+												for(i=0; i<$destinatarios.length; i++){
+																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].id+"'> "+$destinatarios[i].nombre+"</option>");})
+																	}
+												
+
+
+												modalBody.append(' <div class = "row">		<div class="form-group col-md-12">   {!! Form::label ("ext","Ingrese la descripción del vehículo") !!}        {!! Form::text ("vehiculoDescripcion",old("Ingrese la descripción del vehículo"), ["class" => "form-control mayuscula","id" => "vehiculoDescripcion" ,"placeholder" => "Ingrese la descripción"] )!!} </div> </div></div> </div>	');		
+												modalBody.append('<br>');	
+												modalBody.append('<input id="fileArchivo" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">');	
+												modalBody.append('<br>');
+												modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
+												modalTitle.append('<i class="fa fa-file"></i>  Albergues ');
+
+											modalGral.modal('show');
+											
+																	/*for(i=0; i<$destinatarios.length; i++){
+																		$("#idDestinatarios").append("<option value='"+$destinatarios[i].id+"'> "+$destinatarios[i].nombre+"</option>");	}*/
+											
+										}	
+																
+															
+															
+
+									//$("#correosTable").bootstrapTable('refresh');
+								
+								},
+								error: function(data) {
+									console.log(data);
+								}
+							});
+
+					//$("#correosTable").bootstrapTable('refresh');
+				
+				},
+				error: function(data) {
+					console.log(data);
+				}
+
+
+			});
+
+
+
+		//AQUI YA SALI DEL AJAX
+
+								
+
+										
+
 				//bodyModal.empty();
 			}
+
 		}
+
+		//TERMINA LA FUNCION CUANDO LE DOY EDITAR
 
 		var formatCheckDependencia = function(value, row, index){
 			icon = '';
@@ -287,6 +296,7 @@
 				formatter: formatTableActions,
 				events: operateEvents
 			}]				
+
 		});
 		
 	});

@@ -128,6 +128,38 @@ class CargarDocumentosController extends Controller
 	        $desaparecido = \App\Models\Desaparecido::find($datos[0]->id);
 	       
 
+	      
+	        $estado = "Veracruz";
+	        $municipio  = "Xalapa";
+	        $localidad = "Xalapa";
+	        $referenciaLugar = "Lazaro cardenas, Plaza Cryztal";
+
+
+
+	        $fechaHoy = new Carbon();//entra en todos los documentos
+	        $hora =Carbon::parse($fechaHoy)->format('H:i');
+	        dd($hora);
+
+       		$anio =Carbon::parse($fechaHoy)->format('Y');//estas variables se ocupan en la carpeta Inv. hace referencia al año actual y mes actual
+        	$mes =Carbon::parse($fechaHoy)->format('m');
+         	
+      		//Variables que entran en cada uno de los documentos
+    		$desaparecidoNombre  = $desaparecido->persona->nombres  ." ". $desaparecido->persona->primerAp. " ". $desaparecido->persona->segundoAp;
+    		$numCarpeta = "FEADPD/ZCX/".$id."/".$anio."-".$mes;
+    		$numOficio = $id;
+    		$vehiculoDescjripcion =($request['vehiculoDescripcion']);
+    		$fiscalNombre  = $desaparecido->cedula->entrevistadorNombres  ." ". $desaparecido->cedula->entrevistadorPrimerAp. " ". $desaparecido->cedula->entrevistadorSegundoAp;
+    		$fiscalCargo = $desaparecido->cedula->entrevistadorCargo;
+    		$desaparecidoLugar = $referenciaLugar.", ".$localidad.", ".$municipio.", ". $estado;
+    		
+
+    		dd($desaparecidoLugar);
+    	
+    		
+	    	
+	    	//$numCarpeta = "FETA/344/SDF";
+
+
         $fechaInv =new Carbon::parse($desaparecido->persona->fechaNacimiento)->format('d/m/Y');
          dd($fechaInv);
       
@@ -138,6 +170,7 @@ class CargarDocumentosController extends Controller
     		
 	    	$fechaHoy = new Carbon();
 	    	$numCarpeta = "FETA/344/SDF";
+
 	    	$numOficio ="123";
 	    	$anio="2018";
 	    	$articulos = "Ingresar aqui los articulos según sea el caso";

@@ -77,7 +77,7 @@
 		
 <div id="cuerpo">
 	
-	<p class="fuente"><strong> LIC. </strong>	<strong> {{--{!! $datos->nombreRemitente !!}--}} </strong>
+	<p class="fuente"><strong> LIC. </strong>	<strong> {{--{!! $datos->nombreDestinatario1 !!}--}} </strong>
 	</p>
 	<p class="fuente"><strong> Director del DIF municipal</strong>
 	</p>
@@ -141,9 +141,8 @@
 	
 	<p align="center" class="fuente"><strong> LIC. </strong>	<strong> {{--{!! $datos->fiscalNombre !!}--}} </strong>
 	</p>
-	<p align="center" class="fuente"><strong> FISCAL {{--{!! $datos->fiscalNumero !!}--}} DE LA UNIDAD INTEGRAL DE PROCURACIÓN</strong></p>
-	<p align="center" class="fuente"><strong> DE JUSTICIA DEL {{--{!! $datos->numDistrito !!}--}}  DISTRITO JUDICIAL DE {{--{!! $datos->fiscalLugar !!}--}}, VERACRUZ</strong></p>
-
+	<p align="center" class="fuente"><strong> {{--{!! $datos->fiscalCargo !!}--}} </strong></p>
+	
 
 
 </div>
@@ -197,3 +196,6 @@ body{
 			background-color: green;
 			
 		}
+
+		<p align="center" class="fuente"><strong> FISCAL {{--{!! $datos->fiscalNumero !!}--}} DE LA UNIDAD INTEGRAL DE PROCURACIÓN</strong></p>
+	<p align="center" class="fuente"><strong> DE JUSTICIA DEL {{--{!! $datos->numDistrito !!}--}}  DISTRITO JUDICIAL DE {{--{!! $datos->fiscalLugar !!}--}}, VERACRUZ</strong></p>

@@ -77,9 +77,9 @@
 		
 <div id="cuerpo">
 	
-	<p class="fuente"><strong> LIC. </strong>	<strong> {{--{!! $datos->nombreRemitente !!}--}} </strong>
+	<p class="fuente"><strong> LIC. </strong>	<strong> {{--{!! $datos->destinatarioNombre !!}--}} </strong>
 	</p>
-	<p class="fuente"><strong> Director General de los Servicios Periciales</strong>
+	<p class="fuente"><strong> <strong> {{--{!! $datos->destinatarioCargo !!}--}}</strong>
 	</p>
 	
 	
@@ -196,3 +196,4 @@ body{
 			background-color: green;
 			
 		}
+		<p class="fuente"><strong> Director General de los Servicios Periciales</strong>

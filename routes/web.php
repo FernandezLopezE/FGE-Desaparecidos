@@ -305,6 +305,14 @@ Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');*/
 //Route::resource('boletin', 'BoletinController@show');
 
 
+Route::POST('/guardarDocumento','CargarDocumentosController@create')
+	->name('guardarDocumento.create');
+//Obtiene el nombre del documento
+Route::get('/get_dep','ConsultasController@jsonDep')
+	->name('get_DepDes.jsonDep');
+//Obtiene los destinatarios de la dependencia elegida
+Route::get('/get_des','ConsultasController@jsonDes')
+	->name('get_DepDes.jsonDes');
 
 
 
