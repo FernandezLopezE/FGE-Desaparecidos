@@ -147,8 +147,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CatIntervencionesQuirurgicasSeeder::class);
         $this->call(CatAdiccionesSeeder::class);
         $this->call(CatImplantesSeeder::class);
-        $this->call(CatEnfermedadesSeeder::class);
-        $this->call(CatRedesSocialesSeeder::class);
+        $this->call(CatEnfermedadesSeeder::class);        
 
     }
 }
