@@ -60,6 +60,7 @@
 @endsection
 
 @section('content')
+@include('navs.navs_datos',array('activar' => 'desc_fisica'))
 @include('includes.partesCuerpo.01Talla')
 <div class="card border-success">
     <div class="card-header">
