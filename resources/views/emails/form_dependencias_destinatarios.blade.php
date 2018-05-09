@@ -127,10 +127,15 @@ data-search="true">
     $('#navDestinatarios').click(function(e){
 			$('#divDependencias').hide();
             $('#divDestinatarios').show();
+            $('#navDestinatarios').addClass('active');
+            $('#navDependencias').removeClass('active');
 		});
     $('#navDependencias').click(function(e){
 			$('#divDependencias').show();
             $('#divDestinatarios').hide();
+            $('#navDependencias').addClass('active');
+            $('#navDestinatarios').removeClass('active');
+        
 		});
     
     
