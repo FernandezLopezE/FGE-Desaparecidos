@@ -7,26 +7,26 @@
         <div class="form-group row" id="cabello">
 		    <div class="col-3">
 		        {!! Form::label ('perdio','Tamaño') !!}
-		        {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
+		        {!! Form::select('size', $tamanoCabello, '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
 		    </div>
 		    <div class="col-3">
                 {!! Form::label ('perdio','Tipo') !!}
-                {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
+                {!! Form::select('size', $tipoCabello, '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
 		    </div>
 		    <div class="col-3">
                 {!! Form::label ('perdio','Color') !!}
-                {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
+                {!! Form::select('size', $coloresCabello, '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
 		    </div>
 		    <div class="col-3">
                 {!! Form::label ('perdio','Particularidad') !!}
-                {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
+                {!! Form::select('size',$partiCabello, '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
 		    </div>
 		</div>
 
 		<div class="form-group row">
 		    <div class="col-3">
                 {!! Form::label ('perdio','Modificación') !!}
-                {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
+                {!! Form::select('size', $modiCabello, '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
 		    </div>
 		    <div class="col">
                 {!! Form::label ('perdio','Observaciones') !!}
@@ -41,15 +41,15 @@
 		    </div>
 		    <div class="col-3">
 		        {!! Form::label ('perdio','Tipo') !!}
-		        {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
+		        {!! Form::select('size', $tipoBarba, '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
 		    </div>
 		    <div class="col-3">
                 {!! Form::label ('perdio','Color') !!}
-                {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
+                {!! Form::select('size', $coloresBarba, '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
 		    </div>
 		    <div class="col-3">
                 {!! Form::label ('perdio','Estilo') !!}
-                {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
+                {!! Form::select('size', $modiBarba, '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
 		    </div>
 		</div>
 		<div class="form-group row">
@@ -66,15 +66,15 @@
 		    </div>
 		    <div class="col-3">
 		        {!! Form::label ('perdio','Tipo') !!}
-		        {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
+		        {!! Form::select('size', $tipoBigote, '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
 		    </div>
 		    <div class="col-3">
                 {!! Form::label ('perdio','Color') !!}
-                {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
+                {!! Form::select('size', $coloresBigote, '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
 		    </div>
 		    <div class="col-3">
                 {!! Form::label ('perdio','Estilo') !!}
-                {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
+                {!! Form::select('size', $modiBigote, '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
 		    </div>
 		</div>
 		<div class="form-group row">
@@ -91,15 +91,15 @@
 		    </div>
 		    <div class="col-3">
 		        {!! Form::label ('perdio','Tipo') !!}
-		        {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
+		        {!! Form::select('size', $tipoPatilla, '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
 		    </div>
 		    <div class="col-3">
                 {!! Form::label ('perdio','Color') !!}
-                {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
+                {!! Form::select('size', $coloresPatilla, '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
 		    </div>
 		    <div class="col-3">
                 {!! Form::label ('perdio','Estilo') !!}
-                {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
+                {!! Form::select('size', $modiPatilla, '', ['class' => 'form-control', 'id' => 'dientePerdido'] ) !!}
 		    </div>
 		</div>
 		<div class="form-group row">
