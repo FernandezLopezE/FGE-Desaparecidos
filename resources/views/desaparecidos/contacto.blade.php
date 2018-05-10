@@ -12,7 +12,7 @@
 					<h4>Destinatarios</h4>
 				</div>
 				<div class = "col">				
-				{{ Form::button('<i class="fa fa-send "></i>', ['type' => 'submit', 'class' => 'btn btn-dark btn-lg pull-right'] )  }}			
+				{{ Form::button('<i class="fa fa-send "></i>', ['type' => 'submit', 'class' => 'btn btn-dark btn-lg pull-right', 'id'  => 'enviar'] )  }}			
 				{{--<button type="button" class="btn btn-dark pull-right" id="btnAgregarDependencia"> AGREGAR</button>--}}
 				@include('includes.modal')
 			</div>
@@ -35,8 +35,41 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" type="text/javascript"></script>
 
 <script type="text/javascript">
+    
+    
 	$(document).ready(function(){
+       var btnEnviar = $('#enviar');
+        btnEnviar.click(function(e){
+            
+      
+//            
+//            var checkedValue = null; 
+//            var checkedValue2 = null; 
+//var inputElements = $("input[name='ids[]']")
+//for(var i=0; inputElements[i]; ++i){
+//      if(inputElements[i].checked){
+//             checkedValue = inputElements[i].value;
+//             
+//      }
+//     
+//}
+//   alert(checkedValue.value);      
+            
 
+ var checkboxes = $("input[name='ids[]']");
+    var valores = "";
+    var i;
+    for (i = 0; i < checkboxes.length; i++) {
+        if (checkboxes[i].checked) {
+            valores = valores + checkboxes[i].value + ", ";
+        }
+    }
+         alert(valores);  
+            
+            
+             
+             
+        })
 	
 			
 
@@ -166,7 +199,8 @@
 				console.log(row);
 
 				$dependenciaId = row.id;
-				$dependenciaNombre = row.nombre;
+				//$dependenciaNombre = row.nombre;
+                $dependenciaNombre = "SEMEFO";
 				$dependenciaCorreo= row.correo;
 				$dependenciaDoc = row.dDocumento;
 				$destinatarios = "";
@@ -231,9 +265,316 @@
 																	/*for(i=0; i<$destinatarios.length; i++){
 																		$("#idDestinatarios").append("<option value='"+$destinatarios[i].id+"'> "+$destinatarios[i].nombre+"</option>");	}*/
 											
-										}	
-																
-															
+										}
+                                    if($dependenciaNombre== 'APODERADO LEGAL (INFORME MOVIMIENTOS)'){
+											console.log("ya entre perro");
+
+												modalBody.empty();//limpia el contenido del body
+												modalTitle.empty();
+
+												modalBody.append('<p align ="center"><strong>PARA:  APODERADO LEGAL  </strong></p>');
+												modalBody.append('<br>');
+												modalBody.append('<div class="row"><div class="form-group col-md-12">    	 {!! Form::label ("destin","Elija el destinatario:") !!}		{!! Form::select ("idDestinatarios[]",$combo ,"",["class" => "form-control","id" => "idDestinatarios[]"])!!} </div> ');	
+												//$("#idMunicipio").empty();
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).empty();})
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value=''>Seleccione un destinatario</option>");})
+												for(i=0; i<$destinatarios.length; i++){
+																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].id+"'> "+$destinatarios[i].nombre+"</option>");})
+																	}
+												
+												modalBody.append('<br>');
+                                                modalBody.append(' <div class = "row">		<div class="form-group col-md-12">   {!! Form::label ("lugares","Lugares que frecuentaba:") !!}        {!! Form::textarea ("vehiculoDescripcion",old("Ingrese los lugares que frecuentaba"), ["class" => "form-control mayuscula","id" => "vehiculoDescripcion","size" => "30x4","placeholder" => "Ingrese los lugares que frecuentaba"] )!!} </div> </div></div> </div>	');		
+												modalBody.append('<br>');
+												modalBody.append('<input id="fileArchivo" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">');	
+												modalBody.append('<br>');
+												modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
+												modalTitle.append('<i class="fa fa-file"></i>  Albergues ');
+                                                
+                                        
+                                                
+
+
+											modalGral.modal('show');
+											
+										}
+                                    /////////------------------------------------------------------------------------------
+                                    /////////------------------------------------------------------------------------------
+										if($dependenciaNombre== 'TRÁNSITO DEL ESTADO Y SCT (TRÁNSITO Y COMUNICACIONES)'){
+											console.log("ya entre perro");
+
+												modalBody.empty();//limpia el contenido del body
+												modalTitle.empty();
+
+												modalBody.append('<p align ="center"><strong>PARA:  TRÁNSITO DEL ESTADO Y SCT  </strong></p>');
+												modalBody.append('<br>');
+												modalBody.append('<div class="row"><div class="form-group col-md-12">    	 {!! Form::label ("destin","Elija el destinatario:") !!}		{!! Form::select ("idDestinatarios[]",$combo ,"",["class" => "form-control","id" => "idDestinatarios[]"])!!} </div> ');	
+												//$("#idMunicipio").empty();
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).empty();})
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value=''>Seleccione un destinatario</option>");})
+												for(i=0; i<$destinatarios.length; i++){
+																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].id+"'> "+$destinatarios[i].nombre+"</option>");})
+																	}
+												
+												modalBody.append('<br>');	
+												modalBody.append('<input id="fileArchivo" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">');	
+												modalBody.append('<br>');
+												modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
+												modalTitle.append('<i class="fa fa-file"></i>  Albergues ');
+                                                
+                                        
+                                                modalBody.append('<hr></hr>');
+                                                
+                                                $("select[name='idDestinatarios2[]']").append("<option value=''>Seleccione un destinatario</option>");	
+
+												modalBody.append('<p align ="center"><strong>PARA:  TRÁNSITO DEL ESTADO Y SCT (TRÁNSITO Y COMUNICACIONES) </strong></p>');
+												modalBody.append('<br>');
+												modalBody.append('<div class="row"><div class="form-group col-md-12">    	 {!! Form::label ("destin","Elija el destinatario:") !!}		{!! Form::select ("idDestinatarios[]",$combo ,"",["class" => "form-control","id" => "idDestinatarios[]"])!!} </div> ');	
+												//$("#idMunicipio").empty();
+												$("select[name='idDestinatarios2[]']").map(function(){return $(this).empty();})
+												$("select[name='idDestinatarios2[]']").map(function(){return $(this).append("<option value=''>Seleccione un destinatario</option>");})
+												for(i=0; i<$destinatarios.length; i++){
+																		$("select[name='idDestinatarios2[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].id+"'> "+$destinatarios[i].nombre+"</option>");})
+																	}
+												
+														
+												modalBody.append('<br>');	
+												modalBody.append('<input id="fileArchivo" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">');	
+												modalBody.append('<br>');
+												modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
+												
+
+
+											modalGral.modal('show');
+											
+										}
+                                    /////////------------------------------------------------------------------------------
+                                    /////////------------------------------------------------------------------------------
+                                    if($dependenciaNombre== 'FISCALÍA GENERAL (ALERTA MIGRATORIA)'){
+											console.log("ya entre perro");
+
+												modalBody.empty();//limpia el contenido del body
+												modalTitle.empty();
+
+												modalBody.append('<p align ="center"><strong>PARA:  FISCALÍA GENERAL </strong></p>');
+												modalBody.append('<br>');
+												modalBody.append('<div class="row"><div class="form-group col-md-12">    	 {!! Form::label ("destin","Elija el destinatario:") !!}		{!! Form::select ("idDestinatarios[]",$combo ,"",["class" => "form-control","id" => "idDestinatarios[]"])!!} </div> ');	
+												//$("#idMunicipio").empty();
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).empty();})
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value=''>Seleccione un destinatario</option>");})
+												for(i=0; i<$destinatarios.length; i++){
+																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].id+"'> "+$destinatarios[i].nombre+"</option>");})
+																	}
+												
+												modalBody.append('<br>');
+												modalBody.append('<input id="fileArchivo" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">');	
+												modalBody.append('<br>');
+												modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
+												modalTitle.append('<i class="fa fa-file"></i>  Albergues ');
+                                                
+                                        
+                                                
+
+
+											modalGral.modal('show');
+											
+										}
+                                    /////////------------------------------------------------------------------------------
+                                    /////////------------------------------------------------------------------------------
+                                    if($dependenciaNombre== 'DIF MUNICIPAL (ALBERGUES)'){
+											console.log("ya entre perro");
+
+												modalBody.empty();//limpia el contenido del body
+												modalTitle.empty();
+
+												modalBody.append('<p align ="center"><strong>PARA:  DIF MUNICIPAL</strong></p>');
+												modalBody.append('<br>');
+												modalBody.append('<div class="row"><div class="form-group col-md-12">    	 {!! Form::label ("destin","Elija el destinatario:") !!}		{!! Form::select ("idDestinatarios[]",$combo ,"",["class" => "form-control","id" => "idDestinatarios[]"])!!} </div> ');	
+												//$("#idMunicipio").empty();
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).empty();})
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value=''>Seleccione un destinatario</option>");})
+												for(i=0; i<$destinatarios.length; i++){
+																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].id+"'> "+$destinatarios[i].nombre+"</option>");})
+																	}
+												
+												modalBody.append('<br>');
+												modalBody.append('<input id="fileArchivo" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">');	
+												modalBody.append('<br>');
+												modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
+												modalTitle.append('<i class="fa fa-file"></i>  Albergues ');
+                                                
+                                        
+                                                
+
+
+											modalGral.modal('show');
+											
+										}
+                                    /////////------------------------------------------------------------------------------
+                                    /////////------------------------------------------------------------------------------
+                                    if($dependenciaNombre== 'PREVENCIÓN Y REINSERCIÓN SOCIAL (CENTROS DETENCIÓN)'){
+											console.log("ya entre perro");
+
+												modalBody.empty();//limpia el contenido del body
+												modalTitle.empty();
+
+												modalBody.append('<p align ="center"><strong>PARA:  PREVENCIÓN Y REINSERCIÓN SOCIAL</strong></p>');
+												modalBody.append('<br>');
+												modalBody.append('<div class="row"><div class="form-group col-md-12">    	 {!! Form::label ("destin","Elija el destinatario:") !!}		{!! Form::select ("idDestinatarios[]",$combo ,"",["class" => "form-control","id" => "idDestinatarios[]"])!!} </div> ');	
+												//$("#idMunicipio").empty();
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).empty();})
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value=''>Seleccione un destinatario</option>");})
+												for(i=0; i<$destinatarios.length; i++){
+																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].id+"'> "+$destinatarios[i].nombre+"</option>");})
+																	}
+												
+												modalBody.append('<br>');
+												modalBody.append('<input id="fileArchivo" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">');	
+												modalBody.append('<br>');
+												modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
+												modalTitle.append('<i class="fa fa-file"></i>  Albergues ');
+                                                
+                                        
+                                                
+
+
+											modalGral.modal('show');
+											
+										}
+                                    /////////------------------------------------------------------------------------------
+                                    /////////------------------------------------------------------------------------------
+									if($dependenciaNombre== 'INSTITUTO NACIONAL DE MIGRACIÓN (ESTACIONES MIGRATORIAS)'){
+											console.log("ya entre perro");
+
+												modalBody.empty();//limpia el contenido del body
+												modalTitle.empty();
+
+												modalBody.append('<p align ="center"><strong>PARA:  INSTITUTO NACIONAL DE MIGRACIÓN</strong></p>');
+												modalBody.append('<br>');
+												modalBody.append('<div class="row"><div class="form-group col-md-12">    	 {!! Form::label ("destin","Elija el destinatario:") !!}		{!! Form::select ("idDestinatarios[]",$combo ,"",["class" => "form-control","id" => "idDestinatarios[]"])!!} </div> ');	
+												//$("#idMunicipio").empty();
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).empty();})
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value=''>Seleccione un destinatario</option>");})
+												for(i=0; i<$destinatarios.length; i++){
+																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].id+"'> "+$destinatarios[i].nombre+"</option>");})
+																	}
+												
+												modalBody.append('<br>');
+												modalBody.append('<input id="fileArchivo" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">');	
+												modalBody.append('<br>');
+												modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
+												modalTitle.append('<i class="fa fa-file"></i>  Albergues ');
+                                                
+                                        
+                                                
+
+
+											modalGral.modal('show');
+											
+										}
+                                    /////////------------------------------------------------------------------------------
+                                    /////////------------------------------------------------------------------------------		
+                                    
+                                    if($dependenciaNombre== 'POLICIA MINISTERIAL, SEGURO SOCIAL (HOSPITALES)'){
+											console.log("ya entre perro");
+
+												modalBody.empty();//limpia el contenido del body
+												modalTitle.empty();
+
+												modalBody.append('<p align ="center"><strong>PARA:  POLICIA MINISTERIAL, SEGURO SOCIAL</strong></p>');
+												modalBody.append('<br>');
+												modalBody.append('<div class="row"><div class="form-group col-md-12">    	 {!! Form::label ("destin","Elija el destinatario:") !!}		{!! Form::select ("idDestinatarios[]",$combo ,"",["class" => "form-control","id" => "idDestinatarios[]"])!!} </div> ');	
+												//$("#idMunicipio").empty();
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).empty();})
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value=''>Seleccione un destinatario</option>");})
+												for(i=0; i<$destinatarios.length; i++){
+																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].id+"'> "+$destinatarios[i].nombre+"</option>");})
+																	}
+												
+												modalBody.append('<br>');
+                                                modalBody.append(' <div class = "row">		<div class="form-group col-md-12">   {!! Form::label ("ext","Ingrese la descripción del vehículo") !!}        {!! Form::text ("vehiculoDescripcion",old("Ingrese la descripción del vehículo"), ["class" => "form-control mayuscula","id" => "vehiculoDescripcion" ,"placeholder" => "Ingrese la descripción"] )!!} </div> </div></div> </div>	');		
+												modalBody.append('<br>');
+												modalBody.append('<input id="fileArchivo" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">');	
+												modalBody.append('<br>');
+												modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
+												modalTitle.append('<i class="fa fa-file"></i>  Albergues ');
+                                                
+                                        
+                                                
+
+
+											modalGral.modal('show');
+											
+										}
+                                     /////////------------------------------------------------------------------------------
+                                    /////////------------------------------------------------------------------------------		
+                                    
+                                    if($dependenciaNombre== 'UNIDAD DE ANÁLISIS DE INFORMACIÓN FG (PLATAFORMA MÉXICO)'){
+											console.log("ya entre perro");
+
+												modalBody.empty();//limpia el contenido del body
+												modalTitle.empty();
+
+												modalBody.append('<p align ="center"><strong>PARA:  UNIDAD DE ANÁLISIS DE INFORMACIÓN FG</strong></p>');
+												modalBody.append('<br>');
+												modalBody.append('<div class="row"><div class="form-group col-md-12">    	 {!! Form::label ("destin","Elija el destinatario:") !!}		{!! Form::select ("idDestinatarios[]",$combo ,"",["class" => "form-control","id" => "idDestinatarios[]"])!!} </div> ');	
+												//$("#idMunicipio").empty();
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).empty();})
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value=''>Seleccione un destinatario</option>");})
+												for(i=0; i<$destinatarios.length; i++){
+																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].id+"'> "+$destinatarios[i].nombre+"</option>");})
+																	}
+												
+												modalBody.append('<br>');
+                                                modalBody.append(' <div class = "row">		<div class="form-group col-md-12">   {!! Form::label ("ext","Ingrese la descripción del vehículo") !!}        {!! Form::text ("vehiculoDescripcion",old("Ingrese la descripción del vehículo"), ["class" => "form-control mayuscula","id" => "vehiculoDescripcion" ,"placeholder" => "Ingrese la descripción"] )!!} </div> </div></div> </div>	');		
+												modalBody.append('<br>');
+												modalBody.append('<input id="fileArchivo" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">');	
+												modalBody.append('<br>');
+												modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
+												modalTitle.append('<i class="fa fa-file"></i>  Albergues ');
+                                                
+                                        
+                                                
+
+
+											modalGral.modal('show');
+											
+										}
+                                    /////////------------------------------------------------------------------------------
+                                    /////////------------------------------------------------------------------------------		
+                                    
+                                    if($dependenciaNombre== 'CENTRO DE INFORMACIÓN FG (OFICIO)'){
+											console.log("ya entre perro");
+
+												modalBody.empty();//limpia el contenido del body
+												modalTitle.empty();
+
+												modalBody.append('<p align ="center"><strong>PARA:  CENTRO DE INFORMACIÓN FG</strong></p>');
+												modalBody.append('<br>');
+												modalBody.append('<div class="row"><div class="form-group col-md-12">    	 {!! Form::label ("destin","Elija el destinatario:") !!}		{!! Form::select ("idDestinatarios[]",$combo ,"",["class" => "form-control","id" => "idDestinatarios[]"])!!} </div> ');	
+												//$("#idMunicipio").empty();
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).empty();})
+												$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value=''>Seleccione un destinatario</option>");})
+												for(i=0; i<$destinatarios.length; i++){
+																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].id+"'> "+$destinatarios[i].nombre+"</option>");})
+																	}
+												
+												modalBody.append('<br>');
+                                                modalBody.append(' <div class = "row">		<div class="form-group col-md-12">   {!! Form::label ("ext","Ingrese la descripción del vehículo") !!}        {!! Form::text ("vehiculoDescripcion",old("Ingrese la descripción del vehículo"), ["class" => "form-control mayuscula","id" => "vehiculoDescripcion" ,"placeholder" => "Ingrese la descripción"] )!!} </div> </div></div> </div>	');		
+												modalBody.append('<br>');
+												modalBody.append('<input id="fileArchivo" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">');	
+												modalBody.append('<br>');
+												modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
+												modalTitle.append('<i class="fa fa-file"></i>  Albergues ');
+                                                
+                                        
+                                                
+
+
+											modalGral.modal('show');
+											
+										}
+                                    /////////------------------------------------------------------------------------------
+                                    /////////------------------------------------------------------------------------------											
 															
 
 									//$("#correosTable").bootstrapTable('refresh');
@@ -272,7 +613,8 @@
 		var formatCheckDependencia = function(value, row, index){
 			icon = '';
 			//if (row.nombre) {
-				icon = '<i class="fa fa-check" id="chkRows">'
+            console.log(row.id);
+				icon = '<input type="checkbox" value='+row.id+' name="ids[]" class="selector">'
 			//}
 
 			return [icon].join('');
@@ -281,7 +623,7 @@
 		table.bootstrapTable({				
 			url:'/get_dependencias',
 			columns: [{					
-				title: 'No.',
+				title: '',
 				formatter: formatCheckDependencia,
 			},
 			{					
