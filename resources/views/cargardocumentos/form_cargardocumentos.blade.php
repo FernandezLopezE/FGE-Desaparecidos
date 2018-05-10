@@ -56,7 +56,7 @@ extends('layouts.app_uipj')
                 <select class="custom-select" id="listaiden_op1" name="listaiden1" class="listaiden">
                   <option selected value="" >--Seleccione una opción--</option>
                   @foreach($identificacionoficial as $identificacionoficial)
-                    <option  value="{{$identificacionoficial->id}}" >{{$identificacionoficial->nombre}}</option>
+                    <option  value="{{$option->id}}" >{{$identificacionoficial->nombre}}</option>
                   @endforeach
                 </select>
               </div>
@@ -68,7 +68,7 @@ extends('layouts.app_uipj')
                 <select class="custom-select" id="listaiden_op2" name="listaiden3" class="listaiden">
                   <option selected value="" >--Seleccione una opción--</option>
                   @foreach($factura as $factura)
-                  <option  value="{{$factura->id}}" >{{$factura->nombre}}</option>
+                  <option  value="{{$option->id}}" >{{$factura->nombre}}</option>
                   @endforeach
                 </select>
               </div>

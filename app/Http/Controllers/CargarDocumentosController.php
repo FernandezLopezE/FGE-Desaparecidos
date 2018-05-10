@@ -117,6 +117,8 @@ class CargarDocumentosController extends Controller
  	 public function create(Request $request)
 
     {        
+
+    	
     		$d1 =($request['destinatario']);
     		//dd($d1);
     		$destinatarioLenght = count($d1);
@@ -257,7 +259,7 @@ class CargarDocumentosController extends Controller
         return $pdf->stream('formato_'.time().'.pdf',array('Attachment'=>0));*/
         $nombreDocumento = "";
         $nombreDocumento2 = "";
-        if  ($nombreDependencia == "SEMEFO"){
+        if  ($nombreDependencia == "SERVICIOS PERICIALES (SEMEFOS)"){
         	$nombreDocumento = "form_24_semefos";
         	$nombreDocumento2 = "semefos";
         	
