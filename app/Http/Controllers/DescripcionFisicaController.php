@@ -234,7 +234,7 @@ class DescripcionFisicaController extends Controller
             $modiPatilla->idCedulaPartesCuerpo = $parteCuerpo4->id;
             $modiPatilla->idSubModificaciones = $modificacionP[$i];
 
-            $modiBigote->save();
+            $modiPatilla->save();
          }         
          return response()->json($particularidadC);
     }
