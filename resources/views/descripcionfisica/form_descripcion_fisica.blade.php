@@ -108,15 +108,15 @@ $(document).ready(function(){
   $('#modiPatilla').select2();
   //Boton Editar
   $("#btnEditarC").click(function(){
-    $("#btnEditarC").hide();
-    $("#detallesV").hide();
-    $("#datosCabello").show();
+   $("#detallesV").toggle();
+   $("#datosCabello").toggle();
   });
 
   //Boton guardar para cabello
   $("#btnGuardarC").click(function(){
     $("#datosCabello").hide();
     $("#btnEditarC").show();
+    $("#detallesV").show();
     var dataString = {
       //Cabello
       tamanoCabello: $('#tamanoCabello').val(),
