@@ -313,6 +313,9 @@ Route::get('/get_dep','ConsultasController@jsonDep')
 //Obtiene los destinatarios de la dependencia elegida
 Route::get('/get_des','ConsultasController@jsonDes')
 	->name('get_DepDes.jsonDes');
+//envio el nombre de los documentos al controlador para que este se encargue de enviar  los correos correspondientess
+Route::get('/envioDocumentos','MailController@envioDocumentos');
+	
 
 
 

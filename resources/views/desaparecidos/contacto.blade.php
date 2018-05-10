@@ -12,11 +12,9 @@
 					<h4>Destinatarios</h4>
 				</div>
 				<div class = "col">				
-<<<<<<< HEAD
+
 				{{ Form::button('<i class="fa fa-send "></i>', ['type' => 'submit', 'class' => 'btn btn-dark btn-lg pull-right', 'id'  => 'enviar'] )  }}		
-=======
-				{{ Form::button('<i class="fa fa-send "></i>', ['type' => 'submit', 'class' => 'btn btn-dark btn-lg pull-right', 'id'  => 'enviar'] )  }}			
->>>>>>> 9a58a72154661a0de171a3c3c926b29919dcdd32
+
 				{{--<button type="button" class="btn btn-dark pull-right" id="btnAgregarDependencia"> AGREGAR</button>--}}
 				@include('includes.modal')
 			</div>
@@ -43,39 +41,118 @@
     
 	$(document).ready(function(){
        var btnEnviar = $('#enviar');
-        btnEnviar.click(function(e){
-            
-      
-//            
-//            var checkedValue = null; 
-//            var checkedValue2 = null; 
-//var inputElements = $("input[name='ids[]']")
-//for(var i=0; inputElements[i]; ++i){
-//      if(inputElements[i].checked){
-//             checkedValue = inputElements[i].value;
-//             
-//      }
-//     
-//}
-//   alert(checkedValue.value);      
-            
 
- var checkboxes = $("input[name='ids[]']");
-    var valores = "";
-    var i;
-    for (i = 0; i < checkboxes.length; i++) {
-        if (checkboxes[i].checked) {
-            valores = valores + checkboxes[i].value + ", ";
-        }
-    }
-         alert(valores);  
-            
-            
+
+		/**********************************************************************************
+		*							BOTON ENVIAR                           				  *
+		***********************************************************************************/
+        btnEnviar.click(function(e){                    
+					//            var checkedValue = null; 
+					//            var checkedValue2 = null; 
+					//var inputElements = $("input[name='ids[]']")
+					//for(var i=0; inputElements[i]; ++i){
+					//      if(inputElements[i].checked){
+					//             checkedValue = inputElements[i].value;             
+					//      } }
+					//   alert(checkedValue.value);      
+				 	var checkboxes = $("input[name='ids[]']");
+				    var valores = "";
+				    var i;
+				    var a= 0;
+				    var valoresChecks = [50];
+				    for (i = 0; i < checkboxes.length; i++) {
+				        if (checkboxes[i].checked) {
+				        	
+				            valores = valores + checkboxes[i].value + ", ";
+				            valoresChecks[a]  = checkboxes[i].value;
+				            a++;
+				        }
+				    }
+				    	//	AQUI ENVIARE LOS NOMBRES DE LOS DOCUMENTOS HACIA EL CONTROLADOR PARA ENVIAR LOS DOCUMENTOS
+				         alert(documentosArray);  
+
+
+				            var dataString = {
+								datos: documentosArray ,
+								valoresChecks: valoresChecks,
+								
+							};
+								console.log(dataString);
+							$.ajax({
+								type: 'get',
+								url: '/envioDocumentos',
+								data: dataString,
+								dataType: 'text',
+								success: function(data) {				
+									$nombreDocumento= data;
+									
+									 window.open($nombreDocumento);
+									$('#modalGeneral').modal('hide');
+
+									//$("#correosTable").bootstrapTable('refresh');
+								
+								},
+								error: function(data) {
+								//	console.log("succeessss men");
+									console.log(data);
+								}
+							});
              
              
+
         })
+
+		/**********************************************************************************
+		*							BOTON ENVIAR    FIN                       				  *
+		***********************************************************************************/
 	
-			
+			var documentosArray = [];
+		/**********************************************************************************
+		*							BOTON GUARDAR DEL MODAL                               *
+		***********************************************************************************/
+
+
+		$("#btnAgregarInformante").click (function(){//ESTE BOTON ES EL DEL MODAL GENERAL DICE AGREGAR INFORMANTE PERO EN REALIDAD ES EL DE "GUARDAR" Y SE ENCARGA DE GENERAR DOCUMENTO EN PDF
+				$arregloPrueba = ["BERENICE CONTRERAS"]
+				$destinatarios[0]=$("select[id='idDestinatarios[]']").map(function(){return $(this).val();}).get();
+				$destinatarios[1] = $arregloPrueba;
+			var dataString = {
+				
+				vehiculoDescripcion : $("#vehiculoDescripcion").val(),
+				nombreDependencia: nombreDependencia ,
+				destinatario : $destinatarios,
+			};
+				console.log(dataString);
+			$.ajax({
+				type: 'get',
+				url: '/guardarDocumento',
+				data: dataString,
+				dataType: 'text',
+				success: function(data) {
+
+
+					
+					$nombreDocumento= data;
+					documentosArray= [[$nombreDocumento, nombreDependencia]];
+					console.log($nombreDocumento);
+					 window.open($nombreDocumento);
+					$('#modalGeneral').modal('hide');
+
+					//$("#correosTable").bootstrapTable('refresh');
+				
+				},
+				error: function(data) {
+				//	console.log("succeessss men");
+					console.log(data);
+				}
+			});
+		});
+		
+		/**********************************************************************************
+		*							BOTON GUARDAR DEL MODAL         FIN                   *
+		***********************************************************************************/
+
+	
 
 		
 		$('#modalGeneral').on('show.bs.modal', function (event) {
@@ -140,78 +217,7 @@
   			console.log(checkedRows);
 			});
 
-		/**********************************************************************************
-		*							BOTON ENVIAR                             *
-		***********************************************************************************/
-
-
-		$("#enviar").click (function(){//ESTE BOTON ES EL DEL MODAL GENERAL DICE AGREGAR INFORMANTE PERO EN REALIDAD ES EL DE "GUARDAR" Y SE ENCARGA DE GENERAR DOCUMENTO EN PDF
-			console.log("hola perrita ya entre");
-			var dataString = {
-				
-				vehiculoDescripcion : $("#vehiculoDescripcion").val(),
-				nombreDependencia: nombreDependencia ,
-				destinatario1: $("select[id='idDestinatarios[]']").map(function(){return $(this).val();}).get(),
-			};
-				console.log(dataString);
-			$.ajax({
-				type: 'get',
-				url: '/guardarDocumento',
-				data: dataString,
-				dataType: 'json',
-				success: function(data) {
-					console.log(data);
-					$('#modalGeneral').modal('hide');
-
-					//$("#correosTable").bootstrapTable('refresh');
-				
-				},
-				error: function(data) {
-					console.log(data);
-				}
-			});
-		});
-
-
-		/**********************************************************************************
-		*							BOTON GUARDAR DEL MODAL                               *
-		***********************************************************************************/
-
-
-		$("#btnAgregarInformante").click (function(){//ESTE BOTON ES EL DEL MODAL GENERAL DICE AGREGAR INFORMANTE PERO EN REALIDAD ES EL DE "GUARDAR" Y SE ENCARGA DE GENERAR DOCUMENTO EN PDF
-			console.log("hola perrito ya entre");
-			var dataString = {
-				
-				vehiculoDescripcion : $("#vehiculoDescripcion").val(),
-				nombreDependencia: nombreDependencia ,
-				destinatario1: $("select[id='idDestinatarios[]']").map(function(){return $(this).val();}).get(),
-			};
-				console.log(dataString);
-			$.ajax({
-				type: 'get',
-				url: '/guardarDocumento',
-				data: dataString,
-				dataType: 'text',
-				success: function(data) {
-
-
-					
-					$nombreDocumento= data;
-					console.log($nombreDocumento);
-					 window.open($nombreDocumento);
-					$('#modalGeneral').modal('hide');
-
-					//$("#correosTable").bootstrapTable('refresh');
-				
-				},
-				error: function(data) {
-				//	console.log("succeessss men");
-					console.log(data);
-				}
-			});
-		});
-
-	
+		
 
 
 
@@ -244,18 +250,18 @@
 			'click #editDependencia': function (e, value, row, index) {
 
 					
-/*
+
 				console.log(row);
 
 				$dependenciaId = row.id;
-<<<<<<< HEAD
+
 				$dependenciaNombre = row.nombre;
 				//$dependenciaNombre = "hospitales"
 				nombreDependencia = $dependenciaNombre;
-=======
+
 				//$dependenciaNombre = row.nombre;
-                $dependenciaNombre = "SEMEFO";
->>>>>>> 9a58a72154661a0de171a3c3c926b29919dcdd32
+               // $dependenciaNombre = "SEMEFO";
+
 				$dependenciaCorreo= row.correo;
 				$dependenciaDoc = row.dDocumento;
 				$destinatarios = "";
@@ -265,7 +271,7 @@
 
 				var dataString = {
 				idDependencia : $dependenciaId,
-			};*/
+			};
 
 				console.log(dataString);
 			$.ajax({

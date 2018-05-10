@@ -117,17 +117,27 @@ class CargarDocumentosController extends Controller
  	 public function create(Request $request)
 
     {        
-    		$d1 =($request['destinatario1']);
+    		$d1 =($request['destinatario']);
+    		//dd($d1);
+    		$destinatarioLenght = count($d1);
     		//dd ($d1[0]);
+    		//dd($destinatarioLenght);
+    		$destinatarioDatos=[$destinatarioLenght];
 
-    		 $destinatarioDatos =  \DB::table('cat_destinatarios AS cd')
+    	 	for ($i =0; $i<$destinatarioLenght;$i++){
+    		 $destinatarioDatos [$i]=  \DB::table('cat_destinatarios AS cd')
              
                 ->select('cd.id as id',
                         'cd.nombre as nombre',
                         'cd.cargo as cargo',
                         'cd.id_dependencia as dDependencia')
-                ->where('cd.nombre', $d1)
+                ->where('cd.nombre', $d1[$i])
                 ->get();
+               
+            }
+            // dd($destinatarioDatos[1][0]->cargo);
+            
+
            //dd($destinatarioDatos[0]->cargo);
     
     		//dd("ya entre bato");
@@ -164,8 +174,11 @@ class CargarDocumentosController extends Controller
     		$numOficio = $id;
     		$vehiculoDescripcion =($request['vehiculoDescripcion']);
     		$nombreDependencia =($request['nombreDependencia']);
-    		$destinatarioNombre =($request['destinatario1']);
-    		$destinatarioCargo = ($destinatarioDatos[0]->cargo);
+    		$destinatarioNombre =($request['destinatario']);
+    		//dd($destinatarioNombre[0][0]);
+    		//dd($destinatarioNombre);
+    		//$destinatarioCargo = ($destinatarioDatos[0]->cargo);
+    		$destinatarioCargo = ($destinatarioDatos);
     		$fiscalNombre  = $desaparecido->cedula->entrevistadorNombres  ." ". $desaparecido->cedula->entrevistadorPrimerAp. " ". $desaparecido->cedula->entrevistadorSegundoAp;
     		$fiscalCargo = $desaparecido->cedula->entrevistadorCargo;
     		$desaparecidoLugar = $referenciaLugar.", ".$localidad.", ".$municipio.", ". $estado;

@@ -77,9 +77,9 @@
 		
 <div id="cuerpo">
 	
-	<p class="fuente"><strong> LIC. </strong>	<strong> {!! $datos->destinatarioNombre[0] !!} </strong>
+	<p class="fuente"><strong> LIC. </strong>	<strong> {!! $datos->destinatarioNombre[0][0] !!} </strong>
 	</p>
-	<p class="fuente"><strong> <strong> {!! $datos->destinatarioCargo !!}</strong>
+	<p class="fuente"><strong> <strong> {!! $datos->destinatarioCargo[0][0]->cargo !!}</strong>
 	</p>
 	
 	
