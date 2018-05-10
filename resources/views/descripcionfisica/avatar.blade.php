@@ -1,4 +1,4 @@
- <div id="area">
+ <div id="area" style="display:none;">
   Area: <span id="data"></span>
 </div>
 
@@ -87,5 +87,5 @@
     </g>
   </svg>
 </div>
-
+<br><br><br>
    
