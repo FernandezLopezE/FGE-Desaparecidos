@@ -289,7 +289,7 @@ Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');*/
 //Route::resource('boletin', 'BoletinController@show');
 
 
-Route::POST('/guardarDocumento','CargarDocumentosController@create')
+Route::get('/guardarDocumento','CargarDocumentosController@create')
 	->name('guardarDocumento.create');
 //Obtiene el nombre del documento
 Route::get('/get_dep','ConsultasController@jsonDep')

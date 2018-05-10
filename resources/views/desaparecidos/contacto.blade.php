@@ -12,7 +12,7 @@
 					<h4>Destinatarios</h4>
 				</div>
 				<div class = "col">				
-				{{ Form::button('<i class="fa fa-send "></i>', ['type' => 'submit', 'class' => 'btn btn-dark btn-lg pull-right'] )  }}			
+				{{ Form::button('<i class="fa fa-send "></i>', ['type' => 'submit', 'class' => 'btn btn-dark btn-lg pull-right', 'id'  => 'enviar'] )  }}		
 				{{--<button type="button" class="btn btn-dark pull-right" id="btnAgregarDependencia"> AGREGAR</button>--}}
 				@include('includes.modal')
 			</div>
@@ -103,18 +103,22 @@
   			console.log(checkedRows);
 			});
 
-		$("#btnAgregarInformante").click (function(){
-			console.log("hola perrito ya entre");
+		/**********************************************************************************
+		*							BOTON ENVIAR                             *
+		***********************************************************************************/
+
+
+		$("#enviar").click (function(){//ESTE BOTON ES EL DEL MODAL GENERAL DICE AGREGAR INFORMANTE PERO EN REALIDAD ES EL DE "GUARDAR" Y SE ENCARGA DE GENERAR DOCUMENTO EN PDF
+			console.log("hola perrita ya entre");
 			var dataString = {
-				nombre : $("#idDestinatarios").val(),
+				
 				vehiculoDescripcion : $("#vehiculoDescripcion").val(),
 				nombreDependencia: nombreDependencia ,
-
+				destinatario1: $("select[id='idDestinatarios[]']").map(function(){return $(this).val();}).get(),
 			};
-
 				console.log(dataString);
 			$.ajax({
-				type: 'POST',
+				type: 'get',
 				url: '/guardarDocumento',
 				data: dataString,
 				dataType: 'json',
@@ -126,6 +130,45 @@
 				
 				},
 				error: function(data) {
+					console.log(data);
+				}
+			});
+		});
+
+
+		/**********************************************************************************
+		*							BOTON GUARDAR DEL MODAL                               *
+		***********************************************************************************/
+
+
+		$("#btnAgregarInformante").click (function(){//ESTE BOTON ES EL DEL MODAL GENERAL DICE AGREGAR INFORMANTE PERO EN REALIDAD ES EL DE "GUARDAR" Y SE ENCARGA DE GENERAR DOCUMENTO EN PDF
+			console.log("hola perrito ya entre");
+			var dataString = {
+				
+				vehiculoDescripcion : $("#vehiculoDescripcion").val(),
+				nombreDependencia: nombreDependencia ,
+				destinatario1: $("select[id='idDestinatarios[]']").map(function(){return $(this).val();}).get(),
+			};
+				console.log(dataString);
+			$.ajax({
+				type: 'get',
+				url: '/guardarDocumento',
+				data: dataString,
+				dataType: 'text',
+				success: function(data) {
+
+
+					
+					$nombreDocumento= data;
+					console.log($nombreDocumento);
+					 window.open($nombreDocumento);
+					$('#modalGeneral').modal('hide');
+
+					//$("#correosTable").bootstrapTable('refresh');
+				
+				},
+				error: function(data) {
+				//	console.log("succeessss men");
 					console.log(data);
 				}
 			});
@@ -143,7 +186,9 @@
 			var modalTitle = $('.modal-title');
 			var modalBody = $('.modal-body');
 			var modalFooter = $('.modal-footer');
-			var vnombreDependencia = "Alerta migratoria";
+			var nombreDependencia = "";
+			var destinatario1 = "";
+			var vehiculoDescripcion = "";
 	    
 
 		var formatTableActions = function(value, row, index) {				
@@ -167,6 +212,8 @@
 
 				$dependenciaId = row.id;
 				$dependenciaNombre = row.nombre;
+				//$dependenciaNombre = "hospitales"
+				nombreDependencia = $dependenciaNombre;
 				$dependenciaCorreo= row.correo;
 				$dependenciaDoc = row.dDocumento;
 				$destinatarios = "";
@@ -199,7 +246,7 @@
 								console.log($destinatarios)
 
 								
-										if($dependenciaNombre== 'SEMEFO'){
+										if($dependenciaNombre == 'SEMEFO'){
 											console.log("ya entre perro");
 												
 												$("select[name='idDestinatarios[]']").append("<option value=''>Seleccione un destinatario</option>");	
@@ -207,14 +254,14 @@
 												modalBody.empty();//limpia el contenido del body
 												modalTitle.empty();
 
-												modalBody.append('<p align ="center"><strong>PARA:  SEMEFO </strong></p>');
+												modalBody.append('<p align ="center"><strong>DOCUMENTO:  SEMEFO </strong></p>');
 												modalBody.append('<br>');
 												modalBody.append('<div class="row"><div class="form-group col-md-12">    	 {!! Form::label ("destin","Elija el destinatario:") !!}		{!! Form::select ("idDestinatarios[]",$combo ,"",["class" => "form-control","id" => "idDestinatarios[]"])!!} </div> ');	
 												//$("#idMunicipio").empty();
 												$("select[name='idDestinatarios[]']").map(function(){return $(this).empty();})
 												$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value=''>Seleccione un destinatario</option>");})
 												for(i=0; i<$destinatarios.length; i++){
-																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].id+"'> "+$destinatarios[i].nombre+"</option>");})
+																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].nombre+"'> "+$destinatarios[i].nombre+"</option>");})
 																	}
 												
 
@@ -251,18 +298,14 @@
 					console.log(data);
 				}
 
+			
+				
+
 
 			});
 
-
-
 		//AQUI YA SALI DEL AJAX
-
-								
-
-										
-
-				//bodyModal.empty();
+	//bodyModal.empty();
 			}
 
 		}
