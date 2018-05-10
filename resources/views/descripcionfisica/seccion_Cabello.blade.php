@@ -7,7 +7,7 @@
         	
         </h5>
     </div>
-    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">    
+    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion"> {{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}   
     <div class="card-body"> 
         <div class="form-group row" id="cabello">
 		    <div class="col-3">
@@ -24,7 +24,7 @@
 		    </div>
 		    <div class="col-3">
                 {!! Form::label ('partiCabello','Particularidad') !!}
-                {!! Form::select('partiCabello',$partiCabello, '', ['class' => 'form-control', 'id' => 'partiCabello'] ) !!}
+                {!! Form::select('partiCabello',$partiCabello, '', ['class' => 'form-control', 'id' => 'partiCabello','multiple' => 'multiple'] ) !!}
 		    </div>
 		</div>
 
@@ -33,24 +33,24 @@
 		        
 		    </div>
 		    <div class="col-3">
-                {!! Form::text('tipoCabello', '', ['class' => 'form-control', 'id' => 'otroTipoC', 'placeholder' => 'Especifique'] ) !!}
+                {!! Form::text('otroTipoC', '', ['class' => 'form-control', 'id' => 'otroTipoC', 'placeholder' => 'Especifique'] ) !!}
 		    </div>
 		    <div class="col-3">
-                {!! Form::text('colorCabello', '', ['class' => 'form-control', 'id' => 'otroColorC', 'placeholder' => 'Especifique'] ) !!}
+                {!! Form::text('otroColorC', '', ['class' => 'form-control', 'id' => 'otroColorC', 'placeholder' => 'Especifique'] ) !!}
 		    </div>
 		    <div class="col-3">
-                {!! Form::text('partiCabello', '', ['class' => 'form-control', 'id' => 'otroPartiC', 'placeholder' => 'Especifique'] ) !!}
+                {!! Form::text('otroPartiC', '', ['class' => 'form-control', 'id' => 'otroPartiC', 'placeholder' => 'Especifique'] ) !!}
 		    </div>
 		</div>
 
 		<div class="form-group row">
 		    <div class="col-3">
                 {!! Form::label ('modiCabello','Modificación') !!}
-                {!! Form::select('modiCabello', $modiCabello, '', ['class' => 'form-control', 'id' => 'modiCabello'] ) !!}
+                {!! Form::select('modiCabello', $modiCabello, '', ['class' => 'form-control', 'id' => 'modiCabello','multiple' => 'multiple'] ) !!}
 		    </div>
 		    <div class="col-3">
 		    	{!! Form::label ('Especifique','Especifique') !!}
-		    	{!! Form::text('partiCabello', '', ['class' => 'form-control', 'id' => 'otroModificacionC', 'placeholder' => 'Especifique'] ) !!}
+		    	{!! Form::text('otroModificacionC', '', ['class' => 'form-control', 'id' => 'otroModificacionC', 'placeholder' => 'Especifique'] ) !!}
 		    </div>
 		    <div class="col">
                 {!! Form::label ('observacionesCabello','Observaciones') !!}
@@ -73,16 +73,16 @@
 		    </div>
 		    <div class="col-3">
                 {!! Form::label ('modiBarba','Estilo') !!}
-                {!! Form::select('modiBarba', $modiBarba, '', ['class' => 'form-control', 'id' => 'modiBarba'] ) !!}
+                {!! Form::select('modiBarba', $modiBarba, '', ['class' => 'form-control', 'id' => 'modiBarba','multiple' => 'multiple'] ) !!}
 		    </div>
 		</div>
 
 		<div class="form-group row">
 		    <div class="col">
-                {!! Form::text('colorCabello', '', ['class' => 'form-control', 'id' => 'otroColorBar', 'placeholder' => 'Especifique otro color'] ) !!}
+                {!! Form::text('otroColorBar', '', ['class' => 'form-control', 'id' => 'otroColorBar', 'placeholder' => 'Especifique otro color'] ) !!}
 		    </div>
 		    <div class="col">
-                {!! Form::text('partiCabello', '', ['class' => 'form-control', 'id' => 'otroPartiBar', 'placeholder' => 'Especifique otro estilo'] ) !!}
+                {!! Form::text('otroPartiBar', '', ['class' => 'form-control', 'id' => 'otroPartiBar', 'placeholder' => 'Especifique otro estilo'] ) !!}
 		    </div>
 		</div>
 
@@ -108,16 +108,16 @@
 		    </div>
 		    <div class="col-3">
                 {!! Form::label ('modiBigote','Estilo') !!}
-                {!! Form::select('modiBigote', $modiBigote, '', ['class' => 'form-control', 'id' => 'modiBigote'] ) !!}
+                {!! Form::select('modiBigote', $modiBigote, '', ['class' => 'form-control', 'id' => 'modiBigote','multiple' => 'multiple'] ) !!}
 		    </div>
 		</div>
 
 		<div class="form-group row">
 		    <div class="col">
-                {!! Form::text('colorCabello', '', ['class' => 'form-control', 'id' => 'otroColorBig', 'placeholder' => 'Especifique otro color'] ) !!}
+                {!! Form::text('otroColorBig', '', ['class' => 'form-control', 'id' => 'otroColorBig', 'placeholder' => 'Especifique otro color'] ) !!}
 		    </div>
 		    <div class="col">
-                {!! Form::text('partiCabello', '', ['class' => 'form-control', 'id' => 'otroPartiBig', 'placeholder' => 'Especifique otro estilo'] ) !!}
+                {!! Form::text('otroPartiBig', '', ['class' => 'form-control', 'id' => 'otroPartiBig', 'placeholder' => 'Especifique otro estilo'] ) !!}
 		    </div>
 		</div>
 		<div class="form-group row">
@@ -142,16 +142,16 @@
 		    </div>
 		    <div class="col-3">
                 {!! Form::label ('modiPatilla','Estilo') !!}
-                {!! Form::select('modiPatilla', $modiPatilla, '', ['class' => 'form-control', 'id' => 'modiPatilla'] ) !!}
+                {!! Form::select('modiPatilla', $modiPatilla, '', ['class' => 'form-control', 'id' => 'modiPatilla','multiple' => 'multiple'] ) !!}
 		    </div>
 		</div>
 
 		<div class="form-group row">
 		    <div class="col">
-                {!! Form::text('colorCabello', '', ['class' => 'form-control', 'id' => 'otroColorPat', 'placeholder' => 'Especifique otro color'] ) !!}
+                {!! Form::text('otroColorPat', '', ['class' => 'form-control', 'id' => 'otroColorPat', 'placeholder' => 'Especifique otro color'] ) !!}
 		    </div>
 		    <div class="col">
-                {!! Form::text('partiCabello', '', ['class' => 'form-control', 'id' => 'otroPartiPat', 'placeholder' => 'Especifique otro estilo'] ) !!}
+                {!! Form::text('otroPartiPat', '', ['class' => 'form-control', 'id' => 'otroPartiPat', 'placeholder' => 'Especifique otro estilo'] ) !!}
 		    </div>
 		</div>
 
@@ -161,7 +161,7 @@
                 {!! Form::textarea('observacionesPatilla', '', ['class' => 'form-control', 'id' => 'observacionesPatilla', 'rows' => '1', 'placeholder' => 'Observaciones'] ) !!}
 		    </div>
 		</div>
-		<button type="button" class="btn btn-primary" style="float: right;">GUARDAR</button>
+		<button type="button" class="btn btn-primary" style="float: right;" id="btnGuardarC">GUARDAR</button>
     </div>
 </div>
 </div>
