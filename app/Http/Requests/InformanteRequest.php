@@ -32,7 +32,7 @@ class InformanteRequest extends FormRequest
 			'idNacionalidad'			=> 'required',
 			'idDocumentoIdentidad'		=> 'required',
 			'otroDocIdentidad'			=> '',
-			'numDocIdentidad'			=> 'required',
+			'numDocIdentidad'			=> 'required|max:20',
 			'tipoDireccion'				=> 'required',
 			'calle'						=> 'required',
 			'numExterno'				=> 'required',

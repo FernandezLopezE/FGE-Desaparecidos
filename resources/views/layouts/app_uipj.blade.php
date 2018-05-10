@@ -48,7 +48,7 @@
 					<div class="col-sm-6">
 						<h4 class="m-0 text-dark">
 							<i class="fa fa-male" aria-hidden="true"></i>
-							Cedula de investigación de la persona no lozalizada.
+							Cedula de investigación de la persona no localizada.
 							@yield('titulo')
 						</h4>
 					</div><!-- /.col -->
@@ -116,6 +116,8 @@
 	$(function (){
 		
 		var routeIndex = '{!! route('consultas.index') !!}';
+
+		$('[data-toggle="tooltip"]').tooltip()
 
 		$.ajaxSetup({
 			headers: {

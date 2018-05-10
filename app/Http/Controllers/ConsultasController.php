@@ -20,11 +20,12 @@ class ConsultasController extends Controller
 	public function jsonCedulas(Request $request)
 	{
 		//$cedulas = \DB::table('desaparecidos_cedula_investigacion')::all();
-        $cedulas = \DB::table('desaparecidos_personas as d')
-                            ->join('desaparecidos_cedula_investigacion as c', 'c.id', '=', 'd.idCedula')
-                            ->join('persona as p', 'd.idPersona', '=', 'p.id')
-                            ->join('cat_nacionalidad as n', 'p.idNacionalidad', '=', 'n.id')
-                            ->where('d.tipoPersona','DESAPARECIDA')
+        $cedulas = \DB::table('desaparecidos_cedula_investigacion as c')
+                            ->leftJoin('desaparecidos_personas as d', 'c.id', '=',
+                                \DB::raw('d.idCedula AND d.tipoPersona = "DESAPARECIDA"'))
+                            ->leftJoin('persona as p', 'd.idPersona', '=', 'p.id')
+                            ->leftJoin('cat_nacionalidad as n', 'p.idNacionalidad', '=', 'n.id')
+                            //->where('d.tipoPersona','DESAPARECIDA')
                             ->select('c.id','c.idDialecto', \DB::raw('DATE_FORMAT(c.created_at, "%d/%m/%Y %H:%m") as created_at'), 'p.nombres', 'p.primerAp', 'p.segundoAp', 'p.sexo','n.nombre as nacionalidad', 'd.apodo', 'd.edadExtravio')
                             ->get();
 

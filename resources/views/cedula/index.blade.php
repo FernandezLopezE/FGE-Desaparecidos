@@ -53,8 +53,21 @@
 			'click #edit': function (e, value, row, index) {
 			}
 		}
+
+		function rowStyle(row, index) {
+			if(row.nombres){
+				return {};
+			} else {
+				return { classes: 'table-warning'};
+			}				
+		}
+
 		
-		table.bootstrapTable({				
+		table.bootstrapTable({
+			pagination: true,
+			pageList: [10, 25, 50, 100],
+			search: true,
+			rowStyle: rowStyle,				
 			url: routeIndex+'/get_cedulas',
 			columns: [{					
 				field: 'id',
@@ -62,7 +75,11 @@
 			}, {					
 				title: 'Nombres',
 				formatter: (value, row, index, field) => {
-                    return row.nombres+' '+row.primerAp+' '+row.segundoAp;			
+                    if(row.nombres){
+                    	return row.nombres+' '+row.primerAp+' '+row.segundoAp;
+                    } else {
+                    	return 'Pendiente...';
+                    }			
                 }
 			}, {					
 				field: 'apodo',
