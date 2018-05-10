@@ -4,7 +4,7 @@
 	{!! Html::style('') !!}
 @endsection
 
-@section('titulo', 'Registro único de personas desaparecidas')
+@section('titulo', '')
 
 @section('content')
 {!! Form::model($cedula,

@@ -4,7 +4,7 @@
 	{!! Html::style('') !!}
 @endsection
 
-@section('titulo', 'Registro único de personas desaparecidas')
+@section('titulo', '')
 
 @section('content')
 <div class="card">
@@ -39,6 +39,10 @@
 							<a class="btn btn-secondary" href="{{route('boletin.show', ['id' => $cedula->id])}}">
 
 								BOLETIN
+							</a>
+							<a class="btn btn-secondary" href="{{route('mail.enviar', ['id' => $cedula->id])}}">
+
+								CORREO
 							</a>
 						</th>
 					</tr>					

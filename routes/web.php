@@ -35,8 +35,12 @@ Route::get('/', 'InicioController@index');
 	Route::resource('senas_particulares','SenasParticularesController');
 
 	Route::resource('datos_dentales','DatosDentalesController');
+
     
     Route::resource('dependencia_destinatario','AgregarDependenciaController');
+
+	Route::resource('datos_dentales_dientes_perdidos','DatosDentalesDientesPerdidosController');
+
 
 
 
@@ -130,15 +134,27 @@ Route::get('/desaparecido/vestimenta/{idCedula}', 'DesaparecidoController@show_v
 
 Route::get('consultas/get_prendas/{idCedula}', 'ConsultasController@jsonPrendas')
 	->name('consultas.get_prendas');
+Route::get('consultas/get_accesorios/{idCedula}', 'ConsultasController@jsonAccesorios')
+	->name('consultas.get_accesorios');
 Route::get('consultas/get_calzado/{idCedula}', 'ConsultasController@jsonCalzado')
 	->name('consultas.get_calzado');	
 
 Route::post('/desaparecido/store_vestimenta', 'DesaparecidoController@store_vestimenta')
 	->name('desaparecido.store_vestimenta');
+
 Route::post('/desaparecido/update_calzado', 'DesaparecidoController@update_calzado')
 	->name('desaparecido.update_calzado');
+
+Route::post('/domicilio/update', 'DomicilioController@update')
+	->name('domicilio.update');
+
+
+Route::post('/desaparecido/store_accesorios', 'DesaparecidoController@store_accesorios')
+	->name('desaparecido.store_accesorios');
+
 Route::post('/desaparecido/update_accesorios', 'DesaparecidoController@update_accesorios')
-	->name('desaparecido.update_accesorios');	
+	->name('desaparecido.update_accesorios');
+
 Route::post('/desaparecido/update_vestimenta', 'DesaparecidoController@update_vestimenta')
 	->name('desaparecido.update_vestimenta');
 

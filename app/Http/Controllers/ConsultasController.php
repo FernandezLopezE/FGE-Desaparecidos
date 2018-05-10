@@ -46,7 +46,7 @@ class ConsultasController extends Controller
 
 	public function jsonFamiliares(Request $request, $idDesaparecido)
 	{
-		$familiares = \App\Models\Familiar::where('idDesaparecido', $idDesaparecido)->get();
+		$familiares = \App\Models\Familiar::where('idDesaparecido', $idDesaparecido)->with('parentesco')->get();
 
 		return response()->json($familiares);
 
@@ -62,9 +62,51 @@ class ConsultasController extends Controller
   
 	public function jsonDomicilios(Request $request, $idDesaparecido)
 	{
-		$domicilios = \App\Models\Domicilio::where('idDesaparecido', $idDesaparecido)->get();
+//		$domicilios = \App\Models\Domicilio::where('idDesaparecido', $idDesaparecido)->get();
 
+        $domicilios =  \DB::table('desaparecidos_domicilios AS dd')
+            ->join('cat_estado AS ce', 'dd.idEstado', '=', 'ce.id')
+            ->join('cat_municipio AS cm', 'dd.idMunicipio', '=', 'cm.id')
+            ->join('cat_localidad AS cl', 'dd.idLocalidad', '=', 'cl.id')
+            ->join('cat_colonia AS cc', 'dd.idColonia', '=', 'cc.id')
+            ->select('dd.id as id',
+                     'dd.tipoDireccion as tipoD',
+                     'dd.calle as calle',
+                     'dd.numExterno as nExt',
+                     'dd.numInterno as nInt',
+                     'dd.telefono as telefono',
+                     'ce.id as idEstado',
+                     'ce.nombre as estado',
+                     'cm.id as idMunicipio',
+                     'cm.nombre as municipio',
+                     'cl.id as idLocalidad',
+                     'cl.nombre as localidad',
+                     'cc.id as idColonia',
+                     'cc.nombre as colonia',
+                     'cc.codigoPostal as cp')
+            ->where('idDesaparecido', $idDesaparecido)
+                ->get();        
 		return response()->json($domicilios);
+        
+        
+        
+        
+        
+        
+//        $prendas =  \DB::table('desaparecidos_prendas AS dp')
+//                ->join('cat_colores AS cc', 'dp.color', '=', 'cc.id')
+//                ->select('dp.id as id',
+//                        'dp.tipo as tipo',
+//                        'dp.material as material',
+//                        'dp.dibujoBordadoFranja as dibujo',
+//                        'dp.color as pColor',
+//                        'dp.otroColor as otroC',
+//                        'dp.marcaOrigen as marca',
+//                        'dp.talla as talla',
+//                        'cc.nombre as color')
+//                ->where('idCedula', $idCedula)
+//                ->get();
+//            return response()->json($prendas);
 
 	}
 
@@ -161,6 +203,24 @@ class ConsultasController extends Controller
                 ->get();
             return response()->json($prendas);
     }
+    
+    public function jsonAccesorios(Request $request, $idCedula)
+
+    {
+        $accesorios =  \DB::table('desaparecidos_accesorios AS dp')
+                ->join('cat_colores AS cc', 'dp.color', '=', 'cc.id')
+                ->select('dp.id as id',
+                        'dp.tipo as tipo',
+                        'dp.material as material',
+                        'dp.color as pColor',
+                        'dp.otroColor as otroC',
+                        'dp.marcaOrigen as marca',
+                        'cc.nombre as color')
+                ->where('idCedula', $idCedula)
+                ->get();
+            return response()->json($accesorios);
+    }
+    
     public function jsonCalzado(Request $request, $idCedula)
     {
         $prendas =  \DB::table('desaparecidos_cedula_investigacion AS dc')
@@ -267,7 +327,7 @@ class ConsultasController extends Controller
                     'cspu.nombre as nombreUbicacion',
                     'cantidad',
                     'caracteristicas')
-            ->where('idCedula', $idCedula)
+            ->where('idCedula', 1)
             ->get();
 
         return response()->json($senas);

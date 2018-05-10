@@ -34,10 +34,8 @@ class DatosDentalesController extends Controller
      */
     public function store(Request $request)
     {
-        foreach ($request->input('tratamientos') as $index => $value) {
-            $trata[] = array('tratamientos' => $trata[$index]
-                        );
-        }
+        
+        return response()->json('se inserto');
     }
 
     /**

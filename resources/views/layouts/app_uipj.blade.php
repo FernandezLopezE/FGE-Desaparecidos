@@ -12,18 +12,17 @@
 	{!! Html::style('bootstrap4/dist/css/bootstrap.min.css') !!}
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/font-awesome/css/font-awesome.css') }}">
 	<link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
-	<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-	<link rel="stylesheet" href="{{asset ('css/sweetalert.css')}}">
+	
+	
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/select2/select2.css') }}">
 	<link rel="stylesheet" href="{{ asset('css/cssfonts.css') }}">
-	<link rel="stylesheet" href="{{ asset('css/pagination.css') }}">
+	
 	<link rel="stylesheet" href="{{ asset('css/theme-jquery-validation.min.css') }}">
-	<!--<link rel="stylesheet" href="{{ asset('admin/plugins/datatables/adminlte.min.css') }}">-->
 
 	<link rel="stylesheet" href="{{ asset('plugins/bootstrap_table/bootstrap-table.min.css') }}">
-	{!! Html::style('personal/js/icheck/skins/all.css') !!}
+	{!! Html::style('plugins/icheck/skins/all.css') !!}
 	<!-- CSS para personalizar la plantilla -->
-	<link rel="stylesheet" href="{{ asset('css/estilos.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/estilos.css') }}"> 
 
 
 
@@ -49,6 +48,7 @@
 					<div class="col-sm-6">
 						<h4 class="m-0 text-dark">
 							<i class="fa fa-male" aria-hidden="true"></i>
+							Cedula de investigación de la persona no lozalizada.
 							@yield('titulo')
 						</h4>
 					</div><!-- /.col -->
@@ -85,15 +85,17 @@
 	<!-- Main Footer -->
 	
 	</div>
-	{!! HTML::script('personal/js/jquery-3.3.1.js') !!}	
-	{!! HTML::script('bootstrap4/assets/js/vendor/popper.min.js') !!}
+	{!! HTML::script('personal/js/jquery-3.3.1.js') !!}
+	<script src="{{ asset('plugins/tether/js/tether.min.js')}}" ></script>
 	{!! HTML::script('bootstrap4/dist/js/bootstrap.min.js') !!}
+	
 	{!! HTML::script('personal/js/jquery.form-validator.min.js') !!}
 	{!! HTML::script('personal/js/jquery.mask.js') !!}
 	<script src="{{asset('/plugins/ckeditor/ckeditor.js') }}"></script>
 	<script src="{{asset ('js/sweetalert.min.js')}}"></script>
+
     <script src="{{ asset('plugins/select2/select2.min.js')}}" ></script>
-    <script src="{{ asset('js/toastr.min.js')}}" ></script>
+    
     <!-- AdminLTE App -->
     <script src="{{ asset('admin/dist/js/adminlte.js') }}"></script>
     <!-- Latest compiled and minified JavaScript -->
@@ -104,11 +106,13 @@
 
     {!! HTML::script('personal/js/datosgral.js') !!}
     {!! HTML::script('personal/js/style_mask.js') !!}
-    {!! HTML::script('personal/js/icheck/icheck.js') !!}
-	{!! HTML::script('personal/js/icheck/icheck.min.js') !!}
+    {!! HTML::script('plugins/icheck/icheck.js') !!}
+	{!! HTML::script('plugins/icheck/icheck.min.js') !!}
+	
 	
 	@yield('scripts')
 	<script type="text/javascript">
+        
 	$(function (){
 		
 		var routeIndex = '{!! route('consultas.index') !!}';

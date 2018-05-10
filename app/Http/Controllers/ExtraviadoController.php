@@ -24,10 +24,22 @@ class ExtraviadoController extends Controller
 	 */
 	public function create($id)
 	{
+		$informantes = \App\Models\Desaparecido::where('idCedula', $id)
+											->where('tipoPersona', 'INFORMANTE')
+											->get();
+		
+		
+		if (!count($informantes)) {
+			return redirect()->action(
+				'InformanteController@show', ['id' => $id]
+			);
+		}
+
 		$datos = \App\Models\Desaparecido::where('idCedula', $id)
 											->where('tipoPersona', 'DESAPARECIDA')
 											->get();
-
+		// Si la Cedula de investigación ya tiene un persona no localizada
+		// asignada muestra los datos generales.
 		if (count($datos)) {
 			return redirect()->action(
 				'ExtraviadoController@show', ['id' => $id]
@@ -53,7 +65,7 @@ class ExtraviadoController extends Controller
 			$nacionalidades     = \App\Models\CatNacionalidad::all()->pluck('nombre', 'id');
 			$ladas = \App\Models\CatNacionalidad::all()->pluck('lada','id');
 			$documentos     = \App\Models\CatDocumento::all()->pluck('nombre', 'id');
-			$estados            = \App\Models\CatEstado::all()->pluck('nombre','id');       
+			$estados            = \App\Models\CatEstado::all()->pluck('nombre','id');			       
 			$municipios = array();
 			$localidades = array();
 			$colonias = array();
@@ -102,6 +114,22 @@ class ExtraviadoController extends Controller
 	public function store(ExtraviadoRequest $request)
 	{
 
+		$otroDocumento = ($request->input('idDocumentoIdentidad') == 9) ? $request->input('otroDocIdentidad') : null ;
+
+		if ($request->input('sexo') == 'M') {
+			$embarazo 		= $request->input('embarazo');		
+			$numGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('numGestacion') : null;
+			$tipoGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('tipoGestacion') : null;
+			$rumoresBebe	= ($request->input('embarazo') == 'SI') ? $request->input('rumoresBebe') : 'NO';
+			$pormenores		= ($request->input('rumoresBebe') == 'SI') ? $request->input('pormenores') : null;			
+		} else {
+			$embarazo		= 'NO';
+			$numGestacion	= null;
+			$tipoGestacion	= null;
+			$rumoresBebe	= 'NO';
+			$pormenores		= null;			
+		}
+
 		$persona = \App\Models\Persona::create([
 			'nombres'           => $request->input('nombres'),
 			'primerAp'          => $request->input('primerAp'),
@@ -111,14 +139,7 @@ class ExtraviadoController extends Controller
 			'idNacionalidad'    => $request->input('idNacionalidad'),
 			'curp'              => $request->input('curp'),
 			'idEstadoOrigen'    => $request->input('idEstadoOrigen'),
-		]);
-			
-		$embarazo       = ($request->input('sexo')=='M') ? $request->input('embarazo') : 'NO';
-		$numGestacion   = ($request->input('embarazo') == 'SI') ? $request->input('numGestacion') : null;
-		$tipoGestacion  = ($request->input('embarazo') == 'SI') ? $request->input('tipoGestacion') : null;
-		$rumoresBebe    = ($request->input('embarazo') == 'SI') ? $request->input('rumoresBebe') : 'NO';
-		$pormenores     = ($request->input('rumoresBebe') == 'SI') ? $request->input('pormenores') : null;
-					
+		]);					
 				
 		$desaparecido = \App\Models\Desaparecido::create([
 			'idCedula'                  => $request->input('idCedula'),
@@ -132,7 +153,7 @@ class ExtraviadoController extends Controller
 			'rumoresBebe'               => $rumoresBebe,
 			'pormenores'                => $pormenores,
 			'antecedentesJudiciales'    => $request->input('antecedentesJudiciales'),
-			'otroDocIdentidad'          => $request->input('otroDocIdentidad'),
+			'otroDocIdentidad'          => $otroDocumento,
 			'numDocIdentidad'           => $request->input('numDocIdentidad'),
 			'idEdocivil'                => $request->input('idEdocivil'),
 			'idOcupacion'               => $request->input('idOcupacion'),
@@ -141,9 +162,12 @@ class ExtraviadoController extends Controller
 			'tipoPersona'               => 'DESAPARECIDA',
 		]);
 
-		return redirect()->action(
+		return response()->json($data = array('persona' => $persona,
+												'desaparecido' => $desaparecido));
+
+		/*return redirect()->action(
 			'ExtraviadoController@show', ['id' => $desaparecido->idCedula]
-		);
+		);*/
 		
 
 				
@@ -257,14 +281,24 @@ class ExtraviadoController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id)
+	public function update(ExtraviadoRequest $request, $id)
 	{
+		$otroDocumento = ($request->input('idDocumentoIdentidad') == 9) ? $request->input('otroDocIdentidad') : null ;
 
-		$embarazo       = ($request->input('sexo')=='M') ? $request->input('embarazo') : 'NO';
-		$numGestacion   = ($request->input('embarazo') == 'SI') ? $request->input('numGestacion') : null;
-		$tipoGestacion  = ($request->input('embarazo') == 'SI') ? $request->input('tipoGestacion') : null;
-		$rumoresBebe    = ($request->input('embarazo') == 'SI') ? $request->input('rumoresBebe') : 'NO';
-		$pormenores     = ($request->input('rumoresBebe') == 'SI') ? $request->input('pormenores') : null;
+		if ($request->input('sexo') == 'M') {
+			$embarazo 		= $request->input('embarazo');		
+			$numGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('numGestacion') : null;
+			$tipoGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('tipoGestacion') : null;
+			$rumoresBebe	= ($request->input('embarazo') == 'SI') ? $request->input('rumoresBebe') : 'NO';
+			$pormenores		= ($request->input('rumoresBebe') == 'SI') ? $request->input('pormenores') : null;			
+		} else {
+			$embarazo		= 'NO';
+			$numGestacion	= null;
+			$tipoGestacion	= null;
+			$rumoresBebe	= 'NO';
+			$pormenores		= null;			
+		}
+
 
 		$desaparecido = \App\Models\Desaparecido::find($id)->update([						
 			'apodo'                     => $request->input('apodo'),
@@ -297,9 +331,12 @@ class ExtraviadoController extends Controller
 			'idEstadoOrigen'    => $request->input('idEstadoOrigen'),
 		]);
 
-		return redirect()->action(
+		return response()->json($data = array('persona' => $persona,
+										'desaparecido' => $desaparecido));
+
+		/*return redirect()->action(
 			'ExtraviadoController@show', ['id' => $desaparecido->idCedula]
-		);
+		);*/
 	}
 
 	/**
