@@ -46,6 +46,7 @@ class DatosDentalesDientesPerdidosController extends Controller
         }
         //dd($dientesPer);
         \DB::table('pivot_diente_perdido')->insert($dientesPer);
+        return response()->json('successful');
     }
 
     /**

@@ -128,8 +128,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CatTamanoDienteSeeder::class);
         $this->call(CatTratamientoDienteSeeder::class);
         $this->call(CatDienteSeeder::class);
-        $this->call(CatEnfermedadDentalSeeder::class);
-        $this->call(CatEnfermedadDentalSeeder::class);
+        //$this->call(CatEnfermedadDentalSeeder::class);
         
        
 

@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Dentista;
+use App\Models\Dentadura;
 
 class DatosDentalesController extends Controller
 {
@@ -34,8 +36,64 @@ class DatosDentalesController extends Controller
      */
     public function store(Request $request)
     {
+        $dentadura = new Dentadura();
+
+        $dentadura->idTamanoDiente = $request['dienteTamano'];
+        $dentadura->dienteCompleto = $request['dienteCompleto'];
+        $dentadura->asistioDentista = $request['atencionOdonto'];
+        $dentadura->tieneInfoDentista = $request['infoDentista'];
+        $dentadura->nombres = $request['nombres'];
+        $dentadura->primerAp = $request['primerAp'];
+        $dentadura->segundoAp = $request['segundoAp'];
+        $dentadura->empresa = $request['empresa'];
+        $dentadura->telefono = $request['telefono'];
+        $dentadura->direccion = $request['direccion'];
+
+        $trata = array();
+        foreach ($request->input('tratamiento') as $index => $value) {
+                array_push($trata,$value);
+        }
         
-        return response()->json('se inserto');
+        // foreach ($trata as $key => $value) {
+        //     if ($value == "true") {
+        //         echo "hola";
+        //     }
+        // }
+        //$dentaduratrata = json_encode($trata);
+        $dentadura->tratamientos = json_encode($trata);
+
+        $dentadura->perdiodiente = $request['perdiodiente'];
+        $dentadura->higieneBucal = $request['higieneBucal'];
+        $dentadura->describeHigBucal = $request['describahb'];
+        $dentadura->caries = $request['tieneCaries'];
+        $dentadura->describeCaries = $request['DescribaCaries'];
+        $dentadura->abcesos = $request['nombreAbceso'];
+        $dentadura->describeAbcesos = $request['describeAbceso'];
+
+        $enferme = array();
+        foreach ($request->input('enfermedad') as $index => $value) {
+            array_push($enferme,$value);
+            // if ($value == 'true') {
+            //     array_push($enferme,$value);
+            // }
+        }
+        $dentadura->enfermedades = json_encode($enferme);
+
+        $dentadura->malosHabitos = $request['malosHabitos'];
+
+        $malhabitos = array();
+        foreach ($request->input('malhabitos') as $index => $value) {
+            array_push($malhabitos,$value);
+        }
+        $dentadura->arraymaloshabitos = json_encode($malhabitos);
+        $dentadura->describeHabito = $request['especifiqhabito'];
+        $dentadura->idTipoPerfil = $request['valorPerfil'];
+        $dentadura->idTipoMordida = $request['valormordida'];
+        $dentadura->idTipoSonrisa = $request['valorsonrisa'];
+        $dentadura->save();
+        //dd($datoDental);
+        //\DB::table('desaparecido_dentadura')->insert($datoDental);
+        return response()->json('successful');
     }
 
     /**

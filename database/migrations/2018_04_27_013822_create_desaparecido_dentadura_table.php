@@ -23,6 +23,12 @@ class CreateDesaparecidoDentaduraTable extends Migration
             $table->enum('dienteCompleto', ['SIN INFORMACION','NO','SI']);
             $table->enum('asistioDentista', ['SIN INFORMACION','NO','SI']);
             $table->enum('tieneInfoDentista', ['SIN INFORMACION','NO','SI']);
+            $table->string('nombres')->nullable();
+            $table->string('primerAp')->nullable();
+            $table->string('segundoAp')->nullable();
+            $table->string('empresa')->nullable();
+            $table->string('telefono')->nullable();
+            $table->string('direccion')->nullable();
 
             $table->json('tratamientos')->nullable();
 
@@ -42,6 +48,8 @@ class CreateDesaparecidoDentaduraTable extends Migration
             $table->enum('maloshabitos', ['SIN INFORMACION','NO','SI']);
             $table->json('arraymaloshabitos')->nullable();
 
+            $table->string('describeHabito')->nullable();
+
             $table->integer('idTipoPerfil')->unsigned()->nullable();           
             $table->foreign('idTipoPerfil')->references('id')->on('cat_tipo_perfil');
 
@@ -50,6 +58,8 @@ class CreateDesaparecidoDentaduraTable extends Migration
 
             $table->integer('idTipoSonrisa')->unsigned()->nullable();           
             $table->foreign('idTipoSonrisa')->references('id')->on('cat_tipo_sonrisa');
+
+            $table->timestamps();
         });
     }
 

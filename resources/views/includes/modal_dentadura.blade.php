@@ -90,6 +90,11 @@
         <!-- Fin del Contenido del formulario-->
       </div>
       <div class="modal-footer">
+        <div class="col" align="left" >
+          {!! Form::label ('instrucciones','Instrucciones: ') !!}
+          <input id="toggle-teeth" type="checkbox" data-toggle="toggle" data-on="SI" data-off="NO" data-size="small" onchange="myFunctionTeeth()">
+        </div>
+        <button type="button" class="btn btn-warning" id="upDiente" onclick="ConfirmDemo()">EDITAR</button>
         <button type="button" class="btn btn-success" id="btnDiente">GUARDAR</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
       </div>
