@@ -56,6 +56,10 @@
     transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
     }
 
+    #colapsar2:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+
 </style>
 @endsection
 
@@ -63,15 +67,19 @@
 @include('navs.navs_datos',array('activar' => 'desc_fisica'))
 @include('includes.partesCuerpo.01Talla')
 <div class="card border-success">
-    <div class="card-header">
-        <h5 class="card-title">Descripción física y señas particulares</h5>
-    </div>
     <div class="card-body"> 
-        <div class="row">
+        @include('descripcionfisica.seccion_Estatura')
+        <div class="form-group" id="fomularioPrin2" style="display:none;">
+            <div class="card">
+              <div class="card-body">
+                <h5>Selecciona la parte del cuerpo</h5>
+              </div>
+            </div>
+        </div>
+        <div class="row" id="fomularioPrin" style="display:none;">
             <div class="col-3">
             @include('descripcionfisica.avatar')
             </div>
-
             <div class="col-9">
              @include('descripcionfisica.seccion_Cabello')
             </div>
@@ -84,6 +92,13 @@
 @section('scripts')
 <script type="text/javascript">
 $(document).ready(function(){
+
+    $("#colapsar2").click(function(event) {
+        $("#fomularioPrin").toggle();
+        $("#fomularioPrin2").toggle();
+    });
+
+
   //SELECT 2
   $('#partiCabello').select2();
   $('#modiCabello').select2();
