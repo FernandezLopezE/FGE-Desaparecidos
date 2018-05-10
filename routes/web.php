@@ -176,7 +176,7 @@ Route::get('/descripcionfisica/descripcionf/{idPersonaDesaparecida}', 'Descripci
 
 Route::post('/descripcionfisica/store', 'DescripcionFisicaController@store')
 	->name('descripcionfisica.store');
-
+Route::post('/descripcionfisica/storeVelloFacial', 'DescripcionFisicaController@storeVelloFacial')->name('descripcionfisica.storeVelloFacial');
 Route::resource('/descripcionfisica','DescripcionFisicaController');
 //fin de mis rutas
 
