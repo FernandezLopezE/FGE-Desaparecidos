@@ -28,12 +28,13 @@ class CreateDesaparecidosCedulaInvestigacionTable extends Migration
             $table->string('calzadoTalla',50)->nullable();
             $table->text('desaparicionObservaciones')->nullable();
             $table->datetime('desaparicionFecha')->nullable();
-            /*$table->integer('idEstadoDesaparicion')->unsigned()->default(30);
-            $table->foreign('idEstadoDesaparicion')->references('id')->on('cat_estado')->onDelete('cascade');            
-            $table->integer('idMunicipioDesaparicion')->unsigned()->default(2496);
-            $table->foreign('idMunicipioDesaparicion')->references('id')->on('cat_municipio');
-            $table->integer('idLocalidadDesaparicion')->unsigned()->default(108971);
-            $table->foreign('idLocalidadDesaparicion')->references('id')->on('cat_localidad')->onDelete('cascade');*/
+            $table->integer('idEstadoDesaparicion')->unsigned()->default(30);
+            $table->foreign('idEstadoDesaparicion')->references('id')->on('cat_estado')->onDelete('cascade');
+            $table->integer('idMunicipioDesa')->unsigned()->default(2496);
+            $table->foreign('idMunicipioDesa')->references('id')->on('cat_municipio')->onDelete('cascade');
+            $table->integer('idLocalidadDesapa')->unsigned()->default(108971);
+            $table->foreign('idLocalidadDesapa')->references('id')->on('cat_localidad')->onDelete('cascade');
+
             $table->string('referenciaLugar', 200)->nullable();
             $table->string('vehiculoDescripcion', 250)->nullable();
 

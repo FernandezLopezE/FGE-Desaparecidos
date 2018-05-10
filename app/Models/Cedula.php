@@ -22,8 +22,8 @@ class Cedula extends Model
 		'desaparicionObservaciones',
 		'desaparicionFecha',
         'idEstadoDesaparicion',         
-        'idMunicipioDesaparicion',
-        'idLocalidadDesaparicion',
+        'idMunicipioDesa',
+        'idLocalidadDesapa',
         'referenciaLugar', 
         'vehiculoDescripcion',
 		//'estatura',
@@ -42,7 +42,7 @@ class Cedula extends Model
 	];    
 	public function desaparecidos()
 	{
-		return $this->hasMany('App\Models\Desaparecido', 'idDesaparecido', 'id');
+		return $this->hasMany('App\Models\Desaparecido', 'id', 'id');
 	}
 	public function complexion()
 	{

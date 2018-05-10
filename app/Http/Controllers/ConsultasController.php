@@ -19,7 +19,14 @@ class ConsultasController extends Controller
 
 	public function jsonCedulas(Request $request)
 	{
-		$cedulas = \DB::table('desaparecidos_cedula_investigacion')::all();
+		//$cedulas = \DB::table('desaparecidos_cedula_investigacion')::all();
+        $cedulas = \DB::table('desaparecidos_personas as d')
+                            ->join('desaparecidos_cedula_investigacion as c', 'c.id', '=', 'd.idCedula')
+                            ->join('persona as p', 'd.idPersona', '=', 'p.id')
+                            ->join('cat_nacionalidad as n', 'p.idNacionalidad', '=', 'n.id')
+                            ->where('d.tipoPersona','DESAPARECIDA')
+                            ->select('c.id','c.idDialecto', \DB::raw('DATE_FORMAT(c.created_at, "%d/%m/%Y %H:%m") as created_at'), 'p.nombres', 'p.primerAp', 'p.segundoAp', 'p.sexo','n.nombre as nacionalidad', 'd.apodo', 'd.edadExtravio')
+                            ->get();
 
 		return response()->json($cedulas);
 	}
@@ -359,6 +366,44 @@ class ConsultasController extends Controller
                         'cd.id_dependencia as dDependencia',
                          'cdep.nombre as dependencia')
                 //->where('idCedula', $idCedula)
+                ->get();
+            return response()->json($destinatarios);
+    }
+
+    public function jsonDep(Request $request)//me consulta el nombre del documento
+
+    {
+
+    	$idDep  =($request['idDependencia']);
+
+    	//dd($idDep);
+
+    	 $dDocumento=  \DB::table('cat_dependencias AS cd')
+                ->join('cat_documentos AS cdoc', 'cd.documento', '=', 'cdoc.id')
+                ->select(
+                        'cd.documento as dDocumento',
+                         'cdoc.nombre as documento')
+                ->where('cd.id', $idDep)
+                ->get();
+            return response()->json($dDocumento);
+    }
+
+    public function jsonDes(Request $request)
+
+    {
+
+    	$idDep  =($request['idDependencia']);
+
+    	//dd($idDep);
+
+        $destinatarios =  \DB::table('cat_destinatarios AS cd')
+                ->join('cat_dependencias AS cdep', 'cd.id_dependencia', '=', 'cdep.id')
+                ->select('cd.id as id',
+                        'cd.nombre as nombre',
+                        'cd.cargo as cargo',
+                        'cd.id_dependencia as dDependencia',
+                         'cdep.nombre as dependencia')
+                ->where('cd.id_dependencia', $idDep)
                 ->get();
             return response()->json($destinatarios);
     }

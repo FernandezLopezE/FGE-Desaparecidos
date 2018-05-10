@@ -22,7 +22,7 @@
 	<link rel="stylesheet" href="{{ asset('plugins/bootstrap_table/bootstrap-table.min.css') }}">
 	{!! Html::style('plugins/icheck/skins/all.css') !!}
 	<!-- CSS para personalizar la plantilla -->
-	<!--<link rel="stylesheet" href="{{ asset('css/estilos.css') }}">--> 
+	<link rel="stylesheet" href="{{ asset('css/estilos.css') }}"> 
 
 
 
@@ -48,6 +48,7 @@
 					<div class="col-sm-6">
 						<h4 class="m-0 text-dark">
 							<i class="fa fa-male" aria-hidden="true"></i>
+							Cedula de investigación de la persona no lozalizada.
 							@yield('titulo')
 						</h4>
 					</div><!-- /.col -->
