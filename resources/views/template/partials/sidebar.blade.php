@@ -31,7 +31,7 @@
 						<li class="nav-item" ><a href="#" class="active nav-link"><i class="nav-icon fa fa-folder-open"></i><p>Carpeta Abierta</p> <span></span></a></li>
 						
 						<li class="nav-item"><a href="{!! route('cedula.create') !!}" class="nav-link"><i class="nav-icon fa fa-folder"></i><p>Nuevo reporte</p> <span></span></a></li>
-						<li class="nav-item"><a href="{!! route('mail.enviar') !!}" class="nav-link"><i class="nav-icon fa fa-pencil-square-o"></i><p>Correo</p> <span></span></a></li>
+						<li class="nav-item"><a href="{!! route('dependencias.destinatarios') !!}" class="nav-link"><i class="nav-icon fa fa-pencil-square-o"></i><p>Dependencias</p> <span></span></a></li>
 						<li class="nav-item">
 							<a href="pages/widgets.html" class="nav-link">
 								<i class="nav-icon fa fa-th"></i>

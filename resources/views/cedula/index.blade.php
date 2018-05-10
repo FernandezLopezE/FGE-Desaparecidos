@@ -28,7 +28,7 @@
 		var routeIndex = '{!! route('consultas.index') !!}';
 		var routeCedula = '{!! route('cedula.index') !!}';
 		var routeBoletin = '{!! route('boletin.index') !!}';
-		var routeMail = '{!! route('mail.enviar') !!}';
+		var routeMail = '{!! route('mail.index') !!}';
 
 		var formatTableActions = function(value, row, index) {				
 			btn = '<a href="'+routeCedula+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit"><i class="fa fa-address-card"></i></a>&nbsp;';
