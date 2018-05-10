@@ -50,11 +50,67 @@ class MailController extends Controller
         //esta funcion envia correo electronico  a partir de una vista
     
 
+    public function envioDocumentos(Request $request)
+        {
 
+          $dependencias=($request['datos']);//aqui traigo el nombre del documento y el nombre de la dependencia
+          //dd($request);
+    
+         $nombreDepRequest= $dependencias;
+         
+        // $nombreDocumento = $dependencias[0];
+          
+          $valoresChecks= ($request['valoresChecks']); //aqui traigo el arreglo de los checks que fueron seleccionados
+          $countDep= count($dependencias);//cuento el numnero de dependencias o correos que enviare
+          $countChecks= count($valoresChecks);//cuentos cuantos checks fueron checados
+       
+
+              for($i=0; $i<$countChecks;$i++){
+                    $destinatarioDatos =  \DB::table('cat_dependencias AS cd')
+                            ->select('cd.id as id',
+                                'cd.nombre as nombre',
+                                'cd.correo as correo')
+                            ->where('cd.id', $valoresChecks[$i])
+                            ->get();
+                            //dd($valoresChecks[$i]);
+                            $correo=($destinatarioDatos[0]->correo);
+                            $nombreDepConsulta= $destinatarioDatos[0]->nombre;
+                            
+                            
+
+                            for($a=0; $a<$countDep;$a++){
+                                if($nombreDepConsulta == $nombreDepRequest[$a][1]){
+                                    $nombreDocumento =($nombreDepRequest[$a][0]);
+                                              //  dd($nombreDocumento);
+                                  // dd ($nombreDepConsulta. " ==" .$nombreDepRequest[$a][1]);
+                                         Mail::send('emails.contact', $request->all(), function($msj) use($correo, $nombreDocumento){
+                                                        $msj->subject('Correo enviado');
+                                                        //$msj->to('alejandro.f.toledo@gmail.com');
+
+                                                        $msj->setTo( $correo);
+
+                                                        $msj->attach('./'.$nombreDocumento);
+                                                });
+                                                Session::flash('message','Mensaje enviado correctamente');
+                                                return Redirect::to('/email');
+                                            
+                                            }
+
+                                else{
+                                  // dd ($nombreDepConsulta. " ==" .$nombreDepRequest[$a][1]);
+                                }
+
+                            }
+
+              } 
+
+
+        }
 
     public function store (Request $request){
        // dd($request->toArray());
 
+            dd("ya entre aca en mail controller");
         
         $nombreArchivo = $request->file('file')->getClientOriginalName();
         

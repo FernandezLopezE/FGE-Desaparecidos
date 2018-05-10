@@ -119,55 +119,112 @@ class CargarDocumentosController extends Controller
     {        
 
     	
+    		$d1 =($request['destinatario']);
+    		//dd($d1);
+    		$destinatarioLenght = count($d1);
+    		//dd ($d1[0]);
+    		//dd($destinatarioLenght);
+    		$destinatarioDatos=[$destinatarioLenght];
+
+    	 	for ($i =0; $i<$destinatarioLenght;$i++){
+    		 $destinatarioDatos [$i]=  \DB::table('cat_destinatarios AS cd')
+             
+                ->select('cd.id as id',
+                        'cd.nombre as nombre',
+                        'cd.cargo as cargo',
+                        'cd.id_dependencia as dDependencia')
+                ->where('cd.nombre', $d1[$i])
+                ->get();
+               
+            }
+            // dd($destinatarioDatos[1][0]->cargo);
+            
+
+           //dd($destinatarioDatos[0]->cargo);
+    
+    		//dd("ya entre bato");
     		$id = '1';
-            $datos = \App\Models\Desaparecido::where('idCedula', $id)
+
+            $datos2 = \App\Models\Desaparecido::where('idCedula', $id)
                                             ->where('tipoPersona', 'DESAPARECIDA')
                                             ->limit(1)
                                             ->get();
-           
-	        $desaparecido = \App\Models\Desaparecido::find($datos[0]->id);
-	       
+         
 
+	        $desaparecido = \App\Models\Desaparecido::find($datos2[0]->id);
+	        
+	 
 	      
 	        $estado = "Veracruz";
 	        $municipio  = "Xalapa";
 	        $localidad = "Xalapa";
 	        $referenciaLugar = "Lazaro cardenas, Plaza Cryztal";
 
-
+	        	
 
 	        $fechaHoy = new Carbon();//entra en todos los documentos
-	        $hora =Carbon::parse($fechaHoy)->format('H:i');
-	        dd($hora);
+	        $desaparecidoHora =Carbon::parse($fechaHoy)->format('H:i');
+	       
 
        		$anio =Carbon::parse($fechaHoy)->format('Y');//estas variables se ocupan en la carpeta Inv. hace referencia al año actual y mes actual
         	$mes =Carbon::parse($fechaHoy)->format('m');
          	
       		//Variables que entran en cada uno de los documentos
+      		$desaparecidoSexo = $desaparecido->persona->sexo;
     		$desaparecidoNombre  = $desaparecido->persona->nombres  ." ". $desaparecido->persona->primerAp. " ". $desaparecido->persona->segundoAp;
     		$numCarpeta = "FEADPD/ZCX/".$id."/".$anio."-".$mes;
     		$numOficio = $id;
-    		$vehiculoDescjripcion =($request['vehiculoDescripcion']);
+    		$vehiculoDescripcion =($request['vehiculoDescripcion']);
+    		$nombreDependencia =($request['nombreDependencia']);
+    		$destinatarioNombre =($request['destinatario']);
+    		//dd($destinatarioNombre[0][0]);
+    		//dd($destinatarioNombre);
+    		//$destinatarioCargo = ($destinatarioDatos[0]->cargo);
+    		$destinatarioCargo = ($destinatarioDatos);
     		$fiscalNombre  = $desaparecido->cedula->entrevistadorNombres  ." ". $desaparecido->cedula->entrevistadorPrimerAp. " ". $desaparecido->cedula->entrevistadorSegundoAp;
     		$fiscalCargo = $desaparecido->cedula->entrevistadorCargo;
     		$desaparecidoLugar = $referenciaLugar.", ".$localidad.", ".$municipio.", ". $estado;
+    		$desaparecidoFecha = new Carbon();
+ 			$fechaActual =Carbon::parse($desaparecido->persona->fechaNacimiento)->format('d/m/Y');
+         	
     		
 
-    		dd($desaparecidoLugar);
+
+    		$datos3 =  array (
+    			'desaparecidoSexo'=> $desaparecidoSexo,
+    			'fechaHoy' => $fechaHoy,
+    		 	'anio' => $anio,
+    		 	'mes' => $mes,
+    		 	'desaparecidoNombre' => $desaparecidoNombre,
+    		 	'desaparecidoLugar' => $desaparecidoLugar,
+    		 	'desaparecidoFecha' => $desaparecidoFecha,
+    		 	'desaparecidoHora' => $desaparecidoHora,
+    		 	'numCarpeta' => $numCarpeta,
+    		 	'numOficio' => $numOficio,
+    		 	'vehiculoDescripcion' => $vehiculoDescripcion,
+    		 	'fiscalNombre' => $fiscalNombre,
+    		 	'fiscalCargo' => $fiscalCargo,
+    		 	'desaparecidoLugar' => $desaparecidoLugar,
+    		 	'destinatarioNombre' =>$destinatarioNombre,
+    		 	'destinatarioCargo' =>$destinatarioCargo,
+    		 	'fechaActual' => $fechaActual
+    		  );
+    		$datos = (object) $datos3;
+
+    		//dd ($datos->destinatarioNombre[0]);
     	
     		
 	    	
 	    	//$numCarpeta = "FETA/344/SDF";
 
 
-        $fechaInv =new Carbon::parse($desaparecido->persona->fechaNacimiento)->format('d/m/Y');
-         dd($fechaInv);
+       
       
-    		$desaparecidoNombre  = $desaparecido->persona->nombres  ." ". $desaparecido->persona->primerAp. " ". $desaparecido->persona->segundoAp;
-    		$numCarpeta = "FEADPD/zCX/".$id.""
+    		/*$desaparecidoNombre  = $desaparecido->persona->nombres  ." ". $desaparecido->persona->primerAp. " ". $desaparecido->persona->segundoAp;
+    		$numCarpeta = "FEADPD/zCX/".$id."";
 
     		//$desaparecidoLugar = 
-    		
+    		/*
 	    	$fechaHoy = new Carbon();
 	    	$numCarpeta = "FETA/344/SDF";
 
@@ -182,7 +239,7 @@ class CargarDocumentosController extends Controller
 	    	$nombreFiscal = "Avelardo Rodriguez";
 	    	$numFiscal = "455";
 	    	$numDistrito = "XI" ;
-	    	$distrito = "VI";
+	    	$distrito = "VI";*/
 
 
           /*  $datos = \App\Models\Desaparecido::where('idCedula', $id)
@@ -200,14 +257,23 @@ class CargarDocumentosController extends Controller
       	//cada que se crea en esta ruta este PDF se remplaza por el existente por lo que no  satura el servidor con archivos. solo se ocupa uno a la vez
       	file_put_contents('pdftemporal.pdf', $output);
         return $pdf->stream('formato_'.time().'.pdf',array('Attachment'=>0));*/
-        
-
+        $nombreDocumento = "";
+        $nombreDocumento2 = "";
+        if  ($nombreDependencia == "SERVICIOS PERICIALES (SEMEFOS)"){
+        	$nombreDocumento = "form_24_semefos";
+        	$nombreDocumento2 = "semefos";
+        	
+        }
+    
     	//METODOS PARA GENERAR LOS PDFS, se hacen en funcion del nombre del documento que reciba en el Request
-	    	$view = view($nombreDocumento, compact('datos'))->render();
+	    	$view = view('plantillas.'.$nombreDocumento, compact('datos'))->render();
 	        $pdf =\App::make('dompdf.wrapper');
 	        $pdf -> loadHTML($view); 
 	        $pdf->setPaper([0, 0, 1424, 864], 'landscape');
+	        $output = $pdf->output();
+	        $pdf->stream($nombreDocumento.'.pdf');
 	        //cada que se crea en esta ruta este PDF se remplaza por el existente por lo que no  satura el servidor con archivos. solo se ocupa uno a la vez
+	        //stream($nombreDocumento.'.pdf', array('Attachment'=>0));
 	        file_put_contents($nombreDocumento.'.pdf', $output);
 	        return $nombreDocumento.'.pdf';
     }//acaba el create
