@@ -20,6 +20,7 @@ class CatTiposCuerpoSeeder extends Seeder
             [ 'nombre' => 'ONDULADO', 'idPartesCuerpo' => '55'],
             [ 'nombre' => 'CHINO/RIZADO', 'idPartesCuerpo' => '55'],
             [ 'nombre' => 'CRESPO', 'idPartesCuerpo' => '55'],
+            [ 'nombre' => 'OTRO', 'idPartesCuerpo' => '55'],
 
 
             //CEJA IZQUIERDA
@@ -30,6 +31,7 @@ class CatTiposCuerpoSeeder extends Seeder
             [ 'nombre' => 'DEPILADA', 'idPartesCuerpo' => '6'],
             [ 'nombre' => 'RASURADA', 'idPartesCuerpo' => '6'],
             [ 'nombre' => 'SIN CEJA', 'idPartesCuerpo' => '6'],
+            [ 'nombre' => 'OTRO', 'idPartesCuerpo' => '6'],
 
             //CEJA DERECHA
             [ 'nombre' => 'SIN INFORMACION', 'idPartesCuerpo' => '7'],
@@ -39,6 +41,7 @@ class CatTiposCuerpoSeeder extends Seeder
             [ 'nombre' => 'DEPILADA', 'idPartesCuerpo' => '7'],
             [ 'nombre' => 'RASURADA', 'idPartesCuerpo' => '7'],
             [ 'nombre' => 'SIN CEJA', 'idPartesCuerpo' => '7'],
+            [ 'nombre' => 'OTRO', 'idPartesCuerpo' => '7'],
 
             //NARIZ
             [ 'nombre' => 'SIN INFORMACION', 'idPartesCuerpo' => '31'],
@@ -46,12 +49,14 @@ class CatTiposCuerpoSeeder extends Seeder
             [ 'nombre' => 'AGUILEÑA', 'idPartesCuerpo' => '31'],
             [ 'nombre' => 'RESPINGADA/RECATA', 'idPartesCuerpo' => '31'],
             [ 'nombre' => 'OBLITERADA (OBSTRUIDA/CERRADA)', 'idPartesCuerpo' => '31'],
+            [ 'nombre' => 'OTRO', 'idPartesCuerpo' => '31'],
 
             //OREJA IZQUIERDA
             [ 'nombre' => 'SIN INFORMACION', 'idPartesCuerpo' => '35'],
             [ 'nombre' => 'COMPLETA', 'idPartesCuerpo' => '35'],
             [ 'nombre' => 'INCOMPLETA', 'idPartesCuerpo' => '35'],
             [ 'nombre' => 'OBLITERADA (OBSTRUIDA/CERRADA)', 'idPartesCuerpo' => '35'],
+            [ 'nombre' => 'OTRO', 'idPartesCuerpo' => '35'],
 
 
             //OREJA DERECHA
@@ -59,6 +64,7 @@ class CatTiposCuerpoSeeder extends Seeder
             [ 'nombre' => 'COMPLETA', 'idPartesCuerpo' => '34'],
             [ 'nombre' => 'INCOMPLETA', 'idPartesCuerpo' => '34'],
             [ 'nombre' => 'OBLITERADA (OBSTRUIDA/CERRADA)', 'idPartesCuerpo' => '34'],
+            [ 'nombre' => 'OTRO', 'idPartesCuerpo' => '34'],
 
 
 
@@ -67,6 +73,7 @@ class CatTiposCuerpoSeeder extends Seeder
             [ 'nombre' => 'POBLADA', 'idPartesCuerpo' => '56'],
             [ 'nombre' => 'ESCASA', 'idPartesCuerpo' => '56'],
             [ 'nombre' => 'LAMPIÑO', 'idPartesCuerpo' => '56'],
+            [ 'nombre' => 'OTRO', 'idPartesCuerpo' => '56'],
 
 
             //BIGOTE
@@ -74,6 +81,7 @@ class CatTiposCuerpoSeeder extends Seeder
             [ 'nombre' => 'POBLADA', 'idPartesCuerpo' => '57'],
             [ 'nombre' => 'ESCASA', 'idPartesCuerpo' => '57'],
             [ 'nombre' => 'LAMPIÑO', 'idPartesCuerpo' => '57'],
+            [ 'nombre' => 'OTRO', 'idPartesCuerpo' => '57'],
 
 
             //PATILLAS
@@ -81,12 +89,14 @@ class CatTiposCuerpoSeeder extends Seeder
             [ 'nombre' => 'POBLADA', 'idPartesCuerpo' => '58'],
             [ 'nombre' => 'ESCASA', 'idPartesCuerpo' => '58'],
             [ 'nombre' => 'LAMPIÑO', 'idPartesCuerpo' => '58'],
+            [ 'nombre' => 'OTRO', 'idPartesCuerpo' => '58'],
 
             //MENTÓN
             [ 'nombre' => 'SIN INFORMACION', 'idPartesCuerpo' => '24'],
             [ 'nombre' => 'SALIENTE', 'idPartesCuerpo' => '24'],
             [ 'nombre' => 'RECTO', 'idPartesCuerpo' => '24'],
             [ 'nombre' => 'RETRAÍDO', 'idPartesCuerpo' => '24'],
+            [ 'nombre' => 'OTRO', 'idPartesCuerpo' => '24'],
 
 
 
@@ -96,6 +106,7 @@ class CatTiposCuerpoSeeder extends Seeder
             [ 'nombre' => 'MEDIANO', 'idPartesCuerpo' => '19'],
             [ 'nombre' => 'GRUESO', 'idPartesCuerpo' => '19'],
             [ 'nombre' => 'MIXTO', 'idPartesCuerpo' => '19'],
+            [ 'nombre' => 'OTRO', 'idPartesCuerpo' => '19'],
 
             //LABIOS DERECHO
             [ 'nombre' => 'SIN INFORMACION', 'idPartesCuerpo' => '20'],
@@ -103,6 +114,7 @@ class CatTiposCuerpoSeeder extends Seeder
             [ 'nombre' => 'MEDIANO', 'idPartesCuerpo' => '20'],
             [ 'nombre' => 'GRUESO', 'idPartesCuerpo' => '20'],
             [ 'nombre' => 'MIXTO', 'idPartesCuerpo' => '20'],
+            [ 'nombre' => 'OTRO', 'idPartesCuerpo' => '20'],
 
 
 

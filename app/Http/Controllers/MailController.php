@@ -11,6 +11,7 @@ use Redirect;
 use Barryvdh\DomPDF\Facade as PDF;
 use App\Models\Desaparecido;
 use App\Models\CatDependencias;
+use App\models\Cedula;
 
 
 class MailController extends Controller
@@ -21,12 +22,13 @@ class MailController extends Controller
         //
     }
 
-    public function show(){ 
-
+    public function show($idCedula)
+    {
+        $cedula = Cedula::find($idCedula);
             $combo =CatDependencias::all()->pluck('nombre','id');
         
 
-            $cedula = \App\Models\Cedula::find(1);
+            //$cedula = \App\Models\Cedula::find(2);
            
             //$cedula = \App\Models\Cedula::find($id);
             $correosExternos = CatDependencias::all();
