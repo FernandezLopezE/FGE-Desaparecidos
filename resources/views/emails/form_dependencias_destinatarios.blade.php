@@ -35,7 +35,7 @@
 	<div class="card-header">
 		<h5 class="card-title">Dependencias
 		<button type="button" class="btn btn-dark pull-right" id="btnAgregarDependencia">
-	AGREGAR DEPENDENCIA
+	AGREGAR
 </button>
 		</h5>
 	</div>
@@ -58,7 +58,7 @@ data-search="true">
     <thead>
     <tr>
         <th data-field="id_user" 
-            data-sortable="true">ID</th>
+            data-sortable="true">No.</th>
         <th data-field="username" 
             data-sortable="true">User</th>
         <th data-field="desactivate" 
@@ -79,7 +79,7 @@ data-search="true">
 	<div class="card-header">
 		<h5 class="card-title">Destinatarios
             <button type="button" class="btn btn-dark pull-right" style="margin-right:10px" id="btnAgregarDestinatario">
-                AGREGAR DESTINATARIOS
+                AGREGAR
             </button>
 		</h5>
 	</div>
@@ -101,7 +101,7 @@ data-search="true">
     <thead>
     <tr>
         <th data-field="id_user" 
-            data-sortable="true">ID</th>
+            data-sortable="true">No.</th>
         <th data-field="username" 
             data-sortable="true">User</th>
         <th data-field="desactivate" 
@@ -264,7 +264,7 @@ data-search="true">
 			url: routeIndex+'/get_dependencias',
 			columns: [{					
 				field: 'id',
-				title: 'ID',
+				title: 'No.',
 			}, {					
 				field: 'nombre',
 				title: 'Nombre',
@@ -285,16 +285,16 @@ data-search="true">
 			url: routeIndex+'/get_destinatarios',
 			columns: [{					
 				field: 'id',
-				title: 'ID',
+				title: 'No.',
 			}, {					
 				field: 'nombre',
 				title: 'Nombre',
 			}, {					
 				field: 'cargo',
-				title: 'cargo',
+				title: 'Cargo',
 			}, {					
 				field: 'dependencia',
-				title: 'dependencia',
+				title: 'Dependencia',
 			},{					
 				title: 'Acciones',
 				formatter: formatTableActions2,

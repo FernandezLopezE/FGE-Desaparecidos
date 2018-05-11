@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">AGERGAR DESTINATARIO</h5>
+          <h5 class="modal-title" id="exampleModalLabel">AGREGAR DESTINATARIO</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -19,11 +19,11 @@
               {!! Form::select ('dependencias[]',$dependencias,'', ['class' => 'form-control', 'id' => 'idDependenciaDest' ] )!!}
             </div>
             <div class="col">
-              {!! Form::label ('nombreDestinatario','Nombre del destinatario:') !!}
+              {!! Form::label ('nombreDestinatario','Nombre:') !!}
               {!! Form::text ('correo',old('correo'),['class' => 'form-control mayuscula','id' => 'nombreDest', 'placeholder' => 'Ingresa el nombre del destinatario'] )!!}
             </div>
             <div class="col">
-              {!! Form::label ('cargoDestinatario','Cargo del destinatario:') !!}
+              {!! Form::label ('cargoDestinatario','Cargo:') !!}
               {!! Form::text ('cargo',old('correo'),['class' => 'form-control mayuscula','id' => 'cargo', 'placeholder' => 'Ingresa el cargo del destinatario'] )!!}
             </div>
             
