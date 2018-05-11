@@ -135,30 +135,47 @@ class DescripcionFisicaController extends Controller
             //particularidades
             $particularidadC = $request['partiCabello'];
 
+
             $longitud = count($particularidadC);
 
-            for($i=0; $i<$longitud; $i++){
-                
-                $partiCabello =  PivotSubPartiCuerpo::where('idCedulaPartesCuerpo',$parteCuerpo->id);
-                //$partiCabello->idCedulaPartesCuerpo = $parteCuerpo->id;
-                $partiCabello->idSubParticularidades = $particularidadC[$i];
 
-                $partiCabello->save();
+
+            if($longitud !=0){
+                \DB::table('pivot_subparti_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
+                for($i=0; $i<$longitud; $i++){
+                
+                        $partiCabello = new PivotSubPartiCuerpo();
+                        $partiCabello->idCedulaPartesCuerpo = $parteCuerpo->id;
+                        $partiCabello->idSubParticularidades = $particularidadC[$i];
+
+                        $partiCabello->save();
+                    }
+               
+            }else{
+                \DB::table('pivot_subparti_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
+               
             }
+
+            
 
             //modificaciones
 
              $modificacionC = $request['modiCabello'];
 
              $longitud = count($modificacionC);
+             if($longitud !=0){
+                \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
 
-             for($i=0; $i<$longitud; $i++){
-                $modiCabello =  PivotSubModiCuerpo::where('idCedulaPartesCuerpo',$parteCuerpo->id);
-                //$modiCabello->idCedulaPartesCuerpo = $parteCuerpo->id;
-                $modiCabello->idSubModificaciones = $modificacionC[$i];
+                 for($i=0; $i<$longitud; $i++){
+                    $modiCabello =  new PivotSubModiCuerpo();
+                    $modiCabello->idCedulaPartesCuerpo = $parteCuerpo->id;
+                    $modiCabello->idSubModificaciones = $modificacionC[$i];
 
-                $modiCabello->save();
-             }         
+                    $modiCabello->save();
+                 }         
+             }else{
+                \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
+             }
 
 
         }else{
@@ -240,12 +257,17 @@ class DescripcionFisicaController extends Controller
 
              $longitud = count($modificacionBa);
 
-             for($i=0; $i<$longitud; $i++){
-                $modiBarba = new PivotSubModiCuerpo();
-                $modiBarba->idCedulaPartesCuerpo = $parteCuerpo2->id;
-                $modiBarba->idSubModificaciones = $modificacionBa[$i];
+             if($longitud !=0){
+                \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo2->id)->delete();
+                 for($i=0; $i<$longitud; $i++){
+                    $modiBarba = new PivotSubModiCuerpo();
+                    $modiBarba->idCedulaPartesCuerpo = $parteCuerpo2->id;
+                    $modiBarba->idSubModificaciones = $modificacionBa[$i];
 
-                $modiBarba->save();
+                    $modiBarba->save();
+                 }
+                 }else{
+                \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo2->id)->delete();
              }
         }else{
              //barba
@@ -267,14 +289,16 @@ class DescripcionFisicaController extends Controller
              $modificacionBa = $request['modiBarba'];
 
              $longitud = count($modificacionBa);
+             
 
-             for($i=0; $i<$longitud; $i++){
-                $modiBarba = new PivotSubModiCuerpo();
-                $modiBarba->idCedulaPartesCuerpo = $parteCuerpo2->id;
-                $modiBarba->idSubModificaciones = $modificacionBa[$i];
+                 for($i=0; $i<$longitud; $i++){
+                    $modiBarba = new PivotSubModiCuerpo();
+                    $modiBarba->idCedulaPartesCuerpo = $parteCuerpo2->id;
+                    $modiBarba->idSubModificaciones = $modificacionBa[$i];
 
-                $modiBarba->save();
-             }
+                    $modiBarba->save();
+                 }
+             
         }
 
 
@@ -308,14 +332,19 @@ class DescripcionFisicaController extends Controller
              $modificacionBi = $request['modiBigote'];
 
              $longitud = count($modificacionBi);
+             if($longitud !=0){
+                \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo3->id)->delete();
 
-             for($i=0; $i<$longitud; $i++){
-                $modiBigote = new PivotSubModiCuerpo();
-                $modiBigote->idCedulaPartesCuerpo = $parteCuerpo3->id;
-                $modiBigote->idSubModificaciones = $modificacionBi[$i];
+                 for($i=0; $i<$longitud; $i++){
+                    $modiBigote = new PivotSubModiCuerpo();
+                    $modiBigote->idCedulaPartesCuerpo = $parteCuerpo3->id;
+                    $modiBigote->idSubModificaciones = $modificacionBi[$i];
 
-                $modiBigote->save();
-             }     
+                    $modiBigote->save();
+                 }     
+             }else{
+                \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo3->id)->delete();
+             }
         }else{
              //bigote
             $parteCuerpo3 = new CedulaPartesCuerpo();
@@ -376,14 +405,18 @@ class DescripcionFisicaController extends Controller
              $modificacionP = $request['modiPatilla'];
 
              $longitud = count($modificacionP);
+             if($longitud !=0){
+                \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo4->id)->delete();
+                 for($i=0; $i<$longitud; $i++){
+                    $modiPatilla = new PivotSubModiCuerpo();
+                    $modiPatilla->idCedulaPartesCuerpo = $parteCuerpo4->id;
+                    $modiPatilla->idSubModificaciones = $modificacionP[$i];
 
-             for($i=0; $i<$longitud; $i++){
-                $modiPatilla = new PivotSubModiCuerpo();
-                $modiPatilla->idCedulaPartesCuerpo = $parteCuerpo4->id;
-                $modiPatilla->idSubModificaciones = $modificacionP[$i];
-
-                $modiPatilla->save();
-             } 
+                    $modiPatilla->save();
+                 } 
+             }else{
+                \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo4->id)->delete();
+             }
         }else{
             //patilla
             $parteCuerpo4 = new CedulaPartesCuerpo();
