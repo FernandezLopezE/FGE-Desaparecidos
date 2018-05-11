@@ -11,12 +11,10 @@ class CatEnfermedadDentalSeeder extends Seeder
      */
     public function run()
     {
-//        DB::table('cat_enfermedad_dental')->insert([
-//            [ 'id' => 1, 'nombreEnfermedad' => 'ABSCESOS'],
-//            [ 'id' => 2, 'nombreEnfermedad' => 'CARIES'],
-//            [ 'id' => 3, 'nombreEnfermedad' => 'GINGIVITIS'],
-//            [ 'id' => 4, 'nombreEnfermedad' => 'PERIODONTITIS'],
-//            [ 'id' => 5, 'nombreEnfermedad' => 'SARRO'],
-//        ]);
+        // DB::table('cat_enfermedad_dental')->insert([
+        //     [ 'id' => 1, 'nombreEnfermedad' => 'SARRO'],
+        //     [ 'id' => 2, 'nombreEnfermedad' => 'GINGIVITIS'],
+        //     [ 'id' => 3, 'nombreEnfermedad' => 'PERIODONTITIS'],
+        // ]);
     }
 }
