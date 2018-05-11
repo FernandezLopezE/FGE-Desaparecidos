@@ -34,7 +34,7 @@ class MailController extends Controller
             $correosExternos = CatDependencias::all();
             return view('desaparecidos.contacto',[
 
-                    'Cedula' => $cedula,
+                    'cedula' => $cedula,
                     'correosExternos' => $correosExternos ,
                     'combo' => $combo,
 
