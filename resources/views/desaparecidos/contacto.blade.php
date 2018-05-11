@@ -124,6 +124,8 @@
 				nombreDependencia: nombreDependencia ,
 				destinatario : $destinatarios,
 				lugares: $lugares,
+				idCedula: '{!! $cedula->id!!}'
+
 
 			};
 				console.log(dataString);
@@ -132,6 +134,7 @@
 				url: '/guardarDocumento',
 				data: dataString,
 				dataType: 'text',
+
 				success: function(data) {
 
 
@@ -139,7 +142,7 @@
 					$nombreDocumento= data;
 					$documentosArray= [[$nombreDocumento, nombreDependencia]];
 					console.log($nombreDocumento);
-					 window.open($nombreDocumento);
+					 window.open('../'+$nombreDocumento);
 					$('#modalGeneral').modal('hide');
 
 					//$("#correosTable").bootstrapTable('refresh');

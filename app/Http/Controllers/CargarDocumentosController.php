@@ -145,7 +145,8 @@ class CargarDocumentosController extends Controller
            //dd($destinatarioDatos[0]->cargo);
     
     		//dd("ya entre bato");
-    		$id = '1';
+    		$id =($request['idCedula']);
+    		
 
             $datos2 = \App\Models\Desaparecido::where('idCedula', $id)
                                             ->where('tipoPersona', 'DESAPARECIDA')
