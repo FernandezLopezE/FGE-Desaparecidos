@@ -59,6 +59,9 @@ class CreateDesaparecidoDentaduraTable extends Migration
             $table->integer('idTipoSonrisa')->unsigned()->nullable();           
             $table->foreign('idTipoSonrisa')->references('id')->on('cat_tipo_sonrisa');
 
+            $table->integer('idDesaparecido')->unsigned();           
+            $table->foreign('idDesaparecido')->references('id')->on('desaparecidos_personas');
+
             $table->timestamps();
         });
     }

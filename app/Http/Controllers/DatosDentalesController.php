@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Dentista;
 use App\Models\Dentadura;
 
 class DatosDentalesController extends Controller
@@ -36,6 +35,7 @@ class DatosDentalesController extends Controller
      */
     public function store(Request $request)
     {
+
         $dentadura = new Dentadura();
 
         $dentadura->idTamanoDiente = $request['dienteTamano'];
@@ -90,6 +90,8 @@ class DatosDentalesController extends Controller
         $dentadura->idTipoPerfil = $request['valorPerfil'];
         $dentadura->idTipoMordida = $request['valormordida'];
         $dentadura->idTipoSonrisa = $request['valorsonrisa'];
+        $dentadura->idDesaparecido = $request['idDesaparecido'];
+
         $dentadura->save();
         //dd($datoDental);
         //\DB::table('desaparecido_dentadura')->insert($datoDental);
@@ -103,7 +105,7 @@ class DatosDentalesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {        
         $desaparecido = \App\Models\Desaparecido::find($id);
         $dienteTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
         return view('datosdentales.form_datos_dentales',[

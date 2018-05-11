@@ -21,7 +21,6 @@
 
 @section('content')
 @include('navs.navs_datos',array('activar' => 'dentadura'))
-
 <nav>
 	<div class="card border-primary">
 		<div class="card-header">
@@ -385,6 +384,7 @@
 {!! Html::script('personal/js/functions.js') !!}
 
 <script type="text/javascript">
+	console.log('ID de la persona desaparecida: {!! $desaparecido->id !!}');
 
 	$(function() {
         $('#toggle-event').change(function() {
@@ -984,12 +984,15 @@
 
 		$('#btnDiente').click(function()
 		{
+			//var idDesapare = '{!! $desaparecido->id !!}'
+			//console.log($idDesaparecido);
+
 			var dataString = {
 				idDiente 	 : $("input[name='dienteselec[]']").map(function(){return $(this).val();}).get(),
 				causaPerdida : $("input[name='perdio[]']").map(function(){return $(this).val();}).get(),
-				idDentadura  : 1,
+				idDesaparecido: '{!! $desaparecido->id !!}'
 			}
-			console.log(dataString);
+			//console.log(dataString);
 			$.ajax({
 				type: 'POST',
 				url:  routedientesPerdidos,
@@ -1079,28 +1082,8 @@
 				valorPerfil : $("#idperfilselec").val(),
 				valormordida : $("#idmordidaselec").val(),
 				valorsonrisa : $("#idsonrisaselec").val(),
+				idDesaparecido: '{!! $desaparecido->id !!}'
 			}
-
-			// var selected = [];
-			// $(":checkbox[name=enfermedad]").each(function(){
-			// 	if (this.checked){
-			// 		selected.array_push($(this).val());
-			// 	}
-			// });
-
-			 console.log(dataString);
-			 // console.log(tratamiento);
-
-			// var string = '';
-			// $(":checkbox[name=enfermedad]").each(function(){
-			// 	if (this.checked) {
-			// 		string += $(this).val()+', ';
-			// 	}
-			// }); 
-
-			// var dataString = data + string;
-			//array_push($dataString,$selectedenfer);
-			//console.log(dataString);
 			$.ajax({
 				type: 'POST',
 				url: routedatosDentales,
