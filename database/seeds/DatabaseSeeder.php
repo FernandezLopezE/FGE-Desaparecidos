@@ -112,7 +112,7 @@ class DatabaseSeeder extends Seeder
         
         $this->call(CatDocumentosSeeder::class);
         $this->call(CatDependenciasSeeder::class);
-        $this->call(CatDestinatariosSeeder::class);
+        $this->call(CatDestinariosSeeder::class);
 
         $this->call(CatSenasParticularesSeeder::class);
         $this->call(CatSenasParticularesUbicacionesSeeder::class);
