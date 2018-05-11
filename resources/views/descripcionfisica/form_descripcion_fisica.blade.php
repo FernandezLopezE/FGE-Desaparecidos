@@ -201,7 +201,8 @@ $(document).ready(function(){
 
                 success:function(data) {
                      
-                    $.each(data, function(key, value){                        
+                    $.each(data, function(key, value){    
+                    $("#pCabello").empty();                    
 
                         $("#pCabello").append('<div class="card-body bg-white">  <div class="row">    <div class="col-10">      <h5><strong>Datos Cabello</strong></h5>      <hr>      <dl class="row">        <dt class="col-sm-4">Color de cabello:</dt>        <dd class="col-sm-8">'+value.color+'                  </dd>        <dt class="col-sm-4">Tamaño de cabello:</dt>        <dd class="col-sm-8">'+value.tamano+'        </dd>        <dt class="col-sm-4">Tipo de cabello:</dt>        <dd class="col-sm-8">'+value.tipo+'        </dd>               <dt class="col-sm-4">Particularidades del cabello:</dt>        <dd class="col-sm-8">'+value.particularidades+'        </dd>        <dt class="col-sm-4">Modificaciones del cabello:</dt>        <dd class="col-sm-8">'+value.modificaciones+'        </dd>        <dt class="col-sm-4">Observaciones del cabello:</dt>        <dd class="col-sm-8">'+value.observaciones+'        </dd>      </dl>      <hr>    </div>  </div></div>');
 
@@ -219,8 +220,9 @@ $(document).ready(function(){
 
                 success:function(data) {
                         
-                    $.each(data, function(key, value){                        
-
+                    $.each(data, function(key, value){   
+                    pCabello                     
+$("#pBarba").empty();
                         $("#pBarba").append('<div class="card-body bg-white">  <div class="row">    <div class="col-10">      <h5><strong>Datos Barba</strong></h5>      <hr>      <dl class="row">        <dt class="col-sm-4">Color de barba:</dt>        <dd class="col-sm-8">'+value.color+'                  </dd>     <dt class="col-sm-4">Tipo de barba:</dt>        <dd class="col-sm-8">'+value.tipo+'    </dd>                 <dt class="col-sm-4">Estilo de la barba:</dt>        <dd class="col-sm-8">'+value.estilo+'        </dd>        <dt class="col-sm-4">Observaciones de la barba:</dt>        <dd class="col-sm-8">'+value.observaciones+'        </dd>      </dl>      <hr>    </div>  </div></div>');
 
                     });
@@ -237,7 +239,7 @@ $(document).ready(function(){
                 success:function(data) {
                         
                     $.each(data, function(key, value){                        
-
+$("#pBigote").empty();
                         $("#pBigote").append('<div class="card-body bg-white">  <div class="row">    <div class="col-10">      <h5><strong>Datos bigote</strong></h5>      <hr>      <dl class="row">        <dt class="col-sm-4">Color del bigote:</dt>        <dd class="col-sm-8">'+value.color+'                  </dd>     <dt class="col-sm-4">Tipo de bigote:</dt>        <dd class="col-sm-8">'+value.tipo+'    </dd>                 <dt class="col-sm-4">Estilo del bigote:</dt>        <dd class="col-sm-8">'+value.estilo+'        </dd>        <dt class="col-sm-4">Observaciones del bigote:</dt>        <dd class="col-sm-8">'+value.observaciones+'        </dd>      </dl>      <hr>    </div>  </div></div>');
 
                     });
@@ -254,7 +256,7 @@ $(document).ready(function(){
                 success:function(data) {
                         
                     $.each(data, function(key, value){                        
-
+$("#pPatilla").empty();
                         $("#pPatilla").append('<div class="card-body bg-white">  <div class="row">    <div class="col-10">      <h5><strong>Datos patilla</strong></h5>      <hr>      <dl class="row">        <dt class="col-sm-4">Color de patilla:</dt>        <dd class="col-sm-8">'+value.color+'                  </dd>     <dt class="col-sm-4">Tipo de patilla:</dt>        <dd class="col-sm-8">'+value.tipo+'    </dd>                 <dt class="col-sm-4">Estilo de patilla:</dt>        <dd class="col-sm-8">'+value.estilo+'        </dd>        <dt class="col-sm-4">Observaciones de la patilla:</dt>        <dd class="col-sm-8">'+value.observaciones+'        </dd>      </dl>      <hr>    </div>  </div></div>');
 
                     });
