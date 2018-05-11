@@ -101,7 +101,7 @@
 				});
 
 
-var formatContacto = function(value, row, index){
+		var formatContacto = function(value, row, index){
 			telefonos = $.parseJSON(row.datos)
 				var etiqueta = "";
 				$.each(telefonos, function(key, value){
@@ -128,20 +128,56 @@ var formatContacto = function(value, row, index){
 				return [etiqueta2].join('');
 		}
 
-tableContactos.bootstrapTable({				
+		var formatTableActions = function(value, row, index){
+			btn = '<button class="btn btn-dark btn-sm" id="edit"><i class="fa fa-edit"></i></button>&nbsp;';			
+			return [btn].join('');
+		}
+
+		window.operateEvents = {
+			'click #edit': function (e, value, row, index) {
+				var btnEditarContacto = $('#btnEditarContacto');     
+
+				$('select#tipoContacto option[value="'+row.idParentesco+'"]').attr("selected",true);				
+				$("#nombres").val(row.nombres);
+				$("#primerAp").val(row.primerAp);
+				$("#segundoAp").val(row.segundoAp);
+				$("#fechaNacimiento").val(fechaNacimiento);
+				$("#edad").val(row.edad);
+				
+                
+				//modalFooter.empty();
+				$("#btnEditarFamiliar").show();
+				$("#btnGuardarFamiliar").hide();
+                    
+                $("#btnEditarFamiliar").val(row.id);
+				
+				modalDesaparecidoContacto.modal('show');
+			}
+		}
+
+		tableContactos.bootstrapTable({				
 			url: routeIndex+'/get_contactos/{!! $desaparecido->id !!}',
 			columns: [{					
 				field: 'tipoContacto',
 				title: 'Tipo de contacto',
-			}, //{					
-				//field: 'telefono',
-				//formatter: formatContacto,
-				//title: 'Telefono',
-			//},
-                      {					
-				//field: 'redesSociales',
-				field: 'datos',
-				title: 'Datos',				
+			}, {				
+				title: 'Contacto',
+				formatter: (value, row, index, field) => {
+					contacto = $.parseJSON(row.datos);
+					switch(contacto.tipoContacto) {
+						case 'TELEFONO':
+							return contacto.lada+' '+contacto.telefono+' '+contacto.ext;
+							break;
+						case 'CORREO':
+							return contacto.correo;
+							break;
+						case 'REDSOCIAL':
+							return contacto.red_social+': '+contacto.nick;
+							break; 
+						default:
+							return 'Asignando contacto';
+					}					
+                }
 			}, {					
 				title: 'Acciones',
 				//formatter: formatTableActions,
@@ -149,12 +185,11 @@ tableContactos.bootstrapTable({
 			}]				
 		})
 
-btnAgregarContacto.click(function(e){
-			console.log('hola mundo');
+		btnAgregarContacto.click(function(e){			
 			modalDesaparecidoContacto.modal('show');
-		 $( "#modalDesaparecidoContacto" ).sisyphus( {
+		 	/*$( "#modalDesaparecidoContacto" ).sisyphus( {
 	           excludeFields: $('input[name=_token]')
-            });
+            });*/
 		})
         
         btnLimpiar.click(function(){
@@ -177,7 +212,7 @@ btnAgregarContacto.click(function(e){
 				ext: $("input[name='extC[]']").map(function(){return $(this).val();}).get(),
 				idDesaparecido: {!! $desaparecido->id !!},
 			};
-                console.log(dataString)
+                
                 $.ajax({
 				type: 'POST',
 				url: routeContacto,
@@ -200,7 +235,7 @@ btnAgregarContacto.click(function(e){
                 correoElectronico : $("#correoElectronico").val(),
 				idDesaparecido: {!! $desaparecido->id !!},
 			};
-                console.log(dataString2)
+               
                 $.ajax({
 				type: 'POST',
 				url: routeContacto,
@@ -225,7 +260,7 @@ btnAgregarContacto.click(function(e){
                    
 				idDesaparecido: {!! $desaparecido->id !!},
 			};
-                console.log(dataString3)
+                
                 $.ajax({
 				type: 'POST',
 				url: routeContacto,

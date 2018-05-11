@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Dentadura;
 
 class DatosDentalesDientesPerdidosController extends Controller
 {
@@ -34,18 +35,29 @@ class DatosDentalesDientesPerdidosController extends Controller
      */
     public function store(Request $request)
     {
+        $idDesaparecido = $request['idDesaparecido'];
+        //dd($idDesaparecido);
+
+        $dentadura = Dentadura::where('idDesaparecido',$idDesaparecido)->get();
+
+        //dd($dentadura[0]['id']);
+
         $dientes = $request->input('idDiente');
         foreach ($request->input('causaPerdida') as $index => $value) {
             if (!empty($value)) {
                 $dientesPer[] = array(
                                     'idDiente' => $dientes[$index],
                                     'causaPerdida' => $value,
-                                    'idDentadura' => $request->input('idDentadura')
+                                    //'idDentadura' => $request->input('idDentadura')
+                                    'idDentadura' => $dentadura[0]['id']
                                 );
             }
         }
-        //dd($dientesPer);
+
+        //dd($debtadu1);
+    
         \DB::table('pivot_diente_perdido')->insert($dientesPer);
+        return response()->json('successful');
     }
 
     /**

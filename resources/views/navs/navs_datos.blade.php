@@ -34,17 +34,13 @@
 				@if ($activar == 'vestimenta') Vestimenta @endif			
 			</a>
 			<a class="nav-item nav-link @if ($activar == 'desc_fisica') active @endif" href="{{route('descripcionfisica.show',['id' => $desaparecido->id])}}" aria-selected="false">
-				<i class="fa fa-universal-access" aria-hidden="true"  @if ($activar != 'desc_fisica') data-toggle="tooltip" data-placement="right" title="Descripción física" @endif></i>
-				@if ($activar == 'desc_fisica') Descripción física @endif
+				<i class="fa fa-universal-access" aria-hidden="true"  @if ($activar != 'desc_fisica') data-toggle="tooltip" data-placement="right" title="Descripción física y señas particulares" @endif></i>
+				@if ($activar == 'desc_fisica') Descripción física y señas particulares @endif
 			</a>		
 			<a class="nav-item nav-link @if ($activar == 'ant_medicos') active @endif" href="{{route('antecedentesmedicos.show',['id' => $desaparecido->id])}}" aria-selected="false" @if ($activar != 'ant_medicos') data-toggle="tooltip" data-placement="right" title="Antecedentes médicos" @endif>
 				<i class="fa fa-heartbeat" aria-hidden="true" ></i>
 				@if ($activar == 'ant_medicos') Antecedentes médicos @endif			
 
-			</a>
-			<a class="nav-item nav-link @if ($activar == 'senas_part') active @endif" href="{{route('senas_particulares.show',['id' => $desaparecido->id])}}" aria-selected="false" @if ($activar != 'senas_part') data-toggle="tooltip" data-placement="right" title="Señas particulares" @endif>
-				<i class="fa fa-sign-language" aria-hidden="true"></i>
-				@if ($activar == 'senas_part') Señas particulares @endif	
 			</a>
 			<a class="nav-item nav-link @if ($activar == 'dentadura') active @endif" href="{{route('datos_dentales.show',['id' => $desaparecido->id])}}" aria-selected="false" @if ($activar != 'dentadura') data-toggle="tooltip" data-placement="right" title="Datos dentales" @endif>
 				<i class="fa fa-medkit" aria-hidden="true"></i>
