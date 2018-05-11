@@ -153,10 +153,10 @@ class CargarDocumentosController extends Controller
                                             ->limit(1)
                                             ->get();
          
+	 
 
 	        $desaparecido = \App\Models\Desaparecido::find($datos2[0]->id);
-	        
-	 
+	        	
 	      
 	        $estado = "Veracruz";
 	        $municipio  = "Xalapa";
@@ -168,7 +168,6 @@ class CargarDocumentosController extends Controller
 	        $fechaHoy = new Carbon();//entra en todos los documentos
 	        $desaparecidoHora =Carbon::parse($fechaHoy)->format('H:i');
 	       
-
        		$anio =Carbon::parse($fechaHoy)->format('Y');//estas variables se ocupan en la carpeta Inv. hace referencia al año actual y mes actual
         	$mes =Carbon::parse($fechaHoy)->format('m');
          	
@@ -215,7 +214,10 @@ class CargarDocumentosController extends Controller
     		 	'fechaActual' => $fechaActual,
     		 	'lugares' => $lugares
     		  );
+    		
     		$datos = (object) $datos3;
+
+
 
     		//dd ($datos->destinatarioNombre[0]);
     	

@@ -88,7 +88,7 @@ class Desaparecido extends Model
 
 	public function cedula()
 	{
-		return $this->belongsTo('App\Models\Cedula', 'id');
+		return $this->belongsTo('App\Models\Cedula', 'idCedula');
 	}	
 
 }
