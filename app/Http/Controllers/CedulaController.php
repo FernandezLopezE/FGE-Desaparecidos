@@ -15,22 +15,17 @@ class CedulaController extends Controller
 	 */
 	public function index()
 	{
-		$cedulas = Cedula::all();
+		//$familiares = \App\Models\Familiar::where('idDesaparecido', $idDesaparecido)->with('parentesco')->get();
+		//$cedulas = \App\Models\Cedula::with('desaparecidos')->get();
+		$cedulas = \DB::table('desaparecidos_personas as d')
+							->join('desaparecidos_cedula_investigacion as c', 'c.id', '=', 'd.idCedula')
+							->join('persona as p', 'd.idPersona', '=', 'p.id')
+							->join('cat_nacionalidad as n', 'p.idNacionalidad', '=', 'n.id')
+							->where('d.tipoPersona','DESAPARECIDA')
+							->select('c.id','c.idDialecto', 'c.created_at', 'p.nombres', 'p.primerAp', 'p.segundoAp', 'p.sexo','n.nombre as nacionalidad', 'd.apodo', 'd.edadExtravio')
+							->get();
 
-		/*$tipoPersona = 'DESAPARECIDA';
-		$cedulas = \DB::table('desaparecidos_cedula_investigacion')
-					->leftJoin('desaparecidos_personas', function($q) use ($tipoPersona)
-			        {
-			            $q->on('desaparecidos_personas.idCedula', '=', 'desaparecidos_cedula_investigacion.id')
-			                ->where('desaparecidos_personas.tipoPersona', '=', "$tipoPersona");
-			        })
-			        ->leftJoin('persona', 'desaparecidos_personas.idPersona', '=', 'persona.id')
-			        ->select('desaparecidos_cedula_investigacion.id as noCedula',
 
-			        		)
-			        ->get();
-
-		dd($cedulas->toArray());*/
 
 		return view('cedula.index',compact('cedulas'));
 	}

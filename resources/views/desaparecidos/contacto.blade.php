@@ -257,7 +257,7 @@
 
 				$dependenciaNombre = row.nombre;
 				//$dependenciaNombre = "hospitales"
-				nombreDependencia = $dependenciaNombre;
+				 nombreDependencia = $dependenciaNombre;
 
 				//$dependenciaNombre = row.nombre;
                // $dependenciaNombre = "SEMEFO";
@@ -294,8 +294,8 @@
 								console.log($destinatarios)
 
 								
-										if($dependenciaNombre == 'SEMEFO'){
-											console.log("ya entre perro");
+										if(nombreDependencia == 'SERVICIOS PERICIALES (SEMEFOS)'){
+											console.log("ya entre perroooooooooooooo123");
 												
 												$("select[name='idDestinatarios[]']").append("<option value=''>Seleccione un destinatario</option>");	
 												

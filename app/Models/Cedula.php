@@ -42,7 +42,7 @@ class Cedula extends Model
 	];    
 	public function desaparecidos()
 	{
-		return $this->hasMany('App\Models\Desaparecido', 'idDesaparecido', 'id');
+		return $this->hasMany('App\Models\Desaparecido', 'id', 'id');
 	}
 	public function complexion()
 	{

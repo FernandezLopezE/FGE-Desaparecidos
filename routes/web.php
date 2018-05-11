@@ -176,7 +176,7 @@ Route::get('/descripcionfisica/descripcionf/{idPersonaDesaparecida}', 'Descripci
 
 Route::post('/descripcionfisica/store', 'DescripcionFisicaController@store')
 	->name('descripcionfisica.store');
-
+Route::post('/descripcionfisica/storeVelloFacial', 'DescripcionFisicaController@storeVelloFacial')->name('descripcionfisica.storeVelloFacial');
 Route::resource('/descripcionfisica','DescripcionFisicaController');
 //fin de mis rutas
 
@@ -210,8 +210,9 @@ Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'Antece
 Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store');
 Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
 
-Route::get('/email', 'MailController@show')->name('mail.enviar');
+Route::get('/email/{idCedula}', 'MailController@show')->name('mail.show');
 // Rutas de la dependencias
+
 Route::resource('/dependencias','MailController');
 Route::get('/get_dependencias', 'MailController@getDependencias')
 	->name('dependencias.get_dependencias');
@@ -223,7 +224,7 @@ Route::get('/generarDocs', 'CargarDocumentosController@crearDocumento')
 
 	//esta es la ruta .
 
-Route::get('index_agregar_dependencias', 'AgregarDependenciaController@show');
+Route::get('/index_agregar_dependencias', 'AgregarDependenciaController@show')->name('dependencias.destinatarios');
 Route::post('/index_agregar_dependencias/store_destinatario', 'AgregarDependenciaController@store_destinatario')
 	->name('index_agregar_dependencias.store_destinatario');
 Route::post('/index_agregar_dependencias/store_dependencia', 'AgregarDependenciaController@store_dependencia')
@@ -315,6 +316,9 @@ Route::get('/get_des','ConsultasController@jsonDes')
 	->name('get_DepDes.jsonDes');
 //envio el nombre de los documentos al controlador para que este se encargue de enviar  los correos correspondientess
 Route::get('/envioDocumentos','MailController@envioDocumentos');
+
+//Anexos
+Route::get('/anexos','AnexosController@show');
 	
 
 
