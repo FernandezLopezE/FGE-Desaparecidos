@@ -61,7 +61,6 @@
 				return { classes: 'table-warning'};
 			}				
 		}
-
 		
 		table.bootstrapTable({
 			pagination: true,

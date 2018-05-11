@@ -61,76 +61,52 @@ class ContactoController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(Request $request)
-	{
-
-
-	
+	{	
         $tipoContacto = $request->input('tipoContacto');
         
-        if ($tipoContacto == 'TELEFONO'){
-            
-       	$tipo_telefono = $request->input('tipoTel');
-		$lada = $request->input('lada');
-		$ext = $request->input('ext');
-		foreach ($request->input('telefono') as $index => $value) {
-			$telefonos[] = array('tipoTel' => $tipo_telefono[$index],
-								'lada' => $lada[$index],
-								'telefono' => $value,
-								'ext' => $ext[$index]
-						);
-		}
+        if ($tipoContacto == 'TELEFONO'){            
+			$tipo_telefono = $request->input('tipoTel');
+			$lada = $request->input('lada');
+			$ext = $request->input('ext');
+			foreach ($request->input('telefono') as $index => $value) {
+				$telefonos = array('tipoContacto' => $tipoContacto,
+									'tipoTel' => $tipo_telefono[$index],
+									'lada' => $lada[$index],
+									'telefono' => $value,
+									'ext' => $ext[$index]
+							);
+			}
         
-		$contactos = \App\Models\Contacto::create([
-            
-            'idDesaparecido' 		=> $request->input('idDesaparecido'),
-			'tipoContacto'		=> $request->input('tipoContacto'),
-			'datos'          	=> json_encode($telefonos),	
-            
-		
+			$contactos = \App\Models\Contacto::create([	            
+	            'idDesaparecido' 	=> $request->input('idDesaparecido'),
+				'tipoContacto'		=> $request->input('tipoContacto'),
+				'datos'          	=> json_encode($telefonos),	
 
-//			'idDesaparecido' 		=> $request->input('idDesaparecido'),
-//			'correoElectronico'		=> $request->input('correoElectronico'),
-//			'telefono'          	=> json_encode($telefonos),		 
-//			 'redesSociales'		=> json_encode(array(
-//			 									'redesSociales' => $request->input('redesSociales'))),
-
-		]);
-             }else{
+			]);
+		}else {
             if ($tipoContacto == 'CORREO'){
-            	$contactos = \App\Models\Contacto::create([
+            	$contactos = \App\Models\Contacto::create([            
+					'idDesaparecido' 	=> $request->input('idDesaparecido'),
+					'tipoContacto'		=> $request->input('tipoContacto'),
+					'datos'          	=> json_encode(['tipoContacto' => $tipoContacto, 'correo' => $request->input('correoElectronico')]),	
             
-            'idDesaparecido' 		=> $request->input('idDesaparecido'),
-			'tipoContacto'		=> $request->input('tipoContacto'),
-			'datos'          	=> json_encode($request->input('correoElectronico')),	
-            
-		]);
-        } else{
-               if ($tipoContacto == 'REDSOCIAL'){
-            	$contactos = \App\Models\Contacto::create([
-            
-            'idDesaparecido' 		=> $request->input('idDesaparecido'),
-			'tipoContacto'		    => $request->input('tipoContacto'),
-			'datos'          	    => json_encode(array( 'RED SOCIAL' => $request->input('redesSociales'), 'NOMBRE DE USUARIO' =>$request->input('nombreUsuario') )),	
-            
-		]);
-        } 
-            }
-            
+				]);
+	        } else {
+				if ($tipoContacto == 'REDSOCIAL'){
+	            	$contactos = \App\Models\Contacto::create([            
+	            		'idDesaparecido'	=> $request->input('idDesaparecido'),
+						'tipoContacto' 		=> $request->input('tipoContacto'),
+						'datos'				=> json_encode(array(
+															'tipoContacto' => $tipoContacto,
+															'red_social' => $request->input('redesSociales'),
+															'nick' =>$request->input('nombreUsuario')
+															)),            
+					]);
+	        	} 
+			}            
         }
-       
 
 		return response()->json($contactos);
-		
-
-		// 	'fecha'					=> $request->input('mesAnio'),
-		// 	'idDelito'				=> $request->input('idDelito'),
-		// 	'idCentroReclusion'		=> $request->input('idCentroReclusion'),
-		// 	'observaciones'			=> $request->input('observaciones'),
-		// 	'idDesaparecido'		=> $request->input('idDesaparecido'),
-		// ]);
-
-		// $estatus = ($antecedentes) ? true : false ;
-  //       return response()->json($estatus);
 	}
 
 	/**
