@@ -92,7 +92,33 @@
 @section('scripts')
 <script type="text/javascript">
 $(document).ready(function(){
+  $("#guardarTalla").click(function(){
+    console.log("entro");
+    var dataString = {
+      estatura: $('#esta').val(),
+      peso: $('#bulto').val(),
+      complexion: $('#comple').val(),
+      colorPiel: $('#cPiel').val(),
+      idExtraviado: $('#idExtraviado').val(),
+    };
 
+  console.log(dataString);
+      $.ajax({
+        type: 'POST',
+        url: '/descripcionfisica/store',
+        data: dataString,
+        dataType: 'json',
+        success: function(data) {           
+          console.log("hecho");
+          console.log(data);
+          
+        },
+        error: function(data) {
+          console.log("error");
+          console.log(data);
+        }
+      });
+  });
     $("#colapsar2").click(function(event) {
         $("#fomularioPrin").toggle();
         $("#fomularioPrin2").toggle();
