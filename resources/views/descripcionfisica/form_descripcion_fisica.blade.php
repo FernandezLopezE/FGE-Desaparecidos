@@ -109,6 +109,7 @@ $(document).ready(function(){
         data: dataString,
         dataType: 'json',
         success: function(data) {           
+        document.getElementById("colapsar2").click();
           console.log("hecho");
           console.log(data);
           
