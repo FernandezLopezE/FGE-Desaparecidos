@@ -34,7 +34,7 @@ class MailController extends Controller
             $correosExternos = CatDependencias::all();
             return view('desaparecidos.contacto',[
 
-                    'Cedula' => $cedula,
+                    'cedula' => $cedula,
                     'correosExternos' => $correosExternos ,
                     'combo' => $combo,
 
@@ -62,6 +62,7 @@ class MailController extends Controller
           
           $valoresChecks= ($request['valoresChecks']); //aqui traigo el arreglo de los checks que fueron seleccionados
           $countDep= count($dependencias);//cuento el numnero de dependencias o correos que enviare
+         // dd($countDep);
           $countChecks= count($valoresChecks);//cuentos cuantos checks fueron checados
        
 
@@ -92,7 +93,7 @@ class MailController extends Controller
                                                         $msj->attach('./'.$nombreDocumento);
                                                 });
                                                 Session::flash('message','Mensaje enviado correctamente');
-                                                return Redirect::to('/email');
+                                               // return Redirect::to('/email');
                                             
                                             }
 
@@ -103,6 +104,7 @@ class MailController extends Controller
                             }
 
               } 
+              return Redirect::to('/email');
 
 
         }

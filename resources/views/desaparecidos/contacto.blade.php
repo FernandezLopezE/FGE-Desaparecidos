@@ -72,11 +72,11 @@
 				        }
 				    }
 				    	//	AQUI ENVIARE LOS NOMBRES DE LOS DOCUMENTOS HACIA EL CONTROLADOR PARA ENVIAR LOS DOCUMENTOS
-				         alert(documentosArray);  
+				         alert($documentosArray);  
 
 
 				            var dataString = {
-								datos: documentosArray ,
+								datos: $documentosArray ,
 								valoresChecks: valoresChecks,
 								
 							};
@@ -109,21 +109,27 @@
 		*							BOTON ENVIAR    FIN                       				  *
 		***********************************************************************************/
 	
-			var documentosArray = [];
+		//	var documentosArray = [];
 		/**********************************************************************************
 		*							BOTON GUARDAR DEL MODAL                               *
 		***********************************************************************************/
 
 
 		$("#btnAgregarInformante").click (function(){//ESTE BOTON ES EL DEL MODAL GENERAL DICE AGREGAR INFORMANTE PERO EN REALIDAD ES EL DE "GUARDAR" Y SE ENCARGA DE GENERAR DOCUMENTO EN PDF
-				$arregloPrueba = ["BERENICE CONTRERAS"]
+				$arregloPrueba = ["BERENICE CONTRERAS"];
 				$destinatarios[0]=$("select[id='idDestinatarios[]']").map(function(){return $(this).val();}).get();
+				console.log($destinatarios[0]);
 				$destinatarios[1] = $arregloPrueba;
+				$lugares=$("input[id='lugares").map(function(){return $(this).val();}).get();
 			var dataString = {
 				
 				vehiculoDescripcion : $("#vehiculoDescripcion").val(),
 				nombreDependencia: nombreDependencia ,
 				destinatario : $destinatarios,
+				lugares: $lugares,
+				idCedula: '{!! $cedula->id!!}'
+
+
 			};
 				console.log(dataString);
 			$.ajax({
@@ -131,14 +137,15 @@
 				url: '/guardarDocumento',
 				data: dataString,
 				dataType: 'text',
+
 				success: function(data) {
 
 
 					
 					$nombreDocumento= data;
-					documentosArray= [[$nombreDocumento, nombreDependencia]];
+					$documentosArray= [[$nombreDocumento, nombreDependencia]];
 					console.log($nombreDocumento);
-					 window.open($nombreDocumento);
+					 window.open('../'+$nombreDocumento);
 					$('#modalGeneral').modal('hide');
 
 					//$("#correosTable").bootstrapTable('refresh');
@@ -378,10 +385,14 @@
 												$("select[name='idDestinatarios[]']").map(function(){return $(this).empty();})
 												$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value=''>Seleccione un destinatario</option>");})
 												for(i=0; i<$destinatarios.length; i++){
-																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].id+"'> "+$destinatarios[i].nombre+"</option>");})
+																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].nombre+"'> "+$destinatarios[i].nombre+"</option>");})
 																	}
 												
 												modalBody.append('<br>');
+
+                                                modalBody.append(' <div class = "row">		<div class="form-group col-md-12">   {!! Form::label ("lugares","Lugares que frecuentaba:") !!}        {!! Form::textarea ("lugares",old("Ingrese los lugares que frecuentaba"), ["class" => "form-control mayuscula","id" => "lugares","size" => "30x4","placeholder" => "Ingrese los lugares que frecuentaba"] )!!} </div> </div></div> </div>	');		
+												modalBody.append('<br>');
+
 												modalBody.append('<input id="fileArchivo" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">');	
 												modalBody.append('<br>');
 												modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
@@ -410,7 +421,7 @@
 												$("select[name='idDestinatarios[]']").map(function(){return $(this).empty();})
 												$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value=''>Seleccione un destinatario</option>");})
 												for(i=0; i<$destinatarios.length; i++){
-																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].id+"'> "+$destinatarios[i].nombre+"</option>");})
+																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].nombre+"'> "+$destinatarios[i].nombre+"</option>");})
 																	}
 												
 												modalBody.append('<br>');
@@ -446,7 +457,11 @@
 												$("select[name='idDestinatarios[]']").map(function(){return $(this).empty();})
 												$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value=''>Seleccione un destinatario</option>");})
 												for(i=0; i<$destinatarios.length; i++){
+<<<<<<< HEAD
 																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].nombre+"'> "+$destinatarios[i].nombre+"</option>");})
+=======
+																		$("select[name='idDestinatarios2[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].nombre+"'> "+$destinatarios[i].nombre+"</option>");})
+>>>>>>> b616d3bf6669af09580ec01f53f706bda88dcf27
 																	}
 												
 
@@ -595,8 +610,10 @@
 												$("select[name='idDestinatarios[]']").map(function(){return $(this).empty();})
 												$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value=''>Seleccione un destinatario</option>");})
 												for(i=0; i<$destinatarios.length; i++){
-																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].id+"'> "+$destinatarios[i].nombre+"</option>");})
+																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].nombre+"'> "+$destinatarios[i].nombre+"</option>");})
 																	}
+												modalBody.append(' <div class = "row">		<div class="form-group col-md-12">   {!! Form::label ("ext","Ingrese la descripción del vehículo") !!}        {!! Form::text ("vehiculoDescripcion",old("Ingrese la descripción del vehículo"), ["class" => "form-control mayuscula","id" => "vehiculoDescripcion" ,"placeholder" => "Ingrese la descripción"] )!!} </div> </div></div> </div>	');		
+												modalBody.append('<br>');
 												
 												modalBody.append('<br>');
                                                 modalBody.append(' <div class = "row">		<div class="form-group col-md-12">   {!! Form::label ("lugares","Lugares que frecuentaba:") !!}        {!! Form::textarea ("vehiculoDescripcion",old("Ingrese los lugares que frecuentaba"), ["class" => "form-control mayuscula","id" => "vehiculoDescripcion","size" => "30x4","placeholder" => "Ingrese los lugares que frecuentaba"] )!!} </div> </div></div> </div>	');		
@@ -631,13 +648,17 @@
 												$("select[name='idDestinatarios[]']").map(function(){return $(this).empty();})
 												$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value=''>Seleccione un destinatario</option>");})
 												for(i=0; i<$destinatarios.length; i++){
-																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].id+"'> "+$destinatarios[i].nombre+"</option>");})
+																		$("select[name='idDestinatarios[]']").map(function(){return $(this).append("<option value='"+$destinatarios[i].nombre+"'> "+$destinatarios[i].nombre+"</option>");})
 																	}
-												
+												modalBody.append(' <div class = "row">		<div class="form-group col-md-12">   {!! Form::label ("ext","Ingrese la descripción del vehículo") !!}        {!! Form::text ("vehiculoDescripcion",old("Ingrese la descripción del vehículo"), ["class" => "form-control mayuscula","id" => "vehiculoDescripcion" ,"placeholder" => "Ingrese la descripción"] )!!} </div> </div></div> </div>	');	
 												modalBody.append('<br>');
+<<<<<<< HEAD
                                                modalBody.append(' <div class = "row">		<div class="form-group col-md-12">   {!! Form::label ("ext","Ingrese la descripción del vehículo") !!}        {!! Form::text ("vehiculoDescripcion",old("Ingrese la descripción del vehículo"), ["class" => "form-control mayuscula","id" => "vehiculoDescripcion" ,"placeholder" => "Ingrese la descripción"] )!!} </div> </div></div> </div>	');			
 												modalBody.append('<br>');
 												modalBody.append('<input id="fileArchivo" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">');	
+=======
+												
+>>>>>>> b616d3bf6669af09580ec01f53f706bda88dcf27
 												modalBody.append('<br>');
 												modalBody.append('<code>*Para poder generar el documento completo, ingrese los datos solicitados</code>');	
 												modalTitle.append('<i class="fa fa-file"></i>  Albergues ');
