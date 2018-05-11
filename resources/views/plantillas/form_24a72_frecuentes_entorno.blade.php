@@ -79,23 +79,23 @@
 
 
 
-<p class="fuente"><strong> LIC. </strong>	<strong> {{--{!! $datos->nombreRemitente !!}--}} </strong>
+<p class="fuente"><strong> LIC. </strong>	<strong> {!! $datos->destinatarioNombre[0][0] !!} </strong>
 	</p>
-	<p class="fuente"><strong> Director General de la Policía Ministerial y/o Delegado Regional de la Policía Ministerial y/o Comandante de la Policía Ministerial según sea el caso</strong>
+	<p class="fuente"><strong>  {!! $datos->destinatarioCargo[0][0]->cargo !!}</strong>
  </strong>
 	</p>
 	
 	
 	
-	 <p class="fuente"><strong> Xalapa, Ver. </strong>	<strong> {{--{!! $datos->fechaHoy !!}--}}  </strong></p>
+	 <p class="fuente"><strong> Xalapa, Ver. </strong>	<strong> {!! $datos->fechaActual !!}  </strong></p>
 	
 	
 	
-	<p class="fuente"> <strong> No. de Inv. </strong><strong> {{--{!! $datos->numCarpeta !!} --}} </strong></p>
+	<p class="fuente"> <strong> No. de Inv. </strong><strong>  {!! $datos->numCarpeta !!} </strong></p>
 	
 	
 	
-	<p class="fuente"><strong> OFICIO NO. FGE/FIM/FEADPD/</strong>	<strong> {{--{!! $datos->numOficio !!}/{!! $datos->anio !!} --}} </strong></p>
+	<p class="fuente"><strong> OFICIO NO. FGE/FIM/FEADPD/</strong>	<strong> {!! $datos->numOficio !!}/{!! $datos->anio !!} </strong></p>
 
 	<p class="fuente" align="left"><strong> PRESENTE</strong></p>	
 	

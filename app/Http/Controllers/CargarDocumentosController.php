@@ -56,7 +56,6 @@ class CargarDocumentosController extends Controller
 	    {
 
 
-	    	//dd("ya entre men");
 	    	
 	    	$nombreDestinatario = "Alejandro Fernandez";
 	    	$fechaHoy = new Carbon();
@@ -117,9 +116,12 @@ class CargarDocumentosController extends Controller
  	 public function create(Request $request)
 
     {        
+    	$destinatarioNombre =($request['destinatario']);
 
-    	
+    		
+    		//dd($request);
     		$d1 =($request['destinatario']);
+    	
     		//dd($d1);
     		$destinatarioLenght = count($d1);
     		//dd ($d1[0]);
@@ -175,8 +177,10 @@ class CargarDocumentosController extends Controller
     		$numCarpeta = "FEADPD/ZCX/".$id."/".$anio."-".$mes;
     		$numOficio = $id;
     		$vehiculoDescripcion =($request['vehiculoDescripcion']);
+    		$lugares =($request['lugares']);
     		$nombreDependencia =($request['nombreDependencia']);
     		$destinatarioNombre =($request['destinatario']);
+    		//dd($destinatarioNombre);
     		//dd($destinatarioNombre[0][0]);
     		//dd($destinatarioNombre);
     		//$destinatarioCargo = ($destinatarioDatos[0]->cargo);
@@ -207,7 +211,8 @@ class CargarDocumentosController extends Controller
     		 	'desaparecidoLugar' => $desaparecidoLugar,
     		 	'destinatarioNombre' =>$destinatarioNombre,
     		 	'destinatarioCargo' =>$destinatarioCargo,
-    		 	'fechaActual' => $fechaActual
+    		 	'fechaActual' => $fechaActual,
+    		 	'lugares' => $lugares
     		  );
     		$datos = (object) $datos3;
 
@@ -261,9 +266,21 @@ class CargarDocumentosController extends Controller
         $nombreDocumento2 = "";
         if  ($nombreDependencia == "SERVICIOS PERICIALES (SEMEFOS)"){
         	$nombreDocumento = "form_24_semefos";
-        	$nombreDocumento2 = "semefos";
-        	
+        	$nombreDocumento2 = "semefos";     	
+        }else if  ($nombreDependencia == "APODERADO LEGAL (INFORME MOVIMIENTOS)"){
+        	$nombreDocumento = "form_24a72_frecuentes_entorno";
+        	$nombreDocumento2 = "semefos";     	
+        }else if  ($nombreDependencia == "FISCALÍA GENERAL (ALERTA MIGRATORIA)"){
+        	$nombreDocumento = "form_24_alerta_migratoria";
+        	$nombreDocumento2 = "semefos";     	
+        }else if  ($nombreDependencia == "DIF MUNICIPAL (ALBERGUES)"){
+        	$nombreDocumento = "form_24_albergues";
+        	$nombreDocumento2 = "semefos";     	
         }
+       
+
+
+
     
     	//METODOS PARA GENERAR LOS PDFS, se hacen en funcion del nombre del documento que reciba en el Request
 	    	$view = view('plantillas.'.$nombreDocumento, compact('datos'))->render();
