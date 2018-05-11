@@ -48,9 +48,10 @@ class DescripcionFisicaController extends Controller
          $desaparecido->idColorPiel = $request['colorPiel'];
 
          $desaparecido->save();
+         return response()->json($desaparecido);
 
          //cedula_partes_cuerpo;
-         $parteCuerpo = new CedulaPartesCuerpo();
+         /*$parteCuerpo = new CedulaPartesCuerpo();
 
          $parteCuerpo->idPersonaDesaparecida = $request['idExtraviado'];
          $parteCuerpo->idPartesCuerpo = $request['parteCuerpo'];
@@ -74,7 +75,7 @@ class DescripcionFisicaController extends Controller
             echo "<br>";
             echo $particularidad[$i];
             echo "<br>";*/
-            $particularidades = new PivotSubPartiCuerpo();
+         /*   $particularidades = new PivotSubPartiCuerpo();
             $particularidades->idCedulaPartesCuerpo = $parteCuerpo->id;
             $particularidades->idSubParticularidades = $particularidad[$i];
 
@@ -107,135 +108,346 @@ class DescripcionFisicaController extends Controller
     //Store para cabello,barba, bigote y patilla
     public function storeVelloFacial(Request $request){
 
-        //CABELLO
-        $parteCuerpo = new CedulaPartesCuerpo();
+        //consulta
+        $query = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->where('cpc.idPersonaDesaparecida',$request['idExtraviado'])
+                        ->where('cpc.idPartesCuerpo',$request['parteCuerpoC'])
+                        ->get();
+        
+        $aux = count($query->toArray());;
+        //dd($query->toArray());
 
-        $parteCuerpo->idPersonaDesaparecida = $request['idExtraviado'];
-        $parteCuerpo->idPartesCuerpo = $request['parteCuerpoC'];
-        $parteCuerpo->idTamanoCuerpo = $request['tamanoCabello'];
-        $parteCuerpo->idTipoCuerpo = $request['tipoCabello'];
-        $parteCuerpo->idColoresCuerpo = $request['colorCabello'];
-        $parteCuerpo->otraParticularidad =$request['otraPartiC'];
-        $parteCuerpo->otraModificacion =$request['otraModiC'];
-        $parteCuerpo->otroColor =$request['otroColorC'];
-        $parteCuerpo->observaciones = $request['observacionesCabello'];
 
-        $parteCuerpo->save();
+        if($aux != 0){
+            $parteCuerpo =  CedulaPartesCuerpo::find($query->toArray()[0]->id);
 
-        //particularidades
-        $particularidadC = $request['partiCabello'];
+            $parteCuerpo->idPersonaDesaparecida = $request['idExtraviado'];
+            $parteCuerpo->idPartesCuerpo = $request['parteCuerpoC'];
+            $parteCuerpo->idTamanoCuerpo = $request['tamanoCabello'];
+            $parteCuerpo->idTipoCuerpo = $request['tipoCabello'];
+            $parteCuerpo->idColoresCuerpo = $request['colorCabello'];
+            $parteCuerpo->otraParticularidad =$request['otraPartiC'];
+            $parteCuerpo->otraModificacion =$request['otraModiC'];
+            $parteCuerpo->otroColor =$request['otroColorC'];
+            $parteCuerpo->observaciones = $request['observacionesCabello'];
 
-        $longitud = count($particularidadC);
+            $parteCuerpo->save();
 
-        for($i=0; $i<$longitud; $i++){
-            /*echo $parteCuerpo->id;
-            echo "<br>";
-            echo $particularidadC[$i];
-            echo "<br>";*/
-            $partiCabello = new PivotSubPartiCuerpo();
-            $partiCabello->idCedulaPartesCuerpo = $parteCuerpo->id;
-            $partiCabello->idSubParticularidades = $particularidadC[$i];
+            //particularidades
+            $particularidadC = $request['partiCabello'];
 
-            $partiCabello->save();
+
+            $longitud = count($particularidadC);
+
+
+
+            if($longitud !=0){
+                \DB::table('pivot_subparti_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
+                for($i=0; $i<$longitud; $i++){
+                
+                        $partiCabello = new PivotSubPartiCuerpo();
+                        $partiCabello->idCedulaPartesCuerpo = $parteCuerpo->id;
+                        $partiCabello->idSubParticularidades = $particularidadC[$i];
+
+                        $partiCabello->save();
+                    }
+               
+            }else{
+                \DB::table('pivot_subparti_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
+               
+            }
+
+            
+
+            //modificaciones
+
+             $modificacionC = $request['modiCabello'];
+
+             $longitud = count($modificacionC);
+             if($longitud !=0){
+                \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
+
+                 for($i=0; $i<$longitud; $i++){
+                    $modiCabello =  new PivotSubModiCuerpo();
+                    $modiCabello->idCedulaPartesCuerpo = $parteCuerpo->id;
+                    $modiCabello->idSubModificaciones = $modificacionC[$i];
+
+                    $modiCabello->save();
+                 }         
+             }else{
+                \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
+             }
+
+
+        }else{
+            //CABELLO
+            $parteCuerpo = new CedulaPartesCuerpo();
+
+            $parteCuerpo->idPersonaDesaparecida = $request['idExtraviado'];
+            $parteCuerpo->idPartesCuerpo = $request['parteCuerpoC'];
+            $parteCuerpo->idTamanoCuerpo = $request['tamanoCabello'];
+            $parteCuerpo->idTipoCuerpo = $request['tipoCabello'];
+            $parteCuerpo->idColoresCuerpo = $request['colorCabello'];
+            $parteCuerpo->otraParticularidad =$request['otraPartiC'];
+            $parteCuerpo->otraModificacion =$request['otraModiC'];
+            $parteCuerpo->otroColor =$request['otroColorC'];
+            $parteCuerpo->observaciones = $request['observacionesCabello'];
+
+            $parteCuerpo->save();
+
+            //particularidades
+            $particularidadC = $request['partiCabello'];
+
+            $longitud = count($particularidadC);
+
+            for($i=0; $i<$longitud; $i++){
+                
+                $partiCabello = new PivotSubPartiCuerpo();
+                $partiCabello->idCedulaPartesCuerpo = $parteCuerpo->id;
+                $partiCabello->idSubParticularidades = $particularidadC[$i];
+
+                $partiCabello->save();
+            }
+
+             //modificaciones
+
+             $modificacionC = $request['modiCabello'];
+
+             $longitud = count($modificacionC);
+
+             for($i=0; $i<$longitud; $i++){
+                $modiCabello = new PivotSubModiCuerpo();
+                $modiCabello->idCedulaPartesCuerpo = $parteCuerpo->id;
+                $modiCabello->idSubModificaciones = $modificacionC[$i];
+
+                $modiCabello->save();
+             }         
+
         }
-
-         //modificaciones
-
-         $modificacionC = $request['modiCabello'];
-
-         $longitud = count($modificacionC);
-
-         for($i=0; $i<$longitud; $i++){
-            $modiCabello = new PivotSubModiCuerpo();
-            $modiCabello->idCedulaPartesCuerpo = $parteCuerpo->id;
-            $modiCabello->idSubModificaciones = $modificacionC[$i];
-
-            $modiCabello->save();
-         }         
-
-        //barba
-        $parteCuerpo2 = new CedulaPartesCuerpo();
-
-        $parteCuerpo2->idPersonaDesaparecida = $request['idExtraviado'];
-        $parteCuerpo2->idPartesCuerpo = $request['parteCuerpoBa'];
-        $parteCuerpo2->idTipoCuerpo = $request['tipoBarba'];
-        $parteCuerpo2->idColoresCuerpo = $request['colorBarba'];
-        $parteCuerpo2->otraParticularidad =$request['otraPartiBa'];
-        $parteCuerpo2->otraModificacion =$request['otraModiBa'];
-        $parteCuerpo2->otroColor =$request['otroColorBa'];
-        $parteCuerpo2->observaciones = $request['observacionesBarba'];
-
-        $parteCuerpo2->save();
-
-        //modificaciones
-
-         $modificacionBa = $request['modiBarba'];
-
-         $longitud = count($modificacionBa);
-
-         for($i=0; $i<$longitud; $i++){
-            $modiBarba = new PivotSubModiCuerpo();
-            $modiBarba->idCedulaPartesCuerpo = $parteCuerpo->id;
-            $modiBarba->idSubModificaciones = $modificacionBa[$i];
-
-            $modiBarba->save();
-         }
-
-        //bigote
-        $parteCuerpo3 = new CedulaPartesCuerpo();
-
-        $parteCuerpo3->idPersonaDesaparecida = $request['idExtraviado'];
-        $parteCuerpo3->idPartesCuerpo = $request['parteCuerpoBi'];
-        $parteCuerpo3->idTipoCuerpo = $request['tipoBigote'];
-        $parteCuerpo3->idColoresCuerpo = $request['colorBigote'];
-        $parteCuerpo3->otraParticularidad =$request['otraPartiBi'];
-        $parteCuerpo3->otraModificacion =$request['otraModiBi'];
-        $parteCuerpo3->otroColor =$request['otroColorBi'];
-        $parteCuerpo3->observaciones = $request['observacionesBigote'];
-
-        $parteCuerpo3->save();
-
-        //modificaciones
-
-         $modificacionBi = $request['modiBigote'];
-
-         $longitud = count($modificacionBi);
-
-         for($i=0; $i<$longitud; $i++){
-            $modiBigote = new PivotSubModiCuerpo();
-            $modiBigote->idCedulaPartesCuerpo = $parteCuerpo->id;
-            $modiBigote->idSubModificaciones = $modificacionBi[$i];
-
-            $modiBigote->save();
-         }         
         
 
-        //patilla
-        $parteCuerpo4 = new CedulaPartesCuerpo();
 
-        $parteCuerpo4->idPersonaDesaparecida = $request['idExtraviado'];
-        $parteCuerpo4->idPartesCuerpo = $request['parteCuerpoPa'];
-        $parteCuerpo4->idTipoCuerpo = $request['tipoPatilla'];
-        $parteCuerpo4->idColoresCuerpo = $request['colorPatilla'];
-        $parteCuerpo4->otraModificacion =$request['otraModiP'];
-        $parteCuerpo4->otroColor =$request['otroColorP'];
-        $parteCuerpo4->observaciones = $request['observacionesPatilla'];
+        //consulta
+        $query1 = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->where('cpc.idPersonaDesaparecida',$request['idExtraviado'])
+                        ->where('cpc.idPartesCuerpo',$request['parteCuerpoBa'])
+                        ->get();
+        
+        $aux2 = count($query1->toArray());;
+        //dd($query->toArray());
 
-        $parteCuerpo4->save();
 
-        //modificaciones
+        if($aux2 != 0){
+            //barba
+            $parteCuerpo2 = CedulaPartesCuerpo::find($query1->toArray()[0]->id);
 
-         $modificacionP = $request['modiBigote'];
+            $parteCuerpo2->idPersonaDesaparecida = $request['idExtraviado'];
+            $parteCuerpo2->idPartesCuerpo = $request['parteCuerpoBa'];
+            $parteCuerpo2->idTipoCuerpo = $request['tipoBarba'];
+            $parteCuerpo2->idColoresCuerpo = $request['colorBarba'];
+            $parteCuerpo2->otraParticularidad =$request['otraPartiBa'];
+            $parteCuerpo2->otraModificacion =$request['otraModiBa'];
+            $parteCuerpo2->otroColor =$request['otroColorBa'];
+            $parteCuerpo2->observaciones = $request['observacionesBarba'];
 
-         $longitud = count($modificacionP);
+            $parteCuerpo2->save();
 
-         for($i=0; $i<$longitud; $i++){
-            $modiPatilla = new PivotSubModiCuerpo();
-            $modiPatilla->idCedulaPartesCuerpo = $parteCuerpo->id;
-            $modiPatilla->idSubModificaciones = $modificacionP[$i];
+            //modificaciones
 
-            $modiBigote->save();
-         }         
+             $modificacionBa = $request['modiBarba'];
+
+             $longitud = count($modificacionBa);
+
+             if($longitud !=0){
+                \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo2->id)->delete();
+                 for($i=0; $i<$longitud; $i++){
+                    $modiBarba = new PivotSubModiCuerpo();
+                    $modiBarba->idCedulaPartesCuerpo = $parteCuerpo2->id;
+                    $modiBarba->idSubModificaciones = $modificacionBa[$i];
+
+                    $modiBarba->save();
+                 }
+                 }else{
+                \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo2->id)->delete();
+             }
+        }else{
+             //barba
+            $parteCuerpo2 = new CedulaPartesCuerpo();
+
+            $parteCuerpo2->idPersonaDesaparecida = $request['idExtraviado'];
+            $parteCuerpo2->idPartesCuerpo = $request['parteCuerpoBa'];
+            $parteCuerpo2->idTipoCuerpo = $request['tipoBarba'];
+            $parteCuerpo2->idColoresCuerpo = $request['colorBarba'];
+            $parteCuerpo2->otraParticularidad =$request['otraPartiBa'];
+            $parteCuerpo2->otraModificacion =$request['otraModiBa'];
+            $parteCuerpo2->otroColor =$request['otroColorBa'];
+            $parteCuerpo2->observaciones = $request['observacionesBarba'];
+
+            $parteCuerpo2->save();
+
+            //modificaciones
+
+             $modificacionBa = $request['modiBarba'];
+
+             $longitud = count($modificacionBa);
+             
+
+                 for($i=0; $i<$longitud; $i++){
+                    $modiBarba = new PivotSubModiCuerpo();
+                    $modiBarba->idCedulaPartesCuerpo = $parteCuerpo2->id;
+                    $modiBarba->idSubModificaciones = $modificacionBa[$i];
+
+                    $modiBarba->save();
+                 }
+             
+        }
+
+
+       //consulta
+        $query2 = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->where('cpc.idPersonaDesaparecida',$request['idExtraviado'])
+                        ->where('cpc.idPartesCuerpo',$request['parteCuerpoBi'])
+                        ->get();
+        
+        $aux3 = count($query2->toArray());;
+        //dd($query->toArray());
+
+
+        if($aux3 != 0){
+             //bigote
+            $parteCuerpo3 = CedulaPartesCuerpo::find($query2->toArray()[0]->id);
+
+            $parteCuerpo3->idPersonaDesaparecida = $request['idExtraviado'];
+            $parteCuerpo3->idPartesCuerpo = $request['parteCuerpoBi'];
+            $parteCuerpo3->idTipoCuerpo = $request['tipoBigote'];
+            $parteCuerpo3->idColoresCuerpo = $request['colorBigote'];
+            $parteCuerpo3->otraParticularidad =$request['otraPartiBi'];
+            $parteCuerpo3->otraModificacion =$request['otraModiBi'];
+            $parteCuerpo3->otroColor =$request['otroColorBi'];
+            $parteCuerpo3->observaciones = $request['observacionesBigote'];
+
+            $parteCuerpo3->save();
+
+            //modificaciones
+
+             $modificacionBi = $request['modiBigote'];
+
+             $longitud = count($modificacionBi);
+             if($longitud !=0){
+                \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo3->id)->delete();
+
+                 for($i=0; $i<$longitud; $i++){
+                    $modiBigote = new PivotSubModiCuerpo();
+                    $modiBigote->idCedulaPartesCuerpo = $parteCuerpo3->id;
+                    $modiBigote->idSubModificaciones = $modificacionBi[$i];
+
+                    $modiBigote->save();
+                 }     
+             }else{
+                \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo3->id)->delete();
+             }
+        }else{
+             //bigote
+            $parteCuerpo3 = new CedulaPartesCuerpo();
+
+            $parteCuerpo3->idPersonaDesaparecida = $request['idExtraviado'];
+            $parteCuerpo3->idPartesCuerpo = $request['parteCuerpoBi'];
+            $parteCuerpo3->idTipoCuerpo = $request['tipoBigote'];
+            $parteCuerpo3->idColoresCuerpo = $request['colorBigote'];
+            $parteCuerpo3->otraParticularidad =$request['otraPartiBi'];
+            $parteCuerpo3->otraModificacion =$request['otraModiBi'];
+            $parteCuerpo3->otroColor =$request['otroColorBi'];
+            $parteCuerpo3->observaciones = $request['observacionesBigote'];
+
+            $parteCuerpo3->save();
+
+            //modificaciones
+
+             $modificacionBi = $request['modiBigote'];
+
+             $longitud = count($modificacionBi);
+
+             for($i=0; $i<$longitud; $i++){
+                $modiBigote = new PivotSubModiCuerpo();
+                $modiBigote->idCedulaPartesCuerpo = $parteCuerpo3->id;
+                $modiBigote->idSubModificaciones = $modificacionBi[$i];
+
+                $modiBigote->save();
+             }         
+        }
+
+       
+        //consulta
+        $query3 = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->where('cpc.idPersonaDesaparecida',$request['idExtraviado'])
+                        ->where('cpc.idPartesCuerpo',$request['parteCuerpoPa'])
+                        ->get();
+        
+        $aux4 = count($query2->toArray());;
+        //dd($query->toArray());
+
+
+        if($aux4 != 0){
+             //patilla
+            $parteCuerpo4 = CedulaPartesCuerpo::find($query3->toArray()[0]->id);
+
+            $parteCuerpo4->idPersonaDesaparecida = $request['idExtraviado'];
+            $parteCuerpo4->idPartesCuerpo = $request['parteCuerpoPa'];
+            $parteCuerpo4->idTipoCuerpo = $request['tipoPatilla'];
+            $parteCuerpo4->idColoresCuerpo = $request['colorPatilla'];
+            $parteCuerpo4->otraModificacion =$request['otraModiP'];
+            $parteCuerpo4->otroColor =$request['otroColorP'];
+            $parteCuerpo4->observaciones = $request['observacionesPatilla'];
+
+            $parteCuerpo4->save();
+
+            //modificaciones
+
+             $modificacionP = $request['modiPatilla'];
+
+             $longitud = count($modificacionP);
+             if($longitud !=0){
+                \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo4->id)->delete();
+                 for($i=0; $i<$longitud; $i++){
+                    $modiPatilla = new PivotSubModiCuerpo();
+                    $modiPatilla->idCedulaPartesCuerpo = $parteCuerpo4->id;
+                    $modiPatilla->idSubModificaciones = $modificacionP[$i];
+
+                    $modiPatilla->save();
+                 } 
+             }else{
+                \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo4->id)->delete();
+             }
+        }else{
+            //patilla
+            $parteCuerpo4 = new CedulaPartesCuerpo();
+
+            $parteCuerpo4->idPersonaDesaparecida = $request['idExtraviado'];
+            $parteCuerpo4->idPartesCuerpo = $request['parteCuerpoPa'];
+            $parteCuerpo4->idTipoCuerpo = $request['tipoPatilla'];
+            $parteCuerpo4->idColoresCuerpo = $request['colorPatilla'];
+            $parteCuerpo4->otraModificacion =$request['otraModiP'];
+            $parteCuerpo4->otroColor =$request['otroColorP'];
+            $parteCuerpo4->observaciones = $request['observacionesPatilla'];
+
+            $parteCuerpo4->save();
+
+            //modificaciones
+
+             $modificacionP = $request['modiPatilla'];
+
+             $longitud = count($modificacionP);
+
+             for($i=0; $i<$longitud; $i++){
+                $modiPatilla = new PivotSubModiCuerpo();
+                $modiPatilla->idCedulaPartesCuerpo = $parteCuerpo4->id;
+                $modiPatilla->idSubModificaciones = $modificacionP[$i];
+
+                $modiPatilla->save();
+             }         
+        }
+
+        
          return response()->json($particularidadC);
     }
 
@@ -376,11 +588,13 @@ class DescripcionFisicaController extends Controller
             return response()->json($coloresCuerpo);
     }
 
-    public function getPartesCuerpo($idExtraviado){
+    public function getCabello($idExtraviado){
 
         $partesCuerpo = \DB::table('cedula_partes_cuerpo as cpc')
                         ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
                         ->leftjoin('cat_colores_cuerpo as catcolores','catcolores.id','=','cpc.idColoresCuerpo')
+                        ->leftjoin('cat_tamano_cuerpo as tamaCuerpo','tamaCuerpo.id','=','cpc.idTamanoCuerpo')
+                        ->leftjoin('cat_tipos_cuerpo as tipoCuerpo','tipoCuerpo.id','=','cpc.idTipoCuerpo')
                         ->select('cpc.idPartesCuerpo',
                                 'catpc.nombre as nombreCuerpo',
                                 'cpc.lado',
@@ -389,8 +603,11 @@ class DescripcionFisicaController extends Controller
                                 'cpc.otraParticularidad',
                                 'cpc.otraModificacion',
                                 'cpc.otroColor',
-                                'cpc.id')
+                                'cpc.id',
+                                'tamaCuerpo.nombre as tamano',
+                                'tipoCuerpo.nombre as tipo')
                         ->where('cpc.idPersonaDesaparecida',$idExtraviado)
+                        ->where('cpc.idPartesCuerpo',55)
                         ->get();
 
         /*foreach ($partesCuerpo as $parte) {
@@ -459,6 +676,8 @@ class DescripcionFisicaController extends Controller
                                 'nombre' => $value->nombreCuerpo,
                                 'lado' => $value->lado,
                                 'color' => $value->colorCuerpo,
+                                'tamano' => $value->tamano,
+                                'tipo' => $value->tipo,
                                 'particularidades' => trim($nParticularidad,', '),
                                 'modificaciones' => trim($nModificaciones,', '),
                                 'otraParticularidad' => $value->otraParticularidad,
@@ -471,6 +690,183 @@ class DescripcionFisicaController extends Controller
             echo "<br>";*/
             $i++;
             $nParticularidad = '';
+            $nModificaciones = '';
+        }
+
+        return response()->json($cuerpo);        
+    }
+
+    public function getBarba($idExtraviado){
+
+        $partesCuerpo = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
+                        ->leftjoin('cat_colores_cuerpo as catcolores','catcolores.id','=','cpc.idColoresCuerpo')
+                        ->leftjoin('cat_tipos_cuerpo as tipoCuerpo','tipoCuerpo.id','=','cpc.idTipoCuerpo')
+                        ->select('cpc.idPartesCuerpo',
+                                'catpc.nombre as nombreCuerpo',
+                                'cpc.lado',
+                                'cpc.observaciones',
+                                'catcolores.nombre as colorCuerpo',
+                                'cpc.otraParticularidad',
+                                'cpc.otraModificacion',
+                                'cpc.otroColor',
+                                'cpc.id',
+                                'tipoCuerpo.nombre as tipo')
+                        ->where('cpc.idPersonaDesaparecida',$idExtraviado)
+                        ->where('cpc.idPartesCuerpo',56)
+                        ->get();
+
+        $i = 0;
+        foreach ($partesCuerpo as $value) {
+
+
+             $modificaciones = \DB::table('cedula_partes_cuerpo as cpc')
+                                ->join('pivot_submodi_cuerpo as psmc','cpc.id','=','psmc.idCedulaPartesCuerpo')
+                                ->join('cat_sub_modificaciones as csm','csm.id','=','psmc.idSubModificaciones')
+                                ->select('csm.nombre as modificacion')
+                                ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
+                                ->where('psmc.idCedulaPartesCuerpo',$value->id)
+                                ->get();
+           
+            $nModificaciones = '';
+            
+            $longitud2 = count($modificaciones);
+            for($x=0;$x < $longitud2; $x++){
+                $nModificaciones = $modificaciones[$x]->modificacion.', '.$nModificaciones;
+            }
+
+            $cuerpo[$i] = array('id_cuerpo' => $value->idPartesCuerpo,
+                                'nombre' => $value->nombreCuerpo,
+                                'lado' => $value->lado,
+                                'color' => $value->colorCuerpo,
+                                'tipo' => $value->tipo,
+                                'estilo' => trim($nModificaciones,', '),
+                                'otraParticularidad' => $value->otraParticularidad,
+                                'otraModificacion' => $value->otraModificacion,
+                                'otroColor' => $value->otroColor,
+                                'observaciones' => $value->observaciones
+
+                                 ); 
+        
+            $i++;
+            $nModificaciones = '';
+        }
+
+        return response()->json($cuerpo);        
+    }
+
+    public function getBigote($idExtraviado){
+
+        $partesCuerpo = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
+                        ->leftjoin('cat_colores_cuerpo as catcolores','catcolores.id','=','cpc.idColoresCuerpo')
+                        ->leftjoin('cat_tipos_cuerpo as tipoCuerpo','tipoCuerpo.id','=','cpc.idTipoCuerpo')
+                        ->select('cpc.idPartesCuerpo',
+                                'catpc.nombre as nombreCuerpo',
+                                'cpc.lado',
+                                'cpc.observaciones',
+                                'catcolores.nombre as colorCuerpo',
+                                'cpc.otraParticularidad',
+                                'cpc.otraModificacion',
+                                'cpc.otroColor',
+                                'cpc.id',
+                                'tipoCuerpo.nombre as tipo')
+                        ->where('cpc.idPersonaDesaparecida',$idExtraviado)
+                        ->where('cpc.idPartesCuerpo',57)
+                        ->get();
+
+        $i = 0;
+        foreach ($partesCuerpo as $value) {
+
+
+             $modificaciones = \DB::table('cedula_partes_cuerpo as cpc')
+                                ->join('pivot_submodi_cuerpo as psmc','cpc.id','=','psmc.idCedulaPartesCuerpo')
+                                ->join('cat_sub_modificaciones as csm','csm.id','=','psmc.idSubModificaciones')
+                                ->select('csm.nombre as modificacion')
+                                ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
+                                ->where('psmc.idCedulaPartesCuerpo',$value->id)
+                                ->get();
+           
+            $nModificaciones = '';
+            
+            $longitud2 = count($modificaciones);
+            for($x=0;$x < $longitud2; $x++){
+                $nModificaciones = $modificaciones[$x]->modificacion.', '.$nModificaciones;
+            }
+
+            $cuerpo[$i] = array('id_cuerpo' => $value->idPartesCuerpo,
+                                'nombre' => $value->nombreCuerpo,
+                                'lado' => $value->lado,
+                                'color' => $value->colorCuerpo,
+                                'tipo' => $value->tipo,
+                                'estilo' => trim($nModificaciones,', '),
+                                'otraParticularidad' => $value->otraParticularidad,
+                                'otraModificacion' => $value->otraModificacion,
+                                'otroColor' => $value->otroColor,
+                                'observaciones' => $value->observaciones
+
+                                 ); 
+        
+            $i++;
+            $nModificaciones = '';
+        }
+
+        return response()->json($cuerpo);        
+    }
+
+    public function getPatilla($idExtraviado){
+
+        $partesCuerpo = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
+                        ->leftjoin('cat_colores_cuerpo as catcolores','catcolores.id','=','cpc.idColoresCuerpo')
+                        ->leftjoin('cat_tipos_cuerpo as tipoCuerpo','tipoCuerpo.id','=','cpc.idTipoCuerpo')
+                        ->select('cpc.idPartesCuerpo',
+                                'catpc.nombre as nombreCuerpo',
+                                'cpc.lado',
+                                'cpc.observaciones',
+                                'catcolores.nombre as colorCuerpo',
+                                'cpc.otraParticularidad',
+                                'cpc.otraModificacion',
+                                'cpc.otroColor',
+                                'cpc.id',
+                                'tipoCuerpo.nombre as tipo')
+                        ->where('cpc.idPersonaDesaparecida',$idExtraviado)
+                        ->where('cpc.idPartesCuerpo',58)
+                        ->get();
+
+        $i = 0;
+        foreach ($partesCuerpo as $value) {
+
+
+             $modificaciones = \DB::table('cedula_partes_cuerpo as cpc')
+                                ->join('pivot_submodi_cuerpo as psmc','cpc.id','=','psmc.idCedulaPartesCuerpo')
+                                ->join('cat_sub_modificaciones as csm','csm.id','=','psmc.idSubModificaciones')
+                                ->select('csm.nombre as modificacion')
+                                ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
+                                ->where('psmc.idCedulaPartesCuerpo',$value->id)
+                                ->get();
+           
+            $nModificaciones = '';
+            
+            $longitud2 = count($modificaciones);
+            for($x=0;$x < $longitud2; $x++){
+                $nModificaciones = $modificaciones[$x]->modificacion.', '.$nModificaciones;
+            }
+
+            $cuerpo[$i] = array('id_cuerpo' => $value->idPartesCuerpo,
+                                'nombre' => $value->nombreCuerpo,
+                                'lado' => $value->lado,
+                                'color' => $value->colorCuerpo,
+                                'tipo' => $value->tipo,
+                                'estilo' => trim($nModificaciones,', '),
+                                'otraParticularidad' => $value->otraParticularidad,
+                                'otraModificacion' => $value->otraModificacion,
+                                'otroColor' => $value->otroColor,
+                                'observaciones' => $value->observaciones
+
+                                 ); 
+        
+            $i++;
             $nModificaciones = '';
         }
 

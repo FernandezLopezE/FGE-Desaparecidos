@@ -9,7 +9,7 @@
     </div>
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion"> 
     	{{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}   
-    <div class="card-body"> 
+    <div class="card-body"  id="datosCabello"> 
         <div class="form-group row" id="cabello">
         	<div class="col-3">
 		        {!! Form::label ('tieneCabello','¿Tenía cabello?') !!}
@@ -180,6 +180,7 @@
 		</div>
 		<button type="button" class="btn btn-primary" style="float: right;" id="btnGuardarC">GUARDAR</button>
     </div>
+    @include('descripcionfisica.show_cabello')
 </div>
 </div>
 </div>

@@ -92,12 +92,39 @@
 @section('scripts')
 <script type="text/javascript">
 $(document).ready(function(){
+  $("#guardarTalla").click(function(){
+    console.log("entro");
+    var dataString = {
+      estatura: $('#esta').val(),
+      peso: $('#bulto').val(),
+      complexion: $('#comple').val(),
+      colorPiel: $('#cPiel').val(),
+      idExtraviado: $('#idExtraviado').val(),
+    };
 
+  console.log(dataString);
+      $.ajax({
+        type: 'POST',
+        url: '/descripcionfisica/store',
+        data: dataString,
+        dataType: 'json',
+        success: function(data) {           
+          console.log("hecho");
+          console.log(data);
+          
+        },
+        error: function(data) {
+          console.log("error");
+          console.log(data);
+        }
+      });
+  });
     $("#colapsar2").click(function(event) {
         $("#fomularioPrin").toggle();
         $("#fomularioPrin2").toggle();
     });
-
+  //Ocultar Boton editar
+  $("#btnEditarC").hide();
 
   //SELECT 2
   $('#partiCabello').select2();
@@ -105,10 +132,17 @@ $(document).ready(function(){
   $('#modiBarba').select2();
   $('#modiBigote').select2();
   $('#modiPatilla').select2();
-
+  //Boton Editar
+  $("#btnEditarC").click(function(){
+   $("#detallesV").toggle();
+   $("#datosCabello").toggle();
+  });
 
   //Boton guardar para cabello
   $("#btnGuardarC").click(function(){
+    $("#datosCabello").hide();
+    $("#btnEditarC").show();
+    $("#detallesV").show();
     var dataString = {
       //Cabello
       tamanoCabello: $('#tamanoCabello').val(),
@@ -185,6 +219,80 @@ $(document).ready(function(){
         console.log(data);
       }
     });
+
+    $.ajax({
+                url: '/descripcionfisica/get_cabello/{{$desaparecido->id}}/',
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                     
+                    $.each(data, function(key, value){    
+                    $("#pCabello").empty();                    
+
+                        $("#pCabello").append('<div class="card-body bg-white">  <div class="row">    <div class="col-10">      <h5><strong>Datos Cabello</strong></h5>      <hr>      <dl class="row">        <dt class="col-sm-4">Color de cabello:</dt>        <dd class="col-sm-8">'+value.color+'                  </dd>        <dt class="col-sm-4">Tamaño de cabello:</dt>        <dd class="col-sm-8">'+value.tamano+'        </dd>        <dt class="col-sm-4">Tipo de cabello:</dt>        <dd class="col-sm-8">'+value.tipo+'        </dd>               <dt class="col-sm-4">Particularidades del cabello:</dt>        <dd class="col-sm-8">'+value.particularidades+'        </dd>        <dt class="col-sm-4">Modificaciones del cabello:</dt>        <dd class="col-sm-8">'+value.modificaciones+'        </dd>        <dt class="col-sm-4">Observaciones del cabello:</dt>        <dd class="col-sm-8">'+value.observaciones+'        </dd>      </dl>      <hr>    </div>  </div></div>');
+
+                    });
+
+                },
+                
+            });
+
+
+    $.ajax({
+                url: '/descripcionfisica/get_barba/{{$desaparecido->id}}/',
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                        
+                    $.each(data, function(key, value){   
+                    pCabello                     
+$("#pBarba").empty();
+                        $("#pBarba").append('<div class="card-body bg-white">  <div class="row">    <div class="col-10">      <h5><strong>Datos Barba</strong></h5>      <hr>      <dl class="row">        <dt class="col-sm-4">Color de barba:</dt>        <dd class="col-sm-8">'+value.color+'                  </dd>     <dt class="col-sm-4">Tipo de barba:</dt>        <dd class="col-sm-8">'+value.tipo+'    </dd>                 <dt class="col-sm-4">Estilo de la barba:</dt>        <dd class="col-sm-8">'+value.estilo+'        </dd>        <dt class="col-sm-4">Observaciones de la barba:</dt>        <dd class="col-sm-8">'+value.observaciones+'        </dd>      </dl>      <hr>    </div>  </div></div>');
+
+                    });
+
+                },
+                
+            });
+
+    $.ajax({
+                url: '/descripcionfisica/get_bigote/{{$desaparecido->id}}/',
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                        
+                    $.each(data, function(key, value){                        
+$("#pBigote").empty();
+                        $("#pBigote").append('<div class="card-body bg-white">  <div class="row">    <div class="col-10">      <h5><strong>Datos bigote</strong></h5>      <hr>      <dl class="row">        <dt class="col-sm-4">Color del bigote:</dt>        <dd class="col-sm-8">'+value.color+'                  </dd>     <dt class="col-sm-4">Tipo de bigote:</dt>        <dd class="col-sm-8">'+value.tipo+'    </dd>                 <dt class="col-sm-4">Estilo del bigote:</dt>        <dd class="col-sm-8">'+value.estilo+'        </dd>        <dt class="col-sm-4">Observaciones del bigote:</dt>        <dd class="col-sm-8">'+value.observaciones+'        </dd>      </dl>      <hr>    </div>  </div></div>');
+
+                    });
+
+                },
+                
+            });
+
+    $.ajax({
+                url: '/descripcionfisica/get_patilla/{{$desaparecido->id}}/',
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                        
+                    $.each(data, function(key, value){                        
+$("#pPatilla").empty();
+                        $("#pPatilla").append('<div class="card-body bg-white">  <div class="row">    <div class="col-10">      <h5><strong>Datos patilla</strong></h5>      <hr>      <dl class="row">        <dt class="col-sm-4">Color de patilla:</dt>        <dd class="col-sm-8">'+value.color+'                  </dd>     <dt class="col-sm-4">Tipo de patilla:</dt>        <dd class="col-sm-8">'+value.tipo+'    </dd>                 <dt class="col-sm-4">Estilo de patilla:</dt>        <dd class="col-sm-8">'+value.estilo+'        </dd>        <dt class="col-sm-4">Observaciones de la patilla:</dt>        <dd class="col-sm-8">'+value.observaciones+'        </dd>      </dl>      <hr>    </div>  </div></div>');
+
+                    });
+
+                },
+                
+            });
+
+
+
   });
 });
 //Sección para mostrar/ocultar campos de "OTRO"

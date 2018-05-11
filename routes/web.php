@@ -167,9 +167,14 @@ Route::get('/descripcionfisica/get_particularidades/{idParteCuerpo}', 'Descripci
 Route::get('/descripcionfisica/get_modificaciones/{idParteCuerpo}', 'DescripcionFisicaController@getModificaciones')
 	->name('descripcionfisica.get_modificaciones');
 
-Route::get('/descripcionfisica/get_partes/{idExtraviado}', 'DescripcionFisicaController@getPartesCuerpo')
-	->name('descripcionfisica.get_partes');
-	
+Route::get('/descripcionfisica/get_cabello/{idExtraviado}', 'DescripcionFisicaController@getCabello')
+	->name('descripcionfisica.get_cabello');
+Route::get('/descripcionfisica/get_barba/{idExtraviado}', 'DescripcionFisicaController@getBarba')
+	->name('descripcionfisica.get_barba');
+Route::get('/descripcionfisica/get_bigote/{idExtraviado}', 'DescripcionFisicaController@getBigote')
+	->name('descripcionfisica.get_bigote');
+Route::get('/descripcionfisica/get_patilla/{idExtraviado}', 'DescripcionFisicaController@getPatilla')
+	->name('descripcionfisica.get_patilla');			
 
 Route::get('/descripcionfisica/descripcionf/{idPersonaDesaparecida}', 'DescripcionFisicaController@show')
 	->name('descripcionfisica.show');
