@@ -11,7 +11,7 @@ class ColoresSeeder extends Seeder
     {
         DB::table('cat_colores')->insert([
             ['nombre' => 'SIN INFORMACIÓN',         'image' => '0.jpg'],
-            ['nombre' => 'AZÚL',                    'image' => '1.jpg'],        
+            ['nombre' => 'AZUL',                    'image' => '1.jpg'],        
             ['nombre' => 'ROJO',                    'image' => '2.jpg'],
             ['nombre' => 'MORADO',                  'image' => '3.jpg'],
             ['nombre' => 'VERDE',                   'image' => '4.jpg'],

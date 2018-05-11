@@ -221,7 +221,7 @@
 				title: 'Color',
 			}, {					
 				field: 'talla',
-				title: 'talla',
+				title: 'Talla',
 			}, {					
 				title: 'Acciones',
 				formatter: formatTableActions,

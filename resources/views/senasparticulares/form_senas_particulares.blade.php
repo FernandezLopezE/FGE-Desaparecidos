@@ -40,7 +40,7 @@
 	            	{!! Form::select ('senasPartiUbica',$senasParticularesUbica,'1', ['class' => 'form-control', 'id' => 'senasParticularesUbica'] )!!}
 	            </div>
 	            <div class="col">
-	            	{!! Form::label ('caracteristicas','Caracteristicas:') !!}
+	            	{!! Form::label ('caracteristicas','Características:') !!}
 	            	{!! Form::text ('caracteristicas',
 									old('caracteristicas'),
 									['class' => 'form-control mayuscula',
@@ -158,7 +158,7 @@
 				title: 'Ubicación',
 			}, {				
 				field: 'caracteristicas',
-				title: 'Caracteristicas',				
+				title: 'Características',				
 			}, {					
 				title: 'Acciones',
 				formatter: formatTableActions,
