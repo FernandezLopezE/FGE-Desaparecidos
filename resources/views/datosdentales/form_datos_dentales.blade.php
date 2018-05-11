@@ -17,7 +17,6 @@
 </style>
 @endsection
 
-@section('titulo', 'Registro único de personas desaparecidas')
 
 @section('content')
 @include('navs.navs_datos',array('activar' => 'dentadura'))

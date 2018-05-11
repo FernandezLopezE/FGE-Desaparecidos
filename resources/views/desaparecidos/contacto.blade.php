@@ -69,7 +69,7 @@
 				        }
 				    }
 				    	//	AQUI ENVIARE LOS NOMBRES DE LOS DOCUMENTOS HACIA EL CONTROLADOR PARA ENVIAR LOS DOCUMENTOS
-				         alert($documentosArray);  
+				          
 
 
 				            var dataString = {
