@@ -48,6 +48,7 @@ class DescripcionFisicaController extends Controller
          $desaparecido->idColorPiel = $request['colorPiel'];
 
          $desaparecido->save();
+         return response()->json($desaparecido);
 
          //cedula_partes_cuerpo;
          /*$parteCuerpo = new CedulaPartesCuerpo();

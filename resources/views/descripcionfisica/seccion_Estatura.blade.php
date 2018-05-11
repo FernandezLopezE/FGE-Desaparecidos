@@ -10,36 +10,36 @@
 	<div class="form-group row">
           <div class="col-lg-3">
               {!! Form::label ('desaparecidoEstatura','Estatura:') !!}
-              {!! Form::text ('estatura',
-                              old('estatura'),
+              {!! Form::text ('esta',
+                              old('esta'),
                               ['class' => 'form-control sinEnter soloNumeros',
                                       'placeholder' => 'CENTÍMETROS',
-                                      'id' => 'estatura', 'maxlength' => 3
+                                      'id' => 'esta', 'maxlength' => 3
                               ] )!!}
           </div>
           <div class="col-lg-3">
               {!! Form::label ('desaparecidoPeso','Peso:') !!}
-              {!! Form::text ('peso',
-                                  old('peso'),
+              {!! Form::text ('bulto',
+                                  old('bulto'),
                                   ['class' => 'form-control sinEnter soloNumeros',
                                       'placeholder' => 'KILOGRAMOS',
-                                      'id' => 'peso', 'maxlength' => 3
+                                      'id' => 'bulto', 'maxlength' => 3
                                   ] )!!}
           </div>
           <div class="col-lg-3">
-              {!! Form::label ('complexion','Complexión:') !!}
-              {!! Form::select ('complexion',
+              {!! Form::label ('comple','Complexión:') !!}
+              {!! Form::select ('comple',
                               $complexiones,
                               '',
-                              ['class' => 'form-control', 'id' => 'complexion'] )!!}                      
+                              ['class' => 'form-control', 'id' => 'comple'] )!!}                      
           </div>
           <div class="col-lg-3">
-              {!! Form::label ('colorPiel','Color piel:') !!}
-              {!! Form::select ('colorPiel',
+              {!! Form::label ('cPiel','Color piel:') !!}
+              {!! Form::select ('cPiel',
                                   $coloresPiel,
                                   '',
                                   ['class' => 'form-control',
-                                      'id' => 'colorPiel',
+                                      'id' => 'cPiel',
                                   ] )!!}                      
           </div>
         </div>
