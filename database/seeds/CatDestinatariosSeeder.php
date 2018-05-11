@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CatDestinariosSeeder extends Seeder
+class CatDestinatariosSeeder extends Seeder
 {
     /**
      * Run the database seeds.
