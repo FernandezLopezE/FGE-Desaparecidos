@@ -93,35 +93,8 @@ section.range-slider input:last-of-type::-moz-range-track {
         <imput type="button" class="btn btn-dark " id="range">Botón</imput>
         <imput type="button" class="btn btn-dark " id="filtros">Botón2</imput>
         
-           <div id="tablaGen" style="display:none">
-          <table id="tableDependencias"
-data-toggle="table"
-data-toolbar="#toolbar"
-data-search="true"
-data-show-refresh="true"
-data-show-toggle="true"
-data-show-columns="true"
-data-sort-name="id_user"
-data-unique-id="id_user"
-data-sort-order="asc"
-data-show-export="true"
-data-pagination="true"
-data-url=""
-data-search="true" >
-    <thead>
-    <tr>
-        <th data-field="id_user" 
-            data-sortable="true">No.</th>
-        <th data-field="username" 
-            data-sortable="true">User</th>
-        <th data-field="desactivate" 
-            data-sortable="true">Desactivate</th>
-        <th data-field="desactivate" 
-            data-sortable="true">Desactivate2</th>       
-        <th data-field="desactivate">Action</th>
-    </tr>
-    </thead>
-</table>  
+           <div id="tablaGen" >
+          <table id="tableDependencias"> </table>  
         </div>
 
 	    
@@ -188,25 +161,25 @@ $('#range').click(function(e){
       
     var tablaGen = $('#tablaGen');
     
-   var table = $('#tableDependencias');
+   var $table = $('#tableDependencias');
           var routeIndex = '{!! route('consultas.index') !!}';
-    
+    //<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.
       filtros.click(function(){
           
-       var masc = $("#masc").val();
-        
-      
-
-          console.log(routeIndex+'/get_desaparecidos_personas/'+ masc);
+          var fem =" ";
+          var masc =" ";
+       fem = $("input#fem:checked").val();      
+       masc = $("input#masc:checked").val();
+         $table.bootstrapTable('refresh');
           
+          $("#tableDependencias").bootstrapTable("refresh", {
+      url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem
+    });
           
-        tablaGen.show();
-
-        console.log("entrando")
-        });
-		 table.bootstrapTable({			
+      console.log(masc)
+$table.bootstrapTable({			
         
-			url: routeIndex+'/get_desaparecidos_personas/'+ masc,
+			url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem,
 			columns: [{					
 				field: 'nombres',
 				title: 'Nombres.',
@@ -224,6 +197,15 @@ $('#range').click(function(e){
 				title: 'Edad de extravío',
 			}]				
 		})
+          console.log(routeIndex+'/get_desaparecidos_personas/'+ masc+'/'+ fem);
+          
+          
+        tablaGen.show();
+
+        console.log("entrando")
+        });
+    //<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.
+		 
     
     
 </script>

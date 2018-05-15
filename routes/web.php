@@ -45,7 +45,7 @@ Route::get('/', 'InicioController@index');
 
 
 Route::get('consultas/get_cedulas', 'ConsultasController@jsonCedulas');
-Route::get('consultas/get_desaparecidos_personas/{masc}', 'ConsultasController@jsonDesaparecidosPersona');
+Route::get('consultas/get_desaparecidos_personas/{masc}/{fem}', 'ConsultasController@jsonDesaparecidosPersona');
 Route::get('consultas/get_informantes/{idCedula}', 'ConsultasController@jsonInformantes')
 	->name('consultas.get_informantes');
 Route::get('consultas/get_familiares/{idDesaparecido}', 'ConsultasController@jsonFamiliares')

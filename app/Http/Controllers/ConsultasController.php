@@ -32,7 +32,7 @@ class ConsultasController extends Controller
 		return response()->json($cedulas);
 	}
     
-    public function jsonDesaparecidosPersona(Request $request, $masc)
+    public function jsonDesaparecidosPersona(Request $request, $masc, $fem)
 	{
 		//$cedulas = \DB::table('desaparecidos_cedula_investigacion')::all();
         $desaparecidos = \DB::table('desaparecidos_personas as des')
@@ -47,7 +47,7 @@ class ConsultasController extends Controller
                             ->select('des.id as id', 'p.nombres as nombres', 'p.primerAp as pa', 'p.segundoAp as sa', 'p.sexo as sexo','des.apodo as apodo', 'des.edadExtravio as edad')
                             ->where('tipoPersona','DESAPARECIDA')
                             ->where('p.sexo',$masc)
-                            ->orWhere('p.sexo', 'M')
+                            ->orWhere('p.sexo', $fem)
                             ->get();
 
 		return response()->json($desaparecidos);
