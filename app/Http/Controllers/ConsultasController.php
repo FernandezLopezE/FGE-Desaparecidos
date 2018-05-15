@@ -31,6 +31,27 @@ class ConsultasController extends Controller
 
 		return response()->json($cedulas);
 	}
+    
+    public function jsonDesaparecidosPersona(Request $request, $masc)
+	{
+		//$cedulas = \DB::table('desaparecidos_cedula_investigacion')::all();
+        $desaparecidos = \DB::table('desaparecidos_personas as des')
+//                            ->leftJoin('desaparecidos_personas as d', 'c.id', '=',
+//                                \DB::raw('d.idCedula AND d.tipoPersona = "DESAPARECIDA"'))
+                            ->join('persona as p', 'des.id', '=', 'p.id')
+//                            ->leftJoin('cat_nacionalidad as n', 'p.idNacionalidad', '=', 'n.id')
+                            //->where('d.tipoPersona','DESAPARECIDA')
+//            ->join('cat_estado AS ce', 'dd.idEstado', '=', 'ce.id')
+//             'ce.id as idEstado',
+//                     'ce.nombre as estado',
+                            ->select('des.id as id', 'p.nombres as nombres', 'p.primerAp as pa', 'p.segundoAp as sa', 'p.sexo as sexo','des.apodo as apodo', 'des.edadExtravio as edad')
+                            ->where('tipoPersona','DESAPARECIDA')
+                            ->where('p.sexo',$masc)
+                            ->orWhere('p.sexo', 'M')
+                            ->get();
+
+		return response()->json($desaparecidos);
+	}
 
 	public function jsonInformantes(Request $request, $idCedula)
 	{
