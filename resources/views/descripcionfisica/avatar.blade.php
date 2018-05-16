@@ -105,4 +105,45 @@
   </svg>
 </div>
 <br><br><br>
+    
+    <div class="card border-warning mb-3" style="max-width: 18rem;">
+        <div class="card-header">
+            <b>Datos físicos</b>
+        <i class="fa fa-pencil pull-right" id="editFis" data-toggle="tooltip" title="Editar"></i>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-5">
+                    <h6><b>Estatura:</b></h6>
+                </div>
+                <div class="col">
+                    <h6>180 CM</h6>
+                </div>
+            </div> 
+            <div class="row">
+                <div class="col-5">
+                    <h6><b>Peso:</b></h6>
+                </div>
+                <div class="col">
+                    <h6>80 KG</h6>
+                </div>
+            </div>   
+            <div class="row">
+                <div class="col-5">
+                    <h6><b>Complexión:</b></h6>
+                </div>
+                <div class="col">
+                    <h6>DELGADO</h6>
+                </div>
+            </div> 
+             <div class="row">
+                <div class="col-5">
+                    <h6><b>Color de piel:</b></h6>
+                </div>
+                <div class="col">
+                    <h6>BLANCA</h6>
+                </div>
+            </div> 
+        </div>
+    </div>
    
