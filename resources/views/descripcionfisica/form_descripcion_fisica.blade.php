@@ -49,15 +49,23 @@
     }
 
     #cerrar:hover {
-    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: scale(1.7); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
     }
 
     #colapsar:hover {
-    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: scale(1.7); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
     }
 
     #colapsar2:hover {
-    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: scale(1.7); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+
+    #btnEditarC:hover {
+    transform: scale(1.7); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+
+    #editFis:hover {
+    transform: scale(1.7); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
     }
 
 </style>
@@ -95,6 +103,10 @@ $(document).ready(function(){
   $("#talla").modal("show");
   $("#esta").focus();
 
+  $("#editFis").click(function(event) {
+      $("#talla").modal("show");
+  });
+  $('[data-toggle="tooltip"]').tooltip();  
   
 
   $("#guardarTalla").click(function(){
@@ -326,13 +338,52 @@ $(document).ready(function(){
                         
                     $.each(data, function(key, value){   
                     pCabello                     
-$("#pBarba").empty();
-                        $("#pBarba").append('<div class="card-body bg-white">  <div class="row">    <div class="col-10">      <h5><strong>Datos Barba</strong></h5>      <hr>      <dl class="row">        <dt class="col-sm-4">Color de barba:</dt>        <dd class="col-sm-8">'+value.color+'                  </dd>     <dt class="col-sm-4">Tipo de barba:</dt>        <dd class="col-sm-8">'+value.tipo+'    </dd>                 <dt class="col-sm-4">Estilo de la barba:</dt>        <dd class="col-sm-8">'+value.estilo+'        </dd>        <dt class="col-sm-4">Observaciones de la barba:</dt>        <dd class="col-sm-8">'+value.observaciones+'        </dd>      </dl>          </div>  </div></div>');
+                    $("#pBarba").empty();
+                        $("#pBarba").append('<div class="card">'+
+                                                '<div class="card-header bg-white">'+
+                                                    '<h5><b>Datos de la barba</b></h5>'+
+                                                '</div>'+
+                                                '<div class="card-body">'+
+                                                    '<div class="row" >'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Color:</label>'+
+                                                        '</div>'+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.color+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
 
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Tipo:</label>'+
+                                                        '</div>'+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.tipo+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
+
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Estilo:</label>'+
+                                                        '</div>'+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.estilo+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
+
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Observaciones:</label>'+
+                                                        '</div>'+
+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.observaciones+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                '</div>'+
+                                            '</div>');
                     });
-
                 },
-                
             });
 
     $.ajax({
@@ -343,9 +394,50 @@ $("#pBarba").empty();
                 success:function(data) {
                         
                     $.each(data, function(key, value){                        
-$("#pBigote").empty();
-                        $("#pBigote").append('<div class="card-body bg-white">  <div class="row">    <div class="col-10">      <h5><strong>Datos bigote</strong></h5>      <hr>      <dl class="row">        <dt class="col-sm-4">Color del bigote:</dt>        <dd class="col-sm-8">'+value.color+'                  </dd>     <dt class="col-sm-4">Tipo de bigote:</dt>        <dd class="col-sm-8">'+value.tipo+'    </dd>                 <dt class="col-sm-4">Estilo del bigote:</dt>        <dd class="col-sm-8">'+value.estilo+'        </dd>        <dt class="col-sm-4">Observaciones del bigote:</dt>        <dd class="col-sm-8">'+value.observaciones+'        </dd>      </dl>          </div>  </div></div>');
+                    $("#pBigote").empty();
+                        $("#pBigote").append('<div class="card">'+
+                                                '<div class="card-header bg-white">'+
+                                                    '<h5><b>Datos del bigote</b></h5>'+
+                                                '</div>'+
+                                                '<div class="card-body">'+
+                                                    '<div class="row" >'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Color:</label>'+
+                                                        '</div>'+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.color+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
 
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Tipo:</label>'+
+                                                        '</div>'+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.tipo+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
+
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Estilo:</label>'+
+                                                        '</div>'+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.estilo+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
+
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Observaciones:</label>'+
+                                                        '</div>'+
+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.observaciones+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                '</div>'+
+                                            '</div>');
                     });
 
                 },
@@ -360,17 +452,53 @@ $("#pBigote").empty();
                 success:function(data) {
                         
                     $.each(data, function(key, value){                        
-$("#pPatilla").empty();
-                        $("#pPatilla").append('<div class="card-body bg-white">  <div class="row">    <div class="col-10">      <h5><strong>Datos patilla</strong></h5>      <hr>      <dl class="row">        <dt class="col-sm-4">Color de patilla:</dt>        <dd class="col-sm-8">'+value.color+'                  </dd>     <dt class="col-sm-4">Tipo de patilla:</dt>        <dd class="col-sm-8">'+value.tipo+'    </dd>                 <dt class="col-sm-4">Estilo de patilla:</dt>        <dd class="col-sm-8">'+value.estilo+'        </dd>        <dt class="col-sm-4">Observaciones de la patilla:</dt>        <dd class="col-sm-8">'+value.observaciones+'        </dd>      </dl>      <hr>    </div>  </div></div>');
+                    $("#pPatilla").empty();
+                        $("#pPatilla").append('<div class="card">'+
+                                                '<div class="card-header bg-white">'+
+                                                    '<h5><b>Datos de las patillas</b></h5>'+
+                                                '</div>'+
+                                                '<div class="card-body">'+
+                                                    '<div class="row" >'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Color:</label>'+
+                                                        '</div>'+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.color+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
 
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Tipo:</label>'+
+                                                        '</div>'+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.tipo+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
+
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Estilo:</label>'+
+                                                        '</div>'+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.estilo+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
+
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Observaciones:</label>'+
+                                                        '</div>'+
+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.observaciones+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                '</div>'+
+                                            '</div>');
                     });
-
-                },
-                
+                }, 
             });
-
-
-
   });
 });
 //Sección para mostrar/ocultar campos de "OTRO"
