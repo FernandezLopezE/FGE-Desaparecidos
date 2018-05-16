@@ -77,14 +77,10 @@
 <div class="card border-success">
     <div class="card-body"> 
         <!--@include('descripcionfisica.seccion_Estatura')-->
-        <div class="form-group" id="fomularioPrin2" style="display:none;">
-            <div class="card">
-              <div class="card-body">
-                <h5>Selecciona la parte del cuerpo</h5>
-              </div>
-            </div>
+        <div class="form-group" id="fomularioPrin2">
+                <h6><b>Selecciona la parte del cuerpo</b></h6>            
         </div>
-        <div class="row" id="fomularioPrin" style="display:none;">
+        <div class="row" id="fomularioPrin" style="margin-top:7%">
             <div class="col-3">
             @include('descripcionfisica.avatar')
             </div>
@@ -127,8 +123,7 @@ $(document).ready(function(){
         dataType: 'json',
         success: function(data) {           
         //document.getElementById("colapsar2").click();
-          $("#fomularioPrin").toggle();
-          $("#fomularioPrin2").toggle();
+          
           console.log("hecho");
           console.log(data);
           $("#talla").modal("hide");
