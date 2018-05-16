@@ -5,27 +5,27 @@
         <h5 class="modal-title" id="exampleModalLabel" style="margin-left: 25%;">Datos físicos</h5>
       </div>
       <div class="modal-body">
-        <div class="alert alert-danger print-error-msg" style="display:none">
-        <ul></ul>
-        </div>
+        
         <!-- Contenido del formulario-->        
-          <div class="col">
-              {!! Form::label ('desaparecidoEstatura','Estatura (cm):') !!}
+          <div class="form-group col" id="div_estatura">
+              {!! Form::label ('estatura','Estatura (cm):',['class' => 'form-control-label']) !!}
               {!! Form::text ('esta',
                               old('esta'),
                               ['class' => 'form-control sinEnter soloNumeros',
                                       'placeholder' => 'CENTÍMETROS',
                                       'id' => 'esta', 'max' => '250', 'min' => '40', 'data-validation' => 'required',
                               ] )!!}
+              <div class="form-control-feedback" id="error_estatura"></div>
           </div>
-          <div class="col">
-              {!! Form::label ('desaparecidoPeso','Peso (kg):') !!}
+          <div class="form-group col" id="div_peso">
+              {!! Form::label ('peso','Peso (kg):',['class' => 'form-control-label']) !!}
               {!! Form::text ('bulto',
                                   old('bulto'),
                                   ['class' => 'form-control sinEnter soloNumeros',
                                       'placeholder' => 'KILOGRAMOS',
                                       'id' => 'bulto', 'maxlength' => 3
                                   ] )!!}
+              <div class="form-control-feedback" id="error_peso"></div>
           </div>
         
         

@@ -125,10 +125,13 @@ $(document).ready(function(){
         error: function(data) {
           console.log("error");
           console.log(data);
-          $(".print-error-msg").find("ul").html('');
-          $(".print-error-msg").css('display','block');
+          $('.modal-body div.has-danger').removeClass('has-danger');
+          $('.form-control-feedback').empty();
           $.each( data.responseJSON.errors, function( key, value ) {
-            $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+            
+            $('#div_'+key).addClass('has-danger');
+            $('input#'+key).addClass('form-control-danger');
+            $('#error_'+key).append(value);
           });
         }
       });
