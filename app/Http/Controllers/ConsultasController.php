@@ -32,9 +32,23 @@ class ConsultasController extends Controller
 		return response()->json($cedulas);
 	}
     
-    public function jsonDesaparecidosPersona(Request $request, $masc)
+    public function jsonDesaparecidosPersona(Request $request, $masc, $fem, $rg, $rg2)
 	{
 		//$cedulas = \DB::table('desaparecidos_cedula_investigacion')::all();
+//        
+//         $subs = \DB::table('desaparecidos_personas as desap')
+//
+//            ->select (\DB::raw('substr(desap.edadExtravio, 1,3)'))
+//             ->where('tipoPersona','DESAPARECIDA')
+//             ->get();
+//        dd($subs);
+//         $edad = \DB::table('desaparecidos_personas as desa')
+//
+//            ->select (\DB::raw('CAST ('$subs' AS SIGNED) '))
+//             ->where('tipoPersona','DESAPARECIDA')
+//             ->get();
+                
+        
         $desaparecidos = \DB::table('desaparecidos_personas as des')
 //                            ->leftJoin('desaparecidos_personas as d', 'c.id', '=',
 //                                \DB::raw('d.idCedula AND d.tipoPersona = "DESAPARECIDA"'))
@@ -44,10 +58,22 @@ class ConsultasController extends Controller
 //            ->join('cat_estado AS ce', 'dd.idEstado', '=', 'ce.id')
 //             'ce.id as idEstado',
 //                     'ce.nombre as estado',
-                            ->select('des.id as id', 'p.nombres as nombres', 'p.primerAp as pa', 'p.segundoAp as sa', 'p.sexo as sexo','des.apodo as apodo', 'des.edadExtravio as edad')
+                       
+                        //DB::raw('substr(id, 1, 4) as id')
+           
+                 
+            ->select('des.id as id', 'p.nombres as nombres', 'p.primerAp as pa', 'p.segundoAp as sa', 'p.sexo as sexo','des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'))
+            
+            
                             ->where('tipoPersona','DESAPARECIDA')
+                            //->where('des.edadExtravio', 'like', "$rg%")
+                            //->where('des.edadExtravio', 'like', "$rg2%")
+                            //->whereBetween('des.edadExtravio', [$rg, $rg2]) 
                             ->where('p.sexo',$masc)
-                            ->orWhere('p.sexo', 'M')
+                            ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
+                            ->orWhere('p.sexo', $fem) 
+                            ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
+                            //->where('des.edadExtravio', 'like', "$rg2%")
                             ->get();
 
 		return response()->json($desaparecidos);
