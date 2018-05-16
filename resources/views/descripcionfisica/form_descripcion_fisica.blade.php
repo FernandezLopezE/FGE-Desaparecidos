@@ -60,6 +60,10 @@
     transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
     }
 
+    #btnEditarC:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+
 </style>
 @endsection
 
@@ -68,19 +72,19 @@
 @include('includes.partesCuerpo.01Talla')
 <div class="card border-success">
     <div class="card-body"> 
-        @include('descripcionfisica.seccion_Estatura')
+        <!--@include('descripcionfisica.seccion_Estatura')-->
         <div class="form-group" id="fomularioPrin2" style="display:none;">
             <div class="card">
-              <div class="card-body">
+              <div class="card-header">
                 <h5>Selecciona la parte del cuerpo</h5>
               </div>
             </div>
         </div>
-        <div class="row" id="fomularioPrin" style="display:none;">
-            <div class="col-3">
+        <div class="form-group row" id="fomularioPrin" style="display:none;">
+            <div class="col-4">
             @include('descripcionfisica.avatar')
             </div>
-            <div class="col-9">
+            <div class="col">
              @include('descripcionfisica.seccion_Cabello')
             </div>
         </div>
@@ -92,6 +96,11 @@
 @section('scripts')
 <script type="text/javascript">
 $(document).ready(function(){
+  $("#talla").modal("show");
+  $("#esta").focus();
+
+  
+
   $("#guardarTalla").click(function(){
     console.log("entro");
     var dataString = {
@@ -109,21 +118,29 @@ $(document).ready(function(){
         data: dataString,
         dataType: 'json',
         success: function(data) {           
-        document.getElementById("colapsar2").click();
+        //document.getElementById("colapsar2").click();
+          $("#fomularioPrin").toggle();
+          $("#fomularioPrin2").toggle();
           console.log("hecho");
           console.log(data);
+          $("#talla").modal("hide");
           
         },
         error: function(data) {
           console.log("error");
           console.log(data);
+          $(".print-error-msg").find("ul").html('');
+          $(".print-error-msg").css('display','block');
+          $.each( data.responseJSON.errors, function( key, value ) {
+            $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
+          });
         }
       });
   });
-    $("#colapsar2").click(function(event) {
+    /*$("#colapsar2").click(function(event) {
         $("#fomularioPrin").toggle();
         $("#fomularioPrin2").toggle();
-    });
+    });*/
   //Ocultar Boton editar
   $("#btnEditarC").hide();
 
@@ -231,7 +248,68 @@ $(document).ready(function(){
                     $.each(data, function(key, value){    
                     $("#pCabello").empty();                    
 
-                        $("#pCabello").append('<div class="card-body bg-white">  <div class="row">    <div class="col-10">      <h5><strong>Datos Cabello</strong></h5>      <hr>      <dl class="row">        <dt class="col-sm-4">Color de cabello:</dt>        <dd class="col-sm-8">'+value.color+'                  </dd>        <dt class="col-sm-4">Tamaño de cabello:</dt>        <dd class="col-sm-8">'+value.tamano+'        </dd>        <dt class="col-sm-4">Tipo de cabello:</dt>        <dd class="col-sm-8">'+value.tipo+'        </dd>               <dt class="col-sm-4">Particularidades del cabello:</dt>        <dd class="col-sm-8">'+value.particularidades+'        </dd>        <dt class="col-sm-4">Modificaciones del cabello:</dt>        <dd class="col-sm-8">'+value.modificaciones+'        </dd>        <dt class="col-sm-4">Observaciones del cabello:</dt>        <dd class="col-sm-8">'+value.observaciones+'        </dd>      </dl>      <hr>    </div>  </div></div>');
+                        $("#pCabello").append('<div class="card">'+
+                                                '<div class="card-header bg-white">'+
+                                                    '<h5><b>Datos del cabello</b></h5>'+
+                                                '</div>'+
+                                                '<div class="card-body">'+
+                                                    '<div class="row" >'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Color:</label>'+
+                                                        '</div>'+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.color+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
+
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Tamaño:</label>'+
+                                                        '</div>'+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.tamano+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
+
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Tipo:</label>'+
+                                                        '</div>'+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.tipo+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
+
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Particularidades:</label>'+
+                                                        '</div>'+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.particularidades+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
+
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Modificaciones:</label>'+
+                                                        '</div>'+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.modificaciones+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
+
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Observaciones:</label>'+
+                                                        '</div>'+
+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.observaciones+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
+                                                '</div>'+
+                                            '</div>');
+
 
                     });
 
@@ -250,7 +328,7 @@ $(document).ready(function(){
                     $.each(data, function(key, value){   
                     pCabello                     
 $("#pBarba").empty();
-                        $("#pBarba").append('<div class="card-body bg-white">  <div class="row">    <div class="col-10">      <h5><strong>Datos Barba</strong></h5>      <hr>      <dl class="row">        <dt class="col-sm-4">Color de barba:</dt>        <dd class="col-sm-8">'+value.color+'                  </dd>     <dt class="col-sm-4">Tipo de barba:</dt>        <dd class="col-sm-8">'+value.tipo+'    </dd>                 <dt class="col-sm-4">Estilo de la barba:</dt>        <dd class="col-sm-8">'+value.estilo+'        </dd>        <dt class="col-sm-4">Observaciones de la barba:</dt>        <dd class="col-sm-8">'+value.observaciones+'        </dd>      </dl>      <hr>    </div>  </div></div>');
+                        $("#pBarba").append('<div class="card bg-white">  <div class="row">    <div class="col-10">      <h5><strong>Datos Barba</strong></h5>      <hr>      <dl class="row">        <dt class="col-sm-4">Color de barba:</dt>        <dd class="col-sm-8">'+value.color+'                  </dd>     <dt class="col-sm-4">Tipo de barba:</dt>        <dd class="col-sm-8">'+value.tipo+'    </dd>                 <dt class="col-sm-4">Estilo de la barba:</dt>        <dd class="col-sm-8">'+value.estilo+'        </dd>        <dt class="col-sm-4">Observaciones de la barba:</dt>        <dd class="col-sm-8">'+value.observaciones+'        </dd>      </dl>          </div>  </div></div>');
 
                     });
 
@@ -267,7 +345,7 @@ $("#pBarba").empty();
                         
                     $.each(data, function(key, value){                        
 $("#pBigote").empty();
-                        $("#pBigote").append('<div class="card-body bg-white">  <div class="row">    <div class="col-10">      <h5><strong>Datos bigote</strong></h5>      <hr>      <dl class="row">        <dt class="col-sm-4">Color del bigote:</dt>        <dd class="col-sm-8">'+value.color+'                  </dd>     <dt class="col-sm-4">Tipo de bigote:</dt>        <dd class="col-sm-8">'+value.tipo+'    </dd>                 <dt class="col-sm-4">Estilo del bigote:</dt>        <dd class="col-sm-8">'+value.estilo+'        </dd>        <dt class="col-sm-4">Observaciones del bigote:</dt>        <dd class="col-sm-8">'+value.observaciones+'        </dd>      </dl>      <hr>    </div>  </div></div>');
+                        $("#pBigote").append('<div class="card-body bg-white">  <div class="row">    <div class="col-10">      <h5><strong>Datos bigote</strong></h5>      <hr>      <dl class="row">        <dt class="col-sm-4">Color del bigote:</dt>        <dd class="col-sm-8">'+value.color+'                  </dd>     <dt class="col-sm-4">Tipo de bigote:</dt>        <dd class="col-sm-8">'+value.tipo+'    </dd>                 <dt class="col-sm-4">Estilo del bigote:</dt>        <dd class="col-sm-8">'+value.estilo+'        </dd>        <dt class="col-sm-4">Observaciones del bigote:</dt>        <dd class="col-sm-8">'+value.observaciones+'        </dd>      </dl>          </div>  </div></div>');
 
                     });
 
