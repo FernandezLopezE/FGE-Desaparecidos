@@ -1,99 +1,31 @@
 @extends('layouts.app_uipj')
-
 @section('css')
-{!! Html::style('') !!}
 <style type="text/css">
 	.modal-lg {
 		max-width: 80%;
 	}
-	.gi-3x{font-size: 2.5em;}
 </style>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+<link rel="stylesheet" href="{{ asset('plugins/bootstrap-colorselector/bootstrap-colorselector.min.css') }}">
 	
 @endsection
-
-@section('titulo', 'Registro único de personas desaparecidas')
-
 @section('content')
-<nav>
-	<div class="nav nav-tabs" id="nav-tab" role="tablist">
-			<a class="nav-item nav-link" href="#" aria-selected="true">
-				Entrevista
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Informantes
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Desaparecido
-			</a>
-			<a class="nav-item nav-link" href="{{route('familiar.show',['id' => $desaparecido->id])}}" aria-selected="false">
-				Familiares
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Contacto
-			</a>
-			<a class="nav-item nav-link" href="{{route('domicilios.show',['id' => $desaparecido->id])}}" aria-selected="false">
-				Domicilios
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Antecedentes
-			</a>
-			<a class="nav-item nav-link active" href="#" aria-selected="false">
-				Vestimenta
-			</a>				
-	</div>
-</nav>
+@include('navs.navs_datos',array('activar' => 'vestimenta'))
+<button type="button" class="btn btn-dark pull-right"  id="nuevaPrenda">AGREGAR PRENDA</button>
 
-<hr>
-<div class="card border-success">
-	<div class="card-header">
-		<h5 class="card-title">Datos de la vestimenta
-		<button type="button" class="btn btn-dark pull-right"  id="nuevaPrenda"><i class="fa fa-plus"></i> AGREGAR PRENDA</button>
-		</h5>
-	</div>
-	<div class="card-body">	
-	@include('includes.modalVestimenta')
+<div class="card-body bg-white">	
+	@include('vestimenta.modals.modal_vestimenta')
 	<table id="tableInformantes" ></table>
-	</div>
-</div><hr>
-
-<div class="card border-success">
-	<div class="card-header">
-		<h5 class="card-title">Datos del calzado
-		<button type="button" class="btn btn-dark pull-right"  id="nuevoZapato"><i class="fa fa-plus"></i> AGREGAR CALZADO</button>
-		</h5>
-	</div>
-	<div class="card-body">	
-		@include('includes.modalCalzado')
-		<table id="tableCalzado" ></table>
-	</div>
-</div><hr>
-
-<div class="card border-success">
-	<div class="card-header">
-		<h5 class="card-title">ACCESORIOS Y OBJETOS</h5>
-	</div>
-	<div class="card-body">
-		<div class="row">
-            <div class="col">
-              {!! Form::label ('elijaAccesoriosObjetos','Elija los accesorios y objetos que tenía el desaparecido:') !!}
-              {!! Form::select('accesoriosObjetos[]', $accesoriosObjetos, null, ['class' => 'form-control', 'multiple' => 'multiple' ,'id'=>'accesoriosObjetos']) !!}
-            </div>
-          </div><hr>
-
-          <div class="row">
-            <div class="col">
-              <h5 class="card-title">Observaciones:</h5>    
-              {!! Form::textarea  ('descripcionVestimenta',old('Descripción vestimenta'), ['class' => 'form-control mayuscula', 'id' => 'descripcionVestimenta','size' => '30x4', 'data-validation' =>'required','data-validation-error-msg-required' =>'Ingrese las observaciones de la vestimenta'])!!}
-            </div>
-          </div>
-          <br>
-          <input type="button" name="btnAOS" id="btnAOS" value="AGREGAR" class="btn btn-dark pull-right">
-	</div>
-	
 </div>
-
 @endsection
+
 @section('scripts')
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+<script src="{{ asset('plugins/bootstrap-colorselector/bootstrap-colorselector.min.js')}}" ></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		var otroC;
@@ -102,12 +34,16 @@
 		var tipoCal;
 		var otroTipoZ;
 		var otroCo;
-	//Vista de datos de la vestimenta
+		var table = $('#tableInformantes');
+		var routeIndex = '{!! route('consultas.index') !!}';
+
+		//Vista de datos de la vestimenta
 		$('#nuevaPrenda').click(function(e){
 			$('#modalVestimenta').modal('show');
 			$('#btnActualizarP').hide();
 			$('#btnPrenda').show();
 		});
+
 		$("#prendaColor").change(function() {
 			otroC = $('#prendaColor').val();
 			//alert(otroC);
@@ -117,6 +53,7 @@
 				$("#otroColor").hide();
 			}
 		});
+
 		$("#idColor").change(function() {
 			otroCo = $('#idColor').val();
 			//alert(otroC);
@@ -135,16 +72,8 @@
 				$("#otraPrenda").hide();
 			}
 		});
-		/*$("#idVestimenta").change(function() {
-			tipoV = $('#idVestimenta').val();
-			if (tipoV==9) {
-				$("#FormularioVestimenta").hide();
-			}else{
-				$("#FormularioVestimenta").show();
-			}
-		});*/
-		var table = $('#tableInformantes');
-		var routeIndex = '{!! route('consultas.index') !!}';	
+
+
 		
 		var formatTableActions = function(value, row, index) {				
 			btn = '<button class="btn btn-info btn-xs edit" id="editPrenda"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
@@ -172,7 +101,7 @@
 			$('#modalGeneral').modal('show');
 		})
 		table.bootstrapTable({				
-			url: routeIndex+'/get_prendas/{{$desaparecido->idCedula}}',
+			url: routeIndex+'/get_prendas/',
 			columns: [{					
 				field: 'id',
 				title: 'ID',
@@ -244,7 +173,7 @@
 			$('#modalGeneral').modal('show');
 		})
 		table2.bootstrapTable({				
-			url: routeIndex+'/get_calzado/{{$id}}',
+			url: routeIndex+'/get_calzado/',
 			columns: [{					
 				field: 'nombretipo',
 				title: 'Tipo calzado',
@@ -259,7 +188,7 @@
 				title: 'Color',
 			}, {					
 				field: 'talla',
-				title: 'talla',
+				title: 'Talla',
 			}, {					
 				title: 'Acciones',
 				formatter: formatTableActions,
@@ -268,6 +197,129 @@
 		})
 	//Fin de vista de datos de calzado
 	//----
+        
+	//Vista de datos de accesorios
+        
+        var table3 = $('#tableAccesorios');
+		var routeIndex3 = '{!! route('consultas.index') !!}';
+        
+        var formatTableActions = function(value, row, index) {				
+			btn = '<button class="btn btn-info btn-xs edit" id="editAccesorio"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
+			
+			return [btn].join('');
+		};
+        window.operateEvents = {
+			'click #editAccesorio': function (e, value, row, index) {					
+				console.log(row);
+				//bodyModal.empty();
+				$('#idAccesorio').val(row.id);
+				$('#accesoriosObjetos').val(row.tipo);
+				$('#accesorioMaterial').val(row.material);
+				$('#accesorioColor').val(row.pColor);
+				$('#accesorioColorOtro').val(row.otroC);
+				$('#accesorioMarcaOrigen').val(row.marca);
+				$("#btnActualizarA").show();
+				$("#btnAccesorio").hide();
+				$("#modalAccesorios").modal("show");
+			}
+		}
+        
+		$('#nuevoAccesorio').click(function(e){
+			$('#modalAccesorios').modal('show');
+			$('#btnActualizarA').hide();
+			$('#btnAccesorio').show();
+		});  
+        
+        $('#btnAccesorio').click (function(){
+		//alert("hola");
+		var dataString = {
+			
+			//prendaTipo: $('#idVestimenta').val(),
+            accesoriosObjetos: $('#accesoriosObjetos').val(),
+            accesorioMaterial: $('#accesorioMaterial').val(),
+            accesorioColor: $('#accesorioColor').val(),
+            accesorioColorOtro: $('#accesorioColorOtro').val(),
+            accesorioMarcaOrigen: $('#accesorioMarcaOrigen').val(),
+			idCedula: $("#idCedula").val()
+		};
+		console.log(dataString);
+		$.ajax({
+			type: 'POST',
+			url: '/desaparecido/store_accesorios',
+			data: dataString,
+			dataType: 'json',
+			success: function(data) {						
+				console.log(data);
+				table3.bootstrapTable('refresh');
+				$("#modalAccesorios").modal("hide");
+				
+												
+			},
+			error: function(data) {
+				console.log(data);
+			}
+		});
+	});
+        $('.modal-footer').on('click','#btnActualizarA', function(){
+		//alert("hola");
+		var dataString = {
+			//prendaTipo: $('#idVestimenta').val(),
+			accesoriosObjetos: $('#accesoriosObjetos').val(),
+            accesorioMaterial: $('#accesorioMaterial').val(),
+            accesorioColor: $('#accesorioColor').val(),
+            accesorioColorOtro: $('#accesorioColorOtro').val(),
+            accesorioMarcaOrigen: $('#accesorioMarcaOrigen').val(),
+			idCedula: $("#idCedula").val(),
+			idAccesorio: $("#idAccesorio").val()
+		};
+
+		$.ajax({
+			type: 'POST',
+			url: '/desaparecido/update_accesorios',
+			data: dataString,
+			dataType: 'json',
+			success: function(data) {						
+				console.log(data);
+				table3.bootstrapTable('refresh');
+				$("#modalAccesorios").modal("hide");	
+				
+												
+			},
+			error: function(data) {
+				console.log(data);
+			}
+		});
+	});
+        
+       		table3.bootstrapTable({				
+			url: routeIndex3+'/get_accesorios/',
+			columns: [{					
+				field: 'id',
+				title: 'ID',
+			}, {					
+				field: 'tipo',
+				title: 'Nombre',
+			}, {					
+				field: 'color',
+				title: 'Color',
+			}, {					
+				field: 'material',
+				title: 'Material',
+			},{					
+				field: 'marca',
+				title: 'Marca',
+			}, {					
+				title: 'Acciones',
+				formatter: formatTableActions,
+				events: operateEvents
+			}]				
+		}) 
+        
+        
+        
+    //FIN DEL APARTADO DE ACCESORIOS
+        
+        
 		$('#btnPrenda').click (function(){
 		//alert("hola");
 		var dataString = {
@@ -391,7 +443,7 @@
 			}
 		});
 	});
-	
+
 	});
 </script>
 @endsection

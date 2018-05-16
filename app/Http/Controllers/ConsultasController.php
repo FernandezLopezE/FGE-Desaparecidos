@@ -390,7 +390,6 @@ class ConsultasController extends Controller
     }
 
     public function jsonDes(Request $request)
-
     {
 
     	$idDep  =($request['idDependencia']);
@@ -407,6 +406,13 @@ class ConsultasController extends Controller
                 ->where('cd.id_dependencia', $idDep)
                 ->get();
             return response()->json($destinatarios);
+    }
+
+    public function jsonCatPrendas(Request $request, $idVestimenta)
+    {
+        $prendas = \App\Models\CatPrenda::all();
+
+        return response()->json($prendas);
     }
 
 }

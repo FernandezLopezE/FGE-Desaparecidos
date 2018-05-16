@@ -8,17 +8,15 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">
-					{{ Form::hidden('idCedula', $id, array('id' => 'idCedula')) }}
-					{{ Form::hidden('idPrenda','', array('id' => 'idPrenda')) }}   
+				<div class="modal-body"> 
 					<form>     
 					<!-- Contenido del formulario-->
-					<!--<div class="row">
+					<div class="row">
 						<div class="col">
-							{!! Form::label ('elijaVestimenta','Tipo de vestimenta:') !!}
-							{!! Form::select('idVestimenta[]', $vestimenta, null, ['class' => 'form-control' ,'id'=>'idVestimenta']) !!}
+							{!! Form::label ('idVestimenta','Tipo de vestimenta:') !!}
+							{!! Form::select('idVestimenta', $vestimentas, null, ['class' => 'form-control' ,'id'=>'idVestimenta']) !!}
 						</div>
-					</div><br>-->
+					</div><br>
 					<div id="FormularioVestimenta" >
 					<div class="row">
 						<div class="col-4">
@@ -32,27 +30,14 @@
 						<div class="col-4">
 							{!! Form::label ('nombreColor','Color:') !!}
 							{!! Form::select ('prendaColor[]',$colores,'', ['class' => 'form-control', 'id' => 'prendaColor' ] )!!}
-						<ul class="colorpicker">
-							<li class="green-bg"></li>
-							<li class="lightgreen-bg"></li>
-							<li class="lime-bg"></li>
-							<li class="yellow-bg"></li>
-							<li class="orange-bg active"></li>
-							<li class="deeporange-bg"></li>
-							<li class="red-bg"></li>
-							<li class="pink-bg"></li>
-							<li class="purple-bg"></li>
-							<li class="deeppurple-bg"></li>
-							<li class="blue-bg"></li>
-							<li class="lightblue-bg"></li>
-						</ul>
 						</div>
+
 					</div><br>
 
 				 <div class="row" style="display:none" id="otroColor">
 					 <div class="col">
 							{!! Form::label ('colorPrenda','Otro:') !!}
-							{!! Form::text ('colorPrenda',old('Otro color'),['class' => 'form-control mayuscula','id' => 'colorPrenda', 'placeholder' => 'Ingresa una descripción de los colores de la prenda. Ejemplo: cuadros rojos con azul marino'] )!!}
+							{!! Form::text ('colorPrenda',old('Otro color'),['class' => 'form-control mayuscula','id' => 'colorPrenda', 'placeholder' => 'Ingresa una descripción de los colores de la prenda. Ejemplo: cuadros rojos con azul marino'] )!!}						
 						</div>
 				 </div>
 

@@ -15,13 +15,17 @@ class CreateDesaparecidosPrendasTable extends Migration
             $table->increments('id');
             $table->string('tipo',50)->nullable();
             $table->string('material',50)->nullable();
-            //$table->string('color',50);
             $table->string('otroColor')->nullable();
-            $table->string('dibujoBordadoFranja',50)->nullable();
+            $table->string('dibujoBordadoModelo',50)->nullable();
             $table->string('marcaOrigen',50)->nullable();
             $table->string('talla',50)->nullable();
             $table->integer('color')->unsigned();
             $table->foreign('color')->references('id')->on('cat_colores');
+
+            $table->integer('idVestimenta')->unsigned();
+            $table->foreign('idVestimenta')->references('id')->on('cat_vestimentas');
+            $table->integer('idPrenda')->unsigned();
+            $table->foreign('idPrenda')->references('id')->on('cat_prendas');
             $table->integer('idCedula')->unsigned();
             $table->foreign('idCedula')->references('id')->on('desaparecidos_cedula_investigacion');
             $table->timestamps();
