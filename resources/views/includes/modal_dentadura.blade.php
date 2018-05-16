@@ -10,12 +10,12 @@
       <div class="modal-body">
         <!-- Contenido del formulario-->
         <div class="form-group row">
-          <div class="col-md-4">
+          <div class="col-8">
             <img src="/images/esquema-dental.jpg" width="362" height="446" border="0" usemap="#dientes" id="dientes" />
           </div>
-          <div class="col-md-8">
+          <div class="col-md-4">
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-8">
                 <div class="form-group two-fields">
                   <div class="input-group">
                     <label style="margin-left: 12%">Diente seleccionado</label>
