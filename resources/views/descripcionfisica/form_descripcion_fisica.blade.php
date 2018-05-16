@@ -60,6 +60,10 @@
     transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
     }
 
+    #btnEditarC:hover {
+    transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    }
+
 </style>
 @endsection
 
@@ -71,16 +75,16 @@
         <!--@include('descripcionfisica.seccion_Estatura')-->
         <div class="form-group" id="fomularioPrin2" style="display:none;">
             <div class="card">
-              <div class="card-body">
+              <div class="card-header">
                 <h5>Selecciona la parte del cuerpo</h5>
               </div>
             </div>
         </div>
-        <div class="row" id="fomularioPrin" style="display:none;">
-            <div class="col-3">
+        <div class="form-group row" id="fomularioPrin" style="display:none;">
+            <div class="col-4">
             @include('descripcionfisica.avatar')
             </div>
-            <div class="col-9">
+            <div class="col">
              @include('descripcionfisica.seccion_Cabello')
             </div>
         </div>
@@ -125,13 +129,10 @@ $(document).ready(function(){
         error: function(data) {
           console.log("error");
           console.log(data);
-          $('.modal-body div.has-danger').removeClass('has-danger');
-          $('.form-control-feedback').empty();
+          $(".print-error-msg").find("ul").html('');
+          $(".print-error-msg").css('display','block');
           $.each( data.responseJSON.errors, function( key, value ) {
-            
-            $('#div_'+key).addClass('has-danger');
-            $('input#'+key).addClass('form-control-danger');
-            $('#error_'+key).append(value);
+            $(".print-error-msg").find("ul").append('<li>'+value+'</li>');
           });
         }
       });
@@ -249,61 +250,61 @@ $(document).ready(function(){
 
                         $("#pCabello").append('<div class="card">'+
                                                 '<div class="card-header bg-white">'+
-                                                    '<h5>Datos Cabello</h5>'+
+                                                    '<h5><b>Datos del cabello</b></h5>'+
                                                 '</div>'+
                                                 '<div class="card-body">'+
-                                                    '<div class="form-group row">'+
-                                                        '<div class="col">'+
-                                                        '<dt>Color de cabello:</dt>'+
+                                                    '<div class="row" >'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Color:</label>'+
                                                         '</div>'+
                                                         '<div class="col">'+
-                                                        '<dd>'+value.color+'</dd>'+
-                                                        '</div>'+
-                                                    '</div>'+
-
-                                                    '<div class="form-group row">'+
-                                                        '<div class="col">'+
-                                                        '<dt>Tamaño de cabello:</dt>'+
-                                                        '</div>'+
-                                                        '<div class="col">'+
-                                                        '<dd>'+value.tamano+'</dd>'+
+                                                        '<p>'+value.color+'</p>'+
                                                         '</div>'+
                                                     '</div>'+
 
-                                                    '<div class="form-group row">'+
-                                                        '<div class="col">'+
-                                                        '<dt>Tipo de cabello:</dt>'+
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Tamaño:</label>'+
                                                         '</div>'+
                                                         '<div class="col">'+
-                                                        '<dd>'+value.tipo+'</dd>'+
-                                                        '</div>'+
-                                                    '</div>'+
-
-                                                    '<div class="form-group row">'+
-                                                        '<div class="col">'+
-                                                        '<dt>Particularidades del cabello:</dt>'+
-                                                        '</div>'+
-                                                        '<div class="col">'+
-                                                        '<dd>'+value.particularidades+'</dd>'+
+                                                        '<p>'+value.tamano+'</p>'+
                                                         '</div>'+
                                                     '</div>'+
 
-                                                    '<div class="form-group row">'+
-                                                        '<div class="col">'+
-                                                        '<dt>Modificaciones del cabello:</dt>'+
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Tipo:</label>'+
                                                         '</div>'+
                                                         '<div class="col">'+
-                                                        '<dd>'+value.modificaciones+'</dd>'+
+                                                        '<p>'+value.tipo+'</p>'+
                                                         '</div>'+
                                                     '</div>'+
 
-                                                    '<div class="form-group row">'+
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Particularidades:</label>'+
+                                                        '</div>'+
                                                         '<div class="col">'+
-                                                        '<dt>Observaciones del cabello:</dt>'+
+                                                        '<p>'+value.particularidades+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
+
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Modificaciones:</label>'+
+                                                        '</div>'+
+                                                        '<div class="col">'+
+                                                        '<p>'+value.modificaciones+'</p>'+
+                                                        '</div>'+
+                                                    '</div>'+
+
+                                                    '<div class="row" style="margin-top:-10px">'+
+                                                        '<div class="col-4">'+
+                                                        '<label>Observaciones:</label>'+
                                                         '</div>'+
 
                                                         '<div class="col">'+
-                                                        '<dd>'+value.observaciones+'</dd>'+
+                                                        '<p>'+value.observaciones+'</p>'+
                                                         '</div>'+
                                                     '</div>'+
                                                 '</div>'+
@@ -327,7 +328,7 @@ $(document).ready(function(){
                     $.each(data, function(key, value){   
                     pCabello                     
 $("#pBarba").empty();
-                        $("#pBarba").append('<div class="card-body bg-white">  <div class="row">    <div class="col-10">      <h5><strong>Datos Barba</strong></h5>      <hr>      <dl class="row">        <dt class="col-sm-4">Color de barba:</dt>        <dd class="col-sm-8">'+value.color+'                  </dd>     <dt class="col-sm-4">Tipo de barba:</dt>        <dd class="col-sm-8">'+value.tipo+'    </dd>                 <dt class="col-sm-4">Estilo de la barba:</dt>        <dd class="col-sm-8">'+value.estilo+'        </dd>        <dt class="col-sm-4">Observaciones de la barba:</dt>        <dd class="col-sm-8">'+value.observaciones+'        </dd>      </dl>          </div>  </div></div>');
+                        $("#pBarba").append('<div class="card bg-white">  <div class="row">    <div class="col-10">      <h5><strong>Datos Barba</strong></h5>      <hr>      <dl class="row">        <dt class="col-sm-4">Color de barba:</dt>        <dd class="col-sm-8">'+value.color+'                  </dd>     <dt class="col-sm-4">Tipo de barba:</dt>        <dd class="col-sm-8">'+value.tipo+'    </dd>                 <dt class="col-sm-4">Estilo de la barba:</dt>        <dd class="col-sm-8">'+value.estilo+'        </dd>        <dt class="col-sm-4">Observaciones de la barba:</dt>        <dd class="col-sm-8">'+value.observaciones+'        </dd>      </dl>          </div>  </div></div>');
 
                     });
 
