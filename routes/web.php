@@ -117,6 +117,8 @@ Route::resource('image-view','CargarDocumentosController');
 Route::post('image-view','CargarDocumentosController@store');
 //ruta a controlador MailController para envio de correo
 Route::post('/enviar_correo','MailController@store');
+Route::get('imagenAntecedentesM','AntecedentesMedicosController@show');
+Route::post('imagenAntecedentesM','AntecedentesMedicosController@store_imagen');
 
 
 
@@ -323,9 +325,10 @@ Route::get('/get_des','ConsultasController@jsonDes')
 Route::get('/envioDocumentos','MailController@envioDocumentos');
 
 //Anexos
-Route::get('/anexos','AnexosController@show');
+Route::get('anexos','AnexosController@show');
 	
-
+Route::resource('desaparicion','DesaparicionController');
+	
 
 
 

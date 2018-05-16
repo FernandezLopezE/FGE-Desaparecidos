@@ -1,11 +1,25 @@
 @extends('layouts.app_uipj')
+@section('css')
+
+<link href="../plugins/bootstrap_fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+@endsection
 
 @section('content')
 @include('navs.navs_datos',array('activar' => 'ant_medicos'))
   {{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}
+
+  <div class = "card border-primary">
+    
+          <div class="card-header"> 
+                <h5>ANTECEDENTES MÉDICOS
+                 <button  type="button" class="btn btn-dark pull-right"  id="nuevoAntecedenteMedico">Agregar</button> 
+                </button>   
+                </h5>
+          </div>
+        
 	<div class="card-body bg-white">
-    <button  type="button" class="btn btn-dark pull-right"  id="nuevoAntecedenteMedico">Agregar</button>
-    <br>
+   {{-- <button  type="button" class="btn btn-dark pull-right"  id="nuevoAntecedenteMedico">Agregar</button>
+    <br>--}}
     <br>	
     <form id="formAntecedentesM">
       <div class="row">
@@ -163,7 +177,9 @@
                     ] )!!}
           </div>  
           </div>                      
-    </div>  
+    </div> 
+
+
     <br>
       <div class="row">
          <div class="col">
@@ -178,17 +194,49 @@
                                 old('medicamentos',null),
                                 ['class' => 'form-control mayuscula sinEnter', 'id' => 'medicamentosToma','size' => '30x4', 'placeholder' => 'Ingrese los medicamentos que toma'])!!}
             </div>                            
-    </div>       
-    <hr>
-    </form>  
+    </div> 
+   
+       
+  
+    </form>
+    </div>   
 	</div>	
+
+{{--LO SIGUIENTE ES EL FILE INPUT PARA CARGAR IMAGEN DE RADIOGRAFIAS--}}
  
+<div class="card border-primary">
+        <div class="card border-success">
+          <div class="card-header"> 
+              <h5>CARGAR DOCUMENTO DE RADIOGRAFÍAS
+              <button type="submit" class="btn btn-dark pull-right"  id="btnAgregarAnexo"> AGREGAR   
+              </button>   
+              </h5>
+          </div>
+        </div>
+        
+         @include('antecedentesmedicos.modals.modal_cargar_documento')
+</div>
 
 
 
 @endsection	
 
 @section('scripts')
+
+
+
+<script src="../plugins/bootstrap_fileinput/js/popper.min.js" type="text/javascript"></script>---
+
+
+<script src="../plugins/bootstrap_fileinput/js/bootstrap.min.js" type="text/javascript"></script>---
+<!-- the main fileinput plugin file -->
+<script src="../plugins/bootstrap_fileinput/js/fileinput.js"></script>-------
+<!-- optionally uncomment line below for loading your theme assets for a theme like Font Awesome (`fa`) -->
+ <script src="../plugins/bootstrap_fileinput/js/theme.js"></script>-----
+<!-- optionally if you need translation for your language then include  locale file as mentioned below -->
+<script src="../plugins/bootstrap_fileinput/js/es.js"></script>
+
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 <script type="text/javascript">
@@ -197,7 +245,7 @@
 		var otraIq;
     var otraA;
     var otroIm;
-
+   
 //Aplicacion de select2
 $('#idEnfermedad').select2();
   $('#idIQuirurgica').select2();
@@ -395,7 +443,37 @@ $("#sinInformacionIm").change(function () {
       }
       });
   });
+  var modalAnexos = $('#modalAnexosAntecedentesMedicos');
+$('#btnAgregarAnexo').click (function(){
 
+
+  modalAnexos.modal('show');
+
+
+})
+var hola= "hola wey";
+$("#fileImagenes").fileinput({
+                  theme: 'fa',
+                  uploadUrl: "/imagenAntecedentesM",
+                  hola : hola,
+                  uploadExtraData: function() {
+                    console.log($("input[name='_token']").val());
+                      return {
+
+                          _token: $("input[name='_token']").val(),
+
+                      };
+                  },
+                  allowedFileExtensions: ['jpg', 'png', 'gif'],
+                  overwriteInitial: false,
+                  maxFileSize:2000,
+                  maxFilesNum: 10,
+                  slugCallback: function (filename) {
+
+                      return filename.replace('(', '_').replace(']', '_');
+                  }
+
+              });
 
 	</script>
 @endsection

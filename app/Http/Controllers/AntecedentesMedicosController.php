@@ -122,7 +122,7 @@ class AntecedentesMedicosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($idExtraviado)
+    public function show($idExtraviado, Request $request)
     {
         //
         $desaparecido = Desaparecido::find($idExtraviado);
@@ -175,5 +175,19 @@ class AntecedentesMedicosController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function store_imagen(Request $request)
+        {
+     
+            $imageName = request()->file->getClientOriginalName();
+            request()->file->move(public_path('upload'), $imageName);
+          
+            
+            return response()->json(['uploaded' => '/upload/'.$imageName]);
+    }
+    public function imagen(Request $request)
+        {
+       
     }
 }

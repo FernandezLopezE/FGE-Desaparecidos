@@ -12,14 +12,17 @@ class CargarDocumentosController extends Controller
 {
     
 
-    public function show(){
-		//$idCedula = $id;
-		//$cedula = \App\Models\Cedula::find($idCedula);
+    public function show($id){
+	
+		 $desaparecido = \App\Models\Desaparecido::find($id);
 
 			//esto es para la vista de historial dental y radiografias
 		$option = array(
-			'0' => 'SIN INFORMACION',
-			'1' => 'SI');
+			'0' => 'HISTORIAL CLÍNICO DENTAL',
+			'1' => 'RADIOGRAFÍA',
+            '2' => 'MODELO DE ESTUDIO',
+            '3' => 'FOTOGRAFÍAS'
+        );
 		/*$meses = array(
 			'1' => 'ENERO',
 			'2' => 'FEBRERO',
@@ -36,7 +39,7 @@ class CargarDocumentosController extends Controller
 
 
 		return view('cargardocumentos.historialdental_radiografia',[
-			//'id' => $cedula->id,
+			'desaparecido' => $desaparecido,
 			'option' =>$option
 			]);		
 	}

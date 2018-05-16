@@ -17,7 +17,7 @@
 
 @section('content')
 
-@include('navs.navs_datos',array('activar' => 'anexos'))
+{{--@include('navs.navs_datos',array('activar' => 'anexos'))--}}
 
 <hr>
 
