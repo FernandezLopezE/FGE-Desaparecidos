@@ -2,20 +2,20 @@
 @section('css')
 <style type="text/css">
     .human-body {
-        width: 207px;
+        width: 310.5px;
         position: relative;
-        margin-left: 40px;
+        margin-left: 15px;
         /*padding-top: 240px;*/
         /*height: 260px;*/
         display: block;
         /*margin: 40px auto;*/
     }
-    .human-body svg:hover {
+    /*.human-body svg:hover {
         cursor: pointer;
         transition: transform .2s;
         transform: scale(1.5);
 
-    }
+    }*/
     .human-body g:hover path {
         fill: #17a4da;
     }
@@ -80,14 +80,15 @@
         <div class="form-group" id="fomularioPrin2">
                 <h6><b>Selecciona la parte del cuerpo</b></h6>            
         </div>
-        <div class="row" id="fomularioPrin" style="margin-top:7%">
-            <div class="col-3">
-            @include('descripcionfisica.avatar')
+        <div class="row" id="fomularioPrin" >
+            <div class="col">
+              @include('descripcionfisica.avatar')
             </div>
-            <div class="col-9">
-             @include('descripcionfisica.seccion_Cabello')
+            <div class="col-8">
+              @include('descripcionfisica.seccion_Cabello')
             </div>
         </div>
+        
     </div>
 </div>
 
