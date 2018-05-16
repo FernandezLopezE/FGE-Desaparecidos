@@ -1,30 +1,15 @@
 @extends('layouts.app_uipj')
 @section('css')
 <style type="text/css">
-    .human-body {
+    .human-body svg{
         width: 310.5px;
-        position: relative;
         margin-left: 15px;
-        /*padding-top: 240px;*/
-        /*height: 260px;*/
         display: block;
-        /*margin: 40px auto;*/
     }
-    /*.human-body svg:hover {
-        cursor: pointer;
-        transition: transform .2s;
-        transform: scale(1.5);
-
-    }*/
+ 
     .human-body g:hover path {
         fill: #17a4da;
     }
-    /*.human-body svg {
-        position: absolute;
-        left: 50%;
-        fill: #57c9d5;
-    }*/
-
 
     .human-body svg g path{
         position: absolute;
@@ -32,40 +17,24 @@
         fill: #a8a8a8;
     }
 
-
-    #area {
-        display: block;
-        width: 100%;
-        clear: both;
-        padding: 10px;
-        text-align: center;
-        font-size: 25px;
-        font-family: Courier New;
-        color: #a5a5a5;
-    }
-
-    #area #data {
-        color: black;
-    }
-
     #cerrar:hover {
-    transform: scale(1.7); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: scale(1.7);
     }
 
     #colapsar:hover {
-    transform: scale(1.7); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: scale(1.7);
     }
 
     #colapsar2:hover {
-    transform: scale(1.7); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: scale(1.7);
     }
 
     #btnEditarC:hover {
-    transform: scale(1.7); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: scale(1.7);
     }
 
     #editFis:hover {
-    transform: scale(1.7); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: scale(1.7);
     }
 
 </style>
