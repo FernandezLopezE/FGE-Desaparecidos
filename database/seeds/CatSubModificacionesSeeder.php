@@ -15,7 +15,7 @@ class CatSubModificacionesSeeder extends Seeder
           DB::table('cat_sub_modificaciones')->insert([
 
             //CABELLO
-         	['idModificacionesCuerpo'=>1, 'nombre' => 'BASE/PERMANENTE'],
+            ['idModificacionesCuerpo'=>1, 'nombre' => 'BASE/PERMANENTE'],
             ['idModificacionesCuerpo'=>1, 'nombre' => 'ALACIADO'],
             ['idModificacionesCuerpo'=>1, 'nombre' => 'MECHAS'],
             ['idModificacionesCuerpo'=>1, 'nombre' => 'EXTENSIONES'],
