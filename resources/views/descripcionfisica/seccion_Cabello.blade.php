@@ -1,7 +1,8 @@
 <div class="cabello" style="display:none;" id="acordion">
 <div class="card border-success" >
     <div class="card-header" id="headingOne">
-        <h5 class="card-title">Cabello, barba, bigote y patillas  
+        <h5 class="card-title">Cabello, barba, bigote y patillas 
+        	<i class="fa fa-edit pull-right" id="btnEditarC"></i>
         	<i class="fa fa-times-circle" style="float: right; margin-left: 10px;" id="cerrar"></i>
         	<i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="colapsar"></i>
         	
