@@ -248,9 +248,9 @@
     
 var btnLimpiar = $('#btnLimpiar');
     
-     $( "form" ).sisyphus( {
+    /* $( "form" ).sisyphus( {
 	           excludeFields: $('input[name=_token]')
-            });
+     });*/
 
 	var btnLimpiar = $('#btnLimpiar');
 	var routeIndex = '{!! route('consultas.index') !!}';		

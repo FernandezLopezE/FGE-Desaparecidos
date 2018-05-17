@@ -4,14 +4,13 @@ use Illuminate\Database\Eloquent\Model;
 class Prenda extends Model
 {
 	protected $table = 'desaparecidos_prendas';
-	protected $fillable = [	
-	    'tipo',
+	protected $fillable = [	    
 	    'material',
-	    'color',
-	    'otroColor',
-	    'dibujoBordadoFranja',
-	    'marcaOrigen',
+	    'diseno',
+	    'marca',
 	    'talla',
-	    'idCedula',
+	    'idColor',
+	    'idVestimenta',
+	    'idPrenda',
 	];
 }

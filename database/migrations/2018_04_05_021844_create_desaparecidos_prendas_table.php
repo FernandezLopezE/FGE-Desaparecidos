@@ -15,15 +15,21 @@ class CreateDesaparecidosPrendasTable extends Migration
             $table->increments('id');
             $table->string('tipo',50)->nullable();
             $table->string('material',50)->nullable();
-            //$table->string('color',50);
-            $table->string('otroColor')->nullable();
-            $table->string('dibujoBordadoFranja',50)->nullable();
-            $table->string('marcaOrigen',50)->nullable();
+            //$table->string('otroColor')->nullable();
+            $table->string('diseno',50)->nullable();
+            $table->string('marca',50)->nullable();
             $table->string('talla',50)->nullable();
-            $table->integer('color')->unsigned();
-            $table->foreign('color')->references('id')->on('cat_colores');
-            $table->integer('idCedula')->unsigned();
-            $table->foreign('idCedula')->references('id')->on('desaparecidos_cedula_investigacion');
+
+            $table->integer('idVestimenta')->unsigned();
+            $table->foreign('idVestimenta')->references('id')->on('cat_vestimentas');
+            $table->integer('idPrenda')->unsigned();
+            $table->foreign('idPrenda')->references('id')->on('cat_prendas');
+            $table->integer('idMarca')->unsigned();
+            $table->foreign('idMarca')->references('id')->on('cat_marcas');
+            $table->integer('idColor')->unsigned();
+            $table->foreign('idColor')->references('id')->on('cat_colores');
+            $table->integer('idDesaparecido')->unsigned();
+            $table->foreign('idDesaparecido')->references('id')->on('desaparecidos_personas');
             $table->timestamps();
         });
     }

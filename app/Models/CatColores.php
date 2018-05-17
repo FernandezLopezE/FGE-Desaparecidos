@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CatColores extends Model
 {
-     public $table = 'cat_calzado_color';
+     public $table = 'cat_colores';
 
     /**
      * The attributes that are mass assignable.
@@ -17,7 +17,7 @@ class CatColores extends Model
     public $fillable = [
         
         'nombre',
-        'image'
+        'codigo'
         //'snVeh' se quito la columna, le corresponde al sist. de vehiculos
     ];
 }

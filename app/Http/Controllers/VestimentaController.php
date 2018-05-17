@@ -43,23 +43,24 @@ class VestimentaController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show($id)
+	public function show($idCedula)
 	{
-		$desaparecido = \App\Models\Desaparecido::find($id);
+		$desaparecido = \App\Models\Desaparecido::find($idCedula);
 
-		$vestimenta         = \App\Models\CatVestimenta::all()->pluck('nombre','id');
-		$accesoriosObjetos  = \App\Models\CatAccesorioObjeto::all()->pluck('nombre','id');
-		$tiposCalzados      = \App\Models\CatTiposCalzados::all()->pluck('nombre','id');
-		$marcasCalzados     = \App\Models\CatMarcasCalzados::all()->pluck('nombre','id');
-		$colores            = \App\Models\CatCalzadoColor::all()->pluck('nombre','id');
-
+		$vestimentas		= \App\Models\CatVestimenta::all()->pluck('nombre','id');
+		$prendas 			= \App\Models\CatPrenda::all()->pluck('nombre','id');
+		$accesoriosObjetos	= \App\Models\CatAccesorioObjeto::all()->pluck('nombre','id');
+		$tiposCalzados		= \App\Models\CatTiposCalzados::all()->pluck('nombre','id');
+		$marcas				= \App\Models\CatMarca::all()->pluck('nombre','id');
+		$colores 			= \App\Models\CatCalzadoColor::all()->pluck('nombre','id');
 		return view('vestimenta.index',
-					['vestimenta' 			=> $vestimenta,
-						'tiposCalzados' 	=> $tiposCalzados,
-						'marcasCalzados' 	=> $marcasCalzados, 
-						'accesoriosObjetos' => $accesoriosObjetos, 
-						'colores' 			=> $colores, 
-						'desaparecido' 		=> $desaparecido,
+					['vestimentas' => $vestimentas,
+					 'prendas' => $prendas,
+					 'tiposCalzados' => $tiposCalzados,
+					 'marcas' => $marcas, 
+					 'accesoriosObjetos' => $accesoriosObjetos, 
+					 'colores' =>$colores, 
+					 'desaparecido' => $desaparecido
 					 ]);
 	}
 

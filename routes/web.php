@@ -81,8 +81,8 @@ Route::get('consultas/get_dependencias', 'ConsultasController@jsonDependecias')
 	->name('consultas.get_dependencias');
 Route::get('consultas/get_destinatarios', 'ConsultasController@jsonDestinatarios')
 	->name('consultas.get_destinatarios');
-
-
+Route::get('consultas/get_prendas/{idDesaparecido}', 'ConsultasController@jsonCatPrendas')->name('consultas.get_catprendas');
+Route::get('consultas/get_colores', 'ConsultasController@jsonCatColores')->name('consultas.get_colores');
 // Mostrando codigos postales que pertenecen a un municipio.
 Route::get('consultas/codigos/{idMunicipio}', 'ConsultasController@jsonCodigos');
 // Mostrando codigos postales que pertenecen a un municipio cuando hay un cambio en colonias.
@@ -132,8 +132,8 @@ Route::resource('/lada','LadaController');
 Route::get('/desaparecido/vestimenta/{idCedula}', 'DesaparecidoController@show_vestimenta')
 	->name('desaparecido.show_vestimenta');
 
-Route::get('consultas/get_prendas/{idCedula}', 'ConsultasController@jsonPrendas')
-	->name('consultas.get_prendas');
+/*Route::get('consultas/get_prendas/{idCedula}', 'ConsultasController@jsonPrendas')
+	->name('consultas.get_prendas');*/
 Route::get('consultas/get_accesorios/{idCedula}', 'ConsultasController@jsonAccesorios')
 	->name('consultas.get_accesorios');
 Route::get('consultas/get_calzado/{idCedula}', 'ConsultasController@jsonCalzado')
