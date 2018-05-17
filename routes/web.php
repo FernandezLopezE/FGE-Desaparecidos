@@ -175,7 +175,7 @@ Route::get('/descripcionfisica/get_bigote/{idExtraviado}', 'DescripcionFisicaCon
 	->name('descripcionfisica.get_bigote');
 Route::get('/descripcionfisica/get_patilla/{idExtraviado}', 'DescripcionFisicaController@getPatilla')
 	->name('descripcionfisica.get_patilla');			
-
+Route::get('/descripcionfisica/get_datosfisicos/{idExtraviado}', 'DescripcionFisicaController@getdatosfisicos')->name('descripcionfisica.get_datosfisicos');
 Route::get('/descripcionfisica/descripcionf/{idPersonaDesaparecida}', 'DescripcionFisicaController@show')
 	->name('descripcionfisica.show');
 

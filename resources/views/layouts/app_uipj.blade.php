@@ -108,6 +108,7 @@
     {!! HTML::script('personal/js/style_mask.js') !!}
     {!! HTML::script('plugins/icheck/icheck.js') !!}
 	{!! HTML::script('plugins/icheck/icheck.min.js') !!}
+	{!! HTML::script('personal/js/avatar/cara.js') !!}
 	
 	
 	@yield('scripts')

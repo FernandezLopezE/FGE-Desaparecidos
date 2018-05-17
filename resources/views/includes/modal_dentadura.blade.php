@@ -10,6 +10,7 @@
       <div class="modal-body">
         <!-- Contenido del formulario-->
         <div class="form-group row">
+
           <div class="col-md-4 dentadura">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 350 630">
               <title>teeth-adult</title>
@@ -157,8 +158,9 @@
           </div>
           
           <div class="col-md-8">
+
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-8">
                 <div class="form-group two-fields">
                   <div class="input-group">
                     <label style="margin-left: 12%">Diente seleccionado</label>

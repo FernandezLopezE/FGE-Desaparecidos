@@ -496,6 +496,11 @@ class DescripcionFisicaController extends Controller
         $partiPatilla = \App\Models\CatSubParticularidades::where('idParticularidadesCuerpo','9')->pluck('nombre','id');
         $modiPatilla = \App\Models\CatSubModificaciones::where('idModificacionesCuerpo','9')->pluck('nombre','id');
 
+        if ($desaparecido->estatura != null) {
+            $aux = true;
+        }else{
+            $aux = false;
+        }
 
 
         return view('descripcionfisica.form_descripcion_fisica',
@@ -521,6 +526,7 @@ class DescripcionFisicaController extends Controller
                 'coloresPatilla' => $coloresPatilla,
                 'partiPatilla' => $partiPatilla,
                 'modiPatilla' => $modiPatilla,
+                'aux' => $aux,
             ]);
     }
 
@@ -871,5 +877,20 @@ class DescripcionFisicaController extends Controller
         }
 
         return response()->json($cuerpo);        
+    }
+
+    public function getdatosfisicos($idExtraviado){
+        
+        $datosfisicos = \DB::table('desaparecidos_personas as dp')
+            ->join('cat_complexion as cc','cc.id','=','dp.idComplexion')
+            ->join('cat_color_piel as ccp','ccp.id','=','dp.idColorPiel')
+            ->select('dp.estatura',
+                                'dp.peso',
+                                'cc.nombre as complexion',
+                                'ccp.nombre as piel')
+            ->where('dp.id',$idExtraviado)
+            ->get();
+        
+        return response()->json($datosfisicos);
     }
 }
