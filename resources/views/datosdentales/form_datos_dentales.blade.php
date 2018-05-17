@@ -6,6 +6,8 @@
 {!! Html::style('personal/css/jquery-confirm.min.css') !!}
 {!! Html::style('personal/css/alertify.min.css') !!}
 {!! Html::style('personal/css/sweetalert.css') !!}
+{!! Html::style('personal/css/datos_dentales/dentaduraAdult.css') !!}
+
 <style type="text/css">
     .modal-lg {
     	max-width: 80%; /*Se ajusta el ancho del model a un buen tamaño*/
@@ -381,6 +383,8 @@
 {!! Html::script('personal/js/alertify.min.js') !!}
 {!! Html::script('personal/js/sweetalert.min.js') !!}
 {!! Html::script('personal/js/functions.js') !!}
+
+{!! Html::script('personal/js/datos_dentales/accionDientes.js') !!}
 
 <script type="text/javascript">
 	console.log('ID de la persona desaparecida: {!! $desaparecido->id !!}');
