@@ -1,7 +1,8 @@
 <div class="cabello" style="display:none;" id="acordion">
 <div class="card border-success" >
     <div class="card-header" id="headingOne">
-        <h5 class="card-title">Cabello, barba, bigote y patillas  
+        <h5 class="card-title">Cabello y vello facial
+        	<i class="fa fa-pencil pull-right" id="btnEditarC"></i>
         	<i class="fa fa-times-circle" style="float: right; margin-left: 10px;" id="cerrar"></i>
         	<i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="colapsar"></i>
         	
@@ -10,7 +11,7 @@
     <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion"> 
     	{{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}   
     <div class="card-body"  id="datosCabello"> 
-        <div class="form-group row" id="cabello">
+        <div class="row" id="cabello">
         	<div class="col-3">
 		        {!! Form::label ('tieneCabello','¿Tenía cabello?') !!}
 		        {!! Form::select('tieneCabello', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tieneCabello'] ) !!}
@@ -30,7 +31,6 @@
 		</div>
 
 		<div class="form-group row" id="cabello">
-
 		    <div class="col" style="display:none;" id="a">
                 {!! Form::text('otroTipoC', '', ['class' => 'form-control', 'id' => 'otroTipoC', 'placeholder' => 'Especifique'] ) !!}
 		    </div>
@@ -42,7 +42,7 @@
 		    </div>
 		</div>
 
-		<div class="form-group row">
+		<div class="row">
 			<div class="col" style="display:none;" id="infoCabello4">
 		        {!! Form::label ('tamanoCabello','Tamaño') !!}
 		        {!! Form::select('tamanoCabello', $tamanoCabello, '', ['class' => 'form-control', 'id' => 'tamanoCabello'] ) !!}
@@ -62,9 +62,9 @@
                 {!! Form::label ('observacionesCabello','Observaciones') !!}
                 {!! Form::textarea('observacionesCabello', '', ['class' => 'form-control', 'id' => 'observacionesCabello', 'rows' => '1'] ) !!}
 		    </div>
-		</div>
+		</div><hr>
 
-		<div class="form-group row">
+		<div class="row">
 			<div class="col-3">
 		        {!! Form::label ('tieneBarba','¿Tenía barba?') !!}
 		        {!! Form::select('tieneBarba', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tieneBarba'] ) !!}
@@ -84,7 +84,6 @@
 		</div>
 
 		<div class="form-group row">
-
 			<div class="col" style="display:none;" id="e">
                 {!! Form::text('otroTipoBar', '', ['class' => 'form-control', 'id' => 'otroTipoBar', 'placeholder' => 'Especifique otro tipo'] ) !!}
 		    </div>
@@ -103,7 +102,7 @@
 		    </div>
 		</div><hr>
 		
-		<div class="form-group row">
+		<div class="row">
 			<div class="col-3">
 		        {!! Form::label ('tieneBigote','¿Tenía bigote?') !!}
 		        {!! Form::select('tieneBigote', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tieneBigote'] ) !!}
@@ -122,7 +121,7 @@
 		    </div>
 		</div>
 
-		<div class="form-group row">
+		<div class="row">
 
 			<div class="col" style="display:none;" id="h">
                 {!! Form::text('otroTipoBig', '', ['class' => 'form-control', 'id' => 'otroTipoBig', 'placeholder' => 'Especifique otro tipo'] ) !!}
@@ -160,7 +159,7 @@
 		    </div>
 		</div>
 
-		<div class="form-group row">
+		<div class="row">
 			<div class="col" style="display:none;" id="k">
                 {!! Form::text('otroTipoPat', '', ['class' => 'form-control', 'id' => 'otroTipoPat', 'placeholder' => 'Especifique otro tipo'] ) !!}
 		    </div>

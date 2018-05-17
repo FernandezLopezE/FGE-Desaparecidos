@@ -39,7 +39,7 @@ class DatosDentalesController extends Controller
         $dentadura = new Dentadura();
 
         $dentadura->idTamanoDiente = $request['dienteTamano'];
-        $dentadura->dienteCompleto = $request['dienteCompleto'];
+        //$dentadura->dienteCompleto = $request['dienteCompleto'];
         $dentadura->asistioDentista = $request['atencionOdonto'];
         $dentadura->tieneInfoDentista = $request['infoDentista'];
         $dentadura->nombres = $request['nombres'];
