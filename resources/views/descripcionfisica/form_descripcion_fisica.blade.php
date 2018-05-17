@@ -57,7 +57,6 @@
               @include('descripcionfisica.seccion_Cabello')
             </div>
         </div>
-        
     </div>
 </div>
 
@@ -66,8 +65,26 @@
 @section('scripts')
 <script type="text/javascript">
 $(document).ready(function(){
-  $("#talla").modal("show");
-  $("#esta").focus();
+
+  if ("{{$aux}}" == true) {
+    $("#talla").modal("hide");
+     $.ajax({
+            url: '/descripcionfisica/get_datosfisicos/{{$desaparecido->id}}/',
+            type:"GET",
+            dataType:"json",
+            success:function(data) {
+              $.each(data, function(key, value){
+                $("#estatura").val(value.estatura+" CM");
+                $("#peso").val(value.peso+" KG");
+                $("#complexion").val(value.complexion);
+                $("#piel").val(value.piel);
+            });
+            }
+          });
+  }else{
+    $("#talla").modal("show");
+    $("#esta").focus();
+  }
 
   $("#editFis").click(function(event) {
       $("#talla").modal("show");
@@ -84,8 +101,6 @@ $(document).ready(function(){
       colorPiel: $('#cPiel').val(),
       idExtraviado: $('#idExtraviado').val(),
     };
-
-  console.log(dataString);
       $.ajax({
         type: 'POST',
         url: '/descripcionfisica/store',
@@ -93,12 +108,22 @@ $(document).ready(function(){
         dataType: 'json',
         success: function(data) {           
         //document.getElementById("colapsar2").click();
-          
-          console.log("hecho");
-          console.log(data);
           $("#talla").modal("hide");
           
-        },
+          $.ajax({
+            url: '/descripcionfisica/get_datosfisicos/{{$desaparecido->id}}/',
+            type:"GET",
+            dataType:"json",
+            success:function(data) {
+              $.each(data, function(key, value){
+                $("#estatura").val(value.estatura+" CM");
+                $("#peso").val(value.peso+" KG");
+                $("#complexion").val(value.complexion);
+                $("#piel").val(value.piel);
+            });
+            }
+          });
+    },
         error: function(data) {
           console.log("error");
           console.log(data);
@@ -720,6 +745,7 @@ $("#cerrar").click(function(event) {
                 var temp = document.getElementById('data').innerHTML = t.target.parentElement.getAttribute('id');
                 if(temp == "cabello"){
                   $(".cabello").toggle();
+                  $("#cabellointerno").css({"fill":"blue", "stroke":"red","stroke-width":"1"});
                 }
             }
         }
