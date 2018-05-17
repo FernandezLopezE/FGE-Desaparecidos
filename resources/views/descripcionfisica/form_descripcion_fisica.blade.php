@@ -745,7 +745,7 @@ $("#cerrar").click(function(event) {
                 var temp = document.getElementById('data').innerHTML = t.target.parentElement.getAttribute('id');
                 if(temp == "cabello"){
                   $(".cabello").toggle();
-                  $("#cabellointerno").css({"fill":"blue", "stroke":"red","stroke-width":"1"});
+                  $("#cabellointerno").css({"fill":"#17a4da", "stroke":"#ffffff","stroke-width":"2-"});
                 }
             }
         }
