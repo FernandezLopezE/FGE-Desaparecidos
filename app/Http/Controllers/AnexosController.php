@@ -12,7 +12,7 @@ class AnexosController extends Controller
         {
             
             $imageName = request()->file->getClientOriginalName();
-            request()->file->move(public_path('upload'), $imageName);
+            
            
         	$idDesaparecido = request()->idDesaparecido;
         	$tipoAnexo = request()->tipoAnexo;
@@ -27,15 +27,17 @@ class AnexosController extends Controller
 
 				if (!file_exists($carpeta)) {
 				    mkdir($carpeta, 0777, true);
-			
+						request()->file->move(public_path($carpeta), $imageName);
+
 							$imagen = Anexos::create([
 							'tipoAnexo' 			=> $tipoAnexo,
 							'ruta' 					=> $ruta,
 							'idDesaparecido' 		=> $idDesaparecido,
 							]);
-				   response()->json(['uploaded' => '../public/upload/'.$idDesaparecido.'/'.$imageName]);
+				  return response()->json(['uploaded' => '../public/upload/'.$idDesaparecido.'/'.$imageName]);
 				}
 				else {
+					request()->file->move(public_path($carpeta), $imageName);
 
 				$imagen = Anexos::create([
 							'tipoAnexo' 			=> $tipoAnexo,
@@ -46,7 +48,7 @@ class AnexosController extends Controller
 
 				}
 
-				dd("no paso nada");
+			}
 
 
 				            
@@ -56,4 +58,3 @@ class AnexosController extends Controller
 
 
 
-}

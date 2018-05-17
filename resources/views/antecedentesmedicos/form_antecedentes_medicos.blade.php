@@ -490,7 +490,7 @@ $("#fileImagenes").fileinput({
 
                     console.log($nombre);
 
-                      return  $desaparecido+"_ant_medicos_"+filename.replace('(', '_').replace(']', '_');
+                      return  filename.replace('(', '_').replace(']', '_');
                   }
 
 
