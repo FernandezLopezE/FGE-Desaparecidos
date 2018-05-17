@@ -55,6 +55,7 @@
             </div>
             <div class="col-8">
               @include('descripcionfisica.seccion_Cabello')
+              @include('descripcionfisica.seccion_Cara')
             </div>
         </div>
     </div>

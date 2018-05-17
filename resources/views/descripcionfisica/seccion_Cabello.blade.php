@@ -4,7 +4,7 @@
         <h5 class="card-title">Cabello y vello facial
         	<i class="fa fa-pencil pull-right" id="btnEditarC"></i>
         	<i class="fa fa-times-circle" style="float: right; margin-left: 10px;" id="cerrar"></i>
-        	<i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="colapsar"></i>
+        	<i class="fa fa-minus-square" style="float: right;" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="colapsar"></i>
         	
         </h5>
     </div>
