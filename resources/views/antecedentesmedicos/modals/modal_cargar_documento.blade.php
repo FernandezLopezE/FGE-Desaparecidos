@@ -47,9 +47,7 @@
           <!-- Fin del Contenido del formulario-->
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-dark mr-auto" id="btnLimpiar"> LIMPIAR CAMPOS</button>
-          <button type="button" class="btn btn-dark" id="btnDependencia">GUARDAR</button>
-          <button type="button" class="btn btn-dark" id="btnActualizarDependencia" >ACTUALIZAR</button>
+  
           <button type="button" class="btn btn-dark" data-dismiss="modal">CERRAR</button>
         </div>
       </div>

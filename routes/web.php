@@ -118,8 +118,9 @@ Route::post('image-view','CargarDocumentosController@store');
 //ruta a controlador MailController para envio de correo
 Route::post('/enviar_correo','MailController@store');
 Route::get('imagenAntecedentesM','AntecedentesMedicosController@show');
-Route::post('imagenAntecedentesM','AntecedentesMedicosController@store_imagen');
-Route::post('imagenAntecedentesM/store_path','AntecedentesMedicosController@store_path');
+Route::post('imagenAntecedentesM','AnexosController@store');
+/*Route::post('/imagenAntecedentesM/store_path','AntecedentesMedicosController@store_path')
+ ->name('/imagenAntecedentesM.store_path');*/
 
 
 

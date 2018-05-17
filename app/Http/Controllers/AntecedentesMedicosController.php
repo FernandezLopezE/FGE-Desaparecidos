@@ -177,17 +177,17 @@ class AntecedentesMedicosController extends Controller
         //
     }
 
-    public function store_imagen(Request $request)
+   /* public function store_imagen(Request $request)
         {
             
-               // dd($request);
+               
             $imageName = request()->file->getClientOriginalName();
             request()->file->move(public_path('upload'), $imageName);
-            
+            dd($request->toArray());
         
             
             return response()->json(['uploaded' => '/upload/'.$imageName]);
-    }
+    }*/
     public function imagen(Request $request)
         {
        
@@ -195,7 +195,7 @@ class AntecedentesMedicosController extends Controller
     public function store_path(Request $request)
         {  
 
-        dd($request);
+        dd($request->toArray());
 
     
         }

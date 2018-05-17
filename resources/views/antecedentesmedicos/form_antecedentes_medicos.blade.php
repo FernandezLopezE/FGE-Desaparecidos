@@ -453,6 +453,15 @@ $('#btnAgregarAnexo').click (function(){
 })
 var hola= "hola wey";
 $desaparecido = ('{!! $desaparecido->id!!}');
+var rutas = [];
+ /** METODO PARA HACER PUSH A UN
+ if (rutas.indexOf($nombre) === -1) {
+                                rutas.push($nombre);
+                                //console.log('La nueva colección de vegetales es: ' + $nombre);
+                            } else if (rutas.indexOf($nombre) > -1) {
+                                //console.log($nombre + ' ya existe en la colección de verduras.');
+                            }*/
+
 $("#fileImagenes").fileinput({
                   language:'es',
                   theme: 'fa',
@@ -463,6 +472,8 @@ $("#fileImagenes").fileinput({
                       return {
 
                           _token: $("input[name='_token']").val(),
+                          idDesaparecido:'{!! $desaparecido->id!!}',
+                          tipoAnexo: 'antecedentesMedicos',
 
                       };
                   },
@@ -475,55 +486,65 @@ $("#fileImagenes").fileinput({
                   slugCallback: function (filename) {
                     /*$desaparecido = ('{!! $desaparecido->id!!}');
                     console.log ( $desaparecido+"desaparecido");*/
-                     $nombre = $desaparecido+"_ant_medicos_"+filename.replace('(', '_').replace(']', '_');
+                    $nombre = $desaparecido+"_ant_medicos_"+filename.replace('(', '_').replace(']', '_');
 
-                            $.ajax({
-                                type: 'POST',
-                                url: '/imagenAntecedentesM/store_path',
-                                data: {
-                                  desaparecido: ('{!! $desaparecido->id!!}'),
-                                  path: '/upload/'.$nombre,
-
-                              },
-                                dataType: 'json',
-                                success: function(data) {           
-                                  console.log("hecho guardado");
-                                  console.log(data);
-                                 /* $.confirm({
-
-                                      title: 'Datos guardados!',
-                                      content: 'Fotos de antecedentes médicos guardados exitosamente.',
-                                      type: 'dark',
-                                      typeAnimated: true,
-                                      buttons: {
-                                          tryAgain: {
-                                              text: 'Aceptar',
-                                              btnClass: 'btn-dark',
-                                              action: function(){
-                                              }
-                                          },
-                                      }
-                                  });*/
-                                                  
-                                },
-                                error: function(data) {
-                                  console.log("error");
-                                  console.log(data);
-                                }
-                                });
+                    console.log($nombre);
 
                       return  $desaparecido+"_ant_medicos_"+filename.replace('(', '_').replace(']', '_');
                   }
 
 
 
-                    
-                  
-
-
-
-
               });
+
+  $('#btnGuardarAnexos').click (function(){
+
+console.log(rutas);
+ var dataString = {
+
+      desaparecido : ('{!! $desaparecido->id!!}'),
+      rutas: rutas,
+    };
+
+    console.log(dataString);
+    $.ajax({
+      type: 'POST',
+      url: '/imagenAntecedentesM/store_path',
+      data: dataString,
+      dataType: 'json',
+      success: function(data) {           
+        console.log("hecho");
+        console.log(data);
+        $.confirm({
+            title: 'Datos guardados!',
+            content: 'Antecedentes médicos guardados exitosamente.',
+            type: 'dark',
+            typeAnimated: true,
+            buttons: {
+                tryAgain: {
+                    text: 'Aceptar',
+                    btnClass: 'btn-dark',
+                    action: function(){
+                    }
+                },
+            }
+        });
+     
+        $("#otro_Implante").hide();
+
+
+        //swal("Datos guardados exitosamente.", "Dale click en el boton ok!", "success");
+      
+        //tableDescripcion.bootstrapTable('refresh');
+                        
+      },
+      error: function(data) {
+        console.log("error");
+        console.log(data);
+      }
+      });
+
+})
 
 	</script>
 @endsection

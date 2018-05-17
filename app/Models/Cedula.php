@@ -10,6 +10,7 @@ class Cedula extends Model
 		'entrevistadorPrimerAp',
 		'entrevistadorSegundoAp',
 		'entrevistadorCargo',
+		'carpeta',
 		'interpreteNombres' ,			
 		'interpretePrimerAp', 			
 		'interpreteSegundoAp',			

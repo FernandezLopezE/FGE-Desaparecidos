@@ -17,7 +17,7 @@ class CreateDesaparecidosCedulaInvestigacionTable extends Migration
             $table->string('entrevistadorPrimerAp', 50)->nullable();
             $table->string('entrevistadorSegundoAp', 50)->nullable();
             $table->string('entrevistadorCargo', 250)->nullable();
-            
+            $table->string('carpeta', 50)->nullable();
             $table->string('interpreteNombres', 200)->nullable();
             $table->string('interpretePrimerAp', 50)->nullable();
             $table->string('interpreteSegundoAp', 50)->nullable();
