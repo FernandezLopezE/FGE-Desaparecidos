@@ -43,14 +43,14 @@ class CargarDocumentosController extends Controller
 			'option' =>$option
 			]);		
 	}
-	public function store(Request $request)
+	/*public function store(Request $request)
 	    {
 	    	$imageName = request()->file->getClientOriginalName();
 	        request()->file->move(public_path('upload'), $imageName);
 	        
 	    	return response()->json(['uploaded' => '/upload/'.$imageName]);
  	}
-
+*/
 
 
 //DE AQUI EN ADELANTE APARECERAN LO REFERENTE A LA CREACION DE LOS WORDS

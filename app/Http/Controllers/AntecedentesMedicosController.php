@@ -179,10 +179,12 @@ class AntecedentesMedicosController extends Controller
 
     public function store_imagen(Request $request)
         {
-     
+            
+               // dd($request);
             $imageName = request()->file->getClientOriginalName();
             request()->file->move(public_path('upload'), $imageName);
-          
+            
+        
             
             return response()->json(['uploaded' => '/upload/'.$imageName]);
     }
@@ -190,4 +192,11 @@ class AntecedentesMedicosController extends Controller
         {
        
     }
+    public function store_path(Request $request)
+        {  
+
+        dd($request);
+
+    
+        }
 }

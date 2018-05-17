@@ -119,7 +119,7 @@ Route::post('image-view','CargarDocumentosController@store');
 Route::post('/enviar_correo','MailController@store');
 Route::get('imagenAntecedentesM','AntecedentesMedicosController@show');
 Route::post('imagenAntecedentesM','AntecedentesMedicosController@store_imagen');
-
+Route::post('imagenAntecedentesM/store_path','AntecedentesMedicosController@store_path');
 
 
 

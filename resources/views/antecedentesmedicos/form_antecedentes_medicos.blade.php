@@ -452,12 +452,14 @@ $('#btnAgregarAnexo').click (function(){
 
 })
 var hola= "hola wey";
+$desaparecido = ('{!! $desaparecido->id!!}');
 $("#fileImagenes").fileinput({
+                  language:'es',
                   theme: 'fa',
                   uploadUrl: "/imagenAntecedentesM",
-                  hola : hola,
+
                   uploadExtraData: function() {
-                    console.log($("input[name='_token']").val());
+                   
                       return {
 
                           _token: $("input[name='_token']").val(),
@@ -468,10 +470,58 @@ $("#fileImagenes").fileinput({
                   overwriteInitial: false,
                   maxFileSize:2000,
                   maxFilesNum: 10,
-                  slugCallback: function (filename) {
 
-                      return filename.replace('(', '_').replace(']', '_');
+                  
+                  slugCallback: function (filename) {
+                    /*$desaparecido = ('{!! $desaparecido->id!!}');
+                    console.log ( $desaparecido+"desaparecido");*/
+                     $nombre = $desaparecido+"_ant_medicos_"+filename.replace('(', '_').replace(']', '_');
+
+                            $.ajax({
+                                type: 'POST',
+                                url: '/imagenAntecedentesM/store_path',
+                                data: {
+                                  desaparecido: ('{!! $desaparecido->id!!}'),
+                                  path: '/upload/'.$nombre,
+
+                              },
+                                dataType: 'json',
+                                success: function(data) {           
+                                  console.log("hecho guardado");
+                                  console.log(data);
+                                 /* $.confirm({
+
+                                      title: 'Datos guardados!',
+                                      content: 'Fotos de antecedentes médicos guardados exitosamente.',
+                                      type: 'dark',
+                                      typeAnimated: true,
+                                      buttons: {
+                                          tryAgain: {
+                                              text: 'Aceptar',
+                                              btnClass: 'btn-dark',
+                                              action: function(){
+                                              }
+                                          },
+                                      }
+                                  });*/
+                                                  
+                                },
+                                error: function(data) {
+                                  console.log("error");
+                                  console.log(data);
+                                }
+                                });
+
+                      return  $desaparecido+"_ant_medicos_"+filename.replace('(', '_').replace(']', '_');
                   }
+
+
+
+                    
+                  
+
+
+
 
               });
 
