@@ -6,15 +6,12 @@
 	}
 </style>
 
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
-
 <link rel="stylesheet" href="{{ asset('plugins/bootstrap-colorselector/bootstrap-colorselector.min.css') }}">
 	
 @endsection
 @section('content')
 @include('navs.navs_datos',array('activar' => 'vestimenta'))
-<button type="button" class="btn btn-dark pull-right"  id="nuevaPrenda">AGREGAR PRENDA</button>
+<button type="button" class="btn btn-dark pull-right"  id="btnAgregarPrenda">AGREGAR PRENDA</button>
 
 <div class="card-body bg-white">	
 	@include('vestimenta.modals.modal_vestimenta')
@@ -23,26 +20,93 @@
 @endsection
 
 @section('scripts')
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 <script src="{{ asset('plugins/bootstrap-colorselector/bootstrap-colorselector.min.js')}}" ></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		var otroC;
-		var otraP;
-		var tipoV;
-		var tipoCal;
-		var otroTipoZ;
-		var otroCo;
+		var btnPrendaAgregar = $('#btnAgregarPrenda');
+		var btnPrendaActualizar = $('#btnActualizarPrenda');
+		var btnPrendaGuardar = $('#btnGuardarPrenda');
+		var modal = $('#modalVestimenta');
 		var table = $('#tableInformantes');
 		var routeIndex = '{!! route('consultas.index') !!}';
 
+		
+		
 		//Vista de datos de la vestimenta
-		$('#nuevaPrenda').click(function(e){
-			$('#modalVestimenta').modal('show');
-			$('#btnActualizarP').hide();
-			$('#btnPrenda').show();
+		btnPrendaAgregar.click(function(e){
+			console.log('Entrando al modal');
+			modal.modal('show');
+			cargarDatosColores();
+
+			btnPrendaActualizar.hide();
+			btnPrendaGuardar.show();
 		});
+
+		$('#idVestimenta').click(function(){
+			console.log('Tomando el valor de: '+$(this).val());
+			cargarDatosPrendas(selected = null, idVestimenta = $(this).val());
+		})
+
+		var cargarDatosPrendas= function(selected = null, idVestimenta = null){
+			$.getJSON(routeIndex+'/get_prendas/'+idVestimenta)
+			.done(function(data){
+				$('#idPrenda').empty();				
+				$.each(data, function(key, value){						
+					optionSelect = '<option';
+					if (selected == value.id_menu) { optionSelect = optionSelect+' selected'; }
+					optionselect = optionSelect+' value='+value.id+'>'+value.nombre+'</option>';
+					$('#idPrenda').append(optionselect);					
+				});								
+			});
+
+		}
+
+		var cargarDatosColores= function(selected = null){			
+			$.getJSON(routeIndex+'/get_colores')
+			.done(function(data){				
+				$('#idColor').empty();				
+				$.each(data, function(key, value){						
+					optionSelect = '<option';
+					if (selected == value.id_menu) { optionSelect = optionSelect+' selected'; }
+					optionselect = optionSelect+' value='+value.id+' data-color="'+value.codigo+'">'+value.nombre+'</option>';
+					$('#idColor').append(optionselect);										
+				});
+				$('#idColor').colorselector();
+			});
+		}
+
+
+		btnPrendaGuardar.click (function(){
+
+			var dataString = {
+				material: $('#material').val(),
+				diseno: $('#diseno').val(),
+				marca: $('#marca').val(),
+				talla: $('#talla').val(),
+				idColor: $('#idColor').val(),
+				idVestimenta: $('#idVestimenta').val(),
+				idPrenda: $('#idPrenda').val(),
+				idDesaparecido: '{{ $desaparecido->id }}'
+			};
+			console.log(dataString);
+			/*$.ajax({
+				type: 'POST',
+				url: '/desaparecido/store_vestimenta',
+				data: dataString,
+				dataType: 'json',
+				success: function(data) {						
+					console.log(data);
+					table.bootstrapTable('refresh');
+					$("#modalVestimenta").modal("hide");	
+					
+													
+				},
+				error: function(data) {
+					console.log(data);
+				}
+			});*/
+		});
+
 
 		$("#prendaColor").change(function() {
 			otroC = $('#prendaColor').val();
@@ -320,37 +384,7 @@
     //FIN DEL APARTADO DE ACCESORIOS
         
         
-		$('#btnPrenda').click (function(){
-		//alert("hola");
-		var dataString = {
-			//prendaTipo: $('#idVestimenta').val(),
-			nombrePrenda: $('#nombrePrenda').val(),
-			prendaMaterial: $('#prendaMaterial').val(),
-			prendaColor: $('#prendaColor').val(),
-			otroColor: $('#colorPrenda').val(),
-			prendaDibujoBordadoFranjas: $('#prendaDibujoBordadoFranjas').val(),
-			prendaMarcaOrigen: $('#prendaMarcaOrigen').val(),
-			prendaTalla: $('#prendaTalla').val(),
-			idCedula: $("#idCedula").val()
-		};
-		console.log(dataString);
-		$.ajax({
-			type: 'POST',
-			url: '/desaparecido/store_vestimenta',
-			data: dataString,
-			dataType: 'json',
-			success: function(data) {						
-				console.log(data);
-				table.bootstrapTable('refresh');
-				$("#modalVestimenta").modal("hide");	
-				
-												
-			},
-			error: function(data) {
-				console.log(data);
-			}
-		});
-	});
+
 		//----
 		//----
 		$('.modal-footer').on('click','#btnActualizarP', function(){

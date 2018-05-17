@@ -82,6 +82,7 @@ Route::get('consultas/get_dependencias', 'ConsultasController@jsonDependecias')
 Route::get('consultas/get_destinatarios', 'ConsultasController@jsonDestinatarios')
 	->name('consultas.get_destinatarios');
 Route::get('consultas/get_prendas/{idDesaparecido}', 'ConsultasController@jsonCatPrendas')->name('consultas.get_catprendas');
+Route::get('consultas/get_colores', 'ConsultasController@jsonCatColores')->name('consultas.get_colores');
 // Mostrando codigos postales que pertenecen a un municipio.
 Route::get('consultas/codigos/{idMunicipio}', 'ConsultasController@jsonCodigos');
 // Mostrando codigos postales que pertenecen a un municipio cuando hay un cambio en colonias.

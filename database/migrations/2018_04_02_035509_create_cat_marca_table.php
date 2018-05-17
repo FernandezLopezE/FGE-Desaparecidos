@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCatCalzadoMarcaTable extends Migration
+class CreateCatMarcaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCatCalzadoMarcaTable extends Migration
      */
     public function up()
     {
-        Schema::create('cat_calzado_marca', function (Blueprint $table) {
+        Schema::create('cat_marcas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre',20);
             $table->string('image');
@@ -28,6 +28,6 @@ class CreateCatCalzadoMarcaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cat_calzado_marca');
+        Schema::dropIfExists('cat_marcas');
     }
 }

@@ -9,61 +9,78 @@
 					</button>
 				</div>
 				<div class="modal-body"> 
-					<form>     
+					   
 					<!-- Contenido del formulario-->
 					<div class="row">
-						<div class="col">
-							{!! Form::label ('idVestimenta','Tipo de vestimenta:') !!}
-							{!! Form::select('idVestimenta', $vestimentas, null, ['class' => 'form-control' ,'id'=>'idVestimenta']) !!}
+						<div class="form-group col-md-4" id="div_idVestimenta">
+							{!! Form::label ('idVestimenta','Tipo de vestimenta:',['class' => 'form-control-label']) !!}
+							{!! Form::select('idVestimenta',
+											 $vestimentas,
+											 null,
+											 ['class' => 'form-control' ,'id'=>'idVestimenta']) !!}
+							<div class="form-control-feedback" id="error_idVestimenta"></div>
 						</div>
-					</div><br>
-					<div id="FormularioVestimenta" >
+						<div class="form-group col-md-4" id="div_idPrenda">
+							{!! Form::label ('idPrenda','Tipo de prenda/calzado/accesorio/objeto:',['class' => 'form-control-label']) !!}
+							{!! Form::select('idPrenda',
+											 [],
+											 null,
+											 ['class' => 'form-control']) !!}
+							<div class="form-control-feedback" id="error_idPrenda"></div>
+						</div>
+						<div class="form-group col-md-4" id="div_material">
+							{!! Form::label ('material','Material:',['class' => 'form-control-label']) !!}
+							{!! Form::text ('material',
+												old('Material'),
+												['class' => 'form-control mayuscula',
+													'placeholder' => 'Material de la prenda'] )!!}
+							<div class="form-control-feedback" id="error_material"></div>
+						</div>							
+					</div>
+
 					<div class="row">
-						<div class="col-4">
-							{!! Form::label ('nombrePrenda','Nombre de la prenda:') !!}
-							{!! Form::text ('nombrePrenda',old('Nombre de la prenda'), ['class' => 'form-control mayuscula', 'id' => 'nombrePrenda', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese la prenda', 'placeholder' => 'Nombre de la prenda'] )!!}
+						<div class="form-group col-md-4" id="div_diseno">
+							{!! Form::label ('diseno','Dibujo/Bordado/Franjas:',['class' => 'form-control-label']) !!}
+							{!! Form::text ('diseno',
+											old('Dibujo/Bordado/Franjas'),
+											['class' => 'form-control mayuscula',
+												'data-validation' => 'required',
+												'data-validation-error-msg-required' => 'Ingrese el bordado, dibujo o franja',
+												'placeholder' => 'Bordado, dibujo o franja'] )!!}
+							<div class="form-control-feedback" id="error_diseno"></div>
 						</div>
-						<div class="col-4">
-							{!! Form::label ('nombreMaterial','Material:') !!}
-							{!! Form::text ('prendaMaterial',old('Material'), ['class' => 'form-control mayuscula', 'id' => 'prendaMaterial', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese el material', 'placeholder' => 'Material de la prenda'] )!!}
+						<div class="form-group col-md-4" id="div_idMarca">
+							{!! Form::label ('idMarca','Marca y origen:',['class' => 'form-control-label']) !!}
+							{!! Form::select('idMarca',
+											 $marcas,
+											 null,
+											 ['class' => 'form-control']) !!}
+							<div class="form-control-feedback" id="error_idMarca"></div>
 						</div>
-						<div class="col-4">
-							{!! Form::label ('nombreColor','Color:') !!}
-							{!! Form::select ('prendaColor[]',$colores,'', ['class' => 'form-control', 'id' => 'prendaColor' ] )!!}
+						<div class="form-group col-md-4" id="div_talla">
+							{!! Form::label ('talla','Talla:',['class' => 'form-control-label']) !!}
+							{!! Form::text ('talla',old('Talla'), ['class' => 'form-control mayuscula', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese la talla', 'placeholder' => 'Talla'] )!!}
+							<div class="form-control-feedback" id="error_talla"></div>
 						</div>
-
-					</div><br>
-
-				 <div class="row" style="display:none" id="otroColor">
-					 <div class="col">
-							{!! Form::label ('colorPrenda','Otro:') !!}
-							{!! Form::text ('colorPrenda',old('Otro color'),['class' => 'form-control mayuscula','id' => 'colorPrenda', 'placeholder' => 'Ingresa una descripción de los colores de la prenda. Ejemplo: cuadros rojos con azul marino'] )!!}						
-						</div>
-				 </div>
-
-				 <div class="row">
-					<div class="col-4">
-						{!! Form::label ('nombreDibujoBordado','Dibujo/Bordado/Franjas:') !!}
-						{!! Form::text ('prendaDibujoBordadoFranjas',old('Dibujo/Bordado/Franjas'), ['class' => 'form-control mayuscula', 'id' => 'prendaDibujoBordadoFranjas', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese el bordado, dibujo o franja', 'placeholder' => 'Bordado, dibujo o franja'] )!!}
 					</div>
-					<div class="col-4">
-						{!! Form::label ('nombreMarca','Marca y origen:') !!}
-						{!! Form::text ('prendaMarcaOrigen',old('Marca y origen'), ['class' => 'form-control mayuscula', 'id' => 'prendaMarcaOrigen', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese la marca y origen', 'placeholder' => 'Marca y origen'] )!!}
-					</div>
-					<div class="col-4">
-						{!! Form::label ('nombreTalla','Talla:') !!}
-						{!! Form::text ('prendaTalla',old('Talla'), ['class' => 'form-control mayuscula', 'id' => 'prendaTalla', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese la talla', 'placeholder' => 'Talla'] )!!}
-					</div>
-				 </div>
-				</div>
-					</form>  
 
+					<div class="row">
+						<div class="form-group col-md-6" id="div_idColor">
+							{!! Form::label ('idColor','Color:',['class' => 'form-control-label']) !!}
+							{!! Form::select('idColor',
+											 [],
+											 null,
+											 ['class' => 'form-control']) !!}
+							<div class="form-control-feedback" id="error_idColor"></div>
+
+						</div>
+
+					</div>
 					<!-- Fin del Contenido del formulario-->
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-dark mr-auto" id="btnLimpiar"> LIMPIAR CAMPOS</button>
-					<button type="button" class="btn btn-success" id="btnPrenda">GUARDAR</button>
-					<button type="button" class="btn btn-warning" id="btnActualizarP">ACTUALIZAR</button>
+					<button type="button" class="btn btn-success" id="btnGuardarPrenda">GUARDAR</button>
+					<button type="button" class="btn btn-warning" id="btnActualizarPrenda">ACTUALIZAR</button>
 					<button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
 				</div>
 			</div>

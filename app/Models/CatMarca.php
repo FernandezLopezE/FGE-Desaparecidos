@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CatCalzadoMarca extends Model
+class CatMarca extends Model
 {
-	protected $table = 'cat_calzado_marca';
+	protected $table = 'cat_marcas';
 	protected $fillable = [
 		'nombre',	
 	];

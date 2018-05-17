@@ -47,17 +47,17 @@ class VestimentaController extends Controller
 	{
 		$desaparecido = \App\Models\Desaparecido::find($idCedula);
 
-		$vestimentas			= \App\Models\CatVestimenta::all()->pluck('nombre','id');
+		$vestimentas		= \App\Models\CatVestimenta::all()->pluck('nombre','id');
 		$prendas 			= \App\Models\CatPrenda::all()->pluck('nombre','id');
 		$accesoriosObjetos	= \App\Models\CatAccesorioObjeto::all()->pluck('nombre','id');
 		$tiposCalzados		= \App\Models\CatTiposCalzados::all()->pluck('nombre','id');
-		$marcasCalzados		= \App\Models\CatMarcasCalzados::all()->pluck('nombre','id');
-		$colores = \App\Models\CatCalzadoColor::all()->pluck('nombre','id');
+		$marcas				= \App\Models\CatMarca::all()->pluck('nombre','id');
+		$colores 			= \App\Models\CatCalzadoColor::all()->pluck('nombre','id');
 		return view('vestimenta.index',
 					['vestimentas' => $vestimentas,
 					 'prendas' => $prendas,
 					 'tiposCalzados' => $tiposCalzados,
-					 'marcasCalzados' => $marcasCalzados, 
+					 'marcas' => $marcas, 
 					 'accesoriosObjetos' => $accesoriosObjetos, 
 					 'colores' =>$colores, 
 					 'desaparecido' => $desaparecido

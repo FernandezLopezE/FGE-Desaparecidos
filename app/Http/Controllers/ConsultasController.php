@@ -410,9 +410,16 @@ class ConsultasController extends Controller
 
     public function jsonCatPrendas(Request $request, $idVestimenta)
     {
-        $prendas = \App\Models\CatPrenda::all();
+        $prendas = \App\Models\CatPrenda::where('idVestimenta',$idVestimenta)->get();
 
         return response()->json($prendas);
+    }
+
+    public function jsonCatColores(Request $request)
+    {
+        $colores = \App\Models\CatColores::all();
+
+        return response()->json($colores);
     }
 
 }
