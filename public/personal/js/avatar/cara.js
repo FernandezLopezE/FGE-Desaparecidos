@@ -8,11 +8,12 @@ $(document).ready(function() {
     });
 
 	//INICIO FUNCIONES PARA CEJAS
-	$('#tieneCabello').on('change', function(){
+	$('#infocejas').on('change', function(){
+		///alert("Hola");
 		var idPartesCuerpo = 73;
 		var opcion = $(this).val();
-		alert("hola");
-		if(opcion == SÍ){
+		//alert("hola");
+		if(opcion == "SÍ"){
 			console.log("Entro");
 			//obtener tipo
 	    	$.ajax({
