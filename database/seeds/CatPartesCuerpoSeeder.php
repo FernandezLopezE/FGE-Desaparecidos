@@ -85,6 +85,7 @@ class CatPartesCuerpoSeeder extends Seeder
             ['nombre' => 'DEDO PULGAR IZQUIERDO', 'partePadre' => '21'],//70
             ['nombre' => 'BOCA', 'partePadre' => '60'],//71
             ['nombre' => 'LABIOS', 'partePadre' => '71'],//72
+            ['nombre' => 'AMBAS CEJAS', 'partePadre' => '60'],//73
             
             
         ]);

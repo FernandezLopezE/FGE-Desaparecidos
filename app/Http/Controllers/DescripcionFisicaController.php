@@ -462,6 +462,11 @@ class DescripcionFisicaController extends Controller
         //
         $desaparecido = Desaparecido::find($idDesaparecido);
         $ids = array(1,6,11,13,15,16,20,23,24,34,35,36,37);
+        //ids para cejas
+        $idCejas = array(73,6,7);
+        $cejasParte = \App\Models\CatPartesCuerpo::whereIn('id',$idCejas)->pluck('nombre','id');
+        $tipoCeja = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','6')->pluck('nombre','id');
+
         $partesCuerpo = \App\Models\CatPartesCuerpo::whereIn('id',$ids)->pluck('nombre','id');
         $complexiones = \App\Models\CatComplexion::all()->pluck('nombre','id');
         $coloresPiel = \App\Models\CatColorPiel::all()->pluck('nombre','id');
@@ -527,6 +532,8 @@ class DescripcionFisicaController extends Controller
                 'partiPatilla' => $partiPatilla,
                 'modiPatilla' => $modiPatilla,
                 'aux' => $aux,
+                'cejasParte' => $cejasParte,
+                'tipoCeja' => $tipoCeja
             ]);
     }
 
