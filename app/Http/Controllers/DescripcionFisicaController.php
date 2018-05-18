@@ -900,4 +900,13 @@ class DescripcionFisicaController extends Controller
         
         return response()->json($datosfisicos);
     }
+
+    public function getTipoCuerpo($idParteCuerpo){
+        
+        $tipos = \DB::table('cat_tipos_cuerpo')
+            ->where('idPartesCuerpo',$idParteCuerpo)
+            ->get();
+        
+        return response()->json($tipos);
+    }
 }
