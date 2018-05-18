@@ -32,9 +32,9 @@ class ConsultasController extends Controller
 		return response()->json($cedulas);
 	}
     
-    public function jsonDesaparecidosPersona(Request $request, $masc, $fem, $rg, $rg2)
+    public function jsonDesaparecidosPersona(Request $request)
 	{
-		//$cedulas = \DB::table('desaparecidos_cedula_investigacion')::all();
+		//{$cedulas = \DB::table('desaparecidos_cedula_investigacion')::all();
 //        
 //         $subs = \DB::table('desaparecidos_personas as desap')
 //
@@ -47,12 +47,26 @@ class ConsultasController extends Controller
 //            ->select (\DB::raw('CAST ('$subs' AS SIGNED) '))
 //             ->where('tipoPersona','DESAPARECIDA')
 //             ->get();
-                
+        //$estados = "uno,dos,tres,cuatro,cinco";
+        //$array = explode(",", $estados);}
         
+        // dd($request->ToArray());
+        $estados = $request->input('estados');
+        $masc = $request->input('masc');
+        $fem = $request->input('fem');
+        $rg = $request->input('rg');
+        $rg2 = $request->input('rg2');
+//        //dd($estados);
+//        $consulta = \DB::table('persona')
+//            ->whereIn('idEstadoOrigen', $estados)
+//             ->get();
+//        dd($consulta->toArray());
         $desaparecidos = \DB::table('desaparecidos_personas as des')
+             
 //                            ->leftJoin('desaparecidos_personas as d', 'c.id', '=',
-//                                \DB::raw('d.idCedula AND d.tipoPersona = "DESAPARECIDA"'))
+//                                \DB::raw('d.idCedula AND d.tipoPersona = "DESAPARECIDA"'))                            
                             ->join('persona as p', 'des.id', '=', 'p.id')
+                            ->join('cat_estado AS ce', 'p.idEstadoOrigen', '=', 'ce.id')
 //                            ->leftJoin('cat_nacionalidad as n', 'p.idNacionalidad', '=', 'n.id')
                             //->where('d.tipoPersona','DESAPARECIDA')
 //            ->join('cat_estado AS ce', 'dd.idEstado', '=', 'ce.id')
@@ -62,20 +76,24 @@ class ConsultasController extends Controller
                         //DB::raw('substr(id, 1, 4) as id')
            
                  
-            ->select('des.id as id', 'p.nombres as nombres', 'p.primerAp as pa', 'p.segundoAp as sa', 'p.sexo as sexo','des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'))
-            
+            ->select('des.id as id', \DB::raw('CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))AS nombre'), 'p.sexo as sexo',\DB::raw('substr(p.fechaNacimiento, 1,10) as fecha'),'des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'),'ce.id as idEstado','ce.nombre as estado')
             
                             ->where('tipoPersona','DESAPARECIDA')
                             //->where('des.edadExtravio', 'like', "$rg%")
                             //->where('des.edadExtravio', 'like', "$rg2%")
                             //->whereBetween('des.edadExtravio', [$rg, $rg2]) 
+            
                             ->where('p.sexo',$masc)
                             ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
+                            ->whereIn('ce.id', $estados)
                             ->orWhere('p.sexo', $fem) 
                             ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
+                            ->whereIn('ce.id', $estados)
+            
                             //->where('des.edadExtravio', 'like', "$rg2%")
                             ->get();
 
+       // dd($desaparecidos->ToArray());
 		return response()->json($desaparecidos);
 	}
 

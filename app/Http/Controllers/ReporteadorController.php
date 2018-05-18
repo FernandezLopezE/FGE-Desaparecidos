@@ -12,7 +12,10 @@ class ReporteadorController extends Controller
 
          //$dependencias      = \App\Models\CatDependencias::all()->pluck('nombre','id');
          //$documentos        = \App\Models\CatDocumentosCorreos::all()->pluck('nombre','id');
-            return view('reporteador.index');
+           $estados            = \App\Models\CatEstado::all()->pluck('nombre','id');
+            return view('reporteador.index',compact(                                           
+											'estados'
+										));
             
      
                 
