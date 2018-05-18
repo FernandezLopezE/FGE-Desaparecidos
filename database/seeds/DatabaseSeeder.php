@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
          $this->call(Agrupacion2Seeder::class);*/
 
          //domicilioDesaparecidos
-        $this->call(PersonaSeeder::class);
+        //$this->call(PersonaSeeder::class);
 
 
         $this->call(CatDocumentosSeeder::class);        
@@ -155,6 +155,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CatTamanoCuerpoSeeder::class);
         $this->call(CatTiposCuerpoSeeder::class);
         $this->call(CatTiposCorteSeeder::class);
+
+        $this->call(PersonaSeeder::class);
 
     }
 }
