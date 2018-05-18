@@ -178,7 +178,7 @@ Route::get('/descripcionfisica/get_patilla/{idExtraviado}', 'DescripcionFisicaCo
 Route::get('/descripcionfisica/get_datosfisicos/{idExtraviado}', 'DescripcionFisicaController@getdatosfisicos')->name('descripcionfisica.get_datosfisicos');
 Route::get('/descripcionfisica/descripcionf/{idPersonaDesaparecida}', 'DescripcionFisicaController@show')
 	->name('descripcionfisica.show');
-
+Route::get('/descripcionfisica/get_tipos/{idParteCuerpo}', 'DescripcionFisicaController@getTipoCuerpo')->name('descripcionfisica.get_tipos');
 Route::post('/descripcionfisica/store', 'DescripcionFisicaController@store')
 	->name('descripcionfisica.store');
 Route::post('/descripcionfisica/storeVelloFacial', 'DescripcionFisicaController@storeVelloFacial')->name('descripcionfisica.storeVelloFacial');
