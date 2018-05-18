@@ -21,7 +21,7 @@
 							<div class="form-control-feedback" id="error_idVestimenta"></div>
 						</div>
 						<div class="form-group col-md-4" id="div_idPrenda">
-							{!! Form::label ('idPrenda','Tipo de prenda/calzado/accesorio/objeto:',['class' => 'form-control-label']) !!}
+							{!! Form::label ('idPrenda','Prenda, calzado, accesorio u objeto:',['class' => 'form-control-label']) !!}
 							{!! Form::select('idPrenda',
 											 [],
 											 null,
@@ -72,8 +72,13 @@
 											 null,
 											 ['class' => 'form-control']) !!}
 							<div class="form-control-feedback" id="error_idColor"></div>
-
 						</div>
+						<div class="form-group col-md-6" id="div_archivo">
+							{!! Form::label ('archivo','Adjuntar archivo:',['class' => 'form-control-label']) !!}
+							{!! Form::file('archivo', ['class' => 'form-control']) !!}
+							<div class="form-control-feedback" id="error_archivo"></div>
+						</div>
+						
 
 					</div>
 					<!-- Fin del Contenido del formulario-->

@@ -29,6 +29,7 @@
 		var modal = $('#modalVestimenta');
 		var table = $('#tableInformantes');
 		var routeIndex = '{!! route('consultas.index') !!}';
+		var routeVestimenta = '{!! route('vestimentas.index') !!}';
 
 		
 		
@@ -37,7 +38,7 @@
 			console.log('Entrando al modal');
 			modal.modal('show');
 			cargarDatosColores();
-
+			$('#idPrenda').prop('disabled', true);			
 			btnPrendaActualizar.hide();
 			btnPrendaGuardar.show();
 		});
@@ -48,6 +49,7 @@
 		})
 
 		var cargarDatosPrendas= function(selected = null, idVestimenta = null){
+
 			$.getJSON(routeIndex+'/get_prendas/'+idVestimenta)
 			.done(function(data){
 				$('#idPrenda').empty();				
@@ -56,7 +58,13 @@
 					if (selected == value.id_menu) { optionSelect = optionSelect+' selected'; }
 					optionselect = optionSelect+' value='+value.id+'>'+value.nombre+'</option>';
 					$('#idPrenda').append(optionselect);					
-				});								
+				});
+				if (data.length){
+					$('#idPrenda').prop('disabled', false);	
+				} else {
+					$('#idPrenda').prop('disabled', true);
+				}
+										
 			});
 
 		}
@@ -78,33 +86,43 @@
 
 		btnPrendaGuardar.click (function(){
 
-			var dataString = {
-				material: $('#material').val(),
-				diseno: $('#diseno').val(),
-				marca: $('#marca').val(),
-				talla: $('#talla').val(),
-				idColor: $('#idColor').val(),
-				idVestimenta: $('#idVestimenta').val(),
-				idPrenda: $('#idPrenda').val(),
-				idDesaparecido: '{{ $desaparecido->id }}'
-			};
-			console.log(dataString);
-			/*$.ajax({
+			//var archivo = $('input[name=archivo]');
+			var fileToUpload = $('#archivo')[0].files[0];
+
+			var formData = new FormData();
+			formData.append("archivo",fileToUpload);
+			formData.append('material', $('#material').val());
+			formData.append('diseno', $('#diseno').val());
+			formData.append('idMarca', $('#idMarca').val());
+			formData.append('idColor', $('#idColor').val());
+			formData.append('idVestimenta', $('#idVestimenta').val());
+			formData.append('idPrenda', $('#idPrenda').val());
+			formData.append('idDesaparecido', '{{ $desaparecido->id }}');
+		
+			$.ajax({
 				type: 'POST',
-				url: '/desaparecido/store_vestimenta',
-				data: dataString,
+				url: routeVestimenta,				
+				data: formData,
 				dataType: 'json',
+				processData: false,
+				contentType: false,
 				success: function(data) {						
 					console.log(data);
-					table.bootstrapTable('refresh');
-					$("#modalVestimenta").modal("hide");	
-					
+					//table.bootstrapTable('refresh');
+					//$("#modalVestimenta").modal("hide");
 													
 				},
 				error: function(data) {
-					console.log(data);
+					var errors = data.responseJSON;	
+					$('.modal-body div.has-danger').removeClass('has-danger');
+					$('.form-control-feedback').empty();
+					$.each(errors.errors, function(key, value){					
+						$('#div_'+key).addClass('has-danger');
+						$('input#'+key).addClass('form-control-danger');
+						$('#error_'+key).append(value);						
+					});
 				}
-			});*/
+			});
 		});
 
 

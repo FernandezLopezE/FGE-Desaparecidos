@@ -6,11 +6,13 @@ class Prenda extends Model
 	protected $table = 'desaparecidos_prendas';
 	protected $fillable = [	    
 	    'material',
-	    'diseno',
-	    'marca',
+	    'diseno',	    
 	    'talla',
+	    'path',
+	    'idMarca',
 	    'idColor',
 	    'idVestimenta',
 	    'idPrenda',
+	    'idDesaparecido',
 	];
 }
