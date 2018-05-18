@@ -10,8 +10,8 @@
 <div class="card-body"  id="datosCara"> 
 	<div class="row">
 		<div class="col-6">
-			{!! Form::label ('colorCejas','¿Tiene información de las cejas?') !!}
-			{!! Form::select('tieneCabello', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tieneCabello'] ) !!}
+			{!! Form::label ('infocejas','¿Tiene información de las cejas?') !!}
+			{!! Form::select('infocejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infocejas'] ) !!}
 		</div>
 		<div class="col">
 			{!! Form::label ('posCejas','Posición') !!}
