@@ -1,5 +1,9 @@
 $(document).ready(function() {
 	$("#cabeza").click(function(event) {
-		alert("Hola mundo")
+		$("#formCara").toggle();
 	});
+
+	$("#minCara").click(function(event) {
+        $("#formCara").toggle();
+    });
 });
