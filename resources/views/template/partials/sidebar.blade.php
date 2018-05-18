@@ -27,7 +27,7 @@
 					<!-- Add icons to the links using the .nav-icon class
 						with font-awesome or any other icon font library -->
 						<li class="nav-item"><a href="{!! route('cedula.index') !!}" class="nav-link"><i class=" nav-icon fa fa-home"></i> <p> Inicio</p> <span></span></a></li>
-						<li class="nav-item"><a href="{!! route('cedula.index') !!}" class=""><i class=" nav-icon fa fa-book"></i> <p> Cedulas</p><span></span></a></li>						
+						<li class="nav-item"><a href="{!! route('cedula.index') !!}" class="nav-link"><i class=" nav-icon fa fa-book"></i> <p> Cedulas</p><span></span></a></li>						
 						<li class="nav-item" ><a href="#" class="active nav-link"><i class="nav-icon fa fa-folder-open"></i><p>Carpeta Abierta</p> <span></span></a></li>
 						
 						<li class="nav-item"><a href="{!! route('cedula.create') !!}" class="nav-link"><i class="nav-icon fa fa-folder"></i><p>Nuevo reporte</p> <span></span></a></li>
