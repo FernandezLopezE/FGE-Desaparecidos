@@ -1,5 +1,9 @@
 $(document).ready(function() {
 	$("#cabeza").click(function(event) {
-		$("#prueba").toggle();
+		$("#formCara").toggle();
 	});
+
+	$("#minCara").click(function(event) {
+        $("#formCara").toggle();
+    });
 });

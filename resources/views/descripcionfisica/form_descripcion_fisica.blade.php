@@ -35,8 +35,11 @@
 
     #editFis:hover {
     transform: scale(1.7);
+    } 
+  
+    #minCara:hover {
+    transform: scale(1.7);
     }
-
 </style>
 @endsection
 
@@ -139,10 +142,9 @@ $(document).ready(function(){
         }
       });
   });
-    /*$("#colapsar2").click(function(event) {
-        $("#fomularioPrin").toggle();
-        $("#fomularioPrin2").toggle();
-    });*/
+    $("#colapsar").click(function(event) {
+        $("#acordion").toggle();
+    });
   //Ocultar Boton editar
   $("#btnEditarC").hide();
 
@@ -156,6 +158,7 @@ $(document).ready(function(){
   $("#btnEditarC").click(function(){
    $("#detallesV").toggle();
    $("#datosCabello").toggle();
+   $("#btnEditarC").hide();
   });
 
   //Boton guardar para cabello
