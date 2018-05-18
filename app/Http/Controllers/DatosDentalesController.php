@@ -107,10 +107,12 @@ class DatosDentalesController extends Controller
     public function show($id)
     {        
         $desaparecido = \App\Models\Desaparecido::find($id);
+        $edad = explode(" ",$desaparecido->edadExtravio);
         $dienteTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
         return view('datosdentales.form_datos_dentales',[
                     'dienteTamano' => $dienteTamano,
-                    'desaparecido' => $desaparecido
+                    'desaparecido' => $desaparecido,
+                    'edadExtraviado' => $edad
                 ]);
     }
 
