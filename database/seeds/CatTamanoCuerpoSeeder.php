@@ -32,6 +32,12 @@ class CatTamanoCuerpoSeeder extends Seeder
             [ 'nombre' => 'MEDIANO', 'idPartesCuerpo' => '36'],
             [ 'nombre' => 'PEQUEÑO', 'idPartesCuerpo' => '36'],
 
+            //AMBOS OJOS
+            [ 'nombre' => 'SIN INFORMACION', 'idPartesCuerpo' => '74'],
+            [ 'nombre' => 'GRANDE', 'idPartesCuerpo' => '74'],
+            [ 'nombre' => 'MEDIANO', 'idPartesCuerpo' => '74'],
+            [ 'nombre' => 'PEQUEÑO', 'idPartesCuerpo' => '74'],
+
             //BOCA
             [ 'nombre' => 'SIN INFORMACION', 'idPartesCuerpo' => '71'],
             [ 'nombre' => 'GRANDE', 'idPartesCuerpo' => '71'],

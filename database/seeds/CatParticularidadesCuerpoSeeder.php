@@ -22,7 +22,7 @@ class CatParticularidadesCuerpoSeeder extends Seeder
          	['idPartesCuerpo'=>35, 'nombre' => 'PARTICULARIDADES OREJA IZQUIERDA'],	//7
             ['idPartesCuerpo'=>34, 'nombre' => 'PARTICULARIDADES OREJA DERECHA'],//8
          	['idPartesCuerpo'=>58, 'nombre' => 'PARTICULARIDADES PATILLAS'], //9
-         	['idPartesCuerpo'=>23, 'nombre' => 'PARTICULARIDADES MEJILLAS'], //10       	
+         	['idPartesCuerpo'=>23, 'nombre' => 'PARTICULARIDADES AMBAS MEJILLAS'], //10       	
          	['idPartesCuerpo'=>31, 'nombre' => 'PARTICULARIDADES NARIZ'],	//11
          	['idPartesCuerpo'=>57, 'nombre' => 'PARTICULARIDADES BIGOTE'],	//12
          	['idPartesCuerpo'=>19, 'nombre' => 'PARTICULARIDADES LABIO INFERIOR'],	//13
@@ -84,7 +84,14 @@ class CatParticularidadesCuerpoSeeder extends Seeder
             ['idPartesCuerpo'=>53, 'nombre' => 'PARTICULARIDADES TOBILLO IZQUIERDO'],   //64
             ['idPartesCuerpo'=>52, 'nombre' => 'PARTICULARIDADES TOBILLO DERECHO'],//65
             ['idPartesCuerpo'=>59, 'nombre' => 'PARTICULARIDADES UÑA'],//66
-            ['idPartesCuerpo'=>60, 'nombre' => 'PARTICULARIDADES CABEZA'],//68
+            ['idPartesCuerpo'=>60, 'nombre' => 'PARTICULARIDADES CABEZA'],//67
+
+            ['idPartesCuerpo'=>73, 'nombre' => 'PARTICULARIDADES AMBAS CEJAS'],//68
+            ['idPartesCuerpo'=>74, 'nombre' => 'PARTICULARIDADES AMBOS OJOS'],//69
+            ['idPartesCuerpo'=>75, 'nombre' => 'PARTICULARIDADES MEJILLA IZQUIERDA'], //70 
+            ['idPartesCuerpo'=>76, 'nombre' => 'PARTICULARIDADES MEJILLA DERECHA'], //71
+            ['idPartesCuerpo'=>77, 'nombre' => 'PARTICULARIDADES AMBAS OREJAS'],//72
+            ['idPartesCuerpo'=>71, 'nombre' => 'PARTICULARIDADES BOCA'],//73
 
 
     ]);

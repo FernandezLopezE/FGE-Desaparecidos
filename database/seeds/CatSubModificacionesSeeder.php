@@ -44,13 +44,31 @@ class CatSubModificacionesSeeder extends Seeder
             ['idModificacionesCuerpo'=>4, 'nombre' => 'RASURADA/DEPILADA'],
             ['idModificacionesCuerpo'=>4, 'nombre' => 'OTRO'],
 
+            //AMBAS CEJAS
+            ['idModificacionesCuerpo'=>68, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idModificacionesCuerpo'=>68, 'nombre' => 'TATUADA'],
+            ['idModificacionesCuerpo'=>68, 'nombre' => 'PEARCING'],
+            ['idModificacionesCuerpo'=>68, 'nombre' => 'TEÑIDA'],
+            ['idModificacionesCuerpo'=>68, 'nombre' => 'RASURADA/DEPILADA'],
+            ['idModificacionesCuerpo'=>68, 'nombre' => 'OTRO'],
+
             //OJO IZQUIERDO
+            ['idModificacionesCuerpo'=>5, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>5, 'nombre' => 'LENTES DE CONTACTO/PUPILENTES'],
             ['idModificacionesCuerpo'=>5, 'nombre' => 'CIRUGÍA'],
+            ['idModificacionesCuerpo'=>5, 'nombre' => 'OTRO'],
 
             //OJO DERECHO
+            ['idModificacionesCuerpo'=>6, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>6, 'nombre' => 'LENTES DE CONTACTO/PUPILENTES'],
             ['idModificacionesCuerpo'=>6, 'nombre' => 'CIRUGÍA'],
+            ['idModificacionesCuerpo'=>6, 'nombre' => 'OTRO'],
+
+            //AMBOS OJOS
+            ['idModificacionesCuerpo'=>69, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idModificacionesCuerpo'=>69, 'nombre' => 'LENTES DE CONTACTO/PUPILENTES'],
+            ['idModificacionesCuerpo'=>69, 'nombre' => 'CIRUGÍA'],
+            ['idModificacionesCuerpo'=>69, 'nombre' => 'OTRO'],
 
             //OREJA IZQUIERDA
             ['idModificacionesCuerpo'=>7, 'nombre' => 'TATUADA'],
@@ -112,7 +130,14 @@ class CatSubModificacionesSeeder extends Seeder
             ['idModificacionesCuerpo'=>11, 'nombre' => 'CIRUGÍA'],
             ['idModificacionesCuerpo'=>11, 'nombre' => 'OTRO'],
 
-
+            //BOCA
+            ['idModificacionesCuerpo'=>73, 'nombre' => 'TATUADO'],
+            ['idModificacionesCuerpo'=>73, 'nombre' => 'PERFORADA'],
+            ['idModificacionesCuerpo'=>73, 'nombre' => 'PEARCING'],
+            ['idModificacionesCuerpo'=>73, 'nombre' => 'EXPANSIONES'],
+            ['idModificacionesCuerpo'=>73, 'nombre' => 'CIRUGÍA'],
+            ['idModificacionesCuerpo'=>73, 'nombre' => 'OTRO'],
+            
             //LABIO INFERIOR
             ['idModificacionesCuerpo'=>13, 'nombre' => 'TATUADO'],
             ['idModificacionesCuerpo'=>13, 'nombre' => 'PERFORADA'],
