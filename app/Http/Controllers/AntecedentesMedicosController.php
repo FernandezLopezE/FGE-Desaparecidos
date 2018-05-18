@@ -9,7 +9,7 @@ use App\Models\PivotEnfermedadesMedicas;
 use App\Models\PivotIntervencionesMedicas;
 use App\Models\PivotAdicciones;
 use App\Models\PivotImplantesMedicos;
-
+use App\Models\Anexos;
 class AntecedentesMedicosController extends Controller
 {
     /**
@@ -125,6 +125,14 @@ class AntecedentesMedicosController extends Controller
     public function show($idExtraviado, Request $request)
     {
         //
+        $images = (Anexos::where('idDesaparecido', $idExtraviado)->where('tipoAnexo', 'antecedentesMedicos')->get());
+
+
+        //return view('image-gallery',compact('images'));
+
+
+
+
         $desaparecido = Desaparecido::find($idExtraviado);
 
         $enfermedades = \App\Models\CatEnfermedades::all()->pluck('nombre','id');
@@ -140,6 +148,7 @@ class AntecedentesMedicosController extends Controller
                 'iQuirurgicas' => $iQuirurgicas,
                 'adicciones' => $adicciones,
                 'implantes' => $implantes,
+                'images' => $images,
             ]);
     }
 
