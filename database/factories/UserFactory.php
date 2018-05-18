@@ -37,9 +37,6 @@ $factory->define(App\Models\Cedula::class, function (Faker $faker) {
 	$estado = 30;
 	$municipios = App\Models\CatMunicipio::where('idEstado',$estado)->pluck('id')->toArray();//::all()->pluck('id')->toArray();
 	$localidades = App\Models\CatLocalidad::whereIn('idMunicipio',$municipios)->pluck('id')->toArray();
-	$calzadoTipo = App\Models\CatCalzadoTipo::all()->pluck('id')->toArray();
-	$calzadoColor = App\Models\CatCalzadoColor::all()->pluck('id')->toArray();
-	$calzadoMarca = App\Models\CatCalzadoMarca::all()->pluck('id')->toArray();
 	$dialecto = 1;
 	//$faker->addProvider(new Faker\Provider\es_ES\Person($faker));
 	return [
@@ -63,13 +60,13 @@ $factory->define(App\Models\Cedula::class, function (Faker $faker) {
 		//'referenciaLugar' => str_random(50),
 		//'vehiculoDescripcion'=> str_random(50),
 		//'objetos' => str_random(50),
-		'modeloCalzado' => str_random(50),
+		//'modeloCalzado' => str_random(50),
 		//'otroColorCalzado' => str_random(50),
 		//'otroCalzado' => str_random(10),
 		//'otraMarca' => str_random(10),
-		'idCalzadotipo' => $faker->randomElement($calzadoTipo),
-		'idCalzadocolor' =>$faker->randomElement($calzadoColor),
-		'idCalzadomarca' => $faker->randomElement($calzadoMarca),
+		//'idCalzadotipo' => $faker->randomElement($calzadoTipo),
+		//'idCalzadocolor' =>$faker->randomElement($calzadoColor),
+		//'idCalzadomarca' => $faker->randomElement($calzadoMarca),
 		'idDialecto' => $dialecto,				
 	];
 });
