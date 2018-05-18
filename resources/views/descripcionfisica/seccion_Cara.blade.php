@@ -15,7 +15,7 @@
 		</div>
 		<div class="col">
 			{!! Form::label ('posCejas','Posición') !!}
-			{!! Form::select('posCejas', array('SIN INFORMACIÓN' => 'AMBAS', 'IZQUIERDA' => 'IZQUIERDA', 'DERECHA' => 'DERECHA'), '', ['class' => 'form-control', 'id' => 'posCejas'] ) !!}
+			{!! Form::select('posCejas',  $cejasParte, '', ['class' => 'form-control', 'id' => 'posCejas'] ) !!}
 		</div>
 		<div class="col">
 			{!! Form::label ('tipoCeja','Tipo') !!}
