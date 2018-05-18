@@ -7,15 +7,70 @@
 	.modal-lg {
 		max-width: 80%;
 	}
+    
+      section.range-slider {
+    position: relative;
+    width: 200px;
+    height: 35px;
+    text-align: center;
+}
+
+section.range-slider input {
+    pointer-events: none;
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    top: 15px;
+    width: 200px;
+    outline: none;
+    height: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+section.range-slider input::-webkit-slider-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 1;
+    outline: 0;
+}
+
+section.range-slider input::-moz-range-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 10;
+    -moz-appearance: none;
+    width: 9px;
+}
+
+section.range-slider input::-moz-range-track {
+    position: relative;
+    z-index: -1;
+    background-color: rgba(0, 0, 0, 1);
+    border: 0;
+}
+section.range-slider input:last-of-type::-moz-range-track {
+    -moz-appearance: none;
+    background: none transparent;
+    border: 0;
+}
+  section.range-slider input[type=range]::-moz-focus-outer {
+  border: 0;
+}
 </style>
 	
 @endsection
+
 
 @section('content')
 
 <nav>
 
+
+
+
 </nav>
+
 <div class="card border-success" id="divDependencias">
 	<div class="card-header">
 		<h5 class="card-title">Reporteador
@@ -27,34 +82,20 @@
 	<div class="card-body">	
 	    <div class="card-body bg-white">
             <div class="row">
-                <div class=" card-header">
-                    <label for="">Género:</label><br>
-                    <div class="card-body">
+                <div class=" form-check col-lg-1">
+                  
                      <input class="form-check-input" Value="H" type="checkbox" id="masc" checked> Hombre: 
-                     <br>
+                </div>
+                <div class=" form-check col-lg-1">
+                    
                      <input class="form-check-input" Value="M" type="checkbox" id="fem" checked> Mujer:
-                     </div>
-                     </div>
-                     
-               
-
-
-                 <div class="form-group col-lg-2 card-header" id="div_idEstado" style="margin-left:5px" >
+                </div>
+                 <div class="form-group col-lg-4" id="div_idEstado">
              {!! Form::label ('','Edad de:',['class' => '']) !!}
-	            <input  min="0" max="120" step="1" type="number" id="rng1"><br>
+	            <input  min="0" max="120" step="1" type="number" id="rng1">
             {!! Form::label ('','Hasta:',['class' => '']) !!}
-                <input  min="0" max="120" step="1" type="number" id="rng2" style="margin-left:14px"> 
+                <input  min="0" max="120" step="1" type="number" id="rng2"> 
 	         </div>
-           
-           <div class="col-lg-4 card-header"  id="infoCabello3" style="margin-left:5px">
-                {!! Form::label ('idEstados','Estados:') !!} <br>
-                {!! Form::select('idEstados',$estados, '', ['class' => '', 'id' => 'estado','multiple' => 'multiple'] ) !!}
-                {!! Form::label ('idMunicipios','Municipios:') !!} <br>
-                {!! Form::select('idEstados',$estados, '', ['class' => '', 'id' => 'municipio','multiple' => 'multiple'] ) !!}
-		    </div>
-           <div class="col-lg-4 card-header"  id="infoCabello3" style="margin-left:5px">
-                
-		    </div>
             </div>
         </div>
 	    
@@ -63,14 +104,21 @@
 	     <div class="row" >
 	        
 
-	         
+	         <div class="col-lg-3"  id="infoCabello3">
+                {!! Form::label ('idEstados','Estados:') !!}
+                {!! Form::select('idEstados',$estados, '', ['class' => '', 'id' => 'partiCabello','multiple' => 'multiple'] ) !!}
+		    </div>
 	     </div>
-        
-      
+	     <imput type="button" class="btn btn-dark pull-right" id="range">Botón</imput>
         <imput type="button" class="btn btn-dark pull-right" id="filtros">Buscar</imput>
 	     <br><br>
-	     
+
   
+        
+        
+
+        
+        
            <div id="tablaGen" >
           <table id="tableDependencias"
               data-search="true"
@@ -113,10 +161,7 @@
 @section('scripts')
 {!! HTML::script('personal/js/multiple-select.js') !!}
 <script type="text/javascript">
-    $('#estado').multipleSelect({
-            filter: true
-        });
-    $('#municipio').multipleSelect({
+    $('#partiCabello').multipleSelect({
             filter: true
         });
     // $('select').multipleSelect();
