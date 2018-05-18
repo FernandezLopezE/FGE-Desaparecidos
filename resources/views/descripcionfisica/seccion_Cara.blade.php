@@ -27,11 +27,11 @@
 		
 		<div class="col">
 			{!! Form::label ('colorCejas','Particularidades') !!}
-			{!! Form::select('tipoCeja', $tipoCeja, '', ['class' => 'form-control', 'id' => 'tipoCeja'] ) !!}
+			{!! Form::select('idSubParticularidades', $tipoCeja, '', ['class' => 'form-control', 'id' => 'idSubParticularidades'] ) !!}
 		</div>
 		<div class="col">
 			{!! Form::label ('colorCejas','Modificaciones') !!}
-			{!! Form::select('colorCejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'colorCejas'] ) !!}
+			{!! Form::select('idSubModificaciones', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idSubModificaciones'] ) !!}
 		</div>
 	</div><br>
 
