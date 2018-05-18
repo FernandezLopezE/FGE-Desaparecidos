@@ -45,6 +45,14 @@ Route::get('/', 'InicioController@index');
 
 
 Route::get('consultas/get_cedulas', 'ConsultasController@jsonCedulas');
+
+
+Route::resource('reporteador', 'ReporteadorController');
+Route::post('consultas/get_desaparecidos_personas/{masc}/{fem}/{rg}/{rg2}/{estados}', 'ConsultasController@jsonDesaparecidosPersona')->name('consultas.get_desaparecidos_personas');
+//Route::post('remover-permiso/{idCarpeta}/{idTipo}/{id}', 'CarpetaController@removerPermiso')->name('remover.permiso');
+
+
+
 Route::get('consultas/get_informantes/{idCedula}', 'ConsultasController@jsonInformantes')
 	->name('consultas.get_informantes');
 Route::get('consultas/get_familiares/{idDesaparecido}', 'ConsultasController@jsonFamiliares')
@@ -228,6 +236,8 @@ Route::get('/generarDocs', 'CargarDocumentosController@crearDocumento')
 	->name('generarDocs.crearDocumentos');
 
 	//esta es la ruta .
+
+Route::get('/index_reporteador', 'ReporteadorController@show')->name('reporteador');
 
 Route::get('/index_agregar_dependencias', 'AgregarDependenciaController@show')->name('dependencias.destinatarios');
 Route::post('/index_agregar_dependencias/store_destinatario', 'AgregarDependenciaController@store_destinatario')
