@@ -1,7 +1,6 @@
 <div id="area" style="display:none;">
   Area: <span id="data"></span>
 </div>
-
     <div class="human-body">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 700" class="img-fluid">
     <g id="base">
@@ -105,43 +104,4 @@
   </svg>
     </div>
 
-    <div class="card border-warning mb-3" style="max-width: 18rem;">
-        <div class="card-header">
-            <b>Datos físicos</b>
-        <i class="fa fa-pencil pull-right" id="editFis" data-toggle="tooltip" title="Editar"></i>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-5">
-                    <h6><b>Estatura:</b></h6>
-                </div>
-                <div class="col-7">
-                    <input type="text" id="estatura" style="border: 0px">
-                </div>
-            </div> 
-            <div class="row">
-                <div class="col-5">
-                    <h6><b>Peso:</b></h6>
-                </div>
-                <div class="col-7">
-                    <input type="text" id="peso" style="border: 0px">
-                </div>
-            </div>   
-            <div class="row">
-                <div class="col-5">
-                    <h6><b>Complexión:</b></h6>
-                </div>
-                <div class="col-7">
-                    <input type="text" id="complexion" style="border: 0px">
-                </div>
-            </div> 
-             <div class="row">
-                <div class="col-5">
-                    <h6><b>Color de piel:</b></h6>
-                </div>
-                <div class="col-7">
-                    <input type="text" id="piel" style="border: 0px">
-                </div>
-            </div>
-        </div> 
-    </div>
+    
