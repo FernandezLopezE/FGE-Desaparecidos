@@ -8,4 +8,5 @@ class CatVestimenta extends Model
 {
 	protected $table = 'cat_vestimentas';
 	protected $fillable = ['id', 'nombre'];
+
 }

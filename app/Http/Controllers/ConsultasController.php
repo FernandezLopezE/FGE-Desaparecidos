@@ -487,4 +487,16 @@ class ConsultasController extends Controller
         return response()->json($colores);
     }
 
+    public function jsonVestimentas(Request $request, $idDesaparecido)
+    {
+        $prendas = \App\Models\Prenda::where('idDesaparecido', $idDesaparecido)
+                                        ->with('vestimenta')
+                                        ->with('prenda')
+                                        ->with('marca')
+                                        ->with('color')
+                                        ->get();
+        
+        return response()->json($prendas);
+    }
+
 }

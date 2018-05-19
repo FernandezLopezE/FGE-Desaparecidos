@@ -1,5 +1,6 @@
 @extends('layouts.app_uipj')
 @section('css')
+{!! Html::style('') !!}
 <style type="text/css">
 	.modal-lg {
 		max-width: 80%;
@@ -28,10 +29,48 @@
 		var btnPrendaGuardar = $('#btnGuardarPrenda');
 		var modal = $('#modalVestimenta');
 		var table = $('#tableInformantes');
+		var idDesaparecido = '{{ $desaparecido->id }}';
 		var routeIndex = '{!! route('consultas.index') !!}';
 		var routeVestimenta = '{!! route('vestimentas.index') !!}';
+		var routeAsset = '{{asset("")}}';
 
-		
+		table.bootstrapTable({				
+			url: routeIndex+'/get_vestimentas/'+idDesaparecido,
+			columns: [{					
+				title: 'Foto',
+				formatter: (value, row, index, field) => {
+					return '<img src="'+routeAsset+row.path+'" class="rounded float-left" width="136" height="136">'; 				
+                }
+			}, {
+				field: 'vestimenta.nombre',
+				title: 'Vestimenta',				
+			}, {					
+				field: 'prenda.nombre',
+				title: 'Tipo',
+			}, {					
+				field: 'marca.nombre',
+				title: 'Marca',
+			}, {					
+				//field: 'color.nombre',
+				title: 'Color',
+				formatter: (value, row, index, field) => {
+					span = '<span class="btn-colorselector" style="background-color: ';
+					span = span+row.color.codigo;
+					span = span+';"><div></div></span>';
+					return span; 				
+                }
+			}, {					
+				field: 'material',
+				title: 'Material',
+			}, {					
+				field: 'diseno',
+				title: 'Observaciones',
+			}, {
+				title: 'Acciones',
+				//formatter: formatTableActions,
+				//events: operateEvents
+			}]				
+		});		
 		
 		//Vista de datos de la vestimenta
 		btnPrendaAgregar.click(function(e){
@@ -50,7 +89,7 @@
 
 		var cargarDatosPrendas= function(selected = null, idVestimenta = null){
 
-			$.getJSON(routeIndex+'/get_prendas/'+idVestimenta)
+			$.getJSON(routeIndex+'/get_catprendas/'+idVestimenta)
 			.done(function(data){
 				$('#idPrenda').empty();				
 				$.each(data, function(key, value){						
@@ -88,16 +127,18 @@
 
 			//var archivo = $('input[name=archivo]');
 			var fileToUpload = $('#archivo')[0].files[0];
+			if (fileToUpload == 'undefined') { fileToUpload = null }
 
 			var formData = new FormData();
 			formData.append("archivo",fileToUpload);
 			formData.append('material', $('#material').val());
 			formData.append('diseno', $('#diseno').val());
+			formData.append('talla', $('#talla').val());
 			formData.append('idMarca', $('#idMarca').val());
 			formData.append('idColor', $('#idColor').val());
 			formData.append('idVestimenta', $('#idVestimenta').val());
 			formData.append('idPrenda', $('#idPrenda').val());
-			formData.append('idDesaparecido', '{{ $desaparecido->id }}');
+			formData.append('idDesaparecido', idDesaparecido);
 		
 			$.ajax({
 				type: 'POST',
@@ -108,9 +149,8 @@
 				contentType: false,
 				success: function(data) {						
 					console.log(data);
-					//table.bootstrapTable('refresh');
-					//$("#modalVestimenta").modal("hide");
-													
+					table.bootstrapTable('refresh');
+					$("#modalVestimenta").modal("hide");
 				},
 				error: function(data) {
 					var errors = data.responseJSON;	
@@ -182,29 +222,7 @@
 		$('#nuevoInformante').click(function(e){
 			$('#modalGeneral').modal('show');
 		})
-		table.bootstrapTable({				
-			url: routeIndex+'/get_prendas/',
-			columns: [{					
-				field: 'id',
-				title: 'ID',
-			}, {					
-				field: 'tipo',
-				title: 'Nombre',
-			}, {					
-				field: 'color',
-				title: 'Color',
-			}, {					
-				field: 'material',
-				title: 'Material',
-			}, {					
-				field: 'dibujo',
-				title: 'Dibujo/Bordado/Franjas',
-			}, {					
-				title: 'Acciones',
-				formatter: formatTableActions,
-				events: operateEvents
-			}]				
-		})
+
 		
 	//Fin de Vista de datos de la vestimenta
 	//Vista de datos de calzado

@@ -39,16 +39,6 @@
 					</div>
 
 					<div class="row">
-						<div class="form-group col-md-4" id="div_diseno">
-							{!! Form::label ('diseno','Dibujo/Bordado/Franjas:',['class' => 'form-control-label']) !!}
-							{!! Form::text ('diseno',
-											old('Dibujo/Bordado/Franjas'),
-											['class' => 'form-control mayuscula',
-												'data-validation' => 'required',
-												'data-validation-error-msg-required' => 'Ingrese el bordado, dibujo o franja',
-												'placeholder' => 'Bordado, dibujo o franja'] )!!}
-							<div class="form-control-feedback" id="error_diseno"></div>
-						</div>
 						<div class="form-group col-md-4" id="div_idMarca">
 							{!! Form::label ('idMarca','Marca y origen:',['class' => 'form-control-label']) !!}
 							{!! Form::select('idMarca',
@@ -62,10 +52,7 @@
 							{!! Form::text ('talla',old('Talla'), ['class' => 'form-control mayuscula', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese la talla', 'placeholder' => 'Talla'] )!!}
 							<div class="form-control-feedback" id="error_talla"></div>
 						</div>
-					</div>
-
-					<div class="row">
-						<div class="form-group col-md-6" id="div_idColor">
+						<div class="form-group col-md-4" id="div_idColor">
 							{!! Form::label ('idColor','Color:',['class' => 'form-control-label']) !!}
 							{!! Form::select('idColor',
 											 [],
@@ -73,8 +60,21 @@
 											 ['class' => 'form-control']) !!}
 							<div class="form-control-feedback" id="error_idColor"></div>
 						</div>
+					</div>
+
+					<div class="row">
+						<div class="form-group col-md-6" id="div_diseno">
+							{!! Form::label ('diseno','Observaciones:',['class' => 'form-control-label']) !!}
+							{!! Form::textarea ('diseno',
+											old('Dibujo/Bordado/Franjas'),
+											['class' => 'form-control mayuscula',
+												'data-validation' => 'required',
+												'data-validation-error-msg-required' => 'Ingrese observaciones',
+												'placeholder' => 'Ingrese el bordado, dibujo, franja u observaciones de la prenda'] )!!}
+							<div class="form-control-feedback" id="error_diseno"></div>
+						</div>
 						<div class="form-group col-md-6" id="div_archivo">
-							{!! Form::label ('archivo','Adjuntar archivo:',['class' => 'form-control-label']) !!}
+							{!! Form::label ('archivo','Foto:',['class' => 'form-control-label']) !!}
 							{!! Form::file('archivo', ['class' => 'form-control']) !!}
 							<div class="form-control-feedback" id="error_archivo"></div>
 						</div>

@@ -24,7 +24,7 @@ class VestimentaRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            'material'          => 'required',
+            'material'          => '',
             'diseno'            => 'required',
             'talla'             => '',
             'idMarca'           => 'required',
@@ -36,5 +36,15 @@ class VestimentaRequest extends FormRequest
         ];
 
         return $rules;
+    }
+
+    public function messages()
+    {
+        return [
+            'diseno.required' => 'Las Observaciones son requeridas',
+            'idMarca.required'  => 'Marca es requerido',
+            'idVestimenta.required'  => 'Tipo vestimenta es requerido',
+            'idPrenda.required'  => 'Tipo de prenda es requerido',
+        ];
     }
 }

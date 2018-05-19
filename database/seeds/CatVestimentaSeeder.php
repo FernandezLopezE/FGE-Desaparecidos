@@ -16,7 +16,8 @@ class CatVestimentaSeeder extends Seeder
             [ 'nombre' => 'SIN INFORMACIÓN'],
             [ 'nombre' => 'VESTIMENTA'],
             [ 'nombre' => 'CALZADO'],
-            [ 'nombre' => 'ACCESORIOS Y OBJETOS'],          
+            [ 'nombre' => 'ACCESORIOS'],
+            [ 'nombre' => 'OBJETOS'],          
         );
 
         foreach ($vestimentas as $vestimenta) {

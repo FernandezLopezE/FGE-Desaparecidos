@@ -36,16 +36,19 @@ class VestimentaController extends Controller
 	 */
 	public function store(VestimentaRequest $request)
 	{		
-		
-		$mime = $request->file('archivo')->getMimeType();
-		$extension = strtolower($request->file('archivo')->getClientOriginalExtension());
-		$fileName = uniqid().'.'.$extension;
-		$path = "upload";
-
-		\Storage::disk('local')->put('/vestimenta/'.$fileName,  \File::get($request->file('archivo')));
+		if(!$request->file('archivo'))
+    	{
+			$mime = $request->file('archivo')->getMimeType();
+			$extension = strtolower($request->file('archivo')->getClientOriginalExtension());
+			$fileName = uniqid().'.'.$extension;
+			$path = "upload/vestimenta/".$fileName;
+			\Storage::disk('local')->put('/vestimenta/'.$fileName,  \File::get($request->file('archivo')));
+		} else {
+			$path = "images/vestimenta_sin_imagen.png";
+		}
 
 		$vestimenta = Prenda::create([
-			'path' 				=> '/vestimenta/'.$fileName,
+			'path' 				=> $path,
 			'material' 			=> $request->input('material'),
 			'diseno' 			=> $request->input('diseno'),
 			'idMarca' 			=> $request->input('idMarca'),
