@@ -444,11 +444,13 @@ class CatSubModificacionesSeeder extends Seeder
             ['idModificacionesCuerpo'=>46, 'nombre' => 'OTRO'],
 
             //NALGA DERECHA
+            ['idModificacionesCuerpo'=>47, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>47, 'nombre' => 'TATUADA'],
             ['idModificacionesCuerpo'=>47, 'nombre' => 'CIRUGÍA'],
             ['idModificacionesCuerpo'=>47, 'nombre' => 'OTRO'],
 
             //MUSLO IZQUIERDO
+            ['idModificacionesCuerpo'=>49, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>49, 'nombre' => 'TATUADA'],
             ['idModificacionesCuerpo'=>49, 'nombre' => 'CIRUGÍA'],
             ['idModificacionesCuerpo'=>49, 'nombre' => 'OTRO'],
