@@ -456,11 +456,13 @@ class CatSubModificacionesSeeder extends Seeder
             ['idModificacionesCuerpo'=>49, 'nombre' => 'OTRO'],
 
             //MUSLO DERECHO
+            ['idModificacionesCuerpo'=>50, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>50, 'nombre' => 'TATUADA'],
             ['idModificacionesCuerpo'=>50, 'nombre' => 'CIRUGÍA'],
             ['idModificacionesCuerpo'=>50, 'nombre' => 'OTRO'],
 
             //OMBLIGO
+            ['idModificacionesCuerpo'=>51, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>51, 'nombre' => 'TATUADO'],
             ['idModificacionesCuerpo'=>51, 'nombre' => 'PERFORADA'],
             ['idModificacionesCuerpo'=>51, 'nombre' => 'PEARCING'],
@@ -468,46 +470,55 @@ class CatSubModificacionesSeeder extends Seeder
             ['idModificacionesCuerpo'=>51, 'nombre' => 'OTRO'],
 
             //PIERNA IZQUIERDA
+            ['idModificacionesCuerpo'=>52, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>52, 'nombre' => 'TATUADA'],
             ['idModificacionesCuerpo'=>52, 'nombre' => 'CIRUGÍA'],
             ['idModificacionesCuerpo'=>52, 'nombre' => 'OTRO'],
 
             //PIERNA DERECHA
+            ['idModificacionesCuerpo'=>53, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>53, 'nombre' => 'TATUADA'],
             ['idModificacionesCuerpo'=>53, 'nombre' => 'CIRUGÍA'],
             ['idModificacionesCuerpo'=>53, 'nombre' => 'OTRO'],
 
             //RODILLA IZQUIERDA
+            ['idModificacionesCuerpo'=>54, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>54, 'nombre' => 'TATUADA'],
             ['idModificacionesCuerpo'=>54, 'nombre' => 'CIRUGÍA'],
             ['idModificacionesCuerpo'=>54, 'nombre' => 'OTRO'],
 
             //RODILLA DERECHA
+            ['idModificacionesCuerpo'=>55, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>55, 'nombre' => 'TATUADA'],
             ['idModificacionesCuerpo'=>55, 'nombre' => 'CIRUGÍA'],
             ['idModificacionesCuerpo'=>55, 'nombre' => 'OTRO'],
 
             //TALÓN IZQUIERDA
+            ['idModificacionesCuerpo'=>56, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>56, 'nombre' => 'TATUADO'],
             ['idModificacionesCuerpo'=>56, 'nombre' => 'CIRUGÍA'],
             ['idModificacionesCuerpo'=>56, 'nombre' => 'OTRO'],
 
             //TALÓN DERECHA
+            ['idModificacionesCuerpo'=>57, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>57, 'nombre' => 'TATUADO'],
             ['idModificacionesCuerpo'=>57, 'nombre' => 'CIRUGÍA'],
             ['idModificacionesCuerpo'=>57, 'nombre' => 'OTRO'],
 
             //PIE IZQUIERDA
+            ['idModificacionesCuerpo'=>58, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>58, 'nombre' => 'TATUADO'],
             ['idModificacionesCuerpo'=>58, 'nombre' => 'CIRUGÍA'],
             ['idModificacionesCuerpo'=>58, 'nombre' => 'OTRO'],
 
             //PIE DERECHA
+            ['idModificacionesCuerpo'=>59, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>59, 'nombre' => 'TATUADO'],
             ['idModificacionesCuerpo'=>59, 'nombre' => 'CIRUGÍA'],
             ['idModificacionesCuerpo'=>59, 'nombre' => 'OTRO'],
 
             //PECHO DERECHO
+            ['idModificacionesCuerpo'=>60, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>60, 'nombre' => 'TATUADO'],
             ['idModificacionesCuerpo'=>60, 'nombre' => 'PERFORADA'],
             ['idModificacionesCuerpo'=>60, 'nombre' => 'PEARCING'],
@@ -515,6 +526,7 @@ class CatSubModificacionesSeeder extends Seeder
             ['idModificacionesCuerpo'=>60, 'nombre' => 'OTRO'],
 
             //PECHO IZQUIERDO
+            ['idModificacionesCuerpo'=>61, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>61, 'nombre' => 'TATUADO'],
             ['idModificacionesCuerpo'=>61, 'nombre' => 'PERFORADA'],
             ['idModificacionesCuerpo'=>61, 'nombre' => 'PEARCING'],
@@ -522,26 +534,31 @@ class CatSubModificacionesSeeder extends Seeder
             ['idModificacionesCuerpo'=>61, 'nombre' => 'OTRO'],
 
             //PANTORRILLA IZQUIERDA
+            ['idModificacionesCuerpo'=>62, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>62, 'nombre' => 'TATUADO'],
             ['idModificacionesCuerpo'=>62, 'nombre' => 'CIRUGÍA'],
             ['idModificacionesCuerpo'=>62, 'nombre' => 'OTRO'],
 
             //PANTORRILLA DERECHA
+            ['idModificacionesCuerpo'=>63, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>63, 'nombre' => 'TATUADO'],
             ['idModificacionesCuerpo'=>63, 'nombre' => 'CIRUGÍA'],
             ['idModificacionesCuerpo'=>63, 'nombre' => 'OTRO'],
 
             //TOBILLO IZQUIERDA
+            ['idModificacionesCuerpo'=>64, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>64, 'nombre' => 'TATUADO'],
             ['idModificacionesCuerpo'=>64, 'nombre' => 'CIRUGÍA'],
             ['idModificacionesCuerpo'=>64, 'nombre' => 'OTRO'],
 
             //TOBILLO DERECHA
+            ['idModificacionesCuerpo'=>65, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>65, 'nombre' => 'TATUADO'],
             ['idModificacionesCuerpo'=>65, 'nombre' => 'CIRUGÍA'],
             ['idModificacionesCuerpo'=>65, 'nombre' => 'OTRO'],
 
             //UÑAS
+            ['idModificacionesCuerpo'=>66, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>66, 'nombre' => 'UÑAS POSTIZAS'],
             ['idModificacionesCuerpo'=>66, 'nombre' => 'POLISH'],
             ['idModificacionesCuerpo'=>66, 'nombre' => 'OTRO'],
