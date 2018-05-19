@@ -48,27 +48,27 @@
 			{!! Form::select('infoOjos', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoOjos'] ) !!}
 		</div>
 		<div class="col">
-			{!! Form::label ('posCejas','Posición') !!}
-			{!! Form::select('posCejas',  $cejasParte, '', ['class' => 'form-control', 'id' => 'posCejas'] ) !!}
+			{!! Form::label ('posOjos','Posición') !!}
+			{!! Form::select('posOjos',  $ojosParte, '', ['class' => 'form-control', 'id' => 'posOjos'] ) !!}
 		</div>
 		<div class="col">
-			{!! Form::label ('tipoCeja','Color') !!}
-			{!! Form::select('tipoCeja', $tipoCeja, '', ['class' => 'form-control', 'id' => 'tipoCeja'] ) !!}
+			{!! Form::label ('colorOjos','Color') !!}
+			{!! Form::select('colorOjos', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'colorOjos'] ) !!}
 		</div>
 	</div>
 
 	<div class="form-group row">
 		<div class="col-3">
-			{!! Form::label ('colorCejas','Tamaño') !!}
-			{!! Form::select('colorCejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'colorCejas'] ) !!}
+			{!! Form::label ('tamanoOjos','Tamaño') !!}
+			{!! Form::select('tamanoOjos', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tamanoOjos'] ) !!}
 		</div>
 		<div class="col-3">
-			{!! Form::label ('colorCejas','Particularidades') !!}
-			{!! Form::select('colorCejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'colorCejas'] ) !!}
+			{!! Form::label ('idPartiOjos','Particularidades') !!}
+			{!! Form::select('idPartiOjos', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idPartiOjos'] ) !!}
 		</div>
 		<div class="col">
-			{!! Form::label ('colorCejas','Modificaciones') !!}
-			{!! Form::select('colorCejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'colorCejas'] ) !!}
+			{!! Form::label ('idModiOjos','Modificaciones') !!}
+			{!! Form::select('idModiOjos', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idModiOjos'] ) !!}
 		</div>
 	</div>
 
@@ -81,23 +81,23 @@
 	<!--Sección nariz-->	
 	<div class="form-group row">
 		<div class="col-6">
-			{!! Form::label ('infoOjos','¿Tiene información de la nariz?') !!}
-			{!! Form::select('infoOjos', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoOjos'] ) !!}
+			{!! Form::label ('infoNariz','¿Tiene información de la nariz?') !!}
+			{!! Form::select('infoNariz', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoNariz'] ) !!}
 		</div>
 		<div class="col">
-			{!! Form::label ('tipoCeja','Tipo') !!}
-			{!! Form::select('tipoCeja', $tipoCeja, '', ['class' => 'form-control', 'id' => 'tipoCeja'] ) !!}
+			{!! Form::label ('tipoNariz','Tipo') !!}
+			{!! Form::select('tipoNariz', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tipoNariz'] ) !!}
 		</div>
 	</div>
 	
 	<div class="form-group row">
 		<div class="col">
-			{!! Form::label ('colorCejas','Particularidades') !!}
-			{!! Form::select('colorCejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'colorCejas'] ) !!}
+			{!! Form::label ('idPartiNariz','Particularidades') !!}
+			{!! Form::select('idPartiNariz', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idPartiNariz'] ) !!}
 		</div>
 		<div class="col">
-			{!! Form::label ('colorCejas','Modificaciones') !!}
-			{!! Form::select('colorCejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'colorCejas'] ) !!}
+			{!! Form::label ('idModiNariz','Modificaciones') !!}
+			{!! Form::select('idModiNariz', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idModiNariz'] ) !!}
 		</div>
 	</div>
 		
@@ -110,23 +110,27 @@
 	<!--Sección boca-->
 	<div class="form-group row">
 		<div class="col-6">
-			{!! Form::label ('infoOjos','¿Tiene información de la boca?') !!}
-			{!! Form::select('infoOjos', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoOjos'] ) !!}
+			{!! Form::label ('infoBoca','¿Tiene información de la boca?') !!}
+			{!! Form::select('infoBoca', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoBoca'] ) !!}
 		</div>
 		<div class="col">
-			{!! Form::label ('tipoCeja','Tamaño') !!}
-			{!! Form::select('tipoCeja', $tipoCeja, '', ['class' => 'form-control', 'id' => 'tipoCeja'] ) !!}
+			{!! Form::label ('posBoca','Posición') !!}
+			{!! Form::select('posBoca',  $bocaParte, '', ['class' => 'form-control', 'id' => 'posBoca'] ) !!}
+		</div>
+		<div class="col">
+			{!! Form::label ('tamanoBoca','Tamaño') !!}
+			{!! Form::select('tamanoBoca', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tamanoBoca'] ) !!}
 		</div>
 	</div>
 	
 	<div class="form-group row">
 		<div class="col">
-			{!! Form::label ('colorCejas','Particularidades') !!}
-			{!! Form::select('colorCejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'colorCejas'] ) !!}
+			{!! Form::label ('idPartiBoca','Particularidades') !!}
+			{!! Form::select('idPartiBoca', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idPartiBoca'] ) !!}
 		</div>
 		<div class="col">
-			{!! Form::label ('colorCejas','Modificaciones') !!}
-			{!! Form::select('colorCejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'colorCejas'] ) !!}
+			{!! Form::label ('idModiBoca','Modificaciones') !!}
+			{!! Form::select('idModiBoca', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idModiBoca'] ) !!}
 		</div>
 	</div>
 		
@@ -139,27 +143,27 @@
 	<!--Sección orejas-->
 	<div class="form-group row">
 		<div class="col-6">
-			{!! Form::label ('infoOjos','¿Tiene información de las orejas?') !!}
-			{!! Form::select('infoOjos', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoOjos'] ) !!}
+			{!! Form::label ('infoOrejas','¿Tiene información de las orejas?') !!}
+			{!! Form::select('infoOrejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoOrejas'] ) !!}
 		</div>
 		<div class="col">
-			{!! Form::label ('posCejas','Posición') !!}
-			{!! Form::select('posCejas',  $cejasParte, '', ['class' => 'form-control', 'id' => 'posCejas'] ) !!}
+			{!! Form::label ('posOreja','Posición') !!}
+			{!! Form::select('posOreja',  $orejasParte, '', ['class' => 'form-control', 'id' => 'posOreja'] ) !!}
 		</div>
 		<div class="col">
-			{!! Form::label ('tipoCeja','Tipo') !!}
-			{!! Form::select('tipoCeja', $tipoCeja, '', ['class' => 'form-control', 'id' => 'tipoCeja'] ) !!}
+			{!! Form::label ('tipoOreja','Tipo') !!}
+			{!! Form::select('tipoOreja', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tipoOreja'] ) !!}
 		</div>
 	</div>
 
 	<div class="form-group row">
 		<div class="col">
-			{!! Form::label ('colorCejas','Particularidades') !!}
-			{!! Form::select('colorCejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'colorCejas'] ) !!}
+			{!! Form::label ('idPartiOreja','Particularidades') !!}
+			{!! Form::select('idPartiOreja', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idPartiOreja'] ) !!}
 		</div>
 		<div class="col">
-			{!! Form::label ('colorCejas','Modificaciones') !!}
-			{!! Form::select('colorCejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'colorCejas'] ) !!}
+			{!! Form::label ('idModiOreja','Modificaciones') !!}
+			{!! Form::select('idModiOreja', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idModiOreja'] ) !!}
 		</div>
 	</div>
 
@@ -172,20 +176,20 @@
 	<!--Sección frente-->
 	<div class="form-group row">
 		<div class="col-6">
-			{!! Form::label ('infoOjos','¿Tiene información de la frente?') !!}
-			{!! Form::select('infoOjos', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoOjos'] ) !!}
+			{!! Form::label ('infoFrente','¿Tiene información de la frente?') !!}
+			{!! Form::select('infoFrente', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoFrente'] ) !!}
 		</div>
 		
 	</div>
 	
 	<div class="form-group row">
 		<div class="col">
-			{!! Form::label ('colorCejas','Particularidades') !!}
-			{!! Form::select('colorCejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'colorCejas'] ) !!}
+			{!! Form::label ('idPartiFrente','Particularidades') !!}
+			{!! Form::select('idPartiFrente', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idPartiFrente'] ) !!}
 		</div>
 		<div class="col">
-			{!! Form::label ('colorCejas','Modificaciones') !!}
-			{!! Form::select('colorCejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'colorCejas'] ) !!}
+			{!! Form::label ('idModiFrente','Modificaciones') !!}
+			{!! Form::select('idModiFrente', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idModiFrente'] ) !!}
 		</div>
 	</div>
 		
@@ -198,20 +202,24 @@
 	<!--Sección mejillas-->
 	<div class="form-group row">
 		<div class="col-6">
-			{!! Form::label ('infoOjos','¿Tiene información de los cachetes?') !!}
-			{!! Form::select('infoOjos', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoOjos'] ) !!}
+			{!! Form::label ('infoMejillas','¿Tiene información de los cachetes?') !!}
+			{!! Form::select('infoMejillas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoMejillas'] ) !!}
+		</div>
+		<div class="col">
+			{!! Form::label ('posMejilla','Posición') !!}
+			{!! Form::select('posMejilla',  $mejillasParte, '', ['class' => 'form-control', 'id' => 'posMejilla'] ) !!}
 		</div>
 		
 	</div>
 	
 	<div class="form-group row">
 		<div class="col">
-			{!! Form::label ('colorCejas','Particularidades') !!}
-			{!! Form::select('colorCejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'colorCejas'] ) !!}
+			{!! Form::label ('idPartiMejillas','Particularidades') !!}
+			{!! Form::select('idPartiMejillas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idPartiMejillas'] ) !!}
 		</div>
 		<div class="col">
-			{!! Form::label ('colorCejas','Modificaciones') !!}
-			{!! Form::select('colorCejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'colorCejas'] ) !!}
+			{!! Form::label ('idModiMejillas','Modificaciones') !!}
+			{!! Form::select('idModiMejillas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idModiMejillas'] ) !!}
 		</div>
 	</div>
 		
@@ -224,20 +232,20 @@
 	<!--Sección menton-->
 	<div class="form-group row">
 		<div class="col-6">
-			{!! Form::label ('infoOjos','¿Tiene información del mentón?') !!}
-			{!! Form::select('infoOjos', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoOjos'] ) !!}
+			{!! Form::label ('infoMenton','¿Tiene información del mentón?') !!}
+			{!! Form::select('infoMenton', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoMenton'] ) !!}
 		</div>
 		
 	</div>
 	
 	<div class="form-group row">
 		<div class="col">
-			{!! Form::label ('colorCejas','Particularidades') !!}
-			{!! Form::select('colorCejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'colorCejas'] ) !!}
+			{!! Form::label ('idPartiMenton','Particularidades') !!}
+			{!! Form::select('idPartiMenton', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idPartiMenton'] ) !!}
 		</div>
 		<div class="col">
-			{!! Form::label ('colorCejas','Modificaciones') !!}
-			{!! Form::select('colorCejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'colorCejas'] ) !!}
+			{!! Form::label ('idModiMenton','Modificaciones') !!}
+			{!! Form::select('idModiMenton', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idModiMenton'] ) !!}
 		</div>
 	</div>
 		
