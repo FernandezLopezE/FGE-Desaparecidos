@@ -375,7 +375,7 @@ $(document).ready(function() {
 	//INICIO SECCIÓN BOCA
 	$('#infoBoca').on('change', function(){
 		
-		var idPartesCuerpo = 71;
+		var idPartesCuerpo = 72;
 		var opcion = $(this).val();
 
 		if(opcion == "SÍ"){
