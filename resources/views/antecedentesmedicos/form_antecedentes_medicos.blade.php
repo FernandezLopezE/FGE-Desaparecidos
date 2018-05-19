@@ -382,7 +382,7 @@
 <div class="card border-primary">
         <div class="card border-success">
           <div class="card-header"> 
-              <h5>CARGAR DOCUMENTO DE RADIOGRAFÍAS
+              <h5>AGREGAR ANEXOS
               <button type="submit" class="btn btn-dark pull-right"  id="btnAgregarAnexo"> AGREGAR   
               </button>   
               </h5>
@@ -405,7 +405,7 @@
                             <small class='text-muted'>{{ $image->ruta }}</small>
                         </div> <!-- text-center / end -->
                     </a>
-                    <form action="{{ url('image-gallery',$image->id) }}" method="POST">
+                    <form action="{{ url('imagenAntecedentesM',$image->id) }}" method="POST">
                     <input type="hidden" name="_method" value="delete">
                     {!! csrf_field() !!}
                     <button type="submit" class="close-icon btn btn-danger"><i class="fa fa-window-close"></i></button>
@@ -451,7 +451,7 @@
     var otraA;
     var otroIm;
    //los siguientes metodos los empleo en la galeria
-      $(".fancybox").fancybox({
+  $(".fancybox").fancybox({
         openEffect: "none",
         closeEffect: "none"
     });
@@ -696,7 +696,7 @@ $("#fileImagenes").fileinput({
 
                       };
                   },
-                  allowedFileExtensions: ['jpg', 'png', 'gif'],
+                  allowedFileExtensions: ['jpg', 'png', 'gif', 'pdf'],
                   overwriteInitial: false,
                   maxFileSize:2000,
                   maxFilesNum: 10,
@@ -716,52 +716,9 @@ $("#fileImagenes").fileinput({
 
               });
 
-  $('#btnGuardarAnexos').click (function(){
+  $('#cerrarModal').click (function(){
 
-console.log(rutas);
- var dataString = {
-
-      desaparecido : ('{!! $desaparecido->id!!}'),
-      rutas: rutas,
-    };
-
-    console.log(dataString);
-    $.ajax({
-      type: 'POST',
-      url: '/imagenAntecedentesM/store_path',
-      data: dataString,
-      dataType: 'json',
-      success: function(data) {           
-        console.log("hecho");
-        console.log(data);
-        $.confirm({
-            title: 'Datos guardados!',
-            content: 'Antecedentes médicos guardados exitosamente.',
-            type: 'dark',
-            typeAnimated: true,
-            buttons: {
-                tryAgain: {
-                    text: 'Aceptar',
-                    btnClass: 'btn-dark',
-                    action: function(){
-                    }
-                },
-            }
-        });
-     
-        $("#otro_Implante").hide();
-
-
-        //swal("Datos guardados exitosamente.", "Dale click en el boton ok!", "success");
-      
-        //tableDescripcion.bootstrapTable('refresh');
-                        
-      },
-      error: function(data) {
-        console.log("error");
-        console.log(data);
-      }
-      });
+    location.reload();
 
 })
 

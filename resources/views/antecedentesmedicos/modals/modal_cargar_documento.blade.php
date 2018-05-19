@@ -3,11 +3,11 @@
 
 
 
-  <div class="modal fade" id="modalAnexosAntecedentesMedicos" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" rle="dialog" id="modalAnexosAntecedentesMedicos" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">AGREGAR ANEXO</h5>
+        <div class="modal-header"  style="height: 50px; background-color: #A4A4A4">
+          <h5 class="modal-title" style="margin-top: -10px; margin-left: 40%;" id="exampleModalLabel">AGREGAR ANEXO</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -18,14 +18,14 @@
                
                      <div class="col"  id="divModeloEstudio">
                             <body class="bg-danger col">
-                              <div class="row">       
+                             {{--<div class="row">       
                                   <div class="col">
                                     {!! Form::label ('anexo','ESTOY EN EL DIV DE MODELO ESTUDIO') !!}     
                                   </div>
-                                </div>
+                                </div>--}}
                                 <div class="container">
                                     <div class="row" align="center">
-                                        <div class="col-10 main-section" align="center">
+                                        <div class="col main-section" align="center">
                                            {!! csrf_field() !!}
                                                 <div class="form-group">
                                                     <div class="file-loading">
@@ -48,7 +48,7 @@
         </div>
         <div class="modal-footer">
   
-          <button type="button" class="btn btn-dark" data-dismiss="modal">CERRAR</button>
+          <button  id = "cerrarModal" type="button" class="btn btn-dark" data-dismiss="modal">CERRAR</button>
         </div>
       </div>
     </div>

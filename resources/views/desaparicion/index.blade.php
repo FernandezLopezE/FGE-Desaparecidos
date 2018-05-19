@@ -8,7 +8,8 @@
 	}
 	.gi-3x{font-size: 2.5em;}
 </style>
-	
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 @endsection
 
 @section('titulo', '')
@@ -25,6 +26,16 @@
 				</div>
 	  		</div>
 	  		<div class="card-body">
+
+				<div class="row" >
+							<div class="col-10 pull-right">
+								
+							</div>	
+							<div class="col-2 pull-right">
+								<input id = "toggle" type="checkbox"  data-toggle="toggle" data-on="Con conexión" data-off="Sin conexión" class="pull-right" >
+							</div>	
+					
+				</div>
 	  			<div class="row">				
 					
 						<div class="form-group col-3">
@@ -41,7 +52,7 @@
 												])!!}
 						</div>
 						<div class="form-group col">
-							{!! Form::label ('familiaresFechaNacimiento','Hora (hh:mm):') !!}
+							{!! Form::label ('hora','Hora (hh:mm):') !!}
 								<div class = "row">
 									<div class=" col-2" >
 									{!! Form::time ('horas',
@@ -56,13 +67,107 @@
 						</div>		
 					
 				</div>
-				<div class="row">
+				
+						{{--AQUI ENPIEZAN LOS DIV DEL TOGGLE--}}
+					<div class="row" >
+						<div class = "col" id="op-off" >							
+							<div class="row" > 	
+								
+								<div class="form-group col-lg-5">
+									{!! Form::label ('calle','Calle:') !!}
+									{!! Form::text ('calle',
+														old('calle'),
+														['class' => 'form-control mayuscula',
+															'id' => 'calle',
+															'data-validation' => 'required',
+															'data-validation-error-msg-required' => 'El campo es requerido'
+														] )!!}				
+								</div>
+								<div class="form-group col">
+									{!! Form::label ('numExterno','Número exterior:') !!}
+									{!! Form::text ('numExterno',
+													old('numExterno'),
+													['class' => 'form-control mayuscula',
+														'id' => 'numExterno',
+													] )!!}				
+								</div>
+								<div class="form-group col-lg-5">
+									{!! Form::label ('ref','Referencia:') !!}
+									{!! Form::text ('referencia',
+														old('referencia'),
+														['class' => 'form-control mayuscula',
+															'id' => 'calle',
+															'data-validation' => 'required',
+															'data-validation-error-msg-required' => 'El campo es requerido'
+														] )!!}				
+								</div>
+
+								<div class="row" id=""  > 	
+									<div class="form-group col-lg-4">
+										{!! Form::label ('idEstado','Estado:') !!}
+										{!! Form::select ('idEstado',$estados,'', ['class' => 'form-control'] )!!}				
+									</div>
+									<div class="form-group col-lg-4">
+										{!! Form::label ('idMunicipio','Municipio:') !!}
+										{!! Form::select ('idMunicipio',$municipios,'',
+																 ['class' => 'form-control',
+																	'data-validation' => 'required',
+																	'data-validation-error-msg-required' => 'El campo es requerido'
+																] )!!}				
+									</div>
+									<div class="form-group col-lg-4">
+										{!! Form::label ('idLocalidad','Localidad:') !!}
+										{!! Form::select ('idLocalidad',$localidades,'',
+																 ['class' => 'form-control',
+																	'data-validation' => 'required',
+																	'data-validation-error-msg-required' => 'El campo es requerido'
+																 ] )!!}				
+									</div>
+								</div>
+						
+								<div class="row" id=""  > 	
+									<div class="form-group col-lg-8">
+										{!! Form::label ('idColonia','Colonia:') !!}
+										{!! Form::select ('idColonia',$colonias,'',
+																['class' => 'form-control',
+																	'data-validation' => 'required',
+																	'data-validation-error-msg-required' => 'El campo es requerido'
+																] )!!}				
+									</div>
+									<div class="form-group col-lg-4">
+										{!! Form::label ('idCodigoPostal','Código postal:') !!}
+										{!! Form::select ('idCodigoPostal',$codigos,'',
+																['class' => 'form-control',
+																	'data-validation' => 'required',
+																	'data-validation-error-msg-required' => 'El campo es requerido'
+																] )!!}				
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class = "col" id="op-on" style="display: none">							
+							<p id = "off"> Hola esta deshabilitado</p>
+						</div>
+					</div>
+				
+						{{--TERMINALOS DIV DEL TOGGLE--}}
+
+
+
+
 					
+				
+					
+				</div>	
+				<div class="row">
+				
 						<div class="card-body">
-							{!! Form::label ('ultimovisto','Última persona 	que lo vio',['class' => 'form-control-label']) !!}
+							{!! Form::label ('ultimovisto','ÚLTIMA PERSONA QUE LO VIO',['class' => 'form-control-label' ]) !!}
 							<div class="row">
 								<div class="form-group col-md-4" id="div_nombres">
-									{!! Form::label ('nombres','Nombres(s):',['class' => 'form-control-label']) !!}
+									{!! Form::label ('nombres','Nombres(s):',['class' => 'form-control-label' ]) !!}
 									{!! Form::text ('nombres',
 														'',
 														['class' => 'form-control mayuscula',
@@ -70,7 +175,7 @@
 														] )!!}
 									<div class="form-control-feedback" id="error_nombres"></div>
 								</div>
-								<div class="form-group col-md-4" id="div_primerAp">
+								<div class="form-group col" id="div_primerAp">
 									{!! Form::label ('primerAp','Primer apellido:',['class' => 'form-control-label']) !!}
 									{!! Form::text ('primerAp',
 														'',
@@ -79,7 +184,7 @@
 														] )!!}
 									<div class="form-control-feedback" id="error_primerAp"></div>
 								</div>
-								<div class="form-group col-md-4" id="div_segundoAp">
+								<div class="form-group col" id="div_segundoAp">
 									{!! Form::label ('segundoAp','Segundo apellido:',['class' => 'form-control-label']) !!}
 									{!! Form::text ('segundoAp',
 														'',
@@ -87,18 +192,15 @@
 															'id' => 'segundoAp'] )!!}
 									<div class="form-control-feedback" id="error_segundoAp"></div>
 								</div>
+								<div class="form-group col" id="div_nombres">
+									{!! Form::label ('parentescoDesaparecido','Parentesco:') !!}
+									{!! Form::select ('avistoidParentesco[]',$parentescos,'', ['class' => 'form-control', 'id' => 'avistoidParentesco'] )!!}
+									<div class="form-control-feedback" id="error_nombres"></div>
+								</div>
 
 							</div>
 							<div class="row">
-								<div class="form-group col-md-4" id="div_nombres">
-									{!! Form::label ('parentesco','Nombres(s):',['class' => 'form-control-label']) !!}
-									{!! Form::text ('parentezco',
-														'',
-														['class' => 'form-control mayuscula',
-															'id' => 'nombres'
-														] )!!}
-									<div class="form-control-feedback" id="error_nombres"></div>
-								</div>
+								
 							</div>
 						</div>
 					
@@ -124,7 +226,13 @@
 @section('scripts')
 {!! HTML::script('personal/js/sisyphus.min.js') !!}
 {!! HTML::script('personal/js/sisyphus.js') !!}
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
 <script type="text/javascript">
+	/*$(document).ready(function()
+	{
+		document.getElementById("op-on").style.display='block';
+	})*/
 
 	$('input#familiaresFechaNacimiento').mask('00/00/0000');
 
@@ -153,5 +261,32 @@
 		   });
 	   }
    });
+	$(function() {
+    $('#toggle').change(function() {
+	var isChecked = $(this).is(':checked');
+
+	if(isChecked) {
+		document.getElementById("op-on").style.display='block';
+		document.getElementById("op-off").style.display='none';
+        	/*$('#op-on').show();
+       		$('#op-off').hide();*/
+      } else {
+        	document.getElementById("op-on").style.display='none';
+			document.getElementById("op-off").style.display='block';
+      }
+
+  /*  if ( $('#toggle').bootstrapToggle("0")){
+       	$('#op-on').show();
+       	$('#op-off').hide();
+      	 }
+    else if ( $('#toggle').bootstrapToggle("1")){
+       	$('#op-on').hide();
+       	$('#op-off').show();
+       }*/
+
+
+     
+    })
+  	})
 </script>
 @endsection

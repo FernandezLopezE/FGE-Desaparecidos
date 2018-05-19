@@ -181,7 +181,7 @@ class AntecedentesMedicosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    /*public function destroy($id)
     {
         //
     }
@@ -208,10 +208,11 @@ class AntecedentesMedicosController extends Controller
 
     
         }
-         public function destroy($id)
-    {
-        ImageGallery::find($id)->delete();
-        return back()
-            ->with('success','Image removed successfully.');    
-    }
+
+    public function destroy($id)
+        {
+            Anexos::find($id)->delete();
+            return back()
+                ->with('success','Image removed successfully.');    
+        }
 }

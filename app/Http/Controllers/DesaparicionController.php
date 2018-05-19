@@ -25,11 +25,20 @@ class DesaparicionController extends Controller
 			'10' => 'OCTUBRE',
 			'11' => 'NOVIEMBRE',
 			'12' => 'DICIEMBRE');*/
-
-
+		$estados 			= \App\Models\CatEstado::all()->pluck('nombre','id');
+		$municipios 		= \App\Models\CatMunicipio::limit(10)->pluck('nombre','id');
+		$localidades 		= \App\Models\CatLocalidad::limit(10)->pluck('nombre','id');
+		$colonias 			= \App\Models\CatColonia::limit(10)->pluck('nombre','id');
+		$codigos 			= \App\Models\CatColonia::limit(10)->pluck('codigoPostal','id');
+		$parentescos = \App\Models\CatParentesco::all()->pluck('nombre','id');
 		return view('desaparicion.index',[
-			'desaparecido' => $desaparecido
-			
+			'desaparecido' => 	$desaparecido,
+			'estados'      =>	$estados,
+			'municipios'   =>	$municipios,
+			'localidades'  =>	$localidades,
+			'colonias'     =>	$colonias,
+			'codigos'      =>	$codigos,
+			'parentescos' => $parentescos,
 			]);		
 	}// end del show
 

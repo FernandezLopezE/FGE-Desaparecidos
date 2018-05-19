@@ -121,7 +121,7 @@ Route::get('imagenAntecedentesM','AntecedentesMedicosController@show');
 Route::post('imagenAntecedentesM','AnexosController@store');
 /*Route::post('/imagenAntecedentesM/store_path','AntecedentesMedicosController@store_path')
  ->name('/imagenAntecedentesM.store_path');*/
-
+Route::delete('imagenAntecedentesM/{id}','AntecedentesMedicosController@destroy');
 
 
 
