@@ -166,7 +166,7 @@ Route::get('/descripcionfisica/get_particularidades/{idParteCuerpo}', 'Descripci
 	->name('descripcionfisica.get_particularidades');
 Route::get('/descripcionfisica/get_modificaciones/{idParteCuerpo}', 'DescripcionFisicaController@getModificaciones')
 	->name('descripcionfisica.get_modificaciones');
-
+Route::get('/descripcionfisica/get_tamano/{idParteCuerpo}', 'DescripcionFisicaController@getTamanoCuerpo')->name('descripcionfisica.get_tamano');
 Route::get('/descripcionfisica/get_cabello/{idExtraviado}', 'DescripcionFisicaController@getCabello')
 	->name('descripcionfisica.get_cabello');
 Route::get('/descripcionfisica/get_barba/{idExtraviado}', 'DescripcionFisicaController@getBarba')
