@@ -465,7 +465,24 @@ class DescripcionFisicaController extends Controller
         //ids para cejas
         $idCejas = array(73,6,7);
         $cejasParte = \App\Models\CatPartesCuerpo::whereIn('id',$idCejas)->orderBy('nombre')->pluck('nombre','id');
-        $tipoCeja = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','6')->pluck('nombre','id');
+         $tipoCeja = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','6')->pluck('nombre','id');
+
+        //ids para ojos
+        $idOjos = array(37,36,74);
+        $ojosParte = \App\Models\CatPartesCuerpo::whereIn('id',$idOjos)->orderBy('nombre')->pluck('nombre','id');
+
+        //ids para boca
+        $idBoca = array(72,19,20);
+        $bocaParte = \App\Models\CatPartesCuerpo::whereIn('id',$idBoca)->orderBy('nombre')->pluck('nombre','id');
+
+        //ids para orejas
+        $idOrejas = array(34,35,77);
+        $orejasParte = \App\Models\CatPartesCuerpo::whereIn('id',$idOrejas)->orderBy('nombre')->pluck('nombre','id');
+
+        //ids para mejillas
+        $idMejillas = array(23,75,76);
+        $mejillasParte = \App\Models\CatPartesCuerpo::whereIn('id',$idMejillas)->orderBy('nombre')->pluck('nombre','id');
+       
 
         $partesCuerpo = \App\Models\CatPartesCuerpo::whereIn('id',$ids)->pluck('nombre','id');
         $complexiones = \App\Models\CatComplexion::all()->pluck('nombre','id');
@@ -533,7 +550,11 @@ class DescripcionFisicaController extends Controller
                 'modiPatilla' => $modiPatilla,
                 'aux' => $aux,
                 'cejasParte' => $cejasParte,
-                'tipoCeja' => $tipoCeja
+                'tipoCeja' => $tipoCeja,
+                'ojosParte' => $ojosParte,
+                'bocaParte' => $bocaParte,
+                'orejasParte' => $orejasParte,
+                'mejillasParte' => $mejillasParte
             ]);
     }
 
@@ -894,7 +915,9 @@ class DescripcionFisicaController extends Controller
             ->select('dp.estatura',
                                 'dp.peso',
                                 'cc.nombre as complexion',
-                                'ccp.nombre as piel')
+                                'ccp.nombre as piel',
+                                'dp.idComplexion',
+                                'dp.idColorPiel')
             ->where('dp.id',$idExtraviado)
             ->get();
         
@@ -909,4 +932,15 @@ class DescripcionFisicaController extends Controller
         
         return response()->json($tipos);
     }
+
+    public function getTamanoCuerpo($idParteCuerpo){
+        
+        $tamano = \DB::table('cat_tamano_cuerpo')
+            ->where('idPartesCuerpo',$idParteCuerpo)
+            ->get();
+        
+        return response()->json($tamano);
+    }
+
+
 }
