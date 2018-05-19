@@ -35,8 +35,8 @@ $factory->define(App\Models\Cedula::class, function (Faker $faker) {
 	$nacionalidades = App\Models\CatNacionalidad::all()->pluck('id')->toArray();
 	$nacionalidad = 1;
 	$estado = 30;
-	$municipio = 2496;
-	$localidad = 108971;
+	$municipios = App\Models\CatMunicipio::where('idEstado',$estado)->pluck('id')->toArray();//::all()->pluck('id')->toArray();
+	$localidades = App\Models\CatLocalidad::whereIn('idMunicipio',$municipios)->pluck('id')->toArray();
 	$calzadoTipo = App\Models\CatCalzadoTipo::all()->pluck('id')->toArray();
 	$calzadoColor = App\Models\CatCalzadoColor::all()->pluck('id')->toArray();
 	$calzadoMarca = App\Models\CatCalzadoMarca::all()->pluck('id')->toArray();
@@ -58,8 +58,8 @@ $factory->define(App\Models\Cedula::class, function (Faker $faker) {
 		'desaparicionObservaciones' => str_random(50),
 		'desaparicionFecha' => $faker->datetime(),
 		'idEstadoDesaparicion' => $estado,
-		'idMunicipioDesa' => $municipio,
-		'idLocalidadDesapa' => $localidad,
+		'idMunicipioDesa' => $faker->randomElement($municipios),
+		'idLocalidadDesapa' => $faker->randomElement($localidades),
 		//'referenciaLugar' => str_random(50),
 		//'vehiculoDescripcion'=> str_random(50),
 		//'objetos' => str_random(50),
@@ -67,9 +67,9 @@ $factory->define(App\Models\Cedula::class, function (Faker $faker) {
 		//'otroColorCalzado' => str_random(50),
 		//'otroCalzado' => str_random(10),
 		//'otraMarca' => str_random(10),
-		//'idCalzadotipo' => $faker->randomElement($calzadoTipo),
-		//'idCalzadocolor' =>$faker->randomElement($localidad),
-		//'idCalzadomarca' => $faker->randomElement($localidad),
+		'idCalzadotipo' => $faker->randomElement($calzadoTipo),
+		'idCalzadocolor' =>$faker->randomElement($calzadoColor),
+		'idCalzadomarca' => $faker->randomElement($calzadoMarca),
 		'idDialecto' => $dialecto,				
 	];
 });
@@ -132,7 +132,7 @@ $factory->define(App\Models\Desaparecido::class, function (Faker $faker) {
 		'rumoresBebe' => $embarazoNo,//$faker->randomElement(['SI','NO','LO IGNORAN']),
 		//'pormenores' => $faker->sentence(10),
 		//'antecedentesJudiciales' => $faker->randomElement([0 ,1]),
-		'tipoPersona' => $faker->randomElement(['ENTREVISTADOR','INFORMANTE','AUTORIZADAS','DESAPARECIDA','AVISTO']),
+		'tipoPersona' => $faker->randomElement(['INFORMANTE','DESAPARECIDA']),
 		'numDocIdentidad' => str_random(20),
 		'correoElectronico' => $faker->unique()->safeEmail,
 		//'telefonos' => str_random(20),
@@ -192,7 +192,7 @@ $factory->define(App\Models\Domicilio::class, function (Faker $faker) {
 	$localidades = App\Models\CatLocalidad::whereIn('idMunicipio',$municipios)->pluck('id')->toArray();
 	$colonias = App\Models\CatColonia::whereIn('idMunicipio',$municipios)->pluck('id')->toArray();
 	$codigos = App\Models\CatColonia::whereIn('idMunicipio',$municipios)->pluck('id')->toArray();
-	$desaparecidos = App\Models\Persona::all()->pluck('id')->toArray();
+	//$desaparecidos = App\Models\Desaparecido::all()->pluck('id')->toArray();
 
 	
 
@@ -201,16 +201,54 @@ $factory->define(App\Models\Domicilio::class, function (Faker $faker) {
 		'calle' => $faker->cityPrefix,
 		'numExterno' => $faker->numberBetween($min = 1, $max = 1500),
 		//'numInterno' => $faker->numberBetween($min = 1, $max = 1500),
-		'telefono' => $faker->phoneNumber,
+		//'telefono' => $faker->phoneNumber,
 		'idEstado' => $estado,//$faker->randomElement($municipios),
 		'idMunicipio' => $faker->randomElement($municipios),//$faker->numberBetween($min = 2088, $max = 2299),
 		'idLocalidad' => $faker->randomElement($localidades),
 		'idColonia' => $faker->randomElement($colonias),
 		'idCodigoPostal' => $faker->randomElement($codigos),
-		'idDesaparecido' => $faker->randomElement($desaparecidos)
+		'idDesaparecido' => factory('App\Models\Desaparecido')->create()->id,
 	];
 });
 
+/*
+$factory->define(App\Models\CedulaPartesCuerpo::class, function (Faker $faker) {	
+	//$estados = App\Models\CatEstado::all()->pluck('id')->toArray();
+	$estado = 30;
+	$partesCuerpo = App\Models\CatPartesCuerpo::all()->pluck('id')->toArray();
+	$coloresCuerpo = App\Models\CatColoresCuerpo::whereIn('idPartesCuerpo',$partesCuerpo)->pluck('id')->toArray();
+	$desaparecidos = App\Models\Desaparecido::all()->pluck('id')->toArray();
+
+	return [
+		'lado'=> $faker->randomElement(['IZQUIERDO','DERECHO','AMBOS']),
+		'observaciones ' => str_random(30),
+		//'otraParticularidad',
+		//'otraModificacion',
+		//'otroColor',
+		'idPartesCuerpo'=> $faker->randomElement($partesCuerpo),
+		'idColoresCuerpo' => $faker->randomElement($coloresCuerpo),  
+		'idPersonaDesaparecida'=> factory('App\Models\Desaparecido')->create()->id,	
+	];
+});
+
+$factory->define(App\Models\PivotSubPartiCuerpo::class, function (Faker $faker) {	
+	$subParticularidades = App\Models\CatSubParticularidades::all()->pluck('id')->toArray();
+	
+	return [
+		'idCedulaPartesCuerpo'=> factory('App\Models\CedulaPartesCuerpo')->create()->id,	
+		'idSubParticularidades'=> $faker->randomElement($subParticularidades),
+	];
+});
+
+
+$factory->define(App\Models\PivotSubModiCuerpo::class, function (Faker $faker) {	
+	$subModificaciones = App\Models\CatModificaciones::all()->pluck('id')->toArray();
+	
+	return [
+		'idCedulaPartesCuerpo'=> factory('App\Models\CedulaPartesCuerpo')->create()->id,	
+		'idSubModificaciones'=> $faker->randomElement($subModificaciones),
+	];
+});*/
 
 /*
 $factory->define(App\Models\Documento::class, function (Faker $faker) {
