@@ -91,7 +91,7 @@ class CatModificacionesCuerpoSeeder extends Seeder
             ['idPartesCuerpo'=>75, 'nombre' => 'MODIFICACIONES MEJILLA IZQUIERDA'], //70 
             ['idPartesCuerpo'=>76, 'nombre' => 'MODIFICACIONES MEJILLA DERECHA'], //71
             ['idPartesCuerpo'=>77, 'nombre' => 'MODIFICACIONES AMBAS OREJAS'],//72
-            ['idPartesCuerpo'=>71, 'nombre' => 'MODIFICACIONES BOCA'],//73
+            ['idPartesCuerpo'=>72, 'nombre' => 'MODIFICACIONES AMBOS LABIOS'],//73
     ]);
     }
 }
