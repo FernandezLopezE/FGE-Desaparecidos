@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	var ResCejas, otraCeja, otraPartCeja, otraModCeja, ResOjos, otroColorOjo, otraPartOjo, otraModOjo, resNariz, otroTipoNariz, partNariz, otraModNariz, resBoca;
 	$("#cabeza").click(function(event) {
 		$("#formCara").toggle();
 	});
@@ -27,11 +28,8 @@ $(document).ready(function() {
 	                    $.each(data, function(key, value){                        
 
 	                        $("#tipoCeja").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
-
 	                    });
-
-	                },
-	                
+	                },    
 	        });
 
 	        //obtener particularidades
@@ -70,7 +68,6 @@ $(document).ready(function() {
 	                
 	            });
 		}
-		
 	});
 
 	//Cambio de tipo de ceja
@@ -130,7 +127,6 @@ $(document).ready(function() {
                 },
                 
             });
-
     });
     //FIN SECCIÓN CEJAS
 
@@ -216,7 +212,6 @@ $(document).ready(function() {
 	                
 	        });
 		}
-		
 	});
 
 
@@ -299,7 +294,6 @@ $(document).ready(function() {
 	                },
 	                
 	        });
-		
 	});
 
 	//FIN SECCIÓN OJOS
@@ -367,7 +361,6 @@ $(document).ready(function() {
 	                
 	        });
 		}
-		
 	});
 
 	//FIN DE SECCIÓN NARIZ
@@ -454,7 +447,6 @@ $(document).ready(function() {
 	                
 	        });
 		}
-		
 	});
 
 	$('#posBoca').on('change', function(){
@@ -536,8 +528,6 @@ $(document).ready(function() {
 	                },
 	                
 	        });
-		
-		
 	});
 	//FIN SECCIÓN BOCA
 
@@ -605,7 +595,6 @@ $(document).ready(function() {
 	            });
 
 		}
-		
 	});
 
 	$('#posOreja').on('change', function(){
@@ -666,8 +655,7 @@ $(document).ready(function() {
 
 	                },
 	                
-	            });
-	  		
+	            });		
 	});
 	//FIN SECCIÓN OREJAS
 
@@ -865,4 +853,166 @@ $(document).ready(function() {
 		
 	});
 	//FIN SECCIÓN MENTÓN
+
+	//MOSTRAR - OCULTAR CAMPOS
+	//Sección Cejas
+	$("#infocejas").change(function() {
+		ResCejas = $("#infocejas").val();
+		if (ResCejas == 'SÍ') {
+           $('#cejas2').show();
+           $('#cejas3').show();
+           //$('#cejas4').show();
+           $('#cejas5').show();
+           //$('#cejas6').show();
+           //$('#cejas7').show();
+           $('#cejas8').show();
+        }else{
+           $('#cejas2').hide();
+           $('#cejas3').hide();
+           $('#cejas4').hide();
+           $('#cejas5').hide();
+           $('#cejas6').hide();
+           $('#cejas7').hide();
+           $('#cejas8').hide();
+        }
+	});
+
+	$("#tipoCeja").change(function() {
+		otraCeja = $("#tipoCeja").val();
+		if (otraCeja =="31") {
+			$("#cejas4").show();
+		} else{
+			$("#cejas4").hide();
+		}
+	});
+
+	$("#idSubParticularidades").change(function() {
+		otraPartCeja = $("#idSubParticularidades").val();
+		//alert(otraPartCeja);
+		if (otraPartCeja =="30") {
+			$("#cejas6").show();
+		} else{
+			$("#cejas6").hide();
+		}
+	});
+
+	$("#idSubModificaciones").change(function() {
+		otraModCeja = $("#idSubModificaciones").val();
+		//alert(otraModCeja);
+		if (otraModCeja =="32") {
+			$("#cejas7").show();
+		} else{
+			$("#cejas7").hide();
+		}
+	});
+
+	//Sección ojos
+	$("#infoOjos").change(function() {
+		ResOjos = $("#infoOjos").val();
+		if (ResOjos == "SÍ") {
+			$('#ojos1').show();
+			$('#ojos2').show();
+			//$('#ojos3').show();
+			$('#ojos4').show();
+			$('#ojos5').show();
+			$('#ojos6').show();
+			$('#ojos9').show();
+		}else{
+			$('#ojos1').hide();
+			$('#ojos2').hide();
+			$('#ojos3').hide();
+			$('#ojos4').hide();
+			$('#ojos5').hide();
+			$('#ojos6').hide();
+			$('#ojos7').hide();
+			$('#ojos8').hide();
+			$('#ojos9').hide();
+			}
+	});
+
+	$("#colorOjos").change(function(event) {
+		otroColorOjo = $("#colorOjos").val();
+		if (otroColorOjo ==24) {
+			$('#ojos3').show();
+		}else{
+			$('#ojos3').hide();
+		}
+	});
+
+	$("#idPartiOjos").change(function(event) {
+		otraPartOjo = $("#idPartiOjos").val();
+		if (otraPartOjo ==61) {
+			$('#ojos7').show();
+		}else{
+			$('#ojos7').hide();
+		}
+	});
+
+	$("#idModiOjos").change(function(event) {
+		otraModOjo = $("#idModiOjos").val();
+		if (otraModOjo ==44) {
+			$('#ojos8').show();
+		}else{
+			$('#ojos8').hide();
+		}
+	});
+
+	//Sección Nariz
+	$("#infoNariz").change(function(event) {
+		resNariz = $("#infoNariz").val();
+		if (resNariz == "SÍ") {
+			$("#nariz1").show();
+			$("#nariz3").show();
+			$("#nariz4").show();
+			$("#nariz7").show();
+		}else{
+			$("#nariz1").hide();
+			$("#nariz2").hide();
+			$("#nariz3").hide();
+			$("#nariz4").hide();
+			$("#nariz5").hide();
+			$("#nariz6").hide();
+			$("#nariz7").hide();
+		}
+	});
+
+	$("#tipoNariz").change(function(event) {
+	otroTipoNariz = $("#tipoNariz").val();
+		if (otroTipoNariz == "37") {
+			$("#nariz2").show();
+		}else{
+			$("#nariz2").hide();
+		}
+	});
+
+	$("#idPartiNariz").change(function(event) {
+	partNariz = $("#idPartiNariz").val();
+		if (partNariz == "130") {
+			$("#nariz5").show();
+		}else{
+			$("#nariz5").hide();
+		}
+	});
+
+	$("#idModiNariz").change(function(event) {
+	otraModNariz = $("#idModiNariz").val();
+		if (otraModNariz == "114") {
+			$("#nariz6").show();
+		}else{
+			$("#nariz6").hide();
+		}
+	});
+
+	//Sección Boca
+	$("#infoBoca").change(function(event) {
+		resBoca = $("#infoBoca").val();
+		if (resBoca == "SÍ") {
+			$("#boca1").show();
+			$("#boca2").show();
+		}else{
+			$("#boca1").hide();
+			$("#boca2").hide();
+		}
+	});
+
 });
