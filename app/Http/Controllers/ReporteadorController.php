@@ -15,9 +15,13 @@ class ReporteadorController extends Controller
            $estados           = \App\Models\CatEstado::all()->pluck('nombre','id');
            //$municipios        = \App\Models\CatMunicipio::all()->pluck('nombre','id');
            $municipios        = \App\Models\CatMunicipio::where('idEstado', 30)->get()->pluck('nombre','id');
+           $complexiones = \App\Models\CatComplexion::all()->pluck('nombre','id');
+           $coloresPiel = \App\Models\CatColorPiel::all()->pluck('nombre','id');
             return view('reporteador.index',compact(                                           
 											'estados',
-                                            'municipios'
+                                            'municipios',
+                                            'complexiones',
+                                            'coloresPiel'
 										));
             
      

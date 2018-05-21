@@ -89,7 +89,7 @@ section.range-slider input:last-of-type::-moz-range-track {
                            <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar1"></i>
                            </div>
                         <div class=" list-group-flush small">
-                          <div class="list-group-item list-group-item-action" style="Display:none" id="campoGenero"> 
+                          <div class="list-group-item list-group-item-action" style="Display:block" id="campoGenero"> 
                              <div class=" form-check ">
 
                                  <input class="form-check-input" Value="H" type="checkbox" id="masc" checked> Hombre: 
@@ -109,7 +109,7 @@ section.range-slider input:last-of-type::-moz-range-track {
                            <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar2"></i>
                            </div>
                         <div class=" list-group-flush small">
-                          <div class="list-group-item list-group-item-action" style="Display:none" id="campoEdad" > 
+                          <div class="list-group-item list-group-item-action" style="Display:block" id="campoEdad" > 
                               <div class="" id="div_idEstado">
                                  {!! Form::label ('','Desde:',['class' => '']) !!}
                                     <input  min="0" max="120" step="1" type="number" id="rng1"><br>
@@ -140,11 +140,59 @@ section.range-slider input:last-of-type::-moz-range-track {
 	            </div>                 
             </div>
             <div class="row">
-                
+              <div class="">
+                           Estatura:
+                           </div>
+                        <div class=" list-group-flush small">
+                          <div class="list-group-item list-group-item-action" style="Display:block" id="campoEstatura" > 
+                              <div class="" id="div_idEstado">
+                                 {!! Form::label ('','Desde:',['class' => '']) !!}
+                                    <input  min="0" max="300" step="1" type="number" id="estatura1"><br>
+                                {!! Form::label ('','Hasta:',['class' => '']) !!}&nbsp;
+                                    <input  min="0" max="300" step="1" type="number" id="estatura2"> 
+                             </div>     
+                          </div>
+                      </div> 
+                      <div class="">
+                           Peso:
+                           </div>
+                        <div class=" list-group-flush small">
+                          <div class="list-group-item list-group-item-action" style="Display:block" id="campoPeso" > 
+                              <div class="" id="div_idEstado">
+                                 {!! Form::label ('','Desde:',['class' => '']) !!}
+                                    <input  min="0" max="400" step="1" type="number" id="peso1"><br>
+                                {!! Form::label ('','Hasta:',['class' => '']) !!}&nbsp;
+                                    <input  min="0" max="400" step="1" type="number" id="peso2"> 
+                             </div>     
+                          </div>
+                      </div>
+                      <div class="">
+                           Color de piel:
+                           </div>
+                        <div class=" list-group-flush small">
+                          <div class="list-group-item list-group-item-action" style="Display:block" id="campoPeso" > 
+                              <div class="" id="div_colorPiel">
+                                {!! Form::label ('idColorPiel','Color de piel:') !!} <br>
+                                {!! Form::select('cPiel',$coloresPiel, '', ['class' => '', 'id' => 'cPiel','multiple' => 'multiple'] ) !!}
+                             </div>     
+                          </div>
+                      </div> 
+                      <div class="">
+                           Complexion:
+                           </div>
+                        <div class=" list-group-flush small">
+                          <div class="list-group-item list-group-item-action" style="Display:block" id="campoPeso" > 
+                              <div class="" id="div_colorPiel">
+                                {!! Form::label ('comple','Complexión:') !!}
+                              {!! Form::select ('comple', $complexiones, '',['class' => '', 'id' => 'complexion','multiple' => 'multiple'] )!!}        
+                             </div>     
+                          </div>
+                      </div>    
             </div>
         </div>
 	    
-
+                     
+          
 	    
 	     <div class="row" >
 	        
@@ -156,6 +204,11 @@ section.range-slider input:last-of-type::-moz-range-track {
         
 	     <br><br>
 <!--
+             {!! Form::label ('comple','Complexión:') !!}
+              {!! Form::select ('comple',
+                              $complexiones,
+                              '',
+                              ['class' => 'form-control', 'id' => 'comple'] )!!} 
               data-advanced-search="true"
               data-id-table="advancedTable"
 -->
@@ -245,7 +298,20 @@ section.range-slider input:last-of-type::-moz-range-track {
 {!! HTML::script('personal/js/bootstrap-table-toolbar.js') !!}
 
 <script type="text/javascript">
-     $("#campoUbicacion").hide();
+     //$("#campoUbicacion").hide();
+     $('#partiCabello').multipleSelect({
+            filter: true
+        });
+    $('#municipios').multipleSelect({
+            filter: true
+        });
+    $('#cPiel').multipleSelect({
+            filter: true
+        });
+    $('#complexion').multipleSelect({
+            filter: true
+        });
+    
     $("#colapsar1").click(function(event) {
         $("#campoGenero").toggle();
     });
@@ -255,12 +321,12 @@ section.range-slider input:last-of-type::-moz-range-track {
     $("#colapsar3").click(function(event) {
         //$("#campoUbicacion").show();
         $("#campoUbicacion").toggle();
-        $('#partiCabello').multipleSelect({
-            filter: true
-        });
-    $('#municipios').multipleSelect({
-            filter: true
-        });
+//        $('#partiCabello').multipleSelect({
+//            filter: true
+//        });
+//    $('#municipios').multipleSelect({
+//            filter: true
+//        });
         
     });
     
@@ -349,7 +415,11 @@ var formatTableActions = function(value, row, index) {
             $("#idMunicipio").empty();
             $("#idFecha").empty();
             $("#idEdad").empty();
-            $("#apodo").empty();
+            $("#apodo").empty();            
+            $("#idEstatura").empty();
+            $("#idPeso").empty();
+            $("#idCPiel").empty();
+            $("#idComplexion").empty();            
             $("#idNacionalidad").empty();
 //                var btnEditarInformante = $('#btnEditarInformante');
 //				
@@ -363,7 +433,11 @@ var formatTableActions = function(value, row, index) {
                               }else{
                 if(row.sexo =='M'){ 
                     $("#idGenero").append('Mujer');}
-                              }
+                             }
+            $("#idEstatura").append(row.estatura+ ' cm'); 
+            $("#idPeso").append(row.peso + ' kg'); 
+            $("#idCPiel").append(row.cPiel); 
+            $("#idComplexion").append(row.complexion); 
             $("#idEstado").append(row.estado);
             $("#idMunicipio").append(row.municipio);
             $("#idFecha").append(row.fecha);
@@ -654,16 +728,22 @@ var formatTableActions = function(value, row, index) {
           var dataString = {
 			    estados: $('#partiCabello').multipleSelect('getSelects'),
                 municipios: $('#municipios').multipleSelect('getSelects'),
+                cPiel: $('#cPiel').multipleSelect('getSelects'),
+                complexion: $('#complexion').multipleSelect('getSelects'),
                 fem : $("input#fem:checked").val(),     
                 masc : $("input#masc:checked").val(),
                 rg : $('#rng1').val(),
                 rg2 : $('#rng2').val(),
+                estatura1 : $('#estatura1').val(),
+                estatura2 : $('#estatura2').val(),
+                peso1 : $('#peso1').val(),
+                peso2 : $('#peso2').val(),
 			};
           console.log("El dataString:");
           console.log(dataString);
           $.ajax({
 				type: 'POST',
-				url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+ '/'+ estados+ '/'+ municipios,
+				url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+ '/'+ estados+ '/'+ municipios+ '/'+ estatura1+ '/'+ estatura2+ '/'+ peso1+ '/'+ peso2+'/'+ cPiel+'/'+ complexion,
 				data: dataString,
 				dataType: 'json',
 				success: function(data) {
@@ -725,7 +805,7 @@ var formatTableActions = function(value, row, index) {
           
       //console.log(masc)
 
-          //console.log(routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+'/'+ array);
+          console.log(routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+'/'+ estados);
           
           
         tablaGen.show();
