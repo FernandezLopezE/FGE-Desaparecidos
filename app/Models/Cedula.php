@@ -21,12 +21,16 @@ class Cedula extends Model
 		'idDialecto',
 		'calzadoTalla',
 		'desaparicionObservaciones',
+		'desaparicionRef',
 		'desaparicionFecha',
-        'idEstadoDesaparicion',         
+		'desaparicionHora',
+        /*'idEstadoDesaparicion',         
         'idMunicipioDesa',
-        'idLocalidadDesapa',
-        'referenciaLugar', 
+        'idLocalidadDesapa',*/
+        'ultimaPersonaAvisto',
+        //'domicilioDesaparicion',
         'vehiculoDescripcion',
+        'vehiculoPlacas',
 		//'estatura',
 		//'peso',
 		'objetos',
@@ -95,5 +99,13 @@ class Cedula extends Model
 	{
 		return $this->belongsToMany('App\Models\cedula_cat_cenas')
 		->withPivot('idCatsenas');
+	}
+	public function ultimaPersonaAvisto()
+	{
+		return $this->belongsTo('App\Models\Persona', 'id');
+	}
+	public function domicilioDesaparicion()
+	{
+		return $this->belongsTo('App\Models\Domicilio', 'id');
 	}
 }

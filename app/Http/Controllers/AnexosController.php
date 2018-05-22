@@ -31,6 +31,7 @@ class AnexosController extends Controller
 
 							$imagen = Anexos::create([
 							'tipoAnexo' 			=> $tipoAnexo,
+							'nombre'				=> $imageName,
 							'ruta' 					=> $ruta,
 							'idDesaparecido' 		=> $idDesaparecido,
 							]);
@@ -41,6 +42,7 @@ class AnexosController extends Controller
 
 				$imagen = Anexos::create([
 							'tipoAnexo' 			=> $tipoAnexo,
+							'nombre'				=> $imageName,
 							'ruta' 					=> $ruta,
 							'idDesaparecido' 		=> $idDesaparecido,
 							]);

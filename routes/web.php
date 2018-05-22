@@ -329,7 +329,6 @@ Route::get('/envioDocumentos','MailController@envioDocumentos');
 Route::get('anexos','AnexosController@show');
 	
 Route::resource('desaparicion','DesaparicionController');
-	
 
 
 

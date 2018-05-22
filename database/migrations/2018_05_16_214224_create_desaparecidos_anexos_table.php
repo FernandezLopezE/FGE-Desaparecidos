@@ -15,7 +15,8 @@ class CreateDesaparecidosAnexosTable extends Migration
     {
         Schema::create('desaparecidos_anexos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tipoAnexo');            
+            $table->string('tipoAnexo'); 
+            $table->string('nombre');           
             $table->string('ruta');
             $table->integer('idDesaparecido')->unsigned();
             $table->foreign('idDesaparecido')->references('id')->on('desaparecidos_personas')->onDelete('cascade');   

@@ -70,111 +70,6 @@
         padding: 1px 5px;
     }
 
-
-    /*  .green{
-        background-color:#6fb936;
-      }
-        .thumb{
-            margin-bottom: 20px;
-        }
-        /*
-        .page-top{
-           /* margin-top:20px;
-           
-
-        }
-
-        .gallery
-    {
-        display: inline-block;
-        margin-top: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-    .close-icon{
-      border-radius: 10%;
-        position: absolute;
-        right: 5px;
-        top: -10px;
-        padding: 1px 5px;
-    }
-    .form-image-upload{
-        background: #e8e8e8 none repeat scroll 0 0;
-        padding: 15px;
-    }
-      img.zoom {
-          width: 250px;
-          height: 200px;
-          
-          -webkit-transition: all .3s ease-in-out;
-          -moz-transition: all .3s ease-in-out;
-          -o-transition: all .3s ease-in-out;
-          -ms-transition: all .3s ease-in-out;
-      }
-
-       .transition {
-          -webkit-transform: scale(1.2); 
-          -moz-transform: scale(1.2);
-          -o-transform: scale(1.2);
-          transform: scale(1.2);
-      }
-       .modal-header {
-         
-           border-bottom: none;
-      }
-          .modal-title {
-              color:#000;
-          }
-          .modal-footer{
-            display:none;  
-          }
-/*
-     #demo {
-        height:100%;
-        position:relative;
-        overflow:hidden;
-      }
-
-
-      .green{
-        background-color:#6fb936;
-      }
-              .thumb{
-                  margin-bottom: 20px;
-              }
-              
-              .page-top{
-                  margin-top:150px;
-              }
-
-         
-      img.zoom {
-          width: 250px;
-          height: 200px;
-          
-          -webkit-transition: all .3s ease-in-out;
-          -moz-transition: all .3s ease-in-out;
-          -o-transition: all .3s ease-in-out;
-          -ms-transition: all .3s ease-in-out;
-      }
-              
-       
-      .transition {
-          -webkit-transform: scale(1.2); 
-          -moz-transform: scale(1.2);
-          -o-transform: scale(1.2);
-          transform: scale(1.2);
-      }
-          .modal-header {
-         
-           border-bottom: none;
-      }
-          .modal-title {
-              color:#000;
-          }
-          .modal-footer{
-            display:none;  
-          }
 </style>
 
 @endsection
@@ -399,12 +294,26 @@
             @if($images->count())
                 @foreach($images as $image)
                 <div class='col-md-3 thumb'>
-                    <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}">
-                        <img class="img-responsive zoom img-fluid" alt="" src="..{{ $image->ruta }}" />
-                        <div class='text-center'>
-                            <small class='text-muted'>{{ $image->ruta }}</small>
-                        </div> <!-- text-center / end -->
-                    </a>
+                   @if(substr ($image->ruta, -3) == "pdf")
+                         <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}" target="_blank">              
+                           <center>
+                            <img class="img-responsive zoom img-fluid" alt="" src="../images/documentopdf.png" width="150" height="220"  align="center" />
+                          </center>
+                              
+                            <div class='text-center'>
+                                <small class='text-muted'>{{ $image->name }}</small>
+                            </div> <!-- text-center / end -->
+                        </a>
+                    @else
+                       
+                        <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}">                
+                           <img class="img-responsive zoom img-fluid" alt="" src="..{{ $image->ruta }}" />
+                              
+                            <div class='text-center'>
+                                <small class='text-muted'>{{ $image->name }}</small>
+                            </div> <!-- text-center / end -->
+                        </a>
+                    @endif
                     <form action="{{ url('imagenAntecedentesM',$image->id) }}" method="POST">
                     <input type="hidden" name="_method" value="delete">
                     {!! csrf_field() !!}
@@ -421,7 +330,7 @@
   </div>
 </div>
 
-
+                         
 
 @endsection	
 
