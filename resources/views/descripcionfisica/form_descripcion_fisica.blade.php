@@ -35,8 +35,17 @@
 
     #editFis:hover {
     transform: scale(1.7);
+    } 
+  
+    #minCara:hover {
+    transform: scale(1.7);
     }
 
+    #datosFis:hover {
+    transform: scale(1.1);
+    }
+
+    
 </style>
 @endsection
 
@@ -47,14 +56,58 @@
     <div class="card-body"> 
         <!--@include('descripcionfisica.seccion_Estatura')-->
         <div class="form-group" id="fomularioPrin2">
-                <h6><b>Selecciona la parte del cuerpo</b></h6>            
+                <h6><b>Selecciona la parte del cuerpo</b></h6>
         </div>
         <div class="row" id="fomularioPrin" >
             <div class="col">
+              <!-- Card de datos físicos-->
+                <div class="card-transparent" style="max-width: 18rem;height: -70%;">
+                  <div class="card-header-transparent">
+                    <i class="fa fa-address-card" id="datosFis" style="font-size:40px;" data-toggle="tooltip" data-target="#card" data-placement="right" title="Editar datos físicos"></i>       
+                  </div>
+                  <div class="card-body" id="card" style="margin-top: 7px;border: 1px solid #BDBDBD;border-radius: 5px;z-index: 10; position: absolute; background: #ffffff; width: 80%;">
+                      <div class="row">
+                          <div class="col-5">
+                              <h6><b>Estatura:</b></h6>
+                          </div>
+                          <div class="col-7" style="margin-left: 0%;">
+                              <input type="text" id="estatura" style="border: 0px;width: 70%;background: transparent;" disabled>
+                          </div>
+                      </div> 
+                      <div class="row">
+                          <div class="col-5">
+                              <h6><b>Peso:</b></h6>
+                          </div>
+                          <div class="col-7">
+                              <input type="text" id="peso" style="border: 0px;width: 70%;background: transparent;" disabled>
+                          </div>
+                      </div>   
+                      <div class="row">
+                          <div class="col-5">
+                              <h6><b>Complexión:</b></h6>
+                          </div>
+                          <div class="col-7">
+                              <input type="text" id="complexion" style="border: 0px;width: 70%;background: transparent;" disabled>
+                          </div>
+                      </div> 
+                       <div class="row">
+                          <div class="col-5">
+                              <h6><b>Color de piel:</b></h6>
+                          </div>
+                          <div class="col-6">
+                              <input type="text" id="piel" style="border: 0px;width: 110%;background: transparent;" disabled>
+                          </div>
+                      </div>
+                  </div> 
+              </div>
+            </div>
+            <div class="col" style="margin-left:-350px; margin-top:-20px;">
               @include('descripcionfisica.avatar')
             </div>
             <div class="col-8">
               @include('descripcionfisica.seccion_Cabello')
+              @include('descripcionfisica.seccion_Cara')
+              @include('descripcionfisica.seccion_Cuello')
             </div>
         </div>
     </div>
@@ -65,6 +118,17 @@
 @section('scripts')
 <script type="text/javascript">
 $(document).ready(function(){
+
+  $("#card").hide();
+  $("#datosFis").hover( function () {
+    $("#card").toggle();
+  });
+
+  //mostrar sección cara
+  $("#cabeza").change(function(event) {
+    //alert("Hola mundo");
+    $("#formCara").toggle();
+  });
 
   if ("{{$aux}}" == true) {
     $("#talla").modal("hide");
@@ -86,8 +150,22 @@ $(document).ready(function(){
     $("#esta").focus();
   }
 
-  $("#editFis").click(function(event) {
-      $("#talla").modal("show");
+  $("#datosFis").click(function(event) {
+      $.ajax({
+            url: '/descripcionfisica/get_datosfisicos/{{$desaparecido->id}}/',
+            type:"GET",
+            dataType:"json",
+            success:function(data) {
+              console.log(data[0].complexion);
+              $.each(data, function(key, value){
+                $("#esta").val(value.estatura);
+                $("#bulto").val(value.peso);
+                $('select#comple option[value="'+value.idComplexion+'"]').attr('selected', 'selected');
+                $('select#cPiel option[value="'+value.idColorPiel+'"]').attr('selected', 'selected');
+                $("#talla").modal("show");
+            });
+            }
+          });
   });
   $('[data-toggle="tooltip"]').tooltip();  
   
@@ -138,10 +216,9 @@ $(document).ready(function(){
         }
       });
   });
-    /*$("#colapsar2").click(function(event) {
-        $("#fomularioPrin").toggle();
-        $("#fomularioPrin2").toggle();
-    });*/
+    $("#colapsar").click(function(event) {
+        $("#acordion").toggle();
+    });
   //Ocultar Boton editar
   $("#btnEditarC").hide();
 
@@ -155,6 +232,106 @@ $(document).ready(function(){
   $("#btnEditarC").click(function(){
    $("#detallesV").toggle();
    $("#datosCabello").toggle();
+   $("#btnEditarC").hide();
+   
+    //petición para obtener los detalles de cabello.
+    $.ajax({
+                url: '/descripcionfisica/get_cabello/{{$desaparecido->id}}/',
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                     console.log(data);
+                    $.each(data, function(key, value){    
+                      console.log(value.idParti);
+                      $('#tieneCabello').val(value.tenia).trigger('change');
+                      $('#tipoCabello').val(value.idTipo).trigger('change');
+                      $('#colorCabello').val(value.idColor).trigger('change');
+                      $('#tamanoCabello').val(value.idTamano).trigger('change');
+                      $('#partiCabello').val(value.idParti).trigger('change');
+                      $('#modiCabello').val(value.idModi).trigger('change');
+
+
+                      $("#observacionesCabello").val(value.observaciones);
+                      
+
+                    });
+
+                },
+                
+            });// fin de petición de talles de cabello
+
+    //peticion para obtener detalles de barba
+    $.ajax({
+                url: '/descripcionfisica/get_barba/{{$desaparecido->id}}/',
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                        console.log(data);
+                    $.each(data, function(key, value){   
+                                        
+                      $('#tieneBarba').val(value.tenia).trigger('change');
+                      $('#tipoBarba').val(value.idTipo).trigger('change');
+                      $('#colorBarba').val(value.idColor).trigger('change');
+                      $('#modiBarba').val(value.idModi).trigger('change');
+
+
+                      $("#observacionesBarba").val(value.observaciones);
+                      
+                        
+                    });
+                },
+            });// fin de detalles de barba.
+
+    //peticion para obtener detalles de bigote.
+    $.ajax({
+                url: '/descripcionfisica/get_bigote/{{$desaparecido->id}}/',
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                        
+                    $.each(data, function(key, value){                        
+                    $('#tieneBigote').val(value.tenia).trigger('change');
+                      $('#tipoBigote').val(value.idTipo).trigger('change');
+                      $('#colorBigote').val(value.idColor).trigger('change');
+                      $('#modiBigote').val(value.idModi).trigger('change');
+
+
+                      $("#observacionesBigote").val(value.observaciones);
+                        
+                    });
+
+                },
+                
+            });// fin de detalles de bigote.
+
+    //peticion para obtener detalles de patilla
+    $.ajax({
+                url: '/descripcionfisica/get_patilla/{{$desaparecido->id}}/',
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                        
+                    $.each(data, function(key, value){                        
+                    
+                      $('#tienePatilla').val(value.tenia).trigger('change');
+                      $('#tipoPatilla').val(value.idTipo).trigger('change');
+                      $('#colorPatilla').val(value.idColor).trigger('change');
+                      $('#modiPatilla').val(value.idModi).trigger('change');
+
+
+                      $("#observacionesPatilla").val(value.observaciones);
+                    
+                    });
+                }, 
+            });// fin de detalles de patilla
+
+
+
+
   });
 
   //Boton guardar para cabello
@@ -164,6 +341,7 @@ $(document).ready(function(){
     $("#detallesV").show();
     var dataString = {
       //Cabello
+      tieneCabello: $('#tieneCabello').val(),
       tamanoCabello: $('#tamanoCabello').val(),
       tipoCabello: $('#tipoCabello').val(),
       colorCabello: $('#colorCabello').val(),
@@ -177,6 +355,7 @@ $(document).ready(function(){
       idExtraviado: $('#idExtraviado').val(),
 
       //Barba
+      tieneBarba: $('#tieneBarba').val(),
       tipoBarba: $('#tipoBarba').val(),
       colorBarba: $('#colorBarba').val(),
       otraModiBa: $('#otroPartiBar').val(),
@@ -186,6 +365,7 @@ $(document).ready(function(){
       parteCuerpoBa: 56,
 
       //Bigote
+      tieneBigote: $('#tieneBigote').val(),
       tipoBigote: $('#tipoBigote').val(),
       colorBigote: $('#colorBigote').val(),
       otraModiBa: $('#otroPartiBig').val(),
@@ -195,6 +375,7 @@ $(document).ready(function(){
       parteCuerpoBi: 57,
 
       //Patilla
+      tienePatilla: $('#tienePatilla').val(),
       tipoPatilla: $('#tipoPatilla').val(),
       colorPatilla: $('#colorPatilla').val(),
       otraModiP: $('#otroPartiPat').val(),
@@ -203,18 +384,9 @@ $(document).ready(function(){
       modiPatilla: $("#modiPatilla").val(),
       parteCuerpoPa: 58,
 
-
-      /*parteCuerpo: $('#idPartesCuerpo').val(),
-      lado: $('#lado').val(),
-      colorP: $('#color').val(),
-      particularidad: $('#idSubParticularidades').val(),
-      modificacion: $('#idSubModificaciones').val(),
-      otraParticularidad: $('#otroSubParticularidad').val(),
-      otraModificacion: $('#otroSubModificacion').val(),
-      otroColor: $('#otroColor').val(),
-      observaciones: $('#observaciones').val(),*/
     };
     console.log(dataString);
+    //petición para hacer el store de cabello y vello facial
     $.ajax({
       type: 'POST',
       url: '/descripcionfisica/storeVelloFacial',
@@ -223,6 +395,37 @@ $(document).ready(function(){
       success: function(data) {           
         console.log("hecho");
         console.log(data);
+        //Limpiar cabello
+        $('#tieneCabello').prop('selectedIndex',0);
+        $('#tamanoCabello').prop('selectedIndex',0);
+        $('#tipoCabello').prop('selectedIndex',0);
+        $('#colorCabello').prop('selectedIndex',0);
+        $('#otroPartiC').val('');
+        $('#otroModificacionC').val('');
+        $('#otroColorC').val('');
+        $('#observacionesCabello').val('');
+        $('#modiCabello').val(null).trigger('change');
+        $('#partiCabello').val(null).trigger('change');
+
+        //Limpiar barba
+        $('#tieneBarba').prop('selectedIndex',0);
+        $('#tipoBarba').prop('selectedIndex',0);
+        $('#colorBarba').prop('selectedIndex',0);
+        $('#otroTipoBar').val('');
+        $('#otroModificacionC').val('');
+        $('#otroColorBar').val('');
+        $('#observacionesBarba').val('');
+        $('#modiBarba').val(null).trigger('change');
+
+        //Limpiar bigote
+            $('#tieneBigote').prop('selectedIndex',0);
+            $('#tipoBigote').prop('selectedIndex',0);
+            $('#colorBigote').prop('selectedIndex',0);
+            $('#otroTipoBig').val('');
+            $('#otroModificacionC').val('');
+            $('#otroColorBig').val('');
+            $('#observacionesBigote').val('');
+            $('#modiBigote').val(null).trigger('change');
         /*tableDescripcion.bootstrapTable('refresh');
         $("#editComplexion").prop('checked', false);
         $("#estatura").prop('disabled', !this.checked);
@@ -237,8 +440,9 @@ $(document).ready(function(){
         console.log("error");
         console.log(data);
       }
-    });
+    });//fin  de petición para realizar el store de cabello y vello facial.
 
+    //petición para obtener los detalles de cabello.
     $.ajax({
                 url: '/descripcionfisica/get_cabello/{{$desaparecido->id}}/',
                 type:"GET",
@@ -247,9 +451,11 @@ $(document).ready(function(){
                 success:function(data) {
                      
                     $.each(data, function(key, value){    
-                    $("#pCabello").empty();                    
+                    $("#pCabello").empty();
 
-                        $("#pCabello").append('<div class="card">'+
+                    if(value.tenia == "SÍ"){
+                      $("#pCabello").show();
+                      $("#pCabello").append('<div class="card">'+
                                                 '<div class="card-header bg-white">'+
                                                     '<h5><b>Datos del cabello</b></h5>'+
                                                 '</div>'+
@@ -310,15 +516,20 @@ $(document).ready(function(){
                                                     '</div>'+
                                                 '</div>'+
                                             '</div>');
+                    }else{
+                      $("#pCabello").hide();
+                    }                    
+
+                        
 
 
                     });
 
                 },
                 
-            });
+            });// fin de petición de talles de cabello
 
-
+    //peticion para obtener detalles de barba
     $.ajax({
                 url: '/descripcionfisica/get_barba/{{$desaparecido->id}}/',
                 type:"GET",
@@ -329,7 +540,9 @@ $(document).ready(function(){
                     $.each(data, function(key, value){   
                     pCabello                     
                     $("#pBarba").empty();
-                        $("#pBarba").append('<div class="card">'+
+                    if(value.tenia == "SÍ"){
+                      $("#pBarba").show();
+                      $("#pBarba").append('<div class="card">'+
                                                 '<div class="card-header bg-white">'+
                                                     '<h5><b>Datos de la barba</b></h5>'+
                                                 '</div>'+
@@ -372,10 +585,15 @@ $(document).ready(function(){
                                                     '</div>'+
                                                 '</div>'+
                                             '</div>');
+                    }else{
+                      $("#pBarba").hide();
+                    }
+                        
                     });
                 },
-            });
+            });// fin de detalles de barba.
 
+    //peticion para obtener detalles de bigote.
     $.ajax({
                 url: '/descripcionfisica/get_bigote/{{$desaparecido->id}}/',
                 type:"GET",
@@ -385,7 +603,10 @@ $(document).ready(function(){
                         
                     $.each(data, function(key, value){                        
                     $("#pBigote").empty();
-                        $("#pBigote").append('<div class="card">'+
+
+                    if(value.tenia == "SÍ"){
+                      $("#pBigote").show();
+                      $("#pBigote").append('<div class="card">'+
                                                 '<div class="card-header bg-white">'+
                                                     '<h5><b>Datos del bigote</b></h5>'+
                                                 '</div>'+
@@ -428,12 +649,18 @@ $(document).ready(function(){
                                                     '</div>'+
                                                 '</div>'+
                                             '</div>');
+
+                    }else{
+                      $("#pBigote").hide();
+                    }
+                        
                     });
 
                 },
                 
-            });
+            });// fin de detalles de bigote.
 
+    //peticion para obtener detalles de patilla
     $.ajax({
                 url: '/descripcionfisica/get_patilla/{{$desaparecido->id}}/',
                 type:"GET",
@@ -443,7 +670,10 @@ $(document).ready(function(){
                         
                     $.each(data, function(key, value){                        
                     $("#pPatilla").empty();
-                        $("#pPatilla").append('<div class="card">'+
+
+                    if(value.tenia == "SÍ"){
+                      $("#pPatilla").show();
+                      $("#pPatilla").append('<div class="card">'+
                                                 '<div class="card-header bg-white">'+
                                                     '<h5><b>Datos de las patillas</b></h5>'+
                                                 '</div>'+
@@ -486,9 +716,15 @@ $(document).ready(function(){
                                                     '</div>'+
                                                 '</div>'+
                                             '</div>');
+                    }else{
+                      $("#pPatilla").hide();
+
+                    }
+                        
                     });
                 }, 
-            });
+            });// fin de detalles de patilla
+
   });
 });
 //Sección para mostrar/ocultar campos de "OTRO"
@@ -525,6 +761,19 @@ var tieneCabello, otroTipoC, otroColorC, otroPartiC, otroModificacionC, tieneBar
             $('#partiCabello').prop('selectedIndex',0); 
             $('#tamanoCabello').prop('selectedIndex',0); 
             $('#modiCabello').prop('selectedIndex',0); 
+
+            //Limpiar cabello
+            $('#tieneCabello').prop('selectedIndex',0);
+            $('#tamanoCabello').prop('selectedIndex',0);
+            $('#tipoCabello').prop('selectedIndex',0);
+            $('#colorCabello').prop('selectedIndex',0);
+            $('#otroPartiC').val('');
+            $('#otroModificacionC').val('');
+            $('#otroColorC').val('');
+            $('#observacionesCabello').val('');
+            $('#modiCabello').val(null).trigger('change');
+            $('#partiCabello').val(null).trigger('change');
+
         }
     });
 
@@ -587,6 +836,17 @@ var tieneCabello, otroTipoC, otroColorC, otroPartiC, otroModificacionC, tieneBar
             $('#tipoBarba').prop('selectedIndex',0); 
             $('#colorBarba').prop('selectedIndex',0); 
             $('#modiBarba').prop('selectedIndex',0); 
+
+            //Limpiar barba
+            $('#tieneBarba').prop('selectedIndex',0);
+            $('#tipoBarba').prop('selectedIndex',0);
+            $('#colorBarba').prop('selectedIndex',0);
+            $('#otroTipoBar').val('');
+            $('#otroModificacionC').val('');
+            $('#otroColorBar').val('');
+            $('#observacionesBarba').val('');
+            $('#modiBarba').val(null).trigger('change');
+            
         }
     });
 
@@ -642,6 +902,16 @@ var tieneCabello, otroTipoC, otroColorC, otroPartiC, otroModificacionC, tieneBar
             $('#tipoBigote').prop('selectedIndex',0); 
             $('#colorBigote').prop('selectedIndex',0); 
             $('#modiBigote').prop('selectedIndex',0); 
+
+            //Limpiar bigote
+            $('#tieneBigote').prop('selectedIndex',0);
+            $('#tipoBigote').prop('selectedIndex',0);
+            $('#colorBigote').prop('selectedIndex',0);
+            $('#otroTipoBig').val('');
+            $('#otroModificacionC').val('');
+            $('#otroColorBig').val('');
+            $('#observacionesBigote').val('');
+            $('#modiBigote').val(null).trigger('change');
         }
     });
 
@@ -697,6 +967,16 @@ var tieneCabello, otroTipoC, otroColorC, otroPartiC, otroModificacionC, tieneBar
             $('#tipoPatilla').prop('selectedIndex',0); 
             $('#colorPatilla').prop('selectedIndex',0); 
             $('#modiPatilla').prop('selectedIndex',0); 
+
+            //Limpiar patilla
+            $('#tienePatilla').prop('selectedIndex',0);
+            $('#tipoPatilla').prop('selectedIndex',0);
+            $('#colorPatilla').prop('selectedIndex',0);
+            $('#otroTipoPat').val('');
+            $('#otroPartiPat').val('');
+            $('#otroColorPat').val('');
+            $('#observacionesPatilla').val('');
+            $('#modiPatilla').val(null).trigger('change');
         }
     });
 

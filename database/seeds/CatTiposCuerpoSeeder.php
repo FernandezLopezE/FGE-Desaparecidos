@@ -43,6 +43,16 @@ class CatTiposCuerpoSeeder extends Seeder
             [ 'nombre' => 'SIN CEJA', 'idPartesCuerpo' => '7'],
             [ 'nombre' => 'OTRO', 'idPartesCuerpo' => '7'],
 
+            //AMBAS CEJAS
+            [ 'nombre' => 'SIN INFORMACION', 'idPartesCuerpo' => '73'],
+            [ 'nombre' => 'POBLADA', 'idPartesCuerpo' => '73'],
+            [ 'nombre' => 'REGULAR', 'idPartesCuerpo' => '73'],
+            [ 'nombre' => 'ESCASA', 'idPartesCuerpo' => '73'],
+            [ 'nombre' => 'DEPILADA', 'idPartesCuerpo' => '73'],
+            [ 'nombre' => 'RASURADA', 'idPartesCuerpo' => '73'],
+            [ 'nombre' => 'SIN CEJA', 'idPartesCuerpo' => '73'],
+            [ 'nombre' => 'OTRO', 'idPartesCuerpo' => '73'],
+
             //NARIZ
             [ 'nombre' => 'SIN INFORMACION', 'idPartesCuerpo' => '31'],
             [ 'nombre' => 'CHATA/BOTÓN', 'idPartesCuerpo' => '31'],
@@ -65,6 +75,13 @@ class CatTiposCuerpoSeeder extends Seeder
             [ 'nombre' => 'INCOMPLETA', 'idPartesCuerpo' => '34'],
             [ 'nombre' => 'OBLITERADA (OBSTRUIDA/CERRADA)', 'idPartesCuerpo' => '34'],
             [ 'nombre' => 'OTRO', 'idPartesCuerpo' => '34'],
+
+            //AMBAS OREJAS
+            [ 'nombre' => 'SIN INFORMACION', 'idPartesCuerpo' => '77'],
+            [ 'nombre' => 'COMPLETA', 'idPartesCuerpo' => '77'],
+            [ 'nombre' => 'INCOMPLETA', 'idPartesCuerpo' => '77'],
+            [ 'nombre' => 'OBLITERADA (OBSTRUIDA/CERRADA)', 'idPartesCuerpo' => '77'],
+            [ 'nombre' => 'OTRO', 'idPartesCuerpo' => '77'],
 
 
 

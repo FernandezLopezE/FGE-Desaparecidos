@@ -35,7 +35,7 @@ class CatPartesCuerpoSeeder extends Seeder
             ['nombre' => 'LABIO SUPERIOR', 'partePadre' => '72'],		//20
             ['nombre' => 'MANO IZQUIERDA', 'partePadre' => '0'],     //21
             ['nombre' => 'MANO DERECHA', 'partePadre' => '0'],		//22
-            ['nombre' => 'MEJILLAS', 'partePadre' => '0'],			//23
+            ['nombre' => 'AMBAS MEJILLAS', 'partePadre' => '0'],			//23
             ['nombre' => 'MENTÓN', 'partePadre' => '60'],				//24
             ['nombre' => 'MUÑECA DERECHA', 'partePadre' => '22'],		//25
             ['nombre' => 'MUÑECA IZQUIERDA', 'partePadre' => '21'],   //26
@@ -84,7 +84,14 @@ class CatPartesCuerpoSeeder extends Seeder
             ['nombre' => 'DEDO PULGAR DERECHO', 'partePadre' => '22'],//69
             ['nombre' => 'DEDO PULGAR IZQUIERDO', 'partePadre' => '21'],//70
             ['nombre' => 'BOCA', 'partePadre' => '60'],//71
-            ['nombre' => 'LABIOS', 'partePadre' => '71'],//72
+            ['nombre' => 'AMBOS LABIOS', 'partePadre' => '71'],//72
+            ['nombre' => 'AMBAS CEJAS', 'partePadre' => '60'],//73
+            ['nombre' => 'AMBOS OJOS', 'partePadre' => '60'],//74
+            ['nombre' => 'MEJILLA IZQUIERDA', 'partePadre' => '0'],            //75
+            ['nombre' => 'MEJILLA DERECHA', 'partePadre' => '0'],            //76
+            ['nombre' => 'AMBAS OREJAS', 'partePadre' => '60'],    //77
+
+
             
             
         ]);
