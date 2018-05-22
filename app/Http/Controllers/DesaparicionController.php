@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\models\Cedula;
+use App\Models\Persona;
+use App\Models\Desaparecido;
+use App\Models\Domicilio;
 
 class DesaparicionController extends Controller
 {
@@ -17,13 +21,13 @@ class DesaparicionController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a+ new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -34,9 +38,77 @@ class DesaparicionController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+       
+       
+       
+        //persona
+        $nombres = ($request['nombres']);
+        $primerAp = ($request['primerAp']);
+        $segundoAp = ($request['segundoAp']);
+        //cedula
+        $idParentesco = ($request['idParentesco']);
+        $otroParentesco = ($request['otroParentesco']);
+        $vehiculoPlacas = ($request['vehiculoPlacas']);
+        $vehiculoDescripcion = ($request['vehiculoDescripcion']);
+        $descripcion = ($request['descripcion']);
+        $desaparicionFecha = ($request['desaparicionFecha']);
+        $desaparicionHora = ($request['desaparicionHora']);        
+        $referencia = ($request['referencia']);
+        //domicilio
+        $tipoDireccion = ($request['tipoDireccion']);
+        $calle            = ($request['calle']);
+        $numExterno = ($request['numExterno']);
+        $idEstado = ($request['idEstado']);
+        $idMunicipio = ($request['idMunicipio']);
+        $idLocalidad = ($request['idLocalidad']);
+        $idColonia = ($request['idColonia']);
+        $idCodigoPostal = ($request['idCodigoPostal']);
+       
+        //comodin
+        $idDesaparecido = ($request['idDesaparecido']);
 
+     
+
+        $persona = Persona::create([
+            'nombres'           => $nombres,
+            'primerAp'          => $primerAp,
+            'segundoAp'         => $segundoAp,
+        ]);
+ 
+        $desaparecido = Cedula::create([
+            'idPersonaAvisto'   => $persona->id,
+            'idParentescoAvisto'=>$idParentesco,
+           'otroParentescoAvisto' =>$otroParentesco,
+           'vehiculoPlacas' =>$vehiculoPlacas ,
+           'vehiculoDescripcion'  => $vehiculoDescripcion,
+           'desaparicionObservaciones'=> $descripcion, 
+            'desaparicionFecha'=>$desaparicionFecha ,
+           'desaparicionHora' =>$desaparicionHora  ,     
+            'desaparicionRef'=>$referencia ,
+        ]);
+        
+        $domicilio = Domicilio::create([
+          'tipoDireccion'  =>$tipoDireccion,
+           'calle' =>$calle          ,
+           'numExterno' =>$numExterno ,
+           'idEstado' =>$idEstado ,
+           'idMunicipio' =>$idMunicipio,
+            'idLocalidad'=>$idLocalidad,
+            'idColonia'=>$idColonia,
+          'idCodigoPostal' => $idCodigoPostal,
+          'idDesaparecido' =>$idDesaparecido,
+
+        ]);
+
+
+        $data = array('nombres' => $nombres,
+                        'primerAp' => $primerAp,
+                        'segundoAp' => $segundoAp,
+                       );
+        
+       // return response()->json($data);
+    
+    }
     /**
      * Display the specified resource.
      *
@@ -77,7 +149,7 @@ class DesaparicionController extends Controller
             'codigos'      =>   $codigos,
             'parentescos' => $parentescos,
             ]);     
-    }    }
+    }    
 
     /**
      * Show the form for editing the specified resource.
@@ -99,7 +171,7 @@ class DesaparicionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd("hello");
     }
 
     /**

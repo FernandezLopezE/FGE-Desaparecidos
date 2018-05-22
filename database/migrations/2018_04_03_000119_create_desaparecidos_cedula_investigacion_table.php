@@ -36,8 +36,11 @@ class CreateDesaparecidosCedulaInvestigacionTable extends Migration
             $table->foreign('idMunicipioDesa')->references('id')->on('cat_municipio')->onDelete('cascade');
             $table->integer('idLocalidadDesapa')->unsigned()->default(108971);
             $table->foreign('idLocalidadDesapa')->references('id')->on('cat_localidad')->onDelete('cascade');*/
-            $table->integer('ultimaPersonaAvisto')->unsigned()->nullable() ;
-            $table->foreign('ultimaPersonaAvisto')->references('id')->on('persona')->onDelete('cascade');
+            $table->integer('idPersonaAvisto')->unsigned()->nullable() ;
+            $table->foreign('idPersonaAvisto')->references('id')->on('persona')->onDelete('cascade');
+            $table->integer('idParentescoAvisto')->unsigned()->nullable();
+            $table->foreign('idParentescoAvisto')->references('id')->on('cat_parentesco')->onDelete('cascade');
+            $table->string('otroParentescoAvisto', 50)->nullable();
            /* $table->integer('domicilioDesaparicion')->unsigned()->nullable() ;
             $table->foreign('domicilioDesaparicion')->references('id')->on('desaparecidos_domicilios')->onDelete('cascade');*/
             $table->string('vehiculoDescripcion', 250)->nullable();
@@ -55,6 +58,7 @@ class CreateDesaparecidosCedulaInvestigacionTable extends Migration
             $table->foreign('idCalzadocolor')->references('id')->on('cat_colores');
             $table->integer('idCalzadomarca')->unsigned()->nullable();           
             $table->foreign('idCalzadomarca')->references('id')->on('cat_calzado_marca');
+
             //$table->integer('idComplexion')->unsigned()->nullable();           
             //$table->foreign('idComplexion')->references('id')->on('cat_complexion');
             //$table->integer('idColorPiel')->unsigned()->nullable();           

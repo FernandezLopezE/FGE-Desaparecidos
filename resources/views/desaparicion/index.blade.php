@@ -15,6 +15,7 @@
 @section('content')
 @include('navs.navs_datos',array('activar' => 'desaparicion'))
 {{ Form::hidden('idExtraviado', $desaparecido->id, array('id' => 'idExtraviado')) }}
+<input type="hidden" name="_token" value="{{ csrf_token() }}" id="token">
 	  	<div class="card border-primary">
 	  		<div class="card border-success">
 	  			<div class="card-header">	
@@ -360,7 +361,7 @@ $(btnGuardarDescripcionHechos).click (function(){
 				vehiculoDescripcion = $("#vehiculoDescripcion").val();
       			}
 
-
+      		var token = $("#token").val();
 			var dataString = {
 				desaparicionFecha: $("#familiaresFechaNacimiento").val(),
 				desaparicionHora: $("#horas").val()+":"+$("#minutos").val(),
@@ -383,14 +384,15 @@ $(btnGuardarDescripcionHechos).click (function(){
 				vehiculoPlacas: vehiculoPlacas,
 				vehiculoDescripcion:vehiculoDescripcion,
 				idDesaparecido:'{!! $desaparecido->id!!}',
-				
+			
 
 			};
 			console.log(dataString);
 
 			$.ajax({
+				url:'/desaparicion',
+				//headers:{'X-CSRF-TOKEN':token},
 				type: 'POST',
-				url:'desaparicion',
 				data: dataString,
 				dataType: 'json',
 				success: function(data) {

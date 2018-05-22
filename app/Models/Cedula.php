@@ -27,10 +27,12 @@ class Cedula extends Model
         /*'idEstadoDesaparicion',         
         'idMunicipioDesa',
         'idLocalidadDesapa',*/
-        'ultimaPersonaAvisto',
+        'idPersonaAvisto',
         //'domicilioDesaparicion',
         'vehiculoDescripcion',
         'vehiculoPlacas',
+        'idParentescoAvisto',
+        'otroParentescoAvisto',
 		//'estatura',
 		//'peso',
 		'objetos',
