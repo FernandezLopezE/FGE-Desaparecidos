@@ -107,6 +107,7 @@
             <div class="col-8">
               @include('descripcionfisica.seccion_Cabello')
               @include('descripcionfisica.seccion_Cara')
+              @include('descripcionfisica.seccion_Cuello')
             </div>
         </div>
     </div>
@@ -121,6 +122,12 @@ $(document).ready(function(){
   $("#card").hide();
   $("#datosFis").hover( function () {
     $("#card").toggle();
+  });
+
+  //mostrar sección cara
+  $("#cabeza").change(function(event) {
+    //alert("Hola mundo");
+    $("#formCara").toggle();
   });
 
   if ("{{$aux}}" == true) {
