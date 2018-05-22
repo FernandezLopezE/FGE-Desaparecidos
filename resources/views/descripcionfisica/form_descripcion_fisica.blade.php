@@ -254,6 +254,29 @@ $(document).ready(function(){
                 
             });// fin de petición de talles de cabello
 
+    //peticion para obtener detalles de barba
+    $.ajax({
+                url: '/descripcionfisica/get_barba/{{$desaparecido->id}}/',
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                        
+                    $.each(data, function(key, value){   
+                                        
+                      $('#tieneBarba').val(value.tenia).trigger('change');
+                      $('#tipoBarba').val(value.idTipo).trigger('change');
+                      $('#colorBarba').val(value.idColor).trigger('change');
+                      $('#modiBarba').val(value.idModi).trigger('change');
+
+
+                      $("#observacionesBarba").val(value.observaciones);
+                      
+                        
+                    });
+                },
+            });// fin de detalles de barba.
+
 
   });
 
@@ -329,6 +352,16 @@ $(document).ready(function(){
         $('#observacionesCabello').val('');
         $('#modiCabello').val(null).trigger('change');
         $('#partiCabello').val(null).trigger('change');
+
+        //Limpiar cabello
+        $('#tieneBarba').prop('selectedIndex',0);
+        $('#tipoBarba').prop('selectedIndex',0);
+        $('#colorBarba').prop('selectedIndex',0);
+        $('#otroTipoBar').val('');
+        $('#otroModificacionC').val('');
+        $('#otroColorBar').val('');
+        $('#observacionesBarba').val('');
+        $('#modiBarba').val(null).trigger('change');
         /*tableDescripcion.bootstrapTable('refresh');
         $("#editComplexion").prop('checked', false);
         $("#estatura").prop('disabled', !this.checked);
@@ -739,6 +772,17 @@ var tieneCabello, otroTipoC, otroColorC, otroPartiC, otroModificacionC, tieneBar
             $('#tipoBarba').prop('selectedIndex',0); 
             $('#colorBarba').prop('selectedIndex',0); 
             $('#modiBarba').prop('selectedIndex',0); 
+
+            //Limpiar barba
+            $('#tieneBarba').prop('selectedIndex',0);
+            $('#tipoBarba').prop('selectedIndex',0);
+            $('#colorBarba').prop('selectedIndex',0);
+            $('#otroTipoBar').val('');
+            $('#otroModificacionC').val('');
+            $('#otroColorBar').val('');
+            $('#observacionesBarba').val('');
+            $('#modiBarba').val(null).trigger('change');
+            
         }
     });
 
