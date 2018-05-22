@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Input;
 
 class ConsultasController extends Controller
 {
@@ -75,6 +76,7 @@ class ConsultasController extends Controller
         //$estados = "uno,dos,tres,cuatro,cinco";
         //$array = explode(",", $estados);}  
         // dd($request->ToArray());
+        //$estados = Input::get('estados');
         $estados = $request->input('estados');
         $municipios = $request->input('municipios');
         $cPiel = $request->input('cPiel');
@@ -116,6 +118,7 @@ class ConsultasController extends Controller
             $rg2 = $request->input('rg2');
 
         }
+        //-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
 //        {//dd($estados);
 //        $consulta = \DB::table('persona')
 //            ->whereIn('idEstadoOrigen', $estados)
@@ -137,28 +140,43 @@ class ConsultasController extends Controller
                        
                         //DB::raw('substr(id, 1, 4) as id')}
             ->select('des.id as id', \DB::raw('CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))AS nombre'), 'p.sexo as sexo',\DB::raw('substr(dci.desaparicionFecha, 1,10) as fecha'),'des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'),'des.estatura as estatura','des.peso as peso','cc.id as idComplexion','cc.nombre as complexion','ccp.id as idCPiel','ccp.nombre as cPiel','ce.id as idEstado','ce.nombre as estado','cm.id as idMuni','cm.nombre as municipio','cn.nombre as nacionalidad')
-            
-                            ->where('tipoPersona','DESAPARECIDA')
-        //{->where('des.edadExtravio', 'like', "$rg%")
+            //{->where('des.edadExtravio', 'like', "$rg%")
                             //->where('des.edadExtravio', 'like', "$rg2%")
-                            //->whereBetween('des.edadExtravio', [$rg, $rg2])} 
+                            //->whereBetween('des.edadExtravio', [$rg, $rg2])}
+                            ->where('tipoPersona','DESAPARECIDA')
                             ->where('p.sexo',$masc)
                             ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
                             ->whereBetween(\DB::raw('CAST(des.estatura AS SIGNED)'), [$estatura1, $estatura2])
                             ->whereBetween(\DB::raw('CAST(des.peso AS SIGNED)'), [$peso1, $peso2])
-                            ->whereIn('ce.id', $estados)
-                            ->whereIn('cm.id', $municipios)
-                            ->whereIn('des.idColorPiel', $cPiel)
-                            ->whereIn('des.idComplexion', $complexion)
+                            ->when($estados, function ($q) use ($estados) {
+                                return $q->whereIn('ce.id', $estados);
+                            })
+                            ->when($municipios, function ($q) use ($municipios) {
+                                return $q->whereIn('cm.id', $municipios);
+                            })
+                            ->when($cPiel, function ($q) use ($cPiel) {
+                                return $q->whereIn('des.idColorPiel', $cPiel);
+                            })
+                            ->when($complexion, function ($q) use ($complexion) {
+                                return $q->whereIn('des.idComplexion', $complexion);
+                            })
                             ->orWhere('p.sexo', $fem) 
                             ->where('tipoPersona','DESAPARECIDA')
                             ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
                             ->whereBetween(\DB::raw('CAST(des.estatura AS SIGNED)'), [$estatura1, $estatura2])
                             ->whereBetween(\DB::raw('CAST(des.peso AS SIGNED)'), [$peso1, $peso2])
-                            ->whereIn('ce.id', $estados)
-                            ->whereIn('cm.id', $municipios)
-                            ->whereIn('des.idColorPiel', $cPiel)
-                            ->whereIn('des.idComplexion', $complexion)
+                            ->when($estados, function ($q) use ($estados) {
+                                return $q->whereIn('ce.id', $estados);
+                            })
+                            ->when($municipios, function ($q) use ($municipios) {
+                                return $q->whereIn('cm.id', $municipios);
+                            })
+                            ->when($cPiel, function ($q) use ($cPiel) {
+                                return $q->whereIn('des.idColorPiel', $cPiel);
+                            })
+                            ->when($complexion, function ($q) use ($complexion) {
+                                return $q->whereIn('des.idComplexion', $complexion);
+                            })
             
                             //->where('des.edadExtravio', 'like', "$rg2%")
                             ->get();

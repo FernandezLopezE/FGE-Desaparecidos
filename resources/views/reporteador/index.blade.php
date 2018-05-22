@@ -743,7 +743,7 @@ var formatTableActions = function(value, row, index) {
           console.log(dataString);
           $.ajax({
 				type: 'POST',
-				url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+ '/'+ estados+ '/'+ municipios+ '/'+ estatura1+ '/'+ estatura2+ '/'+ peso1+ '/'+ peso2+'/'+ cPiel+'/'+ complexion,
+				url: routeIndex+'/get_desaparecidos_personas',
 				data: dataString,
 				dataType: 'json',
 				success: function(data) {
