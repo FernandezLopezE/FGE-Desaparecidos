@@ -3,36 +3,58 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Anexos;
 
 class AnexosController extends Controller
 {
     
-        public function show(Request $request){
-		$idCedula =1;
-		$cedula = \App\Models\Cedula::find($idCedula);
-
-			//esto es para la vista de historial dental y radiografias
-		$option = array(
-			'0' => 'SIN INFORMACION',
-			'1' => 'SI');
-		/*$meses = array(
-			'1' => 'ENERO',
-			'2' => 'FEBRERO',
-			'3' => 'MARZO',
-			'4' => 'ABRIL',
-			'5' => 'MAYO',
-			'6' => 'JUNIO',
-			'7' => 'JULIO',
-			'8' => 'AGOSTO',
-			'9' => 'SEPTIEMBRE',
-			'10' => 'OCTUBRE',
-			'11' => 'NOVIEMBRE',
-			'12' => 'DICIEMBRE');*/
+    public function store(Request $request)
+        {
+            
+            $imageName = request()->file->getClientOriginalName();
+            
+           
+        	$idDesaparecido = request()->idDesaparecido;
+        	$tipoAnexo = request()->tipoAnexo;
+        	// dd($idDesaparecido);
+        	//$carpeta = rand ( int 0, int 1000 )
+        	$carpeta = '../public/upload/'.$idDesaparecido.'/';
+        	$ruta ='/upload/'.$idDesaparecido.'/'.$imageName;
+         	//almaceno en BD
+        		
+        	//termina metodo de almacenar
 
 
-		return view('cargardocumentos.historialdental_radiografia',[
-			'id' => $cedula->id,
-			'option' =>$option
-			]);		
-	}
-}
+				if (!file_exists($carpeta)) {
+				    mkdir($carpeta, 0777, true);
+						request()->file->move(public_path($carpeta), $imageName);
+
+							$imagen = Anexos::create([
+							'tipoAnexo' 			=> $tipoAnexo,
+							'ruta' 					=> $ruta,
+							'idDesaparecido' 		=> $idDesaparecido,
+							]);
+				  return response()->json(['uploaded' => '../public/upload/'.$idDesaparecido.'/'.$imageName]);
+				}
+				else {
+					request()->file->move(public_path($carpeta), $imageName);
+
+				$imagen = Anexos::create([
+							'tipoAnexo' 			=> $tipoAnexo,
+							'ruta' 					=> $ruta,
+							'idDesaparecido' 		=> $idDesaparecido,
+							]);
+					return response()->json(['uploaded' => '../public/upload/'.$idDesaparecido.'/'.$imageName]);
+
+				}
+
+			}
+
+
+				            
+            
+    }
+
+
+
+

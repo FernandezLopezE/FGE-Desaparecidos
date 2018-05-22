@@ -84,9 +84,9 @@
 					<!-- Fin del Contenido del formulario-->
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-success" id="btnGuardarPrenda">GUARDAR</button>
-					<button type="button" class="btn btn-warning" id="btnActualizarPrenda">ACTUALIZAR</button>
-					<button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
+					<button type="button" class="btn btn-dark" id="btnGuardarPrenda">GUARDAR</button>
+					<button type="button" class="btn btn-dark" id="btnActualizarPrenda">ACTUALIZAR</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
 				</div>
 			</div>
 		</div>

@@ -127,8 +127,11 @@ Route::resource('image-view','CargarDocumentosController');
 Route::post('image-view','CargarDocumentosController@store');
 //ruta a controlador MailController para envio de correo
 Route::post('/enviar_correo','MailController@store');
-
-
+Route::get('imagenAntecedentesM','AntecedentesMedicosController@show');
+Route::post('imagenAntecedentesM','AnexosController@store');
+/*Route::post('/imagenAntecedentesM/store_path','AntecedentesMedicosController@store_path')
+ ->name('/imagenAntecedentesM.store_path');*/
+Route::delete('imagenAntecedentesM/{id}','AntecedentesMedicosController@destroy');
 
 
 
@@ -176,7 +179,7 @@ Route::get('/descripcionfisica/get_particularidades/{idParteCuerpo}', 'Descripci
 	->name('descripcionfisica.get_particularidades');
 Route::get('/descripcionfisica/get_modificaciones/{idParteCuerpo}', 'DescripcionFisicaController@getModificaciones')
 	->name('descripcionfisica.get_modificaciones');
-
+Route::get('/descripcionfisica/get_tamano/{idParteCuerpo}', 'DescripcionFisicaController@getTamanoCuerpo')->name('descripcionfisica.get_tamano');
 Route::get('/descripcionfisica/get_cabello/{idExtraviado}', 'DescripcionFisicaController@getCabello')
 	->name('descripcionfisica.get_cabello');
 Route::get('/descripcionfisica/get_barba/{idExtraviado}', 'DescripcionFisicaController@getBarba')
@@ -188,7 +191,7 @@ Route::get('/descripcionfisica/get_patilla/{idExtraviado}', 'DescripcionFisicaCo
 Route::get('/descripcionfisica/get_datosfisicos/{idExtraviado}', 'DescripcionFisicaController@getdatosfisicos')->name('descripcionfisica.get_datosfisicos');
 Route::get('/descripcionfisica/descripcionf/{idPersonaDesaparecida}', 'DescripcionFisicaController@show')
 	->name('descripcionfisica.show');
-
+Route::get('/descripcionfisica/get_tipos/{idParteCuerpo}', 'DescripcionFisicaController@getTipoCuerpo')->name('descripcionfisica.get_tipos');
 Route::post('/descripcionfisica/store', 'DescripcionFisicaController@store')
 	->name('descripcionfisica.store');
 Route::post('/descripcionfisica/storeVelloFacial', 'DescripcionFisicaController@storeVelloFacial')->name('descripcionfisica.storeVelloFacial');
@@ -335,9 +338,10 @@ Route::get('/get_des','ConsultasController@jsonDes')
 Route::get('/envioDocumentos','MailController@envioDocumentos');
 
 //Anexos
-Route::get('/anexos','AnexosController@show');
+Route::get('anexos','AnexosController@show');
 	
-
+Route::resource('desaparicion','DesaparicionController');
+	
 
 
 

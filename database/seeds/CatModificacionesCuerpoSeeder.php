@@ -84,7 +84,14 @@ class CatModificacionesCuerpoSeeder extends Seeder
             ['idPartesCuerpo'=>53, 'nombre' => 'MODIFICACIONES TOBILLO IZQUIERDO'],   //64
             ['idPartesCuerpo'=>52, 'nombre' => 'MODIFICACIONES TOBILLO DERECHO'],//65
             ['idPartesCuerpo'=>59, 'nombre' => 'MODIFICACIONES UÑA'],//66
-            ['idPartesCuerpo'=>60, 'nombre' => 'MODIFICACIONES CABEZA'],//68   
+            ['idPartesCuerpo'=>60, 'nombre' => 'MODIFICACIONES CABEZA'],//67  
+
+            ['idPartesCuerpo'=>73, 'nombre' => 'MODIFICACIONES AMBAS CEJAS'],//68
+            ['idPartesCuerpo'=>74, 'nombre' => 'MODIFICACIONES AMBOS OJOS'],//69
+            ['idPartesCuerpo'=>75, 'nombre' => 'MODIFICACIONES MEJILLA IZQUIERDA'], //70 
+            ['idPartesCuerpo'=>76, 'nombre' => 'MODIFICACIONES MEJILLA DERECHA'], //71
+            ['idPartesCuerpo'=>77, 'nombre' => 'MODIFICACIONES AMBAS OREJAS'],//72
+            ['idPartesCuerpo'=>72, 'nombre' => 'MODIFICACIONES AMBOS LABIOS'],//73
     ]);
     }
 }

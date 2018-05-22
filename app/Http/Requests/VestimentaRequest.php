@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class VestimentaRequest extends FormRequest
 {
@@ -29,12 +30,30 @@ class VestimentaRequest extends FormRequest
             'talla'             => '',
             'idMarca'           => 'required',
             'idColor'           => '',
-            'idVestimenta'      => 'required',
-            'idPrenda'          => 'required',
-            'idDesaparecido'    => '',
-            //'archivo'           => 'required|mimes:png'
-        ];
+            'idVestimenta'      => ['required',
+                                    function($attribute, $value, $fail){
+                                        if($value === "1"){
+                                            return $fail('Seleccione una vestimenta');
+                                        }
+                                    }],
+            'idPrenda'          => ['required',
+                                    function($attribute, $value, $fail){
+                                        if($value === "null"){
+                                            return $fail('La Prenda es requerida');
+                                        }
+                                    }],
 
+
+            //'idDesaparecido'    => 'unique:desaparecidos_prendas,idDesaparecido,'.$this->request->get('idPrenda').',id,idPrenda,3',
+            //'archivo'           => 'required|mimes:png'
+            /*'idDesaparecido'    => ['required',
+                                    function($attribute, $value, $fail){
+                                        if ($value === '32'){
+                                            return $fail($attribute.' es invalido.');
+                                        }
+                                    }
+                                    ],*/
+        ];
         return $rules;
     }
 
@@ -47,4 +66,5 @@ class VestimentaRequest extends FormRequest
             'idPrenda.required'  => 'Tipo de prenda es requerido',
         ];
     }
+
 }
