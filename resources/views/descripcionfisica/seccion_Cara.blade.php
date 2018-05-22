@@ -354,5 +354,6 @@
 		<button type="button" class="btn btn-primary" style="float: right;" id="guardarCara">GUARDAR</button>
 	</div>
 </div>
+</div>
 
 <script src="personal/js/avatar/cara.js"></script>
