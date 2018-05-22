@@ -747,6 +747,7 @@ class DescripcionFisicaController extends Controller
             $i++;
             $nParticularidad = '';
             $nModificaciones = '';
+
         }
 
         return response()->json($cuerpo);        
@@ -767,6 +768,8 @@ class DescripcionFisicaController extends Controller
                                 'cpc.otraModificacion',
                                 'cpc.otroColor',
                                 'cpc.id',
+                                'cpc.idColoresCuerpo',
+                                'cpc.idTipoCuerpo',
                                 'tipoCuerpo.nombre as tipo')
                         ->where('cpc.idPersonaDesaparecida',$idExtraviado)
                         ->where('cpc.idPartesCuerpo',56)
@@ -779,16 +782,18 @@ class DescripcionFisicaController extends Controller
              $modificaciones = \DB::table('cedula_partes_cuerpo as cpc')
                                 ->join('pivot_submodi_cuerpo as psmc','cpc.id','=','psmc.idCedulaPartesCuerpo')
                                 ->join('cat_sub_modificaciones as csm','csm.id','=','psmc.idSubModificaciones')
-                                ->select('csm.nombre as modificacion')
+                                ->select('csm.nombre as modificacion',
+                                        'csm.id as idModificacion')
                                 ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
                                 ->where('psmc.idCedulaPartesCuerpo',$value->id)
                                 ->get();
            
             $nModificaciones = '';
-            
+            $idModi = array();
             $longitud2 = count($modificaciones);
             for($x=0;$x < $longitud2; $x++){
                 $nModificaciones = $modificaciones[$x]->modificacion.', '.$nModificaciones;
+                array_push($idModi, $modificaciones[$x]->idModificacion);
             }
 
             $cuerpo[$i] = array('id_cuerpo' => $value->idPartesCuerpo,
@@ -800,7 +805,10 @@ class DescripcionFisicaController extends Controller
                                 'otraParticularidad' => $value->otraParticularidad,
                                 'otraModificacion' => $value->otraModificacion,
                                 'otroColor' => $value->otroColor,
-                                'observaciones' => $value->observaciones
+                                'observaciones' => $value->observaciones,
+                                'idColor' => $value->idColoresCuerpo,
+                                'idTipo' => $value->idTipoCuerpo,
+                                'idModi' => $idModi
 
                                  ); 
         
@@ -826,6 +834,8 @@ class DescripcionFisicaController extends Controller
                                 'cpc.otraModificacion',
                                 'cpc.otroColor',
                                 'cpc.id',
+                                'cpc.idColoresCuerpo',
+                                'cpc.idTipoCuerpo',
                                 'tipoCuerpo.nombre as tipo')
                         ->where('cpc.idPersonaDesaparecida',$idExtraviado)
                         ->where('cpc.idPartesCuerpo',57)
@@ -838,16 +848,19 @@ class DescripcionFisicaController extends Controller
              $modificaciones = \DB::table('cedula_partes_cuerpo as cpc')
                                 ->join('pivot_submodi_cuerpo as psmc','cpc.id','=','psmc.idCedulaPartesCuerpo')
                                 ->join('cat_sub_modificaciones as csm','csm.id','=','psmc.idSubModificaciones')
-                                ->select('csm.nombre as modificacion')
+                                ->select('csm.nombre as modificacion',
+                                        'csm.id as idModificacion')
                                 ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
                                 ->where('psmc.idCedulaPartesCuerpo',$value->id)
                                 ->get();
            
             $nModificaciones = '';
+            $idModi = array();
             
             $longitud2 = count($modificaciones);
             for($x=0;$x < $longitud2; $x++){
                 $nModificaciones = $modificaciones[$x]->modificacion.', '.$nModificaciones;
+                array_push($idModi, $modificaciones[$x]->idModificacion);
             }
 
             $cuerpo[$i] = array('id_cuerpo' => $value->idPartesCuerpo,
@@ -859,7 +872,10 @@ class DescripcionFisicaController extends Controller
                                 'otraParticularidad' => $value->otraParticularidad,
                                 'otraModificacion' => $value->otraModificacion,
                                 'otroColor' => $value->otroColor,
-                                'observaciones' => $value->observaciones
+                                'observaciones' => $value->observaciones,
+                                'idColor' => $value->idColoresCuerpo,
+                                'idTipo' => $value->idTipoCuerpo,
+                                'idModi' => $idModi
 
                                  ); 
         
@@ -885,6 +901,8 @@ class DescripcionFisicaController extends Controller
                                 'cpc.otraModificacion',
                                 'cpc.otroColor',
                                 'cpc.id',
+                                'cpc.idColoresCuerpo',
+                                'cpc.idTipoCuerpo',
                                 'tipoCuerpo.nombre as tipo')
                         ->where('cpc.idPersonaDesaparecida',$idExtraviado)
                         ->where('cpc.idPartesCuerpo',58)
@@ -897,16 +915,18 @@ class DescripcionFisicaController extends Controller
              $modificaciones = \DB::table('cedula_partes_cuerpo as cpc')
                                 ->join('pivot_submodi_cuerpo as psmc','cpc.id','=','psmc.idCedulaPartesCuerpo')
                                 ->join('cat_sub_modificaciones as csm','csm.id','=','psmc.idSubModificaciones')
-                                ->select('csm.nombre as modificacion')
+                                ->select('csm.nombre as modificacion',
+                                        'csm.id as idModificacion')
                                 ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
                                 ->where('psmc.idCedulaPartesCuerpo',$value->id)
                                 ->get();
            
             $nModificaciones = '';
-            
+            $idModi = array();
             $longitud2 = count($modificaciones);
             for($x=0;$x < $longitud2; $x++){
                 $nModificaciones = $modificaciones[$x]->modificacion.', '.$nModificaciones;
+                array_push($idModi, $modificaciones[$x]->idModificacion);
             }
 
             $cuerpo[$i] = array('id_cuerpo' => $value->idPartesCuerpo,
@@ -918,7 +938,10 @@ class DescripcionFisicaController extends Controller
                                 'otraParticularidad' => $value->otraParticularidad,
                                 'otraModificacion' => $value->otraModificacion,
                                 'otroColor' => $value->otroColor,
-                                'observaciones' => $value->observaciones
+                                'observaciones' => $value->observaciones,
+                                'idColor' => $value->idColoresCuerpo,
+                                'idTipo' => $value->idTipoCuerpo,
+                                'idModi' => $idModi
 
                                  ); 
         
