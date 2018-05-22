@@ -798,6 +798,7 @@ var formatTableActions = function(value, row, index) {
                 municipios: $('#municipios').multipleSelect('getSelects'),
                 cPiel: $('#cPiel').multipleSelect('getSelects'),
                 complexion: $('#complexion').multipleSelect('getSelects'),
+                tipoCabello: $('#tipoCabello').multipleSelect('getSelects'),
                 fem : $("input#fem:checked").val(),     
                 masc : $("input#masc:checked").val(),
                 rg : $('#rng1').val(),
@@ -837,7 +838,7 @@ var formatTableActions = function(value, row, index) {
 			});
           
           table.bootstrapTable({			
-             
+             //
             //data: data,
 			//url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+'/'+ estados,
 			columns: [{					
