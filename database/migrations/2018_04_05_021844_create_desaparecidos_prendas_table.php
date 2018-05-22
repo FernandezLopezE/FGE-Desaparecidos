@@ -16,7 +16,7 @@ class CreateDesaparecidosPrendasTable extends Migration
             $table->string('tipo',50)->nullable();
             $table->string('material',50)->nullable();
             //$table->string('otroColor')->nullable();
-            $table->string('diseno',50)->nullable();
+            $table->text('diseno')->nullable();
             $table->string('marca',50)->nullable();
             $table->string('talla',50)->nullable();
             $table->string('path')->nullable();

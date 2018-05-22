@@ -35,16 +35,17 @@ class VestimentaController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function store(VestimentaRequest $request)
-	{		
-		if(!$request->file('archivo'))
+	{
+		//dd($request->input());
+		if(is_null($request->file('archivo')))
     	{
+    		$path = "images/vestimenta_sin_imagen.png";
+		} else {
 			$mime = $request->file('archivo')->getMimeType();
 			$extension = strtolower($request->file('archivo')->getClientOriginalExtension());
 			$fileName = uniqid().'.'.$extension;
 			$path = "upload/vestimenta/".$fileName;
-			\Storage::disk('local')->put('/vestimenta/'.$fileName,  \File::get($request->file('archivo')));
-		} else {
-			$path = "images/vestimenta_sin_imagen.png";
+			\Storage::disk('local')->put('/vestimenta/'.$fileName,  \File::get($request->file('archivo')));			
 		}
 
 		$vestimenta = Prenda::create([
@@ -61,45 +62,6 @@ class VestimentaController extends Controller
 		return response()->json($vestimenta);
 
 
-	}
-
-	public function postSave()
-	{
-	    if(!\Input::file("file"))
-	    {
-	        return redirect('uploads')->with('error-message', 'File has required field');
-	    }
-	 
-$mime = \Input::file('file')->getMimeType();
-$extension = strtolower(\Input::file('file')->getClientOriginalExtension());
-$fileName = uniqid().'.'.$extension;
-$path = "files_uploaded";
-	 
-	    switch ($mime)
-	    {
-	        case "image/jpeg":
-	        case "image/png":
-	        case "image/gif":
-	        case "application/pdf":
-	            if (\Request::file('file')->isValid())
-	            {
-	                \Request::file('file')->move($path, $fileName);
-	                $upload = new Upload();
-	                $upload->filename = $fileName;
-	                if($upload->save())
-	                {
-	                    return redirect('uploads')->with('success-message', 'File has been uploaded');
-	                }
-	                else
-	                {
-	                    \File::delete($path."/".$fileName);
-	                    return redirect('uploads')->with('error-message', 'An error ocurred saving data into database');
-	                }
-	            }
-	        break;
-	        default:
-	            return redirect('uploads')->with('error-message', 'Extension file is not valid');
-	    }
 	}
 
 	/**
@@ -150,7 +112,32 @@ $path = "files_uploaded";
 	 */
 	public function update(Request $request, $id)
 	{
-		//
+		dd($request->input());
+		$prenda = Prenda::find($id);
+		if(is_null($request->file('archivo')))
+    	{
+    		$path = $prenda->path;
+		} else {
+			//\Storage::disk('local')->($prenda->path);
+			$mime = $request->file('archivo')->getMimeType();
+			$extension = strtolower($request->file('archivo')->getClientOriginalExtension());
+			$fileName = uniqid().'.'.$extension;
+			$path = "upload/vestimenta/".$fileName;
+			\Storage::disk('local')->put('/vestimenta/'.$fileName,  \File::get($request->file('archivo')));			
+		}
+
+		$vestimenta = Prenda::find($id)->create([
+			'path' 				=> $path,
+			'material' 			=> $request->input('material'),
+			'diseno' 			=> $request->input('diseno'),
+			'idMarca' 			=> $request->input('idMarca'),
+			'idColor' 			=> $request->input('idColor'),
+			'idVestimenta' 		=> $request->input('idVestimenta'),
+			'idPrenda' 			=> $request->input('idPrenda'),
+			'idDesaparecido' 	=> $request->input('idDesaparecido')
+		]);
+
+		return response()->json($vestimenta);
 	}
 
 	/**

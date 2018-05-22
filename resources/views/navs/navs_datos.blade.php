@@ -33,7 +33,7 @@
 				<i class="fa fa-street-view" aria-hidden="true"></i>
 				@if ($activar == 'desaparicion') Descripción de los hechos @endif				
 			</a>
-			<a class="nav-item nav-link @if ($activar == 'vestimenta') active @endif" href="{{route('desaparecido.show_vestimenta',['id' => $desaparecido->id])}}" aria-selected="false">
+			<a class="nav-item nav-link @if ($activar == 'vestimenta') active @endif" href="{{route('vestimentas.show',['id' => $desaparecido->id])}}" aria-selected="false">
 				<i class="fa fa-user-secret" aria-hidden="true" @if ($activar != 'vestimenta') data-toggle="tooltip" data-placement="right" title="Vestimenta" @endif></i>
 				@if ($activar == 'vestimenta') Vestimenta @endif			
 			</a>
