@@ -169,17 +169,26 @@
 	</div>
 	
 	<div class="form-group row">
-		<div class="col">
+		<div class="col" id="boca3" style="display:none;">
 			{!! Form::label ('idPartiBoca','Particularidades') !!}
 			{!! Form::select('idPartiBoca', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idPartiBoca'] ) !!}
 		</div>
-		<div class="col">
+		<div class="col" id="boca4" style="display:none;">
 			{!! Form::label ('idModiBoca','Modificaciones') !!}
 			{!! Form::select('idModiBoca', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idModiBoca'] ) !!}
 		</div>
 	</div>
-		
+
 	<div class="form-group row">
+		<div class="col" id="boca5" style="display:none;">
+			{!! Form::text('otraPartBoca', '', ['class' => 'form-control', 'id' => 'otraPartBoca', 'placeholder' => 'Especifique otra particularidad'] ) !!}
+		</div>
+		<div class="col" id="boca6" style="display:none;">
+			{!! Form::text('otraPartNariz', '', ['class' => 'form-control', 'id' => 'otraPartNariz', 'placeholder' => 'Especifique otra particularidad'] ) !!}
+		</div>
+	</div>
+		
+	<div class="form-group row" id="boca7" style="display:none;">
 		<div class="col">
 			{!! Form::textarea('observacionesCabello', '', ['class' => 'form-control', 'id' => 'observacionesCabello', 'rows' => '1', 'placeholder' => 'Observaciones'] ) !!}
 		</div>
@@ -191,28 +200,43 @@
 			{!! Form::label ('infoOrejas','¿Tiene información de las orejas?') !!}
 			{!! Form::select('infoOrejas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoOrejas'] ) !!}
 		</div>
-		<div class="col">
+		<div class="col" id="oreja1" style="display:none;">
 			{!! Form::label ('posOreja','Posición') !!}
 			{!! Form::select('posOreja',  $orejasParte, '', ['class' => 'form-control', 'id' => 'posOreja'] ) !!}
 		</div>
-		<div class="col">
+		<div class="col" id="oreja2" style="display:none;">
 			{!! Form::label ('tipoOreja','Tipo') !!}
 			{!! Form::select('tipoOreja', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tipoOreja'] ) !!}
 		</div>
 	</div>
 
 	<div class="form-group row">
-		<div class="col">
+		<div class="col" id="oreja3" style="display:none;">
+			{!! Form::text('otroTipoOreja', '', ['class' => 'form-control', 'id' => 'otroTipoOreja', 'placeholder' => 'Especifique otro tipo de oreja(s)'] ) !!}
+		</div>
+	</div>
+
+	<div class="form-group row">
+		<div class="col" id="oreja4" style="display:none;">
 			{!! Form::label ('idPartiOreja','Particularidades') !!}
 			{!! Form::select('idPartiOreja', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idPartiOreja'] ) !!}
 		</div>
-		<div class="col">
+		<div class="col" id="oreja5" style="display:none;">
 			{!! Form::label ('idModiOreja','Modificaciones') !!}
 			{!! Form::select('idModiOreja', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idModiOreja'] ) !!}
 		</div>
 	</div>
 
 	<div class="form-group row">
+		<div class="col" id="oreja6" style="display:none;">
+			{!! Form::text('otraPartOreja', '', ['class' => 'form-control', 'id' => 'otraPartOreja', 'placeholder' => 'Especifique otra particularidad'] ) !!}
+		</div>
+		<div class="col" id="oreja7" style="display:none;">
+			{!! Form::text('otraModOreja', '', ['class' => 'form-control', 'id' => 'otraModOreja', 'placeholder' => 'Especifique otra modificación'] ) !!}
+		</div>
+	</div>
+
+	<div class="form-group row" id="oreja8" style="display:none;">
 		<div class="col">
 			{!! Form::textarea('observacionesCabello', '', ['class' => 'form-control', 'id' => 'observacionesCabello', 'rows' => '1', 'placeholder' => 'Observaciones'] ) !!}
 		</div>
@@ -228,17 +252,26 @@
 	</div>
 	
 	<div class="form-group row">
-		<div class="col">
+		<div class="col" id="frente1" style="display:none;">
 			{!! Form::label ('idPartiFrente','Particularidades') !!}
 			{!! Form::select('idPartiFrente', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idPartiFrente'] ) !!}
 		</div>
-		<div class="col">
+		<div class="col" id="frente2" style="display:none;">
 			{!! Form::label ('idModiFrente','Modificaciones') !!}
 			{!! Form::select('idModiFrente', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idModiFrente'] ) !!}
 		</div>
 	</div>
-		
+
 	<div class="form-group row">
+		<div class="col" id="frente3" style="display:none;">
+			{!! Form::text('otraPartFrente', '', ['class' => 'form-control', 'id' => 'otraPartFrente', 'placeholder' => 'Especifique otra particularidad'] ) !!}
+		</div>
+		<div class="col" id="frente4" style="display:none;">
+			{!! Form::text('otraModFrente', '', ['class' => 'form-control', 'id' => 'otraModFrente', 'placeholder' => 'Especifique otra modificación'] ) !!}
+		</div>
+	</div>
+		
+	<div class="form-group row" id="frente5" style="display:none;">
 		<div class="col">
 			{!! Form::textarea('observacionesCabello', '', ['class' => 'form-control', 'id' => 'observacionesCabello', 'rows' => '1', 'placeholder' => 'Observaciones'] ) !!}
 		</div>
@@ -247,17 +280,17 @@
 	<!--Sección mejillas-->
 	<div class="form-group row">
 		<div class="col-6">
-			{!! Form::label ('infoMejillas','¿Tiene información de los cachetes?') !!}
+			{!! Form::label ('infoMejillas','¿Tiene información de las mejillas?') !!}
 			{!! Form::select('infoMejillas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoMejillas'] ) !!}
 		</div>
-		<div class="col">
+		<div class="col" id="mejilla1" style="display:none;">
 			{!! Form::label ('posMejilla','Posición') !!}
 			{!! Form::select('posMejilla',  $mejillasParte, '', ['class' => 'form-control', 'id' => 'posMejilla'] ) !!}
 		</div>
 		
 	</div>
 	
-	<div class="form-group row">
+	<div class="form-group row"  id="mejilla2" style="display:none;">
 		<div class="col">
 			{!! Form::label ('idPartiMejillas','Particularidades') !!}
 			{!! Form::select('idPartiMejillas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idPartiMejillas'] ) !!}
@@ -267,8 +300,17 @@
 			{!! Form::select('idModiMejillas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idModiMejillas'] ) !!}
 		</div>
 	</div>
-		
+
 	<div class="form-group row">
+		<div class="col" id="mejilla3" style="display:none;">
+			{!! Form::text('otraPartMejilla', '', ['class' => 'form-control', 'id' => 'otraPartMejilla', 'placeholder' => 'Especifique otra particularidad'] ) !!}
+		</div>
+		<div class="col" id="mejilla4" style="display:none;">
+			{!! Form::text('otraModMejilla', '', ['class' => 'form-control', 'id' => 'otraModMejilla', 'placeholder' => 'Especifique otra modificación'] ) !!}
+		</div>
+	</div>
+		
+	<div class="form-group row" id="mejilla5" style="display:none;">
 		<div class="col">
 			{!! Form::textarea('observacionesCabello', '', ['class' => 'form-control', 'id' => 'observacionesCabello', 'rows' => '1', 'placeholder' => 'Observaciones'] ) !!}
 		</div>
@@ -283,7 +325,7 @@
 		
 	</div>
 	
-	<div class="form-group row">
+	<div class="form-group row" id="menton1" style="display:none;">
 		<div class="col">
 			{!! Form::label ('idPartiMenton','Particularidades') !!}
 			{!! Form::select('idPartiMenton', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idPartiMenton'] ) !!}
@@ -293,12 +335,22 @@
 			{!! Form::select('idModiMenton', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idModiMenton'] ) !!}
 		</div>
 	</div>
-		
+
 	<div class="form-group row">
+		<div class="col" id="menton2" style="display:none;">
+			{!! Form::text('otraPartMenton', '', ['class' => 'form-control', 'id' => 'otraPartMenton', 'placeholder' => 'Especifique otra particularidad'] ) !!}
+		</div>
+		<div class="col" id="menton3" style="display:none;">
+			{!! Form::text('otraModMenton', '', ['class' => 'form-control', 'id' => 'otraModMenton', 'placeholder' => 'Especifique otra modificación'] ) !!}
+		</div>
+	</div>
+		
+	<div class="form-group row" id="menton4" style="display:none;">
 		<div class="col">
 			{!! Form::textarea('observacionesCabello', '', ['class' => 'form-control', 'id' => 'observacionesCabello', 'rows' => '1', 'placeholder' => 'Observaciones'] ) !!}
 		</div>
-	</div>	
+	</div><hr>
+	<button type="button" class="btn btn-primary" style="float: right;" id="guardarCara">GUARDAR</button>
 </div>
 </form>
 <script src="personal/js/avatar/cara.js"></script>

@@ -1,5 +1,6 @@
 $(document).ready(function() {
-	var ResCejas, otraCeja, otraPartCeja, otraModCeja, ResOjos, otroColorOjo, otraPartOjo, otraModOjo, resNariz, otroTipoNariz, partNariz, otraModNariz, resBoca;
+	var ResCejas, otraCeja, otraPartCeja, otraModCeja, ResOjos, otroColorOjo, otraPartOjo, otraModOjo, resNariz, otroTipoNariz, partNariz, otraModNariz, resBoca, 
+	otraPartBoca, otraModBoca, resOrejas, otroTipoOreja, otraPartOreja, resFrente, otraPartFrente, otraModFrente, resMejilla, otraPartMejilla, otraModMejilla, otraPartMenton, otraModMenton;
 	$("#cabeza").click(function(event) {
 		$("#formCara").toggle();
 	});
@@ -1009,10 +1010,183 @@ $(document).ready(function() {
 		if (resBoca == "SÍ") {
 			$("#boca1").show();
 			$("#boca2").show();
+			$("#boca3").show();
+			$("#boca4").show();
+			$("#boca7").show();
 		}else{
 			$("#boca1").hide();
 			$("#boca2").hide();
+			$("#boca3").hide();
+			$("#boca4").hide();
+			$("#boca5").hide();
+			$("#boca6").hide();
+			$("#boca7").hide();
 		}
 	});
 
+	$("#idPartiBoca").change(function(event) {
+	otraPartBoca = $("#idPartiBoca").val();
+		if (otraPartBoca == "136") {
+			$("#boca5").show();
+		}else{
+			$("#boca5").hide();
+		}
+	});
+
+	$("#idModiBoca").change(function(event) {
+	otraModBoca = $("#idModiBoca").val();
+		if (otraModBoca == "121") {
+			$("#boca6").show();
+		}else{
+			$("#boca6").hide();
+		}
+	});
+
+	//Sección Orejas
+	$("#infoOrejas").change(function(event) {
+		resOrejas = $("#infoOrejas").val();
+		if (resOrejas == "SÍ") {
+			$("#oreja1").show();
+			$("#oreja2").show();
+			$("#oreja4").show();
+			$("#oreja5").show();
+			$("#oreja8").show();
+		}else{
+			$("#oreja1").hide();
+			$("#oreja2").hide();
+			$("#oreja3").hide();
+			$("#oreja4").hide();
+			$("#oreja5").hide();
+			$("#oreja6").hide();
+			$("#oreja7").hide();
+			$("#oreja8").hide();
+		}
+	});
+
+	$("#tipoOreja").change(function(event) {
+		otroTipoOreja = $("#tipoOreja").val();
+		if (otroTipoOreja == "52") {
+			$("#oreja3").show();
+		}else{
+			$("#oreja3").hide();
+		}
+	});
+
+	$("#idPartiOreja").change(function(event) {
+		otraPartOreja = $("#idPartiOreja").val();
+		if (otraPartOreja == "85") {
+			$("#oreja6").show();
+		}else{
+			$("#oreja6").hide();
+		}
+	});
+
+	$("#idModiOreja").change(function(event) {
+		otraModOreja = $("#idModiOreja").val();
+		if (otraModOreja == "71") {
+			$("#oreja7").show();
+		}else{
+			$("#oreja7").hide();
+		}
+	});
+
+	//Sección Frente
+	$("#infoFrente").change(function(event) {
+		resFrente = $("#infoFrente").val();
+		if (resFrente == "SÍ") {
+			$("#frente1").show();
+			$("#frente2").show();
+			$("#frente5").show();
+		}else{
+			$("#frente1").hide();
+			$("#frente2").hide();
+			$("#frente3").hide();
+			$("#frente4").hide();
+			$("#frente5").hide();
+		}
+	});
+
+	$("#idPartiFrente").change(function(event) {
+		otraPartFrente = $("#idPartiFrente").val();
+		if (otraPartFrente == "21") {
+			$("#frente3").show();
+		}else{
+			$("#frente3").hide();
+		}
+	});
+
+	$("#idModiFrente").change(function(event) {
+		otraModFrente = $("#idModiFrente").val();
+		if (otraModFrente == "14") {
+			$("#frente4").show();
+		}else{
+			$("#frente4").hide();
+		}
+	});
+
+	//Sección mejilla
+	$("#infoMejillas").change(function(event) {
+		resMejilla = $("#infoMejillas").val();
+		if (resMejilla == "SÍ") {
+			$("#mejilla1").show();
+			$("#mejilla2").show();
+			$("#mejilla5").show();
+		}else{
+			$("#mejilla1").hide();
+			$("#mejilla2").hide();
+			$("#mejilla3").hide();
+			$("#mejilla4").hide();
+			$("#mejilla5").hide();
+		}
+	});
+
+	$("#idPartiMejillas").change(function(event) {
+		otraPartMejilla = $("#idPartiMejillas").val();
+		if (otraPartMejilla == "96") {
+			$("#mejilla3").show();
+		}else{
+			$("#mejilla3").hide();
+		}
+	});
+
+	$("#idModiMejillas").change(function(event) {
+		otraModMejilla = $("#idModiMejillas").val();
+		if (otraModMejilla == "95") {
+			$("#mejilla4").show();
+		}else{
+			$("#mejilla4").hide();
+		}
+	});
+
+	//Sección Mentón
+	$("#infoMenton").change(function(event) {
+		resMenton = $("#infoMenton").val();
+		if (resMenton == "SÍ") {
+			$("#menton1").show();
+			$("#menton4").show();
+		}else{
+			$("#menton1").hide();
+			$("#menton2").hide();
+			$("#menton3").hide();
+			$("#menton4").hide();
+		}
+	});
+
+	$("#idPartiMenton").change(function(event) {
+		otraPartMenton = $("#idPartiMenton").val();
+		if (otraPartMenton == "159") {
+			$("#menton2").show();
+		}else{
+			$("#menton2").hide();
+		}
+	});
+
+	$("#idModiMenton").change(function(event) {
+		otraModMenton = $("#idModiMenton").val();
+		if (otraModMenton == "141") {
+			$("#menton3").show();
+		}else{
+			$("#menton3").hide();
+		}
+	});
 });
