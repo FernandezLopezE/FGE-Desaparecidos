@@ -49,7 +49,7 @@ Route::get('consultas/get_cedulas', 'ConsultasController@jsonCedulas');
 
 Route::resource('reporteador', 'ReporteadorController');
 Route::post('consultas/get_desaparecidos_personas_todos', 'ConsultasController@jsonDesaparecidosPersonaTodos')->name('consultas.get_desaparecidos_personas_todos');
-Route::post('consultas/get_desaparecidos_personas/{masc}/{fem}/{rg}/{rg2}/{estados}/{municipios}', 'ConsultasController@jsonDesaparecidosPersona')->name('consultas.get_desaparecidos_personas');
+Route::post('consultas/get_desaparecidos_personas', 'ConsultasController@jsonDesaparecidosPersona')->name('consultas.get_desaparecidos_personas');
 //Route::post('remover-permiso/{idCarpeta}/{idTipo}/{id}', 'CarpetaController@removerPermiso')->name('remover.permiso');
 
 
