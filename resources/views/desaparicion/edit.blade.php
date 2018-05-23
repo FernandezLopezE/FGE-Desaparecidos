@@ -40,7 +40,7 @@
 						<div class="form-group col-4">
 							{!! Form::label ('fechaAvisto','Fecha de la última vez que fue visto:') !!}
 							{!! Form::text ('familiaresFechaNacimiento',
-												old('Fecha de nacimiento'),
+												$desaparicionFecha,
 												['class' => 'form-control',
 													'id' => 'familiaresFechaNacimiento' ,
 													'data-validation' => 'required date',
@@ -61,7 +61,7 @@
 								        <div class="input-group col-4">
 								          
 								          {!! Form::number ('horasAvisto',
-												old('Horas'),
+												$desaparicionHoras,
 												['class' => 'form-control',
 													'id' => 'horas' ,
 													'data-validation' => 'required',
@@ -72,7 +72,7 @@
 
 								          <span class="input-group-addon"><strong>:</strong></span>
 								          {!! Form::number ('miniutos',
-												old('min'),
+												$desaparicionMinutos,
 												['class' => 'form-control',
 													'id' => 'minutos' ,
 													'data-validation' => 'required',
@@ -96,7 +96,7 @@
 								<div class="form-group col">
 									{!! Form::label ('calle','Calle:') !!}
 									{!! Form::text ('calle',
-														old('calle'),
+														$domicilio->calle,
 														['class' => 'form-control mayuscula',
 															'id' => 'calle',
 															'data-validation' => 'required',
@@ -106,7 +106,7 @@
 								<div class="form-group col">
 									{!! Form::label ('numExterno','Número exterior:') !!}
 									{!! Form::text ('numExterno',
-													old('numExterno'),
+													$domicilio->numExterno,
 													['class' => 'form-control mayuscula',
 														'id' => 'numExterno',
 													] )!!}				
@@ -114,7 +114,7 @@
 								<div class="form-group col">
 									{!! Form::label ('ref','Referencia:') !!}
 									{!! Form::text ('referencia',
-														old('referencia'),
+														$desaparecido->cedula->desaparicionRef,
 														['class' => 'form-control mayuscula',
 															'id' => 'referencia',
 															'data-validation' => 'required',
@@ -126,11 +126,11 @@
 							<div class="row" id=""  > 	
 									<div class="form-group col">
 										{!! Form::label ('idEstado','Estado:') !!}
-										{!! Form::select ('idEstado',$estados,'', ['class' => 'form-control'] )!!}				
+										{!! Form::select ('idEstado',$estados,@$domicilio->idEstado, ['class' => 'form-control'] )!!}				
 									</div>
 									<div class="form-group col">
 										{!! Form::label ('idMunicipio','Municipio:') !!}
-										{!! Form::select ('idMunicipio',$municipios,'',
+										{!! Form::select ('idMunicipio',$municipios,@$domicilio->idMunicipio,
 																 ['class' => 'form-control',
 																	'data-validation' => 'required',
 																	'data-validation-error-msg-required' => 'El campo es requerido'
@@ -138,7 +138,7 @@
 									</div>
 									<div class="form-group col">
 										{!! Form::label ('idLocalidad','Localidad:') !!}
-										{!! Form::select ('idLocalidad',$localidades,'',
+										{!! Form::select ('idLocalidad',$localidades,@$domicilio->idLocalidad,
 																 ['class' => 'form-control',
 																	'data-validation' => 'required',
 																	'data-validation-error-msg-required' => 'El campo es requerido'
@@ -149,7 +149,7 @@
 							<div class="row" id=""  > 	
 									<div class="form-group col-lg-8">
 										{!! Form::label ('idColonia','Colonia:') !!}
-										{!! Form::select ('idColonia',$colonias,'',
+										{!! Form::select ('idColonia',$colonias,@$domicilio->idColonia,
 																['class' => 'form-control',
 																	'data-validation' => 'required',
 																	'data-validation-error-msg-required' => 'El campo es requerido'
@@ -176,7 +176,7 @@
 								<div class="form-group col-md-4" id="div_nombres">
 									{!! Form::label ('nombres','Nombres(s):',['class' => 'form-control-label' ]) !!}
 									{!! Form::text ('nombres',
-														'',
+														$desaparecido->cedula->nombresAvisto,
 														['class' => 'form-control mayuscula',
 															'id' => 'nombres'
 														] )!!}
@@ -185,7 +185,7 @@
 								<div class="form-group col" id="div_primerAp">
 									{!! Form::label ('primerAp','Primer apellido:',['class' => 'form-control-label']) !!}
 									{!! Form::text ('primerAp',
-														'',
+														$desaparecido->cedula->primerApAvisto,
 														['class' => 'form-control mayuscula',
 															'id' => 'primerAp',
 														] )!!}
@@ -194,7 +194,7 @@
 								<div class="form-group col" id="div_segundoAp">
 									{!! Form::label ('segundoAp','Segundo apellido:',['class' => 'form-control-label']) !!}
 									{!! Form::text ('segundoAp',
-														'',
+														$desaparecido->cedula->segundoApAvisto,
 														['class' => 'form-control mayuscula',
 															'id' => 'segundoAp'] )!!}
 									<div class="form-control-feedback" id="error_segundoAp"></div>
@@ -205,18 +205,30 @@
 							<div class="row">
 								<div class="form-group col" id="div_nombres">
 									{!! Form::label ('parentescoDesaparecido','Parentesco:') !!}
-									{!! Form::select ('avistoidParentesco[]',$parentescos,'', ['class' => 'form-control', 'id' => 'avistoidParentesco'] )!!}
+									{!! Form::select ('avistoidParentesco[]',$parentescos,$desaparecido->cedula->idParentescoAvisto, ['class' => 'form-control', 'id' => 'avistoidParentesco'] )!!}
 									<div class="form-control-feedback" id="error_nombres"></div>
 								</div>
-								<div class="form-group col-md-4" id="div_otroParentesco"  style="display:none">
+								@if ($desaparecido->cedula->idParentescoAvisto == 14)
+									<div class="form-group col-md-4" id="div_otroParentesco" >
 										{!! Form::label ('otroParentesco','Especifique:',['class' => 'form-control-label']) !!}
 										{!! Form::text ('otroParentesco',
-														old('otroParentesco'),
+														$desaparecido->cedula->otroParentescoAvisto,
 														['class' => 'form-control mayuscula',
 															'id' => 'otroParentesco',
 														] )!!}
 										<div class="form-control-feedback" id="error_otroParentesco"></div>
-								</div>
+									</div>
+								@else 
+									<div class="form-group col-md-4" id="div_otroParentesco"  style="display:none">
+											{!! Form::label ('otroParentesco','Especifique:',['class' => 'form-control-label']) !!}
+											{!! Form::text ('otroParentesco',
+															$desaparecido->cedula->otroParentescoAvisto,
+															['class' => 'form-control mayuscula',
+																'id' => 'otroParentesco',
+															] )!!}
+											<div class="form-control-feedback" id="error_otroParentesco"></div>
+									</div>
+								@endif
 							</div>
 						</div>
 					
@@ -225,11 +237,14 @@
 						 <div class="form-group col">
 	                        {!! Form::label ('descripción','Breve descripción del hecho:') !!}
 	                        {!! Form::textarea('descripcion',
-	                                            $descripcionBreve,
-	                                            ['class' => 'form-control mayuscula', 'data-validation' =>'required','data-validation-depends-on' => 'identificacion','data-validation-depends-on-value' => '1','data-validation-error-msg-required' =>'Este campo es requerido.',"size" => "30x4","placeholder" => "Ingrese la descripción del hecho" , 'id' => 'descripcion'] )!!}
+	                                            $desaparecido->cedula->desaparicionObservaciones,
+	                                            ['class' => 'form-control mayuscula', 'data-validation' =>'required','data-validation-depends-on' => 'identificacion','data-validation-depends-on-value' => '1','data-validation-error-msg-required' =>'Este campo es requerido.',"size" => "30x4", 'id' => 'descripcion'] )!!}
 	                    </div>
 				</div>
 
+
+			
+			@if((is_null($desaparecido->cedula->vehiculoPlacas)) OR ($desaparecido->cedula->vehiculoPlacas == ""))
 				<div class="row">
 			        <div class="form-check col">
 			          <input class="form-check-input" type="checkbox" id="sinInformacionVehiculo" checked="">
@@ -240,7 +255,34 @@
 			          		<div class="col-4">
 					           {!! Form::label ('placas','Placas:',['class' => 'form-control-label']) !!}
 								{!! Form::text ('vehiculoPlacas',
-											old('otroParentesco'),
+											$desaparecido->cedula->vehiculoPlacas,
+											['class' => 'form-control mayuscula',
+											'id' => 'vehiculoPlacas' ,'disabled',
+								] )!!}
+				        	</div>
+				        	<div class="col">
+					           {!! Form::label ('descripcion','Descripción:',['class' => 'form-control-label']) !!}
+								{!! Form::text ('vehiculoDescripcion',
+											$desaparecido->cedula->vehiculoDescripcion,
+											['class' => 'form-control mayuscula',
+											'id' => 'vehiculoDescripcion','disabled',
+								] )!!}
+				        	</div>
+			          	</div>				          	
+			      </div>			                                                               
+			    </div> 
+			@else
+			    <div class="row">
+			        <div class="form-check col">
+			          <input class="form-check-input" type="checkbox" id="sinInformacionVehiculo" >
+			          <label class="form-check-label" for="antecedentesmedicos">
+			           	Sin información de vehículo
+			          </label>
+			          	<div class="row">
+			          		<div class="col-4">
+					           {!! Form::label ('placas','Placas:',['class' => 'form-control-label']) !!}
+								{!! Form::text ('vehiculoPlacas',
+											$desaparecido->cedula->vehiculoPlacas,
 											['class' => 'form-control mayuscula',
 											'id' => 'vehiculoPlacas',
 								] )!!}
@@ -248,16 +290,15 @@
 				        	<div class="col">
 					           {!! Form::label ('descripcion','Descripción:',['class' => 'form-control-label']) !!}
 								{!! Form::text ('vehiculoDescripcion',
-											old('otroParentesco'),
+											$desaparecido->cedula->vehiculoDescripcion,
 											['class' => 'form-control mayuscula',
 											'id' => 'vehiculoDescripcion',
 								] )!!}
 				        	</div>
-			          	</div>
-				          	
-			      </div>
-			                                                               
+			          	</div>				          	
+			      </div>			                                                               
 			    </div> 
+			@endif
 							
 					
 
@@ -279,8 +320,8 @@
 <script type="text/javascript">
 	$(document).ready(function()
 	{
-		document.getElementById("vehiculoPlacas").disabled = true;
-		document.getElementById("vehiculoDescripcion").disabled = true;
+		/*document.getElementById("vehiculoPlacas").disabled = true;
+		document.getElementById("vehiculoDescripcion").disabled = true;*/
 		 $("#vehiculoPlacas").prop('disabled');
       $("#vehiculoDescripcion").prop('disabled');
 	})
@@ -357,9 +398,9 @@ $(btnGuardarDescripcionHechos).click (function(){
 			console.log(dataString);
 
 			$.ajax({
-				url:'/desaparicion',
+				url:'/desaparicion'+'/{!! $desaparecido->id !!}',
 				//headers:{'X-CSRF-TOKEN':token},
-				type: 'POST',
+				type: 'PUT',
 				data: dataString,
 				dataType: 'json',
 				success: function(data) {
@@ -374,7 +415,7 @@ $(btnGuardarDescripcionHechos).click (function(){
 				                    text: 'Aceptar',
 				                    btnClass: 'btn-dark',
 				                    action: function(){
-				                    	 location.reload();
+				                    	window.location = '/desaparicion'+'/{!! $desaparecido->id !!}';
 				                    }//temina el action del boton aceptar 
 				                },
 				            }
@@ -406,6 +447,6 @@ $(btnGuardarDescripcionHechos).click (function(){
         $("#otra_Adiccion").hide();
       }
       });
-
+	
 </script>
 @endsection

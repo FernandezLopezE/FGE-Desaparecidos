@@ -334,6 +334,8 @@ Route::resource('/desaparicion','DesaparicionController');
 
 //Route::resource('desaparicion' , 'DesaparicionController@store');
 Route::post('desaparicion', 'DesaparicionController@store');
+Route::put('desaparicion/{id}', 'DesaparicionController@update');
+
 
 
 
