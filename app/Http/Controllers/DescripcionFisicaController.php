@@ -600,6 +600,95 @@ class DescripcionFisicaController extends Controller
         //
     }
 
+    public function deleteVelloFacial($idExtraviado){
+         //consulta cabello
+        $query = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->where('cpc.idPersonaDesaparecida',$idExtraviado)
+                        ->where('cpc.idPartesCuerpo',55)
+                        ->get();
+        
+        $aux = count($query->toArray());;
+        //dd($query->toArray());
+
+        //dd($query->toArray()[3]);
+
+        for($i=0; $i<$aux; $i++){
+            $particularidades = PivotSubPartiCuerpo::where('idCedulaPartesCuerpo',$query->toArray()[$i]->id);
+            $particularidades->delete();
+
+            $modificaciones = PivotSubModiCuerpo::where('idCedulaPartesCuerpo',$query->toArray()[$i]->id);
+            $modificaciones->delete();
+        }
+
+        \DB::table('cedula_partes_cuerpo')->where('idPersonaDesaparecida',$idExtraviado)->where('idPartesCuerpo',55)->delete();
+
+         //consulta barba
+        $query1 = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->where('cpc.idPersonaDesaparecida',$idExtraviado)
+                        ->where('cpc.idPartesCuerpo',56)
+                        ->get();
+        
+        $aux1 = count($query1->toArray());;
+        //dd($query->toArray());
+
+        //dd($query->toArray()[3]);
+
+        for($i=0; $i<$aux1; $i++){
+            $particularidades = PivotSubPartiCuerpo::where('idCedulaPartesCuerpo',$query1->toArray()[$i]->id);
+            $particularidades->delete();
+
+            $modificaciones = PivotSubModiCuerpo::where('idCedulaPartesCuerpo',$query1->toArray()[$i]->id);
+            $modificaciones->delete();
+        }
+
+        \DB::table('cedula_partes_cuerpo')->where('idPersonaDesaparecida',$idExtraviado)->where('idPartesCuerpo',56)->delete();
+
+         //consulta bigote
+        $query2 = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->where('cpc.idPersonaDesaparecida',$idExtraviado)
+                        ->where('cpc.idPartesCuerpo',57)
+                        ->get();
+        
+        $aux2 = count($query2->toArray());;
+        //dd($query->toArray());
+
+        //dd($query->toArray()[3]);
+
+        for($i=0; $i<$aux2; $i++){
+            $particularidades = PivotSubPartiCuerpo::where('idCedulaPartesCuerpo',$query2->toArray()[$i]->id);
+            $particularidades->delete();
+
+            $modificaciones = PivotSubModiCuerpo::where('idCedulaPartesCuerpo',$query2->toArray()[$i]->id);
+            $modificaciones->delete();
+        }
+
+        \DB::table('cedula_partes_cuerpo')->where('idPersonaDesaparecida',$idExtraviado)->where('idPartesCuerpo',57)->delete();
+
+         //consulta patilla
+        $query3 = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->where('cpc.idPersonaDesaparecida',$idExtraviado)
+                        ->where('cpc.idPartesCuerpo',58)
+                        ->get();
+        
+        $aux3 = count($query3->toArray());;
+        //dd($query->toArray());
+
+        //dd($query->toArray()[3]);
+
+        for($i=0; $i<$aux3; $i++){
+            $particularidades = PivotSubPartiCuerpo::where('idCedulaPartesCuerpo',$query3->toArray()[$i]->id);
+            $particularidades->delete();
+
+            $modificaciones = PivotSubModiCuerpo::where('idCedulaPartesCuerpo',$query3->toArray()[$i]->id);
+            $modificaciones->delete();
+        }
+
+        \DB::table('cedula_partes_cuerpo')->where('idPersonaDesaparecida',$idExtraviado)->where('idPartesCuerpo',58)->delete();
+
+        
+
+    }
+
     public function getParticularidades($idParteCuerpo){
          $particularidades = \DB::table('cat_partes_cuerpo as cpartes')
                             ->join('cat_particularidades_cuerpo as cparti','cpartes.id','=','cparti.idPartesCuerpo' )
