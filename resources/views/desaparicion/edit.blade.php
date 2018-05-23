@@ -27,6 +27,7 @@
 				</div>
 	  		</div>
 	  		<div class="card-body">
+	  		<form id="formulario">
 
 				<div class="row" >
 							<div class="col-10 pull-right">
@@ -65,8 +66,10 @@
 												['class' => 'form-control',
 													'id' => 'horas' ,
 													'data-validation' => 'required',
-													'data-validation-error-msg' => 'Ingrese una hora válida',
+                    'data-validation-error-msg-required' => 'El campo es requerido',
 													'max' =>'23','min' =>'0',
+													'data-validation'=>"number" ,
+													'data-validation-allowing'=>"range[0;23],negative",
 													'placeholder' => 'HH'				
 												])!!}
 
@@ -78,6 +81,8 @@
 													'data-validation' => 'required',
 													'data-validation-error-msg' => 'Ingrese una hora válida',
 													'max' =>'59','min' =>'0',
+													'data-validation'=>"number" ,
+													'data-validation-allowing'=>"range[0;59],negative",
 													'placeholder' => 'MM'						
 												])!!}
 								        </div>
@@ -126,22 +131,20 @@
 							<div class="row" id=""  > 	
 									<div class="form-group col">
 										{!! Form::label ('idEstado','Estado:') !!}
-										{!! Form::select ('idEstado',$estados,@$domicilio->idEstado, ['class' => 'form-control'] )!!}				
+										{!! Form::select ('idEstado',$estados,@$domicilio->idEstado, ['class' => 'form-control' , 'id' =>'idEstado'] )!!}				
 									</div>
 									<div class="form-group col">
 										{!! Form::label ('idMunicipio','Municipio:') !!}
 										{!! Form::select ('idMunicipio',$municipios,@$domicilio->idMunicipio,
-																 ['class' => 'form-control',
-																	'data-validation' => 'required',
-																	'data-validation-error-msg-required' => 'El campo es requerido'
+																 ['class' => 'form-control'
+																	,'id' =>'idMunicipio'
 																] )!!}				
 									</div>
 									<div class="form-group col">
 										{!! Form::label ('idLocalidad','Localidad:') !!}
 										{!! Form::select ('idLocalidad',$localidades,@$domicilio->idLocalidad,
-																 ['class' => 'form-control',
-																	'data-validation' => 'required',
-																	'data-validation-error-msg-required' => 'El campo es requerido'
+																 ['class' => 'form-control'
+																	,'id' =>'idLocalidad'
 																 ] )!!}				
 									</div>
 							</div>
@@ -151,16 +154,14 @@
 										{!! Form::label ('idColonia','Colonia:') !!}
 										{!! Form::select ('idColonia',$colonias,@$domicilio->idColonia,
 																['class' => 'form-control',
-																	'data-validation' => 'required',
-																	'data-validation-error-msg-required' => 'El campo es requerido'
+																	'id' =>'idColonia'
 																] )!!}				
 									</div>
 									<div class="form-group col-lg-4">
 										{!! Form::label ('idCodigoPostal','Código postal:') !!}
 										{!! Form::select ('idCodigoPostal',$codigos,'',
 																['class' => 'form-control',
-																	'data-validation' => 'required',
-																	'data-validation-error-msg-required' => 'El campo es requerido'
+																	'id' =>'idCodigoPostal'
 																] )!!}				
 									</div>
 								</div>
@@ -178,7 +179,9 @@
 									{!! Form::text ('nombres',
 														$desaparecido->cedula->nombresAvisto,
 														['class' => 'form-control mayuscula',
-															'id' => 'nombres'
+															'id' => 'nombres',
+															'data-validation' => 'required',
+                    'data-validation-error-msg-required' => 'El campo es requerido',
 														] )!!}
 									<div class="form-control-feedback" id="error_nombres"></div>
 								</div>
@@ -188,6 +191,8 @@
 														$desaparecido->cedula->primerApAvisto,
 														['class' => 'form-control mayuscula',
 															'id' => 'primerAp',
+															'data-validation' => 'required',
+                    'data-validation-error-msg-required' => 'El campo es requerido',
 														] )!!}
 									<div class="form-control-feedback" id="error_primerAp"></div>
 								</div>
@@ -196,7 +201,8 @@
 									{!! Form::text ('segundoAp',
 														$desaparecido->cedula->segundoApAvisto,
 														['class' => 'form-control mayuscula',
-															'id' => 'segundoAp'] )!!}
+															'id' => 'segundoAp',
+															] )!!}
 									<div class="form-control-feedback" id="error_segundoAp"></div>
 								</div>
 								
@@ -303,7 +309,7 @@
 					
 
 								
-
+				</form>
 			</div>
 		</div>
 

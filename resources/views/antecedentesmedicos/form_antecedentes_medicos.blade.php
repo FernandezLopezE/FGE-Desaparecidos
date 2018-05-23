@@ -93,13 +93,20 @@
     <br>	
     <form id="formAntecedentesM">
       <div class="row">
-        <div class="form-check col-lg-8">
-          <input class="form-check-input" type="checkbox" id="sinInformacionE" checked="">
-          <label class="form-check-label" for="antecedentesmedicos">
-              SIN INFORMACIÓN
-          </label>
-          <div class="col">
-          {!! Form::label ('desaparecidoEnfermedad','Enfermedad:') !!}
+        <div class="form-check col">
+          <div class="row">
+            <div class="col">
+                {!! Form::label ('desaparecidoEnfermedad','Enfermedad:') !!}
+            </div>
+            <div class="col">
+                <input class="form-check-input" type="checkbox" id="sinInformacionE" checked="">
+                <label class="form-check-label" for="antecedentesmedicos">
+                    SIN INFORMACIÓN
+                </label>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-10">
           {!! Form::select ('idEnfermedad',
                     $enfermedades,
                     '',
@@ -107,9 +114,10 @@
                       'id' => 'idEnfermedad',
                       'multiple' => 'multiple',
                       'disabled' => 'disabled'
-                    ] )!!}  
-          
+                    ] )!!}   
         </div>
+          </div>
+          
         </div>
          <div class="form-check col-lg-3">
           <input class="form-check-input" type="checkbox" id="chckOtraEnfermedad"  disabled="true" checked="false">

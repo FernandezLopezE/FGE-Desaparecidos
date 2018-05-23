@@ -9,6 +9,7 @@ use App\Models\Desaparecido;
 use App\Models\Domicilio;
 use Carbon\Carbon;
 use Session;
+use App\Http\Requests\DesaparicionRequest;
 
 class DesaparicionController extends Controller
 {
@@ -278,7 +279,7 @@ class DesaparicionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DesaparicionRequest $request, $id)
     {
        
         $idDesaparecido = ($request['idDesaparecido']);

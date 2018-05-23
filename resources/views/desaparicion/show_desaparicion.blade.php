@@ -7,7 +7,7 @@
 @section('titulo', '')
 
 @section('content')
-@include('navs.navs_datos',array('activar' => 'desaparecido'))
+@include('navs.navs_datos',array('activar' => 'desaparicion'))
 <a href="{{route('desaparicion.edit', ['id' => $desaparecido->id])}}" class="btn btn-dark pull-right">
 	EDITAR
 </a> 
