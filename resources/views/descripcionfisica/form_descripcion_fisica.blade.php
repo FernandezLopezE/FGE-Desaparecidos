@@ -393,6 +393,7 @@ $(document).ready(function(){
       data: dataString,
       dataType: 'json',
       success: function(data) {           
+        $("#cabellointerno").css({"fill":"#17a4da", "stroke":"#ffffff","stroke-width":"2-"});
         console.log("hecho");
         console.log(data);
         //Limpiar cabello
@@ -1011,6 +1012,24 @@ var tieneCabello, otroTipoC, otroColorC, otroPartiC, otroModificacionC, tieneBar
 //Sección para mostrar/ocultar campos de "OTRO"
 $("#cerrar").click(function(event) {
     $(".cabello").toggle();
+    //peticion para obtener detalles de patilla
+    $.ajax({
+                url: '/descripcionfisica/get_deleteVello/{{$desaparecido->id}}/',
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                  //$("#cabellointerno").css({"fill":"#1d3e53", "stroke":"#ffffff","stroke-width":"2-"});
+                  //console.log(data);
+                        
+                   
+                },
+
+                error: function(data) { 
+                  console.log("error");
+                  $("#cabellointerno").css({"fill":"#1d3e53", "stroke":"#ffffff","stroke-width":"2-"});
+                },
+            });// fin de detalles de patilla
     });
 
     window.onload = function () {
@@ -1025,7 +1044,7 @@ $("#cerrar").click(function(event) {
                 var temp = document.getElementById('data').innerHTML = t.target.parentElement.getAttribute('id');
                 if(temp == "cabello"){
                   $(".cabello").toggle();
-                  $("#cabellointerno").css({"fill":"#17a4da", "stroke":"#ffffff","stroke-width":"2-"});
+                  //$("#cabellointerno").css({"fill":"#17a4da", "stroke":"#ffffff","stroke-width":"2-"});
                 }
             }
         }
