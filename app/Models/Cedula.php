@@ -33,6 +33,9 @@ class Cedula extends Model
         'vehiculoPlacas',
         'idParentescoAvisto',
         'otroParentescoAvisto',
+        'nombresAvisto',
+        'primerApAvisto',
+        'segundoApAvisto',
 		//'estatura',
 		//'peso',
 		'objetos',
@@ -110,4 +113,21 @@ class Cedula extends Model
 	{
 		return $this->belongsTo('App\Models\Domicilio', 'id');
 	}
+	public function setDesaparicionFechaAttribute($value)
+	{
+		if(empty($value)){
+			$this->attributes['desaparicionFecha'] = null;	
+		} else {
+			$this->attributes['desaparicionFecha'] = Carbon::createFromFormat('d/m/Y H:i:s', $value)->format('Y-m-d H:i:s');			
+		}
+		
+	}
+	/*public function getDesaparicionFechaAttribute($value)
+	{
+		
+			return  Carbon::createFromFormat('Y/m/d H:i:s', $value)->format('d-m-Y H:i:s');			
+		
+		
+	}*/
+
 }

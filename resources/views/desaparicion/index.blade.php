@@ -1,6 +1,7 @@
 @extends('layouts.app_uipj')
 
 @section('css')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
 {!! Html::style('') !!}
 <style type="text/css">
 	.modal-lg {
@@ -37,7 +38,7 @@
 	  			<div class="row">				
 					
 						<div class="form-group col-4">
-							{!! Form::label ('fechaAvisto','Fecha de la última vez que fué visto:') !!}
+							{!! Form::label ('fechaAvisto','Fecha de la última vez que fue visto:') !!}
 							{!! Form::text ('familiaresFechaNacimiento',
 												old('Fecha de nacimiento'),
 												['class' => 'form-control',
@@ -54,10 +55,10 @@
 						<div class="col">
 								<div class="container">
 								  <div class="row">
-								    <div class="col-xs-12 col-md-3">
+								    <div class="col">
 								      <div class="form-group">
 								        <label for="">Hora</label>
-								        <div class="input-group">
+								        <div class="input-group col-4">
 								          
 								          {!! Form::number ('horasAvisto',
 												old('Horas'),
@@ -222,7 +223,7 @@
 				</div>
 				<div class="row">
 						 <div class="form-group col">
-	                        {!! Form::label ('descripción','Brebe descripción del hecho:') !!}
+	                        {!! Form::label ('descripción','Breve descripción del hecho:') !!}
 	                        {!! Form::textarea('descripcion',
 	                                            '',
 	                                            ['class' => 'form-control mayuscula', 'data-validation' =>'required','data-validation-depends-on' => 'identificacion','data-validation-depends-on-value' => '1','data-validation-error-msg-required' =>'Este campo es requerido.',"size" => "30x4","placeholder" => "Ingrese la descripción del hecho" , 'id' => 'descripcion'] )!!}
@@ -274,6 +275,7 @@
 {!! HTML::script('personal/js/sisyphus.js') !!}
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function()
 	{
@@ -363,8 +365,8 @@ $(btnGuardarDescripcionHechos).click (function(){
 
       		var token = $("#token").val();
 			var dataString = {
-				desaparicionFecha: $("#familiaresFechaNacimiento").val(),
-				desaparicionHora: $("#horas").val()+":"+$("#minutos").val(),
+				desaparicionFecha: $("#familiaresFechaNacimiento").val()+" "+$("#horas").val()+":"+$("#minutos").val()+":00",
+				//desaparicionHora: $("#horas").val()+":"+$("#minutos").val(),
 				calle: $("#calle").val(),
 				numExterno: $("#numExterno").val(),	
 				referencia: $("#referencia").val(),			
@@ -378,7 +380,7 @@ $(btnGuardarDescripcionHechos).click (function(){
 				segundoAp : $("#segundoAp").val(),
 				idParentesco : $("#avistoidParentesco").val(),
 				otroParentesco : $("#otroParentesco").val(),
-				tipoDireccion: "AVISTO",				
+				tipoDireccion: "LUGAR DE AVISTAMIENTO",				
 				descripcion: $("#descripcion").val(),
 
 				vehiculoPlacas: vehiculoPlacas,
@@ -396,7 +398,40 @@ $(btnGuardarDescripcionHechos).click (function(){
 				data: dataString,
 				dataType: 'json',
 				success: function(data) {
-					console.log("Ya la hiciste");                    
+					console.log("Ya la hiciste");
+					$.confirm({
+				            title: 'Datos guardados!',
+				            content: 'Antecedentes médicos guardados exitosamente.',
+				            type: 'dark',
+				            typeAnimated: true,
+				            buttons: {
+				                tryAgain: {
+				                    text: 'Aceptar',
+				                    btnClass: 'btn-dark',
+				                    action: function(){
+				                    					
+				                    }//temina el action del boton aceptar 
+				                },
+				            }
+				        });  
+				       									$("#familiaresFechaNacimiento").value = "";
+														$("#calle").value = "";
+														$("#numExterno").value = "";	
+														$("#referencia").value = "";			
+														/*$("#idEstado").value = "";
+														$("#idMunicipio").value = "";
+														$("#idLocalidad").value = "";
+														$("#idColonia").value = "";
+														$("#idCodigoPostal").value = "";*/
+														$("#nombres").value = "";
+														$("#primerAp").value = "";
+														$("#segundoAp").value = "";
+														$("#avistoidParentesco").value = "";
+														$("#otroParentesco").value = "";
+														$("#vehiculoPlacas").value = "";
+														$("#vehiculoDescripcion").value = "";			
+														$("#descripcion").value = "";
+                  
 				},
 				error: function(data) {
 					console.log("valio verta");
@@ -422,5 +457,6 @@ $(btnGuardarDescripcionHechos).click (function(){
         $("#otra_Adiccion").hide();
       }
       });
+
 </script>
 @endsection

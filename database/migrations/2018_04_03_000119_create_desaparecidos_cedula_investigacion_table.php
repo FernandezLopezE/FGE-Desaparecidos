@@ -27,17 +27,19 @@ class CreateDesaparecidosCedulaInvestigacionTable extends Migration
             $table->date('fechaVisita')->nullable();
             $table->string('calzadoTalla',50)->nullable();
             $table->text('desaparicionObservaciones')->nullable();
-            $table->datetime('desaparicionRef')->nullable();
+            $table->string('desaparicionRef')->nullable();
             $table->datetime('desaparicionFecha')->nullable();
-            $table->datetime('desaparicionHora')->nullable();
+            
            /* $table->integer('idEstadoDesaparicion')->unsigned()->default(30);
             $table->foreign('idEstadoDesaparicion')->references('id')->on('cat_estado')->onDelete('cascade');
             $table->integer('idMunicipioDesa')->unsigned()->default(2496);
             $table->foreign('idMunicipioDesa')->references('id')->on('cat_municipio')->onDelete('cascade');
             $table->integer('idLocalidadDesapa')->unsigned()->default(108971);
             $table->foreign('idLocalidadDesapa')->references('id')->on('cat_localidad')->onDelete('cascade');*/
-            $table->integer('idPersonaAvisto')->unsigned()->nullable() ;
-            $table->foreign('idPersonaAvisto')->references('id')->on('persona')->onDelete('cascade');
+            $table->string('nombresAvisto', 50)->nullable();
+            $table->string('primerApAvisto', 50)->nullable();
+            $table->string('segundoApAvisto', 50)->nullable();
+
             $table->integer('idParentescoAvisto')->unsigned()->nullable();
             $table->foreign('idParentescoAvisto')->references('id')->on('cat_parentesco')->onDelete('cascade');
             $table->string('otroParentescoAvisto', 50)->nullable();
