@@ -1,8 +1,8 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<div class="cuello" id="formCuello">
+<div class="ManoDer" id="formManoDer">
 	<div class="card border-success" >
 		<div class="card-header">
-			<h5 class="card-title">Cuello
+			<h5 class="card-title">Mano derecha
 				<i class="fa fa-pencil pull-right" id="btnEditarC"></i>
 				<i class="fa fa-times-circle" style="float: right; margin-left: 10px;" id="cerrar"></i>
 				<i class="fa fa-minus-square" style="float: right;" id="minCara"></i>
@@ -12,12 +12,12 @@
 		<div class="card-body">
 			<div class="form-group row">
 				<div class="col">
-					{!! Form::label ('idPartCuello','Particularidades') !!}
-					{!! Form::select('idPartCuello', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idPartCuello'] ) !!}
+					{!! Form::label ('idSubParticularidades','Particularidades') !!}
+					{!! Form::select('idSubParticularidades', $tipoCeja, '', ['class' => 'form-control', 'id' => 'idSubParticularidades'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idModCuello','Modificaciones') !!}
-					{!! Form::select('idModCuello', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idModCuello'] ) !!}
+					{!! Form::label ('idSubModificaciones','Modificaciones') !!}
+					{!! Form::select('idSubModificaciones', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idSubModificaciones'] ) !!}
 				</div>
 			</div>
 
@@ -35,10 +35,9 @@
 					{!! Form::textarea('observacionesCabello', '', ['class' => 'form-control', 'id' => 'observacionesCabello', 'rows' => '1', 'placeholder' => 'Observaciones'] ) !!}
 				</div>
 			</div>
-			<button type="button" class="btn btn-primary" style="float: right;" id="guardarCuello">GUARDAR</button>
+			<button type="button" class="btn btn-primary" style="float: right;" id="guardarManoDer">GUARDAR</button>
 		</div> 
 	</div>
 </div>
 
 {!! Html::script('personal/js/avatar/cuello-pecho.js') !!}
-
