@@ -172,7 +172,7 @@ Route::post('/desaparecido/update_vestimenta', 'DesaparecidoController@update_ve
 	->name('desaparecido.update_vestimenta');
 
 //Rutas para descripcion fisica
-
+Route::get('/descripcionfisica/get_deleteVello/{idParteCuerpo}','DescripcionFisicaController@deleteVelloFacial');
 Route::get('/descripcionfisica/get_coloresCuerpo/{idParteCuerpo}', 'DescripcionFisicaController@getColoresCuerpo')
 	->name('descripcionfisica.get_coloresCuerpo');
 Route::get('/descripcionfisica/get_particularidades/{idParteCuerpo}', 'DescripcionFisicaController@getParticularidades')
