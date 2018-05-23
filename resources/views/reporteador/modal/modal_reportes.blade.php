@@ -15,7 +15,7 @@
           <div class="row">
 			<div class="col-lg-9">
 			<dl class="row">
-				<dt class="col-sm-3">Nombres:</dt>
+				<dt class="col-sm-3">Nombre:</dt>
 				<dd class="col-sm-8" id="idNombre">
 					 
 				</dd>
@@ -25,7 +25,18 @@
 				</dd>
 				<dt class="col-sm-3">Género:</dt>
 				<dd class="col-sm-8" id="idGenero">
-					
+				</dd>
+				<dt class="col-sm-3">Estatura:</dt>
+				<dd class="col-sm-8" id="idEstatura">
+				</dd> 
+				<dt class="col-sm-3">Peso:</dt>
+				<dd class="col-sm-8" id="idPeso">
+				</dd>
+				<dt class="col-sm-3">Color de piel:</dt>
+				<dd class="col-sm-8" id="idCPiel">
+				</dd>
+				<dt class="col-sm-3">Complexion:</dt>
+				<dd class="col-sm-8" id="idComplexion">
 				</dd>
 				<dt class="col-sm-3">Nacionalidad:</dt>
 				<dd class="col-sm-8" id="idNacionalidad"> </dd>

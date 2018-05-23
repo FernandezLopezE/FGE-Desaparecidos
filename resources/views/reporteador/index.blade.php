@@ -7,67 +7,14 @@
 	.modal-lg {
 		max-width: 80%;
 	}
-    
-      section.range-slider {
-    position: relative;
-    width: 200px;
-    height: 35px;
-    text-align: center;
-}
 
-section.range-slider input {
-    pointer-events: none;
-    position: absolute;
-    overflow: hidden;
-    left: 0;
-    top: 15px;
-    width: 200px;
-    outline: none;
-    height: 18px;
-    margin: 0;
-    padding: 0;
-}
-
-section.range-slider input::-webkit-slider-thumb {
-    pointer-events: all;
-    position: relative;
-    z-index: 1;
-    outline: 0;
-}
-
-section.range-slider input::-moz-range-thumb {
-    pointer-events: all;
-    position: relative;
-    z-index: 10;
-    -moz-appearance: none;
-    width: 9px;
-}
-
-section.range-slider input::-moz-range-track {
-    position: relative;
-    z-index: -1;
-    background-color: rgba(0, 0, 0, 1);
-    border: 0;
-}
-section.range-slider input:last-of-type::-moz-range-track {
-    -moz-appearance: none;
-    background: none transparent;
-    border: 0;
-}
-  section.range-slider input[type=range]::-moz-focus-outer {
-  border: 0;
-}
 </style>
 	
 @endsection
 
-
 @section('content')
 
 <nav>
-
-
-
 
 </nav>
 
@@ -82,14 +29,13 @@ section.range-slider input:last-of-type::-moz-range-track {
     </p> <br>
 	    <div class="card-body bg-white">       
             <div class="row">               
-               <div class="col">
+               <div class="col" style="padding-right:0px;padding-left:0px;">
                     <div class="">
                         <div class="card-header">
-                           Género
-                           <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar1"></i>
+                           Género:                        
                            </div>
                         <div class=" list-group-flush small">
-                          <div class="list-group-item list-group-item-action" style="Display:none" id="campoGenero"> 
+                          <div class="list-group-item list-group-item-action" style="Display:block" id="campoGenero"> 
                              <div class=" form-check ">
 
                                  <input class="form-check-input" Value="H" type="checkbox" id="masc" checked> Hombre: 
@@ -102,14 +48,13 @@ section.range-slider input:last-of-type::-moz-range-track {
                       </div>
                     </div>
 	            </div>
-               <div class="col">
+               <div class="col"style="padding-right:0px;padding-left:0px;">
                     <div class="">
                         <div class="card-header">
-                           Edad
-                           <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar2"></i>
+                           Edad:
                            </div>
                         <div class=" list-group-flush small">
-                          <div class="list-group-item list-group-item-action" style="Display:none" id="campoEdad" > 
+                          <div class="list-group-item list-group-item-action" style="Display:block" id="campoEdad" > 
                               <div class="" id="div_idEstado">
                                  {!! Form::label ('','Desde:',['class' => '']) !!}
                                     <input  min="0" max="120" step="1" type="number" id="rng1"><br>
@@ -120,16 +65,16 @@ section.range-slider input:last-of-type::-moz-range-track {
                       </div>
                     </div>
 	            </div>
-                <div class="col" >
+                <div class="col" style="padding-right:0px;padding-left:0px;">
                         <div class="card-header">
-                           Ubicación
-                           <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar3"></i>
+                           Ubicación:
+                           <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar1"></i>
                            </div>
                         <div class=" list-group-flush small"  id="campoUbicacion">
                           <div class="list-group-item list-group-item-action"> 
                               <div class=""  id="infoCabello3">
                                 {!! Form::label ('idEstados','Estados:') !!} <br>
-                                {!! Form::select('idEstados',$estados, '', ['class' => '', 'id' => 'partiCabello','multiple' => 'multiple'] ) !!}
+                                {!! Form::select('idEstados',$estados, '', ['class' => '', 'id' => 'estados','multiple' => 'multiple'] ) !!}
                             </div> 
                             <div class=""  id="infoCabello3">
                                 {!! Form::label ('idEstados','Municipios:') !!} <br>
@@ -140,25 +85,172 @@ section.range-slider input:last-of-type::-moz-range-track {
 	            </div>                 
             </div>
             <div class="row">
-                
-            </div>
-        </div>
-	    
+             <div class="col" style="padding-right:0px;padding-left:0px;">
+                <div class="card-header">
+                           Estatura:
+                           </div>
 
+                          <div class="list-group-flush small" style="Display:block" id="campoEstatura" > 
+                              <div class="list-group-item list-group-item-action" id="div_idEstado">
+                                 {!! Form::label ('','Desde:',['class' => '']) !!}
+                                    <input  min="0" max="300" step="1" type="number" id="estatura1"><br>
+                                {!! Form::label ('','Hasta:',['class' => '']) !!}&nbsp;
+                                    <input  min="0" max="300" step="1" type="number" id="estatura2"> 
+                             </div>     
+                          </div> 
+             </div>
+              
+
+                     <div class="col" style="padding-right:0px;padding-left:0px;">
+                <div class="card-header">
+                           Peso:
+                           </div>
+                        <div class=" list-group-flush small">
+                          <div class="list-group-item list-group-item-action" style="Display:block" id="campoPeso" > 
+                              <div class="" id="div_idEstado">
+                                 {!! Form::label ('','Desde:',['class' => '']) !!}
+                                    <input  min="0" max="400" step="1" type="number" id="peso1"><br>
+                                {!! Form::label ('','Hasta:',['class' => '']) !!}&nbsp;
+                                    <input  min="0" max="400" step="1" type="number" id="peso2"> 
+                             </div>     
+                          </div>
+                      </div>
+                      </div>
+                      <div class="col" style="padding-right:0px;padding-left:0px;">
+                <div class="card-header">
+                           Color de piel:
+                           </div>
+                        <div class=" list-group-flush small">
+                          <div class="list-group-item list-group-item-action" style="Display:block" id="campoPeso" > 
+                              <div class="" id="div_colorPiel">
+                                {!! Form::label ('idColorPiel','Color de piel:') !!} <br>
+                                {!! Form::select('cPiel',$coloresPiel, '', ['class' => '', 'id' => 'cPiel','multiple' => 'multiple'] ) !!}
+                             </div>     
+                          </div>
+                      </div>
+                      </div> 
+                      <div class="col" style="padding-right:0px;padding-left:0px;">
+                <div class="card-header">
+                           Complexion:
+                           <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar2"></i>
+                           </div>
+                        <div class=" list-group-flush small">
+                          <div class="list-group-item list-group-item-action" style="Display:block" id="campoPeso" > 
+                              <div class="" id="div_colorPiel">
+                                {!! Form::label ('comple','Complexión:') !!}<br>
+                              {!! Form::select ('comple', $complexiones, '',['class' => '', 'id' => 'complexion','multiple' => 'multiple'] )!!}        
+                             </div>     
+                          </div>
+                      </div>  
+                      </div>  
+            </div>
+             <div class="row">               
+               <div class="col" style="padding-right:0px;padding-left:0px;">
+                    <div class="">
+                        <div class="card-header">
+                           Tipo de cabello:
+                           <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar1"></i>                        
+                           </div>
+                        <div class=" list-group-flush small">
+                          <div class="list-group-item list-group-item-action" style="Display:block" id="campoGenero"> 
+                             <div class=""  id="infoCabello3">
+                                {!! Form::label ('tipoCabello','Tipo') !!}
+                                {!! Form::select('tipoCabello', $tipoCabello, '', ['class' => '', 'id' => 'tipoCabello','multiple' => 'multiple'] ) !!}
+                            </div>      
+                          </div>
+                      </div>
+                    </div>
+	            </div>
+               
+                <div class="col" style="padding-right:0px;padding-left:0px;">
+                        <div class="card-header">
+                           Tipo de barba:
+                           <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar1"></i>                           
+                           </div>
+                        <div class=" list-group-flush small"  id="campoUbicacion">
+                          <div class="list-group-item list-group-item-action"> 
+                              <div class=""  id="infoCabello3">
+                                {!! Form::label ('tipoBarba','Tipo') !!}
+		                        {!! Form::select('tipoBarba', $tipoBarba, '', ['class' => '', 'id' => 'tipoBarba','multiple' => 'multiple'] ) !!}
+                            </div>    
+                          </div>
+                      </div>
+	            </div>
+	            <div class="col" style="padding-right:0px;padding-left:0px;">
+                        <div class="card-header">
+                           Tipo de bigote:
+                           <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar1"></i>                           
+                           </div>
+                        <div class=" list-group-flush small"  id="campoUbicacion">
+                          <div class="list-group-item list-group-item-action"> 
+                              <div class=""  id="infoCabello3">
+                                {!! Form::label ('tipoBigote','Tipo') !!}
+		                        {!! Form::select('tipoBigote', $tipoBigote, '', ['class' => '', 'id' => 'tipoBigote','multiple' => 'multiple'] ) !!}
+                            </div>    
+                          </div>
+                      </div>
+	            </div>                  
+            </div>
+             <div class="row">               
+               <div class="col" style="padding-right:0px;padding-left:0px;">
+                    <div class="">
+                        <div class="card-header">
+                           Tamaño de cabello:
+                                                   
+                           </div>
+                        <div class=" list-group-flush small">
+                          <div class="list-group-item list-group-item-action" style="Display:block" id="campoGenero"> 
+                             <div class=""  id="infoCabello3">
+                                {!! Form::label ('tamanoCabello','Tamaño:') !!}
+		                        {!! Form::select('tamanoCabello', $tamanoCabello, '', ['class' => '', 'id' => 'tamanoCabello','multiple' => 'multiple'] ) !!}
+                            </div>      
+                          </div>
+                      </div>
+                    </div>
+	            </div>
+               
+                <div class="col" style="padding-right:0px;padding-left:0px;">
+                        <div class="card-header">
+                           Tamaño de barba:                           
+                           </div>
+                        <div class=" list-group-flush small"  id="campoUbicacion">
+                          <div class="list-group-item list-group-item-action"> 
+                              <div class=""  id="infoCabello3">
+                                {!! Form::label ('tipoBarba','Tamaño:') !!}
+		                        {!! Form::select('tipoBarba', $tipoBarba, '', ['class' => '', 'id' => 'tamanoOjos','multiple' => 'multiple'] ) !!}
+                            </div>    
+                          </div>
+                      </div>
+	            </div>
+	            <div class="col" style="padding-right:0px;padding-left:0px;">
+                        <div class="card-header">
+                           Tamaño de bigote:                           
+                           </div>
+                        <div class=" list-group-flush small"  id="campoUbicacion">
+                          <div class="list-group-item list-group-item-action"> 
+                              <div class=""  id="infoCabello3">
+                                {!! Form::label ('tipoBigote','Tamaño:') !!}
+		                        {!! Form::select('tipoBigote', $tipoBigote, '', ['class' => '', 'id' => 'tamanoBoca','multiple' => 'multiple'] ) !!}
+                            </div>    
+                          </div>
+                      </div>
+	            </div>                  
+            </div>
+            
+         </div>
+	    
+                     
+          
 	    
 	     <div class="row" >
 	        
 
 	         
 	     </div>
-       <imput type="button" class="btn btn-dark pull-right" id="prueba">PRUEBA</imput>
+       <!--<imput type="button" class="btn btn-dark pull-right" id="prueba">PRUEBA</imput>-->
         <imput type="button" class="btn btn-dark pull-right" id="filtros">Buscar</imput>
         
 	     <br><br>
-<!--
-              data-advanced-search="true"
-              data-id-table="advancedTable"
--->
            <div id="tablaGen" >
 
           <table id="tableDependencias"
@@ -245,7 +337,49 @@ section.range-slider input:last-of-type::-moz-range-track {
 {!! HTML::script('personal/js/bootstrap-table-toolbar.js') !!}
 
 <script type="text/javascript">
-     $("#campoUbicacion").hide();
+     //$("#campoUbicacion").hide();
+    //-<<--<--<<--<<--<<-MULTISELECTS-<<--<--<<--<<--<<-<<--<--<<--<<--<<
+     $('#estados').multipleSelect({
+            filter: true,
+            width: '100%'
+        });
+    $('#municipios').multipleSelect({
+            filter: true,
+            width: '100%'
+        });
+    $('#cPiel').multipleSelect({
+            filter: true,
+            width: '100%'
+        });
+    $('#complexion').multipleSelect({
+            filter: true,
+            width: '100%'
+        });
+    $('#tipoCabello').multipleSelect({
+            filter: true,
+            width: '100%'
+        });
+    $('#tipoBarba').multipleSelect({
+            filter: true,
+            width: '100%'
+        });
+   $('#tipoBigote').multipleSelect({
+            filter: true,
+            width: '100%'
+        });
+    $('#tamanoCabello').multipleSelect({
+            filter: true,
+            width: '100%'
+        });
+    $('#tamanoOjos').multipleSelect({
+            filter: true,
+            width: '100%'
+        });
+    $('#tamanoBoca').multipleSelect({
+            filter: true,
+            width: '100%'
+        });
+    //-<<--<--<<--<<--<<-<<--<--<<--<<--<<-<<--<--<<--<<--<<-<<--<--<<-<<
     $("#colapsar1").click(function(event) {
         $("#campoGenero").toggle();
     });
@@ -255,12 +389,12 @@ section.range-slider input:last-of-type::-moz-range-track {
     $("#colapsar3").click(function(event) {
         //$("#campoUbicacion").show();
         $("#campoUbicacion").toggle();
-        $('#partiCabello').multipleSelect({
-            filter: true
-        });
-    $('#municipios').multipleSelect({
-            filter: true
-        });
+//        $('#partiCabello').multipleSelect({
+//            filter: true
+//        });
+//    $('#municipios').multipleSelect({
+//            filter: true
+//        });
         
     });
     
@@ -297,8 +431,8 @@ section.range-slider input:last-of-type::-moz-range-track {
     
 $('#range').click(function(e){
     
-    alert('Selected values: ' + $('#partiCabello').multipleSelect('getSelects'));
-alert('Selected texts: ' + $('#partiCabello').multipleSelect('getSelects', 'text'));
+    alert('Selected values: ' + $('#estados').multipleSelect('getSelects'));
+alert('Selected texts: ' + $('#estados').multipleSelect('getSelects', 'text'));
     
     
 		var rango = $('#rng1').val();
@@ -349,7 +483,11 @@ var formatTableActions = function(value, row, index) {
             $("#idMunicipio").empty();
             $("#idFecha").empty();
             $("#idEdad").empty();
-            $("#apodo").empty();
+            $("#apodo").empty();            
+            $("#idEstatura").empty();
+            $("#idPeso").empty();
+            $("#idCPiel").empty();
+            $("#idComplexion").empty();            
             $("#idNacionalidad").empty();
 //                var btnEditarInformante = $('#btnEditarInformante');
 //				
@@ -363,7 +501,11 @@ var formatTableActions = function(value, row, index) {
                               }else{
                 if(row.sexo =='M'){ 
                     $("#idGenero").append('Mujer');}
-                              }
+                             }
+            $("#idEstatura").append(row.estatura+ ' cm'); 
+            $("#idPeso").append(row.peso + ' kg'); 
+            $("#idCPiel").append(row.cPiel); 
+            $("#idComplexion").append(row.complexion); 
             $("#idEstado").append(row.estado);
             $("#idMunicipio").append(row.municipio);
             $("#idFecha").append(row.fecha);
@@ -530,7 +672,7 @@ var formatTableActions = function(value, row, index) {
 		}
      filtrosTodos.click(function(){
           tablaGen.hide();
-          var estados = $('#partiCabello').multipleSelect('getSelects');
+          var estados = $('#estados').multipleSelect('getSelects');
           console.log("El string:")
         console.log(estados)
         var array = JSON.parse("[" + estados + "]");
@@ -559,7 +701,7 @@ var formatTableActions = function(value, row, index) {
           
           
           var dataString = {
-			    estados: $('#partiCabello').multipleSelect('getSelects'),
+			    estados: $('#estados').multipleSelect('getSelects'),
                 fem : $("input#fem:checked").val(),     
                 masc : $("input#masc:checked").val(),
                 rg : $('#rng1').val(),
@@ -618,7 +760,7 @@ var formatTableActions = function(value, row, index) {
         });
       filtros.click(function(){
           tablaGenTodos.hide();
-          var estados = $('#partiCabello').multipleSelect('getSelects');
+          var estados = $('#estados').multipleSelect('getSelects');
           var municipios = $('#municipios').multipleSelect('getSelects');
           console.log("El string:")
         console.log(estados)
@@ -652,18 +794,25 @@ var formatTableActions = function(value, row, index) {
           
           
           var dataString = {
-			    estados: $('#partiCabello').multipleSelect('getSelects'),
+			    estados: $('#estados').multipleSelect('getSelects'),
                 municipios: $('#municipios').multipleSelect('getSelects'),
+                cPiel: $('#cPiel').multipleSelect('getSelects'),
+                complexion: $('#complexion').multipleSelect('getSelects'),
+                tipoCabello: $('#tipoCabello').multipleSelect('getSelects'),
                 fem : $("input#fem:checked").val(),     
                 masc : $("input#masc:checked").val(),
                 rg : $('#rng1').val(),
                 rg2 : $('#rng2').val(),
+                estatura1 : $('#estatura1').val(),
+                estatura2 : $('#estatura2').val(),
+                peso1 : $('#peso1').val(),
+                peso2 : $('#peso2').val(),
 			};
           console.log("El dataString:");
           console.log(dataString);
           $.ajax({
 				type: 'POST',
-				url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+ '/'+ estados+ '/'+ municipios,
+				url: routeIndex+'/get_desaparecidos_personas',
 				data: dataString,
 				dataType: 'json',
 				success: function(data) {
@@ -689,7 +838,7 @@ var formatTableActions = function(value, row, index) {
 			});
           
           table.bootstrapTable({			
-             
+             //
             //data: data,
 			//url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+'/'+ estados,
 			columns: [{					
@@ -725,7 +874,7 @@ var formatTableActions = function(value, row, index) {
           
       //console.log(masc)
 
-          //console.log(routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+'/'+ array);
+          console.log(routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+'/'+ estados);
           
           
         tablaGen.show();
