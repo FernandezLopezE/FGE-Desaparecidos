@@ -56,7 +56,7 @@ class ExtraviadoController extends Controller
 
 			$sexos = array('N' => 'SELECCIONE UN GENERO', 'H' => 'MASCULINO', 'M' => 'FEMENINO');
 			$escolaridades      = \App\Models\CatEscolaridad::all()->pluck('nombre','id');
-			$ocupaciones        = \App\Models\CatOcupacion::all()->pluck('nombre','id');
+			$ocupaciones        = \App\Models\CatOcupacion::orderBy('nombre')->pluck('nombre','id')->get();
 			$identificaciones   = \App\Models\CatDocumento::all()->pluck('nombre','id');
 			$edoscivil          = \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
 
@@ -228,7 +228,7 @@ class ExtraviadoController extends Controller
 
 		$sexos = array('H' => 'MASCULINO', 'M' => 'FEMENINO');
 		$escolaridades      = \App\Models\CatEscolaridad::all()->pluck('nombre','id');
-		$ocupaciones        = \App\Models\CatOcupacion::all()->pluck('nombre','id');
+		$ocupaciones        = \App\Models\CatOcupacion::orderBy('nombre')->get()->pluck('nombre','id');
 		$identificaciones   = \App\Models\CatDocumento::all()->pluck('nombre','id');
 		$edoscivil          = \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
 
