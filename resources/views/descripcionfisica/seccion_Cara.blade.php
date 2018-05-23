@@ -1,3 +1,4 @@
+
 <div class="cara" id="formCara" style="display:none;">
 	<div class="card border-success" >
 		<div class="card-header">
@@ -355,5 +356,4 @@
 	</div>
 </div>
 </div>
-
-<script src="personal/js/avatar/cara.js"></script>
+{!! Html::script('personal/js/avatar/cara.js') !!}
