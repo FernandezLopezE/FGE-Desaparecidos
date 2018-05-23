@@ -532,6 +532,30 @@ class DescripcionFisicaController extends Controller
             $aux = false;
         }
 
+         //consulta cabello
+        $cedulaPartesCuerpo = CedulaPartesCuerpo::where('idPersonaDesaparecida',$idDesaparecido)->get();
+        $showCabello = false;
+         
+        for ( $i =0; $i <count($cedulaPartesCuerpo); $i++) {
+            if($showCabello != true){
+              if($cedulaPartesCuerpo[$i]->idPartesCuerpo >= 55 || $cedulaPartesCuerpo[$i]->idPartesCuerpo <= 58 ){
+                $showCabello = true;
+              }else{
+                $showCabello = false;
+              }
+              /*$("#detallesV").toggle();
+              $("#datosCabello").toggle();
+              $("#btnEditarC").hide();*/
+            }else{
+              //
+              /*$("#datosCabello").hide();
+              $("#btnEditarC").show();
+              $("#detallesV").show();*/
+            }
+            
+        }
+        
+
 
         return view('descripcionfisica.form_descripcion_fisica',
             [
@@ -562,7 +586,8 @@ class DescripcionFisicaController extends Controller
                 'ojosParte' => $ojosParte,
                 'bocaParte' => $bocaParte,
                 'orejasParte' => $orejasParte,
-                'mejillasParte' => $mejillasParte
+                'mejillasParte' => $mejillasParte,
+                'showCabello' => $showCabello
             ]);
     }
 
@@ -685,7 +710,7 @@ class DescripcionFisicaController extends Controller
 
         \DB::table('cedula_partes_cuerpo')->where('idPersonaDesaparecida',$idExtraviado)->where('idPartesCuerpo',58)->delete();
 
-        
+
 
     }
 
