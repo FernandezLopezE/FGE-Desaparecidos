@@ -12,32 +12,30 @@
 		<div class="card-body">
 			<div class="form-group row">
 				<div class="col">
-					{!! Form::label ('idSubParticularidades','Particularidades') !!}
-					{!! Form::select('idSubParticularidades', $tipoCeja, '', ['class' => 'form-control', 'id' => 'idSubParticularidades'] ) !!}
+					{!! Form::label ('partHombroIzq','Particularidades') !!}
+					{!! Form::select('partHombroIzq', $tipoCeja, '', ['class' => 'form-control', 'id' => 'partHombroIzq'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubModificaciones','Modificaciones') !!}
-					{!! Form::select('idSubModificaciones', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idSubModificaciones'] ) !!}
-				</div>
-			</div>
-
-			<div class="form-group row">
-				<div class="col">
-					{!! Form::text('otroTipoCeja', '', ['class' => 'form-control', 'id' => 'otroTipoCeja', 'placeholder' => 'Especifique otra particularidad'] ) !!}
-				</div>
-				<div class="col">
-					{!! Form::text('otroTipoCeja', '', ['class' => 'form-control', 'id' => 'otroTipoCeja', 'placeholder' => 'Especifique otra modificación'] ) !!}
+					{!! Form::label ('modHombroIzq','Modificaciones') !!}
+					{!! Form::select('modHombroIzq', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'modHombroIzq'] ) !!}
 				</div>
 			</div>
 
 			<div class="form-group row">
 				<div class="col">
-					{!! Form::textarea('observacionesCabello', '', ['class' => 'form-control', 'id' => 'observacionesCabello', 'rows' => '1', 'placeholder' => 'Observaciones'] ) !!}
+					{!! Form::text('otraPartHombroIzq', '', ['class' => 'form-control', 'id' => 'otraPartHombroIzq', 'placeholder' => 'Especifique otra particularidad'] ) !!}
+				</div>
+				<div class="col">
+					{!! Form::text('otraModHombroIzq', '', ['class' => 'form-control', 'id' => 'otraModHombroIzq', 'placeholder' => 'Especifique otra modificación'] ) !!}
+				</div>
+			</div>
+
+			<div class="form-group row">
+				<div class="col">
+					{!! Form::textarea('obseHombroIzq', '', ['class' => 'form-control', 'id' => 'obseHombroIzq', 'rows' => '1', 'placeholder' => 'Observaciones'] ) !!}
 				</div>
 			</div>
 			<button type="button" class="btn btn-primary" style="float: right;" id="guardarHombroIzq">GUARDAR</button>
 		</div> 
 	</div>
 </div>
-
-{!! Html::script('personal/js/avatar/cuello-pecho.js') !!}

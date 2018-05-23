@@ -141,5 +141,3 @@
 		</div> 
 	</div>
 </div>
-
-{!! Html::script('personal/js/avatar/cuello-pecho.js') !!}
