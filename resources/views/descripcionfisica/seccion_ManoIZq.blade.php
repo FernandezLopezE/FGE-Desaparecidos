@@ -1,4 +1,4 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 <div class="ManoIzq" id="formManoIzq" style="display:none;">
 	<div class="card border-success" >
 		<div class="card-header">

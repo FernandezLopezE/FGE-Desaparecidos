@@ -61,6 +61,21 @@
             <div class="col-8">
               @include('descripcionfisica.seccion_Cabello')
               @include('descripcionfisica.seccion_Cara')
+              @include('descripcionfisica.seccion_Cuello')
+              @include('descripcionfisica.seccion_Pecho')
+              @include('descripcionfisica.seccion_HombroIzq')
+              @include('descripcionfisica.seccion_HombroDer')
+              @include('descripcionfisica.seccion_BrazoIzq')
+              @include('descripcionfisica.seccion_BrazoDer')
+              @include('descripcionfisica.seccion_ManoIZq') 
+              @include('descripcionfisica.seccion_ManoDer')
+              @include('descripcionfisica.seccion_Abdomen') 
+              @include('descripcionfisica.seccion_MusloIzq')
+              @include('descripcionfisica.seccion_MusloDer') 
+              @include('descripcionfisica.seccion_PiernaIzq')
+              @include('descripcionfisica.seccion_PiernaDer') 
+              @include('descripcionfisica.seccion_PieIzq')
+              @include('descripcionfisica.seccion_PieDer')  
               
             </div>
         </div>
@@ -79,8 +94,13 @@
 {!! Html::script('personal/js/avatar/datos_fisicos.js') !!}
 {!! Html::script('personal/js/avatar/cabello.js') !!}
 {!! Html::script('personal/js/avatar/accionAvatar.js') !!}
-
-
-
+{!! Html::script('personal/js/avatar/cuello_pecho.js') !!}
+{!! Html::script('personal/js/avatar/hombros.js') !!}
+{!! Html::script('personal/js/avatar/brazos.js') !!}
+{!! Html::script('personal/js/avatar/manos.js') !!}
+{!! Html::script('personal/js/avatar/abdomen.js') !!}
+{!! Html::script('personal/js/avatar/muslos.js') !!}
+{!! Html::script('personal/js/avatar/piernas.js') !!}
+{!! Html::script('personal/js/avatar/pies.js') !!}
 
 @endsection

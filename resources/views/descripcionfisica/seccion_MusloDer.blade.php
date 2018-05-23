@@ -1,5 +1,4 @@
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<div class="MusloDer" id="formMusloDer">
+<div class="musloDer" id="formMusloDer" style="display:none;">
 	<div class="card border-success" >
 		<div class="card-header">
 			<h5 class="card-title">Muslo derecho

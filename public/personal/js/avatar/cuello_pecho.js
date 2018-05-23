@@ -1,5 +1,17 @@
 $(document).ready(function() {
+  //Mostrar form de Cuello
+  $("#cuello").click(function(event) {
+    console.log("Cuello");
+    $("#formCuello").toggle();
+  });
 
+  //Mostrar form de pecho
+  $("#pectoral").click(function(event) {
+    console.log("Pecho");
+    $("#formPecho").toggle();
+  });
+
+  
 	//Cargar valores a select de particularidades de cuello
 	$.ajax({
        url: '/descripcionfisica/get_particularidades/'+10,
