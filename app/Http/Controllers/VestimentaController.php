@@ -36,30 +36,103 @@ class VestimentaController extends Controller
 	 */
 	public function store(VestimentaRequest $request)
 	{
-		//dd($request->input());
-		if(is_null($request->file('archivo')))
-    	{
-    		$path = "images/vestimenta_sin_imagen.png";
-		} else {
-			$mime = $request->file('archivo')->getMimeType();
-			$extension = strtolower($request->file('archivo')->getClientOriginalExtension());
-			$fileName = uniqid().'.'.$extension;
-			$path = "upload/vestimenta/".$fileName;
-			\Storage::disk('local')->put('/vestimenta/'.$fileName,  \File::get($request->file('archivo')));			
-		}
-
-		$vestimenta = Prenda::create([
-			'path' 				=> $path,
+		$vestimenta = array(
 			'material' 			=> $request->input('material'),
+			'talla' 			=> $request->input('talla'),
 			'diseno' 			=> $request->input('diseno'),
 			'idMarca' 			=> $request->input('idMarca'),
 			'idColor' 			=> $request->input('idColor'),
 			'idVestimenta' 		=> $request->input('idVestimenta'),
 			'idPrenda' 			=> $request->input('idPrenda'),
-			'idDesaparecido' 	=> $request->input('idDesaparecido')
-		]);
+		);
+
+		if($request->input('method') == 'PUT'){
+			$data = Prenda::find($request->input('idPrendaDesaparecido'));
+			if(is_null($request->file('archivo')))
+	    	{	    			    		
+	    		$vestimenta['path'] = $data->path;
+			} else {
+				\Storage::disk('local')->delete($data->path);
+				$mime = $request->file('archivo')->getMimeType();
+				$extension = strtolower($request->file('archivo')->getClientOriginalExtension());
+				$fileName = uniqid().'.'.$extension;
+				$path = "upload/vestimenta/".$fileName;
+				\Storage::disk('local')->put('upload/vestimenta/'.$fileName,  \File::get($request->file('archivo')));
+				$vestimenta['path'] = $path;
+			}
+			
+			$vestimenta = Prenda::find($request->input('idPrendaDesaparecido'))->update($vestimenta);
+		} else {
+			$vestimenta['idDesaparecido'] = $request->input('idDesaparecido');
+			if(is_null($request->file('archivo')))
+	    	{
+	    		$path = "images/vestimenta_sin_imagen.png";
+			} else {
+				$mime = $request->file('archivo')->getMimeType();
+				$extension = strtolower($request->file('archivo')->getClientOriginalExtension());
+				$fileName = uniqid().'.'.$extension;
+				$path = "upload/vestimenta/".$fileName;
+				\Storage::disk('local')->put('upload/vestimenta/'.$fileName,  \File::get($request->file('archivo')));	
+				$vestimenta['path'] = $path;		
+			}
+
+			$vestimenta = Prenda::create($vestimenta);
+		}
 
 		return response()->json($vestimenta);
+
+		/*	if(is_null($request->file('archivo')))
+	    	{
+	    		//$path = "images/vestimenta_sin_imagen.png";
+			} else {
+				//\Storage::disk('local')->($prenda->path);
+				$mime = $request->file('archivo')->getMimeType();
+				$extension = strtolower($request->file('archivo')->getClientOriginalExtension());
+				$fileName = uniqid().'.'.$extension;
+				$path = "upload/vestimenta/".$fileName;
+				\Storage::disk('local')->put('/vestimenta/'.$fileName,  \File::get($request->file('archivo')));			
+			}
+
+			$vestimenta = Prenda::find($request->file('idPrendaDesaparecido'))->create([
+				'path' 				=> $path,
+				'material' 			=> $request->input('material'),
+				'talla' 			=> $request->input('talla'),
+				'diseno' 			=> $request->input('diseno'),
+				'idMarca' 			=> $request->input('idMarca'),
+				'idColor' 			=> $request->input('idColor'),
+				'idVestimenta' 		=> $request->input('idVestimenta'),
+				'idPrenda' 			=> $request->input('idPrenda'),
+				'idDesaparecido' 	=> $request->input('idDesaparecido')
+			]);
+
+
+		} else {
+
+			if(is_null($request->file('archivo')))
+	    	{
+	    		$path = "images/vestimenta_sin_imagen.png";
+			} else {
+				$mime = $request->file('archivo')->getMimeType();
+				$extension = strtolower($request->file('archivo')->getClientOriginalExtension());
+				$fileName = uniqid().'.'.$extension;
+				$path = "upload/vestimenta/".$fileName;
+				\Storage::disk('local')->put('/vestimenta/'.$fileName,  \File::get($request->file('archivo')));			
+			}
+
+			$vestimenta = Prenda::create([
+				'path' 				=> $path,
+				'material' 			=> $request->input('material'),
+				'talla' 			=> $request->input('talla'),
+				'diseno' 			=> $request->input('diseno'),
+				'idMarca' 			=> $request->input('idMarca'),
+				'idColor' 			=> $request->input('idColor'),
+				'idVestimenta' 		=> $request->input('idVestimenta'),
+				'idPrenda' 			=> $request->input('idPrenda'),
+				'idDesaparecido' 	=> $request->input('idDesaparecido')
+			]);
+		}
+
+		return response()->json($vestimenta);*/
 
 
 	}
@@ -112,7 +185,7 @@ class VestimentaController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		dd($request->input());
+		dd($request->input('material'));
 		$prenda = Prenda::find($id);
 		if(is_null($request->file('archivo')))
     	{
