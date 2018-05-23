@@ -27,7 +27,7 @@
 				</div>
 	  		</div>
 	  		<div class="card-body">
-
+	  		<form id="formulario">
 				<div class="row" >
 							<div class="col-10 pull-right">
 								
@@ -132,35 +132,22 @@
 										{!! Form::label ('idMunicipio','Municipio:') !!}
 										{!! Form::select ('idMunicipio',$municipios,'',
 																 ['class' => 'form-control',
-																	'data-validation' => 'required',
-																	'data-validation-error-msg-required' => 'El campo es requerido'
-																] )!!}				
-									</div>
-									<div class="form-group col">
-										{!! Form::label ('idLocalidad','Localidad:') !!}
-										{!! Form::select ('idLocalidad',$localidades,'',
-																 ['class' => 'form-control',
-																	'data-validation' => 'required',
-																	'data-validation-error-msg-required' => 'El campo es requerido'
 																 ] )!!}				
 									</div>
 							</div>
-						
 							<div class="row" id=""  > 	
 									<div class="form-group col-lg-8">
 										{!! Form::label ('idColonia','Colonia:') !!}
 										{!! Form::select ('idColonia',$colonias,'',
 																['class' => 'form-control',
-																	'data-validation' => 'required',
-																	'data-validation-error-msg-required' => 'El campo es requerido'
+																	
 																] )!!}				
 									</div>
 									<div class="form-group col-lg-4">
 										{!! Form::label ('idCodigoPostal','Código postal:') !!}
 										{!! Form::select ('idCodigoPostal',$codigos,'',
 																['class' => 'form-control',
-																	'data-validation' => 'required',
-																	'data-validation-error-msg-required' => 'El campo es requerido'
+																	
 																] )!!}				
 									</div>
 								</div>
@@ -178,7 +165,9 @@
 									{!! Form::text ('nombres',
 														'',
 														['class' => 'form-control mayuscula',
-															'id' => 'nombres'
+															'id' => 'nombres',
+															'data-validation' => 'required',
+																	'data-validation-error-msg-required' => 'El campo es requerido'
 														] )!!}
 									<div class="form-control-feedback" id="error_nombres"></div>
 								</div>
@@ -187,7 +176,8 @@
 									{!! Form::text ('primerAp',
 														'',
 														['class' => 'form-control mayuscula',
-															'id' => 'primerAp',
+															'id' => 'primerAp','data-validation' => 'required',
+																	'data-validation-error-msg-required' => 'El campo es requerido'
 														] )!!}
 									<div class="form-control-feedback" id="error_primerAp"></div>
 								</div>
@@ -196,7 +186,8 @@
 									{!! Form::text ('segundoAp',
 														'',
 														['class' => 'form-control mayuscula',
-															'id' => 'segundoAp'] )!!}
+															'id' => 'segundoAp']
+															 )!!}
 									<div class="form-control-feedback" id="error_segundoAp"></div>
 								</div>
 								
@@ -226,7 +217,7 @@
 	                        {!! Form::label ('descripción','Breve descripción del hecho:') !!}
 	                        {!! Form::textarea('descripcion',
 	                                            $descripcionBreve,
-	                                            ['class' => 'form-control mayuscula', 'data-validation' =>'required','data-validation-depends-on' => 'identificacion','data-validation-depends-on-value' => '1','data-validation-error-msg-required' =>'Este campo es requerido.',"size" => "30x4","placeholder" => "Ingrese la descripción del hecho" , 'id' => 'descripcion'] )!!}
+	                                            ['class' => 'form-control mayuscula', 'data-validation' =>'required','data-validation-error-msg-required' =>'Este campo es requerido.',"size" => "30x4","placeholder" => "Ingrese la descripción del hecho" , 'id' => 'descripcion'] )!!}
 	                    </div>
 				</div>
 
@@ -262,7 +253,7 @@
 					
 
 								
-
+			</form>
 			</div>
 		</div>
 
@@ -274,7 +265,7 @@
 {!! HTML::script('personal/js/sisyphus.min.js') !!}
 {!! HTML::script('personal/js/sisyphus.js') !!}
 
-
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function()
