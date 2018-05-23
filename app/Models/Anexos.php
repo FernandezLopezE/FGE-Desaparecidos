@@ -10,6 +10,7 @@ class Anexos extends Model
 	protected $table = 'desaparecidos_anexos';
 	protected $fillable = [
 			'tipoAnexo',
+			'nombre',
 			'ruta',
 			'idDesaparecido'
 

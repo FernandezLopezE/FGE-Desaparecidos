@@ -339,9 +339,16 @@ Route::get('/envioDocumentos','MailController@envioDocumentos');
 
 //Anexos
 Route::get('anexos','AnexosController@show');
-	
-Route::resource('desaparicion','DesaparicionController');
-	
+//Route::post('/desaparicion','DesaparicionController@store');
+//Route::get('desaparicion/create/{$id}', 'DesaparicionController@create')
+	//->name ('desaparicion.create_desaparicion');	
+Route::resource('/desaparicion','DesaparicionController');
+
+//Route::resource('desaparicion' , 'DesaparicionController@store');
+Route::post('desaparicion', 'DesaparicionController@store');
+Route::put('desaparicion/{id}', 'DesaparicionController@update');
+
+
 
 
 
