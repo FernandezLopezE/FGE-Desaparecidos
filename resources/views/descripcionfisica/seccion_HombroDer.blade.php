@@ -1,5 +1,5 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<div class="HombroDer" id="formHombroDer">
+<div class="hombroDer" id="formHombroDer" style="display:none;">
 	<div class="card border-success" >
 		<div class="card-header">
 			<h5 class="card-title">Hombro derecho

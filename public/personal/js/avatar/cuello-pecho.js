@@ -1,5 +1,6 @@
 $(document).ready(function() {
-	
+
+	//Cargar valores a select de particularidades de cuello
 	$.ajax({
        url: '/descripcionfisica/get_particularidades/'+10,
        type:"GET",
@@ -13,6 +14,7 @@ $(document).ready(function() {
 	        },  
 	});
 
+	//Cargar valores a select de modificaciones de cuello
 	$.ajax({
        url: '/descripcionfisica/get_modificaciones/'+10,
        type:"GET",

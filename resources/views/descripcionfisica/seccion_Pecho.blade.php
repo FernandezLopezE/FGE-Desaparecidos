@@ -1,5 +1,5 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<div class="Pecho" id="formPecho">
+<div class="pecho" id="formPecho" style="display:none;">
 	<div class="card border-success" >
 		<div class="card-header">
 			<h5 class="card-title">Pecho

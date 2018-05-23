@@ -1,5 +1,5 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<div class="BrazoDer" id="formBrazoDer">
+<div class="BrazoDer" id="formBrazoDer" style="display:none;">
 	<div class="card border-success" >
 		<div class="card-header">
 			<h5 class="card-title">Brazo derecho
