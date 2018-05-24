@@ -1206,6 +1206,10 @@ class DescripcionFisicaController extends Controller
         //ids para mejillas
         $idMejillas = array(23,75,76);
         $mejillasParte = \App\Models\CatPartesCuerpo::whereIn('id',$idMejillas)->orderBy('nombre')->pluck('nombre','id');
+
+        //ids para pechos
+        $idPechos = array(42,43,78);
+        $pechosParte = \App\Models\CatPartesCuerpo::whereIn('id',$idPechos)->orderBy('nombre')->pluck('nombre','id');
        
 
         $partesCuerpo = \App\Models\CatPartesCuerpo::whereIn('id',$ids)->pluck('nombre','id');
@@ -1303,6 +1307,7 @@ class DescripcionFisicaController extends Controller
                 'bocaParte' => $bocaParte,
                 'orejasParte' => $orejasParte,
                 'mejillasParte' => $mejillasParte,
+                'pechosParte' => $pechosParte,
                 'showCabello' => $showCabello
             ]);
     }
