@@ -138,6 +138,13 @@
 																 ['class' => 'form-control',
 																 ] )!!}				
 									</div>
+									<div class="form-group col">
+										{!! Form::label ('idLocalidad','Localidad:') !!}
+										{!! Form::select ('idLocalidad',$localidades,'',
+																 ['class' => 'form-control'
+																	,'id' =>'idLocalidad'
+																 ] )!!}				
+									</div>
 							</div>
 							<div class="row" id=""  > 	
 									<div class="form-group col-lg-8">
