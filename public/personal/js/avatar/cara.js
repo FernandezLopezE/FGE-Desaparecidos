@@ -1211,6 +1211,8 @@ $(document).ready(function() {
 
 	//Botón guardar
 	$("#guardarCara").click(function(){
+		$("#datosCara").hide();
+		$("#detallesC").show();
 		var dataString = {
 	      //Cejas
 	      infocejas: $('#infocejas').val(),
@@ -1314,6 +1316,7 @@ $(document).ready(function() {
 	        $("#cara").css({"fill":"#17a4da", "stroke":"#ffffff","stroke-width":"2-"});
 	        $("#orejas").css({"fill":"#17a4da", "stroke":"#ffffff","stroke-width":"2-"});
 	        $("#nariz").css("fill","#17a4da");
+	        detallesCara();
 
 	        
 	      },
@@ -1323,4 +1326,174 @@ $(document).ready(function() {
 	      }
 	    });//fin  de petición para realizar el store de cabello y vello facial.
 	});
+	
+
+	//show datos 
+	function detallesCara(){
+		 //petición para obtener los detalles de rostro.
+	          $.ajax({
+	                      url: '/descripcionfisica/get_rostro/'+extraviado,
+	                      type:"GET",
+	                      dataType:"json",
+
+	                      success:function(data) {
+	                           $("#pCara").empty();
+	                          $.each(data, function(key, value){    
+	                          
+	                          console.log(value);
+	                          if(value.tenia == "SÍ"){
+	                            $("#pCara").show();
+	                            /*$("#pCara").append('<div class="card">'+
+	                                                      '<div class="card-header bg-white" >'+
+	                                                          '<h5 class="btn btn-link" data-toggle="collapse" data-target="#'+$.trim(value.nombre)+'" aria-expanded="false" aria-controls="collapseOne"><b>'+ value.nombre+'</b></h5>'+
+	                                                      '</div>'+
+	                                                      '<div class="card-body" id="'+$.trim(value.nombre)+'>'+
+	                                                          '<div class="row" >'+
+	                                                              '<div class="col-4">'+
+	                                                              '<label>Color:</label>'+
+	                                                              '</div>'+
+	                                                              '<div class="col">'+
+	                                                              '<p>'+value.color+'</p>'+
+	                                                              '</div>'+
+	                                                          '</div>'+
+
+	                                                          '<div class="row" style="margin-top:-10px">'+
+	                                                              '<div class="col-4">'+
+	                                                              '<label>Tamaño:</label>'+
+	                                                              '</div>'+
+	                                                              '<div class="col">'+
+	                                                              '<p>'+value.tamano+'</p>'+
+	                                                              '</div>'+
+	                                                          '</div>'+
+
+	                                                          '<div class="row" style="margin-top:-10px">'+
+	                                                              '<div class="col-4">'+
+	                                                              '<label>Tipo:</label>'+
+	                                                              '</div>'+
+	                                                              '<div class="col">'+
+	                                                              '<p>'+value.tipo+'</p>'+
+	                                                              '</div>'+
+	                                                          '</div>'+
+
+	                                                          '<div class="row" style="margin-top:-10px">'+
+	                                                              '<div class="col-4">'+
+	                                                              '<label>Particularidades:</label>'+
+	                                                              '</div>'+
+	                                                              '<div class="col">'+
+	                                                              '<p>'+value.particularidades+'</p>'+
+	                                                              '</div>'+
+	                                                          '</div>'+
+
+	                                                          '<div class="row" style="margin-top:-10px">'+
+	                                                              '<div class="col-4">'+
+	                                                              '<label>Modificaciones:</label>'+
+	                                                              '</div>'+
+	                                                              '<div class="col">'+
+	                                                              '<p>'+value.modificaciones+'</p>'+
+	                                                              '</div>'+
+	                                                          '</div>'+
+
+	                                                          '<div class="row" style="margin-top:-10px">'+
+	                                                              '<div class="col-4">'+
+	                                                              '<label>Observaciones:</label>'+
+	                                                              '</div>'+
+
+	                                                              '<div class="col">'+
+	                                                              '<p>'+value.observaciones+'</p>'+
+	                                                              '</div>'+
+	                                                          '</div>'+
+	                                                      '</div>'+
+	                                                  '</div>');*/
+								html  = '<div id="accordion">';
+								html = html+'<div class="card">';
+
+								html = html+'<div class="card-header" id="headingTwo">';
+								html = html+'<h5 class="mb-0">';
+								html = html+'<button class="btn btn-link collapsed" data-toggle="collapse" data-target="#'+value.nombre.replace(' ', '')+'" aria-expanded="false" aria-controls="'+value.nombre.replace(' ', '')+'">';
+								html = html+value.nombre;
+								html = html+'</button>';
+								html = html+'</h5>';
+								html = html+'</div>';
+
+								html = html+'<div id="'+value.nombre.replace(' ', '')+'" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">';
+								html = html+'<div class="card-body">';
+
+								html = html+'<div class="row" >';
+								html = html+'<div class="col-4">';
+								html = html+'<label>Color:</label>';
+								html = html+'</div>';
+								html = html+'<div class="col">';
+								html = html+'<p>'+value.color+'</p>';
+								html = html+'</div>';
+								html = html+'</div>';
+								 
+								html = html+'<div class="row" style="margin-top:-10px">';
+								html = html+'<div class="col-4">';
+								html = html+'<label>Tamaño:</label>';
+								html = html+'</div>';
+								html = html+'<div class="col">';
+								html = html+'<p>'+value.tamano+'</p>';
+								html = html+'</div>';
+								html = html+'</div>';
+								 
+								html = html+'<div class="row" style="margin-top:-10px">';
+								html = html+'<div class="col-4">';
+								html = html+'<label>Tipo:</label>';
+								html = html+'</div>';
+								html = html+'<div class="col">';
+								html = html+'<p>'+value.tipo+'</p>';
+								html = html+'</div>';
+								html = html+'</div>';
+								 
+								html = html+'<div class="row" style="margin-top:-10px">';
+								html = html+'<div class="col-4">';
+								html = html+'<label>Particularidades:</label>';
+								html = html+'</div>';
+								html = html+'<div class="col">';
+								html = html+'<p>'+value.particularidades+'</p>';
+								html = html+'</div>';
+								html = html+'</div>';
+								 
+								html = html+'<div class="row" style="margin-top:-10px">';
+								html = html+'<div class="col-4">';
+								html = html+'<label>Modificaciones:</label>';
+								html = html+'</div>';
+								html = html+'<div class="col">';
+								html = html+'<p>'+value.modificaciones+'</p>';
+								html = html+'</div>';
+								html = html+'</div>';
+
+								html = html+'<div class="row" style="margin-top:-10px">';
+								html = html+'<div class="col-4">';
+								html = html+'<label>Observaciones:</label>';
+								html = html+'</div>';
+
+								html = html+'<div class="col">';
+								html = html+'<p>'+value.observaciones+'</p>';
+								html = html+'</div>';
+								html = html+'</div>';
+
+								html = html+'</div>';
+								html = html+'</div>';
+
+								html = html+'</div>';
+
+								html = html+'</div>';
+	                            $("#pCara").append(html);
+	                          }else{
+	                            $("#pCara").hide();
+	                          }                    
+
+	                              
+
+
+	                          });
+
+	                      },
+	                      
+	                  });// fin de petición de talles de cabello
+	}
+
+
+	$('#CEJADERECHA').collapse()
 });
