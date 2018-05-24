@@ -1,4 +1,23 @@
 $(document).ready(function() {
+	//SELECT 2
+  $('#idPartiCeja').select2();
+  $('#idModiCeja').select2();
+  $('#idPartiOjos').select2();
+  $('#idModiOjos').select2();
+  $('#idPartiNariz').select2();
+  $('#idModiNariz').select2();
+  $('#idPartiBoca').select2();
+  $('#idModiBoca').select2();
+  $('#idPartiOreja').select2();
+  $('#idModiOreja').select2();
+
+  $('#idPartiFrente').select2();
+  $('#idModiFrente').select2();
+  $('#idPartiMejillas').select2();
+  $('#idModiMejillas').select2();
+  $('#idPartiMenton').select2();
+  $('#idModiMenton').select2();
+
 	var ResCejas, otraCeja, otraPartCeja, otraModCeja, ResOjos, otroColorOjo, otraPartOjo, otraModOjo, resNariz, otroTipoNariz, partNariz, otraModNariz, resBoca, 
 	otraPartBoca, otraModBoca, resOrejas, otroTipoOreja, otraPartOreja, resFrente, otraPartFrente, otraModFrente, resMejilla, otraPartMejilla, otraModMejilla, otraPartMenton, otraModMenton;
 	$("#cabeza").click(function(event) {
@@ -1216,6 +1235,71 @@ $(document).ready(function() {
 	      observacionesOjos: $('#observacionesOjos').val(),
 	      otraModOjo: $("#otraModOjo").val(),
 	      parteCuerpoO: $('#posOjos').val(),
+	      idExtraviado: $('#idExtraviado').val(),
+
+	      //nariz
+	      infoNariz: $('#infoNariz').val(),
+	      tipoNariz: $('#tipoNariz').val(),
+	      otroTipNar: $('#otroTipNar').val(),
+	      idPartiNariz: $('#idPartiNariz').val(),
+	      idModiNariz: $('#idModiNariz').val(),
+	      otraPartNariz: $('#otraPartNariz').val(),
+	      observacionesNariz: $('#observacionesNariz').val(),
+	      otraModiNariz: $("#otraModiNariz").val(),
+	      parteCuerpoN: 31,
+	      idExtraviado: $('#idExtraviado').val(),
+
+	      //boca
+	      infoBoca: $('#infoBoca').val(),
+	      tamanoBoca: $('#tamanoBoca').val(),
+	      idPartiBoca: $('#idPartiBoca').val(),
+	      idModiBoca: $('#idModiBoca').val(),
+	      otraPartBoca: $('#otraPartBoca').val(),
+	      observacionesBoca: $('#observacionesBoca').val(),
+	      otraModiBoca: $("#otraModiBoca").val(),
+	      parteCuerpoB: $('#posBoca').val(),
+	      idExtraviado: $('#idExtraviado').val(),
+
+	      //orejas
+	      infoOrejas: $('#infoOrejas').val(),
+	      tipoOreja: $('#tipoOreja').val(),
+	      otroTipoOreja: $('#otroTipoOreja').val(),
+	      idPartiOreja: $('#idPartiOreja').val(),
+	      idModiOreja: $('#idModiOreja').val(),
+	      otraPartOreja: $('#otraPartOreja').val(),
+	      observacionesOreja: $('#observacionesOreja').val(),
+	      otraModOreja: $("#otraModOreja").val(),
+	      parteCuerpoOre: $('#posOreja').val(),
+	      idExtraviado: $('#idExtraviado').val(),
+
+	      //frente
+	      infoFrente: $('#infoFrente').val(),
+	      idPartiFrente: $('#idPartiFrente').val(),
+	      idModiFrente: $('#idModiFrente').val(),
+	      otraPartFrente: $('#otraPartFrente').val(),
+	      observacionesFrente: $('#observacionesFrente').val(),
+	      otraModFrente: $("#otraModFrente").val(),
+	      parteCuerpoF: 16,
+	      idExtraviado: $('#idExtraviado').val(),
+
+	      //mejillas
+	      infoMejillas: $('#infoMejillas').val(),
+	      idPartiMejillas: $('#idPartiMejillas').val(),
+	      idModiMejillas: $('#idModiMejillas').val(),
+	      otraPartMejilla: $('#otraPartMejilla').val(),
+	      observacionesMejilla: $('#observacionesMejilla').val(),
+	      otraModMejilla: $("#otraModMejilla").val(),
+	      parteCuerpoM: $('#posMejilla').val(),
+	      idExtraviado: $('#idExtraviado').val(),
+
+	      //Mentón
+	      infoMenton: $('#infoMenton').val(),
+	      idPartiMenton: $('#idPartiMenton').val(),
+	      idModiMenton: $('#idModiMenton').val(),
+	      otraPartMenton: $('#otraPartMenton').val(),
+	      observacionesMenton: $('#observacionesMenton').val(),
+	      otraModMenton: $("#otraModMenton").val(),
+	      parteCuerpoMenton: 24,
 	      idExtraviado: $('#idExtraviado').val(),
 
 	      /*//Bigote
