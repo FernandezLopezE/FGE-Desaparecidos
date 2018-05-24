@@ -21,17 +21,17 @@
 			</div>
 
 			<div class="form-group row">
-				<div class="col">
-					{!! Form::text('otroTipoCeja', '', ['class' => 'form-control', 'id' => 'otroTipoCeja', 'placeholder' => 'Especifique otra particularidad'] ) !!}
+				<div class="col" style="display:none;" id="abdomen1">
+					{!! Form::text('otraPartAbdomen', '', ['class' => 'form-control', 'id' => 'otraPartAbdomen', 'placeholder' => 'Especifique otra particularidad'] ) !!}
 				</div>
-				<div class="col">
-					{!! Form::text('otroTipoCeja', '', ['class' => 'form-control', 'id' => 'otroTipoCeja', 'placeholder' => 'Especifique otra modificación'] ) !!}
+				<div class="col" style="display:none;" id="abdomen2">
+					{!! Form::text('otraModAbdomen', '', ['class' => 'form-control', 'id' => 'otraModAbdomen', 'placeholder' => 'Especifique otra modificación'] ) !!}
 				</div>
 			</div>
 
 			<div class="form-group row">
 				<div class="col">
-					{!! Form::textarea('observacionesCabello', '', ['class' => 'form-control', 'id' => 'observacionesCabello', 'rows' => '1', 'placeholder' => 'Observaciones'] ) !!}
+					{!! Form::textarea('obseAbdomen', '', ['class' => 'form-control', 'id' => 'obseAbdomen', 'rows' => '1', 'placeholder' => 'Observaciones'] ) !!}
 				</div>
 			</div>
 			<button type="button" class="btn btn-primary" style="float: right;" id="guardarAbdomen">GUARDAR</button>
