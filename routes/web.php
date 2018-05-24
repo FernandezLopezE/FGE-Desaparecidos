@@ -195,9 +195,9 @@ Route::get('/descripcionfisica/get_tipos/{idParteCuerpo}', 'DescripcionFisicaCon
 Route::post('/descripcionfisica/store', 'DescripcionFisicaController@store')
 	->name('descripcionfisica.store');
 Route::post('/descripcionfisica/storeVelloFacial', 'DescripcionFisicaController@storeVelloFacial')->name('descripcionfisica.storeVelloFacial');
+Route::post('/descripcionfisica/storeCara', 'DescripcionFisicaController@storeCara')->name('descripcionfisica.storeCara');
 Route::resource('/descripcionfisica','DescripcionFisicaController');
 //fin de mis rutas
-
 //Rutas para antedecedentes medicos
 Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'AntecedentesMedicosController@show')
 	->name('antecedentesmedicos.show');
