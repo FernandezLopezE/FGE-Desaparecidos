@@ -13,7 +13,7 @@ class DesaparicionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class DesaparicionRequest extends FormRequest
     public function rules()
     {
         $rules = [
-            // 'familiaresFechaNacimiento'       => 'required|date_format:d/m/Y|before_or_equal:'.date('Y-m-d'),
+            'desaparicionFecha'       => 'required|date_format:d/m/Y H:i:s|before_or_equal:'.date('Y-m-d H:i:s'),
            /* 'horas'                  => 'required',
             'minutos'               => 'required',*/
            
@@ -32,14 +32,14 @@ class DesaparicionRequest extends FormRequest
             'segundoAp'             => '',
             'primerAp'              => 'required',
             'calle'                 => 'required',
-            'referencia'              => 'required',
-            'idEstado'               => 'required',
-            'idMunicipio'             => 'required',
-            'idLocalidad'              => 'required',
-            'idColonia'                 => 'required',
-            'idCodigoPostal'        =>'required',
-            'avistoParentesco'      => 'required',
-            'descripcion'             => 'required',
+            'referencia'            => 'required',
+            'idEstado'              => 'required',
+            'idMunicipio'           => 'required',
+            'idLocalidad'           => 'required',
+            'idColonia'             => 'required',
+            'idCodigoPostal'        => 'required',
+            'idParentesco'          => 'required',
+            'descripcion'           => 'required',
         ];
 
         

@@ -65,8 +65,10 @@
 												['class' => 'form-control',
 													'id' => 'horas' ,
 													'data-validation' => 'required',
-													'data-validation-error-msg' => 'Ingrese una hora válida',
+                    'data-validation-error-msg-required' => 'El campo es requerido',
 													'max' =>'23','min' =>'0',
+													'data-validation'=>"number" ,
+													'data-validation-allowing'=>"range[0;23],negative",
 													'placeholder' => 'HH'				
 												])!!}
 
@@ -78,6 +80,8 @@
 													'data-validation' => 'required',
 													'data-validation-error-msg' => 'Ingrese una hora válida',
 													'max' =>'59','min' =>'0',
+													'data-validation'=>"number" ,
+													'data-validation-allowing'=>"range[0;59],negative",
 													'placeholder' => 'MM'						
 												])!!}
 								        </div>
@@ -264,7 +268,7 @@
 @section('scripts')
 {!! HTML::script('personal/js/sisyphus.min.js') !!}
 {!! HTML::script('personal/js/sisyphus.js') !!}
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 <script type="text/javascript">
@@ -374,7 +378,14 @@ $(btnGuardarDescripcionHechos).click (function(){
                   
 				},
 				error: function(data) {
-					console.log("valio verta");
+					var errors = data.responseJSON;	
+					$('.modal-body div.has-danger').removeClass('has-danger');
+					$('.form-control-feedback').empty();
+					$.each(errors.errors, function(key, value){			
+						$('#div_'+key).addClass('has-danger');
+						$('input#'+key).addClass('form-control-danger');
+						$('#error_'+key).append(value);						
+					});
 				}
 			});
 		})
