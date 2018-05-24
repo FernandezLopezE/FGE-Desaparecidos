@@ -16,12 +16,12 @@
 					{!! Form::select('infoTobilloDer', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoTobilloDer'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubParticularidades','Particularidades') !!}
-					{!! Form::select('idSubParticularidades', $tipoCeja, '', ['class' => 'form-control', 'id' => 'idSubParticularidades'] ) !!}
+					{!! Form::label ('partTobilloDer','Particularidades') !!}
+					{!! Form::select('partTobilloDer', $tipoCeja, '', ['class' => 'form-control', 'id' => 'partTobilloDer'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubModificaciones','Modificaciones') !!}
-					{!! Form::select('idSubModificaciones', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idSubModificaciones'] ) !!}
+					{!! Form::label ('modTobilloDer','Modificaciones') !!}
+					{!! Form::select('modTobilloDer', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'modTobilloDer'] ) !!}
 				</div>
 			</div>
 
@@ -47,12 +47,12 @@
 					{!! Form::select('infoTalonDer', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoTalonDer'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubParticularidades','Particularidades') !!}
-					{!! Form::select('idSubParticularidades', $tipoCeja, '', ['class' => 'form-control', 'id' => 'idSubParticularidades'] ) !!}
+					{!! Form::label ('partTalonDer','Particularidades') !!}
+					{!! Form::select('partTalonDer', $tipoCeja, '', ['class' => 'form-control', 'id' => 'partTalonDer'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubModificaciones','Modificaciones') !!}
-					{!! Form::select('idSubModificaciones', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idSubModificaciones'] ) !!}
+					{!! Form::label ('modTalonDer','Modificaciones') !!}
+					{!! Form::select('modTalonDer', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'modTalonDer'] ) !!}
 				</div>
 			</div>
 
@@ -78,12 +78,12 @@
 					{!! Form::select('infoPieDer', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoPieDer'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubParticularidades','Particularidades') !!}
-					{!! Form::select('idSubParticularidades', $tipoCeja, '', ['class' => 'form-control', 'id' => 'idSubParticularidades'] ) !!}
+					{!! Form::label ('partPieDer','Particularidades') !!}
+					{!! Form::select('partPieDer', $tipoCeja, '', ['class' => 'form-control', 'id' => 'partPieDer'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubModificaciones','Modificaciones') !!}
-					{!! Form::select('idSubModificaciones', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idSubModificaciones'] ) !!}
+					{!! Form::label ('modPieDer','Modificaciones') !!}
+					{!! Form::select('modPieDer', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'modPieDer'] ) !!}
 				</div>
 			</div>
 

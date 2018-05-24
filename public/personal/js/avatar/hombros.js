@@ -66,4 +66,44 @@ $(document).ready(function() {
 	           });
 	        },  
 	});
+
+	//Mostrar otra particularidad hombro izquierdo
+	$("#partHombroIzq").change(function(event) {
+		partHombIzq = $("#partHombroIzq").val();
+	    if (partHombIzq == "189") {
+	      $("#hombroIzq1").show();
+	    }else{
+	      $("#hombroIzq1").hide();
+	    }
+	  });
+
+	//Mostrar otra modificacion hombro izquierdo
+	$("#modHombroIzq").change(function(event) {
+		modHomIzq = $("#modHombroIzq").val();
+	    if (modHomIzq == "157") {
+	      $("#hombroIzq2").show();
+	    }else{
+	      $("#hombroIzq2").hide();
+	    }
+	  });
+
+	//Mostrar otra particularidad hombro derecho
+	$("#partHombroDer").change(function(event) {
+		partHomDer = $("#partHombroDer").val();
+	    if (partHomDer == "199") {
+	      $("#hombroDer1").show();
+	    }else{
+	      $("#hombroDer1").hide();
+	    }
+	  });
+
+	//Mostrar otra modificacion hombro derecho
+	$("#modHombroDer").change(function(event) {
+		modHomDer = $("#modHombroDer").val();
+	    if (modHomDer == "163") {
+	      $("#hombroDer2").show();
+	    }else{
+	      $("#hombroDer2").hide();
+	    }
+	  });
 });
