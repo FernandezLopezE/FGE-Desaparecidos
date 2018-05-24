@@ -127,13 +127,13 @@ class ConsultasController extends Controller
 //             ->get();
 //        dd($consulta->toArray());}
         
-        $subQuery = \DB::table('desaparecidos_personas as dp')
-        ->leftjoin('cedula_partes_cuerpo as cpc', 'cpc.idPersonaDesaparecida', '=', 'dp.id')    
-         ->leftjoin('cat_tipos_cuerpo as ctc', 'cpc.idTipoCuerpo', '=', 'ctc.id' , 'and', 'ctc.idPartesCuerpo', '=', 'cpc.idPartesCuerpo')   
-        ->select(\DB::raw('ctc.nombre as tipocab'))
-        ->whereRaw('tipoPersona','DESAPARECIDA')
-        ->whereRaw('ctc.idPartesCuerpo', 55)
-        ->whereRaw('ctc.nombre', 'LACIO'); 
+//        $subQuery = \DB::table('desaparecidos_personas as dp')
+//        ->leftjoin('cedula_partes_cuerpo as cpc', 'cpc.idPersonaDesaparecida', '=', 'dp.id')    
+//         ->leftjoin('cat_tipos_cuerpo as ctc', 'cpc.idTipoCuerpo', '=', 'ctc.id' , 'and', 'ctc.idPartesCuerpo', '=', 'cpc.idPartesCuerpo')   
+//        ->select(\DB::raw('ctc.nombre as tipocab'))
+//        ->whereRaw('tipoPersona','DESAPARECIDA')
+//        ->whereRaw('ctc.idPartesCuerpo', 55)
+//        ->whereRaw('ctc.nombre', 'LACIO'); 
         
 //        DB::table('branch_tbl')
 //->select('branch_tbl.id','branch_tbl.branchname',
@@ -167,7 +167,8 @@ class ConsultasController extends Controller
                        
                         //DB::raw('substr(id, 1, 4) as id')}
             ->select('des.id as id', \DB::raw('CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))AS nombre'), 'p.sexo as sexo',\DB::raw('substr(dci.desaparicionFecha, 1,10) as fecha'),'des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'),'des.estatura as estatura','des.peso as peso','cc.id as idComplexion','cc.nombre as complexion','ccp.id as idCPiel','ccp.nombre as cPiel','ce.id as idEstado','ce.nombre as estado','cm.id as idMuni','cm.nombre as municipio',
-                     'cn.nombre as nacionalidad',\DB::raw("({$subQuery->toSql()}) as sub"))
+                     'cn.nombre as nacionalidad')
+           // 'cn.nombre as nacionalidad',\DB::raw("({$subQuery->toSql()}) as sub"))
 //            ->from(\DB::raw(' ( ' . $subQuery->toSql() . ' ) AS counted '))
             
             

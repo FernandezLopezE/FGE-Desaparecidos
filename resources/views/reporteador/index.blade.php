@@ -878,7 +878,7 @@ var formatTableActions = function(value, row, index) {
             //data: data,
 			//url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+'/'+ estados,
 			columns: [{					
-				field: 'sub',
+				field: 'nombre',
 				title: 'Nombre',
 		}
                 , {					
