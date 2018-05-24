@@ -17,12 +17,12 @@
 					{!! Form::select('infoBrazoDer', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoBrazoDer'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubParticularidades','Particularidades') !!}
-					{!! Form::select('idSubParticularidades', $tipoCeja, '', ['class' => 'form-control', 'id' => 'idSubParticularidades'] ) !!}
+					{!! Form::label ('partBrazoDer','Particularidades') !!}
+					{!! Form::select('partBrazoDer', $tipoCeja, '', ['class' => 'form-control', 'id' => 'partBrazoDer'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubModificaciones','Modificaciones') !!}
-					{!! Form::select('idSubModificaciones', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idSubModificaciones'] ) !!}
+					{!! Form::label ('modBrazoDer','Modificaciones') !!}
+					{!! Form::select('modBrazoDer', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'modBrazoDer'] ) !!}
 				</div>
 			</div>
 
@@ -40,19 +40,19 @@
 					{!! Form::textarea('observacionesCabello', '', ['class' => 'form-control', 'id' => 'observacionesCabello', 'rows' => '1', 'placeholder' => 'Observaciones'] ) !!}
 				</div>
 			</div><hr>
-			<!-- Sección hombro  -->
+			<!-- Sección codo  -->
 			<div class="form-group row">
 				<div class="col-4">
 					{!! Form::label ('infoCodoIzq','Información de codo') !!}
 					{!! Form::select('infoCodoIzq', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoCodoIzq'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubParticularidades','Particularidades') !!}
-					{!! Form::select('idSubParticularidades', $tipoCeja, '', ['class' => 'form-control', 'id' => 'idSubParticularidades'] ) !!}
+					{!! Form::label ('partCodoDer','Particularidades') !!}
+					{!! Form::select('partCodoDer', $tipoCeja, '', ['class' => 'form-control', 'id' => 'partCodoDer'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubModificaciones','Modificaciones') !!}
-					{!! Form::select('idSubModificaciones', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idSubModificaciones'] ) !!}
+					{!! Form::label ('modCodoDer','Modificaciones') !!}
+					{!! Form::select('modCodoDer', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'modCodoDer'] ) !!}
 				</div>
 			</div>
 
@@ -74,16 +74,16 @@
 			<!-- Sección antebrazo  -->
 			<div class="form-group row">
 				<div class="col-4">
-					{!! Form::label ('infoCodoIzq','Información de antebrazo') !!}
-					{!! Form::select('infoCodoIzq', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoCodoIzq'] ) !!}
+					{!! Form::label ('infoAntebrazoDer','Información de antebrazo') !!}
+					{!! Form::select('infoAntebrazoDer', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoAntebrazoDer'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubParticularidades','Particularidades') !!}
-					{!! Form::select('idSubParticularidades', $tipoCeja, '', ['class' => 'form-control', 'id' => 'idSubParticularidades'] ) !!}
+					{!! Form::label ('partAntebrazoDer','Particularidades') !!}
+					{!! Form::select('partAntebrazoDer', $tipoCeja, '', ['class' => 'form-control', 'id' => 'partAntebrazoDer'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubModificaciones','Modificaciones') !!}
-					{!! Form::select('idSubModificaciones', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idSubModificaciones'] ) !!}
+					{!! Form::label ('modAntebrazoDer','Modificaciones') !!}
+					{!! Form::select('modAntebrazoDer', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'modAntebrazoDer'] ) !!}
 				</div>
 			</div>
 

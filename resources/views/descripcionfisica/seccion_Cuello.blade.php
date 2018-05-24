@@ -22,10 +22,10 @@
 			</div>
 
 			<div class="form-group row">
-				<div class="col">
+				<div class="col" style="display:none;" id="cuello1">
 					{!! Form::text('otraPartCuello', '', ['class' => 'form-control', 'id' => 'otraPartCuello', 'placeholder' => 'Especifique otra particularidad'] ) !!}
 				</div>
-				<div class="col">
+				<div class="col" style="display:none;" id="cuello2">
 					{!! Form::text('otraModCuello', '', ['class' => 'form-control', 'id' => 'otraModCuello', 'placeholder' => 'Especifique otra modificación'] ) !!}
 				</div>
 			</div>
