@@ -36,7 +36,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal">AGREGAR</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" id="agregaDentista" >AGREGAR</button>
         <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancelardentista">CANCELAR</button>
       </div>
     </div>

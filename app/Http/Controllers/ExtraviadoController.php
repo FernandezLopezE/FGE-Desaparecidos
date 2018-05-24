@@ -27,8 +27,8 @@ class ExtraviadoController extends Controller
 		$informantes = \App\Models\Desaparecido::where('idCedula', $id)
 											->where('tipoPersona', 'INFORMANTE')
 											->get();
-		
-		
+
+
 		if (!count($informantes)) {
 			return redirect()->action(
 				'InformanteController@show', ['id' => $id]
@@ -56,7 +56,7 @@ class ExtraviadoController extends Controller
 
 			$sexos = array('N' => 'SELECCIONE UN GENERO', 'H' => 'MASCULINO', 'M' => 'FEMENINO');
 			$escolaridades      = \App\Models\CatEscolaridad::all()->pluck('nombre','id');
-			$ocupaciones        = \App\Models\CatOcupacion::all()->pluck('nombre','id');
+			$ocupaciones        = \App\Models\CatOcupacion::orderBy('nombre')->get()->pluck('nombre','id');
 			$identificaciones   = \App\Models\CatDocumento::all()->pluck('nombre','id');
 			$edoscivil          = \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
 
@@ -65,7 +65,7 @@ class ExtraviadoController extends Controller
 			$nacionalidades     = \App\Models\CatNacionalidad::all()->pluck('nombre', 'id');
 			$ladas = \App\Models\CatNacionalidad::all()->pluck('lada','id');
 			$documentos     = \App\Models\CatDocumento::all()->pluck('nombre', 'id');
-			$estados            = \App\Models\CatEstado::all()->pluck('nombre','id');			       
+			$estados            = \App\Models\CatEstado::all()->pluck('nombre','id');
 			$municipios = array();
 			$localidades = array();
 			$colonias = array();
@@ -76,7 +76,7 @@ class ExtraviadoController extends Controller
 
 			$tiposTelefonos = array('PERSONAL' => 'PERSONAL',
 									'TRABAJO' => 'TRABAJO',
-									'CELULAR' => 'CELULAR');            
+									'CELULAR' => 'CELULAR');
 
 			$informantes = \App\Models\Desaparecido::where('tipoPersona', 'INFORMANTE')->get();
 
@@ -102,7 +102,7 @@ class ExtraviadoController extends Controller
 												'tiposDireccion',
 												'tiposTelefonos'
 											));
-		} 
+		}
 	}
 
 	/**
@@ -117,50 +117,56 @@ class ExtraviadoController extends Controller
 		$otroDocumento = ($request->input('idDocumentoIdentidad') == 9) ? $request->input('otroDocIdentidad') : null ;
 
 		if ($request->input('sexo') == 'M') {
-			$embarazo 		= $request->input('embarazo');		
+			$embarazo 		= $request->input('embarazo');
 			$numGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('numGestacion') : null;
 			$tipoGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('tipoGestacion') : null;
 			$rumoresBebe	= ($request->input('embarazo') == 'SI') ? $request->input('rumoresBebe') : 'NO';
-			$pormenores		= ($request->input('rumoresBebe') == 'SI') ? $request->input('pormenores') : null;			
+			$pormenores		= ($request->input('rumoresBebe') == 'SI') ? $request->input('pormenores') : null;
 		} else {
 			$embarazo		= 'NO';
 			$numGestacion	= null;
 			$tipoGestacion	= null;
 			$rumoresBebe	= 'NO';
-			$pormenores		= null;			
+			$pormenores		= null;
 		}
+		/*\DB::beginTransaction();
+		try {*/
+			$persona = \App\Models\Persona::create([
+				'nombres'           => $request->input('nombres'),
+				'primerAp'          => $request->input('primerAp'),
+				'segundoAp'         => $request->input('segundoAp'),
+				'fechaNacimiento'   => $request->input('fechaNacimiento'),
+				'sexo'              => $request->input('sexo'),
+				'idNacionalidad'    => $request->input('idNacionalidad'),
+				'curp'              => $request->input('curp'),
+				'idEstadoOrigen'    => $request->input('idEstadoOrigen'),
+			]);
 
-		$persona = \App\Models\Persona::create([
-			'nombres'           => $request->input('nombres'),
-			'primerAp'          => $request->input('primerAp'),
-			'segundoAp'         => $request->input('segundoAp'),
-			'fechaNacimiento'   => $request->input('fechaNacimiento'),
-			'sexo'              => $request->input('sexo'),
-			'idNacionalidad'    => $request->input('idNacionalidad'),
-			'curp'              => $request->input('curp'),
-			'idEstadoOrigen'    => $request->input('idEstadoOrigen'),
-		]);					
-				
-		$desaparecido = \App\Models\Desaparecido::create([
-			'idCedula'                  => $request->input('idCedula'),
-			'idPersona'                 => $persona->id,
-			'apodo'                     => $request->input('apodo'),
-			'edadAparente'              => $request->input('edadAparente'),
-			'edadExtravio'              => $request->input('edadExtravio'),
-			'embarazo'                  => $embarazo,
-			'numGestacion'              => $numGestacion,
-			'tipoGestacion'             => $tipoGestacion,
-			'rumoresBebe'               => $rumoresBebe,
-			'pormenores'                => $pormenores,
-			'antecedentesJudiciales'    => $request->input('antecedentesJudiciales'),
-			'otroDocIdentidad'          => $otroDocumento,
-			'numDocIdentidad'           => $request->input('numDocIdentidad'),
-			'idEdocivil'                => $request->input('idEdocivil'),
-			'idOcupacion'               => $request->input('idOcupacion'),
-			'idEscolaridad'             => $request->input('idEscolaridad'),
-			'idDocumentoIdentidad'      => $request->input('idDocumentoIdentidad'),
-			'tipoPersona'               => 'DESAPARECIDA',
-		]);
+			$desaparecido = \App\Models\Desaparecido::create([
+				'idCedula'                  => $request->input('idCedula'),
+				'idPersona'                 => $persona->id,
+				'apodo'                     => $request->input('apodo'),
+				'edadAparente'              => $request->input('edadAparente'),
+				'edadExtravio'              => $request->input('edadExtravio'),
+				'embarazo'                  => $embarazo,
+				'numGestacion'              => $numGestacion,
+				'tipoGestacion'             => $tipoGestacion,
+				'rumoresBebe'               => $rumoresBebe,
+				'pormenores'                => $pormenores,
+				'antecedentesJudiciales'    => $request->input('antecedentesJudiciales'),
+				'otroDocIdentidad'          => $otroDocumento,
+				'numDocIdentidad'           => $request->input('numDocIdentidad'),
+				'idEdocivil'                => $request->input('idEdocivil'),
+				'idOcupacion'               => $request->input('idOcupacion'),
+				'idEscolaridad'             => $request->input('idEscolaridad'),
+				'idDocumentoIdentidad'      => $request->input('idDocumentoIdentidad'),
+				'tipoPersona'               => 'DESAPARECIDA',
+			]);
+		/*} catch (\Exception $e) {
+				$success = false;
+				$error = $e->getMessage();
+				\DB::rollback();
+    }*/
 
 		return response()->json($data = array('persona' => $persona,
 												'desaparecido' => $desaparecido));
@@ -168,9 +174,9 @@ class ExtraviadoController extends Controller
 		/*return redirect()->action(
 			'ExtraviadoController@show', ['id' => $desaparecido->idCedula]
 		);*/
-		
 
-				
+
+
 		/*$nombres = $request->input('familiaresNombres');
 		$primerAp = $request->input('familiaresPrimerAp');
 		$segundoAp = $request->input('familiaresSegundoAp');
@@ -210,7 +216,7 @@ class ExtraviadoController extends Controller
 											->where('tipoPersona', 'DESAPARECIDA')
 											->limit(1)
 											->get();
-		
+
 		$desaparecido = \App\Models\Desaparecido::find($datos[0]->id);
 
 		return view('desaparecido.show',compact('desaparecido'));
@@ -228,7 +234,7 @@ class ExtraviadoController extends Controller
 
 		$sexos = array('H' => 'MASCULINO', 'M' => 'FEMENINO');
 		$escolaridades      = \App\Models\CatEscolaridad::all()->pluck('nombre','id');
-		$ocupaciones        = \App\Models\CatOcupacion::all()->pluck('nombre','id');
+		$ocupaciones        = \App\Models\CatOcupacion::orderBy('nombre')->get()->pluck('nombre','id');
 		$identificaciones   = \App\Models\CatDocumento::all()->pluck('nombre','id');
 		$edoscivil          = \App\Models\CatEstadoCivil::all()->pluck('nombre','id');
 
@@ -236,7 +242,7 @@ class ExtraviadoController extends Controller
 		$nacionalidades     = \App\Models\CatNacionalidad::all()->pluck('nombre', 'id');
 		$ladas = \App\Models\CatNacionalidad::all()->pluck('lada','id');
 		$documentos     = \App\Models\CatDocumento::all()->pluck('nombre', 'id');
-		$estados            = \App\Models\CatEstado::all()->pluck('nombre','id');       
+		$estados            = \App\Models\CatEstado::all()->pluck('nombre','id');
 		$municipios = array();
 		$localidades = array();
 		$colonias = array();
@@ -247,12 +253,12 @@ class ExtraviadoController extends Controller
 
 		$tiposTelefonos = array('PERSONAL' => 'PERSONAL',
 								'TRABAJO' => 'TRABAJO',
-								'CELULAR' => 'CELULAR');            
+								'CELULAR' => 'CELULAR');
 
 		$informantes = \App\Models\Desaparecido::where('tipoPersona', 'INFORMANTE')->get();
 
 		return view('desaparecido.edit',compact(
-											'desaparecido',									
+											'desaparecido',
 											'sexos',
 											'escolaridades',
 											'ocupaciones',
@@ -286,21 +292,21 @@ class ExtraviadoController extends Controller
 		$otroDocumento = ($request->input('idDocumentoIdentidad') == 9) ? $request->input('otroDocIdentidad') : null ;
 
 		if ($request->input('sexo') == 'M') {
-			$embarazo 		= $request->input('embarazo');		
+			$embarazo 		= $request->input('embarazo');
 			$numGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('numGestacion') : null;
 			$tipoGestacion	= ($request->input('embarazo') == 'SI') ? $request->input('tipoGestacion') : null;
 			$rumoresBebe	= ($request->input('embarazo') == 'SI') ? $request->input('rumoresBebe') : 'NO';
-			$pormenores		= ($request->input('rumoresBebe') == 'SI') ? $request->input('pormenores') : null;			
+			$pormenores		= ($request->input('rumoresBebe') == 'SI') ? $request->input('pormenores') : null;
 		} else {
 			$embarazo		= 'NO';
 			$numGestacion	= null;
 			$tipoGestacion	= null;
 			$rumoresBebe	= 'NO';
-			$pormenores		= null;			
+			$pormenores		= null;
 		}
 
 
-		$desaparecido = \App\Models\Desaparecido::find($id)->update([						
+		$desaparecido = \App\Models\Desaparecido::find($id)->update([
 			'apodo'                     => $request->input('apodo'),
 			'edadAparente'              => $request->input('edadAparente'),
 			'edadExtravio'              => $request->input('edadExtravio'),
@@ -315,10 +321,10 @@ class ExtraviadoController extends Controller
 			'idEdocivil'                => $request->input('idEdocivil'),
 			'idOcupacion'               => $request->input('idOcupacion'),
 			'idEscolaridad'             => $request->input('idEscolaridad'),
-			'idDocumentoIdentidad'      => $request->input('idDocumentoIdentidad'),			
+			'idDocumentoIdentidad'      => $request->input('idDocumentoIdentidad'),
 		]);
 
-		$desaparecido = \App\Models\Desaparecido::find($id);		
+		$desaparecido = \App\Models\Desaparecido::find($id);
 
 		$persona = \App\Models\Persona::find($desaparecido->idPersona)->update([
 			'nombres'           => $request->input('nombres'),

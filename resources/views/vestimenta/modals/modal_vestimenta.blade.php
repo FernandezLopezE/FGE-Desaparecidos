@@ -9,7 +9,7 @@
 					</button>
 				</div>
 				<div class="modal-body"> 
-					   
+					<form id="formVestimenta">
 					<!-- Contenido del formulario-->
 					<div class="row">
 						<div class="form-group col-md-4" id="div_idVestimenta">
@@ -80,8 +80,9 @@
 						</div>
 						
 
-					</div>
+					</div>					
 					<!-- Fin del Contenido del formulario-->
+					</form> 
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-dark" id="btnGuardarPrenda">GUARDAR</button>

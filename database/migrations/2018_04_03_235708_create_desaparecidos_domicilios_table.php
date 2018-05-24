@@ -15,7 +15,7 @@ class CreateDesaparecidosDomiciliosTable extends Migration
     {
         Schema::create('desaparecidos_domicilios', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('tipoDireccion', ['PERSONAL','TRABAJO', 'FAMILIAR']); 
+            $table->enum('tipoDireccion', ['PERSONAL','TRABAJO', 'FAMILIAR', 'LUGAR DE AVISTAMIENTO']); 
             $table->string('calle', 100)->default("SIN INFORMACION");
             $table->string('numExterno', 10)->default('S/N');
             $table->string('numInterno', 10)->nullable();
