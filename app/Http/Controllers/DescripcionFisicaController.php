@@ -105,6 +105,104 @@ class DescripcionFisicaController extends Controller
         
     }
 
+
+    //Store para cara
+    public function storeCara(Request $request){
+        //consulta ceja
+        $query = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->where('cpc.idPersonaDesaparecida',$request['idExtraviado'])
+                        ->where('cpc.idPartesCuerpo',$request['parteCuerpoC'])
+                        ->get();
+        
+        $aux = count($query->toArray());
+
+        if($aux != 0){
+            $parteCuerpo =  CedulaPartesCuerpo::find($query->toArray()[0]->id);
+
+            $parteCuerpo->idPersonaDesaparecida = $request['idExtraviado'];
+            $parteCuerpo->tenia = $request['infocejas'];
+            $parteCuerpo->idPartesCuerpo = $request['parteCuerpoC'];
+            $parteCuerpo->idTipoCuerpo = $request['tipoCeja'];
+            $parteCuerpo->otraParticularidad =$request['otraPartiCeja'];
+            $parteCuerpo->otraModificacion =$request['otraModiCeja'];
+            $parteCuerpo->otroTipoCuerpo =$request['otroTipoCeja'];
+            $parteCuerpo->observaciones = $request['observacionesCejas'];
+
+            $parteCuerpo->save();
+
+            //particularidades
+            $particularidadC = $request['idPartiCeja'];
+            $longitud = count($particularidadC);
+
+            if($longitud !=0){
+                \DB::table('pivot_subparti_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
+                for($i=0; $i<$longitud; $i++){
+                        $partiCabello = new PivotSubPartiCuerpo();
+                        $partiCabello->idCedulaPartesCuerpo = $parteCuerpo->id;
+                        $partiCabello->idSubParticularidades = $particularidadC[$i];
+                        $partiCabello->save();
+                    }
+            }else{
+                \DB::table('pivot_subparti_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
+            }
+
+            //modificaciones
+             $modificacionC = $request['idModiCeja'];
+             $longitud = count($modificacionC);
+             if($longitud !=0){
+                \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
+
+                 for($i=0; $i<$longitud; $i++){
+                    $modiCabello =  new PivotSubModiCuerpo();
+                    $modiCabello->idCedulaPartesCuerpo = $parteCuerpo->id;
+                    $modiCabello->idSubModificaciones = $modificacionC[$i];
+                    $modiCabello->save();
+                 }         
+             }else{
+                \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
+             }
+        }else{
+            //ceja
+            $parteCuerpo = new CedulaPartesCuerpo();
+
+            $parteCuerpo->idPersonaDesaparecida = $request['idExtraviado'];
+            $parteCuerpo->tenia = $request['infocejas'];
+            $parteCuerpo->idPartesCuerpo = $request['parteCuerpoC'];
+            $parteCuerpo->idTipoCuerpo = $request['tipoCeja'];
+            $parteCuerpo->otraParticularidad =$request['otraPartiCeja'];
+            $parteCuerpo->otraModificacion =$request['otraModiCeja'];
+            $parteCuerpo->otroTipoCuerpo =$request['otroTipoCeja'];
+            $parteCuerpo->observaciones = $request['observacionesCejas'];
+
+            $parteCuerpo->save();
+
+            //particularidades ceja
+            $particularidadC = $request['idPartiCeja'];
+            $longitud = count($particularidadC);
+            for($i=0; $i<$longitud; $i++){
+                $partiCabello = new PivotSubPartiCuerpo();
+                $partiCabello->idCedulaPartesCuerpo = $parteCuerpo->id;
+                $partiCabello->idSubParticularidades = $particularidadC[$i];
+                $partiCabello->save();
+            }
+
+             //modificaciones ceja
+             $modificacionC = $request['idModiCeja'];
+             $longitud = count($modificacionC);
+             for($i=0; $i<$longitud; $i++){
+                $modiCabello = new PivotSubModiCuerpo();
+                $modiCabello->idCedulaPartesCuerpo = $parteCuerpo->id;
+                $modiCabello->idSubModificaciones = $modificacionC[$i];
+                $modiCabello->save();
+             }         
+        }
+
+        
+
+        return response()->json($parteCuerpo);
+    }
+
+
     //Store para cabello,barba, bigote y patilla
     public function storeVelloFacial(Request $request){
 
@@ -114,7 +212,7 @@ class DescripcionFisicaController extends Controller
                         ->where('cpc.idPartesCuerpo',$request['parteCuerpoC'])
                         ->get();
         
-        $aux = count($query->toArray());;
+        $aux = count($query->toArray());
         //dd($query->toArray());
 
 
@@ -235,7 +333,7 @@ class DescripcionFisicaController extends Controller
                         ->where('cpc.idPartesCuerpo',$request['parteCuerpoBa'])
                         ->get();
         
-        $aux2 = count($query1->toArray());;
+        $aux2 = count($query1->toArray());
         //dd($query->toArray());
 
 
