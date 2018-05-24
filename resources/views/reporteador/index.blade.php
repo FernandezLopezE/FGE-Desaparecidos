@@ -24,12 +24,14 @@
 		</h5>
 	</div>	
 	<div class="card-body">	
+<!--
     <p >
         <imput type="button" class="btn btn-dark pull-right" id="filtrosTodos">Buscar todos los registros</imput>	    
     </p> <br>
+-->
 	    <div class="card-body bg-white">       
             <div class="row" id="idDatosGral">               
-               <div class="col" style="padding-right:0px;padding-left:0px;">
+               <div class="col-lg-2" style="padding-right:0px;padding-left:0px;">
                     <div class="">
                         <div class="card-header">
                            Datos generales                        
@@ -41,7 +43,7 @@
                              <div class=" form-check ">
 
                                  <input class="form-check-input" Value="H" type="checkbox" id="masc" checked> Hombre: 
-                            </div>
+                            </div><br>
                             <div class=" form-check ">
 
                                  <input class="form-check-input" Value="M" type="checkbox" id="fem" checked> Mujer:
@@ -58,12 +60,12 @@
                         <div class=" list-group-flush small" >
                         
                           <div class="list-group-item list-group-item-action"  id="campoEdad" > 
-                              <p style="text-align:LEFT"><b>Edad</b></p>
+                              <p style="text-align:LEFT"><b>Edad de desaparición</b></p>
                               <div class="" id="div_idEstado">
                                  {!! Form::label ('','Desde:',['class' => '']) !!}
-                                    <input  min="0" max="120" step="1" type="number" id="rng1"><br>
+                                    <input  min="0" max="120" step="1" type="number" id="rng1" class="form-control"><br>
                                 {!! Form::label ('','Hasta:',['class' => '']) !!}&nbsp;
-                                    <input  min="0" max="120" step="1" type="number" id="rng2"> 
+                                    <input  min="0" max="120" step="1" type="number" id="rng2" class="form-control"> 
                              </div>     
                           </div>
                       </div>
@@ -79,18 +81,90 @@
                           <div class="list-group-item list-group-item-action">
                              <p style="text-align:LEFT"><b>Ubicación de la desaparición</b></p> 
                               <div class=""  id="infoCabello3">
-                                {!! Form::label ('idEstados','Estados:') !!} <br>
+                                {!! Form::label ('idEstados','Estados:') !!} 
                                 {!! Form::select('idEstados',$estados, '', ['class' => '', 'id' => 'estados','multiple' => 'multiple'] ) !!}
                             </div> 
                             <div class=""  id="infoCabello3">
-                                {!! Form::label ('idEstados','Municipios:') !!} <br>
+                                {!! Form::label ('idEstados','Municipios:') !!} 
                                 {!! Form::select('idEstados',$municipios, '', ['class' => '', 'id' => 'municipios','multiple' => 'multiple'] ) !!}
                             </div>     
                           </div>
                       </div>
 	            </div>                 
             </div>
-            <div class="row" id="idDesFisica">
+             <div class="row" >
+             <div class="col" style="padding-right:0px;padding-left:0px;">
+                <div class="card-header">
+                           Fechas
+                           
+                           </div>
+                            
+                          <div class="list-group-flush small" style="Display:none" id="campoFechaD" >
+                             
+                              <div class="list-group-item list-group-item-action" id="div_idEstado">
+                                <p style="text-align:LEFT">    <b>Fecha de desaparición</b></p> 
+                                 {!! Form::label ('fechaDesaparicion','Desde:', ['class' => 'form-control-label']) !!}
+						         {!! Form::text ('fechaNacimiento',
+											'',
+											['class' => 'form-control',
+												'id' => 'fechaDesaparicion1',
+												'data-validation' =>'date',
+												'data-validation-format'=>"dd/mm/yyyy",
+												'data-validation-error-msg-date' => 'Ingrese fecha correcta',
+											] )!!} <br>
+                                {!! Form::label ('fechaDesaparicion','Hasta:', ['class' => 'form-control-label']) !!}
+						         {!! Form::text ('fechaNacimiento',
+											'',
+											['class' => 'form-control',
+												'id' => 'fechaDesaparicion2',
+												'data-validation' =>'date',
+												'data-validation-format'=>"dd/mm/yyyy",
+												'data-validation-error-msg-date' => 'Ingrese fecha correcta',
+											] )!!}    
+                                  
+                             </div>     
+                          </div> 
+             </div>
+             <div class="col" style="padding-right:0px;padding-left:0px;">
+                <div class="card-header">
+                           &nbsp;
+                           <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar5"></i>
+                           </div>
+                            
+                          <div class="list-group-flush small" style="Display:none" id="campoFechaR" >
+                             
+                              <div class="list-group-item list-group-item-action" id="div_idEstado">
+                                <p style="text-align:LEFT">    <b>Fecha de reporte</b></p> 
+                                 {!! Form::label ('fechaReporte','Desde:', ['class' => 'form-control-label']) !!}
+						         {!! Form::text ('fechaNacimiento',
+											'',
+											['class' => 'form-control',
+												'id' => 'fechaReporte1',
+												'data-validation' =>'date',
+												'data-validation-format'=>"dd/mm/yyyy",
+												'data-validation-error-msg-date' => 'Ingrese fecha correcta',
+											] )!!} <br>
+                                {!! Form::label ('fechaDesaparicion','Hasta:', ['class' => 'form-control-label']) !!}
+						         {!! Form::text ('fechaNacimiento',
+											'',
+											['class' => 'form-control',
+												'id' => 'fechaReporte2',
+												'data-validation' =>'date',
+												'data-validation-format'=>"dd/mm/yyyy",
+												'data-validation-error-msg-date' => 'Ingrese fecha correcta',
+											] )!!}    
+                                  
+                             </div>     
+                          </div> 
+             </div>
+              
+
+                     
+                       
+                     
+            </div>
+           
+            <div class="row" >
              <div class="col" style="padding-right:0px;padding-left:0px;">
                 <div class="card-header">
                            Descripción física
@@ -133,7 +207,7 @@
                           <div class="list-group-item list-group-item-action" style="Display:none" id="campoColorPiel" >
                               
                               <div class="" id="div_colorPiel">
-                                {!! Form::label ('idColorPiel','Color de piel:') !!} <br>
+                                {!! Form::label ('idColorPiel','Color de piel') !!} <br>
                                 {!! Form::select('cPiel',$coloresPiel, '', ['class' => '', 'id' => 'cPiel','multiple' => 'multiple'] ) !!}
                              </div>     
                           </div>
@@ -148,14 +222,15 @@
                           <div class="list-group-item list-group-item-action" style="Display:none" id="campoComplexion" >
                              
                               <div class="" id="div_colorPiel">
-                                {!! Form::label ('comple','Complexión:') !!}<br>
+                                {!! Form::label ('comple','Complexión') !!}<br>
                               {!! Form::select ('comple', $complexiones, '',['class' => '', 'id' => 'complexion','multiple' => 'multiple'] )!!}        
                              </div>     
                           </div>
                       </div>  
                       </div>  
             </div>
-             <div class="row" id="idTipos">               
+            
+             <div class="row"  >               
                <div class="col" style="padding-right:0px;padding-left:0px;">
                     <div class="">
                         <div class="card-header">
@@ -187,7 +262,7 @@
                           </div>
                       </div>
 	            </div>
-	            <div class="col" style="padding-right:0px;padding-left:0px;">
+	            <div class="col" style="padding-right:0px;padding-left:0px;" >
                         <div class="card-header">
                            &nbsp;
                            <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar3"></i>                           
@@ -202,7 +277,7 @@
                       </div>
 	            </div>                  
             </div>
-             <div class="row" id="idTamanos">               
+             <div class="row" >               
                <div class="col" style="padding-right:0px;padding-left:0px;">
                     <div class="">
                         <div class="card-header">
@@ -263,7 +338,7 @@
         <imput type="button" class="btn btn-dark pull-right" id="filtros">Buscar</imput>
         
 	     <br><br>
-           <div id="tablaGen" >
+           <div id="tablaGen" style="width:90%">
 
           <table id="tableDependencias"
               data-search="true"
@@ -285,7 +360,31 @@
                     <th data-field="Nombres" 
                         data-sortable="true"></th>
                     <th data-field="Fecha de desaparición" 
-                        data-sortable="true"></th>
+                        data-sortable="true" ></th>
+                        <th data-field="Sexo" 
+                        data-sortable="true" data-visible="false"></th>
+                        <th data-field="Apodo" 
+                        data-sortable="true" data-visible="false"></th>
+                        <th data-field="Edad" 
+                        data-sortable="true" data-visible="false"></th>
+                        <th data-field="Estatura" 
+                        data-sortable="true" data-visible="false"></th>
+                        <th data-field="Peso" 
+                        data-sortable="true" data-visible="false"></th>
+                        <th data-field="Complexion" 
+                        data-sortable="true" data-visible="false"></th>
+                        <th data-field="Color de piel" 
+                        data-sortable="true" data-visible="false"></th>
+                        <th data-field="Estado" 
+                        data-sortable="true" data-visible="false"></th>
+                        <th data-field="Municipio" 
+                        data-sortable="true" data-visible="false"></th>
+                        <th data-field="Nacionalidad" 
+                        data-sortable="true" data-visible="false"></th>
+                        <th data-field="Fecha de reporte" 
+                        data-sortable="true" data-visible="false"></th>
+                        <th data-field="Hechos" 
+                        data-sortable="true" data-visible="false"></th>
                <th data-field="Acciones"></th>
                 </tr>
             </thead>
@@ -349,6 +448,7 @@
 {!! HTML::script('personal/js/bootstrap-table-toolbar.js') !!}
 
 <script type="text/javascript">
+    
      //$("#campoUbicacion").hide();
     //-<<--<--<<--<<--<<-MULTISELECTS-<<--<--<<--<<--<<-<<--<--<<--<<--<<
      $('#estados').multipleSelect({
@@ -421,14 +521,14 @@
         $("#campoTamanoCabello").toggle();
         $("#campoTamanoOjos").toggle();
         $("#campoTamanoBoca").toggle();
-
-//        $('#partiCabello').multipleSelect({
-//            filter: true
-//        });
-//    $('#municipios').multipleSelect({
-//            filter: true
-//        });
         
+    });
+     $("#colapsar5").click(function(event) {
+        //$("#campoUbicacion").show();
+        $("#campoFechaD").toggle();
+        $("#campoFechaR").toggle();
+       
+
     });
     
     var prueba = $('#prueba');
@@ -793,7 +893,21 @@ var formatTableActions = function(value, row, index) {
 
         //console.log("entrando")
         });
-      filtros.click(function(){
+     //-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-
+    filtros.click(function(){
+        
+        
+            from = $("#fechaDesaparicion1").val().split("/");
+            fechaDesaparicion1 = from[2] + "-" + from[1] + "-" + from[0];
+            fechaInicio = Date.parse(fechaDesaparicion1);
+            from2 = $("#fechaDesaparicion2").val().split("/");
+            fechaDesaparicion2 = from2[2] + "-" + from2[1] + "-" + from2[0];
+            fechaFin = Date.parse(fechaDesaparicion2);
+            console.log("FECHA");                           
+    console.log(fechaInicio);
+    
+         
+        
           tablaGenTodos.hide();
           var estados = $('#estados').multipleSelect('getSelects');
           var municipios = $('#municipios').multipleSelect('getSelects');
@@ -843,6 +957,10 @@ var formatTableActions = function(value, row, index) {
                 estatura2 : $('#estatura2').val(),
                 peso1 : $('#peso1').val(),
                 peso2 : $('#peso2').val(),
+                fechaDes1 : $('#fechaDesaparicion1').val(),
+                fechaDes2 : $('#fechaDesaparicion2').val(),
+                fechaRep1 : $('#fechaReporte1').val(),
+                fechaRep2 : $('#fechaReporte2').val(),
 			};
           console.log("El dataString:");
           console.log(dataString);
@@ -880,8 +998,47 @@ var formatTableActions = function(value, row, index) {
 			columns: [{					
 				field: 'nombre',
 				title: 'Nombre',
-		}
-                , {					
+		},{
+            field: 'fecha',
+            title: 'Fecha de desaparición',
+        },{					
+				field: 'sexo',
+				title: 'Sexo',
+		},{					
+				field: 'apodo',
+				title: 'Apodo',
+		},{					
+				field: 'edad',
+				title: 'Edad',
+		},{					
+				field: 'estatura',
+				title: 'Estatura',
+		},{					
+				field: 'peso',
+				title: 'Peso',
+		},{					
+				field: 'complexion',
+				title: 'Complexión',
+		},{					
+				field: 'cPiel',
+				title: 'Color de piel',
+		},{					
+				field: 'estado',
+				title: 'Estado',
+		},{					
+				field: 'municipio',
+				title: 'Municipio',
+		},{					
+				field: 'nacionalidad',
+				title: 'Nacionalidad',
+		},{
+            field: 'fechaReporte',
+            title: 'Fecha de reporte',
+        },{					
+				field: 'hechos',
+				title: 'Hechos',
+		},
+                      
 //				title: 'Género',
 //                formatter: formatCheckInformante
 //			}, {					
@@ -890,8 +1047,7 @@ var formatTableActions = function(value, row, index) {
 //			}, 
                 
                 					
-				field: 'fecha',
-				title: 'Fecha de desaparición',
+				
 //			}, {					
 //				field: 'estado',
 //				title: 'Estado',
@@ -899,7 +1055,7 @@ var formatTableActions = function(value, row, index) {
 //				field: 'municipio',
 //				title: 'Municipio',
 //		
-                },
+                
                       {					
 				title: 'Acciones',
 				formatter: formatTableActions,
