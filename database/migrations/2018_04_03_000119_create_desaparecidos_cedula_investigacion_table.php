@@ -48,18 +48,6 @@ class CreateDesaparecidosCedulaInvestigacionTable extends Migration
             $table->string('vehiculoPlacas', 250)->nullable();
             //$table->string('estatura',10)->nullable();
             //$table->string('peso',10)->nullable();
-            $table->json('objetos')->nullable();
-            $table->string('modeloCalzado', 100)->nullable();
-            $table->string('otroColorCalzado', 100)->nullable();
-            $table->string('otroCalzado', 200)->nullable();
-            $table->string('otraMarca', 200)->nullable();
-            $table->integer('idCalzadotipo')->unsigned()->nullable();
-            $table->foreign('idCalzadotipo')->references('id')->on('cat_calzado_tipo');
-            $table->integer('idCalzadocolor')->unsigned()->nullable();
-            $table->foreign('idCalzadocolor')->references('id')->on('cat_colores');
-            $table->integer('idCalzadomarca')->unsigned()->nullable();
-            $table->foreign('idCalzadomarca')->references('id')->on('cat_calzado_marca');
-
             //$table->integer('idComplexion')->unsigned()->nullable();
             //$table->foreign('idComplexion')->references('id')->on('cat_complexion');
             //$table->integer('idColorPiel')->unsigned()->nullable();

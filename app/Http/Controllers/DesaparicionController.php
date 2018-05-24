@@ -20,7 +20,7 @@ class DesaparicionController extends Controller
      */
     public function index()
     {
-      
+
     }
 
     /**
@@ -30,7 +30,7 @@ class DesaparicionController extends Controller
      */
     public function create()
     {
-       
+
     }
 
     /**
@@ -42,14 +42,14 @@ class DesaparicionController extends Controller
     public function store(DesaparicionRequest $request)
     {
         $idDesaparecido = ($request['idDesaparecido']);
-       
-         $datos2= \DB::table('desaparecidos_personas AS dp')    
+
+         $datos2= \DB::table('desaparecidos_personas AS dp')
                 ->select('dp.idCedula as idCedula')
                 ->where('dp.id', $idDesaparecido)
                 ->get();
         $idCedula = ($datos2[0] ->idCedula);
        // $desaparecido = \App\Models\Desaparecido::find($datos2[0]->id);
-       
+
         $nombres = ($request['nombres']);
         $primerAp = ($request['primerAp']);
         $segundoAp = ($request['segundoAp']);
@@ -63,7 +63,7 @@ class DesaparicionController extends Controller
         //$desaparicionHora = ($request['desaparicionHora']);
         $referencia = ($request['referencia']);
         //domicilio
-      //  $desaparicionFecha = Carbon::createFromFormat('d/m/Y', $desaparicionFecha)->format('Y-m-d');         
+      //  $desaparicionFecha = Carbon::createFromFormat('d/m/Y', $desaparicionFecha)->format('Y-m-d');
         $tipoDireccion = ($request['tipoDireccion']);
         $calle            = ($request['calle']);
         $numExterno = ($request['numExterno']);
@@ -71,17 +71,17 @@ class DesaparicionController extends Controller
         $idMunicipio = ($request['idMunicipio']);
         $idLocalidad = ($request['idLocalidad']);
         $idColonia = ($request['idColonia']);
-        $idCodigoPostal = ($request['idCodigoPostal']);     
+        $idCodigoPostal = ($request['idCodigoPostal']);
 
-        
- 
+
+
         $desaparecido = Cedula::find($idCedula)->update([
            'otroParentescoAvisto' =>$otroParentesco,
            'vehiculoPlacas' =>$vehiculoPlacas ,
            'vehiculoDescripcion'  => $vehiculoDescripcion,
-           'desaparicionObservaciones'=> $descripcion, 
+           'desaparicionObservaciones'=> $descripcion,
             'desaparicionFecha'=>$desaparicionFecha ,
-          // 'desaparicionHora' =>$desaparicionHora  ,     
+          // 'desaparicionHora' =>$desaparicionHora  ,
             'desaparicionRef'=>$referencia ,
             'nombresAvisto' =>$nombres,
             'primerApAvisto' =>$primerAp,
@@ -89,7 +89,7 @@ class DesaparicionController extends Controller
             'idParentescoAvisto' => $idParentesco,
 
         ]);
-        
+
         $domicilio = Domicilio::create([
           'tipoDireccion'  =>$tipoDireccion,
            'calle' =>$calle          ,
@@ -107,9 +107,9 @@ class DesaparicionController extends Controller
                         'primerAp' => $primerAp,
                         'segundoAp' => $segundoAp,
                        );
-        
+
         return response()->json($data);
-    
+
     }
     /**
      * Display the specified resource.
@@ -123,18 +123,18 @@ class DesaparicionController extends Controller
 
          $idDesaparecido = ($id);
          $descripcionBreve = Session::get('hecho');
-        
-         $datos2= \DB::table('desaparecidos_personas AS dp')    
+
+         $datos2= \DB::table('desaparecidos_personas AS dp')
                 ->select('dp.idCedula as idCedula')
                 ->where('dp.id', $idDesaparecido)
                 ->get();
         $idCedula = ($datos2[0] ->idCedula);
-        $desapaRef= \DB::table('desaparecidos_cedula_investigacion AS dci')    
+        $desapaRef= \DB::table('desaparecidos_cedula_investigacion AS dci')
                 ->select('dci.desaparicionRef as desaparicionRef')
                 ->where('dci.id', $idCedula)
                 ->get();
-       // dd(is_null($desapaRef[0] ->desaparicionRef));
-        if(is_null($desapaRef[0] ->desaparicionRef)){
+       //dd(!empty($desapaRef[0] ->desaparicionRef));
+        if(empty($desapaRef[0] ->desaparicionRef)){
             $estados            = \App\Models\CatEstado::all()->pluck('nombre','id');
             $municipios         = \App\Models\CatMunicipio::limit(10)->pluck('nombre','id');
             $localidades        = \App\Models\CatLocalidad::limit(10)->pluck('nombre','id');
@@ -151,10 +151,9 @@ class DesaparicionController extends Controller
                         'codigos'      =>   $codigos,
                         'parentescos' => $parentescos,
                         'descripcionBreve' => $descripcionBreve,
-                ]);         
+                ]);
         }
         else{
-
             $desaparicionFecha = $desaparecido->cedula->desaparicionFecha;
             $desaparicionHora = Carbon::parse($desaparicionFecha)->format('H:i');
             $desaparicionFecha = Carbon::parse($desaparicionFecha)->format('d-m-Y');
@@ -169,20 +168,20 @@ class DesaparicionController extends Controller
             //se consulta el valor de parentesco
             $p =  $desaparecido->cedula->idParentescoAvisto;
             if ($p == 14){
-                $parentesco = $desaparecido->cedula->otroParentescoAvisto;                
+                $parentesco = $desaparecido->cedula->otroParentescoAvisto;
             }
             else{
-                $consultaParent= \DB::table('cat_parentesco AS dci')    
+                $consultaParent= \DB::table('cat_parentesco AS dci')
                 ->where('dci.id', $p)
-                ->get();                
-                $parentesco = $consultaParent[0]->nombre;                    
+                ->get();
+                $parentesco = $consultaParent[0]->nombre;
              }
      //AQUI CONSULTO EL ID DEL DOMICILIO AVISTAMIENTO ULTIMO QUE FUE VISTO LA PERSONA DESAPARECIDA
              $idDomicilio =  \DB::table('desaparecidos_domicilios AS dd')
                     ->select('dd.id as id')
                     ->where('idDesaparecido', $idDesaparecido)->where('dd.tipoDireccion', 'LUGAR DE AVISTAMIENTO')->limit(1)
-                        ->get(); 
-    //AQUI JALO SOLO EL ROW DEL ID CONSULTADO ANTERIORMENTE DE DOMICILIO DE AVISTAMIENTO            
+                        ->get();
+    //AQUI JALO SOLO EL ROW DEL ID CONSULTADO ANTERIORMENTE DE DOMICILIO DE AVISTAMIENTO
             $domicilio = \App\Models\Domicilio::find($idDomicilio[0]->id);
             //dd($domicilio);
 
@@ -208,10 +207,10 @@ class DesaparicionController extends Controller
 
         }
 
-    
 
-        
-    }    
+
+
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -221,22 +220,22 @@ class DesaparicionController extends Controller
      */
     public function edit($id)
     {
-       
+
          $desaparecido = \App\Models\Desaparecido::find($id);
 
          $idDesaparecido = ($id);
-        
-         $datos2= \DB::table('desaparecidos_personas AS dp')    
+
+         $datos2= \DB::table('desaparecidos_personas AS dp')
                 ->select('dp.idCedula as idCedula')
                 ->where('dp.id', $idDesaparecido)
                 ->get();
         $idCedula = ($datos2[0] ->idCedula);
-        $desapaRef= \DB::table('desaparecidos_cedula_investigacion AS dci')    
+        $desapaRef= \DB::table('desaparecidos_cedula_investigacion AS dci')
                 ->select('dci.desaparicionRef as desaparicionRef')
                 ->where('dci.id', $idCedula)
                 ->get();
        // dd(is_null($desapaRef[0] ->desaparicionRef));
-   
+
             $estados            = \App\Models\CatEstado::all()->pluck('nombre','id');
             $municipios         = \App\Models\CatMunicipio::limit(10)->pluck('nombre','id');
             $localidades        = \App\Models\CatLocalidad::limit(10)->pluck('nombre','id');
@@ -247,12 +246,12 @@ class DesaparicionController extends Controller
              $idDomicilio =  \DB::table('desaparecidos_domicilios AS dd')
                     ->select('dd.id as id')
                     ->where('idDesaparecido', $idDesaparecido)->where('dd.tipoDireccion', 'LUGAR DE AVISTAMIENTO')->limit(1)
-                        ->get(); 
-    //AQUI JALO SOLO EL ROW DEL ID CONSULTADO ANTERIORMENTE DE DOMICILIO DE AVISTAMIENTO    
+                        ->get();
+    //AQUI JALO SOLO EL ROW DEL ID CONSULTADO ANTERIORMENTE DE DOMICILIO DE AVISTAMIENTO
             $desaparicionFecha = $desaparecido->cedula->desaparicionFecha;
             $desaparicionHoras = Carbon::parse($desaparicionFecha)->format('H');
             $desaparicionMinutos = Carbon::parse($desaparicionFecha)->format('i');
-            $desaparicionFecha = Carbon::parse($desaparicionFecha)->format('d-m-Y');        
+            $desaparicionFecha = Carbon::parse($desaparicionFecha)->format('d-m-Y');
             $domicilio = \App\Models\Domicilio::find($idDomicilio[0]->id);
             //dd($domicilio);
 
@@ -268,8 +267,8 @@ class DesaparicionController extends Controller
                         'desaparicionFecha' => $desaparicionFecha,
                         'desaparicionHoras' => $desaparicionHoras,
                         'desaparicionMinutos' => $desaparicionMinutos,
-                ]);         
-        
+                ]);
+
     }
 
     /**
@@ -281,16 +280,16 @@ class DesaparicionController extends Controller
      */
     public function update(DesaparicionRequest $request, $id)
     {
-       
+
         $idDesaparecido = ($request['idDesaparecido']);
-       
-         $datos2= \DB::table('desaparecidos_personas AS dp')    
+
+         $datos2= \DB::table('desaparecidos_personas AS dp')
                 ->select('dp.idCedula as idCedula')
                 ->where('dp.id', $idDesaparecido)
                 ->get();
         $idCedula = ($datos2[0] ->idCedula);
        // $desaparecido = \App\Models\Desaparecido::find($datos2[0]->id);
-       
+
         $nombres = ($request['nombres']);
         $primerAp = ($request['primerAp']);
         $segundoAp = ($request['segundoAp']);
@@ -304,7 +303,7 @@ class DesaparicionController extends Controller
         //$desaparicionHora = ($request['desaparicionHora']);
         $referencia = ($request['referencia']);
         //domicilio
-      //  $desaparicionFecha = Carbon::createFromFormat('d/m/Y', $desaparicionFecha)->format('Y-m-d');         
+      //  $desaparicionFecha = Carbon::createFromFormat('d/m/Y', $desaparicionFecha)->format('Y-m-d');
         $tipoDireccion = ($request['tipoDireccion']);
         $calle            = ($request['calle']);
         $numExterno = ($request['numExterno']);
@@ -312,17 +311,17 @@ class DesaparicionController extends Controller
         $idMunicipio = ($request['idMunicipio']);
         $idLocalidad = ($request['idLocalidad']);
         $idColonia = ($request['idColonia']);
-        $idCodigoPostal = ($request['idCodigoPostal']);     
+        $idCodigoPostal = ($request['idCodigoPostal']);
 
-        
- 
+
+
         $desaparecido = Cedula::find($idCedula)->update([
            'otroParentescoAvisto' =>$otroParentesco,
            'vehiculoPlacas' =>$vehiculoPlacas ,
            'vehiculoDescripcion'  => $vehiculoDescripcion,
-           'desaparicionObservaciones'=> $descripcion, 
+           'desaparicionObservaciones'=> $descripcion,
             'desaparicionFecha'=>$desaparicionFecha ,
-          // 'desaparicionHora' =>$desaparicionHora  ,     
+          // 'desaparicionHora' =>$desaparicionHora  ,
             'desaparicionRef'=>$referencia ,
             'nombresAvisto' =>$nombres,
             'primerApAvisto' =>$primerAp,
@@ -334,9 +333,9 @@ class DesaparicionController extends Controller
         $idDomicilio =  \DB::table('desaparecidos_domicilios AS dd')
                     ->select('dd.id as id')
                     ->where('idDesaparecido', $idDesaparecido)->where('dd.tipoDireccion', 'LUGAR DE AVISTAMIENTO')->limit(1)
-                        ->get(); 
+                        ->get();
 
-        
+
         $domicilio = Domicilio::find($idDomicilio[0]->id)->update([
           'tipoDireccion'  =>$tipoDireccion,
            'calle' =>$calle          ,
@@ -354,7 +353,7 @@ class DesaparicionController extends Controller
                         'primerAp' => $primerAp,
                         'segundoAp' => $segundoAp,
                        );
-        
+
         return response()->json($data);
     }
 
