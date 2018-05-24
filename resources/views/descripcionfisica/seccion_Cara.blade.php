@@ -354,6 +354,7 @@
 		</div><hr>
 		<button type="button" class="btn btn-primary" style="float: right;" id="guardarCara">GUARDAR</button>
 	</div>
+	@include('descripcionfisica.show_cara')
 </div>
 </div>
 {!! Html::script('personal/js/avatar/cara.js') !!}
