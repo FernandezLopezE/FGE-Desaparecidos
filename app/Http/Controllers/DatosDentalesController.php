@@ -109,10 +109,12 @@ class DatosDentalesController extends Controller
         $desaparecido = \App\Models\Desaparecido::find($id);
         $edad = explode(" ",$desaparecido->edadExtravio);
         $dienteTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
+        //$images = (Anexos::where('idDesaparecido', $idExtraviado)->where('tipoAnexo', 'antecedentesMedicos')->get());
         return view('datosdentales.form_datos_dentales',[
                     'dienteTamano' => $dienteTamano,
                     'desaparecido' => $desaparecido,
                     'edadExtraviado' => $edad
+                    //'images' => $images
                 ]);
     }
 
@@ -147,6 +149,8 @@ class DatosDentalesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Anexos::find($id)->delete();
+        // return back()
+        //     ->with('success','Image removed successfully.');    
     }
 }

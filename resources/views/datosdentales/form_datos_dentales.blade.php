@@ -338,41 +338,90 @@
 		                    		<label style="margin-left: 15%">Diente seleccionado</label>
                     				<label style="margin-left: 27%">Causa de pérdida</label>
                     			</div>
-                    			<div class="input-group" id="PMSID">
-                    				{!! Form::text ('PMSI',old('PMSI'), ['class' => 'form-control mayuscula', 'id' => 'PMSI', 'disabled'])!!}
-                    				{!! Form::text ('perdio[]',old('PMSIP'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PMSIP',] )!!}
-                    				{{ Form::hidden('dienteselec[]','14', array('id' => 'dienteselec26')) }}
+
+                    			<!--Inicia dientes superiores (Izquierda a derecha)-->
+                    			<div class="input-group" id="TMSDD"> 
+                    				{!! Form::text ('TMSD',old('TMSD'), ['class' => 'form-control mayuscula', 'id' => 'TMSD', 'disabled'])!!}
+                    				{!! Form::text ('perdio[]',old('TMSDP'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'TMSDP',] )!!}
+                    				{{ Form::hidden('dienteselec[]','18', array('id' => 'dienteselec18')) }}
                   				</div>
-                  				<div class="input-group" style="margin-top: 10px" id="SPSID">
-				                    {!! Form::text ('SPSI',old('SPSI'), ['class' => 'form-control mayuscula', 'id' => 'SPSI','disabled'] )!!}
-				                    {!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SPSIP',] )!!}
-				                    {{ Form::hidden('dienteselec[]','13', array('id' => 'dienteselec25')) }}
+                  				<div class="input-group" style="margin-top: 10px" id="SMSDD">
+				                    {!! Form::text ('SMSD',old('SMSD'), ['class' => 'form-control mayuscula', 'id' => 'SMSD','disabled'] )!!}
+				                    {!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SMSDP',] )!!}
+				                    {{ Form::hidden('dienteselec[]','17', array('id' => 'dienteselec17')) }}
 				                </div>
-				                <div class="input-group" style="margin-top: 10px" id="PPSID">
-				                    {!! Form::text ('PPSI',old('PPSI'), ['class' => 'form-control mayuscula', 'id' => 'PPSI', 'disabled'] )!!}
-				                    {!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PPSIP',] )!!}
-				                    {{ Form::hidden('dienteselec[]','12', array('id' => 'dienteselec24')) }}
+				                <div class="input-group" style="margin-top: 10px" id="PMSDD">
+				                    {!! Form::text ('PMSD',old('PMSD'), ['class' => 'form-control mayuscula', 'id' => 'PMSD', 'disabled'] )!!}
+				                    {!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PMSDP',] )!!}
+				                    {{ Form::hidden('dienteselec[]','16', array('id' => 'dienteselec16')) }}
 				                </div>
-				                <div class="input-group" style="margin-top: 10px" id="CSID">
-                    				{!! Form::text ('CSI',old('CSI'), ['class' => 'form-control mayuscula', 'id' => 'CSI', 'disabled'] )!!}
-                    				{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'CSIP',] )!!}
-                    				{{ Form::hidden('dienteselec[]','11', array('id' => 'dienteselec23')) }}
+				                <div class="input-group" style="margin-top: 10px" id="SPSDD">
+                    				{!! Form::text ('SPSD',old('SPSD'), ['class' => 'form-control mayuscula', 'id' => 'SPSD', 'disabled'] )!!}
+                    				{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SPSDP',] )!!}
+                    				{{ Form::hidden('dienteselec[]','15', array('id' => 'dienteselec15')) }}
                   				</div>
-                  				<div class="input-group" style="margin-top: 10px" id="ILSID">
-				                    {!! Form::text ('ILSI',old('ILSI'), ['class' => 'form-control mayuscula', 'id' => 'ILSI', 'disabled'] )!!}
-				                    {!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ILSIP',] )!!}
-				                    {{ Form::hidden('dienteselec[]','10', array('id' => 'dienteselec22')) }}
+                  				<div class="input-group" style="margin-top: 10px" id="PPSDD">
+				                    {!! Form::text ('PPSD',old('PPSD'), ['class' => 'form-control mayuscula', 'id' => 'PPSD', 'disabled'] )!!}
+				                    {!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PPSDP',] )!!}
+				                    {{ Form::hidden('dienteselec[]','14', array('id' => 'dienteselec14')) }}
 				                </div>
-				                <div class="input-group" style="margin-top: 10px" id="ICSID">
-				                    {!! Form::text ('ICSI',old('ICSI'), ['class' => 'form-control mayuscula', 'id' => 'ICSI', 'disabled'] )!!}
-				                    {!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ICSIP',] )!!}
-				                    {{ Form::hidden('dienteselec[]','9', array('id' => 'dienteselec21')) }}
+				                <div class="input-group" style="margin-top: 10px" id="CSDD">
+				                    {!! Form::text ('CSD',old('CSD'), ['class' => 'form-control mayuscula', 'id' => 'CSD', 'disabled'] )!!}
+				                    {!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'CSDP',] )!!}
+				                    {{ Form::hidden('dienteselec[]','13', array('id' => 'dienteselec13')) }}
 				                </div>
+				                <div class="input-group" style="margin-top: 10px" id="ILSDD">
+			                    	{!! Form::text ('ILSD',old('ILSD'), ['class' => 'form-control mayuscula', 'id' => 'ILSD', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ILSDP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','12', array('id' => 'dienteselec12')) }}
+			                  	</div>
 			                  	<div class="input-group" style="margin-top: 10px" id="ICSDD">
 			                    	{!! Form::text ('ICSD',old('ICSD'), ['class' => 'form-control mayuscula', 'id' => 'ICSD', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ICSDP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','1', array('id' => 'dienteselec11')) }}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ICSDDP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','11', array('id' => 'dienteselec11')) }}
 			                  	</div>
+
+			                  	<div class="input-group" style="margin-top: 10px" id="ICSID">
+			                    	{!! Form::text ('ICSI',old('ICSI'), ['class' => 'form-control mayuscula', 'id' => 'ICSI', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ICSIP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','21', array('id' => 'dienteselec21')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="ILSID">
+			                    	{!! Form::text ('ILSI',old('ILSI'), ['class' => 'form-control mayuscula', 'id' => 'ILSI', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ILSIP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','22', array('id' => 'dienteselec22')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="CSID">
+			                    	{!! Form::text ('CSI',old('CSI'), ['class' => 'form-control mayuscula', 'id' => 'CSI', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'CSIP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','23', array('id' => 'dienteselec23')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="PPSID">
+			                    	{!! Form::text ('PPSI',old('PPSI'), ['class' => 'form-control mayuscula', 'id' => 'PPSI', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PPSIP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','24', array('id' => 'dienteselec24')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="SPSID">
+			                    	{!! Form::text ('SPSI',old('SPSI'), ['class' => 'form-control mayuscula', 'id' => 'SPSI', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SPSIP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','25', array('id' => 'dienteselec25')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="PMSID">
+			                    	{!! Form::text ('PMSI',old('PMSI'), ['class' => 'form-control mayuscula', 'id' => 'PMSI', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PMSIP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','26', array('id' => 'dienteselec26')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="SMSID">
+			                    	{!! Form::text ('SMSI',old('SMSI'), ['class' => 'form-control mayuscula', 'id' => 'SMSI', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SMSIP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','27', array('id' => 'dienteselec27')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="TMSID">
+			                    	{!! Form::text ('TMSI',old('TMSI'), ['class' => 'form-control mayuscula', 'id' => 'TMSI', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'TMSIP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','28', array('id' => 'dienteselec28')) }}
+			                  	</div>
+                  				
 			                  	<button type="button" class="btn btn-warning" id="upDiente" onclick="ConfirmDemo()">EDITAR</button>
         						<button type="button" class="btn btn-success pull-right" id="btnDiente" style="margin-top: 15px;">GUARDAR</button>
                     		</div>
@@ -382,6 +431,14 @@
           	</div>
 		</div>
 	</div>
+
+
+	
+
+
+  </div>
+
+</div>
 </nav>
 @endsection
 
@@ -394,6 +451,7 @@
 {!! Html::script('personal/js/functions.js') !!}
 {!! Html::script('personal/js/datos_dentales/accionDientes.js') !!}
 {!! Html::script('personal/js/datos_dentales/sliders_dentales.js') !!}
+{!! Html::script('personal/js/datos_dentales/dentadura_adulto.js') !!}
 
 <script type="text/javascript">
 	console.log('ID de la persona desaparecida: {!! $desaparecido->id !!}');
@@ -477,13 +535,8 @@
 		$('#sonrisaseleccionada').hide();
 		$('#dentistahr').hide();
 		$('#upDiente').hide();
-		$('#PMSID').hide();
-		$('#SPSID').hide();
-		$('#PPSID').hide();
-		$('#CSID').hide();
-		$('#ILSID').hide();
-		$('#ICSID').hide();
-		$('#ICSDD').hide();
+
+		
 
 		$('#atencionOdonto').change(function() {
 			atencion = $('#atencionOdonto').val();
@@ -593,160 +646,7 @@
 			}
 		});
 
-        /************************************************************************
-		**** Variables y función Click para los dientes superiores **************
-		************************************************************************/
-		var diente18, diente25, diente24, diente23, diente22, diente21, diente11, 
-			diente12, diente13, diente14, diente15, diente16, 
-			cont1, cont2, cont3, cont4, cont5, cont6, cont7, cont8, 
-			cont9, cont10, cont11, cont12, cont13, cont14, cont15, 
-			cont16,
-
-		diente18 = $('#diente18').attr('value');
-		cont1 = 0;
-		$('#diente18').click(function(event) {
-			cont1 = cont1 + 1;
-			if (cont1 == 1) {
-				$('#PMSID').show();
-				$("#PMSI").val(diente18);
-				$('#PMSIP').focus();
-				$("#TMSI1").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
-			}else{
-				cont1 = 0;
-				$('#PMSID').hide();
-				$("#PMSI").val('');
-				$("#PMSIP").val('');
-				$("#TMSI1").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
-			}
-		});  
-
-		diente17 = $('#diente17').attr("value");
-		cont2 = 0;
-		$('#diente17').click(function(event) {
-			cont2 = cont2 + 1;
-			if (cont2 == 1) {
-				$('#SPSID').show();
-				$("#SPSI").val(diente17);
-				$("#SPSIP").focus();
-				$("#SMSI1").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
-			}else{
-				cont2 = 0;
-				$('#SPSID').hide();
-				$("#SPSI").val('');
-				$("#SPSIP").val('');
-				$("#SMSI1").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
-			}
-		});    
-
-		diente24 = $('#diente24').attr("value");
-		cont3 = 0;
-		$('#diente24').click(function(event) {
-			cont3 = cont3 + 1;
-			if (cont3 == 1) {
-				$('#PPSID').show();
-   				$("#PPSI").val(diente24);
-   				$("#PPSIP").focus();
-			}else{
-				cont3 = 0;
-				$('#PPSID').hide();
-   				$("#PPSI").val('');
-   				$("#PPSIP").val('');
-			}
-   		});    
-
-   		diente23 = $('#diente23').attr("value");
-   		cont4 = 0;
-   		$('#diente23').click(function(event) {
-   			cont4 = cont4 + 1;
-   			if (cont4 == 1) {
-   				$('#CSID').show();
-   				$("#CSI").val(diente23);
-   				$("#CSIP").focus();
-   			}else{
-   				cont4 = 0;
-   				$('#CSID').hide();
-   				$("#CSI").val('');
-   				$("#CSIP").val('');
-   			}
-   		});    
-
-   		diente22 = $('#diente22').attr("value");
-   		cont5 = 0;
-   		$('#diente22').click(function(event) {
-   			cont5 = cont5 + 1;
-   			if (cont5 == 1) {
-   				$('#ILSID').show();
-   				$("#ILSI").val(diente22);
-   				$("#ILSIP").focus();
-   			}else{
-   				cont5 = 0;
-   				$('#ILSID').hide();
-   				$("#ILSI").val('');
-   				$("#ILSIP").val('');
-   			}
-   		});    
-
-   		diente21 = $('#diente21').attr("value");
-   		cont6 = 0;
-   		$('#diente21').click(function(event) {
-   			cont6 = cont6 + 1;
-   			if (cont6 == 1) {
-   				$('#ICSID').show();
-   				$("#ICSI").val(diente21);
-   				$("#ICSIP").focus();
-   			}else{
-   				cont6 = 0;
-   				$('#ICSID').hide();
-   				$("#ICSI").val('');
-   				$("#ICSIP").val('');
-   			}
-   		});    
-
-   		diente11 = $('#diente11').attr("value");
-   		cont7 = 0;
-   		$('#diente11').click(function(event) {
-   			cont7 = cont7 +1;
-   			if (cont7 == 1) {
-   				$('#ICSDD').show();
-   				$("#ICSD").val(diente11);	
-   				$("#ICSDP").focus();
-   			}else{
-   				cont7 = 0;
-   				$('#ICSDD').hide();
-   				$("#ICSD").val('');
-   				$("#ICSDP").val('');
-   			}
-   		});    
-
-   		diente12 = $('#diente12').attr("value");
-   		cont8 = 0;
-   		$('#diente12').click(function(event) {
-   			$("#mostrar").val(diente12);
-   		});    
-
-   		diente13 = $('#diente13').attr("value");
-   		cont9 = 0;
-   		$('#diente13').click(function(event) {
-   			$("#mostrar").val(diente13);
-   		});    
-
-   		diente14 = $('#diente14').attr("value");
-   		cont10 = 0;
-   		$('#diente14').click(function(event) {
-   			$("#mostrar").val(diente14);
-   		});    
-
-   		diente15 = $('#diente15').attr("value");
-   		cont11 = 0;
-   		$('#diente15').click(function(event) {
-   			$("#mostrar").val(diente15);
-   		});    
-
-   		diente16 = $('#diente16').attr("value");
-   		cont12 = 0;
-   		$('#diente16').click(function(event) {
-   			$("#mostrar").val(diente16);
-   		});
+        
 
    		$('#upDiente').click(function() {
    			alertify.confirm('Está seguro de editar esta sección?', 'Esta acción borrará los datos capturados anteriormente', 
@@ -1070,5 +970,64 @@
 
 		// })
 	});
+ //este si va dentro de un DocumentReady
+ 
+//  $(".fancybox").fancybox({
+//         openEffect: "none",
+//         closeEffect: "none"
+//     });
+    
+//     $(".zoom").hover(function(){
+    
+//     $(this).addClass('transition');
+//   }, function(){
+        
+//     $(this).removeClass('transition');
+//   });
+  
+  
+//   //este puede ir afuera xd
+  
+  
+//   $('#cerrarModal').click (function(){
+
+//     location.reload();
+
+// })
+
+// $("#fileImagenes").fileinput({
+//                   language:'es',
+//                   theme: 'fa',
+//                   uploadUrl: "/imagenAntecedentesD",
+
+//                   uploadExtraData: function() {
+                   
+//                       return {
+
+//                           _token: $("input[name='_token']").val(),
+//                           idDesaparecido:'{!! $desaparecido->id!!}',
+//                           tipoAnexo: 'antecedentesdentales',
+
+//                       };
+//                   },
+//                   allowedFileExtensions: ['jpg', 'png', 'gif'],
+//                   overwriteInitial: false,
+//                   maxFileSize:2000,
+//                   maxFilesNum: 10,
+
+                  
+//                   slugCallback: function (filename) {
+//                     /*$desaparecido = ('{!! $desaparecido->id!!}');
+//                     console.log ( $desaparecido+"desaparecido");*/
+//                     $nombre = $desaparecido+"_ant_medicos_"+filename.replace('(', '_').replace(']', '_');
+
+//                     console.log($nombre);
+
+//                       return  filename.replace('(', '_').replace(']', '_');
+//                   }
+
+
+
+//               });
 </script>
 @endsection
