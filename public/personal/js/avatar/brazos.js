@@ -254,4 +254,187 @@ $(document).ready(function() {
     }
   });
 
+  //Mostrar otra modificacion de codo izquierdo
+  $("#modCodoIzq").change(function(event) {
+    modCodIzq = $("#modCodoIzq").val();
+    if (modCodIzq == "193") {
+      $("#codo4").show();
+    }else{
+      $("#codo4").hide();
+      $('#otraModCodIzq').val('');
+    }
+  });
+
+  //Información de antebrazo izquierdo
+  $("#infoAnteIzq").change(function(event) {
+    resAntebrazoIza = $("#infoAnteIzq").val();
+    if (resAntebrazoIza == "SÍ") {
+      $("#ante1").show();
+      $("#ante2").show();
+      $("#ante5").show();
+    }else{
+      $("#ante1").hide();
+      $("#ante2").hide();
+      $("#ante3").hide();
+      $("#ante4").hide();
+      $("#ante5").hide();
+      $('#partAntebrazoIzq').prop('selectedIndex',0); 
+      $('#otraPartAnteIZq').val('');
+      $('#modAntebrazoIzq').prop('selectedIndex',0); 
+      $('#otraModAnteIzq').val('');
+      $('#obseAnteIzq').val('');
+    }
+  });
+
+  //Mostrar otra particularidad de antebrazo izquierdo
+  $("#partAntebrazoIzq").change(function(event) {
+    partAnteIzq = $("#partAntebrazoIzq").val();
+    if (partAnteIzq == "229") {
+      $("#ante3").show();
+    }else{
+      $("#ante3").hide();
+      $('#otraPartAnteIZq').val('');
+    }
+  });
+
+  //Mostrar otra modificacion de antebrazo izquierdo
+  $("#modAntebrazoIzq").change(function(event) {
+    modAnteIzq = $("#modAntebrazoIzq").val();
+    if (modAnteIzq == "183") {
+      $("#ante4").show();
+    }else{
+      $("#ante4").hide();
+      $('#otraModAnteIzq').val('');
+    }
+  });
+
+  //Información de brazo derecho
+  $("#infoBrazoDer").change(function(event) {
+    resBrazoDer = $("#infoBrazoDer").val();
+    if (resBrazoDer == "SÍ") {
+      $("#brazoder1").show();
+      $("#brazoder2").show();
+      $("#brazoder5").show();
+    }else{
+      $("#brazoder1").hide();
+      $("#brazoder2").hide();
+      $("#brazoder3").hide();
+      $("#brazoder4").hide();
+      $("#brazoder5").hide();
+      $('#partBrazoDer').prop('selectedIndex',0); 
+      $('#otraPartBrazoDer').val('');
+      $('#modBrazoDer').prop('selectedIndex',0); 
+      $('#otroModBrazoDer').val('');
+      $('#obseBrazoDer').val('');
+    }
+  });
+
+  //Mostrar otra particularidad de brazo derecho
+  $("#partBrazoDer").change(function(event) {
+    partBrazDer = $("#partBrazoDer").val();
+    if (partBrazDer == "219") {
+      $("#brazoder3").show();
+    }else{
+      $("#brazoder3").hide();
+      $('#otraPartBrazoDer').val('');
+    }
+  });
+
+  //Mostrar otra modificacion de brazo derecho
+  $("#modBrazoDer").change(function(event) {
+    modBrazDer = $("#modBrazoDer").val();
+    if (modBrazDer == "177") {
+      $("#brazoder4").show();
+    }else{
+      $("#brazoder4").hide();
+      $('#otroModBrazoDer').val('');
+    }
+  });
+
+  //Información de codo derecho
+  $("#infoCodoDer").change(function(event) {
+    resBrazoDer = $("#infoCodoDer").val();
+    if (resBrazoDer == "SÍ") {
+      $("#codoDer1").show();
+      $("#codoDer2").show();
+      $("#codoDer5").show();
+    }else{
+      $("#codoDer1").hide();
+      $("#codoDer2").hide();
+      $("#codoDer3").hide();
+      $("#codoDer4").hide();
+      $("#codoDer5").hide();
+      $('#partCodoDer').prop('selectedIndex',0); 
+      $('#otroPartCodoDer').val('');
+      $('#modCodoDer').prop('selectedIndex',0); 
+      $('#otroModCodoDer').val('');
+      $('#obseCodoDer').val('');
+    }
+  });
+
+  //Mostrar otra particularidad de codo derecho
+  $("#partCodoDer").change(function(event) {
+    partCodDer = $("#partCodoDer").val();
+    if (partCodDer == "257") {
+      $("#codoDer3").show();
+    }else{
+      $("#codoDer3").hide();
+      $('#otroPartCodoDer').val('');
+    }
+  });
+
+  //Mostrar otra modificacion de codo derecho
+  $("#modCodoDer").change(function(event) {
+    modCodDer = $("#modCodoDer").val();
+    if (modCodDer == "197") {
+      $("#codoDer4").show();
+    }else{
+      $("#codoDer4").hide();
+      $('#otroModCodoDer').val('');
+    }
+  });
+
+  //Información de antebrazo derecho
+  $("#infoAntebrazoDer").change(function(event) {
+    resAntDerDer = $("#infoAntebrazoDer").val();
+    if (resAntDerDer == "SÍ") {
+      $("#antebrazoDer1").show();
+      $("#antebrazoDer2").show();
+      $("#antebrazoDer5").show();
+    }else{
+      $("#antebrazoDer1").hide();
+      $("#antebrazoDer2").hide();
+      $("#antebrazoDer3").hide();
+      $("#antebrazoDer4").hide();
+      $("#antebrazoDer5").hide();
+      $('#partAntebrazoDer').prop('selectedIndex',0); 
+      $('#otraPartAnteDer').val('');
+      $('#modAntebrazoDer').prop('selectedIndex',0); 
+      $('#otraModAnteDer').val('');
+      $('#obseAnteDer').val('');
+    }
+  });
+
+  //Mostrar otra particularidad de antebrazo derecho
+  $("#partAntebrazoDer").change(function(event) {
+    partAntebDer = $("#partAntebrazoDer").val();
+    if (partAntebDer == "239") {
+      $("#antebrazoDer3").show();
+    }else{
+      $("#antebrazoDer3").hide();
+      $('#otraPartAnteDer').val('');
+    }
+  });
+
+  //Mostrar otra modificacion de antebrazo derecho
+  $("#modAntebrazoDer").change(function(event) {
+    modAntebDer = $("#modAntebrazoDer").val();
+    if (modAntebDer == "189") {
+      $("#antebrazoDer4").show();
+    }else{
+      $("#antebrazoDer4").hide();
+      $('#otraModAnteDer').val('');
+    }
+  });
+
 });
