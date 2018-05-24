@@ -1818,4 +1818,144 @@ class DescripcionFisicaController extends Controller
     }
 
 
+     public function getRostro($idExtraviado){
+
+        $partesCuerpo = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
+                        ->leftjoin('cat_colores_cuerpo as catcolores','catcolores.id','=','cpc.idColoresCuerpo')
+                        ->leftjoin('cat_tamano_cuerpo as tamaCuerpo','tamaCuerpo.id','=','cpc.idTamanoCuerpo')
+                        ->leftjoin('cat_tipos_cuerpo as tipoCuerpo','tipoCuerpo.id','=','cpc.idTipoCuerpo')
+                        ->select('cpc.idPartesCuerpo',
+                                'catpc.nombre as nombreCuerpo',
+                                'cpc.tenia',
+                                'cpc.observaciones',
+                                'catcolores.nombre as colorCuerpo',
+                                'cpc.otraParticularidad',
+                                'cpc.otraModificacion',
+                                'cpc.otroColor',
+                                'cpc.id',
+                                'cpc.idColoresCuerpo',
+                                'cpc.idTamanoCuerpo',
+                                'cpc.idTipoCuerpo',
+                                'tamaCuerpo.nombre as tamano',
+                                'tipoCuerpo.nombre as tipo')
+                        ->where('cpc.idPersonaDesaparecida',$idExtraviado)
+                        ->where('cpc.idPartesCuerpo',73)
+                        ->orwhere('cpc.idPartesCuerpo',6)
+                        ->orwhere('cpc.idPartesCuerpo',7)
+                        ->orwhere('cpc.idPartesCuerpo',36)
+                        ->orwhere('cpc.idPartesCuerpo',37)
+                        ->orwhere('cpc.idPartesCuerpo',74)
+                        ->orwhere('cpc.idPartesCuerpo',31)
+                        ->orwhere('cpc.idPartesCuerpo',72)
+                        ->orwhere('cpc.idPartesCuerpo',19)
+                        ->orwhere('cpc.idPartesCuerpo',20)
+                        ->orwhere('cpc.idPartesCuerpo',77)
+                        ->orwhere('cpc.idPartesCuerpo',34)
+                        ->orwhere('cpc.idPartesCuerpo',35)
+                        ->orwhere('cpc.idPartesCuerpo',16)
+                        ->orwhere('cpc.idPartesCuerpo',75)
+                        ->orwhere('cpc.idPartesCuerpo',76)
+                        ->orwhere('cpc.idPartesCuerpo',23)
+                        ->orwhere('cpc.idPartesCuerpo',24)
+                        ->get();
+
+        /*foreach ($partesCuerpo as $parte) {
+            # code...
+            $particularidades = \DB::table('cedula_partes_cuerpo as cpc')
+                                ->join('pivot_subparti_cuerpo as pspc','cpc.id','=','pspc.idCedulaPartesCuerpo')
+                                ->join('cat_sub_particularidades as csp','csp.id','=','pspc.idSubParticularidades')
+                                ->select('csp.nombre')
+                                ->where('cpc.idPartesCuerpo',$parte->idPartesCuerpo)
+                                ->get();
+            echo $particularidades;
+            echo "<br>";
+
+            $modificaciones = \DB::table('cedula_partes_cuerpo as cpc')
+                                ->join('pivot_submodi_cuerpo as psmc','cpc.id','=','psmc.idCedulaPartesCuerpo')
+                                ->join('cat_sub_modificaciones as csm','csm.id','=','psmc.idSubModificaciones')
+                                ->select('csm.nombre')
+                                ->where('cpc.idPartesCuerpo',$parte->idPartesCuerpo)
+                                ->get();
+            echo $modificaciones;
+            echo "<br>";
+        }
+        */
+        //return response()->json($particularidades);
+
+        $i = 0;
+        foreach ($partesCuerpo as $value) {
+
+             $particularidades = \DB::table('cedula_partes_cuerpo as cpc')
+                                ->join('pivot_subparti_cuerpo as pspc','cpc.id','=','pspc.idCedulaPartesCuerpo')
+                                ->join('cat_sub_particularidades as csp','csp.id','=','pspc.idSubParticularidades')
+                                ->select('csp.nombre as particularidad',
+                                         'csp.id as idParticularidad')
+                                ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
+                                ->where('pspc.idCedulaPartesCuerpo',$value->id)
+                                ->get();
+
+            $longitud = count($particularidades);
+            $nParticularidad = '';
+            $idParti  = array();
+            for($j=0;$j < $longitud; $j++){
+                $nParticularidad = $particularidades[$j]->particularidad.', '.$nParticularidad  ;
+                array_push($idParti , $particularidades[$j]->idParticularidad);
+                
+            }
+
+            /* echo $particularidades;
+            echo "<br>";*/
+
+             $modificaciones = \DB::table('cedula_partes_cuerpo as cpc')
+                                ->join('pivot_submodi_cuerpo as psmc','cpc.id','=','psmc.idCedulaPartesCuerpo')
+                                ->join('cat_sub_modificaciones as csm','csm.id','=','psmc.idSubModificaciones')
+                                ->select('csm.nombre as modificacion',
+                                        'csm.id as idModificacion')
+                                ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
+                                ->where('psmc.idCedulaPartesCuerpo',$value->id)
+                                ->get();
+            /*echo $modificaciones;
+            echo "<br>";*/
+
+            
+            $nModificaciones = '';
+            $idModi = array();
+            
+            $longitud2 = count($modificaciones);
+            for($x=0;$x < $longitud2; $x++){
+                $nModificaciones = $modificaciones[$x]->modificacion.', '.$nModificaciones;
+                array_push($idModi, $modificaciones[$x]->idModificacion);
+            }
+
+            $cuerpo[$i] = array('id_cuerpo' => $value->idPartesCuerpo,
+                                'nombre' => $value->nombreCuerpo,
+                                'tenia' => $value->tenia,
+                                'color' => $value->colorCuerpo,
+                                'tamano' => $value->tamano,
+                                'tipo' => $value->tipo,
+                                'particularidades' => trim($nParticularidad,', '),
+                                'modificaciones' => trim($nModificaciones,', '),
+                                'otraParticularidad' => $value->otraParticularidad,
+                                'otraModificacion' => $value->otraModificacion,
+                                'otroColor' => $value->otroColor,
+                                'observaciones' => $value->observaciones,
+                                'idColor' => $value->idColoresCuerpo,
+                                'idTamano' => $value->idTamanoCuerpo,
+                                'idTipo' => $value->idTipoCuerpo,
+                                'idParti' => $idParti,
+                                'idModi' => $idModi
+
+                                 ); 
+            /*print_r( $cuerpo[$i]);
+            echo "<br>";*/
+            $i++;
+            $nParticularidad = '';
+            $nModificaciones = '';
+
+        }
+        return response()->json($cuerpo);        
+    }
+
+
 }
