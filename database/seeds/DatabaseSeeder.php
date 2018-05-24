@@ -78,7 +78,7 @@ class DatabaseSeeder extends Seeder
          $this->call(Agrupacion2Seeder::class);*/
 
          //domicilioDesaparecidos
-        $this->call(PersonaSeeder::class);
+        //$this->call(PersonaSeeder::class);
 
 
         $this->call(CatDocumentosSeeder::class);        
@@ -144,7 +144,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CatSubParticularidadesSeeder::class);
         $this->call(CatModificacionesCuerpoSeeder::class);
         $this->call(CatSubModificacionesSeeder::class);
-
+        $this->call(CatPrendasSeeder::class);
         $this->call(CatIntervencionesQuirurgicasSeeder::class);
         $this->call(CatAdiccionesSeeder::class);
         $this->call(CatImplantesSeeder::class);
@@ -155,6 +155,8 @@ class DatabaseSeeder extends Seeder
         $this->call(CatTamanoCuerpoSeeder::class);
         $this->call(CatTiposCuerpoSeeder::class);
         $this->call(CatTiposCorteSeeder::class);
+
+        $this->call(PersonaSeeder::class);
 
     }
 }

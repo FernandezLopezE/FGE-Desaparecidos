@@ -39,7 +39,7 @@ class DatosDentalesController extends Controller
         $dentadura = new Dentadura();
 
         $dentadura->idTamanoDiente = $request['dienteTamano'];
-        $dentadura->dienteCompleto = $request['dienteCompleto'];
+        //$dentadura->dienteCompleto = $request['dienteCompleto'];
         $dentadura->asistioDentista = $request['atencionOdonto'];
         $dentadura->tieneInfoDentista = $request['infoDentista'];
         $dentadura->nombres = $request['nombres'];
@@ -107,10 +107,12 @@ class DatosDentalesController extends Controller
     public function show($id)
     {        
         $desaparecido = \App\Models\Desaparecido::find($id);
+        $edad = explode(" ",$desaparecido->edadExtravio);
         $dienteTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
         return view('datosdentales.form_datos_dentales',[
                     'dienteTamano' => $dienteTamano,
-                    'desaparecido' => $desaparecido
+                    'desaparecido' => $desaparecido,
+                    'edadExtraviado' => $edad
                 ]);
     }
 

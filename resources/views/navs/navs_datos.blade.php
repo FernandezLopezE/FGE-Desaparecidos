@@ -33,7 +33,7 @@
 				<i class="fa fa-street-view" aria-hidden="true"></i>
 				@if ($activar == 'desaparicion') Descripción de los hechos @endif				
 			</a>
-			<a class="nav-item nav-link @if ($activar == 'vestimenta') active @endif" href="{{route('desaparecido.show_vestimenta',['id' => $desaparecido->id])}}" aria-selected="false">
+			<a class="nav-item nav-link @if ($activar == 'vestimenta') active @endif" href="{{route('vestimentas.show',['id' => $desaparecido->id])}}" aria-selected="false">
 				<i class="fa fa-user-secret" aria-hidden="true" @if ($activar != 'vestimenta') data-toggle="tooltip" data-placement="right" title="Vestimenta" @endif></i>
 				@if ($activar == 'vestimenta') Vestimenta @endif			
 			</a>
@@ -49,10 +49,6 @@
 			<a class="nav-item nav-link @if ($activar == 'dentadura') active @endif" href="{{route('datos_dentales.show',['id' => $desaparecido->id])}}" aria-selected="false" @if ($activar != 'dentadura') data-toggle="tooltip" data-placement="right" title="Datos dentales" @endif>
 				<i class="fa fa-medkit" aria-hidden="true"></i>
 				@if ($activar == 'dentadura') Datos dentales @endif
-			</a>
-			<a class="nav-item nav-link @if ($activar == 'anexos') active @endif" href="{{route('image-view.show',['id' => $desaparecido->id])}}" aria-selected="false" @if ($activar != 'anexos') data-toggle="tooltip" data-placement="right" title="Anexos" @endif>
-				<i class="fa fa-upload" aria-hidden="true"></i>
-				@if ($activar == 'anexos') Anexos @endif
 			</a>			
 		@else
 			@if (isset($cedula->id))

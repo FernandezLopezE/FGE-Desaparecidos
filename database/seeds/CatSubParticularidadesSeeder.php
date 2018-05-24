@@ -48,6 +48,11 @@ class CatSubParticularidadesSeeder extends Seeder
             ['idParticularidadesCuerpo'=>4, 'nombre' => 'CICATRIZ'],
             ['idParticularidadesCuerpo'=>4, 'nombre' => 'OTRO'],
 
+            //AMBAS CEJAS
+            ['idParticularidadesCuerpo'=>68, 'nombre' => 'SIN INFORMACION'],
+            ['idParticularidadesCuerpo'=>68, 'nombre' => 'CICATRIZ'],
+            ['idParticularidadesCuerpo'=>68, 'nombre' => 'OTRO'],
+
             //OJO IZQUIERDO
             ['idParticularidadesCuerpo'=>5, 'nombre' => 'SIN INFORMACION'],
          	['idParticularidadesCuerpo'=>5, 'nombre' => 'COLOR DIFERENTE'],
@@ -72,6 +77,19 @@ class CatSubParticularidadesSeeder extends Seeder
             ['idParticularidadesCuerpo'=>6, 'nombre' => 'LUNARES'],
             ['idParticularidadesCuerpo'=>6, 'nombre' => 'OTRO'],
 
+            //AMBOS OJOS
+            ['idParticularidadesCuerpo'=>69, 'nombre' => 'SIN INFORMACION'],
+            ['idParticularidadesCuerpo'=>69, 'nombre' => 'COLOR DIFERENTE'],
+            ['idParticularidadesCuerpo'=>69, 'nombre' => 'CATARATA'],
+            ['idParticularidadesCuerpo'=>69, 'nombre' => 'CIEGO'],
+            ['idParticularidadesCuerpo'=>69, 'nombre' => 'BIZCO'],
+            ['idParticularidadesCuerpo'=>69, 'nombre' => 'OJO DE VIDRIO'],
+            ['idParticularidadesCuerpo'=>69, 'nombre' => 'LENTES DE CONTACTO'],
+            ['idParticularidadesCuerpo'=>69, 'nombre' => 'ANTEOJOS/GAFAS'],
+            ['idParticularidadesCuerpo'=>69, 'nombre' => 'FALTA OJO'],
+            ['idParticularidadesCuerpo'=>69, 'nombre' => 'LUNARES'],
+            ['idParticularidadesCuerpo'=>69, 'nombre' => 'OTRO'],
+
             //OREJA IZQUIERDA
             ['idParticularidadesCuerpo'=>7, 'nombre' => 'SIN INFORMACION'],           
             ['idParticularidadesCuerpo'=>7, 'nombre' => 'CICATRIZ'],
@@ -92,10 +110,20 @@ class CatSubParticularidadesSeeder extends Seeder
             ['idParticularidadesCuerpo'=>8, 'nombre' => 'QUEMADURA'],
             ['idParticularidadesCuerpo'=>8, 'nombre' => 'OTRO'],
 
+            //AMBAS OREJAS
+            ['idParticularidadesCuerpo'=>72, 'nombre' => 'SIN INFORMACION'],
+            ['idParticularidadesCuerpo'=>72, 'nombre' => 'CICATRIZ'],
+            ['idParticularidadesCuerpo'=>72, 'nombre' => 'DEFORMACIÓN'],
+            ['idParticularidadesCuerpo'=>72, 'nombre' => 'LUNARES'],
+            ['idParticularidadesCuerpo'=>72, 'nombre' => 'MANCHAS'],
+            ['idParticularidadesCuerpo'=>72, 'nombre' => 'NEVO'],
+            ['idParticularidadesCuerpo'=>72, 'nombre' => 'QUEMADURA'],
+            ['idParticularidadesCuerpo'=>72, 'nombre' => 'OTRO'],
+
             //PATILLAS 9
             
 
-            //MEJILLAS
+            //AMBAS MEJILLAS
             ['idParticularidadesCuerpo'=>10, 'nombre' => 'SIN INFORMACION'],
             ['idParticularidadesCuerpo'=>10, 'nombre' => 'ACNÉ'],
             ['idParticularidadesCuerpo'=>10, 'nombre' => 'CICATRIZ'],
@@ -107,6 +135,32 @@ class CatSubParticularidadesSeeder extends Seeder
             ['idParticularidadesCuerpo'=>10, 'nombre' => 'NEVO'],
             ['idParticularidadesCuerpo'=>10, 'nombre' => 'QUEMADURA'],
             ['idParticularidadesCuerpo'=>10, 'nombre' => 'OTRO'],
+
+            //MEJILLA IZQUIERDA
+            ['idParticularidadesCuerpo'=>70, 'nombre' => 'SIN INFORMACION'],
+            ['idParticularidadesCuerpo'=>70, 'nombre' => 'ACNÉ'],
+            ['idParticularidadesCuerpo'=>70, 'nombre' => 'CICATRIZ'],
+            ['idParticularidadesCuerpo'=>70, 'nombre' => 'MANCHAS'],
+            ['idParticularidadesCuerpo'=>70, 'nombre' => 'PECAS'],
+            ['idParticularidadesCuerpo'=>70, 'nombre' => 'VERRUGAS'],
+            ['idParticularidadesCuerpo'=>70, 'nombre' => 'LUNARES'],
+            ['idParticularidadesCuerpo'=>70, 'nombre' => 'DEFORMACIÓN'],
+            ['idParticularidadesCuerpo'=>70, 'nombre' => 'NEVO'],
+            ['idParticularidadesCuerpo'=>70, 'nombre' => 'QUEMADURA'],
+            ['idParticularidadesCuerpo'=>70, 'nombre' => 'OTRO'],
+
+            //MEJILLA DERECHA
+            ['idParticularidadesCuerpo'=>71, 'nombre' => 'SIN INFORMACION'],
+            ['idParticularidadesCuerpo'=>71, 'nombre' => 'ACNÉ'],
+            ['idParticularidadesCuerpo'=>71, 'nombre' => 'CICATRIZ'],
+            ['idParticularidadesCuerpo'=>71, 'nombre' => 'MANCHAS'],
+            ['idParticularidadesCuerpo'=>71, 'nombre' => 'PECAS'],
+            ['idParticularidadesCuerpo'=>71, 'nombre' => 'VERRUGAS'],
+            ['idParticularidadesCuerpo'=>71, 'nombre' => 'LUNARES'],
+            ['idParticularidadesCuerpo'=>71, 'nombre' => 'DEFORMACIÓN'],
+            ['idParticularidadesCuerpo'=>71, 'nombre' => 'NEVO'],
+            ['idParticularidadesCuerpo'=>71, 'nombre' => 'QUEMADURA'],
+            ['idParticularidadesCuerpo'=>71, 'nombre' => 'OTRO'],
 
             //NARIZ
             ['idParticularidadesCuerpo'=>11, 'nombre' => 'SIN INFORMACION'],
@@ -125,6 +179,14 @@ class CatSubParticularidadesSeeder extends Seeder
 
             //BIGOTE 12
            
+
+            //BOCA
+            ['idParticularidadesCuerpo'=>73, 'nombre' => 'SIN INFORMACION'],
+            ['idParticularidadesCuerpo'=>73, 'nombre' => 'CICATRIZ'],
+            ['idParticularidadesCuerpo'=>73, 'nombre' => 'DEFORMACIÓN'],
+            ['idParticularidadesCuerpo'=>73, 'nombre' => 'LUNARES'],
+            ['idParticularidadesCuerpo'=>73, 'nombre' => 'QUEMADURA'],
+            ['idParticularidadesCuerpo'=>73, 'nombre' => 'OTRO'],
 
             //LABIO INFERIOR
             ['idParticularidadesCuerpo'=>13, 'nombre' => 'SIN INFORMACION'],

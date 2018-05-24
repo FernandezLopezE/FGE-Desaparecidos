@@ -15,6 +15,7 @@ class CatColoresCuerpoSeeder extends Seeder
          DB::table('cat_colores_cuerpo')->insert([
 
             //OJO DERECHO
+            ['idPartesCuerpo'=>36, 'nombre' => 'SIN INFORMACIÓN', 'imagen' => '7-1.jpg'],
             ['idPartesCuerpo'=>36, 'nombre' => 'CAFÉ CLARO', 'imagen' => '1.jpg'],       
             ['idPartesCuerpo'=>36, 'nombre' => 'CAFÉ OSCURO',  'imagen' => '2.jpg'],
             ['idPartesCuerpo'=>36, 'nombre' => 'NEGRO', 'imagen' => '3.jpg'],
@@ -24,13 +25,24 @@ class CatColoresCuerpoSeeder extends Seeder
             ['idPartesCuerpo'=>36, 'nombre' => 'OTRO', 'imagen' => '7-1.jpg'], 
 
             //OJO IZQUIERDO
+            ['idPartesCuerpo'=>37, 'nombre' => 'SIN INFORMACIÓN', 'imagen' => '7-1.jpg'],
             ['idPartesCuerpo'=>37, 'nombre' => 'CAFÉ CLARO', 'imagen' => '1.jpg'],       
             ['idPartesCuerpo'=>37, 'nombre' => 'CAFÉ OSCURO',  'imagen' => '2.jpg'],
             ['idPartesCuerpo'=>37, 'nombre' => 'NEGRO', 'imagen' => '3.jpg'],
             ['idPartesCuerpo'=>37, 'nombre' => 'AZUL', 'imagen' => '4.jpg'],
             ['idPartesCuerpo'=>37, 'nombre' => 'VERDE', 'imagen' => '5.jpg'], 
             ['idPartesCuerpo'=>37, 'nombre' => 'GRIS', 'imagen' => '7.jpg'],
-            ['idPartesCuerpo'=>37, 'nombre' => 'OTRO', 'imagen' => '7-1.jpg'], 
+            ['idPartesCuerpo'=>37, 'nombre' => 'OTRO', 'imagen' => '7-1.jpg'],
+
+            //AMBOS OJOS
+            ['idPartesCuerpo'=>74, 'nombre' => 'SIN INFORMACIÓN', 'imagen' => '7-1.jpg'],
+            ['idPartesCuerpo'=>74, 'nombre' => 'CAFÉ CLARO', 'imagen' => '1.jpg'],       
+            ['idPartesCuerpo'=>74, 'nombre' => 'CAFÉ OSCURO',  'imagen' => '2.jpg'],
+            ['idPartesCuerpo'=>74, 'nombre' => 'NEGRO', 'imagen' => '3.jpg'],
+            ['idPartesCuerpo'=>74, 'nombre' => 'AZUL', 'imagen' => '4.jpg'],
+            ['idPartesCuerpo'=>74, 'nombre' => 'VERDE', 'imagen' => '5.jpg'], 
+            ['idPartesCuerpo'=>74, 'nombre' => 'GRIS', 'imagen' => '7.jpg'],
+            ['idPartesCuerpo'=>74, 'nombre' => 'OTRO', 'imagen' => '7-1.jpg'], 
 
 
             //CABELLO

@@ -1,0 +1,15 @@
+.dentadura svg{
+    width: 310.5px;
+    margin-left: 15px;
+    display: block;
+}
+ 
+.dentadura g:hover path {
+    fill: #706e6e;
+}
+
+.dentadura svg g path{
+    position: absolute;
+    left: 50%;
+    fill: #f6f6f6;
+}

@@ -10,12 +10,41 @@
       <div class="modal-body">
         <!-- Contenido del formulario-->
         <div class="form-group row">
-          <div class="col-md-4">
-            <img src="/images/esquema-dental.jpg" width="362" height="446" border="0" usemap="#dientes" id="dientes" />
+
+          <div class="col-md-4 dentadura">
+            <div id="area">
+              Area: <span id="data"></span>
+            </div>
+            
+            {{$edadExtraviado[0]}}
+            {{$edadExtraviado[1]}}
+            {{$edadExtraviado[2]}}
+            {{$edadExtraviado[3]}}
+            {{$edadExtraviado[4]}}
+            {{$edadExtraviado[5]}}
+            {{$edadExtraviado[6]}}
+
+            @if($edadExtraviado[0] > 14)
+              @include('datosdentales.dentadura_adult')
+            @endif
+            
+            @if($edadExtraviado[0] <= 6)
+              @include('datosdentales.dentadura_child')
+            @endif
+
+            @if($edadExtraviado[0] > 6 && $edadExtraviado[0] <=14 )
+               @include('datosdentales.dentadura_mixto')
+            @endif
+            
+            
+           
+
           </div>
+          
           <div class="col-md-8">
+
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-8">
                 <div class="form-group two-fields">
                   <div class="input-group">
                     <label style="margin-left: 12%">Diente seleccionado</label>
@@ -101,3 +130,4 @@
     </div>
   </div>
 </div>
+

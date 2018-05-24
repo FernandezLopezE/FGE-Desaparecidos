@@ -1,397 +1,253 @@
 @extends('layouts.app_uipj')
-
 @section('css')
 {!! Html::style('') !!}
 <style type="text/css">
 	.modal-lg {
 		max-width: 80%;
 	}
-	.gi-3x{font-size: 2.5em;}
 </style>
+
+<link rel="stylesheet" href="{{ asset('plugins/bootstrap-colorselector/bootstrap-colorselector.min.css') }}">
 	
 @endsection
-
-@section('titulo', 'Registro único de personas desaparecidas')
-
 @section('content')
-<nav>
-	<div class="nav nav-tabs" id="nav-tab" role="tablist">
-			<a class="nav-item nav-link" href="#" aria-selected="true">
-				Entrevista
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Informantes
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Desaparecido
-			</a>
-			<a class="nav-item nav-link" href="{{route('familiar.show',['id' => $desaparecido->id])}}" aria-selected="false">
-				Familiares
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Contacto
-			</a>
-			<a class="nav-item nav-link" href="{{route('domicilios.show',['id' => $desaparecido->id])}}" aria-selected="false">
-				Domicilios
-			</a>
-			<a class="nav-item nav-link" href="#" aria-selected="false">
-				Antecedentes
-			</a>
-			<a class="nav-item nav-link active" href="#" aria-selected="false">
-				Vestimenta
-			</a>				
-	</div>
-</nav>
+@include('navs.navs_datos',array('activar' => 'vestimenta'))
+<button type="button" class="btn btn-dark pull-right"  id="btnAgregarPrenda">AGREGAR PRENDA</button>
 
-<hr>
-<div class="card border-success">
-	<div class="card-header">
-		<h5 class="card-title">Datos de la vestimenta
-		<button type="button" class="btn btn-dark pull-right"  id="nuevaPrenda"><i class="fa fa-plus"></i> AGREGAR PRENDA</button>
-		</h5>
-	</div>
-	<div class="card-body">	
-	@include('includes.modalVestimenta')
+<div class="card-body bg-white">	
+	@include('vestimenta.modals.modal_vestimenta')
 	<table id="tableInformantes" ></table>
-	</div>
-</div><hr>
-
-<div class="card border-success">
-	<div class="card-header">
-		<h5 class="card-title">Datos del calzado
-		<button type="button" class="btn btn-dark pull-right"  id="nuevoZapato"><i class="fa fa-plus"></i> AGREGAR CALZADO</button>
-		</h5>
-	</div>
-	<div class="card-body">	
-		@include('includes.modalCalzado')
-		<table id="tableCalzado" ></table>
-	</div>
-</div><hr>
-
-<div class="card border-success">
-	<div class="card-header">
-		<h5 class="card-title">ACCESORIOS Y OBJETOS</h5>
-	</div>
-	<div class="card-body">
-		<div class="row">
-            <div class="col">
-              {!! Form::label ('elijaAccesoriosObjetos','Elija los accesorios y objetos que tenía el desaparecido:') !!}
-              {!! Form::select('accesoriosObjetos[]', $accesoriosObjetos, null, ['class' => 'form-control', 'multiple' => 'multiple' ,'id'=>'accesoriosObjetos']) !!}
-            </div>
-          </div><hr>
-
-          <div class="row">
-            <div class="col">
-              <h5 class="card-title">Observaciones:</h5>    
-              {!! Form::textarea  ('descripcionVestimenta',old('Descripción vestimenta'), ['class' => 'form-control mayuscula', 'id' => 'descripcionVestimenta','size' => '30x4', 'data-validation' =>'required','data-validation-error-msg-required' =>'Ingrese las observaciones de la vestimenta'])!!}
-            </div>
-          </div>
-          <br>
-          <input type="button" name="btnAOS" id="btnAOS" value="AGREGAR" class="btn btn-dark pull-right">
-	</div>
-	
 </div>
-
 @endsection
+
 @section('scripts')
+<script src="{{ asset('plugins/bootstrap-colorselector/bootstrap-colorselector.min.js')}}" ></script>
 <script type="text/javascript">
 	$(document).ready(function(){
-		var otroC;
-		var otraP;
-		var tipoV;
-		var tipoCal;
-		var otroTipoZ;
-		var otroCo;
-	//Vista de datos de la vestimenta
-		$('#nuevaPrenda').click(function(e){
-			$('#modalVestimenta').modal('show');
-			$('#btnActualizarP').hide();
-			$('#btnPrenda').show();
-		});
-		$("#prendaColor").change(function() {
-			otroC = $('#prendaColor').val();
-			//alert(otroC);
-			if (otroC==15) {
-				$("#otroColor").show();
-			}else{
-				$("#otroColor").hide();
-			}
-		});
-		$("#idColor").change(function() {
-			otroCo = $('#idColor').val();
-			//alert(otroC);
-			if (otroCo==15) {
-				$("#otroColor2").show();
-			}else{
-				$("#otroColor2").hide();
-			}
-		});
-		$("#idMarca").change(function() {
-			otraP = $('#idMarca').val();
-			
-			if (otraP==26) {
-				$("#otraPrenda").show();
-			}else{
-				$("#otraPrenda").hide();
-			}
-		});
-		/*$("#idVestimenta").change(function() {
-			tipoV = $('#idVestimenta').val();
-			if (tipoV==9) {
-				$("#FormularioVestimenta").hide();
-			}else{
-				$("#FormularioVestimenta").show();
-			}
-		});*/
+		var btnPrendaAgregar = $('#btnAgregarPrenda');
+		var btnPrendaActualizar = $('#btnActualizarPrenda');
+		var btnPrendaGuardar = $('#btnGuardarPrenda');
+		var modal = $('#modalVestimenta');
 		var table = $('#tableInformantes');
-		var routeIndex = '{!! route('consultas.index') !!}';	
+		var idDesaparecido = '{{ $desaparecido->id }}';
+		var routeIndex = '{!! route('consultas.index') !!}';
+		var routeVestimenta = '{!! route('vestimentas.index') !!}';
+		var routeAsset = '{{asset("")}}';
 		
 		var formatTableActions = function(value, row, index) {				
-			btn = '<button class="btn btn-info btn-xs edit" id="editPrenda"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
+			btn = '<button class="btn btn-dark btn-xs edit" id="editVestimenta"><i class="fa fa-edit"></i>&nbsp;</button>';	
 			
 			return [btn].join('');
 		};
+
 		window.operateEvents = {
-			'click #editPrenda': function (e, value, row, index) {					
-				console.log(row);
-				//bodyModal.empty();
-				$('#idPrenda').val(row.id);
-				$('#nombrePrenda').val(row.tipo);
-				$('#prendaMaterial').val(row.material);
-				$('#prendaColor').val(row.pColor);
-				$('#colorPrenda').val(row.otroC);
-				$('#prendaDibujoBordadoFranjas').val(row.dibujo);
-				$('#prendaMarcaOrigen').val(row.marca);
-				$('#prendaTalla').val(row.talla);
-				$("#btnActualizarP").show();
-				$("#btnPrenda").hide();
-				$("#modalVestimenta").modal("show");
+			'click #editVestimenta': function (e, value, row, index) {
+				cargarDatosColores(row.color.codigo);
+				cargarDatosPrendas(row.idPrenda, row.idVestimenta);
+				btnPrendaActualizar.val(row.id);
+				$('select#idVestimenta option[value="'+row.idVestimenta+'"]').attr("selected",true);
+				$('#material').val(row.material);
+				$('select#idMarca option[value="'+row.idMarca+'"]').attr("selected",true);
+				$('#talla').val(row.talla);
+				$('#diseno').val(row.diseno);
+
+				$('#idPrenda').prop('disabled', false);
+				btnPrendaActualizar.show();
+				btnPrendaGuardar.hide();
+				modal.modal('show');
 			}
 		}
-		$('#nuevoInformante').click(function(e){
-			$('#modalGeneral').modal('show');
-		})
+
 		table.bootstrapTable({				
-			url: routeIndex+'/get_prendas/{{$desaparecido->idCedula}}',
+			url: routeIndex+'/get_vestimentas/'+idDesaparecido,
 			columns: [{					
-				field: 'id',
-				title: 'ID',
+				title: 'Foto',
+				formatter: (value, row, index, field) => {
+					return '<img src="'+routeAsset+row.path+'" class="rounded float-left" width="136" height="136">'; 				
+                }
+			}, {
+				field: 'vestimenta.nombre',
+				title: 'Vestimenta',				
 			}, {					
-				field: 'tipo',
-				title: 'Nombre',
+				field: 'prenda.nombre',
+				title: 'Tipo',
 			}, {					
-				field: 'color',
+				field: 'marca.nombre',
+				title: 'Marca',
+			}, {					
+				field: 'talla',
+				title: 'Talla',
+			}, {					
+				//field: 'color.nombre',
 				title: 'Color',
+				formatter: (value, row, index, field) => {
+					span = '<span class="btn-colorselector" style="background-color: ';
+					span = span+row.color.codigo;
+					span = span+';"><div></div></span>';
+					return span; 				
+                }
 			}, {					
 				field: 'material',
 				title: 'Material',
 			}, {					
-				field: 'dibujo',
-				title: 'Dibujo/Bordado/Franjas',
-			}, {					
+				field: 'diseno',
+				title: 'Observaciones',
+			}, {
 				title: 'Acciones',
 				formatter: formatTableActions,
 				events: operateEvents
 			}]				
+		});		
+		
+		//Vista de datos de la vestimenta
+		btnPrendaAgregar.click(function(e){
+			modal.modal('show');
+			$('#idPrenda').empty();				
+			$('#formVestimenta')[0].reset();
+			$('select#idVestimenta option[value="1"]').attr("selected",true);
+			$('select#idMarca option[value="1"]').attr("selected",true);
+			cargarDatosColores();
+			$('#idPrenda').prop('disabled', true);
+			btnPrendaActualizar.hide();
+			btnPrendaGuardar.show();
+		});
+
+		$('#idVestimenta').click(function(){
+			console.log('Tomando el valor de: '+$(this).val());
+			cargarDatosPrendas(selected = null, idVestimenta = $(this).val());
 		})
-		
-	//Fin de Vista de datos de la vestimenta
-	//Vista de datos de calzado
-		$('#nuevoZapato').click(function(e){
-			$('#modalCalzado').modal('show');
-		});
-		$("#idTipo").change(function() {
-			tipoCal = $('#idTipo').val();
-			if (tipoCal==1) {
-				$("#FormularioCalzado").hide();
-			}else{
-				$("#FormularioCalzado").show();
-			}
-		});
-		$("#idTipo").change(function() {
-			otroTipoZ = $('#idTipo').val();
-			if (otroTipoZ==8) {
-				$("#otroZapato").show();
-				
-			}else{
-				$("#otroZapato").hide();
-			}
-		});
-		var table2 = $('#tableCalzado');
-		var routeIndex = '{!! route('consultas.index') !!}';	
-		
-		var formatTableActions = function(value, row, index) {				
-			btn = '<button class="btn btn-info btn-xs edit" id="editCalzado"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
-			
-			return [btn].join('');
-		};
-		window.operateEvents = {
-			'click #editCalzado': function (e, value, row, index) {					
-				console.log(row);
-				//bodyModal.empty();
-				$('#idTipo').val(row.cTipo);
-				$('#otroCalzado').val(row.oCalzado);
-				$('#idColor').val(row.cColor);
-				$('#otroColorCalzado').val(row.ocCalzado);
-				$('#modeloCalzado').val(row.modelo);
-				$('#idMarca').val(row.cMarca);
-				$('#otraMarca').val(row.oMarca);
-				$('#calzadoTalla').val(row.talla);
-				$("#modalCalzado").modal("show");
-			}
+
+		var cargarDatosPrendas= function(selected = null, idVestimenta = null){
+
+			$.getJSON(routeIndex+'/get_catprendas/'+idVestimenta)
+			.done(function(data){
+				$('#idPrenda').empty();				
+				$.each(data, function(key, value){						
+					optionSelect = '<option';
+					if (selected == value.id_menu) { optionSelect = optionSelect+' selected'; }
+					optionselect = optionSelect+' value='+value.id+'>'+value.nombre+'</option>';
+					$('#idPrenda').append(optionselect);					
+				});
+				if (data.length){
+					$('#idPrenda').prop('disabled', false);	
+				} else {
+					$('#idPrenda').prop('disabled', true);
+				}
+										
+			});
+
 		}
-		$('#nuevoInformante').click(function(e){
-			$('#modalGeneral').modal('show');
-		})
-		table2.bootstrapTable({				
-			url: routeIndex+'/get_calzado/{{$id}}',
-			columns: [{					
-				field: 'nombretipo',
-				title: 'Tipo calzado',
-			}, {					
-				field: 'nombremarca',
-				title: 'Marca',
-			}, {					
-				field: 'modelo',
-				title: 'Modelo',
-			}, {					
-				field: 'nombrecolor',
-				title: 'Color',
-			}, {					
-				field: 'talla',
-				title: 'talla',
-			}, {					
-				title: 'Acciones',
-				formatter: formatTableActions,
-				events: operateEvents
-			}]				
-		})
-	//Fin de vista de datos de calzado
-	//----
-		$('#btnPrenda').click (function(){
-		//alert("hola");
-		var dataString = {
-			//prendaTipo: $('#idVestimenta').val(),
-			nombrePrenda: $('#nombrePrenda').val(),
-			prendaMaterial: $('#prendaMaterial').val(),
-			prendaColor: $('#prendaColor').val(),
-			otroColor: $('#colorPrenda').val(),
-			prendaDibujoBordadoFranjas: $('#prendaDibujoBordadoFranjas').val(),
-			prendaMarcaOrigen: $('#prendaMarcaOrigen').val(),
-			prendaTalla: $('#prendaTalla').val(),
-			idCedula: $("#idCedula").val()
-		};
-		console.log(dataString);
-		$.ajax({
-			type: 'POST',
-			url: '/desaparecido/store_vestimenta',
-			data: dataString,
-			dataType: 'json',
-			success: function(data) {						
-				console.log(data);
-				table.bootstrapTable('refresh');
-				$("#modalVestimenta").modal("hide");	
+
+		var cargarDatosColores= function(selected = null){			
+			$.getJSON(routeIndex+'/get_colores')
+			.done(function(data){				
+				$('#idColor').empty();				
+				$.each(data, function(key, value){						
+					optionSelect = '<option';
+					if (selected == value.id_menu) { optionSelect = optionSelect+' selected'; }
+					optionselect = optionSelect+' value='+value.id+' data-color="'+value.codigo+'">'+value.nombre+'</option>';
+					$('#idColor').append(optionselect);										
+				});
+				$('#idColor').colorselector();				
+				if (selected) {
+					$('#idColor').colorselector('setColor', selected);
+				}
 				
-												
-			},
-			error: function(data) {
-				console.log(data);
-			}
+			});
+		}
+
+
+		btnPrendaGuardar.click (function(){
+
+			//var archivo = $('input[name=archivo]');
+			var fileToUpload = $('#archivo')[0].files[0];
+			if (fileToUpload == 'undefined') { fileToUpload = null }
+
+			var formData = new FormData();
+			formData.append("archivo",fileToUpload);
+			formData.append('material', $('#material').val());
+			formData.append('diseno', $('#diseno').val());
+			formData.append('talla', $('#talla').val());
+			formData.append('idMarca', $('#idMarca').val());
+			formData.append('idColor', $('#idColor').val());
+			formData.append('idVestimenta', $('#idVestimenta').val());
+			formData.append('idPrenda', $('#idPrenda').val());
+			formData.append('idDesaparecido', idDesaparecido);
+		
+			$.ajax({
+				type: 'POST',
+				url: routeVestimenta,				
+				data: formData,
+				dataType: 'json',
+				processData: false,
+				contentType: false,
+				success: function(data) {						
+					console.log(data);
+					table.bootstrapTable('refresh');
+					$("#modalVestimenta").modal("hide");
+				},
+				error: function(data) {
+					var errors = data.responseJSON;	
+					$('.modal-body div.has-danger').removeClass('has-danger');
+					$('.form-control-feedback').empty();
+					$.each(errors.errors, function(key, value){					
+						$('#div_'+key).addClass('has-danger');
+						$('input#'+key).addClass('form-control-danger');
+						$('#error_'+key).append(value);						
+					});
+				}
+			});
 		});
-	});
-		//----
-		//----
-		$('.modal-footer').on('click','#btnActualizarP', function(){
-		//alert("hola");
-		var dataString = {
-			//prendaTipo: $('#idVestimenta').val(),
-			nombrePrenda: $('#nombrePrenda').val(),
-			prendaMaterial: $('#prendaMaterial').val(),
-			prendaColor: $('#prendaColor').val(),
-			otroColor: $('#colorPrenda').val(),
-			prendaDibujoBordadoFranjas: $('#prendaDibujoBordadoFranjas').val(),
-			prendaMarcaOrigen: $('#prendaMarcaOrigen').val(),
-			prendaTalla: $('#prendaTalla').val(),
-			idCedula: $("#idCedula").val(),
-			idPrenda: $("#idPrenda").val()
-		};
-		console.log(dataString);
-		$.ajax({
-			type: 'POST',
-			url: '/desaparecido/update_vestimenta',
-			data: dataString,
-			dataType: 'json',
-			success: function(data) {						
-				console.log(data);
-				table.bootstrapTable('refresh');
-				$("#modalVestimenta").modal("hide");	
-				
-												
-			},
-			error: function(data) {
-				console.log(data);
-			}
+
+
+		btnPrendaActualizar.click (function(){
+
+			//var archivo = $('input[name=archivo]');
+			var fileToUpload = $('#archivo')[0].files[0];
+			if (fileToUpload == 'undefined') { fileToUpload = null }
+
+			var formData = new FormData();
+			formData.append("archivo",fileToUpload);
+			formData.append('material', $('#material').val());
+			formData.append('diseno', $('#diseno').val());
+			formData.append('talla', $('#talla').val());
+			formData.append('idMarca', $('#idMarca').val());
+			formData.append('idColor', $('#idColor').val());
+			formData.append('idVestimenta', $('#idVestimenta').val());
+			formData.append('idPrenda', $('#idPrenda').val());
+			formData.append('method', 'PUT');
+			formData.append('idDesaparecido', idDesaparecido);
+			formData.append('idPrendaDesaparecido',btnPrendaActualizar.val());
+		
+			$.ajax({
+				type: 'POST',
+				url: routeVestimenta,
+				data: formData,
+				dataType: 'json',
+				processData: false,
+				contentType: false,
+				success: function(data) {						
+					console.log(data);
+					table.bootstrapTable('refresh');
+					$("#modalVestimenta").modal("hide");
+				},
+				error: function(data) {
+					var errors = data.responseJSON;	
+					$('.modal-body div.has-danger').removeClass('has-danger');
+					$('.form-control-feedback').empty();
+					$.each(errors.errors, function(key, value){					
+						$('#div_'+key).addClass('has-danger');
+						$('input#'+key).addClass('form-control-danger');
+						$('#error_'+key).append(value);						
+					});
+				}
+			});
 		});
-	});
-		//----
-		//----
-		$('#btnCalzado').click (function(){
-		//alert("hola");
-		var dataString = {
-			
-			//prendaTipo: $('#idVestimenta').val(),
-			idTipo: $('#idTipo').val(),
-			calzadoTalla: $('#calzadoTalla').val(),
-			idColor: $('#idColor').val(),
-			idMarca: $('#idMarca').val(),
-			modeloCalzado: $('#modeloCalzado').val(),
-			//descripcionVestimenta: $('#descripcionVestimenta').val(),
-			//accesoriosObjetos: $('#accesoriosObjetos').val(),
-			otroColorCalzado: $('#otroColorCalzado').val(),
-			otroCalzado: $('#otroCalzado').val(),
-			otraMarca: $('#otraMarca').val(),
-			idCedula: $("#idCedula").val()
-		};
-		console.log(dataString);
-		$.ajax({
-			type: 'POST',
-			url: '/desaparecido/update_calzado',
-			data: dataString,
-			dataType: 'json',
-			success: function(data) {						
-				console.log(data);
-				table2.bootstrapTable('refresh');
-				$("#modalCalzado").modal("hide");
-				
-												
-			},
-			error: function(data) {
-				console.log(data);
-			}
-		});
-	});
-	$('#btnAOS').click (function(){
-		//alert("hola");
-		var dataString = {
-			descripcionVestimenta: $('#descripcionVestimenta').val(),
-			accesoriosObjetos: $('#accesoriosObjetos').val(),
-			idCedula: $("#idCedula").val()
-		};
-		console.log(dataString);
-		$.ajax({
-			type: 'POST',
-			url: '/desaparecido/update_accesorios',
-			data: dataString,
-			dataType: 'json',
-			success: function(data) {						
-				console.log(data);
-			},
-			error: function(data) {
-				console.log(data);
-			}
-		});
-	});
-	
+
+
+
+
+
 	});
 </script>
 @endsection

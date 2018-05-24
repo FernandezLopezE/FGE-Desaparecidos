@@ -122,6 +122,7 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo =  CedulaPartesCuerpo::find($query->toArray()[0]->id);
 
             $parteCuerpo->idPersonaDesaparecida = $request['idExtraviado'];
+            $parteCuerpo->tenia = $request['tieneCabello'];
             $parteCuerpo->idPartesCuerpo = $request['parteCuerpoC'];
             $parteCuerpo->idTamanoCuerpo = $request['tamanoCabello'];
             $parteCuerpo->idTipoCuerpo = $request['tipoCabello'];
@@ -184,6 +185,7 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo = new CedulaPartesCuerpo();
 
             $parteCuerpo->idPersonaDesaparecida = $request['idExtraviado'];
+            $parteCuerpo->tenia = $request['tieneCabello'];
             $parteCuerpo->idPartesCuerpo = $request['parteCuerpoC'];
             $parteCuerpo->idTamanoCuerpo = $request['tamanoCabello'];
             $parteCuerpo->idTipoCuerpo = $request['tipoCabello'];
@@ -242,6 +244,7 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo2 = CedulaPartesCuerpo::find($query1->toArray()[0]->id);
 
             $parteCuerpo2->idPersonaDesaparecida = $request['idExtraviado'];
+            $parteCuerpo2->tenia = $request['tieneBarba'];
             $parteCuerpo2->idPartesCuerpo = $request['parteCuerpoBa'];
             $parteCuerpo2->idTipoCuerpo = $request['tipoBarba'];
             $parteCuerpo2->idColoresCuerpo = $request['colorBarba'];
@@ -275,6 +278,7 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo2 = new CedulaPartesCuerpo();
 
             $parteCuerpo2->idPersonaDesaparecida = $request['idExtraviado'];
+            $parteCuerpo2->tenia = $request['tieneBarba'];
             $parteCuerpo2->idPartesCuerpo = $request['parteCuerpoBa'];
             $parteCuerpo2->idTipoCuerpo = $request['tipoBarba'];
             $parteCuerpo2->idColoresCuerpo = $request['colorBarba'];
@@ -318,6 +322,7 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo3 = CedulaPartesCuerpo::find($query2->toArray()[0]->id);
 
             $parteCuerpo3->idPersonaDesaparecida = $request['idExtraviado'];
+            $parteCuerpo3->tenia = $request['tieneBigote'];
             $parteCuerpo3->idPartesCuerpo = $request['parteCuerpoBi'];
             $parteCuerpo3->idTipoCuerpo = $request['tipoBigote'];
             $parteCuerpo3->idColoresCuerpo = $request['colorBigote'];
@@ -351,6 +356,7 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo3 = new CedulaPartesCuerpo();
 
             $parteCuerpo3->idPersonaDesaparecida = $request['idExtraviado'];
+            $parteCuerpo3->tenia = $request['tieneBigote'];
             $parteCuerpo3->idPartesCuerpo = $request['parteCuerpoBi'];
             $parteCuerpo3->idTipoCuerpo = $request['tipoBigote'];
             $parteCuerpo3->idColoresCuerpo = $request['colorBigote'];
@@ -392,6 +398,7 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo4 = CedulaPartesCuerpo::find($query3->toArray()[0]->id);
 
             $parteCuerpo4->idPersonaDesaparecida = $request['idExtraviado'];
+            $parteCuerpo4->tenia = $request['tienePatilla'];
             $parteCuerpo4->idPartesCuerpo = $request['parteCuerpoPa'];
             $parteCuerpo4->idTipoCuerpo = $request['tipoPatilla'];
             $parteCuerpo4->idColoresCuerpo = $request['colorPatilla'];
@@ -423,6 +430,7 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo4 = new CedulaPartesCuerpo();
 
             $parteCuerpo4->idPersonaDesaparecida = $request['idExtraviado'];
+            $parteCuerpo4->tenia = $request['tienePatilla'];
             $parteCuerpo4->idPartesCuerpo = $request['parteCuerpoPa'];
             $parteCuerpo4->idTipoCuerpo = $request['tipoPatilla'];
             $parteCuerpo4->idColoresCuerpo = $request['colorPatilla'];
@@ -462,6 +470,28 @@ class DescripcionFisicaController extends Controller
         //
         $desaparecido = Desaparecido::find($idDesaparecido);
         $ids = array(1,6,11,13,15,16,20,23,24,34,35,36,37);
+        //ids para cejas
+        $idCejas = array(73,6,7);
+        $cejasParte = \App\Models\CatPartesCuerpo::whereIn('id',$idCejas)->orderBy('nombre')->pluck('nombre','id');
+         $tipoCeja = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','6')->pluck('nombre','id');
+
+        //ids para ojos
+        $idOjos = array(37,36,74);
+        $ojosParte = \App\Models\CatPartesCuerpo::whereIn('id',$idOjos)->orderBy('nombre')->pluck('nombre','id');
+
+        //ids para boca
+        $idBoca = array(72,19,20);
+        $bocaParte = \App\Models\CatPartesCuerpo::whereIn('id',$idBoca)->orderBy('nombre')->pluck('nombre','id');
+
+        //ids para orejas
+        $idOrejas = array(34,35,77);
+        $orejasParte = \App\Models\CatPartesCuerpo::whereIn('id',$idOrejas)->orderBy('nombre')->pluck('nombre','id');
+
+        //ids para mejillas
+        $idMejillas = array(23,75,76);
+        $mejillasParte = \App\Models\CatPartesCuerpo::whereIn('id',$idMejillas)->orderBy('nombre')->pluck('nombre','id');
+       
+
         $partesCuerpo = \App\Models\CatPartesCuerpo::whereIn('id',$ids)->pluck('nombre','id');
         $complexiones = \App\Models\CatComplexion::all()->pluck('nombre','id');
         $coloresPiel = \App\Models\CatColorPiel::all()->pluck('nombre','id');
@@ -496,6 +526,35 @@ class DescripcionFisicaController extends Controller
         $partiPatilla = \App\Models\CatSubParticularidades::where('idParticularidadesCuerpo','9')->pluck('nombre','id');
         $modiPatilla = \App\Models\CatSubModificaciones::where('idModificacionesCuerpo','9')->pluck('nombre','id');
 
+        if ($desaparecido->estatura != null) {
+            $aux = true;
+        }else{
+            $aux = false;
+        }
+
+         //consulta cabello
+        $cedulaPartesCuerpo = CedulaPartesCuerpo::where('idPersonaDesaparecida',$idDesaparecido)->get();
+        $showCabello = false;
+         
+        for ( $i =0; $i <count($cedulaPartesCuerpo); $i++) {
+            if($showCabello != true){
+              if($cedulaPartesCuerpo[$i]->idPartesCuerpo >= 55 || $cedulaPartesCuerpo[$i]->idPartesCuerpo <= 58 ){
+                $showCabello = true;
+              }else{
+                $showCabello = false;
+              }
+              /*$("#detallesV").toggle();
+              $("#datosCabello").toggle();
+              $("#btnEditarC").hide();*/
+            }else{
+              //
+              /*$("#datosCabello").hide();
+              $("#btnEditarC").show();
+              $("#detallesV").show();*/
+            }
+            
+        }
+        
 
 
         return view('descripcionfisica.form_descripcion_fisica',
@@ -521,6 +580,14 @@ class DescripcionFisicaController extends Controller
                 'coloresPatilla' => $coloresPatilla,
                 'partiPatilla' => $partiPatilla,
                 'modiPatilla' => $modiPatilla,
+                'aux' => $aux,
+                'cejasParte' => $cejasParte,
+                'tipoCeja' => $tipoCeja,
+                'ojosParte' => $ojosParte,
+                'bocaParte' => $bocaParte,
+                'orejasParte' => $orejasParte,
+                'mejillasParte' => $mejillasParte,
+                'showCabello' => $showCabello
             ]);
     }
 
@@ -556,6 +623,95 @@ class DescripcionFisicaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function deleteVelloFacial($idExtraviado){
+         //consulta cabello
+        $query = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->where('cpc.idPersonaDesaparecida',$idExtraviado)
+                        ->where('cpc.idPartesCuerpo',55)
+                        ->get();
+        
+        $aux = count($query->toArray());;
+        //dd($query->toArray());
+
+        //dd($query->toArray()[3]);
+
+        for($i=0; $i<$aux; $i++){
+            $particularidades = PivotSubPartiCuerpo::where('idCedulaPartesCuerpo',$query->toArray()[$i]->id);
+            $particularidades->delete();
+
+            $modificaciones = PivotSubModiCuerpo::where('idCedulaPartesCuerpo',$query->toArray()[$i]->id);
+            $modificaciones->delete();
+        }
+
+        \DB::table('cedula_partes_cuerpo')->where('idPersonaDesaparecida',$idExtraviado)->where('idPartesCuerpo',55)->delete();
+
+         //consulta barba
+        $query1 = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->where('cpc.idPersonaDesaparecida',$idExtraviado)
+                        ->where('cpc.idPartesCuerpo',56)
+                        ->get();
+        
+        $aux1 = count($query1->toArray());;
+        //dd($query->toArray());
+
+        //dd($query->toArray()[3]);
+
+        for($i=0; $i<$aux1; $i++){
+            $particularidades = PivotSubPartiCuerpo::where('idCedulaPartesCuerpo',$query1->toArray()[$i]->id);
+            $particularidades->delete();
+
+            $modificaciones = PivotSubModiCuerpo::where('idCedulaPartesCuerpo',$query1->toArray()[$i]->id);
+            $modificaciones->delete();
+        }
+
+        \DB::table('cedula_partes_cuerpo')->where('idPersonaDesaparecida',$idExtraviado)->where('idPartesCuerpo',56)->delete();
+
+         //consulta bigote
+        $query2 = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->where('cpc.idPersonaDesaparecida',$idExtraviado)
+                        ->where('cpc.idPartesCuerpo',57)
+                        ->get();
+        
+        $aux2 = count($query2->toArray());;
+        //dd($query->toArray());
+
+        //dd($query->toArray()[3]);
+
+        for($i=0; $i<$aux2; $i++){
+            $particularidades = PivotSubPartiCuerpo::where('idCedulaPartesCuerpo',$query2->toArray()[$i]->id);
+            $particularidades->delete();
+
+            $modificaciones = PivotSubModiCuerpo::where('idCedulaPartesCuerpo',$query2->toArray()[$i]->id);
+            $modificaciones->delete();
+        }
+
+        \DB::table('cedula_partes_cuerpo')->where('idPersonaDesaparecida',$idExtraviado)->where('idPartesCuerpo',57)->delete();
+
+         //consulta patilla
+        $query3 = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->where('cpc.idPersonaDesaparecida',$idExtraviado)
+                        ->where('cpc.idPartesCuerpo',58)
+                        ->get();
+        
+        $aux3 = count($query3->toArray());;
+        //dd($query->toArray());
+
+        //dd($query->toArray()[3]);
+
+        for($i=0; $i<$aux3; $i++){
+            $particularidades = PivotSubPartiCuerpo::where('idCedulaPartesCuerpo',$query3->toArray()[$i]->id);
+            $particularidades->delete();
+
+            $modificaciones = PivotSubModiCuerpo::where('idCedulaPartesCuerpo',$query3->toArray()[$i]->id);
+            $modificaciones->delete();
+        }
+
+        \DB::table('cedula_partes_cuerpo')->where('idPersonaDesaparecida',$idExtraviado)->where('idPartesCuerpo',58)->delete();
+
+
+
     }
 
     public function getParticularidades($idParteCuerpo){
@@ -597,13 +753,16 @@ class DescripcionFisicaController extends Controller
                         ->leftjoin('cat_tipos_cuerpo as tipoCuerpo','tipoCuerpo.id','=','cpc.idTipoCuerpo')
                         ->select('cpc.idPartesCuerpo',
                                 'catpc.nombre as nombreCuerpo',
-                                'cpc.lado',
+                                'cpc.tenia',
                                 'cpc.observaciones',
                                 'catcolores.nombre as colorCuerpo',
                                 'cpc.otraParticularidad',
                                 'cpc.otraModificacion',
                                 'cpc.otroColor',
                                 'cpc.id',
+                                'cpc.idColoresCuerpo',
+                                'cpc.idTamanoCuerpo',
+                                'cpc.idTipoCuerpo',
                                 'tamaCuerpo.nombre as tamano',
                                 'tipoCuerpo.nombre as tipo')
                         ->where('cpc.idPersonaDesaparecida',$idExtraviado)
@@ -639,15 +798,18 @@ class DescripcionFisicaController extends Controller
              $particularidades = \DB::table('cedula_partes_cuerpo as cpc')
                                 ->join('pivot_subparti_cuerpo as pspc','cpc.id','=','pspc.idCedulaPartesCuerpo')
                                 ->join('cat_sub_particularidades as csp','csp.id','=','pspc.idSubParticularidades')
-                                ->select('csp.nombre as particularidad')
+                                ->select('csp.nombre as particularidad',
+                                         'csp.id as idParticularidad')
                                 ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
                                 ->where('pspc.idCedulaPartesCuerpo',$value->id)
                                 ->get();
 
             $longitud = count($particularidades);
             $nParticularidad = '';
+            $idParti  = array();
             for($j=0;$j < $longitud; $j++){
                 $nParticularidad = $particularidades[$j]->particularidad.', '.$nParticularidad  ;
+                array_push($idParti , $particularidades[$j]->idParticularidad);
                 
             }
 
@@ -657,7 +819,8 @@ class DescripcionFisicaController extends Controller
              $modificaciones = \DB::table('cedula_partes_cuerpo as cpc')
                                 ->join('pivot_submodi_cuerpo as psmc','cpc.id','=','psmc.idCedulaPartesCuerpo')
                                 ->join('cat_sub_modificaciones as csm','csm.id','=','psmc.idSubModificaciones')
-                                ->select('csm.nombre as modificacion')
+                                ->select('csm.nombre as modificacion',
+                                        'csm.id as idModificacion')
                                 ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
                                 ->where('psmc.idCedulaPartesCuerpo',$value->id)
                                 ->get();
@@ -666,15 +829,17 @@ class DescripcionFisicaController extends Controller
 
             
             $nModificaciones = '';
+            $idModi = array();
             
             $longitud2 = count($modificaciones);
             for($x=0;$x < $longitud2; $x++){
                 $nModificaciones = $modificaciones[$x]->modificacion.', '.$nModificaciones;
+                array_push($idModi, $modificaciones[$x]->idModificacion);
             }
 
             $cuerpo[$i] = array('id_cuerpo' => $value->idPartesCuerpo,
                                 'nombre' => $value->nombreCuerpo,
-                                'lado' => $value->lado,
+                                'tenia' => $value->tenia,
                                 'color' => $value->colorCuerpo,
                                 'tamano' => $value->tamano,
                                 'tipo' => $value->tipo,
@@ -683,7 +848,12 @@ class DescripcionFisicaController extends Controller
                                 'otraParticularidad' => $value->otraParticularidad,
                                 'otraModificacion' => $value->otraModificacion,
                                 'otroColor' => $value->otroColor,
-                                'observaciones' => $value->observaciones
+                                'observaciones' => $value->observaciones,
+                                'idColor' => $value->idColoresCuerpo,
+                                'idTamano' => $value->idTamanoCuerpo,
+                                'idTipo' => $value->idTipoCuerpo,
+                                'idParti' => $idParti,
+                                'idModi' => $idModi
 
                                  ); 
             /*print_r( $cuerpo[$i]);
@@ -691,6 +861,7 @@ class DescripcionFisicaController extends Controller
             $i++;
             $nParticularidad = '';
             $nModificaciones = '';
+
         }
 
         return response()->json($cuerpo);        
@@ -704,13 +875,15 @@ class DescripcionFisicaController extends Controller
                         ->leftjoin('cat_tipos_cuerpo as tipoCuerpo','tipoCuerpo.id','=','cpc.idTipoCuerpo')
                         ->select('cpc.idPartesCuerpo',
                                 'catpc.nombre as nombreCuerpo',
-                                'cpc.lado',
+                                'cpc.tenia',
                                 'cpc.observaciones',
                                 'catcolores.nombre as colorCuerpo',
                                 'cpc.otraParticularidad',
                                 'cpc.otraModificacion',
                                 'cpc.otroColor',
                                 'cpc.id',
+                                'cpc.idColoresCuerpo',
+                                'cpc.idTipoCuerpo',
                                 'tipoCuerpo.nombre as tipo')
                         ->where('cpc.idPersonaDesaparecida',$idExtraviado)
                         ->where('cpc.idPartesCuerpo',56)
@@ -723,28 +896,33 @@ class DescripcionFisicaController extends Controller
              $modificaciones = \DB::table('cedula_partes_cuerpo as cpc')
                                 ->join('pivot_submodi_cuerpo as psmc','cpc.id','=','psmc.idCedulaPartesCuerpo')
                                 ->join('cat_sub_modificaciones as csm','csm.id','=','psmc.idSubModificaciones')
-                                ->select('csm.nombre as modificacion')
+                                ->select('csm.nombre as modificacion',
+                                        'csm.id as idModificacion')
                                 ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
                                 ->where('psmc.idCedulaPartesCuerpo',$value->id)
                                 ->get();
            
             $nModificaciones = '';
-            
+            $idModi = array();
             $longitud2 = count($modificaciones);
             for($x=0;$x < $longitud2; $x++){
                 $nModificaciones = $modificaciones[$x]->modificacion.', '.$nModificaciones;
+                array_push($idModi, $modificaciones[$x]->idModificacion);
             }
 
             $cuerpo[$i] = array('id_cuerpo' => $value->idPartesCuerpo,
                                 'nombre' => $value->nombreCuerpo,
-                                'lado' => $value->lado,
+                                'tenia' => $value->tenia,
                                 'color' => $value->colorCuerpo,
                                 'tipo' => $value->tipo,
                                 'estilo' => trim($nModificaciones,', '),
                                 'otraParticularidad' => $value->otraParticularidad,
                                 'otraModificacion' => $value->otraModificacion,
                                 'otroColor' => $value->otroColor,
-                                'observaciones' => $value->observaciones
+                                'observaciones' => $value->observaciones,
+                                'idColor' => $value->idColoresCuerpo,
+                                'idTipo' => $value->idTipoCuerpo,
+                                'idModi' => $idModi
 
                                  ); 
         
@@ -763,13 +941,15 @@ class DescripcionFisicaController extends Controller
                         ->leftjoin('cat_tipos_cuerpo as tipoCuerpo','tipoCuerpo.id','=','cpc.idTipoCuerpo')
                         ->select('cpc.idPartesCuerpo',
                                 'catpc.nombre as nombreCuerpo',
-                                'cpc.lado',
+                                'cpc.tenia',
                                 'cpc.observaciones',
                                 'catcolores.nombre as colorCuerpo',
                                 'cpc.otraParticularidad',
                                 'cpc.otraModificacion',
                                 'cpc.otroColor',
                                 'cpc.id',
+                                'cpc.idColoresCuerpo',
+                                'cpc.idTipoCuerpo',
                                 'tipoCuerpo.nombre as tipo')
                         ->where('cpc.idPersonaDesaparecida',$idExtraviado)
                         ->where('cpc.idPartesCuerpo',57)
@@ -782,28 +962,34 @@ class DescripcionFisicaController extends Controller
              $modificaciones = \DB::table('cedula_partes_cuerpo as cpc')
                                 ->join('pivot_submodi_cuerpo as psmc','cpc.id','=','psmc.idCedulaPartesCuerpo')
                                 ->join('cat_sub_modificaciones as csm','csm.id','=','psmc.idSubModificaciones')
-                                ->select('csm.nombre as modificacion')
+                                ->select('csm.nombre as modificacion',
+                                        'csm.id as idModificacion')
                                 ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
                                 ->where('psmc.idCedulaPartesCuerpo',$value->id)
                                 ->get();
            
             $nModificaciones = '';
+            $idModi = array();
             
             $longitud2 = count($modificaciones);
             for($x=0;$x < $longitud2; $x++){
                 $nModificaciones = $modificaciones[$x]->modificacion.', '.$nModificaciones;
+                array_push($idModi, $modificaciones[$x]->idModificacion);
             }
 
             $cuerpo[$i] = array('id_cuerpo' => $value->idPartesCuerpo,
                                 'nombre' => $value->nombreCuerpo,
-                                'lado' => $value->lado,
+                                'tenia' => $value->tenia,
                                 'color' => $value->colorCuerpo,
                                 'tipo' => $value->tipo,
                                 'estilo' => trim($nModificaciones,', '),
                                 'otraParticularidad' => $value->otraParticularidad,
                                 'otraModificacion' => $value->otraModificacion,
                                 'otroColor' => $value->otroColor,
-                                'observaciones' => $value->observaciones
+                                'observaciones' => $value->observaciones,
+                                'idColor' => $value->idColoresCuerpo,
+                                'idTipo' => $value->idTipoCuerpo,
+                                'idModi' => $idModi
 
                                  ); 
         
@@ -822,13 +1008,15 @@ class DescripcionFisicaController extends Controller
                         ->leftjoin('cat_tipos_cuerpo as tipoCuerpo','tipoCuerpo.id','=','cpc.idTipoCuerpo')
                         ->select('cpc.idPartesCuerpo',
                                 'catpc.nombre as nombreCuerpo',
-                                'cpc.lado',
+                                'cpc.tenia',
                                 'cpc.observaciones',
                                 'catcolores.nombre as colorCuerpo',
                                 'cpc.otraParticularidad',
                                 'cpc.otraModificacion',
                                 'cpc.otroColor',
                                 'cpc.id',
+                                'cpc.idColoresCuerpo',
+                                'cpc.idTipoCuerpo',
                                 'tipoCuerpo.nombre as tipo')
                         ->where('cpc.idPersonaDesaparecida',$idExtraviado)
                         ->where('cpc.idPartesCuerpo',58)
@@ -841,28 +1029,33 @@ class DescripcionFisicaController extends Controller
              $modificaciones = \DB::table('cedula_partes_cuerpo as cpc')
                                 ->join('pivot_submodi_cuerpo as psmc','cpc.id','=','psmc.idCedulaPartesCuerpo')
                                 ->join('cat_sub_modificaciones as csm','csm.id','=','psmc.idSubModificaciones')
-                                ->select('csm.nombre as modificacion')
+                                ->select('csm.nombre as modificacion',
+                                        'csm.id as idModificacion')
                                 ->where('cpc.idPartesCuerpo',$value->idPartesCuerpo)
                                 ->where('psmc.idCedulaPartesCuerpo',$value->id)
                                 ->get();
            
             $nModificaciones = '';
-            
+            $idModi = array();
             $longitud2 = count($modificaciones);
             for($x=0;$x < $longitud2; $x++){
                 $nModificaciones = $modificaciones[$x]->modificacion.', '.$nModificaciones;
+                array_push($idModi, $modificaciones[$x]->idModificacion);
             }
 
             $cuerpo[$i] = array('id_cuerpo' => $value->idPartesCuerpo,
                                 'nombre' => $value->nombreCuerpo,
-                                'lado' => $value->lado,
+                                'tenia' => $value->tenia,
                                 'color' => $value->colorCuerpo,
                                 'tipo' => $value->tipo,
                                 'estilo' => trim($nModificaciones,', '),
                                 'otraParticularidad' => $value->otraParticularidad,
                                 'otraModificacion' => $value->otraModificacion,
                                 'otroColor' => $value->otroColor,
-                                'observaciones' => $value->observaciones
+                                'observaciones' => $value->observaciones,
+                                'idColor' => $value->idColoresCuerpo,
+                                'idTipo' => $value->idTipoCuerpo,
+                                'idModi' => $idModi
 
                                  ); 
         
@@ -872,4 +1065,41 @@ class DescripcionFisicaController extends Controller
 
         return response()->json($cuerpo);        
     }
+
+    public function getdatosfisicos($idExtraviado){
+        
+        $datosfisicos = \DB::table('desaparecidos_personas as dp')
+            ->join('cat_complexion as cc','cc.id','=','dp.idComplexion')
+            ->join('cat_color_piel as ccp','ccp.id','=','dp.idColorPiel')
+            ->select('dp.estatura',
+                                'dp.peso',
+                                'cc.nombre as complexion',
+                                'ccp.nombre as piel',
+                                'dp.idComplexion',
+                                'dp.idColorPiel')
+            ->where('dp.id',$idExtraviado)
+            ->get();
+        
+        return response()->json($datosfisicos);
+    }
+
+    public function getTipoCuerpo($idParteCuerpo){
+        
+        $tipos = \DB::table('cat_tipos_cuerpo')
+            ->where('idPartesCuerpo',$idParteCuerpo)
+            ->get();
+        
+        return response()->json($tipos);
+    }
+
+    public function getTamanoCuerpo($idParteCuerpo){
+        
+        $tamano = \DB::table('cat_tamano_cuerpo')
+            ->where('idPartesCuerpo',$idParteCuerpo)
+            ->get();
+        
+        return response()->json($tamano);
+    }
+
+
 }

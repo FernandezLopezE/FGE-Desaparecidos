@@ -1,21 +1,19 @@
-<div id="detallesV">	
-	<button class="btn btn-dark pull-right" id="btnEditarC">EDITAR</button>
-	<div id="btnEditar">
-		
-	</div>
-	<div id="pCabello">
-		
-	</div>
+<div id="detallesV">
 
-	<div id="pBarba">
-		
+	<div class="form-group row" >
+		<div class="col" id="pCabello" style="display: none;">
+			
+		</div>
+		<div class="col" id="pBarba" style="display: none;">
+			
+		</div>
 	</div>
-
-	<div id="pBigote">
-		
-	</div>
-
-	<div id="pPatilla">
-		
+	<div class="form-group row">
+		<div class="col" id="pBigote" style="display: none;">
+			
+		</div>
+		<div class="col" id="pPatilla" style="display: none;">
+			
+		</div>
 	</div>
 </div>

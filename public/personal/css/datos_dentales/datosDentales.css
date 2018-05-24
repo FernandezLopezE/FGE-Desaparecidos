@@ -1,0 +1,8 @@
+.modal-lg {
+    max-width: 80%; /*Se ajusta el ancho del model a un buen tamaño*/
+}
+
+.carousel-inner img { /*se utiliza para el carrusel de los slider*/
+	width: 90%;
+	max-height: 450px;
+}
