@@ -13,7 +13,7 @@
 			<div class="form-group row">
 				<div class="col-6">
 					{!! Form::label ('idSubParticularidades','Ubicación') !!}
-					{!! Form::select('posCejas',  $cejasParte, '', ['class' => 'form-control', 'id' => 'posCejas'] ) !!}
+					{!! Form::select('posCejas',  $pechosParte, '', ['class' => 'form-control', 'id' => 'posCejas'] ) !!}
 				</div>
 			</div>
 			<div class="form-group row">
