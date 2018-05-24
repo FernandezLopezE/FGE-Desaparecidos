@@ -34,21 +34,21 @@
 		<div class="form-group row" id="cejas5" style="display:none;">
 			
 			<div class="col">
-				{!! Form::label ('idSubParticularidades','Particularidades') !!}
-				{!! Form::select('idSubParticularidades', $tipoCeja, '', ['class' => 'form-control', 'id' => 'idSubParticularidades'] ) !!}
+				{!! Form::label ('idPartiCeja','Particularidades') !!}
+				{!! Form::select('idPartiCeja', $tipoCeja, '', ['class' => 'form-control', 'id' => 'idPartiCeja'] ) !!}
 			</div>
 			<div class="col">
-				{!! Form::label ('idSubModificaciones','Modificaciones') !!}
-				{!! Form::select('idSubModificaciones', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idSubModificaciones'] ) !!}
+				{!! Form::label ('idModiCeja','Modificaciones') !!}
+				{!! Form::select('idModiCeja', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idModiCeja'] ) !!}
 			</div>
 		</div>
 
 		<div class="form-group row" >
 			<div class="col" id="cejas6" style="display:none;">
-				{!! Form::text('otroTipoCeja', '', ['class' => 'form-control', 'id' => 'otroTipoCeja', 'placeholder' => 'Especifique otra particularidad'] ) !!}
+				{!! Form::text('otraPartiCeja', '', ['class' => 'form-control', 'id' => 'otraPartiCeja', 'placeholder' => 'Especifique otra particularidad'] ) !!}
 			</div>
 			<div class="col" id="cejas7" style="display:none;">
-				{!! Form::text('otroTipoCeja', '', ['class' => 'form-control', 'id' => 'otroTipoCeja', 'placeholder' => 'Especifique otra modificación'] ) !!}
+				{!! Form::text('otraModiCeja', '', ['class' => 'form-control', 'id' => 'otraModiCeja', 'placeholder' => 'Especifique otra modificación'] ) !!}
 			</div>
 		</div>
 

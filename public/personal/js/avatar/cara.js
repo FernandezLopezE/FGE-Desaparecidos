@@ -40,10 +40,10 @@ $(document).ready(function() {
 	                dataType:"json",
 
 	                success:function(data) {
-	                        $("#idSubParticularidades").empty();
+	                        $("#idPartiCeja").empty();
 	                    $.each(data, function(key, value){                        
 
-	                        $("#idSubParticularidades").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+	                        $("#idPartiCeja").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
 
 	                    });
 
@@ -58,10 +58,10 @@ $(document).ready(function() {
 	                dataType:"json",
 
 	                success:function(data) {
-	                        $("#idSubModificaciones").empty();
+	                        $("#idModiCeja").empty();
 	                    $.each(data, function(key, value){                        
 
-	                        $("#idSubModificaciones").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+	                        $("#idModiCeja").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
 
 	                    });
 
@@ -100,10 +100,10 @@ $(document).ready(function() {
                 dataType:"json",
 
                 success:function(data) {
-                        $("#idSubParticularidades").empty();
+                        $("#idPartiCeja").empty();
                     $.each(data, function(key, value){                        
 
-                        $("#idSubParticularidades").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+                        $("#idPartiCeja").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
 
                     });
 
@@ -118,10 +118,10 @@ $(document).ready(function() {
                 dataType:"json",
 
                 success:function(data) {
-                        $("#idSubModificaciones").empty();
+                        $("#idModiCeja").empty();
                     $.each(data, function(key, value){                        
 
-                        $("#idSubModificaciones").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+                        $("#idModiCeja").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
 
                     });
 
@@ -887,8 +887,8 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#idSubParticularidades").change(function() {
-		otraPartCeja = $("#idSubParticularidades").val();
+	$("#idPartiCeja").change(function() {
+		otraPartCeja = $("#idPartiCeja").val();
 		//alert(otraPartCeja);
 		if (otraPartCeja =="30") {
 			$("#cejas6").show();
@@ -897,8 +897,8 @@ $(document).ready(function() {
 		}
 	});
 
-	$("#idSubModificaciones").change(function() {
-		otraModCeja = $("#idSubModificaciones").val();
+	$("#idModiCeja").change(function() {
+		otraModCeja = $("#idModiCeja").val();
 		//alert(otraModCeja);
 		if (otraModCeja =="32") {
 			$("#cejas7").show();
@@ -1188,5 +1188,73 @@ $(document).ready(function() {
 		}else{
 			$("#menton3").hide();
 		}
+	});
+
+	//Botón guardar
+	$("#guardarCara").click(function(){
+		var dataString = {
+	      //Cejas
+	      infocejas: $('#infocejas').val(),
+	      tipoCeja: $('#tipoCeja').val(),
+	      otroTipoCeja: $('#otroTipoCeja').val(),
+	      idPartiCeja: $('#idPartiCeja').val(),
+	      idModiCeja: $('#idModiCeja').val(),
+	      otraPartiCeja: $('#otraPartiCeja').val(),
+	      observacionesCejas: $('#observacionesCejas').val(),
+	      otraModiCeja: $("#otraModiCeja").val(),
+	      parteCuerpoC: $('#posCejas').val(),
+	      idExtraviado: $('#idExtraviado').val(),
+
+	      //ojos
+	      infoOjos: $('#infoOjos').val(),
+	      colorOjos: $('#colorOjos').val(),
+	      otroColorOjo: $('#otroColorOjo').val(),
+	      tamanoOjos: $('#tamanoOjos').val(),
+	      idPartiOjos: $('#idPartiOjos').val(),
+	      idModiOjos: $('#idModiOjos').val(),
+	      otraPartOjo: $('#otraPartOjo').val(),
+	      observacionesOjos: $('#observacionesOjos').val(),
+	      otraModOjo: $("#otraModOjo").val(),
+	      parteCuerpoO: $('#posOjos').val(),
+	      idExtraviado: $('#idExtraviado').val(),
+
+	      /*//Bigote
+	      tieneBigote: $('#tieneBigote').val(),
+	      tipoBigote: $('#tipoBigote').val(),
+	      colorBigote: $('#colorBigote').val(),
+	      otraModiBa: $('#otroPartiBig').val(),
+	      otroColorBa: $('#otroColorBig').val(),
+	      observacionesBigote: $('#observacionesBigote').val(),
+	      modiBigote: $("#modiBigote").val(),
+	      parteCuerpoBi: 57,
+
+	      //Patilla
+	      tienePatilla: $('#tienePatilla').val(),
+	      tipoPatilla: $('#tipoPatilla').val(),
+	      colorPatilla: $('#colorPatilla').val(),
+	      otraModiP: $('#otroPartiPat').val(),
+	      otroColorP: $('#otroColorPat').val(),
+	      observacionesPatilla: $('#observacionesPatilla').val(),
+	      modiPatilla: $("#modiPatilla").val(),
+	      parteCuerpoPa: 58,*/
+
+	    };
+	    console.log(dataString);
+	    $.ajax({
+	      type: 'POST',
+	      url: '/descripcionfisica/storeCara',
+	      data: dataString,
+	      dataType: 'json',
+	      success: function(data) {
+	        console.log("hecho cara");
+	        console.log(data);
+
+	        
+	      },
+	      error: function(data) {
+	        console.log("error cara");
+	        console.log(data);
+	      }
+	    });//fin  de petición para realizar el store de cabello y vello facial.
 	});
 });
