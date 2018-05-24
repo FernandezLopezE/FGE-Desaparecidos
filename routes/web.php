@@ -172,7 +172,7 @@ Route::post('/desaparecido/update_vestimenta', 'DesaparecidoController@update_ve
 	->name('desaparecido.update_vestimenta');
 
 //Rutas para descripcion fisica
-
+Route::get('/descripcionfisica/get_deleteVello/{idParteCuerpo}','DescripcionFisicaController@deleteVelloFacial');
 Route::get('/descripcionfisica/get_coloresCuerpo/{idParteCuerpo}', 'DescripcionFisicaController@getColoresCuerpo')
 	->name('descripcionfisica.get_coloresCuerpo');
 Route::get('/descripcionfisica/get_particularidades/{idParteCuerpo}', 'DescripcionFisicaController@getParticularidades')
@@ -195,9 +195,9 @@ Route::get('/descripcionfisica/get_tipos/{idParteCuerpo}', 'DescripcionFisicaCon
 Route::post('/descripcionfisica/store', 'DescripcionFisicaController@store')
 	->name('descripcionfisica.store');
 Route::post('/descripcionfisica/storeVelloFacial', 'DescripcionFisicaController@storeVelloFacial')->name('descripcionfisica.storeVelloFacial');
+Route::post('/descripcionfisica/storeCara', 'DescripcionFisicaController@storeCara')->name('descripcionfisica.storeCara');
 Route::resource('/descripcionfisica','DescripcionFisicaController');
 //fin de mis rutas
-
 //Rutas para antedecedentes medicos
 Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'AntecedentesMedicosController@show')
 	->name('antecedentesmedicos.show');
@@ -340,9 +340,16 @@ Route::get('/envioDocumentos','MailController@envioDocumentos');
 
 //Anexos
 Route::get('anexos','AnexosController@show');
-	
-Route::resource('desaparicion','DesaparicionController');
-	
+//Route::post('/desaparicion','DesaparicionController@store');
+//Route::get('desaparicion/create/{$id}', 'DesaparicionController@create')
+	//->name ('desaparicion.create_desaparicion');	
+Route::resource('/desaparicion','DesaparicionController');
+
+//Route::resource('desaparicion' , 'DesaparicionController@store');
+Route::post('desaparicion', 'DesaparicionController@store');
+Route::put('desaparicion/{id}', 'DesaparicionController@update');
+
+
 
 
 

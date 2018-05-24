@@ -48,6 +48,8 @@
 				<dd class="col-sm-8"id="idFecha"> </dd>
 				<dt class="col-sm-3">Edad de extravio:</dt>
 				<dd class="col-sm-8"id="idEdad"> </dd>
+				<dt class="col-sm-3">Tipo de cabello:</dt>
+				<dd class="col-sm-8"id="idTipoCabello"> </dd>
 				
 <!--
 				<dt class="col-sm-3">Edad aparente:</dt>

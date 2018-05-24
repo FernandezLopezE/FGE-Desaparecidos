@@ -82,6 +82,7 @@ class ConsultasController extends Controller
         $cPiel = $request->input('cPiel');
         $complexion = $request->input('complexion'); 
         $tipoCabello = $request->input('tipoCabello');
+        $tipoBarba = $request->input('$tipoBarba');
         $masc = $request->input('masc');
         $fem = $request->input('fem');
         //-o-o-o-o-o-o-o-o-PESO-o-o-o-o-o-o-o-o-o-o-o-o
@@ -125,16 +126,39 @@ class ConsultasController extends Controller
 //            ->whereIn('idEstadoOrigen', $estados)
 //             ->get();
 //        dd($consulta->toArray());}
+        
+//        $subQuery = \DB::table('desaparecidos_personas as dp')
+//        ->leftjoin('cedula_partes_cuerpo as cpc', 'cpc.idPersonaDesaparecida', '=', 'dp.id')    
+//         ->leftjoin('cat_tipos_cuerpo as ctc', 'cpc.idTipoCuerpo', '=', 'ctc.id' , 'and', 'ctc.idPartesCuerpo', '=', 'cpc.idPartesCuerpo')   
+//        ->select(\DB::raw('ctc.nombre as tipocab'))
+//        ->whereRaw('tipoPersona','DESAPARECIDA')
+//        ->whereRaw('ctc.idPartesCuerpo', 55)
+//        ->whereRaw('ctc.nombre', 'LACIO'); 
+        
+//        DB::table('branch_tbl')
+//->select('branch_tbl.id','branch_tbl.branchname',
+//    DB::raw("(" . $subQuery->toSql() . ") as 'total expenses'")
+//)
+            
+//            select  ctc.nombre from desaparecidos_personas as dp  
+//join (cat_tipos_cuerpo as ctc) join (cedula_partes_cuerpo as cpc) 
+//where dp.tipoPersona = 'DESAPARECIDA' and ctc.id = cpc.idTipoCuerpo and
+//dp.id = cpc.idPersonaDesaparecida and ctc.idPartesCuerpo = 56
+//        
+        
+        
         $desaparecidos = \DB::table('desaparecidos_personas as des')                           
-                ->leftjoin('persona as p', 'des.idPersona', '=', 'p.id')
-                ->leftjoin('desaparecidos_cedula_investigacion AS dci', 'dci.id', '=', 'des.idCedula')
-                ->leftjoin('cat_estado AS ce', 'dci.idEstadoDesaparicion', '=', 'ce.id') 
-                ->leftjoin('Cat_complexion AS cc', 'des.idComplexion', '=', 'cc.id')
-                ->leftjoin('Cat_color_piel AS ccp', 'des.idColorPiel', '=', 'ccp.id')
-                ->leftjoin('cat_municipio AS cm', 'dci.idMunicipioDesa', '=', 'cm.id', 'and', 'cm.idEstado', '=', 'dci.idEstadoDesaparicion')
-                ->leftjoin('cat_nacionalidad AS cn', 'p.idNacionalidad', '=', 'cn.id')
-                ->leftjoin('cedula_partes_cuerpo as cpc', 'cpc.idPersonaDesaparecida', '=', 'des.idPersona')
-                ->leftjoin('cat_tipos_cuerpo as ctc', 'cpc.idTipoCuerpo', '=', 'ctc.id')
+    ->leftjoin('persona as p', 'des.idPersona', '=', 'p.id')
+    ->leftjoin('desaparecidos_cedula_investigacion AS dci', 'dci.id', '=', 'des.idCedula')
+    ->leftjoin('cat_estado AS ce', 'dci.idEstadoDesaparicion', '=', 'ce.id') 
+    ->leftjoin('Cat_complexion AS cc', 'des.idComplexion', '=', 'cc.id')
+    ->leftjoin('Cat_color_piel AS ccp', 'des.idColorPiel', '=', 'ccp.id')
+    ->leftjoin('cat_municipio AS cm', 'dci.idMunicipioDesa', '=', 'cm.id', 'and', 'cm.idEstado', '=', 'dci.idEstadoDesaparicion')
+    ->leftjoin('cat_nacionalidad AS cn', 'p.idNacionalidad', '=', 'cn.id')
+    ->leftjoin('cedula_partes_cuerpo as cpc', 'cpc.idPersonaDesaparecida', '=', 'des.id')
+    ->leftjoin('cat_partes_cuerpo as cpartes', 'cpc.idPartesCuerpo', '=', 'cPartes.id')
+    ->leftjoin('cat_tipos_cuerpo as ctc', 'cpc.idTipoCuerpo', '=', 'ctc.id' , 'and', 'ctc.idPartesCuerpo', '=', 'cpc.idPartesCuerpo')
+    
 //                           { ->leftJoin('cat_nacionalidad as n', 'p.idNacionalidad', '=', 'n.id')
                             //->where('d.tipoPersona','DESAPARECIDA')
 //            ->join('cat_estado AS ce', 'dd.idEstado', '=', 'ce.id')
@@ -142,7 +166,13 @@ class ConsultasController extends Controller
 //                     'ce.nombre as estado',
                        
                         //DB::raw('substr(id, 1, 4) as id')}
-            ->select('des.id as id', \DB::raw('CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))AS nombre'), 'p.sexo as sexo',\DB::raw('substr(dci.desaparicionFecha, 1,10) as fecha'),'des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'),'des.estatura as estatura','des.peso as peso','cc.id as idComplexion','cc.nombre as complexion','ccp.id as idCPiel','ccp.nombre as cPiel','ce.id as idEstado','ce.nombre as estado','cm.id as idMuni','cm.nombre as municipio','cn.nombre as nacionalidad', 'ctc.nombre as tipo')
+            ->select('des.id as id', \DB::raw('CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))AS nombre'), 'p.sexo as sexo',\DB::raw('substr(dci.desaparicionFecha, 1,10) as fecha'),'des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'),'des.estatura as estatura','des.peso as peso','cc.id as idComplexion','cc.nombre as complexion','ccp.id as idCPiel','ccp.nombre as cPiel','ce.id as idEstado','ce.nombre as estado','cm.id as idMuni','cm.nombre as municipio',
+                     'cn.nombre as nacionalidad')
+           // 'cn.nombre as nacionalidad',\DB::raw("({$subQuery->toSql()}) as sub"))
+//            ->from(\DB::raw(' ( ' . $subQuery->toSql() . ' ) AS counted '))
+            
+            
+            
             //{->where('des.edadExtravio', 'like', "$rg%")
                             //->where('des.edadExtravio', 'like', "$rg2%")
                             //->whereBetween('des.edadExtravio', [$rg, $rg2])}
@@ -165,8 +195,11 @@ class ConsultasController extends Controller
                                 return $q->whereIn('des.idComplexion', $complexion);
                             })
                             ->when($tipoCabello, function ($q) use ($tipoCabello) {
-                                return $q->whereIn('ctc.id', $tipoCabello);
-                            })        
+                                return $q->whereIn('cpc.idTipoCuerpo', $tipoCabello);
+                            })
+                            ->when($tipoBarba, function ($q) use ($tipoBarba) {
+                                return $q->whereIn('cpc.idTipoCuerpo', $tipoBarba);
+                            })
                             ->orWhere('p.sexo', $fem) 
                             ->where('tipoPersona','DESAPARECIDA')
                             ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
@@ -185,11 +218,17 @@ class ConsultasController extends Controller
                                 return $q->whereIn('des.idComplexion', $complexion);
                             })
                             ->when($tipoCabello, function ($q) use ($tipoCabello) {
-                                return $q->whereIn('ctc.id', $tipoCabello);
-                            }) 
+                                return $q->whereIn('cpc.idTipoCuerpo', $tipoCabello);
+                            })
+                            ->when($tipoBarba, function ($q) use ($tipoBarba) {
+                                return $q->whereIn('cpc.idTipoCuerpo', $tipoBarba);
+                            })
             
                             //->where('des.edadExtravio', 'like', "$rg2%")
+                            ->distinct()
                             ->get();
+        
+        //$desaparecidos = $desaparecidos->unique('idPersonaDesaparecida');
 
         //dd($desaparecidos->ToArray());
 		return response()->json($desaparecidos);

@@ -302,9 +302,9 @@
             
 			modalInformanteAgregar.modal('show');
 
-            $( "#modalInformante" ).sisyphus( {
+            /*$( "#modalInformante" ).sisyphus( {
 	           excludeFields: $('input[name=_token]')
-            });
+            });*/
 		})
         
         btnLimpiar.click(function(){

@@ -75,6 +75,9 @@
 				field: 'marca.nombre',
 				title: 'Marca',
 			}, {					
+				field: 'talla',
+				title: 'Talla',
+			}, {					
 				//field: 'color.nombre',
 				title: 'Color',
 				formatter: (value, row, index, field) => {
@@ -99,6 +102,10 @@
 		//Vista de datos de la vestimenta
 		btnPrendaAgregar.click(function(e){
 			modal.modal('show');
+			$('#idPrenda').empty();				
+			$('#formVestimenta')[0].reset();
+			$('select#idVestimenta option[value="1"]').attr("selected",true);
+			$('select#idMarca option[value="1"]').attr("selected",true);
 			cargarDatosColores();
 			$('#idPrenda').prop('disabled', true);
 			btnPrendaActualizar.hide();
@@ -208,11 +215,13 @@
 			formData.append('idColor', $('#idColor').val());
 			formData.append('idVestimenta', $('#idVestimenta').val());
 			formData.append('idPrenda', $('#idPrenda').val());
+			formData.append('method', 'PUT');
 			formData.append('idDesaparecido', idDesaparecido);
+			formData.append('idPrendaDesaparecido',btnPrendaActualizar.val());
 		
 			$.ajax({
-				type: 'PUT',
-				url: routeVestimenta+'/'+btnPrendaActualizar.val(),				
+				type: 'POST',
+				url: routeVestimenta,
 				data: formData,
 				dataType: 'json',
 				processData: false,
