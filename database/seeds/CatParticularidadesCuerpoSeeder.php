@@ -93,6 +93,8 @@ class CatParticularidadesCuerpoSeeder extends Seeder
             ['idPartesCuerpo'=>77, 'nombre' => 'PARTICULARIDADES AMBAS OREJAS'],//72
             ['idPartesCuerpo'=>72, 'nombre' => 'PARTICULARIDADES AMBOS LABIOS'],//73
 
+            ['idPartesCuerpo'=>68, 'nombre' => 'PARTICULARIDADES ESPINILLA IZQUIERDA'],//74
+            ['idPartesCuerpo'=>67, 'nombre' => 'PARTICULARIDADES ESPINILLA DERECHA'],//75
 
     ]);
   }

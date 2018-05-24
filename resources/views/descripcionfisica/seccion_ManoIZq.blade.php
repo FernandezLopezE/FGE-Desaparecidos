@@ -17,12 +17,12 @@
 					{!! Form::select('infoMuñecaIzq', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoMuñecaIzq'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubParticularidades','Particularidades') !!}
-					{!! Form::select('idSubParticularidades', $tipoCeja, '', ['class' => 'form-control', 'id' => 'idSubParticularidades'] ) !!}
+					{!! Form::label ('partMunecaIzq','Particularidades') !!}
+					{!! Form::select('partMunecaIzq', $tipoCeja, '', ['class' => 'form-control', 'id' => 'partMunecaIzq'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubModificaciones','Modificaciones') !!}
-					{!! Form::select('idSubModificaciones', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idSubModificaciones'] ) !!}
+					{!! Form::label ('modMunecaIzq','Modificaciones') !!}
+					{!! Form::select('modMunecaIzq', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'modMunecaIzq'] ) !!}
 				</div>
 			</div>
 
@@ -48,12 +48,12 @@
 					{!! Form::select('infoPalmaIzq', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoPalmaIzq'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubParticularidades','Particularidades') !!}
-					{!! Form::select('idSubParticularidades', $tipoCeja, '', ['class' => 'form-control', 'id' => 'idSubParticularidades'] ) !!}
+					{!! Form::label ('partPalmaIzq','Particularidades') !!}
+					{!! Form::select('partPalmaIzq', $tipoCeja, '', ['class' => 'form-control', 'id' => 'partPalmaIzq'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubModificaciones','Modificaciones') !!}
-					{!! Form::select('idSubModificaciones', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idSubModificaciones'] ) !!}
+					{!! Form::label ('modPalmaIzq','Modificaciones') !!}
+					{!! Form::select('modPalmaIzq', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'modPalmaIzq'] ) !!}
 				</div>
 			</div>
 
@@ -114,12 +114,12 @@
 					{!! Form::select('infoUñas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoUñas'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubParticularidades','Particularidades') !!}
-					{!! Form::select('idSubParticularidades', $tipoCeja, '', ['class' => 'form-control', 'id' => 'idSubParticularidades'] ) !!}
+					{!! Form::label ('partUnas','Particularidades') !!}
+					{!! Form::select('partUnas', $tipoCeja, '', ['class' => 'form-control', 'id' => 'partUnas'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubModificaciones','Modificaciones') !!}
-					{!! Form::select('idSubModificaciones', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idSubModificaciones'] ) !!}
+					{!! Form::label ('modUnas','Modificaciones') !!}
+					{!! Form::select('modUnas', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'modUnas'] ) !!}
 				</div>
 			</div>
 

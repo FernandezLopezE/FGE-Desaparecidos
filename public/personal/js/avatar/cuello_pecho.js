@@ -3,13 +3,13 @@ $(document).ready(function() {
   $("#cuello").click(function(event) {
     console.log("Cuello");
     $("#formCuello").toggle();
-  });
+    });
 
   //Mostrar form de pecho
   $("#pectoral").click(function(event) {
     console.log("Pecho");
     $("#formPecho").toggle();
-  });
+    });
 
   
 	//Cargar valores a select de particularidades de cuello
@@ -40,6 +40,24 @@ $(document).ready(function() {
 	        },  
 	});
 
-  //
+  //Mostrar otra particularidad cuello
+  $("#idPartCuello").change(function(event) {
+    partCuello = $("#idPartCuello").val();
+    if (partCuello == "169") {
+      $("#cuello1").show();
+    }else{
+      $("#cuello1").hide();
+    }
+  });
+
+  //Mostrar otra modificacion cuello
+  $("#idModCuello").change(function(event) {
+    modCuello = $("#idModCuello").val();
+    if (modCuello == "146") {
+      $("#cuello2").show();
+    }else{
+      $("#cuello2").hide();
+    }
+  });
    
 });

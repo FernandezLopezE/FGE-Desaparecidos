@@ -70,7 +70,7 @@
 			</div>
 			<div class="col" id="ojos2" style="display:none;">
 				{!! Form::label ('colorOjos','Color') !!}
-				{!! Form::select('colorOjos', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'colorOjos'] ) !!}
+				{!! Form::select('colorOjos', array(), '', ['class' => 'form-control', 'id' => 'colorOjos'] ) !!}
 			</div>
 		</div>
 
@@ -83,7 +83,7 @@
 		<div class="form-group row">
 			<div class="col-3" id="ojos4" style="display:none;">
 				{!! Form::label ('tamanoOjos','Tamaño') !!}
-				{!! Form::select('tamanoOjos', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tamanoOjos'] ) !!}
+				{!! Form::select('tamanoOjos', array(), '', ['class' => 'form-control', 'id' => 'tamanoOjos'] ) !!}
 			</div>
 			<div class="col-3" id="ojos5" style="display:none;">
 				{!! Form::label ('idPartiOjos','Particularidades') !!}
@@ -118,7 +118,7 @@
 			</div>
 			<div class="col" id="nariz1" style="display:none;">
 				{!! Form::label ('tipoNariz','Tipo') !!}
-				{!! Form::select('tipoNariz', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tipoNariz'] ) !!}
+				{!! Form::select('tipoNariz', array(), '', ['class' => 'form-control', 'id' => 'tipoNariz'] ) !!}
 			</div>
 		</div>
 
@@ -166,7 +166,7 @@
 			</div>
 			<div class="col" id="boca2" style="display:none;">
 				{!! Form::label ('tamanoBoca','Tamaño') !!}
-				{!! Form::select('tamanoBoca', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tamanoBoca'] ) !!}
+				{!! Form::select('tamanoBoca', array(), '', ['class' => 'form-control', 'id' => 'tamanoBoca'] ) !!}
 			</div>
 		</div>
 		
@@ -208,7 +208,7 @@
 			</div>
 			<div class="col" id="oreja2" style="display:none;">
 				{!! Form::label ('tipoOreja','Tipo') !!}
-				{!! Form::select('tipoOreja', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tipoOreja'] ) !!}
+				{!! Form::select('tipoOreja', array(), '', ['class' => 'form-control', 'id' => 'tipoOreja'] ) !!}
 			</div>
 		</div>
 

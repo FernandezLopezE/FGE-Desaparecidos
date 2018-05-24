@@ -11,4 +11,60 @@ $(document).ready(function() {
 	    $("#formMusloDer").toggle();
   	});
 
+  	//Cargar valores a select de particularidades de muslo izquierdo
+    $.ajax({
+         url: '/descripcionfisica/get_particularidades/'+27,
+         type:"GET",
+         dataType:"json",
+
+         success:function(data) {
+          $("#partMusloIzq").empty();
+          $.each(data, function(key, value){   
+            $("#partMusloIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+               });
+            },  
+    });
+
+    //Cargar valores a select de modificaciones de muslo izquierdo
+    $.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+27,
+         type:"GET",
+         dataType:"json",
+
+         success:function(data) {
+          $("#modMusloIzq").empty();
+          $.each(data, function(key, value){   
+            $("#modMusloIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+               });
+            },  
+    });
+
+    //Cargar valores a select de particularidades de muslo derecho
+    $.ajax({
+         url: '/descripcionfisica/get_particularidades/'+28,
+         type:"GET",
+         dataType:"json",
+
+         success:function(data) {
+          $("#partMusloDer").empty();
+          $.each(data, function(key, value){   
+            $("#partMusloDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+               });
+            },  
+    });
+
+    //Cargar valores a select de modificaciones de muslo derecho
+    $.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+28,
+         type:"GET",
+         dataType:"json",
+
+         success:function(data) {
+          $("#modMusloDer").empty();
+          $.each(data, function(key, value){   
+            $("#modMusloDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+               });
+            },  
+    });
+
 });
