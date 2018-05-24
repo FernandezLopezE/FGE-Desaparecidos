@@ -39,7 +39,7 @@ class DesaparicionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DesaparicionRequest $request)
     {
         $idDesaparecido = ($request['idDesaparecido']);
        
@@ -279,7 +279,7 @@ class DesaparicionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DesaparicionRequest $request, $id)
     {
        
         $idDesaparecido = ($request['idDesaparecido']);

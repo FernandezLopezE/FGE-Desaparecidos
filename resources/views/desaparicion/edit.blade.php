@@ -131,7 +131,7 @@
 							<div class="row" id=""  > 	
 									<div class="form-group col">
 										{!! Form::label ('idEstado','Estado:') !!}
-										{!! Form::select ('idEstado',$estados,@$domicilio->idEstado, ['class' => 'form-control' , 'id' =>'idEstado'] )!!}				
+										{!! Form::select ('idEstado',$estados,'', ['class' => 'form-control' , 'id' =>'idEstado'] )!!}				
 									</div>
 									<div class="form-group col">
 										{!! Form::label ('idMunicipio','Municipio:') !!}
@@ -142,7 +142,7 @@
 									</div>
 									<div class="form-group col">
 										{!! Form::label ('idLocalidad','Localidad:') !!}
-										{!! Form::select ('idLocalidad',$localidades,@$domicilio->idLocalidad,
+										{!! Form::select ('idLocalidad',$localidades,'',
 																 ['class' => 'form-control'
 																	,'id' =>'idLocalidad'
 																 ] )!!}				
@@ -152,7 +152,7 @@
 							<div class="row" id=""  > 	
 									<div class="form-group col-lg-8">
 										{!! Form::label ('idColonia','Colonia:') !!}
-										{!! Form::select ('idColonia',$colonias,@$domicilio->idColonia,
+										{!! Form::select ('idColonia',$colonias,'',
 																['class' => 'form-control',
 																	'id' =>'idColonia'
 																] )!!}				
@@ -324,8 +324,73 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 <script type="text/javascript">
+	var routeIndex = '{!! route('consultas.index') !!}';	
+
 	$(document).ready(function()
-	{
+	{	
+		console.log(routeIndex);
+		/*$('select#idEstado option[value="'+row.+'{!! $domicilio->idMunicipio !!}'+'"]').attr("selected",true);*/
+		//$('#idEstado').val(''+'{!! $domicilio->idEstado !!}'+'').trigger('change');
+		console.log("el ID del estado es: "+'{!! $domicilio->idMunicipio !!}');
+		//$('select#idEstado option[value="'+'{!! $domicilio->idEstado !!}'+'"]').attr("selected",false);
+		$('#idEstado').val(''+'{!! $domicilio->idEstado !!}'+'').trigger('change');
+		$.getJSON(routeIndex+'/get_municipios/'+'{!! $domicilio->idEstado !!}')
+				.done(function(data){					
+					idSelect ='{!! $domicilio->idMunicipio !!}';
+					selectedGeneral = $('#idMunicipio');
+					selectedGeneral.select2();
+					//selectedGeneral.append('<option value="0">[ SELECCIONE TIPO]</option>');
+					$.each(data, function(key, value){						
+						optionSelect = '<option';
+						if (idSelect == value.id) { optionSelect = optionSelect+' selected'; }
+						optionselect = optionSelect+' value='+value.id+'>'+value.nombre+'</option>';
+						selectedGeneral.append(optionselect);
+					});
+				});
+
+				$.getJSON(routeIndex+'/get_localidades/'+'{!! $domicilio->idMunicipio !!}')
+				.done(function(data){					
+					idSelect = '{!! $domicilio->idLocalidad !!}';
+					selectedGeneral = $('#idLocalidad');
+					selectedGeneral.select2();
+					//selectedGeneral.append('<option value="0">[ SELECCIONE TIPO]</option>');
+					$.each(data, function(key, value){						
+						optionSelect = '<option';
+						if (idSelect == value.id) { optionSelect = optionSelect+' selected'; }
+						optionselect = optionSelect+' value='+value.id+'>'+value.nombre+'</option>';
+						selectedGeneral.append(optionselect);
+					});
+				});
+
+				$.getJSON(routeIndex+'/get_colonias/'+'{!! $domicilio->idMunicipio !!}')
+				.done(function(data){					
+					idSelect = '{!! $domicilio->idColonia !!}';
+					selectedGeneral = $('#idColonia');
+					selectedGeneral.select2();
+					//selectedGeneral.append('<option value="0">[ SELECCIONE TIPO]</option>');
+					$.each(data, function(key, value){						
+						optionSelect = '<option';
+						if (idSelect == value.id) { optionSelect = optionSelect+' selected'; }
+						optionselect = optionSelect+' value='+value.id+'>'+value.nombre+'</option>';
+						selectedGeneral.append(optionselect);
+					});
+				});
+
+				$.getJSON(routeIndex+'/get_colonias/'+'{!! $domicilio->idMunicipio !!}')
+				.done(function(data){					
+					idSelect = '{!! $domicilio->idCodigoPostal !!}';
+					selectedGeneral = $('#idCodigoPostal');
+					selectedGeneral.select2();
+					//selectedGeneral.append('<option value="0">[ SELECCIONE TIPO]</option>');
+					$.each(data, function(key, value){						
+						optionSelect = '<option';
+						if (idSelect == value.id) { optionSelect = optionSelect+' selected'; }
+						optionselect = optionSelect+' value='+value.id+'>'+value.codigoPostal+'</option>';
+						selectedGeneral.append(optionselect);
+					});
+				});//HASTA AQUI TERMINA LA CONSULTA DE ESTADO COLONIA MUNICIPIO LOCALIDAD CP AL EDIT
+
+		//$('select#idMunicipio option[value="'+'{!! $domicilio->idMunicipio !!}'+'"]').attr("selected",true);
 		/*document.getElementById("vehiculoPlacas").disabled = true;
 		document.getElementById("vehiculoDescripcion").disabled = true;*/
 		 $("#vehiculoPlacas").prop('disabled');
@@ -365,6 +430,8 @@
 
 $(btnGuardarDescripcionHechos).click (function(){
 			
+			
+
 		 if ($('#sinInformacionVehiculo').is(':checked')) {
         		
       			vehiculoPlacas = "";
@@ -430,7 +497,14 @@ $(btnGuardarDescripcionHechos).click (function(){
                   
 				},
 				error: function(data) {
-					console.log("valio verta");
+					var errors = data.responseJSON;	
+					$('.modal-body div.has-danger').removeClass('has-danger');
+					$('.form-control-feedback').empty();
+					$.each(errors.errors, function(key, value){			
+						$('#div_'+key).addClass('has-danger');
+						$('input#'+key).addClass('form-control-danger');
+						$('#error_'+key).append(value);						
+					});
 				}
 			});
 		})
