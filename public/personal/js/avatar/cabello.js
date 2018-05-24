@@ -318,7 +318,7 @@ $(document).ready(function(){
   $('#modiBigote').select2();
   $('#modiPatilla').select2();
 
-	//mostrar sección cara
+	//mostrar sección cabello
   $("#cabello").click(function(event) {
     //alert("Hola mundo");
     $("#acordion").toggle();
