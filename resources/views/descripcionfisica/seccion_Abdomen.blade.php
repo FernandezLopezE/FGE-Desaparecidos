@@ -11,12 +11,12 @@
 		<div class="card-body">
 			<div class="form-group row">
 				<div class="col">
-					{!! Form::label ('idSubParticularidades','Particularidades') !!}
-					{!! Form::select('idSubParticularidades', $tipoCeja, '', ['class' => 'form-control', 'id' => 'idSubParticularidades'] ) !!}
+					{!! Form::label ('partAbdomen','Particularidades') !!}
+					{!! Form::select('partAbdomen', $tipoCeja, '', ['class' => 'form-control', 'id' => 'partAbdomen'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubModificaciones','Modificaciones') !!}
-					{!! Form::select('idSubModificaciones', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idSubModificaciones'] ) !!}
+					{!! Form::label ('modAbdomen','Modificaciones') !!}
+					{!! Form::select('modAbdomen', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'modAbdomen'] ) !!}
 				</div>
 			</div>
 

@@ -564,6 +564,22 @@ class CatSubModificacionesSeeder extends Seeder
             ['idModificacionesCuerpo'=>66, 'nombre' => 'POLISH'],
             ['idModificacionesCuerpo'=>66, 'nombre' => 'OTRO'],
 
+            //ESPINILLA IZQUIERDA
+            ['idParticularidadesCuerpo'=>74, 'nombre' => 'SIN INFORMACION'],
+            ['idParticularidadesCuerpo'=>74, 'nombre' => 'CICATRIZ'],
+            ['idParticularidadesCuerpo'=>74, 'nombre' => 'MANCHAS'],
+            ['idParticularidadesCuerpo'=>74, 'nombre' => 'LUNARES'],
+            ['idParticularidadesCuerpo'=>74, 'nombre' => 'QUEMADURA'],
+            ['idParticularidadesCuerpo'=>74, 'nombre' => 'OTRO'],
+
+            //ESPINILLA DERECHA
+            ['idParticularidadesCuerpo'=>75, 'nombre' => 'SIN INFORMACION'],
+            ['idParticularidadesCuerpo'=>75, 'nombre' => 'CICATRIZ'],
+            ['idParticularidadesCuerpo'=>75, 'nombre' => 'MANCHAS'],
+            ['idParticularidadesCuerpo'=>75, 'nombre' => 'LUNARES'],
+            ['idParticularidadesCuerpo'=>75, 'nombre' => 'QUEMADURA'],
+            ['idParticularidadesCuerpo'=>75, 'nombre' => 'OTRO'],
+
         ]);
 
     }

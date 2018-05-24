@@ -1301,27 +1301,6 @@ $(document).ready(function() {
 	      otraModMenton: $("#otraModMenton").val(),
 	      parteCuerpoMenton: 24,
 	      idExtraviado: $('#idExtraviado').val(),
-
-	      /*//Bigote
-	      tieneBigote: $('#tieneBigote').val(),
-	      tipoBigote: $('#tipoBigote').val(),
-	      colorBigote: $('#colorBigote').val(),
-	      otraModiBa: $('#otroPartiBig').val(),
-	      otroColorBa: $('#otroColorBig').val(),
-	      observacionesBigote: $('#observacionesBigote').val(),
-	      modiBigote: $("#modiBigote").val(),
-	      parteCuerpoBi: 57,
-
-	      //Patilla
-	      tienePatilla: $('#tienePatilla').val(),
-	      tipoPatilla: $('#tipoPatilla').val(),
-	      colorPatilla: $('#colorPatilla').val(),
-	      otraModiP: $('#otroPartiPat').val(),
-	      otroColorP: $('#otroColorPat').val(),
-	      observacionesPatilla: $('#observacionesPatilla').val(),
-	      modiPatilla: $("#modiPatilla").val(),
-	      parteCuerpoPa: 58,*/
-
 	    };
 	    console.log(dataString);
 	    $.ajax({
@@ -1332,6 +1311,9 @@ $(document).ready(function() {
 	      success: function(data) {
 	        console.log("hecho cara");
 	        console.log(data);
+	        $("#cara").css({"fill":"#17a4da", "stroke":"#ffffff","stroke-width":"2-"});
+	        $("#orejas").css({"fill":"#17a4da", "stroke":"#ffffff","stroke-width":"2-"});
+	        $("#nariz").css("fill","#17a4da");
 
 	        
 	      },

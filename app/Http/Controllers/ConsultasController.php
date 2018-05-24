@@ -85,6 +85,9 @@ class ConsultasController extends Controller
         $tipoBarba = $request->input('$tipoBarba');
         $masc = $request->input('masc');
         $fem = $request->input('fem');
+        
+        $fechaRep1 = $request->input('fechaRep1');
+        $fechaRep2 = $request->input('fechaRep2');
         //-o-o-o-o-o-o-o-o-PESO-o-o-o-o-o-o-o-o-o-o-o-o
         if ($request->input('peso1') == '') {
             $peso1=0;
@@ -121,13 +124,43 @@ class ConsultasController extends Controller
 
         }
         //-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
+
+        
+        if ($request->input('fechaDes1') == '') {
+            $desaparicionFecha1='1900-01-01';
+        }else{
+            $fechaDes1 = $request->input('fechaDes1');
+            $desaparicionFecha1 = Carbon::parse($fechaDes1)->format('Y-m-d');
+        }
+        if ($request->input('fechaDes2') == '') {
+            $desaparicionFecha2=Carbon::now();
+        }else{
+            $fechaDes2 = $request->input('fechaDes2');
+            $desaparicionFecha2 = Carbon::parse($fechaDes2)->format('Y-m-d');
+
+        }
+        //-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
+         if ($request->input('fechaRep1') == '') {
+            $reporteFecha1='1900-01-01';
+        }else{
+            $fechaRep1 = $request->input('fechaRep1');
+            $reporteFecha1 = Carbon::parse($fechaRep1)->format('Y-m-d');
+        }
+        if ($request->input('fechaRep2') == '') {
+            $reporteFecha2=Carbon::now();
+        }else{
+            $fechaRep2 = $request->input('fechaRep2');
+            $reporteFecha2 = Carbon::parse($fechaRep2)->format('Y-m-d');
+
+        }
+        //-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
 //        {//dd($estados);
 //        $consulta = \DB::table('persona')
 //            ->whereIn('idEstadoOrigen', $estados)
 //             ->get();
 //        dd($consulta->toArray());}
         
-//        $subQuery = \DB::table('desaparecidos_personas as dp')
+//  {      $subQuery = \DB::table('desaparecidos_personas as dp')
 //        ->leftjoin('cedula_partes_cuerpo as cpc', 'cpc.idPersonaDesaparecida', '=', 'dp.id')    
 //         ->leftjoin('cat_tipos_cuerpo as ctc', 'cpc.idTipoCuerpo', '=', 'ctc.id' , 'and', 'ctc.idPartesCuerpo', '=', 'cpc.idPartesCuerpo')   
 //        ->select(\DB::raw('ctc.nombre as tipocab'))
@@ -144,7 +177,7 @@ class ConsultasController extends Controller
 //join (cat_tipos_cuerpo as ctc) join (cedula_partes_cuerpo as cpc) 
 //where dp.tipoPersona = 'DESAPARECIDA' and ctc.id = cpc.idTipoCuerpo and
 //dp.id = cpc.idPersonaDesaparecida and ctc.idPartesCuerpo = 56
-//        
+//}        
         
         
         $desaparecidos = \DB::table('desaparecidos_personas as des')                           
@@ -167,7 +200,7 @@ class ConsultasController extends Controller
                        
                         //DB::raw('substr(id, 1, 4) as id')}
             ->select('des.id as id', \DB::raw('CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))AS nombre'), 'p.sexo as sexo',\DB::raw('substr(dci.desaparicionFecha, 1,10) as fecha'),'des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'),'des.estatura as estatura','des.peso as peso','cc.id as idComplexion','cc.nombre as complexion','ccp.id as idCPiel','ccp.nombre as cPiel','ce.id as idEstado','ce.nombre as estado','cm.id as idMuni','cm.nombre as municipio',
-                     'cn.nombre as nacionalidad')
+                     'cn.nombre as nacionalidad','dci.fechaVisita as fechaReporte', 'dci.desaparicionObservaciones as hechos')
            // 'cn.nombre as nacionalidad',\DB::raw("({$subQuery->toSql()}) as sub"))
 //            ->from(\DB::raw(' ( ' . $subQuery->toSql() . ' ) AS counted '))
             
@@ -182,6 +215,8 @@ class ConsultasController extends Controller
                             ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
                             ->whereBetween(\DB::raw('CAST(des.estatura AS SIGNED)'), [$estatura1, $estatura2])
                             ->whereBetween(\DB::raw('CAST(des.peso AS SIGNED)'), [$peso1, $peso2])
+                            ->whereBetween('dci.desaparicionFecha', [$desaparicionFecha1, $desaparicionFecha2])
+                            ->whereBetween('dci.fechaVisita', [$reporteFecha1, $reporteFecha2])
                             ->when($estados, function ($q) use ($estados) {
                                 return $q->whereIn('ce.id', $estados);
                             })
@@ -205,6 +240,8 @@ class ConsultasController extends Controller
                             ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
                             ->whereBetween(\DB::raw('CAST(des.estatura AS SIGNED)'), [$estatura1, $estatura2])
                             ->whereBetween(\DB::raw('CAST(des.peso AS SIGNED)'), [$peso1, $peso2])
+                            ->whereBetween('dci.desaparicionFecha', [$desaparicionFecha1, $desaparicionFecha2])
+                            ->whereBetween('dci.fechaVisita', [$reporteFecha1, $reporteFecha2])
                             ->when($estados, function ($q) use ($estados) {
                                 return $q->whereIn('ce.id', $estados);
                             })
@@ -223,13 +260,14 @@ class ConsultasController extends Controller
                             ->when($tipoBarba, function ($q) use ($tipoBarba) {
                                 return $q->whereIn('cpc.idTipoCuerpo', $tipoBarba);
                             })
+                    
             
                             //->where('des.edadExtravio', 'like', "$rg2%")
                             ->distinct()
                             ->get();
         
         //$desaparecidos = $desaparecidos->unique('idPersonaDesaparecida');
-
+        //dd($reporteFecha2);
         //dd($desaparecidos->ToArray());
 		return response()->json($desaparecidos);
 	}
