@@ -3,7 +3,8 @@
   <div class="modal-dialog modal-lg" role="document">
 	<div class="modal-content">
 	  <div class="modal-header">
-		<h5 class="modal-title" id="exampleModalLabel">DATOS DEL DOMICILIO</h5>
+		<h5 class="modal-title" id="exampleModalLabel">
+				<i class="fa fa-map-marker" aria-hidden="true" style="font-size:30px"></i> Datos del domicilio</h5>
 		<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		  <span aria-hidden="true">&times;</span>
 		</button>
