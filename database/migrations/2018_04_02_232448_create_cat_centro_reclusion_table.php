@@ -16,6 +16,7 @@ class CreateCatCentroReclusionTable extends Migration
         Schema::create('cat_centro_reclusion', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
+            $table->string('entidad');
             $table->timestamps();
             $table->softDeletes();
         });

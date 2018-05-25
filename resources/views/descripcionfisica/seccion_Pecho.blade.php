@@ -12,27 +12,27 @@
 		<div class="card-body">
 			<div class="form-group row">
 				<div class="col-6">
-					{!! Form::label ('idSubParticularidades','Ubicación') !!}
-					{!! Form::select('posCejas',  $cejasParte, '', ['class' => 'form-control', 'id' => 'posCejas'] ) !!}
+					{!! Form::label ('posPecho','Ubicación') !!}
+					{!! Form::select('posPecho',  $pechosParte, '', ['class' => 'form-control', 'id' => 'posPecho'] ) !!}
 				</div>
 			</div>
 			<div class="form-group row">
 				<div class="col">
-					{!! Form::label ('idSubParticularidades','Particularidades') !!}
-					{!! Form::select('idSubParticularidades', $tipoCeja, '', ['class' => 'form-control', 'id' => 'idSubParticularidades'] ) !!}
+					{!! Form::label ('idPartiPecho','Particularidades') !!}
+					{!! Form::select('idPartiPecho', $tipoCeja, '', ['class' => 'form-control', 'id' => 'idPartiPecho'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::label ('idSubModificaciones','Modificaciones') !!}
-					{!! Form::select('idSubModificaciones', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idSubModificaciones'] ) !!}
+					{!! Form::label ('idModiPecho','Modificaciones') !!}
+					{!! Form::select('idModiPecho', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'idModiPecho'] ) !!}
 				</div>
 			</div>
 
 			<div class="form-group row">
 				<div class="col">
-					{!! Form::text('otroTipoCeja', '', ['class' => 'form-control', 'id' => 'otroTipoCeja', 'placeholder' => 'Especifique otra particularidad'] ) !!}
+					{!! Form::text('otraPartiPecho', '', ['class' => 'form-control', 'id' => 'otraPartiPecho', 'placeholder' => 'Especifique otra particularidad'] ) !!}
 				</div>
 				<div class="col">
-					{!! Form::text('otroTipoCeja', '', ['class' => 'form-control', 'id' => 'otroTipoCeja', 'placeholder' => 'Especifique otra modificación'] ) !!}
+					{!! Form::text('otroModiPecho', '', ['class' => 'form-control', 'id' => 'otroModiPecho', 'placeholder' => 'Especifique otra modificación'] ) !!}
 				</div>
 			</div>
 

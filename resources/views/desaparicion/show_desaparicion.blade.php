@@ -14,7 +14,7 @@
 
 <div class="card-body bg-white">
 	<div class="row">
-		<div class="col-10">
+		<div class="col">
 			
 			<dl class="row">
 					<dt class="col-sm-8">ÚLTIMA FECHA QUE VIERON A LA PERSONA:</dt>
@@ -32,7 +32,7 @@
 				</dd>
 			</dl>
 			<dl class="row">
-				<dt class="col-sm-8">ÚLTIMA DIRECCIÓN EN DONDE SE VIO AL DESAPARECIDO:</dt>
+				<dt class="col-sm-8">ÚLTIMA DIRECCIÓN EN DONDE SE VIO:</dt>
 			</dl>
 			<dl class="row">
 				<dt class="col-sm-4">Calle:</dt>
@@ -43,7 +43,7 @@
 				<dd class="col-sm-8">
 					{!!  $domicilio->colonia->nombre !!} , CP:{!!  $domicilio->colonia->codigoPostal !!}			
 				</dd>
-				<dt class="col-sm-4">CodigoPostal:</dt>
+				<dt class="col-sm-4">Código postal:</dt>
 				<dd class="col-sm-8">
 					{!!  $domicilio->colonia->codigoPostal !!}					
 				</dd>
@@ -57,9 +57,7 @@
 			</dl>
 
 		</div>
-		<div class="col-2">
-			{{ HTML::image('images/perfil3.png', 'Fiscal', array('class' => 'rounded w-100 p-3 float-right')) }}	
-		</div>		
+				
 	</div>
 	<div class="row">
 		<div class="col">
@@ -83,7 +81,7 @@
 	<div class="row">
 		<div class="col">
 				<dl class="row">
-					<dt class="col-sm-8">DESCRIPCIÓN DE LA DESAPARICION:</dt>
+					<dt class="col-sm-8">DESCRIPCIÓN DE LA DESAPARICIÓN:</dt>
 				</dl>
 				<dl class="row">
 					<dd class="col-sm-12">
@@ -106,7 +104,7 @@
 							<dd class="col-sm-3">
 								{!!  $desaparecido->cedula->vehiculoPlacas !!} 
 							</dd>
-							<dt class="col-sm-2">Descripcion:</dt>
+							<dt class="col-sm-2">Descripción:</dt>
 							<dd class="col-sm-5">
 								{!!  $datosDesaparicion->vehiculoDescripcion !!} 
 							</dd>
