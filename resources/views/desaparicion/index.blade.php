@@ -46,7 +46,7 @@
 													'data-validation' => 'required date',
 													'data-validation-error-msg' => 'Ingrese una fecha valida o menor a la actual',
 													'data-validation-format'=>"dd/mm/yyyy",
-													'placeholder' => ''
+													'placeholder' => 'dd/mm/yyyy'
 
 												])!!}
 
@@ -57,7 +57,7 @@
 								  <div class="row">
 								    <div class="col">
 								      <div class="form-group">
-								        <label for="">Hora</label>
+								        <label for="">Hora (24 hrs):</label>
 								        <div class="input-group col-4">
 								          
 								          {!! Form::number ('horasAvisto',

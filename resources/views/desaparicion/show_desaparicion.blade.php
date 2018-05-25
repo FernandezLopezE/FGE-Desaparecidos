@@ -14,7 +14,7 @@
 
 <div class="card-body bg-white">
 	<div class="row">
-		<div class="col-10">
+		<div class="col">
 			
 			<dl class="row">
 					<dt class="col-sm-8">ÚLTIMA FECHA QUE VIERON A LA PERSONA:</dt>
@@ -57,9 +57,7 @@
 			</dl>
 
 		</div>
-		<div class="col-2">
-			{{ HTML::image('images/perfil3.png', 'Fiscal', array('class' => 'rounded w-100 p-3 float-right')) }}	
-		</div>		
+				
 	</div>
 	<div class="row">
 		<div class="col">
