@@ -42,7 +42,7 @@ class DatosDentalesController extends Controller
         $dentadura->idTamanoDiente = $request['dienteTamano'];
         //$dentadura->dienteCompleto = $request['dienteCompleto'];
         $dentadura->asistioDentista = $request['atencionOdonto'];
-        $dentadura->tieneInfoDentista = $request['infoDentista'];
+        //$dentadura->tieneInfoDentista = $request['infoDentista'];
         $dentadura->nombres = $request['nombres'];
         $dentadura->primerAp = $request['primerAp'];
         $dentadura->segundoAp = $request['segundoAp'];
@@ -63,12 +63,12 @@ class DatosDentalesController extends Controller
         //$dentaduratrata = json_encode($trata);
         $dentadura->tratamientos = json_encode($trata);
 
-        $dentadura->perdiodiente = $request['perdiodiente'];
-        $dentadura->higieneBucal = $request['higieneBucal'];
+        //$dentadura->perdiodiente = $request['perdiodiente'];
+        //$dentadura->higieneBucal = $request['higieneBucal'];
         $dentadura->describeHigBucal = $request['describahb'];
-        $dentadura->caries = $request['tieneCaries'];
+        //$dentadura->caries = $request['tieneCaries'];
         $dentadura->describeCaries = $request['DescribaCaries'];
-        $dentadura->abcesos = $request['nombreAbceso'];
+        //$dentadura->abcesos = $request['nombreAbceso'];
         $dentadura->describeAbcesos = $request['describeAbceso'];
 
         $enferme = array();
@@ -80,7 +80,7 @@ class DatosDentalesController extends Controller
         }
         $dentadura->enfermedades = json_encode($enferme);
 
-        $dentadura->malosHabitos = $request['malosHabitos'];
+        //$dentadura->malosHabitos = $request['malosHabitos'];
 
         $malhabitos = array();
         foreach ($request->input('malhabitos') as $index => $value) {
@@ -115,7 +115,7 @@ class DatosDentalesController extends Controller
                     'dienteTamano' => $dienteTamano,
                     'desaparecido' => $desaparecido,
                     'edadExtraviado' => $edad,
-                    'images' => $images
+                    //'images' => $images
                 ]);
     }
 

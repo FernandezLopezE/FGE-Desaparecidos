@@ -204,7 +204,7 @@ none repeat scroll 0 0;
 	<div class="card border-primary" id="cardTratamientos">
 		<div class="card-header">
 			<h5>TRATAMIENTOS, HIGIENE & HÁBITOS DENTALES DE LA PERSONA DESAPARECIDA
-				<button type="button" class="btn btn-dark pull-right" id="agregaSegInformacion" data-toggle="collapse" href="#segundaseccion">GUARDAR</button>
+				<button type="button" class="btn btn-dark pull-right" id="agregardatodental">GUARDAR</button>
 				<button type="button" class="btn btn-dark pull-right" id="editarSegInformacion">EDITAR</button>
 				<button type="button" class="btn btn-dark pull-right" id="updateSegInformacion">ACTUALIZAR</button>
 			</h5>	
@@ -239,7 +239,7 @@ none repeat scroll 0 0;
 				<div class="col">
 					<!--{!! Form::checkbox('CARILLA', '5') !!}-->
 					<input class="form-check-input" name="trata[]" style="margin-top: 6px" type="checkbox" id="CARILLA" value=5>
-					<a  rel="popover" data-img="{{ URL::to('/images/Dientes/carillas.jpg') }}"><b>CARILLA</b></a>
+					<a  rel="popover" data-img="{{ URL::to('/images/Dientes/corona.jpg') }}"><b>CARILLA</b></a>
 				</div>
 				<div class="col">
 					<!--{!! Form::checkbox('CORONA ESTETICA', '6') !!}-->
@@ -586,7 +586,7 @@ none repeat scroll 0 0;
 			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'TMIDP',] )!!}
 			                    	{{ Form::hidden('dienteselec[]','48', array('id' => 'dienteselec48')) }}
 			                  	</div>
-			                  	<button type="button" class="btn btn-warning" id="upDiente" onclick="ConfirmDemo()">EDITAR</button>
+			                  	<button type="button" class="btn btn-dark pull-right" id="upDiente" onclick="ConfirmDemo()">EDITAR</button>
         						<button type="button" class="btn btn-dark pull-right" id="btnDiente" style="margin-top: 15px;">GUARDAR</button>
                     		</div>
                     	</div>
@@ -596,7 +596,7 @@ none repeat scroll 0 0;
 		</div>
 	</div>
 
-	<!-- {{--LO SIGUIENTE ES EL FILE INPUT PARA CARGAR IMAGEN DE RADIOGRAFIAS--}} -->
+	<!-- {{--LO SIGUIENTE ES EL FILE INPUT PARA CARGAR IMAGEN DE RADIOGRAFIAS
 
  <div class="card border-primary">
   <div class="card border-success">
@@ -641,7 +641,7 @@ none repeat scroll 0 0;
       @endif
     </div> 
   </div>
-</div>
+</div>--}} -->
 </nav>
 @endsection
 
@@ -731,7 +731,8 @@ none repeat scroll 0 0;
 	/**********************************************************************
 	*** Inicia segmento para ocultar y/o mostrar campos en el formulario***
 	**********************************************************************/
-		
+		$('#editarSegInformacion').hide();
+		$('#cardDientes').hide();
 		$('#editarInformacion').hide();
 		$('#updateInformacion').hide();
 		$('#verinfodentista').hide();
@@ -996,7 +997,6 @@ none repeat scroll 0 0;
 			$('#agregaInformacion').hide();
 			$('#editarInformacion').show();
 			$('#cardTratamientos').show();
-			$('#editarSegInformacion').hide();
 			$('#updateSegInformacion').hide();
 		});
 
@@ -1034,7 +1034,7 @@ none repeat scroll 0 0;
 				dienteTamano : $("#dienteTamano").val(),
 				dienteCompleto : $("#dienteCompleto").val(),
 				atencionOdonto : $("#atencionOdonto").val(),
-				infoDentista : $("#infoDentista").val(),
+				//infoDentista : $("#infoDentista").val(),
 				nombres : $("#nombres").val(),
 				primerAp : $("#primerAp").val(),
 				segundoAp : $("#segundoAp").val(),
@@ -1045,16 +1045,16 @@ none repeat scroll 0 0;
 				//tratamiento : $("input[name='trata[]']").map(function(){return $(this).val();}).get(),
 				tratamiento : $("input[name='trata[]']").map(function(){return $(this).is(':checked');}).get(),
 				describatrata : $("#otroTratamiento").val(),
-				perdiodiente : $("#dientePerdido").val(),
-				higieneBucal : $("#higieneBucal").val(),
+				//perdiodiente : $("#dientePerdido").val(),
+				//higieneBucal : $("#higieneBucal").val(),
 				describahb : $("#describahb").val(),
-				tieneCaries : $("#tieneCaries").val(),
+				//tieneCaries : $("#tieneCaries").val(),
 				DescribaCaries : $("#DescribaCaries").val(),
-				nombreAbceso : $("#nombreAbceso").val(),
+				//nombreAbceso : $("#nombreAbceso").val(),
 				describeAbceso : $("#describeAbceso").val(),
 				//enfermedad : $("input[name='enfermedad[]']").map(function(){return $(this).val();}).get(),
 				enfermedad : $("input[name='enfermedad[]']").map(function(){return $(this).is(':checked');}).get(),
-				malosHabitos : $("#malosHabitos").val(),
+				//malosHabitos : $("#malosHabitos").val(),
 				//malhabitos : $("input[name='malhabito[]']").map(function(){return $(this).val();}).get(),
 				malhabitos : $("input[name='malhabito[]']").map(function(){return $(this).is(':checked');}).get(),
 				especifiqhabito : $("#escpecifiquehabito").val(),
@@ -1071,7 +1071,10 @@ none repeat scroll 0 0;
 				success: function(data){
 					$('#dientePerdido').prop('disabled', false);
 					$('#agregardatodental').hide();
+					$('#segundaseccion').hide();
 					$('#updatedatodental').show();
+					$('#cardDientes').show();
+					$('#editarSegInformacion').show();
 					$.confirm({
             		title: 'Datos dentales',
             		content: 'Guardados exitosamente.',
@@ -1092,83 +1095,6 @@ none repeat scroll 0 0;
 				}
 			});
 		});
-		var modalAnexos = $('#modalAnexosDatosDentales');
-
-		$('#btnAgregarAnexo').click (function(){  
-			modalAnexos.modal('show');
-		});
-
-		// $('#mapDientes').on('click', '#diente', function(){
-		// 	console.log('Estas dando click en la imagen');
-		// 	console.log('El ID_diente es: '+$(this).attr('value')+' nombre del diente: '+$(this).attr('alt'));
-		// 	cont1 = cont1 + 1;
-		// 	if (cont1 == 1) {
-		// 		$('#nombreDiente'+$(this).attr('value')).show();
-		// 		$('#observacionesDiente'+$(this).attr('value')).show();
-		// 		$('#nombreDiente'+$(this).attr('value')).value($(this).attr('alt'));
-		// 		$("input[id*='14']" ).name("PRIMER MOLAR SUPERIOR IZQUIERDO");
-		// 	}else{
-		// 		cont1 = 0;
-		// 		$('#PMSID').hide();
-		// 		$('#PMSIPDP').hide();
-		// 		$("#PMSI").val('');
-		// 	}
-
-		// })
-
-		$(".fancybox").fancybox({
-			openEffect: "none",
-        	closeEffect: "none"
-        });
-    
-    	$(".zoom").hover(function(){
-    		$(this).addClass('transition');
-    	}, function(){
-    		$(this).removeClass('transition');
-    	});
-  
-  
-  //este puede ir afuera xd
-  
-  
-  $('#cerrarModal').click (function(){
-
-    location.reload();
-
-})
-
-$("#fileImagenes").fileinput({
-                  language:'es',
-                  theme: 'fa',
-                  uploadUrl: "/imagenAntecedentesD",
-
-                  uploadExtraData: function() {
-                   
-                      return {
-
-                          _token: $("input[name='_token']").val(),
-                          idDesaparecido:'{!! $desaparecido->id!!}',
-                          tipoAnexo: 'antecedentesdentales',
-
-                      };
-                  },
-                  allowedFileExtensions: ['jpg', 'png', 'gif'],
-                  overwriteInitial: false,
-                  maxFileSize:2000,
-                  maxFilesNum: 10,
-
-                  
-                  slugCallback: function (filename) {
-                    $nombre = $desaparecido+"_ant_medicos_"+filename.replace('(', '_').replace(']', '_');
-
-                    console.log($nombre);
-
-                      return  filename.replace('(', '_').replace(']', '_');
-                  }
-
-
-
-              });
 });
 </script>
 @endsection
