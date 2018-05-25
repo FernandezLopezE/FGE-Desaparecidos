@@ -204,7 +204,7 @@ none repeat scroll 0 0;
 	<div class="card border-primary" id="cardTratamientos">
 		<div class="card-header">
 			<h5>TRATAMIENTOS, HIGIENE & HÁBITOS DENTALES DE LA PERSONA DESAPARECIDA
-				<button type="button" class="btn btn-dark pull-right" id="agregaSegInformacion" data-toggle="collapse" href="#segundaseccion">GUARDAR</button>
+				<button type="button" class="btn btn-dark pull-right" id="agregardatodental" data-toggle="collapse" href="#segundaseccion">GUARDAR</button>
 				<button type="button" class="btn btn-dark pull-right" id="editarSegInformacion">EDITAR</button>
 				<button type="button" class="btn btn-dark pull-right" id="updateSegInformacion">ACTUALIZAR</button>
 			</h5>	
@@ -586,7 +586,7 @@ none repeat scroll 0 0;
 			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'TMIDP',] )!!}
 			                    	{{ Form::hidden('dienteselec[]','48', array('id' => 'dienteselec48')) }}
 			                  	</div>
-			                  	<button type="button" class="btn btn-warning" id="upDiente" onclick="ConfirmDemo()">EDITAR</button>
+			                  	<button type="button" class="btn btn-dark pull-right" id="upDiente" onclick="ConfirmDemo()">EDITAR</button>
         						<button type="button" class="btn btn-dark pull-right" id="btnDiente" style="margin-top: 15px;">GUARDAR</button>
                     		</div>
                     	</div>
@@ -1034,7 +1034,7 @@ none repeat scroll 0 0;
 				dienteTamano : $("#dienteTamano").val(),
 				dienteCompleto : $("#dienteCompleto").val(),
 				atencionOdonto : $("#atencionOdonto").val(),
-				infoDentista : $("#infoDentista").val(),
+				//infoDentista : $("#infoDentista").val(),
 				nombres : $("#nombres").val(),
 				primerAp : $("#primerAp").val(),
 				segundoAp : $("#segundoAp").val(),
@@ -1045,16 +1045,16 @@ none repeat scroll 0 0;
 				//tratamiento : $("input[name='trata[]']").map(function(){return $(this).val();}).get(),
 				tratamiento : $("input[name='trata[]']").map(function(){return $(this).is(':checked');}).get(),
 				describatrata : $("#otroTratamiento").val(),
-				perdiodiente : $("#dientePerdido").val(),
-				higieneBucal : $("#higieneBucal").val(),
+				//perdiodiente : $("#dientePerdido").val(),
+				//higieneBucal : $("#higieneBucal").val(),
 				describahb : $("#describahb").val(),
-				tieneCaries : $("#tieneCaries").val(),
+				//tieneCaries : $("#tieneCaries").val(),
 				DescribaCaries : $("#DescribaCaries").val(),
-				nombreAbceso : $("#nombreAbceso").val(),
+				//nombreAbceso : $("#nombreAbceso").val(),
 				describeAbceso : $("#describeAbceso").val(),
 				//enfermedad : $("input[name='enfermedad[]']").map(function(){return $(this).val();}).get(),
 				enfermedad : $("input[name='enfermedad[]']").map(function(){return $(this).is(':checked');}).get(),
-				malosHabitos : $("#malosHabitos").val(),
+				//malosHabitos : $("#malosHabitos").val(),
 				//malhabitos : $("input[name='malhabito[]']").map(function(){return $(this).val();}).get(),
 				malhabitos : $("input[name='malhabito[]']").map(function(){return $(this).is(':checked');}).get(),
 				especifiqhabito : $("#escpecifiquehabito").val(),
