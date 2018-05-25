@@ -32,7 +32,7 @@
 				</dd>
 			</dl>
 			<dl class="row">
-				<dt class="col-sm-8">ÚLTIMA DIRECCIÓN EN DONDE SE VIO AL DESAPARECIDO:</dt>
+				<dt class="col-sm-8">ÚLTIMA DIRECCIÓN EN DONDE SE VIO:</dt>
 			</dl>
 			<dl class="row">
 				<dt class="col-sm-4">Calle:</dt>
@@ -43,7 +43,7 @@
 				<dd class="col-sm-8">
 					{!!  $domicilio->colonia->nombre !!} , CP:{!!  $domicilio->colonia->codigoPostal !!}			
 				</dd>
-				<dt class="col-sm-4">CodigoPostal:</dt>
+				<dt class="col-sm-4">Código postal:</dt>
 				<dd class="col-sm-8">
 					{!!  $domicilio->colonia->codigoPostal !!}					
 				</dd>
@@ -81,7 +81,7 @@
 	<div class="row">
 		<div class="col">
 				<dl class="row">
-					<dt class="col-sm-8">DESCRIPCIÓN DE LA DESAPARICION:</dt>
+					<dt class="col-sm-8">DESCRIPCIÓN DE LA DESAPARICIÓN:</dt>
 				</dl>
 				<dl class="row">
 					<dd class="col-sm-12">
@@ -104,7 +104,7 @@
 							<dd class="col-sm-3">
 								{!!  $desaparecido->cedula->vehiculoPlacas !!} 
 							</dd>
-							<dt class="col-sm-2">Descripcion:</dt>
+							<dt class="col-sm-2">Descripción:</dt>
 							<dd class="col-sm-5">
 								{!!  $datosDesaparicion->vehiculoDescripcion !!} 
 							</dd>
