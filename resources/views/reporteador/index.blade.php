@@ -63,7 +63,7 @@
                               
                               <div class="" id="div_idEstado">
                                  {!! Form::label ('','Edad de desaparición desde:',['class' => '']) !!}
-                                    <input  min="0" max="120" step="1" type="number" id="rng1" class="form-control"><br>
+                                    <input  min="0" max="120" step="1" type="number" id="rng1" class="form-control" ><br>
                                 {!! Form::label ('','Hasta:',['class' => '']) !!}&nbsp;
                                     <input  min="0" max="120" step="1" type="number" id="rng2" class="form-control"> 
                              </div>     
@@ -575,12 +575,13 @@ var formatTableActions = function(value, row, index) {
             $("#idEstado").append(row.estado);
             $("#idMunicipio").append(row.municipio);
             $("#idFecha").append(row.fecha);
-            $("#idEdad").append(row.edad);
+            $("#idEdad").append(row.edad + ' años');
             $("#apodo").append(row.apodo);
             $("#idNacionalidad").append(row.nacionalidad);
             $("#idTipoCabello").append(row.tipoCabello);
 }
     }
+    //-o-|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-
         var formatTableActions2 = function(value, row, index) {				
 			btn = '<button class="btn btn-dark " id="verReporte" value="'+row.id+'">Ver detalles</button>';
 			return [btn].join('');

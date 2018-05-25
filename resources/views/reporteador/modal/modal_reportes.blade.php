@@ -26,6 +26,16 @@
 				<dt class="col-sm-3">Género:</dt>
 				<dd class="col-sm-8" id="idGenero">
 				</dd>
+				<dt class="col-sm-3">Nacionalidad:</dt>
+				<dd class="col-sm-8" id="idNacionalidad"> </dd>
+				<dt class="col-sm-3">Estado de desaparición:</dt>
+				<dd class="col-sm-8"id="idEstado"> </dd>
+				<dt class="col-sm-3">Municipio de desaparición:</dt>
+				<dd class="col-sm-8"id="idMunicipio"> </dd>
+				<dt class="col-sm-3">Fecha de desaparición:</dt>
+				<dd class="col-sm-8"id="idFecha"> </dd>
+				<dt class="col-sm-3">Edad de extravio:</dt>
+				<dd class="col-sm-8"id="idEdad"> </dd>
 				<dt class="col-sm-3">Estatura:</dt>
 				<dd class="col-sm-8" id="idEstatura">
 				</dd> 
@@ -38,16 +48,7 @@
 				<dt class="col-sm-3">Complexión:</dt>
 				<dd class="col-sm-8" id="idComplexion">
 				</dd>
-				<dt class="col-sm-3">Nacionalidad:</dt>
-				<dd class="col-sm-8" id="idNacionalidad"> </dd>
-				<dt class="col-sm-3">Estado de desaparición:</dt>
-				<dd class="col-sm-8"id="idEstado"> </dd>
-				<dt class="col-sm-3">Municipio de desaparición:</dt>
-				<dd class="col-sm-8"id="idMunicipio"> </dd>
-				<dt class="col-sm-3">Fecha de desaparición:</dt>
-				<dd class="col-sm-8"id="idFecha"> </dd>
-				<dt class="col-sm-3">Edad de extravio:</dt>
-				<dd class="col-sm-8"id="idEdad"> </dd>
+				
 <!--
 				<dt class="col-sm-3">Tipo de cabello:</dt>
 				<dd class="col-sm-8"id="idTipoCabello"> </dd>
