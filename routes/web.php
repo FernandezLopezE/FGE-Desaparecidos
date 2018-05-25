@@ -214,8 +214,8 @@ Route::get('/datos_dentales/{idDesaparecido}','DatosDentalesController@show_dato
 	->name('datos_dentales.show');
 Route::post('/datos_dentales/store_datos_dentales', 'DatosDentalesController@store_datos_dentales')
 	->name('datos_dentales.store_datos_dentales');
-//Route::post('imagenAntecedentesD', 'AnexosController@store');
-//Route::delete('datosDentales/{id}','datosDEntalesController@destroy');
+Route::post('imagenAntecedentesD', 'AnexosController@store');
+Route::delete('datosDentales/{id}','datosDEntalesController@destroy');
 
 //la siguiente es una ruta para crear el pdf
 

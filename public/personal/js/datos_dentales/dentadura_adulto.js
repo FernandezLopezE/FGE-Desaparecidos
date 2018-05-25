@@ -3,7 +3,7 @@
 ******************************************************************************/	
 
 		/*************************************************************
-		*************** Dientes superior izquierda *******************
+		*************** Dientes superior derecha *******************
 		**************************************************************/
 
 $(document).ready(function(){
@@ -322,6 +322,327 @@ var diente18, diente17, diente16, diente15, diente14, diente13, diente12, diente
    				$("#TMSI").val('');
    				$("#TMSIP").val('');
    				$("#path28").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
+   			}
+   		}); 
+
+   		/*************************************************************
+		*************** Dientes INFERIOR izquierda *******************
+		**************************************************************/
+
+		//Se inician ocultos los div por defecto  
+		$('#TMIID').hide(); 
+		$('#SMIID').hide();
+		$('#PMIID').hide();
+		$('#SPIID').hide();
+		$('#PPIID').hide();
+		$('#CIID').hide();
+		$('#ILIID').hide();
+		$('#ICIID').hide();
+
+		var diente38, diente37, diente36, diente35, diente34, diente33, diente32, diente31, 
+			diente41, diente42, diente43, diente44, diente45, diente46, diente47, diente48,
+			cont38, cont37, cont36, cont35, cont34, cont33, cont32, cont31,
+			cont41, cont42, cont43, cont44, cont45, cont46, cont47, cont48,
+
+		diente38 = $('#diente38').attr("value");
+   		cont38 = 0;
+   		$('#diente38').click(function(event) {
+   			cont38 = cont38 + 1;
+   			if (cont38 == 1) {
+   				$('#TMIID').show();
+   				$("#TMII").val(diente38);	
+   				$("#TMIIP").focus();
+   				$("#path38").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
+   			}else{
+   				cont38 = 0;
+   				$('#TMIID').hide();
+   				$("#TMII").val('');
+   				$("#TMIIP").val('');
+   				$("#path38").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
+   			}
+   		}); 
+
+   		diente37 = $('#diente37').attr("value");
+   		cont37 = 0;
+   		$('#diente37').click(function(event) {
+   			cont37 = cont37 + 1;
+   			if (cont37 == 1) {
+   				$('#SMIID').show();
+   				$("#SMII").val(diente37);	
+   				$("#SMIIP").focus();
+   				$("#path37").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
+   			}else{
+   				cont37 = 0;
+   				$('#SMIID').hide();
+   				$("#SMII").val('');
+   				$("#SMIIP").val('');
+   				$("#path37").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
+   			}
+   		}); 
+
+   		diente36 = $('#diente36').attr("value");
+   		cont36 = 0;
+   		$('#diente36').click(function(event) {
+   			cont36 = cont36 + 1;
+   			if (cont36 == 1) {
+   				$('#PMIID').show();
+   				$("#PMII").val(diente36);	
+   				$("#PMIIP").focus();
+   				$("#path36").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
+   			}else{
+   				cont36 = 0;
+   				$('#PMIID').hide();
+   				$("#PMII").val('');
+   				$("#PMIIP").val('');
+   				$("#path36").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
+   			}
+   		}); 
+
+   		diente35 = $('#diente35').attr("value");
+   		cont35 = 0;
+   		$('#diente35').click(function(event) {
+   			cont35 = cont35 + 1;
+   			if (cont35 == 1) {
+   				$('#SPIID').show();
+   				$("#SPII").val(diente35);	
+   				$("#SPIIP").focus();
+   				$("#path35").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
+   			}else{
+   				cont35 = 0;
+   				$('#SPIID').hide();
+   				$("#SPII").val('');
+   				$("#SPIIP").val('');
+   				$("#path35").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
+   			}
+   		}); 
+
+   		diente34 = $('#diente34').attr("value");
+   		cont34 = 0;
+   		$('#diente34').click(function(event) {
+   			cont34 = cont34 + 1;
+   			if (cont34 == 1) {
+   				$('#PPIID').show();
+   				$("#PPII").val(diente34);	
+   				$("#PPIIP").focus();
+   				$("#path34").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
+   			}else{
+   				cont34 = 0;
+   				$('#PPIID').hide();
+   				$("#PPII").val('');
+   				$("#PPIIP").val('');
+   				$("#path34").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
+   			}
+   		}); 
+
+   		diente33 = $('#diente33').attr("value");
+   		cont33 = 0;
+   		$('#diente33').click(function(event) {
+   			cont33 = cont33 + 1;
+   			if (cont33 == 1) {
+   				$('#CIID').show();
+   				$("#CII").val(diente33);	
+   				$("#CIIP").focus();
+   				$("#path33").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
+   			}else{
+   				cont33 = 0;
+   				$('#CIID').hide();
+   				$("#CII").val('');
+   				$("#CIIP").val('');
+   				$("#path33").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
+   			}
+   		}); 
+
+   		diente32 = $('#diente32').attr("value");
+   		cont32 = 0;
+   		$('#diente32').click(function(event) {
+   			cont32 = cont32 + 1;
+   			if (cont32 == 1) {
+   				$('#ILIID').show();
+   				$("#ILII").val(diente32);	
+   				$("#ILIIP").focus();
+   				$("#path32").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
+   			}else{
+   				cont32 = 0;
+   				$('#ILIID').hide();
+   				$("#ILII").val('');
+   				$("#ILIIP").val('');
+   				$("#path32").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
+   			}
+   		}); 
+
+   		diente31 = $('#diente31').attr("value");
+   		cont31 = 0;
+   		$('#diente31').click(function(event) {
+   			cont31 = cont31 + 1;
+   			if (cont31 == 1) {
+   				$('#ICIID').show();
+   				$("#ICII").val(diente31);	
+   				$("#ICIIP").focus();
+   				$("#path31").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
+   			}else{
+   				cont31 = 0;
+   				$('#ICIID').hide();
+   				$("#ICII").val('');
+   				$("#ICIIP").val('');
+   				$("#path31").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
+   			}
+   		}); 
+
+   		/*************************************************************
+		*************** Dientes INFERIOR derecha *******************
+		**************************************************************/
+
+		//Se inician ocultos los div por defecto  
+		$('#ICIDD').hide(); 
+		$('#ILIDD').hide();
+		$('#CIDD').hide();
+		$('#PPIDD').hide();
+		$('#SPIDD').hide();
+		$('#PMIDD').hide();
+		$('#SMIDD').hide();
+		$('#TMIDD').hide();
+
+		diente41 = $('#diente41').attr("value");
+   		cont41 = 0;
+   		$('#diente41').click(function(event) {
+   			cont41 = cont41 + 1;
+   			if (cont41 == 1) {
+   				$('#ICIDD').show();
+   				$("#ICID").val(diente41);	
+   				$("#ICIDP").focus();
+   				$("#path41").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
+   			}else{
+   				cont41 = 0;
+   				$('#ICIDD').hide();
+   				$("#ICID").val('');
+   				$("#ICIDP").val('');
+   				$("#path41").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
+   			}
+   		}); 
+
+   		diente42 = $('#diente42').attr("value");
+   		cont42 = 0;
+   		$('#diente42').click(function(event) {
+   			cont42 = cont42 + 1;
+   			if (cont42 == 1) {
+   				$('#ILIDD').show();
+   				$("#ILID").val(diente42);	
+   				$("#ILIDP").focus();
+   				$("#path42").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
+   			}else{
+   				cont42 = 0;
+   				$('#ILIDD').hide();
+   				$("#ILID").val('');
+   				$("#ILIDP").val('');
+   				$("#path42").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
+   			}
+   		}); 
+
+   		diente43 = $('#diente43').attr("value");
+   		cont43 = 0;
+   		$('#diente43').click(function(event) {
+   			cont43 = cont43 + 1;
+   			if (cont43 == 1) {
+   				$('#CIDD').show();
+   				$("#CID").val(diente43);	
+   				$("#CIDP").focus();
+   				$("#path43").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
+   			}else{
+   				cont43 = 0;
+   				$('#CIDD').hide();
+   				$("#CID").val('');
+   				$("#CIDP").val('');
+   				$("#path43").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
+   			}
+   		}); 
+
+   		diente44 = $('#diente44').attr("value");
+   		cont44 = 0;
+   		$('#diente44').click(function(event) {
+   			cont44 = cont44 + 1;
+   			if (cont44 == 1) {
+   				$('#PPIDD').show();
+   				$("#PPID").val(diente44);	
+   				$("#PPIDP").focus();
+   				$("#path44").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
+   			}else{
+   				cont44 = 0;
+   				$('#PPIDD').hide();
+   				$("#PPID").val('');
+   				$("#PPIDP").val('');
+   				$("#path44").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
+   			}
+   		}); 
+
+   		diente45 = $('#diente45').attr("value");
+   		cont45 = 0;
+   		$('#diente45').click(function(event) {
+   			cont45 = cont45 + 1;
+   			if (cont45 == 1) {
+   				$('#SPIDD').show();
+   				$("#SPID").val(diente45);	
+   				$("#SPIDP").focus();
+   				$("#path45").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
+   			}else{
+   				cont45 = 0;
+   				$('#SPIDD').hide();
+   				$("#SPID").val('');
+   				$("#SPIDP").val('');
+   				$("#path45").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
+   			}
+   		}); 
+
+   		diente46 = $('#diente46').attr("value");
+   		cont46 = 0;
+   		$('#diente46').click(function(event) {
+   			cont46 = cont46 + 1;
+   			if (cont46 == 1) {
+   				$('#PMIDD').show();
+   				$("#PMID").val(diente46);	
+   				$("#PMIDP").focus();
+   				$("#path46").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
+   			}else{
+   				cont46 = 0;
+   				$('#PMIDD').hide();
+   				$("#PMID").val('');
+   				$("#PMIDP").val('');
+   				$("#path46").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
+   			}
+   		}); 
+
+   		diente47 = $('#diente47').attr("value");
+   		cont47 = 0;
+   		$('#diente47').click(function(event) {
+   			cont47 = cont47 + 1;
+   			if (cont47 == 1) {
+   				$('#SMIDD').show();
+   				$("#SMID").val(diente47);	
+   				$("#SMIDP").focus();
+   				$("#path47").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
+   			}else{
+   				cont47 = 0;
+   				$('#SMIDD').hide();
+   				$("#SMID").val('');
+   				$("#SMIDP").val('');
+   				$("#path47").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
+   			}
+   		}); 
+
+   		diente48 = $('#diente48').attr("value");
+   		cont48 = 0;
+   		$('#diente48').click(function(event) {
+   			cont48 = cont48 + 1;
+   			if (cont48 == 1) {
+   				$('#TMIDD').show();
+   				$("#TMID").val(diente48);	
+   				$("#TMIDP").focus();
+   				$("#path48").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
+   			}else{
+   				cont48 = 0;
+   				$('#TMIDD').hide();
+   				$("#TMID").val('');
+   				$("#TMIDP").val('');
+   				$("#path48").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
    			}
    		}); 
 });

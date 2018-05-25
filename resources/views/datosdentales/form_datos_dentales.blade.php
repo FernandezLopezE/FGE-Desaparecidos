@@ -8,6 +8,89 @@
 {!! Html::style('personal/css/sweetalert.css') !!}
 {!! Html::style('personal/css/datos_dentales/dentaduraAdult.css') !!}
 {!! Html::style('personal/css/datos_dentales/datosDentales.css') !!}
+<link href="../plugins/bootstrap_fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+<style type="text/css">
+
+.gallery
+
+   {
+
+       display: inline-block;
+
+       margin-top: 20px;
+
+       margin-left: 20px;
+
+       margin-right: 20px;
+
+   }
+
+   .close-icon{
+
+     border-radius: 50%;
+
+       position: absolute;
+
+       right: 5px;
+
+       top: -10px;
+
+       padding: 5px 8px;
+
+   }
+
+   .form-image-upload{
+
+       background: #e8e8e8
+
+none repeat scroll 0 0;
+
+       padding: 15px;
+
+   }
+
+    .transition {
+
+         -webkit-transform: scale(1.2);
+
+         -moz-transform: scale(1.2);
+
+         -o-transform: scale(1.2);
+
+         transform: scale(1.2);
+
+     }
+
+     img.zoom {
+
+     
+
+         
+
+         -webkit-transition: all .3s ease-in-out;
+
+         -moz-transition: all .3s ease-in-out;
+
+         -o-transition: all .3s ease-in-out;
+
+         -ms-transition: all .3s ease-in-out;
+
+     }
+
+     .close-icon{
+
+     border-radius: 10%;
+
+       position: absolute;
+
+       right: 5px;
+
+       top: -10px;
+
+       padding: 1px 5px;
+
+   }
+</style>
 @endsection
 
 
@@ -421,9 +504,90 @@
 			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'TMSIP',] )!!}
 			                    	{{ Form::hidden('dienteselec[]','28', array('id' => 'dienteselec28')) }}
 			                  	</div>
-                  				
+
+			                  	<!-- PARTE INFERIOR -->
+			                  	<div class="input-group" style="margin-top: 10px" id="TMIID">
+			                    	{!! Form::text ('TMII',old('TMII'), ['class' => 'form-control mayuscula', 'id' => 'TMII', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'TMIIP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','38', array('id' => 'dienteselec38')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="SMIID">
+			                    	{!! Form::text ('SMII',old('SMII'), ['class' => 'form-control mayuscula', 'id' => 'SMII', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SMIIP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','37', array('id' => 'dienteselec37')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="PMIID">
+			                    	{!! Form::text ('PMII',old('PMII'), ['class' => 'form-control mayuscula', 'id' => 'PMII', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PMIIP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','36', array('id' => 'dienteselec36')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="SPIID">
+			                    	{!! Form::text ('SPII',old('SPII'), ['class' => 'form-control mayuscula', 'id' => 'SPII', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SPIIP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','35', array('id' => 'dienteselec35')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="PPIID">
+			                    	{!! Form::text ('PPII',old('PPII'), ['class' => 'form-control mayuscula', 'id' => 'PPII', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PPIIP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','34', array('id' => 'dienteselec34')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="CIID">
+			                    	{!! Form::text ('CII',old('CII'), ['class' => 'form-control mayuscula', 'id' => 'CII', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'CIIP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','33', array('id' => 'dienteselec33')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="ILIID">
+			                    	{!! Form::text ('ILII',old('ILII'), ['class' => 'form-control mayuscula', 'id' => 'ILII', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ILIIP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','32', array('id' => 'dienteselec32')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="ICIID">
+			                    	{!! Form::text ('ICII',old('ICII'), ['class' => 'form-control mayuscula', 'id' => 'ICII', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ICIIP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','31', array('id' => 'dienteselec31')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="ICIDD">
+			                    	{!! Form::text ('ICID',old('ICID'), ['class' => 'form-control mayuscula', 'id' => 'ICID', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ICIDP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','41', array('id' => 'dienteselec41')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="ILIDD">
+			                    	{!! Form::text ('ILID',old('ILID'), ['class' => 'form-control mayuscula', 'id' => 'ILID', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ILIDP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','42', array('id' => 'dienteselec42')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="CIDD">
+			                    	{!! Form::text ('CID',old('CID'), ['class' => 'form-control mayuscula', 'id' => 'CID', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'CIDP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','43', array('id' => 'dienteselec43')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="PPIDD">
+			                    	{!! Form::text ('PPID',old('PPID'), ['class' => 'form-control mayuscula', 'id' => 'PPID', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PPIDP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','44', array('id' => 'dienteselec44')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="SPIDD">
+			                    	{!! Form::text ('SPID',old('SPID'), ['class' => 'form-control mayuscula', 'id' => 'SPID', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SPIDP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','45', array('id' => 'dienteselec45')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="PMIDD">
+			                    	{!! Form::text ('PMID',old('PMID'), ['class' => 'form-control mayuscula', 'id' => 'PMID', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PMIDP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','46', array('id' => 'dienteselec46')) }}
+			                  	</div>
+			                  	<div class="input-group" style="margin-top: 10px" id="SMIDD">
+			                    	{!! Form::text ('SMID',old('SMID'), ['class' => 'form-control mayuscula', 'id' => 'SMID', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SMIDP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','47', array('id' => 'dienteselec47')) }}
+			                  	</div>
+                  				<div class="input-group" style="margin-top: 10px" id="TMIDD">
+			                    	{!! Form::text ('TMID',old('TMID'), ['class' => 'form-control mayuscula', 'id' => 'TMID', 'disabled'] )!!}
+			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'TMIDP',] )!!}
+			                    	{{ Form::hidden('dienteselec[]','48', array('id' => 'dienteselec48')) }}
+			                  	</div>
 			                  	<button type="button" class="btn btn-warning" id="upDiente" onclick="ConfirmDemo()">EDITAR</button>
-        						<button type="button" class="btn btn-success pull-right" id="btnDiente" style="margin-top: 15px;">GUARDAR</button>
+        						<button type="button" class="btn btn-dark pull-right" id="btnDiente" style="margin-top: 15px;">GUARDAR</button>
                     		</div>
                     	</div>
                     </div>
@@ -432,12 +596,51 @@
 		</div>
 	</div>
 
+	<!-- {{--LO SIGUIENTE ES EL FILE INPUT PARA CARGAR IMAGEN DE RADIOGRAFIAS--}} -->
 
-	
-
-
+ <div class="card border-primary">
+  <div class="card border-success">
+    <div class="card-header"> 
+      <h5>AGREGAR ANEXOS
+        <button type="submit" class="btn btn-dark pull-right"  id="btnAgregarAnexo"> AGREGAR</button>   
+      </h5>
+    </div>
   </div>
+  @include('datosdentales.modals.modal_cargar_documento')
+  <div class="container page-top">
+    <div class="row">
+      
+      @if($images->count())
+        @foreach($images as $image)
+          <div class='col-md-3 thumb'>
+            @if(substr ($image->ruta, -3) == "pdf")
+              <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}" target="_blank">              
+                <center>
+                  <img class="img-responsive zoom img-fluid" alt="" src="../images/documentopdf.png" width="150" height="220"  align="center" />
+                </center>
+                <div class='text-center'>
+                  <small class='text-muted'>{{ $image->name }}</small>
+                </div>
+              </a>
+            @else
+              <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}">                
+                <img class="img-responsive zoom img-fluid" alt="" src="..{{ $image->ruta }}" />
+                  <div class='text-center'>
+                    <small class='text-muted'>{{ $image->name }}</small>
+                  </div>
+              </a>
+            @endif
 
+            <form action="{{ url('imagenAntecedentesM',$image->id) }}" method="POST">
+              <input type="hidden" name="_method" value="delete">
+                {!! csrf_field() !!}
+                  <button type="submit" class="close-icon btn btn-danger"><i class="fa fa-window-close"></i></button>
+            </form>
+          </div>
+        @endforeach
+      @endif
+    </div> 
+  </div>
 </div>
 </nav>
 @endsection
@@ -452,9 +655,30 @@
 {!! Html::script('personal/js/datos_dentales/accionDientes.js') !!}
 {!! Html::script('personal/js/datos_dentales/sliders_dentales.js') !!}
 {!! Html::script('personal/js/datos_dentales/dentadura_adulto.js') !!}
+<script src="../plugins/bootstrap_fileinput/js/popper.min.js" type="text/javascript"></script><script src="../plugins/bootstrap_fileinput/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!-- the main fileinput plugin file -->
+
+<script src="../plugins/bootstrap_fileinput/js/fileinput.js"></script>
+
+<!-- optionally uncomment line below for loading your theme assets for a theme like Font Awesome (`fa`) -->
+
+<script src="../plugins/bootstrap_fileinput/js/theme.js"></script>
+
+<!-- optionally if you need translation for your language then include  locale file as mentioned below -->
+
+<script src="../plugins/bootstrap_fileinput/js/es.js"></script>
+
+<!-- para la galeria de imagenes fancybox -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 
 <script type="text/javascript">
 	console.log('ID de la persona desaparecida: {!! $desaparecido->id !!}');
+
+	/*************************************************************
+	********* función para los toltip's de tratamientos **********S
+	**************************************************************/
 
 	$(function() {
         $('#toggle-event').change(function() {
@@ -508,8 +732,6 @@
 	*** Inicia segmento para ocultar y/o mostrar campos en el formulario***
 	**********************************************************************/
 		
-		//$('#agregardatodental').prop('disabled', true);
-		//$('#dientePerdido').prop('disabled', true);
 		$('#editarInformacion').hide();
 		$('#updateInformacion').hide();
 		$('#verinfodentista').hide();
@@ -666,75 +888,6 @@
 				});
    		});
 
-   		
-
-   		/************************************************************************
-		**** Variables y función Click para los dientes inferiores **************
-		************************************************************************/
-
-		var diente36, diente37, diente34, diente33, diente32, diente31, diente41, 
-			diente42, diente43, diente44, diente45,diente46;
-
-		diente36 = $('#diente36').attr("value");
-		$('#diente36').click(function(event) {
-			$("#mostrar").val(diente36);
-		});    
-
-		diente37 = $('#diente37').attr("value");
-		$('#diente37').click(function(event) {
-			$("#mostrar").val(diente37);
-		});    
-
-		diente34 = $('#diente34').attr("value");
-		$('#diente34').click(function(event) {
-			$("#mostrar").val(diente34);
-		});    
-
-		diente33 = $('#diente33').attr("value");
-		$('#diente33').click(function(event) {
-			$("#mostrar").val(diente33);
-		});    
-
-		diente32 = $('#diente32').attr("value");
-		$('#diente32').click(function(event) {
-			$("#mostrar").val(diente32);
-		});    
-
-		diente31 = $('#diente31').attr("value");
-		$('#diente31').click(function(event) {
-			$("#mostrar").val(diente31);
-		});    
-
-		diente41 = $('#diente41').attr("value");
-		$('#diente41').click(function(event) {
-			$("#mostrar").val(diente41);
-		});    
-
-		diente42 = $('#diente42').attr("value");
-		$('#diente42').click(function(event) {
-			$("#mostrar").val(diente42);
-		});    
-
-		diente43 = $('#diente43').attr("value");
-		$('#diente43').click(function(event) {
-			$("#mostrar").val(diente43);
-		});    
-
-		diente44 = $('#diente44').attr("value");
-		$('#diente44').click(function(event) {
-			$("#mostrar").val(diente44);
-		});    
-
-		diente45 = $('#diente45').attr("value");
-		$('#diente45').click(function(event) {
-			$("#mostrar").val(diente45);
-		});    
-
-		diente46 = $('#diente46').attr("value");
-		$('#diente46').click(function(event) {
-			$("#mostrar").val(diente46);
-		});
-
 		/************************************************************************
 		*** función que limpia campos al dar CANCELAR en modal datos dentista ***
 		************************************************************************/
@@ -877,17 +1030,6 @@
 
 		$('#agregardatodental').click(function()
 		{
-
-			// var stringenfermedad = '';
-			// $(":checkbox[name=enfermedad]").each(function(){
-			// 	if (this.checked) {
-			// 		if (stringenfermedad == true) {
-			// 			stringenfermedad += $(this).val()+', ';
-			// 		}
-			// 	}
-			// }); 
-
-			// console.log(stringenfermedad);
 			var dataString = {
 				dienteTamano : $("#dienteTamano").val(),
 				dienteCompleto : $("#dienteCompleto").val(),
@@ -950,7 +1092,11 @@
 				}
 			});
 		});
+		var modalAnexos = $('#modalAnexosDatosDentales');
 
+		$('#btnAgregarAnexo').click (function(){  
+			modalAnexos.modal('show');
+		});
 
 		// $('#mapDientes').on('click', '#diente', function(){
 		// 	console.log('Estas dando click en la imagen');
@@ -969,65 +1115,60 @@
 		// 	}
 
 		// })
-	});
- //este si va dentro de un DocumentReady
- 
-//  $(".fancybox").fancybox({
-//         openEffect: "none",
-//         closeEffect: "none"
-//     });
+
+		$(".fancybox").fancybox({
+			openEffect: "none",
+        	closeEffect: "none"
+        });
     
-//     $(".zoom").hover(function(){
-    
-//     $(this).addClass('transition');
-//   }, function(){
-        
-//     $(this).removeClass('transition');
-//   });
+    	$(".zoom").hover(function(){
+    		$(this).addClass('transition');
+    	}, function(){
+    		$(this).removeClass('transition');
+    	});
   
   
-//   //este puede ir afuera xd
+  //este puede ir afuera xd
   
   
-//   $('#cerrarModal').click (function(){
+  $('#cerrarModal').click (function(){
 
-//     location.reload();
+    location.reload();
 
-// })
+})
 
-// $("#fileImagenes").fileinput({
-//                   language:'es',
-//                   theme: 'fa',
-//                   uploadUrl: "/imagenAntecedentesD",
+$("#fileImagenes").fileinput({
+                  language:'es',
+                  theme: 'fa',
+                  uploadUrl: "/imagenAntecedentesD",
 
-//                   uploadExtraData: function() {
+                  uploadExtraData: function() {
                    
-//                       return {
+                      return {
 
-//                           _token: $("input[name='_token']").val(),
-//                           idDesaparecido:'{!! $desaparecido->id!!}',
-//                           tipoAnexo: 'antecedentesdentales',
+                          _token: $("input[name='_token']").val(),
+                          idDesaparecido:'{!! $desaparecido->id!!}',
+                          tipoAnexo: 'antecedentesdentales',
 
-//                       };
-//                   },
-//                   allowedFileExtensions: ['jpg', 'png', 'gif'],
-//                   overwriteInitial: false,
-//                   maxFileSize:2000,
-//                   maxFilesNum: 10,
+                      };
+                  },
+                  allowedFileExtensions: ['jpg', 'png', 'gif'],
+                  overwriteInitial: false,
+                  maxFileSize:2000,
+                  maxFilesNum: 10,
 
                   
-//                   slugCallback: function (filename) {
-//                     /*$desaparecido = ('{!! $desaparecido->id!!}');
-//                     console.log ( $desaparecido+"desaparecido");*/
-//                     $nombre = $desaparecido+"_ant_medicos_"+filename.replace('(', '_').replace(']', '_');
+                  slugCallback: function (filename) {
+                    $nombre = $desaparecido+"_ant_medicos_"+filename.replace('(', '_').replace(']', '_');
 
-//                     console.log($nombre);
+                    console.log($nombre);
 
-//                       return  filename.replace('(', '_').replace(']', '_');
-//                   }
+                      return  filename.replace('(', '_').replace(']', '_');
+                  }
 
 
 
-//               });
+              });
+});
 </script>
 @endsection
