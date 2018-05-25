@@ -56,10 +56,11 @@
               </div>
             </div>
             <div class="col" style="margin-left:-350px; margin-top:-20px;">
-              <img src="/images/cuerpo2.gif" class="img-fluid" alt="" width="27" height="57" style="float: right; display:none;" data-toggle="tooltip" title="Tras" data-placement="bottom" id="AvatarTras">
-              <img src="/images/cuerpo1.gif" class="img-fluid" alt="" width="27" height="57" style="float: right;" data-toggle="tooltip" title="Frente" data-placement="bottom" id="AvatarFrente">
+              <img src="/images/cuerpo2.gif" class="img-fluid" alt="" width="27" height="57" style="float: right;" data-toggle="tooltip" title="Atrás" data-placement="bottom" id="btnTras">
+              <img src="/images/cuerpo1.gif" class="img-fluid" alt="" width="27" height="57" style="float: right; display:none;" data-toggle="tooltip" title="Frente" data-placement="bottom" id="btnFrente">
 
               @include('descripcionfisica.avatar')
+              @include('descripcionfisica.avatarTras')
             </div>
             <div class="col-8">
               @include('descripcionfisica.seccion_Cabello')
@@ -94,10 +95,19 @@
   var showCabello2 = "{{$showCabello}}";
 
   //Boton frente
-  $("#AvatarFrente").click(function(event) {
-    $("#AvatarFront").toggle();
-    $("#AvatarFrente").hide();
-    $("#AvatarTras").show();
+  $("#btnTras").click(function(event) {
+    $("#AvatarFront").hide();
+    $("#btnFrente").show();
+    $("#btnTras").hide();
+    $("#avatarBack").show();
+  });
+
+  //Boton tras
+  $("#btnFrente").click(function(event) {
+    $("#AvatarFront").show();
+    $("#btnFrente").hide();
+    $("#btnTras").show();
+    $("#avatarBack").hide();
   });
 
   

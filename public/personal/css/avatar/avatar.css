@@ -42,10 +42,10 @@
     transform: scale(1.1);
     }
 
-    #AvatarFrente:hover {
+    #btnFrente:hover {
     transform: scale(2);
     }
 
-     #AvatarTras:hover {
+     #btnTras:hover {
     transform: scale(2);
     }
