@@ -41,3 +41,11 @@
     #datosFis:hover {
     transform: scale(1.1);
     }
+
+    #AvatarFrente:hover {
+    transform: scale(2);
+    }
+
+     #AvatarTras:hover {
+    transform: scale(2);
+    }

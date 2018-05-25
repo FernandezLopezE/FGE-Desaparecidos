@@ -52,10 +52,13 @@
                               <input type="text" id="piel" style="border: 0px;width: 110%;background: transparent;" disabled>
                           </div>
                       </div>
-                  </div> 
+                  </div>
               </div>
             </div>
             <div class="col" style="margin-left:-350px; margin-top:-20px;">
+              <img src="/images/cuerpo2.gif" class="img-fluid" alt="" width="27" height="57" style="float: right; display:none;" data-toggle="tooltip" title="Tras" data-placement="bottom" id="AvatarTras">
+              <img src="/images/cuerpo1.gif" class="img-fluid" alt="" width="27" height="57" style="float: right;" data-toggle="tooltip" title="Frente" data-placement="bottom" id="AvatarFrente">
+
               @include('descripcionfisica.avatar')
             </div>
             <div class="col-8">
@@ -89,6 +92,14 @@
   var aux ="{{$aux}}";
   var extraviado = "{{$desaparecido->id}}";
   var showCabello2 = "{{$showCabello}}";
+
+  //Boton frente
+  $("#AvatarFrente").click(function(event) {
+    $("#AvatarFront").toggle();
+    $("#AvatarFrente").hide();
+    $("#AvatarTras").show();
+  });
+
   
 </script>
 {!! Html::script('personal/js/avatar/datos_fisicos.js') !!}

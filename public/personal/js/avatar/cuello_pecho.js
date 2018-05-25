@@ -59,5 +59,19 @@ $(document).ready(function() {
       $("#cuello2").hide();
     }
   });
+
+  //Cargar valores a select de pecho
+  $.ajax({
+       url: '/descripcionfisica/get_particularidades/'+10,
+       type:"GET",
+       dataType:"json",
+
+       success:function(data) {
+        $("#idPartCuello").empty();
+        $.each(data, function(key, value){   
+          $("#idPartCuello").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+             });
+          },  
+  });
    
 });
