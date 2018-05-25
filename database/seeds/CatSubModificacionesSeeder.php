@@ -534,6 +534,14 @@ class CatSubModificacionesSeeder extends Seeder
             ['idModificacionesCuerpo'=>61, 'nombre' => 'CIRUGÍA'],
             ['idModificacionesCuerpo'=>61, 'nombre' => 'OTRO'],
 
+            //AMBOS PECHO
+            ['idModificacionesCuerpo'=>76, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idModificacionesCuerpo'=>76, 'nombre' => 'TATUADO'],
+            ['idModificacionesCuerpo'=>76, 'nombre' => 'PERFORADA'],
+            ['idModificacionesCuerpo'=>76, 'nombre' => 'PEARCING'],
+            ['idModificacionesCuerpo'=>76, 'nombre' => 'CIRUGÍA'],
+            ['idModificacionesCuerpo'=>76, 'nombre' => 'OTRO'],
+
             //PANTORRILLA IZQUIERDA
             ['idModificacionesCuerpo'=>62, 'nombre' => 'SIN INFORMACIÓN'],
             ['idModificacionesCuerpo'=>62, 'nombre' => 'TATUADO'],

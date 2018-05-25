@@ -1,4 +1,43 @@
 $(document).ready(function() {
+
+  //obtener particularidades
+        $.ajax({
+                url: '/descripcionfisica/get_particularidades/'+78,
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                        $("#idPartiPecho").empty();
+                    $.each(data, function(key, value){                        
+
+                        $("#idPartiPecho").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+
+                    });
+
+                },
+                
+        });
+
+        //obtener modificaciones
+        $.ajax({
+                url: '/descripcionfisica/get_modificaciones/'+78,
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                        $("#idModiPecho").empty();
+                    $.each(data, function(key, value){                        
+
+                        $("#idModiPecho").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+
+                    });
+
+                },
+                
+            });
+
+
+
   //Mostrar form de Cuello
   $("#cuello").click(function(event) {
     console.log("Cuello");
@@ -59,5 +98,58 @@ $(document).ready(function() {
       $("#cuello2").hide();
     }
   });
+
+  //Cargar valores a select de pecho
+  $.ajax({
+       url: '/descripcionfisica/get_particularidades/'+10,
+       type:"GET",
+       dataType:"json",
+
+       success:function(data) {
+        $("#idPartCuello").empty();
+        $.each(data, function(key, value){   
+          $("#idPartCuello").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+             });
+          },  
+  });
    
+
+   $("#posPecho").change(function(){
+      var idPartesCuerpo = $(this).val();
+      //obtener particularidades
+        $.ajax({
+                url: '/descripcionfisica/get_particularidades/'+idPartesCuerpo,
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                        $("#idPartiPecho").empty();
+                    $.each(data, function(key, value){                        
+
+                        $("#idPartiPecho").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+
+                    });
+
+                },
+                
+        });
+
+        //obtener modificaciones
+        $.ajax({
+                url: '/descripcionfisica/get_modificaciones/'+idPartesCuerpo,
+                type:"GET",
+                dataType:"json",
+
+                success:function(data) {
+                        $("#idModiPecho").empty();
+                    $.each(data, function(key, value){                        
+
+                        $("#idModiPecho").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+
+                    });
+
+                },
+                
+            });
+   });
 });

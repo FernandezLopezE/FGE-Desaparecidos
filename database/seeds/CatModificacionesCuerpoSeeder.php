@@ -95,6 +95,7 @@ class CatModificacionesCuerpoSeeder extends Seeder
 
             ['idPartesCuerpo'=>68, 'nombre' => 'MODIFICACIONES ESPINILLA IZQUIERDA'],//74
             ['idPartesCuerpo'=>67, 'nombre' => 'MODIFICACIONES ESPINILLA DERECHA'],//75
+            ['idPartesCuerpo'=>78, 'nombre' => 'MODIFICACIONES AMBOS PECHOS'],//76
     ]);
     }
 }
