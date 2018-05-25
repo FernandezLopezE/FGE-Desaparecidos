@@ -52,7 +52,7 @@
                       </div>
                     </div>
 	            </div>
-               <div class="col"style="padding-right:0px;padding-left:0px;">
+               <div class="col-lg-5"style="padding-right:0px;padding-left:0px;">
                     <div class="">
                         <div class="card-header">
                               &nbsp;                   
@@ -60,9 +60,9 @@
                         <div class=" list-group-flush small" >
                         
                           <div class="list-group-item list-group-item-action"  id="campoEdad" > 
-                              <p style="text-align:LEFT"><b>Edad de desaparición</b></p>
+                              
                               <div class="" id="div_idEstado">
-                                 {!! Form::label ('','Desde:',['class' => '']) !!}
+                                 {!! Form::label ('','Edad de desaparición desde:',['class' => '']) !!}
                                     <input  min="0" max="120" step="1" type="number" id="rng1" class="form-control"><br>
                                 {!! Form::label ('','Hasta:',['class' => '']) !!}&nbsp;
                                     <input  min="0" max="120" step="1" type="number" id="rng2" class="form-control"> 
@@ -71,7 +71,7 @@
                       </div>
                     </div>
 	            </div>
-                <div class="col" style="padding-right:0px;padding-left:0px;">
+                <div class="col-lg-5" style="padding-right:0px;padding-left:0px;">
                         <div class="card-header">
                            &nbsp;
                         <!-- <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar1"></i>-->
@@ -92,6 +92,9 @@
                       </div>
 	            </div>                 
             </div>
+             
+             <div class="row" >
+                 <!--   FECHAS  --><div class="col-lg-6" >  
              <div class="row" >
              <div class="col" style="padding-right:0px;padding-left:0px;">
                 <div class="card-header">
@@ -157,17 +160,17 @@
                              </div>     
                           </div> 
              </div>
-              
-
-                     
-                       
-                     
+          
             </div>
            
-            <div class="row" >
+             </div>
+             
+             <!--   DESCRIPCIÓN FÍSICA  --><div class="col-lg-6" >  
+             
+             <div class="row" >
              <div class="col" style="padding-right:0px;padding-left:0px;">
                 <div class="card-header">
-                           Descripción física
+                           Cuerpo
                            </div>
 
                           <div class="list-group-flush small" style="Display:none" id="campoEstatura" >
@@ -230,11 +233,18 @@
                       </div>  
             </div>
             
-             <div class="row"  >               
+             </div>
+           
+             </div>
+             
+             
+            <div class="row" >
+             <!--   CABELLO  --><div class="col-lg-6">
+            <div class="row"  >               
                <div class="col" style="padding-right:0px;padding-left:0px;">
                     <div class="">
                         <div class="card-header">
-                           Tipos en partes del cuerpo 
+                           Cabello 
                                                    
                            </div>
                         <div class=" list-group-flush small">
@@ -252,13 +262,13 @@
                         <div class="card-header">
                            &nbsp;
                                                       
-                           </div>
-                        <div class=" list-group-flush small" style="Display:none" id="campoTipoBarba">
-                          <div class="list-group-item list-group-item-action"> 
-                              <div class=""  id="infoCabello3">
-                                {!! Form::label ('tipoBarba','Tipo de barba') !!}
-		                        {!! Form::select('tipoBarba', $tipoBarba, '', ['class' => '', 'id' => 'tipoBarba','multiple' => 'multiple'] ) !!}
-                            </div>    
+                           </div>                           
+                           <div class=" list-group-flush small">
+                          <div class="list-group-item list-group-item-action" style="Display:none" id="campoTamanoCabello"> 
+                             <div class=""  id="infoCabello3">
+                                {!! Form::label ('tamanoCabello','Tamaño de cabello:') !!}
+		                        {!! Form::select('tamanoCabello', $tamanoCabello, '', ['class' => '', 'id' => 'tamanoCabello','multiple' => 'multiple'] ) !!}
+                            </div>      
                           </div>
                       </div>
 	            </div>
@@ -267,73 +277,60 @@
                            &nbsp;
                            <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar3"></i>                           
                            </div>
-                        <div class=" list-group-flush small" style="Display:none" id="campoTipoBigote">
+                        <div class=" list-group-flush small" style="Display:none" id="campoColorCabello">
                           <div class="list-group-item list-group-item-action"> 
                               <div class=""  id="infoCabello3">
-                                {!! Form::label ('tipoBigote','Tipo de bigote') !!}
-		                        {!! Form::select('tipoBigote', $tipoBigote, '', ['class' => '', 'id' => 'tipoBigote','multiple' => 'multiple'] ) !!}
+                                {!! Form::label ('tipoBigote','Color de cabello') !!}
+		                        {!! Form::select('tipoBigote', $coloresCabello, '', ['class' => '', 'id' => 'colorCabello','multiple' => 'multiple'] ) !!}
                             </div>    
                           </div>
                       </div>
 	            </div>                  
             </div>
-             <div class="row" >               
+          
+            </div>
+             
+             <!--   BARBA  --><div class="col-lg-6"><!--   COL-LG-6-->
+              <div class="row" >               
                <div class="col" style="padding-right:0px;padding-left:0px;">
-                    <div class="">
                         <div class="card-header">
-                           Tamaños en partes del cuerpo:
-                                                   
+                           Barba                                                   
+                                         
                            </div>
-                        <div class=" list-group-flush small">
-                          <div class="list-group-item list-group-item-action" style="Display:none" id="campoTamanoCabello"> 
-                             <div class=""  id="infoCabello3">
-                                {!! Form::label ('tamanoCabello','Tamaño de cabello:') !!}
-		                        {!! Form::select('tamanoCabello', $tamanoCabello, '', ['class' => '', 'id' => 'tamanoCabello','multiple' => 'multiple'] ) !!}
-                            </div>      
-                          </div>
-                      </div>
-                    </div>
-	            </div>
-               
-                <div class="col" style="padding-right:0px;padding-left:0px;">
-                        <div class="card-header">
-                           &nbsp;                        
-                           </div>
-                        <div class=" list-group-flush small" style="Display:none" id="campoTamanoOjos">
+                        <div class=" list-group-flush small" style="Display:none" id="campoTipoBarba">
                           <div class="list-group-item list-group-item-action"> 
                               <div class=""  id="infoCabello3">
-                                {!! Form::label ('tipoBarba','Tamaño de barba:') !!}
-		                        {!! Form::select('tipoBarba', $tipoBarba, '', ['class' => '', 'id' => 'tamanoOjos','multiple' => 'multiple'] ) !!}
-                            </div>    
+                                {!! Form::label ('tipoBarba','Tipo de barba:') !!}
+		                        {!! Form::select('tipoBarba', $tipoBarba, '', ['class' => '', 'id' => 'tipoBarba','multiple' => 'multiple'] ) !!}
+                             </div>    
                           </div>
                       </div>
 	            </div>
+	            
 	            <div class="col" style="padding-right:0px;padding-left:0px;">
                         <div class="card-header">
                            &nbsp;    
                            <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar4"></i>                       
                            </div>
-                        <div class=" list-group-flush small" style="Display:none" id="campoTamanoBoca">
+                        <div class=" list-group-flush small" style="Display:none" id="campoColorBarba">
                           <div class="list-group-item list-group-item-action"> 
                               <div class=""  id="infoCabello3">
-                                {!! Form::label ('tipoBigote','Tamaño de bigote:') !!}
-		                        {!! Form::select('tipoBigote', $tipoBigote, '', ['class' => '', 'id' => 'tamanoBoca','multiple' => 'multiple'] ) !!}
+                                {!! Form::label ('tipoBigote','Color de barba:') !!}
+		                        {!! Form::select('tipoBigote', $coloresBarba, '', ['class' => '', 'id' => 'colorBarba','multiple' => 'multiple'] ) !!}
                             </div>    
                           </div>
                       </div>
-	            </div>                  
+	            </div>                   
+            </div>
+              
             </div>
             
+            </div>
+           
          </div>
-	    
-                     
-          
-	    
 	     <div class="row" >
-	        
-
-	         
-	     </div>
+	     </div> 
+        <!--<imput type="button" class="btn btn-dark pull-right" id="button2">PRUEBA</imput>-->
        <!--<imput type="button" class="btn btn-dark pull-right" id="prueba">PRUEBA</imput>-->
         <imput type="button" class="btn btn-dark pull-right" id="filtros">Buscar</imput>
         
@@ -352,12 +349,13 @@
               data-show-export="true"
               data-pagination="true"
               data-search="true" 
+              data-show-print="true"
               
               data-trim-on-search="false"> 
 
              <thead>
                 <tr>
-                    <th data-field="Nombres" 
+                    <th data-field="nombres" 
                         data-sortable="true"></th>
                     <th data-field="Fecha de desaparición" 
                         data-sortable="true" ></th>
@@ -381,56 +379,16 @@
                         data-sortable="true" data-visible="false"></th>
                         <th data-field="Nacionalidad" 
                         data-sortable="true" data-visible="false"></th>
-                        <th data-field="Fecha de reporte" 
+                        <th data-field="FechaR" 
                         data-sortable="true" data-visible="false"></th>
                         <th data-field="Hechos" 
                         data-sortable="true" data-visible="false"></th>
                <th data-field="Acciones"></th>
                 </tr>
             </thead>
-         </table>  
- 	@include('reporteador.modal.modal_reportes')
-
-        </div>
-<div id="tablaGenTodos" >
-
-          <table id="tableTodos"
-              data-search="true"
-              data-toolbar="#toolbar"
-              data-show-refresh="true"
-              data-show-toggle="true"
-              data-show-columns="true"
-              data-sort-name="id_user"
-              data-unique-id="id_user"
-              data-sort-order="asc"
-              data-show-export="true"
-              data-pagination="true"
-              data-search="true" 
-              
-              data-trim-on-search="false"> 
-
-             <thead>
-                <tr>
-                    <th data-field="Nombres" 
-                        data-sortable="true"></th>
-
-                    <th data-field="Genero" 
-                        data-sortable="true"></th>       
-                    <th data-field="Edad" 
-                        data-sortable="true"></th> 
-
-                    <th data-field="Fecha de desaparición" 
-                        data-sortable="true"></th>
-                        <th data-field="Estado de origen" 
-                        data-sortable="true"></th>
-
-                        <th data-field="Municipio" 
-                        data-sortable="true"></th>
-                        
-
-               <th data-field="Acciones"></th>
-                </tr>
-            </thead>
+ <tbody>
+    
+    </tbody>
          </table>  
  	@include('reporteador.modal.modal_reportes')
 
@@ -442,10 +400,14 @@
 
 @endsection
 
-@section('scripts')
+@section('scripts') 
 {!! HTML::script('personal/js/multiple-select.js') !!}
 {!! HTML::script('personal/js/bootstrap-table-multiple-search.js') !!}
 {!! HTML::script('personal/js/bootstrap-table-toolbar.js') !!}
+<!--
+{!! HTML::script('personal/js/bootstrap-table.js') !!}
+{!! HTML::script('personal/js/bootstrap-table-print.js') !!}
+-->
 
 <script type="text/javascript">
     
@@ -454,6 +416,7 @@
      $('#estados').multipleSelect({
             filter: true,
             width: '100%'
+           
         });
     $('#municipios').multipleSelect({
             filter: true,
@@ -471,30 +434,29 @@
             filter: true,
             width: '100%'
         });
-    $('#tipoBarba').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
-   $('#tipoBigote').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
     $('#tamanoCabello').multipleSelect({
             filter: true,
             width: '100%'
         });
-    $('#tamanoOjos').multipleSelect({
+    $('#colorCabello').multipleSelect({
             filter: true,
             width: '100%'
         });
-    $('#tamanoBoca').multipleSelect({
+    $('#tipoBarba').multipleSelect({
             filter: true,
             width: '100%'
         });
+    $('#tamanoBarba').multipleSelect({
+            filter: true,
+            width: '100%'
+        });
+    $('#colorBarba').multipleSelect({
+            filter: true,
+            width: '100%'
+        });
+   
     //-<<--<--<<--<<--<<-<<--<--<<--<<--<<-<<--<--<<--<<--<<-<<--<--<<-<<
-//    $("#colapsar1").click(function(event) {
-//        $("#campoGenero").toggle();
-//    });
+
     $("#colapsar2").click(function(event) {
         $("#campoEstatura").toggle();
         $("#campoPeso").toggle();
@@ -504,62 +466,43 @@
     $("#colapsar3").click(function(event) {
         //$("#campoUbicacion").show();
         $("#campoTipoCabello").toggle();
-        $("#campoTipoBigote").toggle();
-        $("#campoTipoBarba").toggle();
-
-//        $('#partiCabello').multipleSelect({
-//            filter: true
-//        });
-//    $('#municipios').multipleSelect({
-//            filter: true
-//        });
-        
+        $("#campoTamanoCabello").toggle();
+        $("#campoColorCabello").toggle();
+ 
     });
     
      $("#colapsar4").click(function(event) {
         //$("#campoUbicacion").show();
-        $("#campoTamanoCabello").toggle();
-        $("#campoTamanoOjos").toggle();
-        $("#campoTamanoBoca").toggle();
+         $("#campoTipoBarba").toggle();        
+        $("#campoColorBarba").toggle();
         
     });
      $("#colapsar5").click(function(event) {
         //$("#campoUbicacion").show();
         $("#campoFechaD").toggle();
         $("#campoFechaR").toggle();
-       
-
     });
     
     var prueba = $('#prueba');
     var btnVerReporte = $('#verReporte');
 		var modalReportes = $('#modal_reportes');
-    
-    
-    
-    // $('select').multipleSelect();
+
     var CheckMasc = $('#masc');
     var filtros = $('#filtros');
     var filtrosTodos = $('#filtrosTodos');
         var CheckFem = $('#fem');
     
         var fem = "";  
-    
-    //console.log(masc);
 
     prueba.click(function(e){
 			alert("FGFg");
-			modalReportes.modal('show');
-
-           
+			modalReportes.modal('show');   
 		});
     
     btnVerReporte.click(function(e){
 			alert("FGFg");
             
 			modalReportes.modal('show');
-
-           
 		});
     
 $('#range').click(function(e){
@@ -591,17 +534,11 @@ alert('Selected texts: ' + $('#estados').multipleSelect('getSelects', 'text'));
 
 			return [texto].join('');
 		}
-    //-->-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<__
-    //<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.
-    //-->-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<__
-    
-    //filtrodds.click(function(){
-        
-   // });
+    //-->-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-
     
 var formatTableActions = function(value, row, index) {				
 			btn = '<button class="btn btn-dark " id="verReporte" value="'+row.id+'">Ver detalles</button>';
-            //btn = '<a href="'+row.id+'" class="btn btn-dark btn-sm" id="edit"><i class="fa fa-address-card"></i></a>&nbsp;';
+
 
 			return [btn].join('');
 		};
@@ -623,12 +560,7 @@ var formatTableActions = function(value, row, index) {
             $("#idComplexion").empty();            
             $("#idNacionalidad").empty();
             $("#idTipoCabello").empty();
-//                var btnEditarInformante = $('#btnEditarInformante');
-//				
-//				$('.modal-body div.has-danger').removeClass('has-danger');
-//				$('.form-control-feedback').empty();
-//
-            
+
 			$("#idNombre").append(row.nombre);
             if(row.sexo =='H'){ 
                 $("#idGenero").append('Hombre'); 
@@ -651,8 +583,6 @@ var formatTableActions = function(value, row, index) {
     }
         var formatTableActions2 = function(value, row, index) {				
 			btn = '<button class="btn btn-dark " id="verReporte" value="'+row.id+'">Ver detalles</button>';
-            //btn = '<a href="'+row.id+'" class="btn btn-dark btn-sm" id="edit"><i class="fa fa-address-card"></i></a>&nbsp;';
-
 			return [btn].join('');
 		};
     
@@ -668,19 +598,14 @@ var formatTableActions = function(value, row, index) {
             $("#idEdad").empty();
             $("#apodo").empty();
             $("#idNacionalidad").empty();
-//                var btnEditarInformante = $('#btnEditarInformante');
-//				
-//				$('.modal-body div.has-danger').removeClass('has-danger');
-//				$('.form-control-feedback').empty();
-//
-            
+   
 			$("#idNombre").append(row.nombre);
             if(row.sexo =='H'){ 
                 $("#idGenero").append('Hombre'); 
-                              }else{
-                if(row.sexo =='M'){ 
+            }else{
+            if(row.sexo =='M'){ 
                     $("#idGenero").append('Mujer');}
-                              }
+                }
             $("#idEstado").append(row.estado);
             $("#idMunicipio").append(row.municipio);
             $("#idFecha").append(row.fecha);
@@ -688,122 +613,6 @@ var formatTableActions = function(value, row, index) {
             $("#apodo").append(row.apodo);
             $("#idNacionalidad").append(row.nacionalidad);
 }
-//	{			$("#primerAp").val(row.primerAp);
-//				$("#segundoAp").val(row.segundoAp);
-//				$('select#idParentesco option[value="'+row.idParentesco+'"]').attr("selected",true);
-//				$("#otroParentesco").val(row.otroParentesco);
-//				$('select#idNacionalidad option[value="'+row.idNacionalidad+'"]').attr("selected",true);
-//				$("#otroDocIdentidad").val(row.otroDocIdentidad);
-//				$("#numDocIdentidad").val(row.numDocIdentidad);
-//				$('select#tipoDireccion option[value="'+row.tipoDireccion+'"]').attr("selected",true);
-//				$("#calle").val(row.calle);
-//				$("#numExterno").val(row.numExterno);
-//				$("#numInterno").val(row.numInterno);
-//				$('select#idEstado option[value="'+row.idEstado+'"]').attr("selected",true);
-//
-//				$.getJSON(routeIndex+'/get_municipios/'+row.idEstado)
-//				.done(function(data){					
-//					idSelect = row.idMunicipio;
-//					selectedGeneral = $('#idMunicipio');
-//					selectedGeneral.select2();
-//					//selectedGeneral.append('<option value="0">[ SELECCIONE TIPO]</option>');
-//					$.each(data, function(key, value){						
-//						optionSelect = '<option';
-//						if (idSelect == value.id) { optionSelect = optionSelect+' selected'; }
-//						optionselect = optionSelect+' value='+value.id+'>'+value.nombre+'</option>';
-//						selectedGeneral.append(optionselect);
-//					});
-//				});
-//
-//				$.getJSON(routeIndex+'/get_localidades/'+row.idMunicipio)
-//				.done(function(data){					
-//					idSelect = row.idLocalidad;
-//					selectedGeneral = $('#idLocalidad');
-//					selectedGeneral.select2();
-//					//selectedGeneral.append('<option value="0">[ SELECCIONE TIPO]</option>');
-//					$.each(data, function(key, value){						
-//						optionSelect = '<option';
-//						if (idSelect == value.id) { optionSelect = optionSelect+' selected'; }
-//						optionselect = optionSelect+' value='+value.id+'>'+value.nombre+'</option>';
-//						selectedGeneral.append(optionselect);
-//					});
-//				});
-//
-//				$.getJSON(routeIndex+'/get_colonias/'+row.idMunicipio)
-//				.done(function(data){					
-//					idSelect = row.idColonia;
-//					selectedGeneral = $('#idColonia');
-//					selectedGeneral.select2();
-//					//selectedGeneral.append('<option value="0">[ SELECCIONE TIPO]</option>');
-//					$.each(data, function(key, value){						
-//						optionSelect = '<option';
-//						if (idSelect == value.id) { optionSelect = optionSelect+' selected'; }
-//						optionselect = optionSelect+' value='+value.id+'>'+value.nombre+'</option>';
-//						selectedGeneral.append(optionselect);
-//					});
-//				});
-//
-//				$.getJSON(routeIndex+'/get_colonias/'+row.idMunicipio)
-//				.done(function(data){					
-//					idSelect = row.idCodigoPostal;
-//					selectedGeneral = $('#idCodigoPostal');
-//					selectedGeneral.select2();
-//					//selectedGeneral.append('<option value="0">[ SELECCIONE TIPO]</option>');
-//					$.each(data, function(key, value){						
-//						optionSelect = '<option';
-//						if (idSelect == value.id) { optionSelect = optionSelect+' selected'; }
-//						optionselect = optionSelect+' value='+value.id+'>'+value.codigoPostal+'</option>';
-//						selectedGeneral.append(optionselect);
-//					});
-//				});
-//                                            
-//				telefonos = $.parseJSON(row.telefonos)
-//                var etiqueta2 = 0;
-//                console.log("Aqui los telefonos:");
-//				//console.log(telefonos.length);
-//                
-//                informanteTele2 = $("input[name='telefonos[]']");
-//                
-//                for ($t =1; $t < telefonos.length; $t++ ){
-//                    
-//                    if (telefonos.length > informanteTele2.length ){
-//                        addCamposTelefono(tipoTel = null, lada=null, telefono=null, ext=null);
-//                    }                   
-//                    
-//                    
-//                }
-//                var informanteTipo = $("select[name='tipoTelefono[]']");
-//                var informanteLada = $("input[name='lada[]']");
-//                var informanteTele = $("input[name='telefonos[]']");
-//                var informanteExt = $("input[name='ext[]']");
-//				$.each(telefonos, function(key, value){
-//                    //console.log(row.lenght);
-//					console.log(value.telefono);
-//                    informanteTipo[etiqueta2].value = value.tipoTelefono;
-//                    informanteLada[etiqueta2].value = value.lada;
-//                    informanteTele[etiqueta2].value = value.telefono;
-//                    informanteExt[etiqueta2].value = value.ext;
-//                    etiqueta2 = etiqueta2 +1;                    
-//				})
-//
-//				$("#correoElectronico").val(row.correoElectronico);
-//				if (row.informante == 0) {
-//					$("input#informante").iCheck('uncheck');
-//				}
-//
-//				if (row.notificaciones == 0) {
-//					$("input#notificaciones").iCheck('uncheck');
-//				}                
-//                
-//				//modalFooter.empty();
-//				$("#btnEditarInformante").show();
-//				$("#btnGuardarInformante").hide();
-//                    
-//                $("#btnEditarInformante").val(row.idDesaparecido);
-//				
-//				modalInformanteAgregar.modal('show');
-//			}}
-        
 		}
      filtrosTodos.click(function(){
           tablaGen.hide();
@@ -833,8 +642,7 @@ var formatTableActions = function(value, row, index) {
           table2.bootstrapTable("refresh", {
               data: dataString
     });
-          
-          
+  
           var dataString = {
 			    estados: $('#estados').multipleSelect('getSelects'),
                 fem : $("input#fem:checked").val(),     
@@ -860,9 +668,7 @@ var formatTableActions = function(value, row, index) {
 			});
           
           table2.bootstrapTable({			
-             
-            //data: data,
-			//url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+'/'+ estados,
+
 			columns: [{					
 				field: 'nombre',
 				title: 'Nombre',
@@ -893,10 +699,9 @@ var formatTableActions = function(value, row, index) {
 
         //console.log("entrando")
         });
-     //-<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<-
+     //-o-|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-
     filtros.click(function(){
-        
-        
+
             from = $("#fechaDesaparicion1").val().split("/");
             fechaDesaparicion1 = from[2] + "-" + from[1] + "-" + from[0];
             fechaInicio = Date.parse(fechaDesaparicion1);
@@ -905,9 +710,7 @@ var formatTableActions = function(value, row, index) {
             fechaFin = Date.parse(fechaDesaparicion2);
             console.log("FECHA");                           
     console.log(fechaInicio);
-    
-         
-        
+
           tablaGenTodos.hide();
           var estados = $('#estados').multipleSelect('getSelects');
           var municipios = $('#municipios').multipleSelect('getSelects');
@@ -934,21 +737,21 @@ var formatTableActions = function(value, row, index) {
           var fem =' ';
           var masc =' ';
    
-         //table.bootstrapTable('refresh');
-          
           table.bootstrapTable("refresh", {
               data: dataString
               //url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+ '/'+ estados
     });
-          
-          
+
           var dataString = {
 			    estados: $('#estados').multipleSelect('getSelects'),
                 municipios: $('#municipios').multipleSelect('getSelects'),
                 cPiel: $('#cPiel').multipleSelect('getSelects'),
                 complexion: $('#complexion').multipleSelect('getSelects'),
-                tipoCabello: $('#tipoCabello').multipleSelect('getSelects'), 
+                tipoCabello: $('#tipoCabello').multipleSelect('getSelects'),
+                tamanoCabello: $('#tamanoCabello').multipleSelect('getSelects'),
+                colorCabello: $('#colorCabello').multipleSelect('getSelects'),
                 tipoBarba: $('#tipoBarba').multipleSelect('getSelects'),
+                colorBarba: $('#colorBarba').multipleSelect('getSelects'),
                 fem : $("input#fem:checked").val(),     
                 masc : $("input#masc:checked").val(),
                 rg : $('#rng1').val(),
@@ -996,87 +799,78 @@ var formatTableActions = function(value, row, index) {
             //data: data,
 			//url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+'/'+ estados,
 			columns: [{					
-				field: 'nombre',
-				title: 'Nombre',
-		},{
-            field: 'fecha',
-            title: 'Fecha de desaparición',
-        },{					
-				field: 'sexo',
-				title: 'Sexo',
-		},{					
-				field: 'apodo',
-				title: 'Apodo',
-		},{					
-				field: 'edad',
-				title: 'Edad',
-		},{					
-				field: 'estatura',
-				title: 'Estatura',
-		},{					
-				field: 'peso',
-				title: 'Peso',
-		},{					
-				field: 'complexion',
-				title: 'Complexión',
-		},{					
-				field: 'cPiel',
-				title: 'Color de piel',
-		},{					
-				field: 'estado',
-				title: 'Estado',
-		},{					
-				field: 'municipio',
-				title: 'Municipio',
-		},{					
-				field: 'nacionalidad',
-				title: 'Nacionalidad',
-		},{
-            field: 'fechaReporte',
-            title: 'Fecha de reporte',
-        },{					
-				field: 'hechos',
-				title: 'Hechos',
-		},
-                      
-//				title: 'Género',
-//                formatter: formatCheckInformante
-//			}, {					
-//				field: 'edad',
-//				title: 'Edad de extravío',
-//			}, 
-                
-                					
-				
-//			}, {					
-//				field: 'estado',
-//				title: 'Estado',
-//			}, {					
-//				field: 'municipio',
-//				title: 'Municipio',
-//		
-                
-                      {					
-				title: 'Acciones',
-				formatter: formatTableActions,
-				events: operateEvents
-			}]				
-		})
-          
-          
-      //console.log(masc)
+                    field: 'nombre',
+                    title: 'Nombre',
+            },{
+                    field: 'fecha',
+                    title: 'Fecha de desaparición',
+            },{					
+                    field: 'sexo',
+                    title: 'Sexo',
+            },{					
+                    field: 'apodo',
+                    title: 'Apodo',
+            },{					
+                    field: 'edad',
+                    title: 'Edad',
+            },{					
+                    field: 'estatura',
+                    title: 'Estatura',
+            },{					
+                    field: 'peso',
+                    title: 'Peso',
+            },{					
+                    field: 'complexion',
+                    title: 'Complexión',
+            },{					
+                    field: 'cPiel',
+                    title: 'Color de piel',
+            },{					
+                    field: 'estado',
+                    title: 'Estado',
+            },{					
+                    field: 'municipio',
+                    title: 'Municipio',
+            },{					
+                    field: 'nacionalidad',
+                    title: 'Nacionalidad',
+            },{
+                    field: 'fechaReporte',
+                    title: 'Fecha de reporte',
+            },{					
+                    field: 'hechos',
+                    title: 'Hechos',
+            },{					
+                    title: 'Acciones',
+                    formatter: formatTableActions,
+                    events: operateEvents
+                }]				
+            })
 
           console.log(routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+'/'+ estados);
-          
-          
-        tablaGen.show();
+        fechar1 =$('#fechaReporte1');
 
-        //console.log("entrando")
-        });
-    //<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.
-		 
-    
-    
+        tablaGen.show();
+//
+//     table.bootstrapTable('hideColumn', 'nombres');
+//
+//        });
+//    
+//    $(function() {
+//$table = $('#tableDependencias');
+// $button2 = $('#button2');
+//  $button2.click(function() {
+//      
+//     
+//      
+//    $table.bootstrapTable('hideColumn', 'nombres');
+//       $table.bootstrapTable({
+//   reorderableColumns: true,
+//  detailView: true
+//          });
+//  });
+});
+    //<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<-
 </script>
 @endsection
 

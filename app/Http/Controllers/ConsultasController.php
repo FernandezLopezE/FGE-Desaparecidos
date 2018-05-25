@@ -82,9 +82,14 @@ class ConsultasController extends Controller
         $cPiel = $request->input('cPiel');
         $complexion = $request->input('complexion'); 
         $tipoCabello = $request->input('tipoCabello');
-        $tipoBarba = $request->input('$tipoBarba');
+        $tamanoCabello = $request->input('tamanoCabello');
+        $colorCabello = $request->input('colorCabello');
+        $tipoBarba = $request->input('tipoBarba');
+        $colorBarba = $request->input('colorBarba');
         $masc = $request->input('masc');
         $fem = $request->input('fem');
+        
+        //dd($tamanoCabello);
         
         $fechaRep1 = $request->input('fechaRep1');
         $fechaRep2 = $request->input('fechaRep2');
@@ -130,28 +135,28 @@ class ConsultasController extends Controller
             $desaparicionFecha1='1900-01-01';
         }else{
             $fechaDes1 = $request->input('fechaDes1');
-            $desaparicionFecha1 = Carbon::parse($fechaDes1)->format('Y-m-d');
+            $desaparicionFecha1 = Carbon::createFromFormat('d/m/Y',$fechaDes1)->format('Y-m-d');
         }
         if ($request->input('fechaDes2') == '') {
             $desaparicionFecha2=Carbon::now();
         }else{
             $fechaDes2 = $request->input('fechaDes2');
-            $desaparicionFecha2 = Carbon::parse($fechaDes2)->format('Y-m-d');
+            $desaparicionFecha2 = Carbon::createFromFormat('d/m/Y',$fechaDes2)->format('Y-m-d');
 
         }
         //-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
          if ($request->input('fechaRep1') == '') {
             $reporteFecha1='1900-01-01';
+             
         }else{
             $fechaRep1 = $request->input('fechaRep1');
-            $reporteFecha1 = Carbon::parse($fechaRep1)->format('Y-m-d');
+            $reporteFecha1 = Carbon::createFromFormat('d/m/Y',$fechaRep1)->format('Y-m-d');
         }
         if ($request->input('fechaRep2') == '') {
             $reporteFecha2=Carbon::now();
         }else{
             $fechaRep2 = $request->input('fechaRep2');
-            $reporteFecha2 = Carbon::parse($fechaRep2)->format('Y-m-d');
-
+            $reporteFecha2 = Carbon::createFromFormat('d/m/Y',$fechaRep2)->format('Y-m-d');
         }
         //-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
 //        {//dd($estados);
@@ -235,6 +240,16 @@ class ConsultasController extends Controller
                             ->when($tipoBarba, function ($q) use ($tipoBarba) {
                                 return $q->whereIn('cpc.idTipoCuerpo', $tipoBarba);
                             })
+                            ->when($tamanoCabello, function ($q) use ($tamanoCabello) {
+                                return $q->whereIn('cpc.idTamanoCuerpo', $tamanoCabello);
+                            })
+                            ->when($colorCabello, function ($q) use ($colorCabello) {
+                                return $q->whereIn('cpc.idColoresCuerpo', $colorCabello);
+                            })
+                            ->when($colorBarba, function ($q) use ($colorBarba) {
+                                return $q->whereIn('cpc.idColoresCuerpo', $colorBarba);
+                            })
+            
                             ->orWhere('p.sexo', $fem) 
                             ->where('tipoPersona','DESAPARECIDA')
                             ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
@@ -260,6 +275,15 @@ class ConsultasController extends Controller
                             ->when($tipoBarba, function ($q) use ($tipoBarba) {
                                 return $q->whereIn('cpc.idTipoCuerpo', $tipoBarba);
                             })
+                             ->when($tamanoCabello, function ($q) use ($tamanoCabello) {
+                                return $q->whereIn('cpc.idTamanoCuerpo', $tamanoCabello);
+                            })
+                            ->when($colorCabello, function ($q) use ($colorCabello) {
+                                return $q->whereIn('cpc.idColoresCuerpo', $colorCabello);
+                            })
+                            ->when($colorBarba, function ($q) use ($colorBarba) {
+                                return $q->whereIn('cpc.idColoresCuerpo', $colorBarba);
+                            })
                     
             
                             //->where('des.edadExtravio', 'like', "$rg2%")
@@ -267,7 +291,7 @@ class ConsultasController extends Controller
                             ->get();
         
         //$desaparecidos = $desaparecidos->unique('idPersonaDesaparecida');
-        //dd($reporteFecha2);
+        //dd($reporteFecha1);
         //dd($desaparecidos->ToArray());
 		return response()->json($desaparecidos);
 	}

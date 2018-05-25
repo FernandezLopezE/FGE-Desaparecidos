@@ -35,7 +35,7 @@
 				<dt class="col-sm-3">Color de piel:</dt>
 				<dd class="col-sm-8" id="idCPiel">
 				</dd>
-				<dt class="col-sm-3">Complexion:</dt>
+				<dt class="col-sm-3">Complexión:</dt>
 				<dd class="col-sm-8" id="idComplexion">
 				</dd>
 				<dt class="col-sm-3">Nacionalidad:</dt>
@@ -48,8 +48,10 @@
 				<dd class="col-sm-8"id="idFecha"> </dd>
 				<dt class="col-sm-3">Edad de extravio:</dt>
 				<dd class="col-sm-8"id="idEdad"> </dd>
+<!--
 				<dt class="col-sm-3">Tipo de cabello:</dt>
 				<dd class="col-sm-8"id="idTipoCabello"> </dd>
+-->
 				
 <!--
 				<dt class="col-sm-3">Edad aparente:</dt>
