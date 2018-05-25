@@ -83,7 +83,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call(CatDocumentosSeeder::class);        
         //$this->call(DomicilioTableSeeder::class);
-        //$this->call(CatCentroReclusionSeeder::class);
+        $this->call(CatCentroReclusionSeeder::class);
         //$this->call(DocumentosSeeder::class);
        // $this->call(AntecedenteSeeder::class);
         //$this->call(DocumentosIdentidadSeeder::class);
