@@ -718,6 +718,17 @@ class CatSubParticularidadesSeeder extends Seeder
             ['idParticularidadesCuerpo'=>61, 'nombre' => 'QUEMADURA'],
             ['idParticularidadesCuerpo'=>61, 'nombre' => 'OTRO'],
 
+            //AMBOS PECHOS
+            ['idParticularidadesCuerpo'=>76, 'nombre' => 'SIN INFORMACION'],
+            ['idParticularidadesCuerpo'=>76, 'nombre' => 'ACNÉ'],
+            ['idParticularidadesCuerpo'=>76, 'nombre' => 'CICATRIZ'],
+            ['idParticularidadesCuerpo'=>76, 'nombre' => 'MANCHAS'],
+            ['idParticularidadesCuerpo'=>76, 'nombre' => 'VERRUGAS'],
+            ['idParticularidadesCuerpo'=>76, 'nombre' => 'LUNARES'],
+            ['idParticularidadesCuerpo'=>76, 'nombre' => 'NEVO'],
+            ['idParticularidadesCuerpo'=>76, 'nombre' => 'QUEMADURA'],
+            ['idParticularidadesCuerpo'=>76, 'nombre' => 'OTRO'],
+
             //PANTORRILLA IZQUIERDA
             ['idParticularidadesCuerpo'=>62, 'nombre' => 'SIN INFORMACION'],
             ['idParticularidadesCuerpo'=>62, 'nombre' => 'CICATRIZ'],
