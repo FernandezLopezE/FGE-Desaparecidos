@@ -52,11 +52,15 @@
                               <input type="text" id="piel" style="border: 0px;width: 110%;background: transparent;" disabled>
                           </div>
                       </div>
-                  </div> 
+                  </div>
               </div>
             </div>
             <div class="col" style="margin-left:-350px; margin-top:-20px;">
+              <img src="/images/cuerpo2.gif" class="img-fluid" alt="" width="27" height="57" style="float: right;" data-toggle="tooltip" title="Atrás" data-placement="bottom" id="btnTras">
+              <img src="/images/cuerpo1.gif" class="img-fluid" alt="" width="27" height="57" style="float: right; display:none;" data-toggle="tooltip" title="Frente" data-placement="bottom" id="btnFrente">
+
               @include('descripcionfisica.avatar')
+              @include('descripcionfisica.avatarTras')
             </div>
             <div class="col-8">
               @include('descripcionfisica.seccion_Cabello')
@@ -89,6 +93,23 @@
   var aux ="{{$aux}}";
   var extraviado = "{{$desaparecido->id}}";
   var showCabello2 = "{{$showCabello}}";
+
+  //Boton frente
+  $("#btnTras").click(function(event) {
+    $("#AvatarFront").hide();
+    $("#btnFrente").show();
+    $("#btnTras").hide();
+    $("#avatarBack").show();
+  });
+
+  //Boton tras
+  $("#btnFrente").click(function(event) {
+    $("#AvatarFront").show();
+    $("#btnFrente").hide();
+    $("#btnTras").show();
+    $("#avatarBack").hide();
+  });
+
   
 </script>
 {!! Html::script('personal/js/avatar/datos_fisicos.js') !!}
