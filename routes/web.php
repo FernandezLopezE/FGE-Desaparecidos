@@ -161,7 +161,6 @@ Route::post('/desaparecido/update_calzado', 'DesaparecidoController@update_calza
 Route::post('/domicilio/update', 'DomicilioController@update')
 	->name('domicilio.update');
 
-
 Route::post('/desaparecido/store_accesorios', 'DesaparecidoController@store_accesorios')
 	->name('desaparecido.store_accesorios');
 
@@ -182,6 +181,9 @@ Route::get('/descripcionfisica/get_modificaciones/{idParteCuerpo}', 'Descripcion
 Route::get('/descripcionfisica/get_tamano/{idParteCuerpo}', 'DescripcionFisicaController@getTamanoCuerpo')->name('descripcionfisica.get_tamano');
 Route::get('/descripcionfisica/get_cabello/{idExtraviado}', 'DescripcionFisicaController@getCabello')
 	->name('descripcionfisica.get_cabello');
+
+Route::get('/descripcionfisica/get_rostro/{idExtraviado}', 'DescripcionFisicaController@getRostro')
+	->name('descripcionfisica.get_rostro');
 Route::get('/descripcionfisica/get_barba/{idExtraviado}', 'DescripcionFisicaController@getBarba')
 	->name('descripcionfisica.get_barba');
 Route::get('/descripcionfisica/get_bigote/{idExtraviado}', 'DescripcionFisicaController@getBigote')
@@ -214,7 +216,8 @@ Route::get('/datos_dentales/{idDesaparecido}','DatosDentalesController@show_dato
 	->name('datos_dentales.show');
 Route::post('/datos_dentales/store_datos_dentales', 'DatosDentalesController@store_datos_dentales')
 	->name('datos_dentales.store_datos_dentales');
-
+Route::post('imagenAntecedentesD', 'AnexosController@store');
+Route::delete('datosDentales/{id}','datosDEntalesController@destroy');
 
 //la siguiente es una ruta para crear el pdf
 
