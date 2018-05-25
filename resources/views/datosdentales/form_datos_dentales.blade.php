@@ -9,6 +9,8 @@
 {!! Html::style('personal/css/datos_dentales/dentaduraAdult.css') !!}
 {!! Html::style('personal/css/datos_dentales/datosDentales.css') !!}
 <link href="../plugins/bootstrap_fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+
 <style type="text/css">
 
 .gallery
@@ -595,18 +597,15 @@ none repeat scroll 0 0;
           	</div>
 		</div>
 	</div>
-
-	<!-- {{--LO SIGUIENTE ES EL FILE INPUT PARA CARGAR IMAGEN DE RADIOGRAFIAS
-
- <div class="card border-primary">
-  <div class="card border-success">
-    <div class="card-header"> 
-      <h5>AGREGAR ANEXOS
-        <button type="submit" class="btn btn-dark pull-right"  id="btnAgregarAnexo"> AGREGAR</button>   
-      </h5>
-    </div>
-  </div>
-  @include('datosdentales.modals.modal_cargar_documento')
+	<div class="card border-primary">
+	  <div class="card border-success">
+	    <div class="card-header"> 
+	      <h5>AGREGAR ANEXOS
+	        <button type="submit" class="btn btn-dark pull-right"  id="btnAgregarAnexo"> AGREGAR</button>   
+	      </h5>
+	    </div>
+	  </div>
+	  @include('datosdentales.modals.modal_cargar_documento')
   <div class="container page-top">
     <div class="row">
       
@@ -641,7 +640,7 @@ none repeat scroll 0 0;
       @endif
     </div> 
   </div>
-</div>--}} -->
+</div>
 </nav>
 @endsection
 
@@ -719,14 +718,18 @@ none repeat scroll 0 0;
         }
     }
 
-	$(document).ready(function()
-	{
-	/**********************************************************************
-	*** Declaración de rutas a usar de los campos en el formulario ****
-	***********************************************************************/
-	
-	var routedatosDentales = '{!! route('datos_dentales.index') !!}';
-	var routedientesPerdidos = '{!! route('datos_dentales_dientes_perdidos.index') !!}';
+    $(document).ready(function(){
+
+    	$(".fancybox").fancybox({
+			openEffect: "none",
+        	closeEffect: "none"
+        });
+    
+    	$(".zoom").hover(function(){
+    		$(this).addClass('transition');
+    	}, function(){
+    		$(this).removeClass('transition');
+    	});
 
 	/**********************************************************************
 	*** Inicia segmento para ocultar y/o mostrar campos en el formulario***
@@ -759,9 +762,9 @@ none repeat scroll 0 0;
 		$('#dentistahr').hide();
 		$('#upDiente').hide();
 
-		
+    });
 
-		$('#atencionOdonto').change(function() {
+    $('#atencionOdonto').change(function() {
 			atencion = $('#atencionOdonto').val();
 			if (atencion == 'SI') {
 				$('#infoDen').show();
@@ -869,9 +872,25 @@ none repeat scroll 0 0;
 			}
 		});
 
-        
+		// $('#mapDientes').on('click', '#diente', function(){
+		// 	console.log('Estas dando click en la imagen');
+		// 	console.log('El ID_diente es: '+$(this).attr('value')+' nombre del diente: '+$(this).attr('alt'));
+		// 	cont1 = cont1 + 1;
+		// 	if (cont1 == 1) {
+		// 		$('#nombreDiente'+$(this).attr('value')).show();
+		// 		$('#observacionesDiente'+$(this).attr('value')).show();
+		// 		$('#nombreDiente'+$(this).attr('value')).value($(this).attr('alt'));
+		// 		$("input[id*='14']" ).name("PRIMER MOLAR SUPERIOR IZQUIERDO");
+		// 	}else{
+		// 		cont1 = 0;
+		// 		$('#PMSID').hide();
+		// 		$('#PMSIPDP').hide();
+		// 		$("#PMSI").val('');
+		// 	}
 
-   		$('#upDiente').click(function() {
+		// })
+
+		$('#upDiente').click(function() {
    			alertify.confirm('Está seguro de editar esta sección?', 'Esta acción borrará los datos capturados anteriormente', 
    				function(){ 
    					$('#btnDiente').show();
@@ -888,6 +907,61 @@ none repeat scroll 0 0;
 				function(){ 
 				});
    		});
+
+
+
+
+$desaparecido = ('{!! $desaparecido->id!!}');
+
+   		var modalAnexos = $('#modalAnexosDatosDentales');
+
+		$('#btnAgregarAnexo').click (function(){  
+			modalAnexos.modal('show');
+		});
+
+   		$('#cerrarModal').click (function(){
+  	location.reload();});
+
+$("#fileImagenes").fileinput({
+                  language:'es',
+                  theme: 'fa',
+                  uploadUrl: "/imagenAntecedentesD",
+
+                  uploadExtraData: function() {
+                   
+                      return {
+
+                          _token: $("input[name='_token']").val(),
+                          idDesaparecido:'{!! $desaparecido->id!!}',
+                          tipoAnexo: 'antecedentesdentales',
+
+                      };
+                  },
+                  allowedFileExtensions: ['jpg', 'png', 'gif', 'pdf'],
+                  overwriteInitial: false,
+                  maxFileSize:2000,
+                  maxFilesNum: 10,
+
+                  
+                  slugCallback: function (filename) {
+                    $nombre = $desaparecido+"_ant_dentales_"+filename.replace('(', '_').replace(']', '_');
+
+                    console.log($nombre);
+
+                      return  filename.replace('(', '_').replace(']', '_');
+                  }
+
+
+
+              });
+
+   		/**********************************************************************
+	*** Declaración de rutas a usar de los campos en el formulario ****
+	***********************************************************************/
+	
+	var routedatosDentales = '{!! route('datos_dentales.index') !!}';
+	var routedientesPerdidos = '{!! route('datos_dentales_dientes_perdidos.index') !!}';
+
 
 		/************************************************************************
 		*** función que limpia campos al dar CANCELAR en modal datos dentista ***
@@ -1095,6 +1169,5 @@ none repeat scroll 0 0;
 				}
 			});
 		});
-});
 </script>
 @endsection
