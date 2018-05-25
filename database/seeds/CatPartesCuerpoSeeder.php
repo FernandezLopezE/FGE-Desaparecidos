@@ -90,6 +90,7 @@ class CatPartesCuerpoSeeder extends Seeder
             ['nombre' => 'MEJILLA IZQUIERDA', 'partePadre' => '0'],            //75
             ['nombre' => 'MEJILLA DERECHA', 'partePadre' => '0'],            //76
             ['nombre' => 'AMBAS OREJAS', 'partePadre' => '60'],    //77
+            ['nombre' => 'AMBAS PECHOS', 'partePadre' => '0'],    //78
 
 
             

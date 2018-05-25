@@ -75,31 +75,31 @@
 			<!-- Sección antebrazo  -->
 			<div class="form-group row">
 				<div class="col-4">
-					{!! Form::label ('infoCodoIzq','Información de antebrazo') !!}
-					{!! Form::select('infoCodoIzq', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoCodoIzq'] ) !!}
+					{!! Form::label ('infoAnteIzq','Información de antebrazo') !!}
+					{!! Form::select('infoAnteIzq', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'infoAnteIzq'] ) !!}
 				</div>
-				<div class="col">
+				<div class="col" id="ante1" style="display:none;">
 					{!! Form::label ('partAntebrazoIzq','Particularidades') !!}
 					{!! Form::select('partAntebrazoIzq', $tipoCeja, '', ['class' => 'form-control', 'id' => 'partAntebrazoIzq'] ) !!}
 				</div>
-				<div class="col">
+				<div class="col" id="ante2" style="display:none;">
 					{!! Form::label ('modAntebrazoIzq','Modificaciones') !!}
 					{!! Form::select('modAntebrazoIzq', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SÍ' => 'SÍ', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'modAntebrazoIzq'] ) !!}
 				</div>
 			</div>
 
 			<div class="form-group row">
-				<div class="col">
-					{!! Form::text('otroTipoCeja', '', ['class' => 'form-control', 'id' => 'otroTipoCeja', 'placeholder' => 'Especifique otra particularidad'] ) !!}
+				<div class="col" id="ante3" style="display:none;">
+					{!! Form::text('otraPartAnteIZq', '', ['class' => 'form-control', 'id' => 'otraPartAnteIZq', 'placeholder' => 'Especifique otra particularidad'] ) !!}
 				</div>
-				<div class="col">
-					{!! Form::text('otroTipoCeja', '', ['class' => 'form-control', 'id' => 'otroTipoCeja', 'placeholder' => 'Especifique otra modificación'] ) !!}
+				<div class="col" id="ante4" style="display:none;">
+					{!! Form::text('otraModAnteIzq', '', ['class' => 'form-control', 'id' => 'otroTipoCeja', 'placeholder' => 'Especifique otra modificación'] ) !!}
 				</div>
 			</div>
 
-			<div class="form-group row">
+			<div class="form-group row" id="ante5" style="display:none;">
 				<div class="col">
-					{!! Form::textarea('observacionesCabello', '', ['class' => 'form-control', 'id' => 'observacionesCabello', 'rows' => '1', 'placeholder' => 'Observaciones'] ) !!}
+					{!! Form::textarea('obseAnteIzq', '', ['class' => 'form-control', 'id' => 'obseAnteIzq', 'rows' => '1', 'placeholder' => 'Observaciones'] ) !!}
 				</div>
 			</div>
 			<button type="button" class="btn btn-primary" style="float: right;" id="guardarBrazoIzq">GUARDAR</button>
