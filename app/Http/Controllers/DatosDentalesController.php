@@ -115,7 +115,7 @@ class DatosDentalesController extends Controller
                     'dienteTamano' => $dienteTamano,
                     'desaparecido' => $desaparecido,
                     'edadExtraviado' => $edad,
-                    'images' => $images
+                    //'images' => $images
                 ]);
     }
 
