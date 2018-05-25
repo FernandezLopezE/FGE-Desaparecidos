@@ -131,7 +131,8 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo->save();
 
             //particularidades
-            $particularidadC = $request['idPartiCeja'];
+            $particularidadC  = (is_null($request['idPartiCeja'])) ? array() : $request['idPartiCeja'] ;
+            //$particularidadC = $request['idPartiCeja'];
             $longitud = count($particularidadC);
 
             if($longitud !=0){
@@ -147,7 +148,8 @@ class DescripcionFisicaController extends Controller
             }
 
             //modificaciones
-             $modificacionC = $request['idModiCeja'];
+             $modificacionC  = (is_null($request['idModiCeja'])) ? array() : $request['idModiCeja'] ;
+             //$modificacionC = $request['idModiCeja'];
              $longitud = count($modificacionC);
              if($longitud !=0){
                 \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
@@ -177,7 +179,8 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo->save();
 
             //particularidades ceja
-            $particularidadC = $request['idPartiCeja'];
+            $particularidadC  = (is_null($request['idPartiCeja'])) ? array() : $request['idPartiCeja'] ;
+            //$particularidadC = $request['idPartiCeja'];
             $longitud = count($particularidadC);
             for($i=0; $i<$longitud; $i++){
                 $partiCabello = new PivotSubPartiCuerpo();
@@ -187,7 +190,8 @@ class DescripcionFisicaController extends Controller
             }
 
              //modificaciones ceja
-             $modificacionC = $request['idModiCeja'];
+             $modificacionC  = (is_null($request['idModiCeja'])) ? array() : $request['idModiCeja'] ;
+             //$modificacionC = $request['idModiCeja'];
              $longitud = count($modificacionC);
              for($i=0; $i<$longitud; $i++){
                 $modiCabello = new PivotSubModiCuerpo();
@@ -223,7 +227,8 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo->save();
 
             //particularidades
-            $particularidadC = $request['idPartiOjos'];
+            $particularidadC  = (is_null($request['idPartiOjos'])) ? array() : $request['idPartiOjos'] ;
+            //$particularidadC = $request['idPartiOjos'];
             $longitud = count($particularidadC);
 
             if($longitud !=0){
@@ -239,7 +244,8 @@ class DescripcionFisicaController extends Controller
             }
 
             //modificaciones
-             $modificacionC = $request['idModiOjos'];
+             $modificacionC  = (is_null($request['idModiOjos'])) ? array() : $request['idModiOjos'] ;
+             //$modificacionC = $request['idModiOjos'];
              $longitud = count($modificacionC);
              if($longitud !=0){
                 \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
@@ -270,7 +276,8 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo->save();
 
             //particularidades ceja
-            $particularidadC = $request['idPartiOjos'];
+            $particularidadC  = (is_null($request['idPartiOjos'])) ? array() : $request['idPartiOjos'] ;
+            //$particularidadC = $request['idPartiOjos'];
             $longitud = count($particularidadC);
             for($i=0; $i<$longitud; $i++){
                 $partiCabello = new PivotSubPartiCuerpo();
@@ -280,7 +287,8 @@ class DescripcionFisicaController extends Controller
             }
 
              //modificaciones ceja
-             $modificacionC = $request['idModiOjos'];
+             $modificacionC = (is_null($request['idModiOjos'])) ? array() : $request['idModiOjos'] ;
+             //$modificacionC = $request['idModiOjos'];
              $longitud = count($modificacionC);
              for($i=0; $i<$longitud; $i++){
                 $modiCabello = new PivotSubModiCuerpo();
@@ -313,7 +321,8 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo->save();
 
             //particularidades
-            $particularidadC = $request['idPartiNariz'];
+            $particularidadC  = (is_null($request['idPartiNariz'])) ? array() : $request['idPartiNariz'] ;
+            //$particularidadC = $request['idPartiNariz'];
             $longitud = count($particularidadC);
 
             if($longitud !=0){
@@ -329,7 +338,8 @@ class DescripcionFisicaController extends Controller
             }
 
             //modificaciones
-             $modificacionC = $request['idModiNariz'];
+             $modificacionC  = (is_null($request['idModiNariz'])) ? array() : $request['idModiNariz'] ;
+             //$modificacionC = $request['idModiNariz'];
              $longitud = count($modificacionC);
              if($longitud !=0){
                 \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
@@ -359,7 +369,8 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo->save();
 
             //particularidades ceja
-            $particularidadC = $request['idPartiNariz'];
+            $particularidadC  = (is_null($request['idPartiNariz'])) ? array() : $request['idPartiNariz'] ;
+            //$particularidadC = $request['idPartiNariz'];
             $longitud = count($particularidadC);
             for($i=0; $i<$longitud; $i++){
                 $partiCabello = new PivotSubPartiCuerpo();
@@ -369,7 +380,8 @@ class DescripcionFisicaController extends Controller
             }
 
              //modificaciones ceja
-             $modificacionC = $request['idModiNariz'];
+             $modificacionC  = (is_null($request['idModiNariz'])) ? array() : $request['idModiNariz'] ;
+             //$modificacionC = $request['idModiNariz'];
              $longitud = count($modificacionC);
              for($i=0; $i<$longitud; $i++){
                 $modiCabello = new PivotSubModiCuerpo();
@@ -402,7 +414,8 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo->save();
 
             //particularidades
-            $particularidadC = $request['idPartiBoca'];
+            $particularidadC  = (is_null($request['idPartiBoca'])) ? array() : $request['idPartiBoca'] ;
+            //$particularidadC = $request['idPartiBoca'];
             $longitud = count($particularidadC);
 
             if($longitud !=0){
@@ -418,7 +431,8 @@ class DescripcionFisicaController extends Controller
             }
 
             //modificaciones
-             $modificacionC = $request['idModiBoca'];
+             $modificacionC = (is_null($request['idModiBoca'])) ? array() : $request['idModiBoca'] ;
+             //$modificacionC = $request['idModiBoca'];
              $longitud = count($modificacionC);
              if($longitud !=0){
                 \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
@@ -447,7 +461,8 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo->save();
 
             //particularidades boca
-            $particularidadC = $request['idPartiBoca'];
+            $particularidadC  = (is_null($request['idPartiBoca'])) ? array() : $request['idPartiBoca'] ;
+            //$particularidadC = $request['idPartiBoca'];
             $longitud = count($particularidadC);
             for($i=0; $i<$longitud; $i++){
                 $partiCabello = new PivotSubPartiCuerpo();
@@ -457,7 +472,8 @@ class DescripcionFisicaController extends Controller
             }
 
              //modificaciones boca
-             $modificacionC = $request['idModiBoca'];
+             $modificacionC = (is_null($request['idModiBoca'])) ? array() : $request['idModiBoca'] ;
+             //$modificacionC = $request['idModiBoca'];
              $longitud = count($modificacionC);
              for($i=0; $i<$longitud; $i++){
                 $modiCabello = new PivotSubModiCuerpo();
@@ -491,7 +507,8 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo->save();
 
             //particularidades
-            $particularidadC = $request['idPartiOreja'];
+            $particularidadC= (is_null($request['idPartiOreja'])) ? array() : $request['idPartiOreja'] ;
+            //$particularidadC = $request['idPartiOreja'];
             $longitud = count($particularidadC);
 
             if($longitud !=0){
@@ -507,7 +524,8 @@ class DescripcionFisicaController extends Controller
             }
 
             //modificaciones
-             $modificacionC = $request['idModiOreja'];
+             $modificacionC= (is_null($request['idModiOreja'])) ? array() : $request['idModiOreja'] ;
+             //$modificacionC = $request['idModiOreja'];
              $longitud = count($modificacionC);
              if($longitud !=0){
                 \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
@@ -537,7 +555,8 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo->save();
 
             //particularidades orejas
-            $particularidadC = $request['idPartiOreja'];
+            $particularidadC= (is_null($request['idPartiOreja'])) ? array() : $request['idPartiOreja'] ;
+            //$particularidadC = $request['idPartiOreja'];
             $longitud = count($particularidadC);
             for($i=0; $i<$longitud; $i++){
                 $partiCabello = new PivotSubPartiCuerpo();
@@ -547,7 +566,8 @@ class DescripcionFisicaController extends Controller
             }
 
              //modificaciones orejas
-             $modificacionC = $request['idModiOreja'];
+             $modificacionC= (is_null($request['idModiOreja'])) ? array() : $request['idModiOreja'] ;
+             //$modificacionC = $request['idModiOreja'];
              $longitud = count($modificacionC);
              for($i=0; $i<$longitud; $i++){
                 $modiCabello = new PivotSubModiCuerpo();
@@ -580,7 +600,8 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo->save();
 
             //particularidades
-            $particularidadC = $request['idPartiFrente'];
+            $particularidadC= (is_null($request['idPartiFrente'])) ? array() : $request['idPartiFrente'] ;
+            //$particularidadC = $request['idPartiFrente'];
             $longitud = count($particularidadC);
 
             if($longitud !=0){
@@ -596,7 +617,8 @@ class DescripcionFisicaController extends Controller
             }
 
             //modificaciones
-             $modificacionC = $request['idModiFrente'];
+             $modificacionC= (is_null($request['idModiFrente'])) ? array() : $request['idModiFrente'] ;
+             //$modificacionC = $request['idModiFrente'];
              $longitud = count($modificacionC);
              if($longitud !=0){
                 \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
@@ -624,7 +646,8 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo->save();
 
             //particularidades orejas
-            $particularidadC = $request['idPartiFrente'];
+            $particularidadC= (is_null($request['idPartiFrente'])) ? array() : $request['idPartiFrente'] ;
+            //$particularidadC = $request['idPartiFrente'];
             $longitud = count($particularidadC);
             for($i=0; $i<$longitud; $i++){
                 $partiCabello = new PivotSubPartiCuerpo();
@@ -634,7 +657,8 @@ class DescripcionFisicaController extends Controller
             }
 
              //modificaciones orejas
-             $modificacionC = $request['idModiFrente'];
+             $modificacionC= (is_null($request['idModiFrente'])) ? array() : $request['idModiFrente'] ;
+             //$modificacionC = $request['idModiFrente'];
              $longitud = count($modificacionC);
              for($i=0; $i<$longitud; $i++){
                 $modiCabello = new PivotSubModiCuerpo();
@@ -667,7 +691,8 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo->save();
 
             //particularidades
-            $particularidadC = $request['idPartiMejillas'];
+            $particularidadC= (is_null($request['idPartiMejillas'])) ? array() : $request['idPartiMejillas'] ;
+            //$particularidadC = $request['idPartiMejillas'];
             $longitud = count($particularidadC);
 
             if($longitud !=0){
@@ -683,7 +708,8 @@ class DescripcionFisicaController extends Controller
             }
 
             //modificaciones
-             $modificacionC = $request['idModiMejillas'];
+             $modificacionC= (is_null($request['idModiMejillas'])) ? array() : $request['idModiMejillas'] ;
+             //$modificacionC = $request['idModiMejillas'];
              $longitud = count($modificacionC);
              if($longitud !=0){
                 \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
@@ -711,7 +737,8 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo->save();
 
             //particularidades mejilla
-            $particularidadC = $request['idPartiMejillas'];
+            $particularidadC= (is_null($request['idPartiMejillas'])) ? array() : $request['idPartiMejillas'] ;
+            //$particularidadC = $request['idPartiMejillas'];
             $longitud = count($particularidadC);
             for($i=0; $i<$longitud; $i++){
                 $partiCabello = new PivotSubPartiCuerpo();
@@ -721,7 +748,8 @@ class DescripcionFisicaController extends Controller
             }
 
              //modificaciones mejilla
-             $modificacionC = $request['idModiMejillas'];
+             $modificacionC= (is_null($request['idModiMejillas'])) ? array() : $request['idModiMejillas'] ;
+             //$modificacionC = $request['idModiMejillas'];
              $longitud = count($modificacionC);
              for($i=0; $i<$longitud; $i++){
                 $modiCabello = new PivotSubModiCuerpo();
@@ -753,7 +781,8 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo->save();
 
             //particularidades
-            $particularidadC = $request['idPartiMenton'];
+            $particularidadC= (is_null($request['idPartiMenton'])) ? array() : $request['idPartiMenton'] ;
+            //$particularidadC = $request['idPartiMenton'];
             $longitud = count($particularidadC);
 
             if($longitud !=0){
@@ -769,7 +798,8 @@ class DescripcionFisicaController extends Controller
             }
 
             //modificaciones
-             $modificacionC = $request['idModiMenton'];
+             $modificacionC= (is_null($request['idModiMenton'])) ? array() : $request['idModiMenton'] ;
+             //$modificacionC = $request['idModiMenton'];
              $longitud = count($modificacionC);
              if($longitud !=0){
                 \DB::table('pivot_submodi_cuerpo')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
@@ -797,7 +827,8 @@ class DescripcionFisicaController extends Controller
             $parteCuerpo->save();
 
             //particularidades orejas
-            $particularidadC = $request['idPartiMenton'];
+            $particularidadC= (is_null($request['idPartiMenton'])) ? array() : $request['idPartiMenton'] ;
+            //$particularidadC = $request['idPartiMenton'];
             $longitud = count($particularidadC);
             for($i=0; $i<$longitud; $i++){
                 $partiCabello = new PivotSubPartiCuerpo();
@@ -807,7 +838,8 @@ class DescripcionFisicaController extends Controller
             }
 
              //modificaciones orejas
-             $modificacionC = $request['idModiMenton'];
+             $modificacionC= (is_null($request['idModiMenton'])) ? array() : $request['idModiMenton'] ;
+             //$modificacionC = $request['idModiMenton'];
              $longitud = count($modificacionC);
              for($i=0; $i<$longitud; $i++){
                 $modiCabello = new PivotSubModiCuerpo();
@@ -1258,7 +1290,7 @@ class DescripcionFisicaController extends Controller
          
         for ( $i =0; $i <count($cedulaPartesCuerpo); $i++) {
             if($showCabello != true){
-              if($cedulaPartesCuerpo[$i]->idPartesCuerpo >= 55 || $cedulaPartesCuerpo[$i]->idPartesCuerpo <= 58 ){
+              if($cedulaPartesCuerpo[$i]->idPartesCuerpo >= 55 && $cedulaPartesCuerpo[$i]->idPartesCuerpo <= 58 ){
                 $showCabello = true;
               }else{
                 $showCabello = false;
@@ -1845,7 +1877,8 @@ class DescripcionFisicaController extends Controller
                                 'tamaCuerpo.nombre as tamano',
                                 'tipoCuerpo.nombre as tipo')
                         ->where('cpc.idPersonaDesaparecida',$idExtraviado)
-                        ->where('cpc.idPartesCuerpo',73)
+                        ->whereIn('cpc.idPartesCuerpo', array(73, 6, 7, 36, 37, 74, 31, 72,19,20,77,34,35,16,75,76,23,24))
+                        /*->where('cpc.idPartesCuerpo',73)
                         ->orwhere('cpc.idPartesCuerpo',6)
                         ->orwhere('cpc.idPartesCuerpo',7)
                         ->orwhere('cpc.idPartesCuerpo',36)
@@ -1862,7 +1895,7 @@ class DescripcionFisicaController extends Controller
                         ->orwhere('cpc.idPartesCuerpo',75)
                         ->orwhere('cpc.idPartesCuerpo',76)
                         ->orwhere('cpc.idPartesCuerpo',23)
-                        ->orwhere('cpc.idPartesCuerpo',24)
+                        ->orwhere('cpc.idPartesCuerpo',24)*/
                         ->get();
 
         /*foreach ($partesCuerpo as $parte) {
