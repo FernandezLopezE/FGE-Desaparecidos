@@ -33,4 +33,26 @@ $(document).ready(function() {
             },  
     });
 
+  //Mostrar otra particularidad de abdomen
+  $("#partAbdomen").change(function(event) {
+    partAbdo = $("#partAbdomen").val();
+    if (partAbdo == "432") {
+      $("#abdomen1").show();
+    }else{
+      $("#abdomen1").hide();
+      $('#otraPartAbdomen').val('');
+    }
+  });
+
+  //Mostrar otra modificacion de abdomen
+  $("#modAbdomen").change(function(event) {
+    modAbdo = $("#modAbdomen").val();
+    if (modAbdo == "313") {
+      $("#abdomen2").show();
+    }else{
+      $("#abdomen2").hide();
+      $('#otraModAbdomen').val('');
+    }
+  });
+
 });

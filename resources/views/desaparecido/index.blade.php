@@ -300,7 +300,7 @@ var btnLimpiar = $('#btnLimpiar');
 			dataString['rumoresBebe'] = 'NO';
 			dataString['pormenores'] = null;
 		}
-					
+			console.log(dataString);		
 		$.ajax({
 			type: 'POST',
 			url: routeDesaparecido,
@@ -354,7 +354,8 @@ var btnLimpiar = $('#btnLimpiar');
 			from = $("#fechaNacimiento").val().split("/");
 			fechaNacimiento = from[2] + "-" + from[1] + "-" + from[0];
 			fechaEnviada = Date.parse(fechaNacimiento);	   
-			fechaActual= new Date();	   
+			fechaActual= new Date();
+            
 			if (fechaEnviada > fechaActual)
 			{
 				$("#fechaNacimiento").val("");

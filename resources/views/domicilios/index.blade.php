@@ -176,10 +176,6 @@
 			modal.modal('show');
 			$('#btnActualizarD').hide();
 			$('#btnGuardarDomicilio').show();
-            
-		  $( "#modalDomicilio" ).sisyphus( {
-	           excludeFields: $('input[name=_token]')
-            });
             $("input[name='telefonos']").mask('(000) 000 0000');
 		})
         
