@@ -9,7 +9,7 @@ use App\Models\PivotEnfermedadesMedicas;
 use App\Models\PivotIntervencionesMedicas;
 use App\Models\PivotAdicciones;
 use App\Models\PivotImplantesMedicos;
-
+use App\Models\Anexos;
 class AntecedentesMedicosController extends Controller
 {
     /**
@@ -122,9 +122,17 @@ class AntecedentesMedicosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($idExtraviado)
+    public function show($idExtraviado, Request $request)
     {
         //
+        $images = (Anexos::where('idDesaparecido', $idExtraviado)->where('tipoAnexo', 'antecedentesMedicos')->get());
+
+
+        //return view('image-gallery',compact('images'));
+
+
+
+
         $desaparecido = Desaparecido::find($idExtraviado);
 
         $enfermedades = \App\Models\CatEnfermedades::all()->pluck('nombre','id');
@@ -140,6 +148,7 @@ class AntecedentesMedicosController extends Controller
                 'iQuirurgicas' => $iQuirurgicas,
                 'adicciones' => $adicciones,
                 'implantes' => $implantes,
+                'images' => $images,
             ]);
     }
 
@@ -172,8 +181,38 @@ class AntecedentesMedicosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    /*public function destroy($id)
     {
         //
     }
+
+   /* public function store_imagen(Request $request)
+        {
+            
+               
+            $imageName = request()->file->getClientOriginalName();
+            request()->file->move(public_path('upload'), $imageName);
+            dd($request->toArray());
+        
+            
+            return response()->json(['uploaded' => '/upload/'.$imageName]);
+    }*/
+    public function imagen(Request $request)
+        {
+       
+    }
+    public function store_path(Request $request)
+        {  
+
+        dd($request->toArray());
+
+    
+        }
+
+    public function destroy($id)
+        {
+            Anexos::find($id)->delete();
+            return back()
+                ->with('success','Image removed successfully.');    
+        }
 }

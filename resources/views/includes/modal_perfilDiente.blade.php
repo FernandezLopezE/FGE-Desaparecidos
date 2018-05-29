@@ -2,7 +2,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Seleccionar el tipo de perfil</h5>
+        <h5 class="modal-title" id="exampleModalLabel" style="text-align: center;">SELECCIONAR EL TIPO DE PERFIL</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -18,24 +18,24 @@
           <div class="carousel-inner">
             <div class="carousel-item active">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Perfil recto</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur esse, labore blanditiis aut magni libero optio incidunt autem omnis, pariatur, in praesentium excepturi. Assumenda, quibusdam? Iusto, assumenda dolore nemo libero.</p>
+                <h5>PERFIL RECTO</h5>
+                <P>SE FORMA UNA LÍNEA CASI RECTA ENTRE LA PUNTA DE LA MANDÍBULA Y LA BARBILLA</P>
               </div>
-              <img class="d-block w-100" src="/images/TiposPerfil/recto.png" alt="Perfil recto">
+              <img class="d-block w-100" src="/images/TiposPerfil/RECTO/TEAM-recto.jpg" alt="PERFIL RECTO" id="perfilRecto" value="2">
             </div>
             <div class="carousel-item">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Perfil cóncavo</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur esse, labore blanditiis aut magni libero optio incidunt autem omnis, pariatur, in praesentium excepturi. Assumenda, quibusdam? Iusto, assumenda dolore nemo libero.</p>
+                <h5>PERFIL CÓNCAVO</h5>
+                <P>LAS LÍNEAS QUE UNEN LA PUNTA DE LA NARIZ CON LOS DIENTES SUPERIORES,LOS DIENTES SUPERIORES CON LA BARBILLA SE JUNTAN FORMANDO UN SIGNO MENOR "<".</P>
               </div>
-              <img class="d-block w-100" src="/images/TiposPerfil/concavo.png" alt="Perfil cóncavo">
+              <img class="d-block w-100" src="/images/TiposPerfil/CONCAVO/TEAM-concavo.jpg" alt="PERFIL CÓNCAVO" id="perfilConcavo" value="3">
             </div>
             <div class="carousel-item">
               <div class="carousel-caption d-none d-md-block">
-                <h5>Perfil convexo</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur esse, labore blanditiis aut magni libero optio incidunt autem omnis, pariatur, in praesentium excepturi. Assumenda, quibusdam? Iusto, assumenda dolore nemo libero.</p>
+                <h5>PERFIL CONVEXO</h5>
+                <p>LA PARTE SUPERIOR DE LA MANDÍBULA SE ENCUENTRA ADELANTADA CON RESPECTO A LA BARBILLA, FORMANDO ASÍ UN ÁNGULO CONVEXO CON LA PUNTA DE LA NARIZ</p>
               </div>
-              <img class="d-block w-100" src="/images/TiposPerfil/convexo.png" alt="Perfil convexo">
+              <img class="d-block w-100" src="/images/TiposPerfil/CONVEXO/TEAM-convexo.jpg" alt="PERFIL CÓNVEXO" id="perfilConvexo" value="4">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselPDiente" role="button" data-slide="prev">
@@ -48,9 +48,6 @@
           </a>
         </div>
         <!-- Fin del Contenido del formulario-->
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
       </div>
     </div>
   </div>

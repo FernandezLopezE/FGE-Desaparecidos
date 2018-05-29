@@ -17,7 +17,7 @@
 
 @section('content')
 
-@include('navs.navs_datos',array('activar' => 'ant_medicos'))
+@include('navs.navs_datos',array('activar' => 'anexos'))
 
 <hr>
 
@@ -25,7 +25,7 @@
 	  	<div class="card border-primary">
 	  		<div class="card border-success">
 	  			<div class="card-header">	
-					<h5>Historial clínico
+					<h5>Anexos
 					<button type="submit" class="btn btn-dark pull-right"  id="btnAgregarInformante">	GUARDAR		
 					</button>		
 					</h5>
@@ -34,22 +34,27 @@
 	  		<div class="card-body">
 	  			<div class="row">				
 					<div class="col">
-						{!! Form::label ('otraIdentificacion','Historial Clínico dental de la persona:') !!}			
+						{!! Form::label ('anexo','Elija el tipo de documento o fotografía a ingresar:') !!}			
 					</div>
-					<div class="col-3">					
-						{!! Form::select('idHistorialDental[]', $option, null, ['class' => 'form-control pull-right','id'=>'idHistorialDental']) !!}
+					<div class="col">					
+						{!! Form::select('idTipoAnexo[]', $option, null, ['class' => 'form-control pull-right','id'=>'idTipoAnexo' , 'placeholder' => 'ELIJA UNA OPCIÓN']) !!}
 					</div>
 				</div>
 				<br></br>
-				<div class="col" style="display: none" id="divHistorialDental">
-				
+				<div class="col" style="display: none" id="divHistorialDental">				
 					<body class="bg-danger col ">
+						<div class="row">				
+								<div class="col">
+									{!! Form::label ('anexo','ESTOY EN EL DIV DE FOTOGRAFÍAS') !!}			
+								</div>
+							</div>
+
+
+
 					    <div class="container">
 					        <div class="row">
 					            <div class="col-lg-8 col-sm-12 col-11 main-section">
-					               
-					                
-					                    {!! csrf_field() !!}
+					                         {!! csrf_field() !!}
 					                    <div class="form-group">
 					                        <div class="file-loading">
 					                            <input id="fileHistorialDental" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">
@@ -60,41 +65,18 @@
 					        </div>
 					    </div>
 					</body>	
+				</div>
 				
-	  			</div>		
-			</div>
-		</div>
-
-
-		<div class="card border-primary">
-	  		<div class="card border-success">
-	  			<div class="card-header">
-					<h5>Radiografías
-					<button type="submit" class="btn btn-dark pull-right"  id="btnAgregarInformante">	GUARDAR		
-					</button>		
-					</h5>
-
-				</div>
-	  		</div>
-	  		<div class="card-body">
-	  			<div class="row">				
-					<div class="col">
-						{!! Form::label ('otraIdentificacion','Radiografías de la persona:') !!}			
-					</div>
-					<div class="col-3">					
-						{!! Form::select('idRadiografias[]', $option, null, ['class' => 'form-control pull-right','id'=>'idRadiografias']) !!}
-					</div>
-				</div>
 				<div class="col" style="display: none" id="divRadiografias">
-
-					
 					<body class="bg-danger col">
+						<div class="row">				
+								<div class="col">
+									{!! Form::label ('anexo','ESTOY EN EL DIV DE RADIOGRAFÍAS') !!}			
+								</div>
+							</div>
 					    <div class="container">
 					        <div class="row">
-					            <div class="col-lg-8 col-sm-12 col-11 main-section">
-					               
-					                
-					                    {!! csrf_field() !!}
+					            <div class="col-lg-8 col-sm-12 col-11 main-section">      {!! 	csrf_field() !!}
 					                    <div class="form-group">
 					                        <div class="file-loading">
 					                            <input id="fileRadiografias" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">
@@ -104,113 +86,70 @@
 					            </div>
 					        </div>
 					    </div>
-					</body>	
-				
-					
-				</div>			
-	  		</div>		
-		</div>
-
-
-
-		<div class="card border-primary">
-	  		<div class="card border-success">
-	  			<div class="card-header">
-					<h5>Modelo de estudio
-					<button type="submit" class="btn btn-dark pull-right"  id="btnAgregarInformante">	GUARDAR		
-					</button>		
-					</h5>
+					</body>		
 				</div>
-	  		</div>
-	  		<div class="card-body">
-	  			<div class="row">				
-					<div class="col">
-						{!! Form::label ('otraIdentificacion','Modelo de estudio de la persona:') !!}			
-					</div>
-					<div class="col-3">					
-						{!! Form::select('idModeloEstudio[]', $option, null, ['class' => 'form-control pull-right','id'=>'idModeloEstudio']) !!}
-					</div>
-				</div>
+
 				<div class="col" style="display: none" id="divModeloEstudio">
-
-					
 					<body class="bg-danger col">
+						<div class="row">				
+								<div class="col">
+									{!! Form::label ('anexo','ESTOY EN EL DIV DE MODELO ESTUDIO') !!}			
+								</div>
+							</div>
 					    <div class="container">
 					        <div class="row">
 					            <div class="col-lg-8 col-sm-12 col-11 main-section">
-					               
-					                
-					                    {!! csrf_field() !!}
+					            	 {!! csrf_field() !!}
 					                    <div class="form-group">
 					                        <div class="file-loading">
 					                            <input id="fileModeloEstudio" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">
 					                        </div>
 					                    </div>
-					                
-					            </div>
+					               </div>
 					        </div>
 					    </div>
 					</body>	
-				
-					
-				</div>			
-	  		</div>		
-		</div>
-
-	<hr>
-
-		<div class="card border-primary">
-	  		<div class="card border-success">
-	  			<div class="card-header">
-					<h5>Fotografía
-					<button type="submit" class="btn btn-dark pull-right"  id="btnAgregarInformante">	GUARDAR		
-					</button>		
-					</h5>
 				</div>
-	  		</div>
-	  		<div class="card-body">
-	  			<div class="row">				
-					<div class="col">
-						{!! Form::label ('otraIdentificacion','Fotografias :') !!}			
-					</div>
-					<div class="col-3">					
-						{!! Form::select('idFotografias[]', $option, null, ['class' => 'form-control pull-right','id'=>'idFotografias']) !!}
-					</div>
-				</div>
+
 				<div class="col" style="display: none" id="divFotografias">
-
-					
 					<body class="bg-danger col">
+							<div class="row">				
+								<div class="col">
+									{!! Form::label ('anexo','ESTOY EN EL DIV DE FOTOGRAFÍAS') !!}			
+								</div>
+							</div>
 					    <div class="container">
 					        <div class="row">
 					            <div class="col-lg-8 col-sm-12 col-11 main-section">
-					               
-					                
-					                    {!! csrf_field() !!}
+					                {!! csrf_field() !!}
 					                    <div class="form-group">
 					                        <div class="file-loading">
 					                            <input id="fileFotografias" type="file" name="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="4">
 					                        </div>
-					                    </div>
-					                
+					                    </div>					               
 					            </div>
 					        </div>
 					    </div>
-					</body>	
-				
-					
+					</body>		
 				</div>			
-	  		</div>		
+
+
+			</div>
 		</div>
 
- 
 
 	
 
+
+		
+
+	
+
+{{--
 <div>
 	<input type="button" name="btnAOS" id="btnAOS" value="AGREGAR" class="btn btn-dark pull-right">
 	<a href="/desaparecido/correo" class='btn btn-large btn-primary openbutton'>corrreo</a>
-</div>
+</div>--}}
 
 
 @endsection
@@ -299,54 +238,40 @@
 
 			        //AQUI ESTAN LOS METODOS DE LOS DIFERENTES  NONE DE CADA SECCIÓN -(MOSTRAR LAS TARJETAS CUANDO DEN SI)
 
-			        $('#idHistorialDental').change(function() {
-					option = $('#idHistorialDental').val();
+			        $('#idTipoAnexo').change(function() {
+					option = $('#idTipoAnexo').val();
 					console.log("El género es: "+option);
 						if (option==1) {
 							$("#divHistorialDental").show();
-						}
-						else{
-							$("#divHistorialDental").hide();
-						}
-					});
-
-
-					 $('#idRadiografias').change(function() {
-					option = $('#idRadiografias').val();
-					console.log("El género es: "+option);
-						if (option==1) {
-							$("#divRadiografias").show();
-						}
-						else{
 							$("#divRadiografias").hide();
-						}
-					});
-
-
-					  $('#idModeloEstudio').change(function() {
-					option = $('#idModeloEstudio').val();
-					console.log("El género es: "+option);
-						if (option==1) {
-							$("#divModeloEstudio").show();
-						}
-						else{
 							$("#divModeloEstudio").hide();
-						}
-					});
-
-
-					   $('#idFotografias').change(function() {
-					option = $('#idFotografias').val();
-					console.log("El género es: "+option);
-						if (option==1) {
-							$("#divFotografias").show();
-						}
-						else{
+							$("#divFotografias").hide();	
+							}
+						else if(option =2){
+							$("#divHistorialDental").hide();
+							$("#divRadiografias").show();
+							$("#divModeloEstudio").hide();
 							$("#divFotografias").hide();
 						}
+						else if(option =3){
+							$("#divHistorialDental").hide();
+							$("#divRadiografias").hide();
+							$("#divModeloEstudio").show();
+							$("#divFotografias").hide();
+						}
+						else if(option =4){
+							$("#divHistorialDental").hide();
+							$("#divRadiografias").hide();
+							$("#divModeloEstudio").hide();
+							$("#divFotografias").show();
+						}
+
+
+						
 					});
 
 
+					 
 
 	   
 

@@ -37,27 +37,21 @@
 
 <div class="card border-success">
 	<div class="card-header">
-		<h5 class="card-title">ACCESORIOS Y OBJETOS</h5>
+		<h5 class="card-title">ACCESORIOS Y OBJETOS
+		    <button type="button" class="btn btn-dark pull-right"  id="nuevoAccesorio"><i class="fa fa-plus"></i> AGREGAR ACCESORIO</button>
+		</h5>
 	</div>
 	<div class="card-body">
-		<div class="row">
-            <div class="col">
-              {!! Form::label ('elijaAccesoriosObjetos','Elija los accesorios y objetos que tenía el desaparecido:') !!}
-              {!! Form::select('accesoriosObjetos[]', $accesoriosObjetos, null, ['class' => 'form-control', 'multiple' => 'multiple' ,'id'=>'accesoriosObjetos']) !!}
-            </div>
-          </div><hr>
-
-          <div class="row">
-            <div class="col">
-              <h5 class="card-title">Observaciones:</h5>    
-              {!! Form::textarea  ('descripcionVestimenta',old('Descripción vestimenta'), ['class' => 'form-control mayuscula', 'id' => 'descripcionVestimenta','size' => '30x4', 'data-validation' =>'required','data-validation-error-msg-required' =>'Ingrese las observaciones de la vestimenta'])!!}
-            </div>
-          </div>
-          <br>
-          <input type="button" name="btnAOS" id="btnAOS" value="AGREGAR" class="btn btn-dark pull-right">
-
-          <a href="/desaparecido/correo" class='btn btn-large btn-primary openbutton'>corrreo</a>
+	<div class="card-body">	
+		@include('includes.modalAccesorios')
+		<table id="tableAccesorios" ></table>
 	</div>
+	<div class="row">
+                <div class="col">
+                  <h5 class="card-title">Observaciones:</h5>    
+                  {!! Form::textarea  ('descripcionVestimenta',old('Descripción vestimenta'), ['class' => 'form-control mayuscula', 'id' => 'descripcionVestimenta','size' => '30x4', 'data-validation' =>'required','data-validation-error-msg-required' =>'Ingrese las observaciones de la vestimenta'])!!}
+                </div>
+              </div>
 	
 </div>
 @endsection
@@ -227,7 +221,7 @@
 				title: 'Color',
 			}, {					
 				field: 'talla',
-				title: 'talla',
+				title: 'Talla',
 			}, {					
 				title: 'Acciones',
 				formatter: formatTableActions,
@@ -236,6 +230,129 @@
 		})
 	//Fin de vista de datos de calzado
 	//----
+        
+	//Vista de datos de accesorios
+        
+        var table3 = $('#tableAccesorios');
+		var routeIndex3 = '{!! route('consultas.index') !!}';
+        
+        var formatTableActions = function(value, row, index) {				
+			btn = '<button class="btn btn-info btn-xs edit" id="editAccesorio"><i class="fa fa-edit"></i>&nbsp;Editar</button>';	
+			
+			return [btn].join('');
+		};
+        window.operateEvents = {
+			'click #editAccesorio': function (e, value, row, index) {					
+				console.log(row);
+				//bodyModal.empty();
+				$('#idAccesorio').val(row.id);
+				$('#accesoriosObjetos').val(row.tipo);
+				$('#accesorioMaterial').val(row.material);
+				$('#accesorioColor').val(row.pColor);
+				$('#accesorioColorOtro').val(row.otroC);
+				$('#accesorioMarcaOrigen').val(row.marca);
+				$("#btnActualizarA").show();
+				$("#btnAccesorio").hide();
+				$("#modalAccesorios").modal("show");
+			}
+		}
+        
+		$('#nuevoAccesorio').click(function(e){
+			$('#modalAccesorios').modal('show');
+			$('#btnActualizarA').hide();
+			$('#btnAccesorio').show();
+		});  
+        
+        $('#btnAccesorio').click (function(){
+		//alert("hola");
+		var dataString = {
+			
+			//prendaTipo: $('#idVestimenta').val(),
+            accesoriosObjetos: $('#accesoriosObjetos').val(),
+            accesorioMaterial: $('#accesorioMaterial').val(),
+            accesorioColor: $('#accesorioColor').val(),
+            accesorioColorOtro: $('#accesorioColorOtro').val(),
+            accesorioMarcaOrigen: $('#accesorioMarcaOrigen').val(),
+			idCedula: $("#idCedula").val()
+		};
+		console.log(dataString);
+		$.ajax({
+			type: 'POST',
+			url: '/desaparecido/store_accesorios',
+			data: dataString,
+			dataType: 'json',
+			success: function(data) {						
+				console.log(data);
+				table3.bootstrapTable('refresh');
+				$("#modalAccesorios").modal("hide");
+				
+												
+			},
+			error: function(data) {
+				console.log(data);
+			}
+		});
+	});
+        $('.modal-footer').on('click','#btnActualizarA', function(){
+		//alert("hola");
+		var dataString = {
+			//prendaTipo: $('#idVestimenta').val(),
+			accesoriosObjetos: $('#accesoriosObjetos').val(),
+            accesorioMaterial: $('#accesorioMaterial').val(),
+            accesorioColor: $('#accesorioColor').val(),
+            accesorioColorOtro: $('#accesorioColorOtro').val(),
+            accesorioMarcaOrigen: $('#accesorioMarcaOrigen').val(),
+			idCedula: $("#idCedula").val(),
+			idAccesorio: $("#idAccesorio").val()
+		};
+		console.log(dataString);
+		$.ajax({
+			type: 'POST',
+			url: '/desaparecido/update_accesorios',
+			data: dataString,
+			dataType: 'json',
+			success: function(data) {						
+				console.log(data);
+				table3.bootstrapTable('refresh');
+				$("#modalAccesorios").modal("hide");	
+				
+												
+			},
+			error: function(data) {
+				console.log(data);
+			}
+		});
+	});
+        
+       		table3.bootstrapTable({				
+			url: routeIndex3+'/get_accesorios/{{$id}}',
+			columns: [{					
+				field: 'id',
+				title: 'ID',
+			}, {					
+				field: 'tipo',
+				title: 'Nombre',
+			}, {					
+				field: 'color',
+				title: 'Color',
+			}, {					
+				field: 'material',
+				title: 'Material',
+			},{					
+				field: 'marca',
+				title: 'Marca',
+			}, {					
+				title: 'Acciones',
+				formatter: formatTableActions,
+				events: operateEvents
+			}]				
+		}) 
+        
+        
+        
+    //FIN DEL APARTADO DE ACCESORIOS
+        
+        
 		$('#btnPrenda').click (function(){
 		//alert("hola");
 		var dataString = {

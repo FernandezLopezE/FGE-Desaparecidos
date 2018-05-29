@@ -6,10 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CatVestimenta extends Model
 {
-    ////cat_vestimenta
-    protected $table = 'cat_vestimenta';
-	protected $fillable = [
-		'id',
-		'nombre'	
-	];
+	protected $table = 'cat_vestimentas';
+	protected $fillable = ['id', 'nombre'];
+
 }

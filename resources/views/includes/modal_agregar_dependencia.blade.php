@@ -12,24 +12,43 @@
                   <!-- Contenido del formulario-->
                   
                    <div class="row">
-                    <div class="col">
-                       {!! Form::label ('ingresarnombre','Ingresar nombre de la dependencia:') !!}
-                     {!! Form::text ('idDependencia','', ['class' => 'form-control js-example-responsive', 'id' => 'idDependencia'] )!!}
-                    </div>
-                    
-                  </div><hr>        
-                
+                      <div class="col">
+                         {!! Form::label ('ingresarnombre','Ingresar nombre de la dependencia:') !!}
+                       {!! Form::text ('idDependencia','', ['class' => 'form-control js-example-responsive', 'id' => 'idDependencia'] )!!}
+                      </div>  
+                  </div>
+               
+                   <div class="row">
+                      <div class="col">
+                         {!! Form::label ('titular','Titular del correo:') !!}
+                         {!! Form::text ('titularCorreo',
+                                old('correoElectronico'),
+                                ['class' => 'form-control',
+                                  'id' => 'titularCorreo'
+                                ] )!!}    
+                      </div>
+                  </div>      
+                  <div class="row">
+                      <div class="col">
+                         {!! Form::label ('correoElectronico','Correo electrónico:') !!}
+                         {!! Form::text ('correoElectronico',
+                                old('correoElectronico'),
+                                ['class' => 'form-control',
+                                  'id' => 'correoElectronico'
+                                ] )!!}    
+                      </div>
+                  </div>
+                  <div class="row">
+                      <div class="col">
+                         {!! Form::label ('Archivos','Nombre del archivo a enviar:') !!}
+                         {!! Form::text ('titularArchivos',
+                                old('correoElectronico'),
+                                ['class' => 'form-control',
+                                  'id' => 'titularArchivos'
+                                ] )!!}    
+                      </div>
+                  </div>
                  
-                        <div class="row">
-                          <div class="col">
-                             {!! Form::label ('correoElectronico','Correo electrónico:') !!}
-                             {!! Form::text ('correoElectronico',
-                                    old('correoElectronico'),
-                                    ['class' => 'form-control',
-                                      'id' => 'correoElectronico'
-                                    ] )!!}    
-                          </div>
-                        </div>
 
                   
 

@@ -10,6 +10,7 @@ class Cedula extends Model
 		'entrevistadorPrimerAp',
 		'entrevistadorSegundoAp',
 		'entrevistadorCargo',
+		'carpeta',
 		'interpreteNombres' ,			
 		'interpretePrimerAp', 			
 		'interpreteSegundoAp',			
@@ -19,7 +20,22 @@ class Cedula extends Model
 		'fechaVisita',
 		'idDialecto',
 		'calzadoTalla',
-		'observacionesDesaparicion',
+		'desaparicionObservaciones',
+		'desaparicionRef',
+		'desaparicionFecha',
+		'desaparicionHora',
+        /*'idEstadoDesaparicion',         
+        'idMunicipioDesa',
+        'idLocalidadDesapa',*/
+        'idPersonaAvisto',
+        //'domicilioDesaparicion',
+        'vehiculoDescripcion',
+        'vehiculoPlacas',
+        'idParentescoAvisto',
+        'otroParentescoAvisto',
+        'nombresAvisto',
+        'primerApAvisto',
+        'segundoApAvisto',
 		//'estatura',
 		//'peso',
 		'objetos',
@@ -36,7 +52,7 @@ class Cedula extends Model
 	];    
 	public function desaparecidos()
 	{
-		return $this->hasMany('App\Models\Desaparecido', 'idDesaparecido', 'id');
+		return $this->hasMany('App\Models\Desaparecido', 'id', 'id');
 	}
 	public function complexion()
 	{
@@ -89,4 +105,29 @@ class Cedula extends Model
 		return $this->belongsToMany('App\Models\cedula_cat_cenas')
 		->withPivot('idCatsenas');
 	}
+	public function ultimaPersonaAvisto()
+	{
+		return $this->belongsTo('App\Models\Persona', 'id');
+	}
+	public function domicilioDesaparicion()
+	{
+		return $this->belongsTo('App\Models\Domicilio', 'id');
+	}
+	public function setDesaparicionFechaAttribute($value)
+	{
+		if(empty($value)){
+			$this->attributes['desaparicionFecha'] = null;	
+		} else {
+			$this->attributes['desaparicionFecha'] = Carbon::createFromFormat('d/m/Y H:i:s', $value)->format('Y-m-d H:i:s');			
+		}
+		
+	}
+	/*public function getDesaparicionFechaAttribute($value)
+	{
+		
+			return  Carbon::createFromFormat('Y/m/d H:i:s', $value)->format('d-m-Y H:i:s');			
+		
+		
+	}*/
+
 }

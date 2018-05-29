@@ -9,12 +9,15 @@ class CedulaPartesCuerpo extends Model
     //
     protected $table = 'cedula_partes_cuerpo';
 	protected $fillable = [
-		'lado',
+		'tenia',
 		'observaciones',
 		'otraParticularidad',
 		'otraModificacion',
+		'otroTipoCuerpo',
 		'otroColor',
 		'idPartesCuerpo',
+		'idTamanoCuerpo',
+		'idTipoCuerpo',
 		'idColoresCuerpo',
 		'idPersonaDesaparecida',
 	];

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Domicilio;
+use App\Models\Desaparecido;
 
 class DomicilioController extends Controller
 {
@@ -35,8 +36,7 @@ class DomicilioController extends Controller
      */
     public function store(Request $request)
     {        
-        $telefonos[] = array('tipoTel' => $request->input('tipoTel'),
-                            'telefono' => $request->input('telefonos'),
+        $telefonos[] = array('telefono' => $request->input('telefonos'),
                             'ext' => $request->input('ext')
                     );
         
@@ -78,9 +78,9 @@ class DomicilioController extends Controller
         $tiposDireccion = array('PERSONAL' => 'PERSONAL',
                                 'TRABAJO' => 'TRABAJO',
                                 'FAMILIAR' => 'FAMILIAR');
-        $tiposTelefonos = array('PERSONAL' => 'PERSONAL',
-                                'TRABAJO' => 'TRABAJO',
-                                'CELULAR' => 'CELULAR');
+//        $tiposTelefonos = array('PERSONAL' => 'PERSONAL',
+//                                'TRABAJO' => 'TRABAJO',
+//                                'CELULAR' => 'CELULAR');
 
         return view('domicilios.index', compact('desaparecido',
                                                 'estados',
@@ -89,7 +89,7 @@ class DomicilioController extends Controller
                                                 'colonias',
                                                 'codigos',
                                                 'tiposDireccion',
-                                                'tiposTelefonos',
+                                                //'tiposTelefonos',
                                                 'ladas'
                                                 ));
     }
@@ -114,7 +114,38 @@ class DomicilioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $desaparecido = Desaparecido::find($id);
+	   $domicilios = Domicilio::find($desaparecido->domicilios[0]['id']);
+	   
+	   $noDomicilio = $desaparecido->domicilios[0]['id'];
+        
+    $telefonos[] = array('telefono' => $request->input('telefonos'),
+                            'ext' => $request->input('ext')
+                    );
+        
+         
+           $domicilios->tipoDireccion= $request->input('tipoDireccion');
+            $domicilios->calle             = $request->input('calle');
+            $domicilios->numExterno        = $request->input('numExterno');
+            $domicilios->numInterno        = $request->input('numInterno');
+            $domicilios->idestado          = $request->input('idEstado');
+            $domicilios->idMunicipio       = $request->input('idMunicipio');
+            $domicilios->idLocalidad       = $request->input('idLocalidad');
+            $domicilios->idColonia         = $request->input('idColonia');
+            $domicilios->idCodigoPostal    = $request->input('idCodigoPostal');
+            $domicilios->telefono          = json_encode($telefonos);
+        
+        
+//		
+//			$accesorio->tipo = $request->input('accesoriosObjetos');
+//			$accesorio->material = $request->input('accesorioMaterial');
+//			$accesorio->color = $request->input('accesorioColor');
+//			$accesorio->otroColor = $request->input('accesorioColorOtro');
+//			$accesorio->marcaOrigen = $request->input('accesorioMarcaOrigen');
+
+		$domicilios->save();
+		//$colorPrenda = CatColores::find($prenda->color);
+		return response()->json($domicilios);
     }
 
     /**

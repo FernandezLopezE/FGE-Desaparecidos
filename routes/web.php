@@ -36,10 +36,24 @@ Route::get('/', 'InicioController@index');
 
 	Route::resource('datos_dentales','DatosDentalesController');
 
+    
+    Route::resource('dependencia_destinatario','AgregarDependenciaController');
+
+	Route::resource('datos_dentales_dientes_perdidos','DatosDentalesDientesPerdidosController');
+
 
 
 
 Route::get('consultas/get_cedulas', 'ConsultasController@jsonCedulas');
+
+
+Route::resource('reporteador', 'ReporteadorController');
+Route::post('consultas/get_desaparecidos_personas_todos', 'ConsultasController@jsonDesaparecidosPersonaTodos')->name('consultas.get_desaparecidos_personas_todos');
+Route::post('consultas/get_desaparecidos_personas', 'ConsultasController@jsonDesaparecidosPersona')->name('consultas.get_desaparecidos_personas');
+//Route::post('remover-permiso/{idCarpeta}/{idTipo}/{id}', 'CarpetaController@removerPermiso')->name('remover.permiso');
+
+
+
 Route::get('consultas/get_informantes/{idCedula}', 'ConsultasController@jsonInformantes')
 	->name('consultas.get_informantes');
 Route::get('consultas/get_familiares/{idDesaparecido}', 'ConsultasController@jsonFamiliares')
@@ -72,7 +86,13 @@ Route::get('consultas/get_tipos_telefonos', 'ConsultasController@jsonTiposTelefo
 Route::get('consultas/get_ladas', 'ConsultasController@jsonLadas')
 	->name('consultas.get_ladas');
 
-
+Route::get('consultas/get_dependencias', 'ConsultasController@jsonDependecias')
+	->name('consultas.get_dependencias');
+Route::get('consultas/get_destinatarios', 'ConsultasController@jsonDestinatarios')
+	->name('consultas.get_destinatarios');
+Route::get('consultas/get_catprendas/{idVestimenta}', 'ConsultasController@jsonCatPrendas')->name('consultas.get_catprendas');
+Route::get('consultas/get_colores', 'ConsultasController@jsonCatColores')->name('consultas.get_colores');
+Route::get('consultas/get_vestimentas/{idDesaparecido}', 'ConsultasController@jsonVestimentas')->name('consultas.get_vestimentas');
 // Mostrando codigos postales que pertenecen a un municipio.
 Route::get('consultas/codigos/{idMunicipio}', 'ConsultasController@jsonCodigos');
 // Mostrando codigos postales que pertenecen a un municipio cuando hay un cambio en colonias.
@@ -107,8 +127,11 @@ Route::resource('image-view','CargarDocumentosController');
 Route::post('image-view','CargarDocumentosController@store');
 //ruta a controlador MailController para envio de correo
 Route::post('/enviar_correo','MailController@store');
-
-
+Route::get('imagenAntecedentesM','AntecedentesMedicosController@show');
+Route::post('imagenAntecedentesM','AnexosController@store');
+/*Route::post('/imagenAntecedentesM/store_path','AntecedentesMedicosController@store_path')
+ ->name('/imagenAntecedentesM.store_path');*/
+Route::delete('imagenAntecedentesM/{id}','AntecedentesMedicosController@destroy');
 
 
 
@@ -122,42 +145,61 @@ Route::resource('/lada','LadaController');
 Route::get('/desaparecido/vestimenta/{idCedula}', 'DesaparecidoController@show_vestimenta')
 	->name('desaparecido.show_vestimenta');
 
-Route::get('consultas/get_prendas/{idCedula}', 'ConsultasController@jsonPrendas')
-	->name('consultas.get_prendas');
+/*Route::get('consultas/get_prendas/{idCedula}', 'ConsultasController@jsonPrendas')
+	->name('consultas.get_prendas');*/
+Route::get('consultas/get_accesorios/{idCedula}', 'ConsultasController@jsonAccesorios')
+	->name('consultas.get_accesorios');
 Route::get('consultas/get_calzado/{idCedula}', 'ConsultasController@jsonCalzado')
 	->name('consultas.get_calzado');	
 
 Route::post('/desaparecido/store_vestimenta', 'DesaparecidoController@store_vestimenta')
 	->name('desaparecido.store_vestimenta');
+
 Route::post('/desaparecido/update_calzado', 'DesaparecidoController@update_calzado')
 	->name('desaparecido.update_calzado');
+
+Route::post('/domicilio/update', 'DomicilioController@update')
+	->name('domicilio.update');
+
+Route::post('/desaparecido/store_accesorios', 'DesaparecidoController@store_accesorios')
+	->name('desaparecido.store_accesorios');
+
 Route::post('/desaparecido/update_accesorios', 'DesaparecidoController@update_accesorios')
-	->name('desaparecido.update_accesorios');	
+	->name('desaparecido.update_accesorios');
+
 Route::post('/desaparecido/update_vestimenta', 'DesaparecidoController@update_vestimenta')
 	->name('desaparecido.update_vestimenta');
 
 //Rutas para descripcion fisica
-
+Route::get('/descripcionfisica/get_deleteVello/{idParteCuerpo}','DescripcionFisicaController@deleteVelloFacial');
 Route::get('/descripcionfisica/get_coloresCuerpo/{idParteCuerpo}', 'DescripcionFisicaController@getColoresCuerpo')
 	->name('descripcionfisica.get_coloresCuerpo');
 Route::get('/descripcionfisica/get_particularidades/{idParteCuerpo}', 'DescripcionFisicaController@getParticularidades')
 	->name('descripcionfisica.get_particularidades');
 Route::get('/descripcionfisica/get_modificaciones/{idParteCuerpo}', 'DescripcionFisicaController@getModificaciones')
 	->name('descripcionfisica.get_modificaciones');
+Route::get('/descripcionfisica/get_tamano/{idParteCuerpo}', 'DescripcionFisicaController@getTamanoCuerpo')->name('descripcionfisica.get_tamano');
+Route::get('/descripcionfisica/get_cabello/{idExtraviado}', 'DescripcionFisicaController@getCabello')
+	->name('descripcionfisica.get_cabello');
 
-Route::get('/descripcionfisica/get_partes/{idExtraviado}', 'DescripcionFisicaController@getPartesCuerpo')
-	->name('descripcionfisica.get_partes');
-	
-
+Route::get('/descripcionfisica/get_rostro/{idExtraviado}', 'DescripcionFisicaController@getRostro')
+	->name('descripcionfisica.get_rostro');
+Route::get('/descripcionfisica/get_barba/{idExtraviado}', 'DescripcionFisicaController@getBarba')
+	->name('descripcionfisica.get_barba');
+Route::get('/descripcionfisica/get_bigote/{idExtraviado}', 'DescripcionFisicaController@getBigote')
+	->name('descripcionfisica.get_bigote');
+Route::get('/descripcionfisica/get_patilla/{idExtraviado}', 'DescripcionFisicaController@getPatilla')
+	->name('descripcionfisica.get_patilla');			
+Route::get('/descripcionfisica/get_datosfisicos/{idExtraviado}', 'DescripcionFisicaController@getdatosfisicos')->name('descripcionfisica.get_datosfisicos');
 Route::get('/descripcionfisica/descripcionf/{idPersonaDesaparecida}', 'DescripcionFisicaController@show')
 	->name('descripcionfisica.show');
-
+Route::get('/descripcionfisica/get_tipos/{idParteCuerpo}', 'DescripcionFisicaController@getTipoCuerpo')->name('descripcionfisica.get_tipos');
 Route::post('/descripcionfisica/store', 'DescripcionFisicaController@store')
 	->name('descripcionfisica.store');
-
+Route::post('/descripcionfisica/storeVelloFacial', 'DescripcionFisicaController@storeVelloFacial')->name('descripcionfisica.storeVelloFacial');
+Route::post('/descripcionfisica/storeCara', 'DescripcionFisicaController@storeCara')->name('descripcionfisica.storeCara');
 Route::resource('/descripcionfisica','DescripcionFisicaController');
 //fin de mis rutas
-
 //Rutas para antedecedentes medicos
 Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'AntecedentesMedicosController@show')
 	->name('antecedentesmedicos.show');
@@ -174,7 +216,8 @@ Route::get('/datos_dentales/{idDesaparecido}','DatosDentalesController@show_dato
 	->name('datos_dentales.show');
 Route::post('/datos_dentales/store_datos_dentales', 'DatosDentalesController@store_datos_dentales')
 	->name('datos_dentales.store_datos_dentales');
-
+Route::post('imagenAntecedentesD', 'AnexosController@store');
+Route::delete('datosDentales/{id}','datosDEntalesController@destroy');
 
 //la siguiente es una ruta para crear el pdf
 
@@ -188,10 +231,31 @@ Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'Antece
 Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store');
 Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
 
-Route::get('/email', 'MailController@show')->name('mail.enviar');
+Route::get('/email/{idCedula}', 'MailController@show')->name('mail.show');
+// Rutas de la dependencias
 
+Route::resource('/dependencias','MailController');
+Route::get('/get_dependencias', 'MailController@getDependencias')
+	->name('dependencias.get_dependencias');
 
+Route::get('/envio_documentos', 'MailController@show');
 
+Route::get('/generarDocs', 'CargarDocumentosController@crearDocumento')
+	->name('generarDocs.crearDocumentos');
+
+	//esta es la ruta .
+
+Route::get('/index_reporteador', 'ReporteadorController@show')->name('reporteador');
+
+Route::get('/index_agregar_dependencias', 'AgregarDependenciaController@show')->name('dependencias.destinatarios');
+Route::post('/index_agregar_dependencias/store_destinatario', 'AgregarDependenciaController@store_destinatario')
+	->name('index_agregar_dependencias.store_destinatario');
+Route::post('/index_agregar_dependencias/store_dependencia', 'AgregarDependenciaController@store_dependencia')
+	->name('index_agregar_dependencias.store_dependencia');
+Route::post('/index_agregar_dependencias/update_dependencia', 'AgregarDependenciaController@update_dependencia')
+	->name('index_agregar_dependencias.update_dependencia');
+Route::post('/index_agregar_dependencias/update_destinatario', 'AgregarDependenciaController@update_destinatario')
+	->name('index_agregar_dependencias.update_destinatario');
 
 
 
@@ -264,6 +328,28 @@ Route::get('codigos2/{id}', 'DomiciliosController@getCodigos2');*/
 
 //Route::resource('boletin', 'BoletinController@show');
 
+
+Route::get('/guardarDocumento','CargarDocumentosController@create')
+	->name('guardarDocumento.create');
+//Obtiene el nombre del documento
+Route::get('/get_dep','ConsultasController@jsonDep')
+	->name('get_DepDes.jsonDep');
+//Obtiene los destinatarios de la dependencia elegida
+Route::get('/get_des','ConsultasController@jsonDes')
+	->name('get_DepDes.jsonDes');
+//envio el nombre de los documentos al controlador para que este se encargue de enviar  los correos correspondientess
+Route::get('/envioDocumentos','MailController@envioDocumentos');
+
+//Anexos
+Route::get('anexos','AnexosController@show');
+//Route::post('/desaparicion','DesaparicionController@store');
+//Route::get('desaparicion/create/{$id}', 'DesaparicionController@create')
+	//->name ('desaparicion.create_desaparicion');	
+Route::resource('/desaparicion','DesaparicionController');
+
+//Route::resource('desaparicion' , 'DesaparicionController@store');
+Route::post('desaparicion', 'DesaparicionController@store');
+Route::put('desaparicion/{id}', 'DesaparicionController@update');
 
 
 

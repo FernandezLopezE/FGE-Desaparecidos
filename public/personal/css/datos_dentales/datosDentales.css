@@ -1,0 +1,28 @@
+.modal-lg {
+    max-width: 80%; /*Se ajusta el ancho del model a un buen tamaño*/
+}
+
+.carousel-inner img { /*se utiliza para el carrusel de los slider*/
+	width: 90%;
+	max-height: 450px;
+}
+
+.carousel-caption
+{
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: #fff;
+	text-align: center;
+	background: rgba(0,0,0,0.4);
+	height: 30%;
+}
+
+.carousel-caption p
+{
+	color: #FFFFFF;
+}

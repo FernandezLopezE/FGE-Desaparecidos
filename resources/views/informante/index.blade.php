@@ -6,11 +6,25 @@
 	.modal-lg {
 		max-width: 80%;
 	}
+
+	div.hr {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		border: 0;
+		border-top: 1px solid #eee;
+		text-align: center;
+		height: 0px;
+		line-height: 0px;
+	}
+
+	.hr-title {
+		background-color: #fff;
+	}
 </style>
 	
 @endsection
 
-@section('titulo', 'Registro único de personas desaparecidas')
+@section('titulo', '')
 
 @section('content')
 	{{ Form::hidden('idCedula', $cedula->id, array('id' => 'idCedula')) }}
@@ -19,7 +33,6 @@
 <button type="button" class="btn btn-dark pull-right"  id="btnAgregarInformante">
 	AGREGAR
 </button>	
-
 <div class="card-body bg-white">
 	<table id="tableInformantes" ></table>
 	@include('informante.modals.modal_informante')
@@ -33,7 +46,9 @@
 {!! HTML::script('personal/js/sisyphus.min.js') !!}
 {!! HTML::script('personal/js/sisyphus.js') !!}
 
-<script type="text/javascript">
+<script type="text/javascript">    
+	var contador=0;
+  
 	$(function (){
 		var table = $('#tableInformantes');
 		var tableFamiliares = $('#table_familiares');
@@ -49,11 +64,25 @@
 		var modalInformanteDetalle = $('#modalInformanteShow');
 		var modalDesaparecidoFamiliar = $('#modalDesaparecidoFamiliar');
 		var bodyModalInformante = $('#modal-body-informante');
+		var modalBody = $('#modal-body');
 		var modalFooter = $('.modal-footer');
         var btnLimpiar = $('#btnLimpiar');
+        var telefono2 = $('#telefono2');
+        
+        
+        var valueCamposTelefono = function(tipoTel, lada, telefono, ext) {
+			console.log("valor de los campos telefono");
+        }
 
 		var addCamposTelefono = function(tipoTel = null, lada=null, telefono=null, ext=null) {
-            $("#telefono2").append('<div class="row"><div class="form-group col-lg-2">{!! Form::label ("informanteTipoTel","Tipo de telefono:") !!}	            {!! Form::select ("informanteTipoTel[]", $tiposTelefonos,"'+tipoTel+'",["class" => "form-control","id" => "informanteTipoTel[]"])!!} </div> <div class="form-group col-lg-2">                                             {!! Form::label ("lada","Lada:") !!}	                                    {!! Form::select ("lada[]", $ladas,"'+lada+'",["class" => "form-control","id" => "lada[]"])!!} </div>  <div class="form-group col-lg-3">                                                                {!! Form::label ("informanteTelefonos","Número:") !!}                    {!! Form::text ("informanteTelefonos[]",old("'+telefono+'"),["class" => "form-control mayuscula valid","data-validation" => "required","data-validation-error-msg-required" => "El campo es requerido","id" => "informanteTelefonos[]"] )!!} </div>    <div class="form-group col-lg-1">                                              {!! Form::label ("ext","Ext:") !!}                                        {!! Form::text ("ext[]",old("'+ext+'"), ["class" => "form-control mayuscula","id" => "ext[]"] )!!} </div> </div>');
+                        
+			var lada1 = $("#lada").val();
+            $("#telefono2").append('<div class="row"><div class="form-group col-md-2">{!! Form::label ("tipoTelefono","Tipo de telefono:") !!}	            {!! Form::select ("tipoTelefono[]", $tiposTelefonos,"'+tipoTel+'",["class" => "form-control","id" => "tipoTelefono[]"])!!} </div> <div class="form-group col-md-2">                                             {!! Form::label ("lada","Lada:") !!}	                                    {!! Form::text ("lada[]",old(""),["class" => "form-control lada","id" =>"lada[]"])!!} </div>  <div class="form-group col-md-4">                                                                {!! Form::label ("telefonos","Número:") !!}                    {!! Form::text ("telefonos[]",old("'+telefono+'"),["class" => "form-control mayuscula valid","data-validation" => "required","data-validation-error-msg-required" => "El campo es requerido","id" => "telefonos[]"] )!!} </div>    <div class="form-group col-md-1">                                              {!! Form::label ("ext","Ext:") !!}                                        {!! Form::text ("ext[]",old("'+ext+'"), ["class" => "form-control mayuscula","id" => "ext[]"] )!!} </div> </div>');
+             var otrasLadas = document.getElementsByClassName("lada");
+		    otrasLadas[contador].value = lada1;
+		    contador = contador + 1;
+		    console.log(contador);
+            $("input[name='telefonos[]']").mask('(000) 000 0000');
 		}; 
 		
 		btnAgregarTelefono.click(function(e){
@@ -98,19 +127,23 @@
 
 		window.operateEvents = {
 			'click #editInformante': function (e, value, row, index) {
-				console.log(row);
-				$("#informanteNombres").val(row.nombres);
-				$("#informantePrimerAp").val(row.primerAp);
-				$("#informanteSegundoAp").val(row.segundoAp);
-				$('select#informanteidParentesco option[value="'+row.idParentesco+'"]').attr("selected",true);
-				$("#informanteOtroParentesco").val(row.otroParentesco);
-				$('select#informanteidNacionalidad option[value="'+row.idNacionalidad+'"]').attr("selected",true);
-				$("#informanteOtroDocIdentidad").val(row.otroDocIdentidad);
-				$("#informanteNumDocIdentidad").val(row.numDocIdentidad);
-				$('select#informanteTipoDireccion option[value="'+row.tipoDireccion+'"]').attr("selected",true);
-				$("#informanteCalle").val(row.calle);
-				$("#informanteNumExterno").val(row.numExterno);
-				$("#informanteNumInterno").val(row.numInterno);
+                var btnEditarInformante = $('#btnEditarInformante');
+				
+				$('.modal-body div.has-danger').removeClass('has-danger');
+				$('.form-control-feedback').empty();
+
+				$("#nombres").val(row.nombres);
+				$("#primerAp").val(row.primerAp);
+				$("#segundoAp").val(row.segundoAp);
+				$('select#idParentesco option[value="'+row.idParentesco+'"]').attr("selected",true);
+				$("#otroParentesco").val(row.otroParentesco);
+				$('select#idNacionalidad option[value="'+row.idNacionalidad+'"]').attr("selected",true);
+				$("#otroDocIdentidad").val(row.otroDocIdentidad);
+				$("#numDocIdentidad").val(row.numDocIdentidad);
+				$('select#tipoDireccion option[value="'+row.tipoDireccion+'"]').attr("selected",true);
+				$("#calle").val(row.calle);
+				$("#numExterno").val(row.numExterno);
+				$("#numInterno").val(row.numInterno);
 				$('select#idEstado option[value="'+row.idEstado+'"]').attr("selected",true);
 
 				$.getJSON(routeIndex+'/get_municipios/'+row.idEstado)
@@ -168,19 +201,36 @@
 						selectedGeneral.append(optionselect);
 					});
 				});
-				
+                                            
 				telefonos = $.parseJSON(row.telefonos)
-				console.log(telefonos);
+                var etiqueta2 = 0;
+                console.log("Aqui los telefonos:");
+				//console.log(telefonos.length);
+                
+                informanteTele2 = $("input[name='telefonos[]']");
+                
+                for ($t =1; $t < telefonos.length; $t++ ){
+                    
+                    if (telefonos.length > informanteTele2.length ){
+                        addCamposTelefono(tipoTel = null, lada=null, telefono=null, ext=null);
+                    }                   
+                    
+                    
+                }
+                var informanteTipo = $("select[name='tipoTelefono[]']");
+                var informanteLada = $("input[name='lada[]']");
+                var informanteTele = $("input[name='telefonos[]']");
+                var informanteExt = $("input[name='ext[]']");
 				$.each(telefonos, function(key, value){
-					console.log(value);
-					addCamposTelefono(value.tipoTel, value.lada, value.telefono, value.ext);
+                    //console.log(row.lenght);
+					console.log(value.telefono);
+                    informanteTipo[etiqueta2].value = value.tipoTelefono;
+                    informanteLada[etiqueta2].value = value.lada;
+                    informanteTele[etiqueta2].value = value.telefono;
+                    informanteExt[etiqueta2].value = value.ext;
+                    etiqueta2 = etiqueta2 +1;                    
 				})
 
-				//$('select#informanteTipoTel option[value="'+telefonos.tipoTel+'"]').attr("selected",true);
-				//$('select#lada option[value="'+telefonos.lada+'"]').attr("selected",true);
-				//$("#informanteTelefonos").val(telefonos.telefono);
-				//$("#ext").val(telefonos.ext);
-				
 				$("#correoElectronico").val(row.correoElectronico);
 				if (row.informante == 0) {
 					$("input#informante").iCheck('uncheck');
@@ -188,11 +238,14 @@
 
 				if (row.notificaciones == 0) {
 					$("input#notificaciones").iCheck('uncheck');
-				}
-
-				modalFooter.empty();
-				modalFooter.append('<button type="button" class="btn btn-dark" id="btnEditarInformante" value="'+row.idDesaparecido+'"><i class="fa fa-save"></i> EDITAR</button>		<button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>');
-
+				}                
+                
+				//modalFooter.empty();
+				$("#btnEditarInformante").show();
+				$("#btnGuardarInformante").hide();
+                    
+                $("#btnEditarInformante").val(row.idDesaparecido);
+				
 				modalInformanteAgregar.modal('show');
 			}
 		}
@@ -231,14 +284,27 @@
 			$("#idLocalidad").empty();
 			$("#idColonia").empty();
 			$("#idCodigoPostal").empty();
+            $("#telefono2").empty();
+             $("#lada").empty();
+            
+            //$("#telefono2").remove();
+            
+            $("input[name='telefonos[]']").mask('(000) 000 0000');
+			//$("#otroDocIdentidad").ocultar
+			//otroParentesco
+            
+            $("#btnEditarInformante").hide();
+			$("#btnGuardarInformante").show();
+			$("#lada").val("(+52)-");
 
-
-			//$("#informanteOtroDocIdentidad").ocultar
-			//informanteOtroParentesco
+			$('.modal-body div.has-danger').removeClass('has-danger');
+			$('.form-control-feedback').empty();
+            
 			modalInformanteAgregar.modal('show');
-            $( "#modalInformante" ).sisyphus( {
+
+            /*$( "#modalInformante" ).sisyphus( {
 	           excludeFields: $('input[name=_token]')
-            });
+            });*/
 		})
         
         btnLimpiar.click(function(){
@@ -250,27 +316,27 @@
 		btnGuardarInformante.click (function(){
 			
 			var dataString = {
-				nombre : $("#informanteNombres").val(),
-				primerAp : $("#informantePrimerAp").val(),
-				segundoAp : $("#informanteSegundoAp").val(),
-				idParentesco : $("#informanteidParentesco").val(),
-				otroParentesco : $("#informanteOtroParentesco").val(),
-				nacionalidad : $("#informanteidNacionalidad").val(),
-				idDocumentoIdentidad : $("#informanteidDocumentoIdentidad").val(),
-				otroDocIdentidad : $("#informanteOtroDocIdentidad").val(),
-				numDocIdentidad: $("#informanteNumDocIdentidad").val(),
-				tipoDirec: $("#informanteTipoDireccion").val(),
-				calle: $("#informanteCalle").val(),
-				numExt: $("#informanteNumExterno").val(),
-				numInt: $("#informanteNumInterno").val(),
-				estado: $("#idEstado").val(),
-				municipio: $("#idMunicipio").val(),
-				localidad: $("#idLocalidad").val(),
-				colonia: $("#idColonia").val(),
-				cp: $("#idCodigoPostal").val(),
-				tipoTel: $("select[name='informanteTipoTel[]']").map(function(){return $(this).val();}).get(),
-				lada: $("select[name='lada[]']").map(function(){return $(this).val();}).get(),				
-				telefono : $("input[name='informanteTelefonos[]']").map(function(){return $(this).val();}).get(),				
+				nombres : $("#nombres").val(),
+				primerAp : $("#primerAp").val(),
+				segundoAp : $("#segundoAp").val(),
+				idParentesco : $("#idParentesco").val(),
+				otroParentesco : $("#otroParentesco").val(),
+				idNacionalidad : $("#idNacionalidad").val(),
+				idDocumentoIdentidad : $("#idDocumentoIdentidad").val(),
+				otroDocIdentidad : $("#otroDocIdentidad").val(),
+				numDocIdentidad: $("#numDocIdentidad").val(),
+				tipoDireccion: $("#tipoDireccion").val(),
+				calle: $("#calle").val(),
+				numExterno: $("#numExterno").val(),
+				numInterno: $("#numInterno").val(),
+				idEstado: $("#idEstado").val(),
+				idMunicipio: $("#idMunicipio").val(),
+				idLocalidad: $("#idLocalidad").val(),
+				idColonia: $("#idColonia").val(),
+				idCodigoPostal: $("#idCodigoPostal").val(),
+				tipoTelefono: $("select[name='tipoTelefono[]']").map(function(){return $(this).val();}).get(),
+				lada: $("input[name='lada[]']").map(function(){return $(this).val();}).get(),				
+				telefono : $("input[name='telefonos[]']").map(function(){return $(this).val();}).get(),				
 				ext: $("input[name='ext[]']").map(function(){return $(this).val();}).get(),
 				correoElectronico: $("#correoElectronico").val(),
 				informante: $("input#informante:checked").val(),
@@ -286,9 +352,19 @@
 				success: function(data) {
 					modalInformanteAgregar.modal('hide');
 					table.bootstrapTable('refresh');
+                    modalInformanteAgregar.find('form')[0].reset();
+                    modalInformanteAgregar.removeData('modal');
+                    
 				},
 				error: function(data) {
-					console.log(data);
+					var errors = data.responseJSON;	
+					$('.modal-body div.has-danger').removeClass('has-danger');
+					$('.form-control-feedback').empty();
+					$.each(errors.errors, function(key, value){					
+						$('#div_'+key).addClass('has-danger');
+						$('input#'+key).addClass('form-control-danger');
+						$('#error_'+key).append(value);						
+					});
 				}
 			});
 		})
@@ -296,28 +372,28 @@
 		modalFooter.on('click', '#btnEditarInformante', function(){
 
 			var dataString = {
-				nombre : $("#informanteNombres").val(),
-				primerAp : $("#informantePrimerAp").val(),
-				segundoAp : $("#informanteSegundoAp").val(),
-				idParentesco : $("#informanteidParentesco").val(),
-				otroParentesco : $("#informanteOtroParentesco").val(),
-				nacionalidad : $("#informanteidNacionalidad").val(),
-				idDocumentoIdentidad : $("#informanteidDocumentoIdentidad").val(),
-				otroDocIdentidad : $("#informanteOtroDocIdentidad").val(),
-				numDocIdentidad: $("#informanteNumDocIdentidad").val(),
-				tipoDirec: $("#informanteTipoDireccion").val(),
-				calle: $("#informanteCalle").val(),
-				numExt: $("#informanteNumExterno").val(),
-				numInt: $("#informanteNumInterno").val(),
-				estado: $("#idEstado").val(),
-				municipio: $("#idMunicipio").val(),
-				localidad: $("#idLocalidad").val(),
-				colonia: $("#idColonia").val(),
-				cp: $("#idCodigoPostal").val(),
-				tipoTel: $("#informanteTipoTel").val(),
-				lada: $("#lada").val(),
-				telefono : $("#informanteTelefonos").val(),
-				ext: $("#ext").val(),
+				nombres : $("#nombres").val(),
+				primerAp : $("#primerAp").val(),
+				segundoAp : $("#segundoAp").val(),
+				idParentesco : $("#idParentesco").val(),
+				otroParentesco : $("#otroParentesco").val(),
+				idNacionalidad : $("#idNacionalidad").val(),
+				idDocumentoIdentidad : $("#idDocumentoIdentidad").val(),
+				otroDocIdentidad : $("#otroDocIdentidad").val(),
+				numDocIdentidad: $("#numDocIdentidad").val(),
+				tipoDireccion: $("#tipoDireccion").val(),
+				calle: $("#calle").val(),
+				numExterno: $("#numExterno").val(),
+				numInterno: $("#numInterno").val(),
+				idEstado: $("#idEstado").val(),
+				idMunicipio: $("#idMunicipio").val(),
+				idLocalidad: $("#idLocalidad").val(),
+				idColonia: $("#idColonia").val(),
+				idCodigoPostal: $("#idCodigoPostal").val(),
+				tipoTelefono: $("select[name='tipoTelefono[]']").map(function(){return $(this).val();}).get(),
+				lada: $("input[name='lada[]']").map(function(){return $(this).val();}).get(),				
+				telefono : $("input[name='telefonos[]']").map(function(){return $(this).val();}).get(),				
+				ext: $("input[name='ext[]']").map(function(){return $(this).val();}).get(),
 				correoElectronico: $("#correoElectronico").val(),
 				informante: $("input#informante:checked").val(),
 				notificaciones: $("input#notificaciones:checked").val()		 					
@@ -333,6 +409,7 @@
 				success: function(data) {
 					modalInformanteAgregar.modal('hide');
 					table.bootstrapTable('refresh');
+                    //telefono2.remove();
 				},
 				error: function(data) {
 					console.log(data);
