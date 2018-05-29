@@ -38,7 +38,7 @@ $(document).ready(function() {
 			console.log("Entro cejas");
 			//obtener tipo
 	    	$.ajax({
-	                url: '/descripcionfisica/get_tipos/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_tipos/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -54,7 +54,7 @@ $(document).ready(function() {
 
 	        //obtener particularidades
 	        $.ajax({
-	                url: '/descripcionfisica/get_particularidades/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_particularidades/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -72,7 +72,7 @@ $(document).ready(function() {
 
 	        //obtener modificaciones
 	        $.ajax({
-	                url: '/descripcionfisica/get_modificaciones/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_modificaciones/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -95,7 +95,7 @@ $(document).ready(function() {
     	var idPartesCuerpo = $(this).val();
     	//obtener tipo
     	$.ajax({
-                url: '/descripcionfisica/get_tipos/'+idPartesCuerpo,
+                url: routeDescrip+'/get_tipos/'+idPartesCuerpo,
                 type:"GET",
                 dataType:"json",
 
@@ -114,7 +114,7 @@ $(document).ready(function() {
 
         //obtener particularidades
         $.ajax({
-                url: '/descripcionfisica/get_particularidades/'+idPartesCuerpo,
+                url: routeDescrip+'/get_particularidades/'+idPartesCuerpo,
                 type:"GET",
                 dataType:"json",
 
@@ -132,7 +132,7 @@ $(document).ready(function() {
 
         //obtener modificaciones
         $.ajax({
-                url: '/descripcionfisica/get_modificaciones/'+idPartesCuerpo,
+                url: routeDescrip+'/get_modificaciones/'+idPartesCuerpo,
                 type:"GET",
                 dataType:"json",
 
@@ -160,7 +160,7 @@ $(document).ready(function() {
 			console.log("Entro ojos");
 			//obtener color
 	    	$.ajax({
-	                url: '/descripcionfisica/get_coloresCuerpo/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_coloresCuerpo/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -179,7 +179,7 @@ $(document).ready(function() {
 
 	        //obtener particularidades
 	        $.ajax({
-	                url: '/descripcionfisica/get_particularidades/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_particularidades/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -197,7 +197,7 @@ $(document).ready(function() {
 
 	        //obtener modificaciones
 	        $.ajax({
-	                url: '/descripcionfisica/get_modificaciones/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_modificaciones/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -215,7 +215,7 @@ $(document).ready(function() {
 
 	        //obtener tamaño
 	    	$.ajax({
-	                url: '/descripcionfisica/get_tamano/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_tamano/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -243,7 +243,7 @@ $(document).ready(function() {
 			console.log("Entro ojos");
 			//obtener color
 	    	$.ajax({
-	                url: '/descripcionfisica/get_coloresCuerpo/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_coloresCuerpo/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -262,7 +262,7 @@ $(document).ready(function() {
 
 	        //obtener particularidades
 	        $.ajax({
-	                url: '/descripcionfisica/get_particularidades/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_particularidades/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -280,7 +280,7 @@ $(document).ready(function() {
 
 	        //obtener modificaciones
 	        $.ajax({
-	                url: '/descripcionfisica/get_modificaciones/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_modificaciones/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -298,7 +298,7 @@ $(document).ready(function() {
 
 	        //obtener tamaño
 	    	$.ajax({
-	                url: '/descripcionfisica/get_tamano/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_tamano/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -328,7 +328,7 @@ $(document).ready(function() {
 			console.log("Entro nariz");
 	        //obtener particularidades
 	        $.ajax({
-	                url: '/descripcionfisica/get_particularidades/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_particularidades/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -346,7 +346,7 @@ $(document).ready(function() {
 
 	        //obtener modificaciones
 	        $.ajax({
-	                url: '/descripcionfisica/get_modificaciones/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_modificaciones/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -364,7 +364,7 @@ $(document).ready(function() {
 
 	        //obtener tipo
 	    	$.ajax({
-	                url: '/descripcionfisica/get_tipos/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_tipos/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -395,7 +395,7 @@ $(document).ready(function() {
 			console.log("Entro boca");
 			//obtener color
 	    	$.ajax({
-	                url: '/descripcionfisica/get_coloresCuerpo/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_coloresCuerpo/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -414,7 +414,7 @@ $(document).ready(function() {
 
 	        //obtener particularidades
 	        $.ajax({
-	                url: '/descripcionfisica/get_particularidades/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_particularidades/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -432,7 +432,7 @@ $(document).ready(function() {
 
 	        //obtener modificaciones
 	        $.ajax({
-	                url: '/descripcionfisica/get_modificaciones/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_modificaciones/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -450,7 +450,7 @@ $(document).ready(function() {
 
 	        //obtener tamaño
 	    	$.ajax({
-	                url: '/descripcionfisica/get_tamano/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_tamano/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -477,7 +477,7 @@ $(document).ready(function() {
 			console.log("Entro boca");
 			//obtener color
 	    	$.ajax({
-	                url: '/descripcionfisica/get_coloresCuerpo/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_coloresCuerpo/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -496,7 +496,7 @@ $(document).ready(function() {
 
 	        //obtener particularidades
 	        $.ajax({
-	                url: '/descripcionfisica/get_particularidades/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_particularidades/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -514,7 +514,7 @@ $(document).ready(function() {
 
 	        //obtener modificaciones
 	        $.ajax({
-	                url: '/descripcionfisica/get_modificaciones/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_modificaciones/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -532,7 +532,7 @@ $(document).ready(function() {
 
 	        //obtener tamaño
 	    	$.ajax({
-	                url: '/descripcionfisica/get_tamano/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_tamano/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -561,7 +561,7 @@ $(document).ready(function() {
 			console.log("Entro oreja");
 			//obtener color
 	    	$.ajax({
-	                url: '/descripcionfisica/get_tipos/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_tipos/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -580,7 +580,7 @@ $(document).ready(function() {
 
 	        //obtener particularidades
 	        $.ajax({
-	                url: '/descripcionfisica/get_particularidades/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_particularidades/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -598,7 +598,7 @@ $(document).ready(function() {
 
 	        //obtener modificaciones
 	        $.ajax({
-	                url: '/descripcionfisica/get_modificaciones/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_modificaciones/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -624,7 +624,7 @@ $(document).ready(function() {
 			console.log("Entro oreja");
 			//obtener tipo
 	    	$.ajax({
-	                url: '/descripcionfisica/get_tipos/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_tipos/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -643,7 +643,7 @@ $(document).ready(function() {
 
 	        //obtener particularidades
 	        $.ajax({
-	                url: '/descripcionfisica/get_particularidades/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_particularidades/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -661,7 +661,7 @@ $(document).ready(function() {
 
 	        //obtener modificaciones
 	        $.ajax({
-	                url: '/descripcionfisica/get_modificaciones/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_modificaciones/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -690,7 +690,7 @@ $(document).ready(function() {
 
 	        //obtener particularidades
 	        $.ajax({
-	                url: '/descripcionfisica/get_particularidades/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_particularidades/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -708,7 +708,7 @@ $(document).ready(function() {
 
 	        //obtener modificaciones
 	        $.ajax({
-	                url: '/descripcionfisica/get_modificaciones/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_modificaciones/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -740,7 +740,7 @@ $(document).ready(function() {
 
 	        //obtener particularidades
 	        $.ajax({
-	                url: '/descripcionfisica/get_particularidades/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_particularidades/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -758,7 +758,7 @@ $(document).ready(function() {
 
 	        //obtener modificaciones
 	        $.ajax({
-	                url: '/descripcionfisica/get_modificaciones/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_modificaciones/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -786,7 +786,7 @@ $(document).ready(function() {
 
 	        //obtener particularidades
 	        $.ajax({
-	                url: '/descripcionfisica/get_particularidades/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_particularidades/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -804,7 +804,7 @@ $(document).ready(function() {
 
 	        //obtener modificaciones
 	        $.ajax({
-	                url: '/descripcionfisica/get_modificaciones/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_modificaciones/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -835,7 +835,7 @@ $(document).ready(function() {
 
 	        //obtener particularidades
 	        $.ajax({
-	                url: '/descripcionfisica/get_particularidades/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_particularidades/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -853,7 +853,7 @@ $(document).ready(function() {
 
 	        //obtener modificaciones
 	        $.ajax({
-	                url: '/descripcionfisica/get_modificaciones/'+idPartesCuerpo,
+	                url: routeDescrip+'/get_modificaciones/'+idPartesCuerpo,
 	                type:"GET",
 	                dataType:"json",
 
@@ -1307,7 +1307,7 @@ $(document).ready(function() {
 	    console.log(dataString);
 	    $.ajax({
 	      type: 'POST',
-	      url: '/descripcionfisica/storeCara',
+	      url: routeDescrip+'/storeCara',
 	      data: dataString,
 	      dataType: 'json',
 	      success: function(data) {
@@ -1332,7 +1332,7 @@ $(document).ready(function() {
 	function detallesCara(){
 		 //petición para obtener los detalles de rostro.
 	          $.ajax({
-	                      url: '/descripcionfisica/get_rostro/'+extraviado,
+	                      url: routeDescrip+'/get_rostro/'+extraviado,
 	                      type:"GET",
 	                      dataType:"json",
 

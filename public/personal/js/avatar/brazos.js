@@ -13,7 +13,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de particularidades de brazo izquierdo
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+4,
+         url: routeDescri+'/get_particularidades/'+4,
          type:"GET",
          dataType:"json",
 
@@ -27,7 +27,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de brazo izquierdo
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+4,
+         url: routeDescri+'/get_modificaciones/'+4,
          type:"GET",
          dataType:"json",
 
@@ -41,7 +41,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de particularidades de codo izquierdo
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+8,
+         url: routeDescri+'/get_particularidades/'+8,
          type:"GET",
          dataType:"json",
 
@@ -55,7 +55,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de codo izquierdo
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+8,
+         url: routeDescri+'/get_modificaciones/'+8,
          type:"GET",
          dataType:"json",
 
@@ -69,7 +69,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de particularidades de antebrazo izquierdo
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+3,
+         url: routeDescri+'/get_particularidades/'+3,
          type:"GET",
          dataType:"json",
 
@@ -83,7 +83,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de antebrazo izquierdo
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+3,
+         url: routeDescri+'/get_modificaciones/'+3,
          type:"GET",
          dataType:"json",
 
@@ -97,7 +97,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de particularidades de brazo derecho
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+61,
+         url: routeDescri+'/get_particularidades/'+61,
          type:"GET",
          dataType:"json",
 
@@ -111,7 +111,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de brazo derecho
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+61,
+         url: routeDescri+'/get_modificaciones/'+61,
          type:"GET",
          dataType:"json",
 
@@ -125,7 +125,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de particularidades de codo derecho
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+9,
+         url: routeDescri+'/get_particularidades/'+9,
          type:"GET",
          dataType:"json",
 
@@ -139,7 +139,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de codo derecho
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+9,
+         url: routeDescri+'/get_modificaciones/'+9,
          type:"GET",
          dataType:"json",
 
@@ -153,7 +153,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de particularidades de antebrazo derecho
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+62,
+         url: routeDescri+'/get_particularidades/'+62,
          type:"GET",
          dataType:"json",
 
@@ -167,7 +167,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de antebrazo derecho
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+62,
+         url: routeDescri+'/get_modificaciones/'+62,
          type:"GET",
          dataType:"json",
 

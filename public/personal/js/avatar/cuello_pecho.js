@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   //obtener particularidades
         $.ajax({
-                url: '/descripcionfisica/get_particularidades/'+78,
+                url: routeDescrip+'/get_particularidades/'+78,
                 type:"GET",
                 dataType:"json",
 
@@ -20,7 +20,7 @@ $(document).ready(function() {
 
         //obtener modificaciones
         $.ajax({
-                url: '/descripcionfisica/get_modificaciones/'+78,
+                url: routeDescrip+'/get_modificaciones/'+78,
                 type:"GET",
                 dataType:"json",
 
@@ -53,7 +53,7 @@ $(document).ready(function() {
   
 	//Cargar valores a select de particularidades de cuello
 	$.ajax({
-       url: '/descripcionfisica/get_particularidades/'+10,
+       url: routeDescrip+'/get_particularidades/'+10,
        type:"GET",
        dataType:"json",
 
@@ -67,7 +67,7 @@ $(document).ready(function() {
 
 	//Cargar valores a select de modificaciones de cuello
 	$.ajax({
-       url: '/descripcionfisica/get_modificaciones/'+10,
+       url: routeDescrip+'/get_modificaciones/'+10,
        type:"GET",
        dataType:"json",
 
@@ -101,7 +101,7 @@ $(document).ready(function() {
 
   //Cargar valores a select de pecho
   $.ajax({
-       url: '/descripcionfisica/get_particularidades/'+10,
+       url: routeDescrip+'/get_particularidades/'+10,
        type:"GET",
        dataType:"json",
 
@@ -118,7 +118,7 @@ $(document).ready(function() {
       var idPartesCuerpo = $(this).val();
       //obtener particularidades
         $.ajax({
-                url: '/descripcionfisica/get_particularidades/'+idPartesCuerpo,
+                url: routeDescrip+'/get_particularidades/'+idPartesCuerpo,
                 type:"GET",
                 dataType:"json",
 
@@ -136,7 +136,7 @@ $(document).ready(function() {
 
         //obtener modificaciones
         $.ajax({
-                url: '/descripcionfisica/get_modificaciones/'+idPartesCuerpo,
+                url: routeDescrip+'/get_modificaciones/'+idPartesCuerpo,
                 type:"GET",
                 dataType:"json",
 
