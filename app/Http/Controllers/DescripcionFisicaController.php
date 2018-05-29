@@ -1995,5 +1995,7 @@ class DescripcionFisicaController extends Controller
         return response()->json($cuerpo);        
     }
 
+    
+
 
 }

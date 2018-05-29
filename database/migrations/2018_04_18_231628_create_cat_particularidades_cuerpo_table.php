@@ -18,6 +18,8 @@ class CreateCatParticularidadesCuerpoTable extends Migration
             $table->string('nombre');
             $table->integer('idPartesCuerpo')->unsigned()->nullable();           
             $table->foreign('idPartesCuerpo')->references('id')->on('cat_partes_cuerpo');
+            //$table->integer('idParticularidadesCuerpo')->unsigned()->nullable();           
+            //$table->foreign('idParticularidadesCuerpo')->references('id')->on('cat_particularidades_cuerpo');
             $table->timestamps();
         });
     }
