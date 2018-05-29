@@ -3,7 +3,7 @@ $(document).ready(function(){
 	function detallesCabello(){
 	  //petición para obtener los detalles de cabello.
 	          $.ajax({
-	                      url: '/descripcionfisica/get_cabello/'+extraviado,
+	                      url: routeDescrip+'/get_cabello/'+extraviado,
 	                      type:"GET",
 	                      dataType:"json",
 
@@ -90,7 +90,7 @@ $(document).ready(function(){
 
 	          //peticion para obtener detalles de barba
 	          $.ajax({
-	                      url: '/descripcionfisica/get_barba/'+extraviado,
+	                      url: routeDescrip+'/get_barba/'+extraviado,
 	                      type:"GET",
 	                      dataType:"json",
 
@@ -154,7 +154,7 @@ $(document).ready(function(){
 
 	          //peticion para obtener detalles de bigote.
 	          $.ajax({
-	                      url: '/descripcionfisica/get_bigote/'+extraviado,
+	                      url: routeDescrip+'/get_bigote/'+extraviado,
 	                      type:"GET",
 	                      dataType:"json",
 
@@ -221,7 +221,7 @@ $(document).ready(function(){
 
 	          //peticion para obtener detalles de patilla
 	          $.ajax({
-	                      url: '/descripcionfisica/get_patilla/'+extraviado,
+	                      url: routeDescrip+'/get_patilla/'+extraviado,
 	                      type:"GET",
 	                      dataType:"json",
 
@@ -675,7 +675,7 @@ $(document).ready(function(){
     //petición para hacer el store de cabello y vello facial
     $.ajax({
       type: 'POST',
-      url: '/descripcionfisica/storeVelloFacial',
+      url: routeDescrip+'/storeVelloFacial',
       data: dataString,
       dataType: 'json',
       success: function(data) {
@@ -744,7 +744,7 @@ $(document).ready(function(){
    
     //petición para obtener los detalles de cabello.
     $.ajax({
-                url: '/descripcionfisica/get_cabello/'+extraviado,
+                url: routeDescrip+'/get_cabello/'+extraviado,
                 type:"GET",
                 dataType:"json",
 
@@ -771,7 +771,7 @@ $(document).ready(function(){
 
     //peticion para obtener detalles de barba
     $.ajax({
-                url: '/descripcionfisica/get_barba/'+extraviado,
+                url: routeDescrip+'/get_barba/'+extraviado,
                 type:"GET",
                 dataType:"json",
 
@@ -794,7 +794,7 @@ $(document).ready(function(){
 
     //peticion para obtener detalles de bigote.
     $.ajax({
-                url: '/descripcionfisica/get_bigote/'+extraviado,
+                url: routeDescrip+'/get_bigote/'+extraviado,
                 type:"GET",
                 dataType:"json",
 
@@ -817,7 +817,7 @@ $(document).ready(function(){
 
     //peticion para obtener detalles de patilla
     $.ajax({
-                url: '/descripcionfisica/get_patilla/'+extraviado,
+                url: routeDescrip+'/get_patilla/'+extraviado,
                 type:"GET",
                 dataType:"json",
 
@@ -844,7 +844,7 @@ $(document).ready(function(){
     //$(".cabello").toggle();
     //peticion para obtener detalles de patilla
     $.ajax({
-                url: '/descripcionfisica/get_deleteVello/'+extraviado,
+                url: routeDescrip+'/get_deleteVello/'+extraviado,
                 type:"GET",
                 dataType:"json",
 
