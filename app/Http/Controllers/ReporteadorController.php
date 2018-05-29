@@ -21,6 +21,10 @@ class ReporteadorController extends Controller
            $tipoBarba = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','56')->pluck('nombre','id');
            $tipoBigote = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','57')->pluck('nombre','id');
            $tamanoCabello = \App\Models\CatTamanoCuerpo::where('idPartesCuerpo','55')->pluck('nombre','id');
+           $coloresCuerpo = \App\Models\CatColoresCuerpo::all()->pluck('nombre','id');
+           $coloresCabello = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','55')->pluck('nombre','id');
+           $coloresBarba = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','56')->pluck('nombre','id');
+
             return view('reporteador.index',compact(                                           
 											'estados',
                                             'municipios',
@@ -29,7 +33,9 @@ class ReporteadorController extends Controller
                                             'tipoCabello',
                                             'tipoBarba',
                                             'tipoBigote',
-                                            'tamanoCabello'
+                                            'tamanoCabello',
+                                            'coloresCabello',
+                                            'coloresBarba'
 										));
             
      

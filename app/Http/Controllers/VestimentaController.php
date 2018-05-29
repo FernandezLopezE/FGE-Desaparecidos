@@ -52,7 +52,9 @@ class VestimentaController extends Controller
 	    	{	    			    		
 	    		$vestimenta['path'] = $data->path;
 			} else {
-				\Storage::disk('local')->delete($data->path);
+				if($data->path != 'images/vestimenta_sin_imagen.png'){
+					\Storage::disk('local')->delete($data->path);
+				}				
 				$mime = $request->file('archivo')->getMimeType();
 				$extension = strtolower($request->file('archivo')->getClientOriginalExtension());
 				$fileName = uniqid().'.'.$extension;
@@ -66,7 +68,7 @@ class VestimentaController extends Controller
 			$vestimenta['idDesaparecido'] = $request->input('idDesaparecido');
 			if(is_null($request->file('archivo')))
 	    	{
-	    		$path = "images/vestimenta_sin_imagen.png";
+	    		$vestimenta['path'] = "images/vestimenta_sin_imagen.png";
 			} else {
 				$mime = $request->file('archivo')->getMimeType();
 				$extension = strtolower($request->file('archivo')->getClientOriginalExtension());

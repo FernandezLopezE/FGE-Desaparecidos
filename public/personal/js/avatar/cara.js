@@ -1481,7 +1481,7 @@ $(document).ready(function() {
 								html = html+'</div>';
 	                            $("#pCara").append(html);
 	                          }else{
-	                            $("#pCara").hide();
+	                            //$("#pCara").hide();
 	                          }                    
 
 	                              
