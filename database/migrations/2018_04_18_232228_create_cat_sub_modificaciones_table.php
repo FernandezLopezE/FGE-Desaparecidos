@@ -15,9 +15,11 @@ class CreateCatSubModificacionesTable extends Migration
     {
         Schema::create('cat_sub_modificaciones', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');       
-            $table->integer('idModificacionesCuerpo')->unsigned()->nullable();           
-            $table->foreign('idModificacionesCuerpo')->references('id')->on('cat_modificaciones_cuerpo');
+            $table->string('nombre');
+            $table->integer('idPartesCuerpo')->unsigned()->nullable();           
+            $table->foreign('idPartesCuerpo')->references('id')->on('cat_partes_cuerpo');                   
+            //$table->integer('idModificacionesCuerpo')->unsigned()->nullable();           
+            //$table->foreign('idModificacionesCuerpo')->references('id')->on('cat_modificaciones_cuerpo');
             $table->timestamps();
         });
     }
