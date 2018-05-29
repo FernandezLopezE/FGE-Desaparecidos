@@ -12,86 +12,55 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 
 <style type="text/css">
-
 .gallery
-
    {
-
-       display: inline-block;
-
-       margin-top: 20px;
-
-       margin-left: 20px;
-
-       margin-right: 20px;
-
+   	display: inline-block;
+   	margin-top: 20px;
+   	margin-left: 20px;
+   	margin-right: 20px;
    }
 
-   .close-icon{
-
-     border-radius: 50%;
-
-       position: absolute;
-
-       right: 5px;
-
-       top: -10px;
-
-       padding: 5px 8px;
-
+   .close-icon
+   {
+   	border-radius: 50%;
+   	position: absolute;
+   	right: 5px;
+   	top: -10px;
+   	padding: 5px 8px;
    }
 
-   .form-image-upload{
-
-       background: #e8e8e8
-
-none repeat scroll 0 0;
-
-       padding: 15px;
-
+   .form-image-upload
+   {
+   	background: #e8e8e8
+   	none repeat scroll 0 0;
+   	padding: 15px;
    }
 
-    .transition {
+    .transition 
+    {
+    	-webkit-transform: scale(1.2);
+    	-moz-transform: scale(1.2);
+    	-o-transform: scale(1.2);
+    	transform: scale(1.2);
+    }
 
-         -webkit-transform: scale(1.2);
+    img.zoom 
+    {
+    	-webkit-transition: all .3s ease-in-out;
+    	-moz-transition: all .3s ease-in-out;
+    	-o-transition: all .3s ease-in-out;
+    	-ms-transition: all .3s ease-in-out;
+    }
 
-         -moz-transform: scale(1.2);
+    .close-icon
+    {
+    	border-radius: 10%;
+    	position: absolute;
+    	right: 5px;
+    	top: -10px;
+    	padding: 1px 5px;
+    }
 
-         -o-transform: scale(1.2);
-
-         transform: scale(1.2);
-
-     }
-
-     img.zoom {
-
-     
-
-         
-
-         -webkit-transition: all .3s ease-in-out;
-
-         -moz-transition: all .3s ease-in-out;
-
-         -o-transition: all .3s ease-in-out;
-
-         -ms-transition: all .3s ease-in-out;
-
-     }
-
-     .close-icon{
-
-     border-radius: 10%;
-
-       position: absolute;
-
-       right: 5px;
-
-       top: -10px;
-
-       padding: 1px 5px;
-
-   }
 </style>
 @endsection
 
@@ -654,22 +623,15 @@ none repeat scroll 0 0;
 {!! Html::script('personal/js/datos_dentales/accionDientes.js') !!}
 {!! Html::script('personal/js/datos_dentales/sliders_dentales.js') !!}
 {!! Html::script('personal/js/datos_dentales/dentadura_adulto.js') !!}
-<script src="../plugins/bootstrap_fileinput/js/popper.min.js" type="text/javascript"></script><script src="../plugins/bootstrap_fileinput/js/bootstrap.min.js" type="text/javascript"></script>
-
+<script src="../plugins/bootstrap_fileinput/js/popper.min.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap_fileinput/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- the main fileinput plugin file -->
-
 <script src="../plugins/bootstrap_fileinput/js/fileinput.js"></script>
-
 <!-- optionally uncomment line below for loading your theme assets for a theme like Font Awesome (`fa`) -->
-
 <script src="../plugins/bootstrap_fileinput/js/theme.js"></script>
-
 <!-- optionally if you need translation for your language then include  locale file as mentioned below -->
-
 <script src="../plugins/bootstrap_fileinput/js/es.js"></script>
-
 <!-- para la galeria de imagenes fancybox -->
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 
 <script type="text/javascript">
@@ -909,51 +871,39 @@ none repeat scroll 0 0;
    		});
 
 
-
-
-$desaparecido = ('{!! $desaparecido->id!!}');
-
+   		$desaparecido = ('{!! $desaparecido->id!!}');
    		var modalAnexos = $('#modalAnexosDatosDentales');
 
-		$('#btnAgregarAnexo').click (function(){  
+   		$('#btnAgregarAnexo').click (function(){  
 			modalAnexos.modal('show');
 		});
 
    		$('#cerrarModal').click (function(){
-  	location.reload();});
+  			location.reload();
+  		});
 
-$("#fileImagenes").fileinput({
-                  language:'es',
-                  theme: 'fa',
-                  uploadUrl: "/imagenAntecedentesD",
+		$("#fileImagenes").fileinput({
+			language:'es',
+			theme: 'fa',
+            uploadUrl: "/imagenAntecedentesD",
+            uploadExtraData: function() {
+            	return {
+            		_token: $("input[name='_token']").val(),
+            		idDesaparecido:'{!! $desaparecido->id!!}',
+            		tipoAnexo: 'antecedentesdentales',
+            	};
+            },
+            allowedFileExtensions: ['jpg', 'png', 'gif', 'pdf'],
+          	overwriteInitial: false,
+          	maxFileSize:2000,
+          	maxFilesNum: 10,
 
-                  uploadExtraData: function() {
-                   
-                      return {
-
-                          _token: $("input[name='_token']").val(),
-                          idDesaparecido:'{!! $desaparecido->id!!}',
-                          tipoAnexo: 'antecedentesdentales',
-
-                      };
-                  },
-                  allowedFileExtensions: ['jpg', 'png', 'gif', 'pdf'],
-                  overwriteInitial: false,
-                  maxFileSize:2000,
-                  maxFilesNum: 10,
-
-                  
-                  slugCallback: function (filename) {
-                    $nombre = $desaparecido+"_ant_dentales_"+filename.replace('(', '_').replace(']', '_');
-
-                    console.log($nombre);
-
-                      return  filename.replace('(', '_').replace(']', '_');
-                  }
-
-
-
-              });
+          	slugCallback: function (filename) {
+          		$nombre = $desaparecido+"_ant_dentales_"+filename.replace('(', '_').replace(']', '_');
+          		console.log($nombre);
+          		return  filename.replace('(', '_').replace(']', '_');
+          	}
+          });
 
    		/**********************************************************************
 	*** Declaración de rutas a usar de los campos en el formulario ****
@@ -1000,55 +950,7 @@ $("#fileImagenes").fileinput({
         	$('#modalDentista').modal('show');
     	}); 
 
-		/************************************************************************
-		**** función para guardar los datos del form de dientes seleccionados ***
-		************************************************************************/
-
-		$('#btnDiente').click(function()
-		{
-			var dataString = {
-				idDiente 	 : $("input[name='dienteselec[]']").map(function(){return $(this).val();}).get(),
-				causaPerdida : $("input[name='perdio[]']").map(function(){return $(this).val();}).get(),
-				idDesaparecido: '{!! $desaparecido->id !!}'
-			}
-			$.ajax({
-				type: 'POST',
-				url:  routedientesPerdidos,
-				data: dataString,
-				dataType: 'json',
-				success: function(data){
-					$('#btnDiente').hide();
-					$('#upDiente').show();
-					$('#dientes').attr('usemap', '');
-					$('#PMSIP').prop('disabled', true);
-					$('#SPSIP').prop('disabled', true);
-					$('#PPSIP').prop('disabled', true);
-					$('#CSIP').prop('disabled', true);
-					$('#ILSIP').prop('disabled', true);
-					$('#ICSIP').prop('disabled', true);
-					$('#ICSDP').prop('disabled', true);
-					$.confirm({
-            		title: 'Datos guardados!',
-            		content: 'Dientes perdidos guardados exitosamente.',
-            		type: 'dark',
-            		typeAnimated: true,
-            		buttons: {
-            			tryAgain: {
-                    	text: 'Aceptar',
-                    	btnClass: 'btn-dark',
-                    	action: function(){
-                    			}
-                    		},
-                		}
-            		});
-				},
-				error: function(data){
-
-				}
-			});
-		});
-
-		/************************************************************************
+    	/************************************************************************
 		** función para guardar los datos del formulario de la primera sección***
 		************************************************************************/
 
@@ -1074,12 +976,20 @@ $("#fileImagenes").fileinput({
 			$('#updateSegInformacion').hide();
 		});
 
+		/************************************************************************
+		** función para mostrar los datos del formulario de la primera sección***
+		************************************************************************/
+
 		$('#editarInformacion').click(function(){
 			$('#primeraseccion').show();
 			$('#agregaInformacion').hide();
 			$('#updateInformacion').show();
 			$('#editarInformacion').hide();
 		});
+
+		/************************************************************************
+		** función para actualizar datos del formulario de la primera sección***
+		************************************************************************/
 
 		$('#updateInformacion').click(function(){
 			$.confirm({
@@ -1101,6 +1011,10 @@ $("#fileImagenes").fileinput({
 			$('#updateInformacion').hide();
 			$('#editarInformacion').show();
 		});
+
+		/************************************************************************
+		******** función para guardar datos de todo el formulario ***************
+		************************************************************************/
 
 		$('#agregardatodental').click(function()
 		{
@@ -1169,5 +1083,92 @@ $("#fileImagenes").fileinput({
 				}
 			});
 		});
+
+		/**}**********************************************************************
+		**** función para habilitar los datos de la segunda sección para editar***
+		************************************************************************/
+
+		$('#editarSegInformacion').click(function(){
+			$('#editarSegInformacion').hide();
+			$('#segundaseccion').show();
+			$('#updateSegInformacion').show();
+		});
+
+		/**}**********************************************************************
+		**** función para guardar los datos del form de dientes seleccionados ***
+		************************************************************************/
+
+		$('#btnDiente').click(function()
+		{
+			var dataString = {
+				idDiente 	 : $("input[name='dienteselec[]']").map(function(){return $(this).val();}).get(),
+				causaPerdida : $("input[name='perdio[]']").map(function(){return $(this).val();}).get(),
+				idDesaparecido: '{!! $desaparecido->id !!}'
+			}
+			$.ajax({
+				type: 'POST',
+				url:  routedientesPerdidos,
+				data: dataString,
+				dataType: 'json',
+				success: function(data){
+					$('#btnDiente').hide();
+					$('#upDiente').show();
+					$('#dientes').attr('usemap', '');
+					$('#PMSIP').prop('disabled', true);
+					$('#SPSIP').prop('disabled', true);
+					$('#PPSIP').prop('disabled', true);
+					$('#CSIP').prop('disabled', true);
+					$('#ILSIP').prop('disabled', true);
+					$('#ICSIP').prop('disabled', true);
+					$('#ICSDP').prop('disabled', true);
+					$.confirm({
+            		title: 'Datos guardados!',
+            		content: 'Dientes perdidos guardados exitosamente.',
+            		type: 'dark',
+            		typeAnimated: true,
+            		buttons: {
+            			tryAgain: {
+                    	text: 'Aceptar',
+                    	btnClass: 'btn-dark',
+                    	action: function(){
+                    			}
+                    		},
+                		}
+            		});
+				},
+				error: function(data){
+				}
+			});
+		});
+
+		
+
+		/************************************************************************
+		** función para guardar los datos del formulario de la segunda sección***
+		************************************************************************/
+
+		$('#updateSegInformacion').click(function(){
+			$.confirm({
+        		title: 'Datos',
+        		content: 'Guardados exitosamente.',
+        		type: 'dark',
+        		typeAnimated: true,
+        		buttons: {
+        			tryAgain: {
+                	text: 'Aceptar',
+                	btnClass: 'btn-dark',
+                	action: function(){
+                			}
+                		},
+            		}
+        		});
+			$('#editarSegInformacion').show();
+			$('#segundaseccion').hide();
+			$('#updateSegInformacion').hide();
+		});
+
+		
+
+		
 </script>
 @endsection
