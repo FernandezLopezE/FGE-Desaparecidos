@@ -427,7 +427,7 @@
    });
 	var vehiculoPlacas = "";
 	var vehiculoDescripcion = "";
-
+	var routeIndex = '{!! route('desaparicion.index') !!}';
 $(btnGuardarDescripcionHechos).click (function(){
 			
 			
@@ -471,7 +471,7 @@ $(btnGuardarDescripcionHechos).click (function(){
 			console.log(dataString);
 
 			$.ajax({
-				url:'/desaparicion'+'/{!! $desaparecido->id !!}',
+				url: routeIndex+'/desaparicion'+'/{!! $desaparecido->id !!}',
 				//headers:{'X-CSRF-TOKEN':token},
 				type: 'PUT',
 				data: dataString,
