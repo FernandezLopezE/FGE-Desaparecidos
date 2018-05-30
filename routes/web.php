@@ -355,3 +355,4 @@ Route::put('desaparicion/{id}', 'DesaparicionController@update');
 
 
 
+Route::get('conexion/uipj/{carpeta}', 'ConexionUipjController@resolviendo_peticion');
