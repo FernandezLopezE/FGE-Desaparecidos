@@ -49,13 +49,15 @@ $(document).ready(function(){
   	//botón para guardar talla
   	$("#guardarTalla").click(function(){
 	    console.log("entro");
+	    console.log("hhh"+extraviado);
 	    var dataString = {
 	      estatura: $('#esta').val(),
 	      peso: $('#bulto').val(),
 	      complexion: $('#comple').val(),
 	      colorPiel: $('#cPiel').val(),
-	      idExtraviado: $('#idExtraviado').val(),
+	      idExtraviado: extraviado,
 	    };
+	    console.log(dataString);
       	$.ajax({
 	        type: 'POST',
 	        url: '/descripcionfisica/store',
