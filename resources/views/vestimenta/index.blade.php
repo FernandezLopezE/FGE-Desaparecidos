@@ -44,7 +44,6 @@
 			'click #editVestimenta': function (e, value, row, index) {
 				cargarDatosColores(row.color.codigo);
 				cargarDatosPrendas(row.idPrenda, row.idVestimenta);
-				btnPrendaActualizar.val(row.id);
 				$('select#idVestimenta option[value="'+row.idVestimenta+'"]').attr("selected",true);
 				$('#material').val(row.material);
 				$('select#idMarca option[value="'+row.idMarca+'"]').attr("selected",true);
@@ -122,9 +121,9 @@
 			$.getJSON(routeIndex+'/get_catprendas/'+idVestimenta)
 			.done(function(data){
 				$('#idPrenda').empty();				
-				$.each(data, function(key, value){						
+				$.each(data, function(key, value){					
 					optionSelect = '<option';
-					if (selected == value.id_menu) { optionSelect = optionSelect+' selected'; }
+					if (selected == value.id) { optionSelect = optionSelect+' selected'; }
 					optionselect = optionSelect+' value='+value.id+'>'+value.nombre+'</option>';
 					$('#idPrenda').append(optionselect);					
 				});
