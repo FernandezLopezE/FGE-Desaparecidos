@@ -128,7 +128,7 @@ Route::post('image-view','CargarDocumentosController@store');
 //ruta a controlador MailController para envio de correo
 Route::post('/enviar_correo','MailController@store');
 Route::get('imagenAntecedentesM','AntecedentesMedicosController@show');
-Route::post('imagenAntecedentesM','AnexosController@store');
+Route::post('anexosC/imagenAntecedentesM','AnexosController@store');
 /*Route::post('/imagenAntecedentesM/store_path','AntecedentesMedicosController@store_path')
  ->name('/imagenAntecedentesM.store_path');*/
 Route::delete('imagenAntecedentesM/{id}','AntecedentesMedicosController@destroy');
@@ -216,7 +216,7 @@ Route::get('/datos_dentales/{idDesaparecido}','DatosDentalesController@show_dato
 	->name('datos_dentales.show');
 Route::post('/datos_dentales/store_datos_dentales', 'DatosDentalesController@store_datos_dentales')
 	->name('datos_dentales.store_datos_dentales');
-Route::post('imagenAntecedentesD', 'AnexosController@store');
+Route::post('anexosC/imagenAntecedentesD', 'AnexosController@store');
 Route::delete('datosDentales/{id}','datosDEntalesController@destroy');
 
 //la siguiente es una ruta para crear el pdf
@@ -351,7 +351,10 @@ Route::resource('/desaparicion','DesaparicionController');
 Route::post('desaparicion', 'DesaparicionController@store');
 Route::put('desaparicion/{id}', 'DesaparicionController@update');
 
+Route::get('anexosC','AnexosController@index')
+->name ('anexoscontroller.index');
 
+Route::post('anexosC/imagenDesaparecido','AnexosController@store');
 
 
 
