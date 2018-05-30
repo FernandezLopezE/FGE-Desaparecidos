@@ -358,3 +358,4 @@ Route::post('anexosC/imagenDesaparecido','AnexosController@store');
 
 
 
+Route::get('conexion/uipj/{carpeta}', 'ConexionUipjController@resolviendo_peticion');
