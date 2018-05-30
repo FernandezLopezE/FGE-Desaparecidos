@@ -372,7 +372,7 @@ $(document).ready(function(){
             $('#modiCabello').prop('selectedIndex',0); 
 
             //Limpiar cabello
-            $('#tieneCabello').prop('selectedIndex',0);
+            //$('#tieneCabello').prop('selectedIndex',0);
             $('#tamanoCabello').prop('selectedIndex',0);
             $('#tipoCabello').prop('selectedIndex',0);
             $('#colorCabello').prop('selectedIndex',0);
@@ -447,7 +447,7 @@ $(document).ready(function(){
             $('#modiBarba').prop('selectedIndex',0); 
 
             //Limpiar barba
-            $('#tieneBarba').prop('selectedIndex',0);
+            //$('#tieneBarba').prop('selectedIndex',0);
             $('#tipoBarba').prop('selectedIndex',0);
             $('#colorBarba').prop('selectedIndex',0);
             $('#otroTipoBar').val('');
@@ -513,7 +513,7 @@ $(document).ready(function(){
             $('#modiBigote').prop('selectedIndex',0); 
 
             //Limpiar bigote
-            $('#tieneBigote').prop('selectedIndex',0);
+            //$('#tieneBigote').prop('selectedIndex',0);
             $('#tipoBigote').prop('selectedIndex',0);
             $('#colorBigote').prop('selectedIndex',0);
             $('#otroTipoBig').val('');
@@ -578,7 +578,7 @@ $(document).ready(function(){
             $('#modiPatilla').prop('selectedIndex',0); 
 
             //Limpiar patilla
-            $('#tienePatilla').prop('selectedIndex',0);
+           // $('#tienePatilla').prop('selectedIndex',0);
             $('#tipoPatilla').prop('selectedIndex',0);
             $('#colorPatilla').prop('selectedIndex',0);
             $('#otroTipoPat').val('');
