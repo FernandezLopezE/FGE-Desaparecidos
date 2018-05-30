@@ -7,6 +7,10 @@ use App\Models\Anexos;
 
 class AnexosController extends Controller
 {
+    public function index()
+    {
+        //
+    }
     
     public function store(Request $request)
         {

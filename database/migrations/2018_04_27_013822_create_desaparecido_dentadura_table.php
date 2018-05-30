@@ -30,7 +30,7 @@ class CreateDesaparecidoDentaduraTable extends Migration
             $table->string('telefono')->nullable();
             $table->string('direccion')->nullable();
 
-            $table->json('tratamientos')->nullable();
+            $table->text('tratamientos')->nullable();
 
             //$table->enum('perdiodiente', ['SIN INFORMACION','NO','SI']);
             
@@ -43,10 +43,10 @@ class CreateDesaparecidoDentaduraTable extends Migration
             //$table->enum('abcesos', ['SIN INFORMACION','NO','SI']);
             $table->string('describeAbcesos')->nullable();
 
-            $table->json('enfermedades')->nullable();
+            $table->text('enfermedades')->nullable();
 
             $table->enum('maloshabitos', ['SIN INFORMACION','NO','SI']);
-            $table->json('arraymaloshabitos')->nullable();
+            $table->text('arraymaloshabitos')->nullable();
 
             $table->string('describeHabito')->nullable();
 

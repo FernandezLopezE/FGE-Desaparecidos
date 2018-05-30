@@ -7,7 +7,7 @@ $(document).ready(function() {
 
   //Cargar valores a select de particularidades de Abdomen
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+2,
+         url: routeDescrip+'/get_particularidades/'+2,
          type:"GET",
          dataType:"json",
 
@@ -21,7 +21,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de Abdomen
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+2,
+         url: routeDescrip+'/get_modificaciones/'+2,
          type:"GET",
          dataType:"json",
 

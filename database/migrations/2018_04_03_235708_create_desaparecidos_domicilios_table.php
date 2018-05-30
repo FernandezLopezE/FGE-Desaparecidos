@@ -19,7 +19,7 @@ class CreateDesaparecidosDomiciliosTable extends Migration
             $table->string('calle', 100)->default("SIN INFORMACION");
             $table->string('numExterno', 10)->default('S/N');
             $table->string('numInterno', 10)->nullable();
-            $table->json('telefono')->nullable();
+            $table->text('telefono')->nullable();
 
             $table->integer('idEstado')->unsigned()->default(30);
             $table->foreign('idEstado')->references('id')->on('cat_estado')->onDelete('cascade');            

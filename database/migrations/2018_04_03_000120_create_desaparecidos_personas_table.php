@@ -30,7 +30,7 @@ class CreateDesaparecidosPersonasTable extends Migration
 			$table->string('numDocIdentidad',20)->nullable();
 			$table->string('otroParentesco',20)->nullable();
 			$table->string('correoElectronico')->unique()->nullable();
-			$table->json('telefonos')->nullable();			
+			$table->text('telefonos')->nullable();			
 			$table->boolean('tieneHijos')->default(0);
 			$table->boolean('informante')->default(0);
 			$table->boolean('notificaciones')->default(0);	

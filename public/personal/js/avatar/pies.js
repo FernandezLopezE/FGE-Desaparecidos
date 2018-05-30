@@ -14,7 +14,7 @@ $(document).ready(function() {
 
   	//Cargar valores a select de particularidades de tobillo izquierdo
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+53,
+         url: routeDescrip+'/get_particularidades/'+53,
          type:"GET",
          dataType:"json",
 
@@ -28,7 +28,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de tobillo izquierdo
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+53,
+         url: routeDescrip+'/get_modificaciones/'+53,
          type:"GET",
          dataType:"json",
 
@@ -42,7 +42,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de particularidades de talon izquierdo
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+51,
+         url: routeDescrip+'/get_particularidades/'+51,
          type:"GET",
          dataType:"json",
 
@@ -56,7 +56,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de talon izquierdo
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+51,
+         url: routeDescrip+'/get_modificaciones/'+51,
          type:"GET",
          dataType:"json",
 
@@ -70,7 +70,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de particularidades de pie izquierdo
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+45,
+         url: routeDescrip+'/get_particularidades/'+45,
          type:"GET",
          dataType:"json",
 
@@ -84,7 +84,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de pie izquierdo
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+45,
+         url: routeDescrip+'/get_modificaciones/'+45,
          type:"GET",
          dataType:"json",
 
@@ -98,7 +98,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de particularidades de tobillo derecho
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+52,
+         url: routeDescrip+'/get_particularidades/'+52,
          type:"GET",
          dataType:"json",
 
@@ -112,7 +112,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de tobillo derecho
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+52,
+         url: routeDescrip+'/get_modificaciones/'+52,
          type:"GET",
          dataType:"json",
 
@@ -126,7 +126,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de particularidades de talon derecho
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+50,
+         url: routeDescrip+'/get_particularidades/'+50,
          type:"GET",
          dataType:"json",
 
@@ -140,7 +140,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de talon derecho
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+50,
+         url: routeDescrip+'/get_modificaciones/'+50,
          type:"GET",
          dataType:"json",
 
@@ -154,7 +154,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de particularidades de pie derecho
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+44,
+         url: routeDescrip+'/get_particularidades/'+44,
          type:"GET",
          dataType:"json",
 
@@ -168,7 +168,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de pie derecho
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+44,
+         url: routeDescrip+'/get_modificaciones/'+44,
          type:"GET",
          dataType:"json",
 
