@@ -13,7 +13,7 @@ $(document).ready(function() {
 
   	//Cargar valores a select de particularidades de rodilla izquierdo
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+49,
+         url: routeDescrip+'/get_particularidades/'+49,
          type:"GET",
          dataType:"json",
 
@@ -27,7 +27,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de rodilla izquierdo
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+49,
+         url: routeDescrip+'/get_modificaciones/'+49,
          type:"GET",
          dataType:"json",
 
@@ -41,7 +41,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de particularidades de espinilla izquierda
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+68,
+         url: routeDescrip+'/get_particularidades/'+68,
          type:"GET",
          dataType:"json",
 
@@ -55,7 +55,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de espinilla izquierda
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+68,
+         url: routeDescrip+'/get_modificaciones/'+68,
          type:"GET",
          dataType:"json",
 
@@ -69,7 +69,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de particularidades de rodilla derecha
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+48,
+         url: routeDescrip+'/get_particularidades/'+48,
          type:"GET",
          dataType:"json",
 
@@ -83,7 +83,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de rodilla derecha
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+48,
+         url: routeDescrip+'/get_modificaciones/'+48,
          type:"GET",
          dataType:"json",
 
@@ -97,7 +97,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de particularidades de espinilla derecha
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+68,
+         url: routeDescrip+'/get_particularidades/'+68,
          type:"GET",
          dataType:"json",
 
@@ -111,7 +111,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de espinilla derecha
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+68,
+         url: routeDescrip+'/get_modificaciones/'+68,
          type:"GET",
          dataType:"json",
 

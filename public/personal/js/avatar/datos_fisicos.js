@@ -1,4 +1,5 @@
 $(document).ready(function(){
+	console.log("Mi ruta es: "+routeDescrip);
 	//Ocultar tarjeta de datos físicos
 	$("#card").hide();
 	$("#datosFis").hover( function () {
@@ -9,7 +10,7 @@ $(document).ready(function(){
   	if (aux == true) {
 	    $("#talla").modal("hide");
 	     $.ajax({
-	            url: '/descripcionfisica/get_datosfisicos/'+extraviado,
+	            url: routeDescrip+'/get_datosfisicos/'+extraviado,
 	            type:"GET",
 	            dataType:"json",
 	            success:function(data) {
@@ -29,7 +30,7 @@ $(document).ready(function(){
 	//Click para mostrar en el modal
   	$("#datosFis").click(function(event) {
       $.ajax({
-            url: '/descripcionfisica/get_datosfisicos/'+extraviado,
+            url: routeDescrip+'/get_datosfisicos/'+extraviado,
             type:"GET",
             dataType:"json",
             success:function(data) {
@@ -60,7 +61,7 @@ $(document).ready(function(){
 	    console.log(dataString);
       	$.ajax({
 	        type: 'POST',
-	        url: '/descripcionfisica/store',
+	        url: routeDescrip+'/store',
 	        data: dataString,
 	        dataType: 'json',
 	        success: function(data) {           
@@ -68,7 +69,7 @@ $(document).ready(function(){
 	          $("#talla").modal("hide");
 	          
 	          $.ajax({
-	            url: '/descripcionfisica/get_datosfisicos/'+extraviado,
+	            url: routeDescrip+'/get_datosfisicos/'+extraviado,
 	            type:"GET",
 	            dataType:"json",
 	            success:function(data) {

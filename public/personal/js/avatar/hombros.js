@@ -13,7 +13,7 @@ $(document).ready(function() {
 
 	//Cargar valores a select de particularidades de hombro izquierdo
 	$.ajax({
-       url: '/descripcionfisica/get_particularidades/'+18,
+       url: routeDescrip+'/get_particularidades/'+18,
        type:"GET",
        dataType:"json",
 
@@ -27,7 +27,7 @@ $(document).ready(function() {
 
 	//Cargar valores a select de modificaciones de hombro izquierdo
 	$.ajax({
-       url: '/descripcionfisica/get_modificaciones/'+18,
+       url: routeDescrip+'/get_modificaciones/'+18,
        type:"GET",
        dataType:"json",
 
@@ -41,7 +41,7 @@ $(document).ready(function() {
 
 	//Cargar valores a select de particularidades de hombro derecho
 	$.ajax({
-       url: '/descripcionfisica/get_particularidades/'+17,
+       url: routeDescrip+'/get_particularidades/'+17,
        type:"GET",
        dataType:"json",
 
@@ -55,7 +55,7 @@ $(document).ready(function() {
 
 	//Cargar valores a select de modificaciones de hombro derecho
 	$.ajax({
-       url: '/descripcionfisica/get_modificaciones/'+17,
+       url: routeDescrip+'/get_modificaciones/'+17,
        type:"GET",
        dataType:"json",
 

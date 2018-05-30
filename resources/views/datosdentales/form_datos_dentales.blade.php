@@ -12,54 +12,61 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 
 <style type="text/css">
+a.fancybox img {
+     width: 200px;
+height:150px;
+    }
+    a.div_tamano{
+
+
+    }
+    a.fancybox{
+ margin:10px auto;
+  width:180px;
+  height:180px;
+}
+
+    
 .gallery
-   {
-   	display: inline-block;
-   	margin-top: 20px;
-   	margin-left: 20px;
-   	margin-right: 20px;
-   }
-
-   .close-icon
-   {
-   	border-radius: 50%;
-   	position: absolute;
-   	right: 5px;
-   	top: -10px;
-   	padding: 5px 8px;
-   }
-
-   .form-image-upload
-   {
-   	background: #e8e8e8
-   	none repeat scroll 0 0;
-   	padding: 15px;
-   }
-
-    .transition 
     {
-    	-webkit-transform: scale(1.2);
-    	-moz-transform: scale(1.2);
-    	-o-transform: scale(1.2);
-    	transform: scale(1.2);
+        display: inline-block;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    .close-icon{
+      border-radius: 50%;
+        position: absolute;
+        right: 5px;
+        top: -10px;
+        padding: 5px 8px;
+    }
+    .form-image-upload{
+        background: #e8e8e8 none repeat scroll 0 0;
+        padding: 15px;
+    }
+     .transition {
+          -webkit-transform: scale(1.2); 
+          -moz-transform: scale(1.2);
+          -o-transform: scale(1.2);
+          transform: scale(1.2);
+      }
+      img.zoom {
+      
+          
+          -webkit-transition: all .3s ease-in-out;
+          -moz-transition: all .3s ease-in-out;
+          -o-transition: all .3s ease-in-out;
+          -ms-transition: all .3s ease-in-out;
+      }
+      .close-icon{
+      border-radius: 10%;
+        position: absolute;
+        right: 5px;
+        top: -10px;
+        padding: 1px 5px;
     }
 
-    img.zoom 
-    {
-    	-webkit-transition: all .3s ease-in-out;
-    	-moz-transition: all .3s ease-in-out;
-    	-o-transition: all .3s ease-in-out;
-    	-ms-transition: all .3s ease-in-out;
-    }
-
-    .close-icon
-    {
-    	border-radius: 10%;
-    	position: absolute;
-    	right: 5px;
-    	top: -10px;
-    	padding: 1px 5px;
-    }
 
 </style>
 @endsection
@@ -566,51 +573,66 @@
           	</div>
 		</div>
 	</div>
-	<div class="card border-primary">
-	  <div class="card border-success">
-	    <div class="card-header"> 
-	      <h5>AGREGAR ANEXOS
-	        <button type="submit" class="btn btn-dark pull-right"  id="btnAgregarAnexo"> AGREGAR</button>   
-	      </h5>
-	    </div>
-	  </div>
-	  @include('datosdentales.modals.modal_cargar_documento')
-  <div class="container page-top">
-    <div class="row">
-      
-      @if($images->count())
-        @foreach($images as $image)
-          <div class='col-md-3 thumb'>
-            @if(substr ($image->ruta, -3) == "pdf")
-              <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}" target="_blank">              
-                <center>
-                  <img class="img-responsive zoom img-fluid" alt="" src="../images/documentopdf.png" width="150" height="220"  align="center" />
-                </center>
-                <div class='text-center'>
-                  <small class='text-muted'>{{ $image->name }}</small>
-                </div>
-              </a>
-            @else
-              <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}">                
-                <img class="img-responsive zoom img-fluid" alt="" src="..{{ $image->ruta }}" />
-                  <div class='text-center'>
-                    <small class='text-muted'>{{ $image->name }}</small>
-                  </div>
-              </a>
-            @endif
-
-            <form action="{{ url('imagenAntecedentesM',$image->id) }}" method="POST">
-              <input type="hidden" name="_method" value="delete">
-                {!! csrf_field() !!}
-                  <button type="submit" class="close-icon btn btn-danger"><i class="fa fa-window-close"></i></button>
-            </form>
+	
+	 
+  	<div class="card border-primary">
+        <div class="card border-success">
+          <div class="card-header"> 
+              <h5>AGREGAR ANEXOS
+              <button type="submit" class="btn btn-dark pull-right"  id="btnAgregarAnexo"> Agregar  
+              </button>   
+              </h5>
           </div>
-        @endforeach
-      @endif
+        </div>        
+         @include('datosdentales.modals.modal_cargar_documento')
+ 
+       <div class="container page-top">
+        <div class="row">
+           
+
+
+            @if($images->count())
+                @foreach($images as $image)
+                <div class='col-md-2 thumb' >
+                   @if(substr ($image->ruta, -3) == "pdf")
+                    <a id ="div_tamano">
+                         <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}" target="_blank">              
+                           <center>
+                            <img class="img-responsive zoom img-fluid" alt="" src="../images/documentopdf.png" width="150" height="220"  align="center" />
+                          </center>
+                              
+                            <div class='text-center'>
+                                <small class='text-muted'>{{ $image->name }}</small>
+                            </div> 
+                        </a>
+                      </a>
+                    @else
+                       <a id ="div_tamano">
+                        <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}">                
+                           <img class="img-responsive zoom img-fluid" alt="" src="..{{ $image->ruta }}" />
+                              
+                            <div class='text-center'>
+                                <small class='text-muted'>{{ $image->name }}</small>
+                            </div> 
+                        </a>
+                        <a id ="div_tamano">
+                    @endif
+                    <form action="{{ url('imagenAntecedentesM',$image->id) }}" method="POST">
+                    <input type="hidden" name="_method" value="delete">
+                    {!! csrf_field() !!}
+                    <button type="submit" class="close-icon btn btn-danger"><i class="fa fa-window-close"></i></button>
+                    </form>
+                </div> 
+                @endforeach
+            @endif
+           
     </div> 
+
   </div>
+  <br>
 </div>
 </nav>
+
 @endsection
 
 @section('scripts')
@@ -881,11 +903,11 @@
    		$('#cerrarModal').click (function(){
   			location.reload();
   		});
-
+var routeIndex = '{!! route('anexoscontroller.index') !!}';
 		$("#fileImagenes").fileinput({
 			language:'es',
 			theme: 'fa',
-            uploadUrl: "/imagenAntecedentesD",
+            uploadUrl:routeIndex + '/imagenAntecedentesD',
             uploadExtraData: function() {
             	return {
             		_token: $("input[name='_token']").val(),

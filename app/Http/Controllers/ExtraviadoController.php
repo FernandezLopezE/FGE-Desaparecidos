@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\ExtraviadoRequest;
-
+use App\Models\Anexos;
 class ExtraviadoController extends Controller
 {
 	/**
@@ -219,7 +219,9 @@ class ExtraviadoController extends Controller
 
 		$desaparecido = \App\Models\Desaparecido::find($datos[0]->id);
 
-		return view('desaparecido.show',compact('desaparecido'));
+		$images = (Anexos::where('idDesaparecido', $datos[0]->id)->where('tipoAnexo', 'desaparecido')->get());
+		return view('desaparecido.show',compact('desaparecido',
+												'images'));
 	}
 
 	/**

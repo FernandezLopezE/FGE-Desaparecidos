@@ -13,7 +13,7 @@ $(document).ready(function() {
 
   	//Cargar valores a select de particularidades de muslo izquierdo
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+27,
+         url: routeDescrip+'/get_particularidades/'+27,
          type:"GET",
          dataType:"json",
 
@@ -27,7 +27,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de muslo izquierdo
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+27,
+         url: routeDescrip+'/get_modificaciones/'+27,
          type:"GET",
          dataType:"json",
 
@@ -41,7 +41,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de particularidades de muslo derecho
     $.ajax({
-         url: '/descripcionfisica/get_particularidades/'+28,
+         url: routeDescrip+'/get_particularidades/'+28,
          type:"GET",
          dataType:"json",
 
@@ -55,7 +55,7 @@ $(document).ready(function() {
 
     //Cargar valores a select de modificaciones de muslo derecho
     $.ajax({
-         url: '/descripcionfisica/get_modificaciones/'+28,
+         url: routeDescrip+'/get_modificaciones/'+28,
          type:"GET",
          dataType:"json",
 
