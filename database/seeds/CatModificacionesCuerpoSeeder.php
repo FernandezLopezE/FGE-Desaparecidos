@@ -13,89 +13,501 @@ class CatModificacionesCuerpoSeeder extends Seeder
     {
         //
         DB::table('cat_modificaciones_cuerpo')->insert([
-         	['idPartesCuerpo'=>55, 'nombre' => 'MODIFICACIONES CABELLO'], //1
-            ['idPartesCuerpo'=>16, 'nombre' => 'MODIFICACIONES FRENTE'],  //2
-            ['idPartesCuerpo'=>6, 'nombre' => 'MODIFICACIONES CEJA IZQUIERDA'],//3
-            ['idPartesCuerpo'=>7, 'nombre' => 'MODIFICACIONES CEJA DERECHA'],//4
-            ['idPartesCuerpo'=>37, 'nombre' => 'MODIFICACIONES OJO IZQUIERDO'],   //5
-            ['idPartesCuerpo'=>36, 'nombre' => 'MODIFICACIONES OJO DERECHO'], //6
-            ['idPartesCuerpo'=>35, 'nombre' => 'MODIFICACIONES OREJA IZQUIERDA'], //7
-            ['idPartesCuerpo'=>34, 'nombre' => 'MODIFICACIONES OREJA DERECHA'],//8
-            ['idPartesCuerpo'=>58, 'nombre' => 'MODIFICACIONES PATILLAS'], //9
-            ['idPartesCuerpo'=>23, 'nombre' => 'MODIFICACIONES MEJILLAS'], //10           
-            ['idPartesCuerpo'=>31, 'nombre' => 'MODIFICACIONES NARIZ'],   //11
-            ['idPartesCuerpo'=>57, 'nombre' => 'MODIFICACIONES BIGOTE'],  //12
-            ['idPartesCuerpo'=>19, 'nombre' => 'MODIFICACIONES LABIO INFERIOR'],  //13
-            ['idPartesCuerpo'=>20, 'nombre' => 'MODIFICACIONES LABIO SUPERIOR'],//14
-            ['idPartesCuerpo'=>24, 'nombre' => 'MODIFICACIONES MENTÓN'],  //15    
-            ['idPartesCuerpo'=>56, 'nombre' => 'MODIFICACIONES BARBA'],   //16    
+         	 //CABELLO
 
-            //
-            ['idPartesCuerpo'=>10, 'nombre' => 'MODIFICACIONES CUELLO'], //17
-            ['idPartesCuerpo'=>32, 'nombre' => 'MODIFICACIONES NUCA'],  //18
-            ['idPartesCuerpo'=>18, 'nombre' => 'MODIFICACIONES HOMBRO IZQUIERDO'],     //19
-            ['idPartesCuerpo'=>17, 'nombre' => 'MODIFICACIONES HOMBRO DERECHO'],//20
-            ['idPartesCuerpo'=>4, 'nombre' => 'MODIFICACIONES BRAZO IZQUIERDO'],     //21
-            ['idPartesCuerpo'=>61, 'nombre' => 'MODIFICACIONES BRAZO DERECHO'],//22
-            ['idPartesCuerpo'=>3, 'nombre' => 'MODIFICACIONES ANTEBRAZO IZQUIERDO'],   //23
-            ['idPartesCuerpo'=>62, 'nombre' => 'MODIFICACIONES ANTEBRAZO DERECHO'],//24
-            ['idPartesCuerpo'=>8, 'nombre' => 'MODIFICACIONES CODO IZQUIERDO'], //25
-            ['idPartesCuerpo'=>9, 'nombre' => 'MODIFICACIONES CODO DERECHO'],//26
-            ['idPartesCuerpo'=>26, 'nombre' => 'MODIFICACIONES MUÑECA IZQUIERDA'], //27        
-            ['idPartesCuerpo'=>25, 'nombre' => 'MODIFICACIONES MUÑECA DERECHA'],//28
-            ['idPartesCuerpo'=>39, 'nombre' => 'MODIFICACIONES PALMA IZQUIERDA'],   //29
-            ['idPartesCuerpo'=>38, 'nombre' => 'MODIFICACIONES PALMA DERECHA'],//30
+            ['idPartesCuerpo'=>2, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>2, 'nombre' => 'BASE/PERMANENTE'],
+            ['idPartesCuerpo'=>2, 'nombre' => 'ALACIADO'],
+            ['idPartesCuerpo'=>2, 'nombre' => 'MECHAS'],
+            ['idPartesCuerpo'=>2, 'nombre' => 'EXTENSIONES'],
+            ['idPartesCuerpo'=>2, 'nombre' => 'TRENZADO'],
+            ['idPartesCuerpo'=>2, 'nombre' => 'RASTAS'],
+            ['idPartesCuerpo'=>2, 'nombre' => 'PELUCA'],
+            ['idPartesCuerpo'=>2, 'nombre' => 'BISOÑE'],
+            ['idPartesCuerpo'=>2, 'nombre' => 'OTRO'],
 
-            ['idPartesCuerpo'=>21, 'nombre' => 'MODIFICACIONES MANO IZQUIERDA'],  //31
-            ['idPartesCuerpo'=>22, 'nombre' => 'MODIFICACIONES MANO DERECHA'],//32
-            ['idPartesCuerpo'=>12, 'nombre' => 'MODIFICACIONES DEDO ANULAR IZQUIERDO'],   //33
-            ['idPartesCuerpo'=>64, 'nombre' => 'MODIFICACIONES DEDO ANULAR DERECHO'], //34
-            ['idPartesCuerpo'=>14, 'nombre' => 'MODIFICACIONES DEDO ÍNDICE IZQUIERDO'],   //35
-            ['idPartesCuerpo'=>66, 'nombre' => 'MODIFICACIONES DEDO ÍNDICE DERECHO'],//36
-            ['idPartesCuerpo'=>13, 'nombre' => 'MODIFICACIONES DEDO MEDIO IZQUIERDO'],   //37
-            ['idPartesCuerpo'=>65, 'nombre' => 'MODIFICACIONES DEDO MEDIO DERECHO'],//38
-            ['idPartesCuerpo'=>11, 'nombre' => 'MODIFICACIONES DEDO MENIQUE IZQUIERDO'],   //39
-            ['idPartesCuerpo'=>63, 'nombre' => 'MODIFICACIONES DEDO MENIQUE DERECHO'],//40
-            ['idPartesCuerpo'=>70, 'nombre' => 'MODIFICACIONES DEDO PULGAR IZQUIERDO'],   //41
-            ['idPartesCuerpo'=>69, 'nombre' => 'MODIFICACIONES DEDO PULGAR DERECHO'],//42
+            //FRENTE
+            ['idPartesCuerpo'=>7, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>7, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>7, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>7, 'nombre' => 'OTRO'],
+
+            //CEJA IZQUIERDA
+            ['idPartesCuerpo'=>8, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>8, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>8, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>8, 'nombre' => 'TEÑIDA'],
+            ['idPartesCuerpo'=>8, 'nombre' => 'RASURADA/DEPILADA'],
+            ['idPartesCuerpo'=>8, 'nombre' => 'OTRO'],
+
+            
+
+            //OJO IZQUIERDO
+            ['idPartesCuerpo'=>9, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>9, 'nombre' => 'LENTES DE CONTACTO/PUPILENTES'],
+            ['idPartesCuerpo'=>9, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>9, 'nombre' => 'OTRO'],
+
+            
+
+            //OREJA IZQUIERDA
+            ['idPartesCuerpo'=>11, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>11, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>11, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>11, 'nombre' => 'ARETES'],
+            ['idPartesCuerpo'=>11, 'nombre' => 'PERCING'],
+            ['idPartesCuerpo'=>11, 'nombre' => 'PROTESIS AUDITIVA'],
+            ['idPartesCuerpo'=>11, 'nombre' => 'EXPANSIONES'],
+            ['idPartesCuerpo'=>11, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>11, 'nombre' => 'OTRO'],
+
+            
 
 
-            ['idPartesCuerpo'=>15, 'nombre' => 'MODIFICACIONES ESPALDA'],  //43        
-            ['idPartesCuerpo'=>2, 'nombre' => 'MODIFICACIONES ADBOMEN'],   //44
-            ['idPartesCuerpo'=>5, 'nombre' => 'MODIFICACIONES CADERA'], //45
-            ['idPartesCuerpo'=>30, 'nombre' => 'MODIFICACIONES NALGA IZQUIERDA'],  //46
-            ['idPartesCuerpo'=>29, 'nombre' => 'MODIFICACIONES NALGA DERECHA'],//47
-            ['idPartesCuerpo'=>54, 'nombre' => 'MODIFICACIONES DORSO'],     //48
-            ['idPartesCuerpo'=>27, 'nombre' => 'MODIFICACIONES MUSLO IZQUIERDO'],     //49
-            ['idPartesCuerpo'=>28, 'nombre' => 'MODIFICACIONES MUSLO DERECHO'],//50
-            ['idPartesCuerpo'=>33, 'nombre' => 'MODIFICACIONES OMBLIGO'],   //51
-            ['idPartesCuerpo'=>47, 'nombre' => 'MODIFICACIONES PIERNA IZQUIERDA'], //52
-            ['idPartesCuerpo'=>46, 'nombre' => 'MODIFICACIONES PIERNA DERECHA'],//53
-            ['idPartesCuerpo'=>49, 'nombre' => 'MODIFICACIONES RODILLA IZQUIERDA'], //54        
-            ['idPartesCuerpo'=>48, 'nombre' => 'MODIFICACIONES RODILLA DERECHA'],//55
-            ['idPartesCuerpo'=>51, 'nombre' => 'MODIFICACIONES TALÓN IZQUIERDO'], //56
-            ['idPartesCuerpo'=>50, 'nombre' => 'MODIFICACIONES TALÓN DERECHO'],   //57
-            ['idPartesCuerpo'=>45, 'nombre' => 'MODIFICACIONES PIE IZQUIERDO'],  //58
-            ['idPartesCuerpo'=>44, 'nombre' => 'MODIFICACIONES PIE DERECHO'],//59
-            ['idPartesCuerpo'=>42, 'nombre' => 'MODIFICACIONES PECHO DERECHO'],   //60
-            ['idPartesCuerpo'=>43, 'nombre' => 'MODIFICACIONES PECHO IZQUIERDO'],//61
-            ['idPartesCuerpo'=>41, 'nombre' => 'MODIFICACIONES PANTORRILLA IZQUIERDA'],  //62
-            ['idPartesCuerpo'=>40, 'nombre' => 'MODIFICACIONES PANTORRILLA DERECHA'],//63    
-            ['idPartesCuerpo'=>53, 'nombre' => 'MODIFICACIONES TOBILLO IZQUIERDO'],   //64
-            ['idPartesCuerpo'=>52, 'nombre' => 'MODIFICACIONES TOBILLO DERECHO'],//65
-            ['idPartesCuerpo'=>59, 'nombre' => 'MODIFICACIONES UÑA'],//66
-            ['idPartesCuerpo'=>60, 'nombre' => 'MODIFICACIONES CABEZA'],//67  
+            //PATILLAS
+            ['idPartesCuerpo'=>5, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>5, 'nombre' => 'LARGA'],
+            ['idPartesCuerpo'=>5, 'nombre' => 'RASURADA'],
+            ['idPartesCuerpo'=>5, 'nombre' => 'CERRADA'],
+            ['idPartesCuerpo'=>5, 'nombre' => 'DEPILADA'],
+            ['idPartesCuerpo'=>5, 'nombre' => 'OTRO'],
 
-            ['idPartesCuerpo'=>73, 'nombre' => 'MODIFICACIONES AMBAS CEJAS'],//68
-            ['idPartesCuerpo'=>74, 'nombre' => 'MODIFICACIONES AMBOS OJOS'],//69
-            ['idPartesCuerpo'=>75, 'nombre' => 'MODIFICACIONES MEJILLA IZQUIERDA'], //70 
-            ['idPartesCuerpo'=>76, 'nombre' => 'MODIFICACIONES MEJILLA DERECHA'], //71
-            ['idPartesCuerpo'=>77, 'nombre' => 'MODIFICACIONES AMBAS OREJAS'],//72
-            ['idPartesCuerpo'=>72, 'nombre' => 'MODIFICACIONES AMBOS LABIOS'],//73
+            //BIGOTE
+            ['idPartesCuerpo'=>4, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>4, 'nombre' => 'LARGA'],
+            ['idPartesCuerpo'=>4, 'nombre' => 'RASURADA'],
+            ['idPartesCuerpo'=>4, 'nombre' => 'CERRADA'],
+            ['idPartesCuerpo'=>4, 'nombre' => 'DEPILADA'],
+            ['idPartesCuerpo'=>4, 'nombre' => 'OTRO'],
 
-            ['idPartesCuerpo'=>68, 'nombre' => 'MODIFICACIONES ESPINILLA IZQUIERDA'],//74
-            ['idPartesCuerpo'=>67, 'nombre' => 'MODIFICACIONES ESPINILLA DERECHA'],//75
-            ['idPartesCuerpo'=>78, 'nombre' => 'MODIFICACIONES AMBOS PECHOS'],//76
+            //BARBA
+            ['idPartesCuerpo'=>3, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>3, 'nombre' => 'LARGA'],
+            ['idPartesCuerpo'=>3, 'nombre' => 'RASURADA'],
+            ['idPartesCuerpo'=>3, 'nombre' => 'CERRADA'],
+            ['idPartesCuerpo'=>3, 'nombre' => 'DEPILADA'],
+            ['idPartesCuerpo'=>3, 'nombre' => 'OTRO'],
+            
+            //MEJILLAS
+            ['idPartesCuerpo'=>12, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>12, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>12, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>12, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>12, 'nombre' => 'EXPANSIONES'],
+            ['idPartesCuerpo'=>12, 'nombre' => 'OTRO'],
+
+            
+
+            //NARIZ
+            ['idPartesCuerpo'=>10, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>10, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>10, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>10, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>10, 'nombre' => 'EXPANSIONES'],
+            ['idPartesCuerpo'=>10, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>10, 'nombre' => 'OTRO'],
+
+           
+            
+            //LABIO INFERIOR
+            ['idPartesCuerpo'=>14, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>14, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>14, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>14, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>14, 'nombre' => 'EXPANSIONES'],
+            ['idPartesCuerpo'=>14, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>14, 'nombre' => 'OTRO'],
+
+            
+
+
+            //MENTÓN
+            ['idPartesCuerpo'=>15, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>15, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>15, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>15, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>15, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>15, 'nombre' => 'OTRO'],
+
+            //CUELLO
+            ['idPartesCuerpo'=>16, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>16, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>16, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>16, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>16, 'nombre' => 'OTRO'],
+
+            //NUCA
+            ['idPartesCuerpo'=>61, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>61, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>61, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>61, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>61, 'nombre' => 'OTRO'],
+
+            //HOMBRO IZQUIERDO
+            ['idPartesCuerpo'=>18, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>18, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>18, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>18, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>18, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>18, 'nombre' => 'OTRO'],
+
+            //HOMBRO DERECHO
+            ['idPartesCuerpo'=>17, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>17, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>17, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>17, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>17, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>17, 'nombre' => 'OTRO'],
+
+
+            //BRAZO IZQUIERDO
+            ['idPartesCuerpo'=>20, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>20, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>20, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>20, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>20, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>20, 'nombre' => 'PROTESIS'],
+            ['idPartesCuerpo'=>20, 'nombre' => 'OTRO'],
+
+            //BRAZO DERECHO
+            ['idPartesCuerpo'=>30, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>30, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>30, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>30, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>30, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>30, 'nombre' => 'PROTESIS'],
+            ['idPartesCuerpo'=>30, 'nombre' => 'OTRO'],
+
+
+            //ANTEBRAZO IZQUIERDO
+            ['idPartesCuerpo'=>21, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>21, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>21, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>21, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>21, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>21, 'nombre' => 'OTRO'],
+
+            //ANTEBRAZO DERECHO
+            ['idPartesCuerpo'=>31, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>31, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>31, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>31, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>31, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>31, 'nombre' => 'OTRO'],
+
+            //CODO IZQUIERDO
+            ['idPartesCuerpo'=>22, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>22, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>22, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>22, 'nombre' => 'OTRO'],
+
+            //CODO DERECHO
+            ['idPartesCuerpo'=>32, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>32, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>32, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>32, 'nombre' => 'OTRO'],
+
+
+            //MUÑECA IZQUIERDO
+            ['idPartesCuerpo'=>43, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>43, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>43, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>43, 'nombre' => 'OTRO'],
+
+            //MUÑECA DERECHO
+            ['idPartesCuerpo'=>42, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>42, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>42, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>42, 'nombre' => 'OTRO'],
+
+
+            //PALMA IZQUIERDO
+            ['idPartesCuerpo'=>24, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>24, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>24, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>24, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>24, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>24, 'nombre' => 'OTRO'],
+
+            //PALMA DERECHO
+            ['idPartesCuerpo'=>34, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>34, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>34, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>34, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>34, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>34, 'nombre' => 'OTRO'],
+
+            //MANO IZQUIERDA
+            ['idPartesCuerpo'=>23, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>23, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>23, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>23, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>23, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>23, 'nombre' => 'PROTESIS'],
+            ['idPartesCuerpo'=>23, 'nombre' => 'OTRO'],
+
+            //MANO DERECHO
+            ['idPartesCuerpo'=>33, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>33, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>33, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>33, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>33, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>33, 'nombre' => 'PROTESIS'],
+            ['idPartesCuerpo'=>33, 'nombre' => 'OTRO'],
+
+            //DEDO ANULAR DERECHO
+            ['idPartesCuerpo'=>36, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>36, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>36, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>36, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>36, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>36, 'nombre' => 'PROTESIS'],
+            ['idPartesCuerpo'=>36, 'nombre' => 'OTRO'],
+            //DEDO ANULAR IZQUIERDO
+            ['idPartesCuerpo'=>27, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>27, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>27, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>27, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>27, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>27, 'nombre' => 'PROTESIS'],
+            ['idPartesCuerpo'=>27, 'nombre' => 'OTRO'],
+
+            //DEDO INDICE DERECHO
+            ['idPartesCuerpo'=>38, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>38, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>38, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>38, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>38, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>38, 'nombre' => 'PROTESIS'],
+            ['idPartesCuerpo'=>38, 'nombre' => 'OTRO'],
+            //DEDO INDICE IZQUIERDO
+            ['idPartesCuerpo'=>29, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>29, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>29, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>29, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>29, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>29, 'nombre' => 'PROTESIS'],
+            ['idPartesCuerpo'=>29, 'nombre' => 'OTRO'],
+
+            //DEDO MEDIO DERECHO
+            ['idPartesCuerpo'=>37, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>37, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>37, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>37, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>37, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>37, 'nombre' => 'PROTESIS'],
+            ['idPartesCuerpo'=>37, 'nombre' => 'OTRO'],
+            //DEDO MEDIO IZQUIERDO
+            ['idPartesCuerpo'=>28, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>28, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>28, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>28, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>28, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>28, 'nombre' => 'PROTESIS'],
+            ['idPartesCuerpo'=>28, 'nombre' => 'OTRO'],
+
+            //DEDO MENIQUE DERECHO
+            ['idPartesCuerpo'=>35, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>35, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>35, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>35, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>35, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>35, 'nombre' => 'PROTESIS'],
+            ['idPartesCuerpo'=>35, 'nombre' => 'OTRO'],
+            //DEDO MENIQUE IZQUIERDO
+            ['idPartesCuerpo'=>26, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>26, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>26, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>26, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>26, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>26, 'nombre' => 'PROTESIS'],
+            ['idPartesCuerpo'=>26, 'nombre' => 'OTRO'],
+
+            //DEDO PULGAR DERECHO
+            ['idPartesCuerpo'=>39, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>39, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>39, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>39, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>39, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>39, 'nombre' => 'PROTESIS'],
+            ['idPartesCuerpo'=>39, 'nombre' => 'OTRO'],
+            //DEDO PULGAR IZQUIERDO
+            ['idPartesCuerpo'=>25, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>25, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>25, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>25, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>25, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>25, 'nombre' => 'PROTESIS'],
+            ['idPartesCuerpo'=>25, 'nombre' => 'OTRO'],
+
+
+            //ESPALDA
+            ['idPartesCuerpo'=>62, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>62, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>62, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>62, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>62, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>62, 'nombre' => 'OTRO'],
+
+            //ABDOMEN
+            ['idPartesCuerpo'=>40, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>40, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>40, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>40, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>40, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>40, 'nombre' => 'OTRO'],
+
+            //CADERA
+            ['idPartesCuerpo'=>41, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>41, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>41, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>41, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>41, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>41, 'nombre' => 'OTRO'],
+
+            //NALGA IZQUIERDA
+            ['idPartesCuerpo'=>65, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>65, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>65, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>65, 'nombre' => 'OTRO'],
+
+            
+
+            //MUSLO IZQUIERDO
+            ['idPartesCuerpo'=>45, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>45, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>45, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>45, 'nombre' => 'OTRO'],
+
+            //MUSLO DERECHO
+            ['idPartesCuerpo'=>54, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>54, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>54, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>54, 'nombre' => 'OTRO'],
+
+            //OMBLIGO
+            ['idPartesCuerpo'=>52, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>52, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>52, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>52, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>52, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>52, 'nombre' => 'OTRO'],
+
+            //PIERNA IZQUIERDA
+            ['idPartesCuerpo'=>44, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>44, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>44, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>44, 'nombre' => 'OTRO'],
+
+            //PIERNA DERECHA
+            ['idPartesCuerpo'=>53, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>53, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>53, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>53, 'nombre' => 'OTRO'],
+
+            //RODILLA IZQUIERDA
+            ['idPartesCuerpo'=>46, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>46, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>46, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>46, 'nombre' => 'OTRO'],
+
+            //RODILLA DERECHA
+            ['idPartesCuerpo'=>55, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>55, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>55, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>55, 'nombre' => 'OTRO'],
+
+            //TALÓN IZQUIERDA
+            ['idPartesCuerpo'=>51, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>51, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>51, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>51, 'nombre' => 'OTRO'],
+
+            //TALÓN DERECHA
+            ['idPartesCuerpo'=>59, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>59, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>59, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>59, 'nombre' => 'OTRO'],
+
+            //PIE IZQUIERDA
+            ['idPartesCuerpo'=>49, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>49, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>49, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>49, 'nombre' => 'OTRO'],
+
+            //PIE DERECHA
+            ['idPartesCuerpo'=>58, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>58, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>58, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>58, 'nombre' => 'OTRO'],
+
+            //PECHO DERECHO
+            ['idPartesCuerpo'=>19, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>19, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>19, 'nombre' => 'PERFORADA'],
+            ['idPartesCuerpo'=>19, 'nombre' => 'PEARCING'],
+            ['idPartesCuerpo'=>19, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>19, 'nombre' => 'OTRO'],
+
+
+            //PANTORRILLA IZQUIERDA
+            ['idPartesCuerpo'=>48, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>48, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>48, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>48, 'nombre' => 'OTRO'],
+
+            //PANTORRILLA DERECHA
+            ['idPartesCuerpo'=>57, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>57, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>57, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>57, 'nombre' => 'OTRO'],
+
+            //TOBILLO IZQUIERDA
+            ['idPartesCuerpo'=>50, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>50, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>50, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>50, 'nombre' => 'OTRO'],
+
+            //TOBILLO DERECHA
+            ['idPartesCuerpo'=>60, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>60, 'nombre' => 'TATUADO'],
+            ['idPartesCuerpo'=>60, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>60, 'nombre' => 'OTRO'],
+
+            //UÑAS
+            ['idPartesCuerpo'=>64, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>64, 'nombre' => 'UÑAS POSTIZAS'],
+            ['idPartesCuerpo'=>64, 'nombre' => 'POLISH'],
+            ['idPartesCuerpo'=>64, 'nombre' => 'OTRO'],
+
+            //ESPINILLA IZQUIERDA
+            ['idPartesCuerpo'=>47, 'nombre' => 'SIN INFORMACION'],
+            ['idPartesCuerpo'=>47, 'nombre' => 'CICATRIZ'],
+            ['idPartesCuerpo'=>47, 'nombre' => 'MANCHAS'],
+            ['idPartesCuerpo'=>47, 'nombre' => 'LUNARES'],
+            ['idPartesCuerpo'=>47, 'nombre' => 'QUEMADURA'],
+            ['idPartesCuerpo'=>47, 'nombre' => 'OTRO'],
+
+            //ESPINILLA DERECHA
+            ['idPartesCuerpo'=>56, 'nombre' => 'SIN INFORMACION'],
+            ['idPartesCuerpo'=>56, 'nombre' => 'CICATRIZ'],
+            ['idPartesCuerpo'=>56, 'nombre' => 'MANCHAS'],
+            ['idPartesCuerpo'=>56, 'nombre' => 'LUNARES'],
+            ['idPartesCuerpo'=>56, 'nombre' => 'QUEMADURA'],
+            ['idPartesCuerpo'=>56, 'nombre' => 'OTRO'],
+
+            //FEMORAL IZQUIERDO
+            ['idPartesCuerpo'=>66, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>66, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>66, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>66, 'nombre' => 'OTRO'],
+
+            //FEMORAL DERECHO
+            ['idPartesCuerpo'=>67, 'nombre' => 'SIN INFORMACIÓN'],
+            ['idPartesCuerpo'=>67, 'nombre' => 'TATUADA'],
+            ['idPartesCuerpo'=>67, 'nombre' => 'CIRUGÍA'],
+            ['idPartesCuerpo'=>67, 'nombre' => 'OTRO'],
+
     ]);
     }
 }

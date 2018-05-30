@@ -41,7 +41,7 @@ class DescripcionFisicaController extends Controller
         //
     //try {
          $desaparecido = Desaparecido::find($request['idExtraviado']);
-
+         //dd($desaparecido);
          $desaparecido->estatura = $request['estatura'];
          $desaparecido->peso = $request['peso'];
          $desaparecido->idComplexion = $request['complexion'];
@@ -1217,6 +1217,7 @@ class DescripcionFisicaController extends Controller
     {
         //
         $desaparecido = Desaparecido::find($idDesaparecido);
+        //dd($desaparecido->toArray());
         $ids = array(1,6,11,13,15,16,20,23,24,34,35,36,37);
         //ids para cejas
         $idCejas = array(73,6,7);
@@ -1248,35 +1249,35 @@ class DescripcionFisicaController extends Controller
         $complexiones = \App\Models\CatComplexion::all()->pluck('nombre','id');
         $coloresPiel = \App\Models\CatColorPiel::all()->pluck('nombre','id');
         $coloresCuerpo = \App\Models\CatColoresCuerpo::all()->pluck('nombre','id');
-        $subParticularidades = \App\Models\CatSubParticularidades::all()->pluck('nombre','id');
-        $subModificaciones = \App\Models\CatSubModificaciones::all()->pluck('nombre','id');
+        $subParticularidades = \App\Models\CatParticularidadesCuerpo::all()->pluck('nombre','id');
+        $subModificaciones = \App\Models\CatModificacionesCuerpo::all()->pluck('nombre','id');
         //Datos para cabello
         $tipoCabello = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','55')->pluck('nombre','id');
         $tamanoCabello = \App\Models\CatTamanoCuerpo::where('idPartesCuerpo','55')->pluck('nombre','id');
         $coloresCabello = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','55')->pluck('nombre','id');
-        $partiCabello = \App\Models\CatSubParticularidades::where('idParticularidadesCuerpo','1')->pluck('nombre','id');
-        $modiCabello = \App\Models\CatSubModificaciones::where('idModificacionesCuerpo','1')->pluck('nombre','id');
+        $partiCabello = \App\Models\CatParticularidadesCuerpo::where('idPartesCuerpo','1')->pluck('nombre','id');
+        $modiCabello = \App\Models\CatModificacionesCuerpo::where('idPartesCuerpo','1')->pluck('nombre','id');
 
         //Datos Barba
         $tipoBarba = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','56')->pluck('nombre','id');
         
         $coloresBarba = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','56')->pluck('nombre','id');
-        $partiBarba = \App\Models\CatSubParticularidades::where('idParticularidadesCuerpo','16')->pluck('nombre','id');
-        $modiBarba = \App\Models\CatSubModificaciones::where('idModificacionesCuerpo','16')->pluck('nombre','id');
+        $partiBarba = \App\Models\CatParticularidadesCuerpo::where('idPartesCuerpo','16')->pluck('nombre','id');
+        $modiBarba = \App\Models\CatModificacionesCuerpo::where('idPartesCuerpo','16')->pluck('nombre','id');
 
         //Datos Bigote
         $tipoBigote = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','57')->pluck('nombre','id');
         
         $coloresBigote = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','57')->pluck('nombre','id');
-        $partiBigote = \App\Models\CatSubParticularidades::where('idParticularidadesCuerpo','12')->pluck('nombre','id');
-        $modiBigote = \App\Models\CatSubModificaciones::where('idModificacionesCuerpo','12')->pluck('nombre','id');
+        $partiBigote = \App\Models\CatParticularidadesCuerpo::where('idPartesCuerpo','12')->pluck('nombre','id');
+        $modiBigote = \App\Models\CatModificacionesCuerpo::where('idPartesCuerpo','12')->pluck('nombre','id');
 
         //Datos Patilla
         $tipoPatilla = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','58')->pluck('nombre','id');
         
         $coloresPatilla = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','58')->pluck('nombre','id');
-        $partiPatilla = \App\Models\CatSubParticularidades::where('idParticularidadesCuerpo','9')->pluck('nombre','id');
-        $modiPatilla = \App\Models\CatSubModificaciones::where('idModificacionesCuerpo','9')->pluck('nombre','id');
+        $partiPatilla = \App\Models\CatParticularidadesCuerpo::where('idPartesCuerpo','9')->pluck('nombre','id');
+        $modiPatilla = \App\Models\CatModificacionesCuerpo::where('idPartesCuerpo','9')->pluck('nombre','id');
 
         if ($desaparecido->estatura != null) {
             $aux = true;
