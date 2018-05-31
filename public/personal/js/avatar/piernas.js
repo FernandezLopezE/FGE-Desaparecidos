@@ -12,7 +12,7 @@ $(document).ready(function() {
   	});
 
   	//Cargar valores a select de particularidades de rodilla izquierdo
-    $.ajax({
+    /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+49,
          type:"GET",
          dataType:"json",
@@ -23,10 +23,10 @@ $(document).ready(function() {
             $("#partRodillaIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de rodilla izquierdo
-    $.ajax({
+    /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+49,
          type:"GET",
          dataType:"json",
@@ -37,10 +37,10 @@ $(document).ready(function() {
             $("#modRodillaIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de espinilla izquierda
-    $.ajax({
+    /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+68,
          type:"GET",
          dataType:"json",
@@ -51,10 +51,10 @@ $(document).ready(function() {
             $("#partEspinillaIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de espinilla izquierda
-    $.ajax({
+    /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+68,
          type:"GET",
          dataType:"json",
@@ -65,10 +65,10 @@ $(document).ready(function() {
             $("#modEspinillaIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de rodilla derecha
-    $.ajax({
+    /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+48,
          type:"GET",
          dataType:"json",
@@ -79,10 +79,10 @@ $(document).ready(function() {
             $("#partRodillaDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de rodilla derecha
-    $.ajax({
+    /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+48,
          type:"GET",
          dataType:"json",
@@ -93,10 +93,10 @@ $(document).ready(function() {
             $("#modRodillaDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de espinilla derecha
-    $.ajax({
+    /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+68,
          type:"GET",
          dataType:"json",
@@ -107,10 +107,10 @@ $(document).ready(function() {
             $("#partEspinillaDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de espinilla derecha
-    $.ajax({
+    /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+68,
          type:"GET",
          dataType:"json",
@@ -121,6 +121,6 @@ $(document).ready(function() {
             $("#modEspinillaDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
 });

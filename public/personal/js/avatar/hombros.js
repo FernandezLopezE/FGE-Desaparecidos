@@ -12,7 +12,7 @@ $(document).ready(function() {
 	});
 
 	//Cargar valores a select de particularidades de hombro izquierdo
-	$.ajax({
+	/*$.ajax({
        url: '/descripcionfisica/get_particularidades/'+18,
        type:"GET",
        dataType:"json",
@@ -23,10 +23,10 @@ $(document).ready(function() {
 		    	$("#partHombroIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
 	           });
 	        },  
-	});
+	});*/
 
 	//Cargar valores a select de modificaciones de hombro izquierdo
-	$.ajax({
+	/*$.ajax({
        url: '/descripcionfisica/get_modificaciones/'+18,
        type:"GET",
        dataType:"json",
@@ -37,10 +37,10 @@ $(document).ready(function() {
 		    	$("#modHombroIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
 	           });
 	        },  
-	});
+	});*/
 
 	//Cargar valores a select de particularidades de hombro derecho
-	$.ajax({
+	/*$.ajax({
        url: '/descripcionfisica/get_particularidades/'+17,
        type:"GET",
        dataType:"json",
@@ -51,10 +51,10 @@ $(document).ready(function() {
 		    	$("#partHombroDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
 	           });
 	        },  
-	});
+	});*/
 
 	//Cargar valores a select de modificaciones de hombro derecho
-	$.ajax({
+	/*$.ajax({
        url: '/descripcionfisica/get_modificaciones/'+17,
        type:"GET",
        dataType:"json",
@@ -65,7 +65,7 @@ $(document).ready(function() {
 		    	$("#modHombroDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
 	           });
 	        },  
-	});
+	});*/
 
 	//Mostrar otra particularidad hombro izquierdo
 	$("#partHombroIzq").change(function(event) {

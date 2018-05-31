@@ -33,12 +33,15 @@ $(document).ready(function(){
                     contenido = '<div class="form-group">';
                     contenido = contenido+'<label for="idPartecuerpo">Partes del cuerpo:</label>';
                     contenido = contenido+'<select type="select" class="form-control" id="idPartecuerpo">'
+                    contenido =contenido+'<option value="">[Seleccione una opción]</option>';
                     $.each(data.subpartes, function(key, value){
                         console.log(value);
                         contenido = contenido+'<option value="'+value.id+'">'+value.nombre+'</option>';
                     });
                     contenido = contenido+'</select>';
                     contenido = contenido+'</div>';
+                    contenido = contenido+'<div class="form-group" id="contenidoForm">';
+                    contenido = contenido +'</div>';
                 }else{
                     contenido="";
                     contenido = contenido+'<div class="form-group">';
@@ -112,7 +115,7 @@ $(document).ready(function(){
 
     $(document).on("change", "#idPartecuerpo", function(){
     //$(this).next().toggle();
-        alert("hola");
+        //alert("hola");
         var v= $("#idPartecuerpo").val();
         pintar_formulario(v);
     });
@@ -131,7 +134,7 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(data) {
                 console.log(data);
-                $('#formulario').empty();
+                $('#contenidoForm').empty();
 
                 $.each(data.reglas, function(key,value){
                     console.log("value"+value);
@@ -199,7 +202,7 @@ $(document).ready(function(){
                     contenido = contenido+'</div>';
                     contenido = contenido+'<button type="submit" class="btn btn-primary">Guardar</button>';  
                 
-               $('#formulario').append(contenido);
+               $('#contenidoForm').append(contenido);
           
             },
             error: function(data) {

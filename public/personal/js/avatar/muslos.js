@@ -12,7 +12,7 @@ $(document).ready(function() {
   	});
 
   	//Cargar valores a select de particularidades de muslo izquierdo
-    $.ajax({
+    /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+27,
          type:"GET",
          dataType:"json",
@@ -23,10 +23,10 @@ $(document).ready(function() {
             $("#partMusloIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de muslo izquierdo
-    $.ajax({
+    /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+27,
          type:"GET",
          dataType:"json",
@@ -37,10 +37,10 @@ $(document).ready(function() {
             $("#modMusloIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de muslo derecho
-    $.ajax({
+    /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+28,
          type:"GET",
          dataType:"json",
@@ -51,10 +51,10 @@ $(document).ready(function() {
             $("#partMusloDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de muslo derecho
-    $.ajax({
+    /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+28,
          type:"GET",
          dataType:"json",
@@ -65,6 +65,6 @@ $(document).ready(function() {
             $("#modMusloDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
 });
