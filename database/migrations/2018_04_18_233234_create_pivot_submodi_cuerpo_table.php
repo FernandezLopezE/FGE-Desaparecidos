@@ -16,8 +16,8 @@ class CreatePivotSubmodiCuerpoTable extends Migration
         Schema::create('pivot_submodi_cuerpo', function (Blueprint $table) {
             $table->integer('idCedulaPartesCuerpo')->unsigned()->nullable();           
             $table->foreign('idCedulaPartesCuerpo')->references('id')->on('cedula_partes_cuerpo');
-            $table->integer('idSubModificaciones')->unsigned()->nullable();           
-            $table->foreign('idSubModificaciones')->references('id')->on('cat_sub_modificaciones');
+            $table->integer('idModificaciones')->unsigned()->nullable();           
+            $table->foreign('idModificaciones')->references('id')->on('cat_modificaciones_cuerpo');
             $table->timestamps();
         });
     }
