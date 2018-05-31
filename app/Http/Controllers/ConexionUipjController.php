@@ -108,7 +108,7 @@ class ConexionUipjController extends Controller
             \DB::rollback();
             dd($data);
         }
-        dd($data);
+        //dd($data);
         return redirect()->action(
             'CedulaController@show', ['id' => $cedula->id]
         );
