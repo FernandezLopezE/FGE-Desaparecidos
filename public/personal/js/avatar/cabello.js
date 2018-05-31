@@ -599,7 +599,6 @@ $(document).ready(function(){
             $('#modiPatilla').prop('selectedIndex',0); 
 
             //Limpiar patilla
-            //$('#tienePatilla').prop('selectedIndex',0);
             $('#tipoPatilla').prop('selectedIndex',0);
             $('#colorPatilla').prop('selectedIndex',0);
             $('#otroTipoPat').val('');

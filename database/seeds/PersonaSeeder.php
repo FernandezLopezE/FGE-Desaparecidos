@@ -22,7 +22,7 @@ class PersonaSeeder extends Seeder
         //factory(\App\Models\Plan::class, 3)->create()->each(function ($planes) {
         //planes->auditorias()->save(factory(\App\Models\Auditoria::class)->make());
 
-        factory(App\Models\Cedula::class, 10)->create()->each(function ($cedula){
+       /* factory(App\Models\Cedula::class, 10)->create()->each(function ($cedula){
         $cedula->desaparecidos()->save(factory(App\Models\Desaparecido::class)->make());
         });
 
@@ -33,7 +33,7 @@ class PersonaSeeder extends Seeder
         factory(App\Models\Desaparecido::class, 10)->create()->each(function ($desaparecido){
         $desaparecido->domicilios()->save(factory(App\Models\Domicilio::class)->make());
         });
-
+*/
 
 
     }
