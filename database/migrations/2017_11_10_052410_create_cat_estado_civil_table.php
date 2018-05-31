@@ -15,7 +15,7 @@ class CreateCatEstadoCivilTable extends Migration
     {
         Schema::create('cat_estado_civil', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre', 50)->unique();
+            $table->string('nombre', 50);
 
             $table->timestamps();
             $table->softDeletes();

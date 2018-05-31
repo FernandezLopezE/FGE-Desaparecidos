@@ -20,8 +20,8 @@
 	  	<div class="card border-primary">
 	  		<div class="card border-success">
 	  			<div class="card-header">	
-					<h5>Datos de la desaparición
-					<button type="submit" class="btn btn-dark pull-right"  id="btnGuardarDescripcionHechos">	GUARDAR		
+					<h5>Descripción de los hechos
+					<button type="submit" class="btn btn-dark pull-right"  id="btnGuardarDescripcionHechos">	Guardar		
 					</button>		
 					</h5>
 				</div>
@@ -104,8 +104,7 @@
 														$domicilio->calle,
 														['class' => 'form-control mayuscula',
 															'id' => 'calle',
-															'data-validation' => 'required',
-															'data-validation-error-msg-required' => 'El campo es requerido'
+															
 														] )!!}				
 								</div>
 								<div class="form-group col">
@@ -180,8 +179,7 @@
 														$desaparecido->cedula->nombresAvisto,
 														['class' => 'form-control mayuscula',
 															'id' => 'nombres',
-															'data-validation' => 'required',
-                    'data-validation-error-msg-required' => 'El campo es requerido',
+														
 														] )!!}
 									<div class="form-control-feedback" id="error_nombres"></div>
 								</div>
@@ -191,8 +189,7 @@
 														$desaparecido->cedula->primerApAvisto,
 														['class' => 'form-control mayuscula',
 															'id' => 'primerAp',
-															'data-validation' => 'required',
-                    'data-validation-error-msg-required' => 'El campo es requerido',
+														
 														] )!!}
 									<div class="form-control-feedback" id="error_primerAp"></div>
 								</div>
@@ -427,6 +424,7 @@
    });
 	var vehiculoPlacas = "";
 	var vehiculoDescripcion = "";
+	var routeIndex2 = '{!! route('desaparicion.index') !!}';
 
 $(btnGuardarDescripcionHechos).click (function(){
 			
@@ -471,7 +469,7 @@ $(btnGuardarDescripcionHechos).click (function(){
 			console.log(dataString);
 
 			$.ajax({
-				url:'/desaparicion'+'/{!! $desaparecido->id !!}',
+				url: routeIndex2 +'/{!! $desaparecido->id !!}',
 				//headers:{'X-CSRF-TOKEN':token},
 				type: 'PUT',
 				data: dataString,
@@ -488,7 +486,7 @@ $(btnGuardarDescripcionHechos).click (function(){
 				                    text: 'Aceptar',
 				                    btnClass: 'btn-dark',
 				                    action: function(){
-				                    	window.location = '/desaparicion'+'/{!! $desaparecido->id !!}';
+				                    	window.location =  routeIndex2 +'/{!! $desaparecido->id !!}';
 				                    }//temina el action del boton aceptar 
 				                },
 				            }

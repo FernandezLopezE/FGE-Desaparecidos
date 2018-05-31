@@ -27,7 +27,7 @@ class ConsultasController extends Controller
                             ->leftJoin('persona as p', 'd.idPersona', '=', 'p.id')
                             ->leftJoin('cat_nacionalidad as n', 'p.idNacionalidad', '=', 'n.id')
                             //->where('d.tipoPersona','DESAPARECIDA')
-                            ->select('c.id','c.idDialecto', \DB::raw('DATE_FORMAT(c.created_at, "%d/%m/%Y %H:%m") as created_at'), 'p.nombres', 'p.primerAp', 'p.segundoAp', 'p.sexo','n.nombre as nacionalidad', 'd.apodo', 'd.edadExtravio')
+                            ->select('c.id','c.idDialecto', 'c.carpeta', 'c.idCarpeta', \DB::raw('DATE_FORMAT(c.created_at, "%d/%m/%Y %H:%m") as created_at'), 'p.nombres', 'p.primerAp', 'p.segundoAp', 'p.sexo','n.nombre as nacionalidad', 'd.apodo', 'd.edadExtravio')
                             ->get();
 
 		return response()->json($cedulas);
@@ -217,6 +217,7 @@ class ConsultasController extends Controller
                             //->whereBetween('des.edadExtravio', [$rg, $rg2])}
                             
                             ->where('tipoPersona','DESAPARECIDA')
+                            ->where('dd.tipoDireccion','LUGAR DE AVISTAMIENTO')
                             ->where('p.sexo',$masc)
                             ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
                             ->whereBetween(\DB::raw('CAST(des.estatura AS SIGNED)'), [$estatura1, $estatura2])
@@ -253,11 +254,13 @@ class ConsultasController extends Controller
             
                             ->orWhere('p.sexo', $fem) 
                             ->where('tipoPersona','DESAPARECIDA')
+                            ->where('dd.tipoDireccion','LUGAR DE AVISTAMIENTO')
                             ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
                             ->whereBetween(\DB::raw('CAST(des.estatura AS SIGNED)'), [$estatura1, $estatura2])
                             ->whereBetween(\DB::raw('CAST(des.peso AS SIGNED)'), [$peso1, $peso2])
                             ->whereBetween('dci.desaparicionFecha', [$desaparicionFecha1, $desaparicionFecha2])
                             ->whereBetween('dci.fechaVisita', [$reporteFecha1, $reporteFecha2])
+
                             ->when($estados, function ($q) use ($estados) {
                                 return $q->whereIn('ce.id', $estados);
                             })
@@ -358,6 +361,7 @@ class ConsultasController extends Controller
                      'cc.nombre as colonia',
                      'cc.codigoPostal as cp')
             ->where('idDesaparecido', $idDesaparecido)
+            ->where('tipoDireccion','!=', 'LUGAR DE AVISTAMIENTO')
                 ->get();        
 		return response()->json($domicilios);
         
@@ -555,7 +559,7 @@ class ConsultasController extends Controller
 
 	public function jsonColonias(Request $request, $id){
 		//if($request->ajax()){
-			$colonias = \App\Models\CatColonia::where('idMunicipio',$id)->get();
+			$colonias = \App\Models\CatColonia::where('idMunicipio',$id)->orderBy('nombre')->get();
 			return response()->json($colonias);
 		//}
 	}

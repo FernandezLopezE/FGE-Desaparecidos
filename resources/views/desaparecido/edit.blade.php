@@ -126,12 +126,12 @@
 										 	'placeholder' => 'Ingrese el C.U.R.P.'
 										 ]) !!}
 						<div class="form-control-feedback" id="error_curp"></div>
-					</div>			
+					</div>					
 					<div class="form-group col-md-4" id="div_idEscolaridad">
 						{!! Form::label ('idEscolaridad','Escolaridad:', ['class' => 'form-control-label']) !!}
 						{!! Form::select ('idEscolaridad',
 											$escolaridades,
-											$desaparecido->persona->idEscolaridad,
+											$desaparecido->idEscolaridad,
 											['class' => 'form-control',
 											] )!!}
 						<div class="form-control-feedback" id="error_idEscolaridad"></div>

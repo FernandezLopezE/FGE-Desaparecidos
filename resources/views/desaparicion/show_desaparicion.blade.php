@@ -8,9 +8,15 @@
 
 @section('content')
 @include('navs.navs_datos',array('activar' => 'desaparicion'))
-<a href="{{route('desaparicion.edit', ['id' => $desaparecido->id])}}" class="btn btn-dark pull-right">
-	EDITAR
-</a> 
+<div class="card border-primary">
+        <div class="card border-success">
+          <div class="card-header"> 
+                <h5>Descripción de los hechos
+                 <a href="{{route('desaparicion.edit', ['id' => $desaparecido->id])}}" class="btn btn-dark pull-right">
+						Editar </a>   
+                </h5>
+          </div>
+        </div>
 
 <div class="card-body bg-white">
 	<div class="row">
@@ -115,4 +121,5 @@
 			</div>
 	@endif
 </div>	
+</div>
 @endsection

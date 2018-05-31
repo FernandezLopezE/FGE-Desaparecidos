@@ -156,7 +156,5 @@ class DatabaseSeeder extends Seeder
         $this->call(CatTiposCuerpoSeeder::class);
         $this->call(CatTiposCorteSeeder::class);
 
-        //$this->call(PersonaSeeder::class);
-
     }
 }
