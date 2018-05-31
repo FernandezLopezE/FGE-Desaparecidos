@@ -56,8 +56,8 @@
               </div>
             </div>
             <div class="col" style="margin-left:-350px; margin-top:-20px;">
-              <img src="/images/cuerpo2.gif" class="img-fluid" alt="" width="27" height="57" style="float: right;" data-toggle="tooltip" title="Atrás" data-placement="bottom" id="btnTras">
-              <img src="/images/cuerpo1.gif" class="img-fluid" alt="" width="27" height="57" style="float: right; display:none;" data-toggle="tooltip" title="Frente" data-placement="bottom" id="btnFrente">
+              <img src="{{asset('/images/cuerpo2.gif')}}" class="img-fluid" alt="" width="27" height="57" style="float: right;" data-toggle="tooltip" title="Atrás" data-placement="bottom" id="btnTras">
+              <img src="{{asset('/images/cuerpo1.gif')}}" class="img-fluid" alt="" width="27" height="57" style="float: right; display:none;" data-toggle="tooltip" title="Frente" data-placement="bottom" id="btnFrente">
 
               @include('descripcionfisica.avatar')
               @include('descripcionfisica.avatarTras')
