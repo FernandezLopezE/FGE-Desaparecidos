@@ -98,9 +98,7 @@
 					{!! Form::label ('telefonos','Número:') !!}
 					{!! Form::text ('telefonos',
 										old('telefonos'), 
-										['class' => 'form-control mayuscula',
-											'data-validation' => 'required',
-											'data-validation-error-msg-required' => 'El campo es requerido'
+										['class' => 'form-control mayuscula'
 										] )!!}				
 				</div>
 				<div class="form-group col-lg-2">

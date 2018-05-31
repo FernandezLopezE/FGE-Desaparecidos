@@ -27,18 +27,7 @@ class DesaparicionRequest extends FormRequest
             'desaparicionFecha'       => 'required|date_format:d/m/Y H:i:s|before_or_equal:'.date('Y-m-d H:i:s'),
            /* 'horas'                  => 'required',
             'minutos'               => 'required',*/
-           
-            'nombres'               => 'required',
-            'segundoAp'             => '',
-            'primerAp'              => 'required',
-            'calle'                 => 'required',
             'referencia'            => 'required',
-            'idEstado'              => 'required',
-            'idMunicipio'           => 'required',
-            'idLocalidad'           => 'required',
-            'idColonia'             => 'required',
-            'idCodigoPostal'        => 'required',
-            'idParentesco'          => 'required',
             'descripcion'           => 'required',
         ];
 

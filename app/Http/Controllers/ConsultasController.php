@@ -27,7 +27,7 @@ class ConsultasController extends Controller
                             ->leftJoin('persona as p', 'd.idPersona', '=', 'p.id')
                             ->leftJoin('cat_nacionalidad as n', 'p.idNacionalidad', '=', 'n.id')
                             //->where('d.tipoPersona','DESAPARECIDA')
-                            ->select('c.id','c.idDialecto', \DB::raw('DATE_FORMAT(c.created_at, "%d/%m/%Y %H:%m") as created_at'), 'p.nombres', 'p.primerAp', 'p.segundoAp', 'p.sexo','n.nombre as nacionalidad', 'd.apodo', 'd.edadExtravio')
+                            ->select('c.id','c.idDialecto', 'c.carpeta', 'c.idCarpeta', \DB::raw('DATE_FORMAT(c.created_at, "%d/%m/%Y %H:%m") as created_at'), 'p.nombres', 'p.primerAp', 'p.segundoAp', 'p.sexo','n.nombre as nacionalidad', 'd.apodo', 'd.edadExtravio')
                             ->get();
 
 		return response()->json($cedulas);
@@ -555,7 +555,7 @@ class ConsultasController extends Controller
 
 	public function jsonColonias(Request $request, $id){
 		//if($request->ajax()){
-			$colonias = \App\Models\CatColonia::where('idMunicipio',$id)->get();
+			$colonias = \App\Models\CatColonia::where('idMunicipio',$id)->orderBy('nombre')->get();
 			return response()->json($colonias);
 		//}
 	}
