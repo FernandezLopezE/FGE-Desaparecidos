@@ -425,6 +425,7 @@
 	var vehiculoPlacas = "";
 	var vehiculoDescripcion = "";
 	var routeIndex2 = '{!! route('desaparicion.index') !!}';
+
 $(btnGuardarDescripcionHechos).click (function(){
 			
 			
