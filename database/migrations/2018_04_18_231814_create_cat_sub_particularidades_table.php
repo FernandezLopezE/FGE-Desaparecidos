@@ -16,8 +16,10 @@ class CreateCatSubParticularidadesTable extends Migration
         Schema::create('cat_sub_particularidades', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->integer('idParticularidadesCuerpo')->unsigned()->nullable();           
-            $table->foreign('idParticularidadesCuerpo')->references('id')->on('cat_particularidades_cuerpo');
+            $table->integer('idPartesCuerpo')->unsigned()->nullable();           
+            $table->foreign('idPartesCuerpo')->references('id')->on('cat_partes_cuerpo');
+            //$table->integer('idParticularidadesCuerpo')->unsigned()->nullable();           
+            //$table->foreign('idParticularidadesCuerpo')->references('id')->on('cat_particularidades_cuerpo');
             $table->timestamps();
         });
     }
