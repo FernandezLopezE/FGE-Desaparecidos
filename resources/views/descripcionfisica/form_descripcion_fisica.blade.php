@@ -77,6 +77,8 @@
   var aux ="{{$aux}}";
   var extraviado = "{{$desaparecido->id}}";
   var showCabello2 = "{{$showCabello}}";
+  var routeDescrip ="{!! route('descripcionfisica.index') !!}";
+  var routeConsul ="{!! route('consultas.index') !!}";
 
   //Boton frente
   $("#btnTras").click(function(event) {

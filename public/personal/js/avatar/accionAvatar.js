@@ -21,7 +21,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: 'GET',
-            url: '/consultas/json_subparte_cuerpo/'+parteCuerpo,            
+            url: routeConsul+'/json_subparte_cuerpo/'+parteCuerpo,            
             dataType: 'json',
             success: function(data) {
                 console.log(data);
