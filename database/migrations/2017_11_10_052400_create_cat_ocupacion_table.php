@@ -15,7 +15,7 @@ class CreateCatOcupacionTable extends Migration
     {
         Schema::create('cat_ocupacion', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre',100)->unique();
+            $table->string('nombre',100);
             $table->timestamps();
             $table->softDeletes();
         });
