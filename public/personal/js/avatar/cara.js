@@ -1404,6 +1404,13 @@ $(document).ready(function() {
 	                                                          '</div>'+
 	                                                      '</div>'+
 	                                                  '</div>');*/
+								color = (value.color) ? value.color : "SIN INFORMACIÓN";
+								tamano = (value.tamano) ? value.tamano : "SIN INFORMACIÓN";
+								tipo = (value.tipo) ? value.tipo : "SIN INFORMACIÓN";
+								observaciones = (value.observaciones) ? value.observaciones : "SIN INFORMACIÓN";
+								particularidades = (value.particularidades) ? value.particularidades : "SIN INFORMACIÓN";
+								modificaciones = (value.modificaciones) ? value.modificaciones : "SIN INFORMACIÓN";
+
 								html  = '<div id="accordion">';
 								html = html+'<div class="card">';
 
@@ -1423,7 +1430,7 @@ $(document).ready(function() {
 								html = html+'<label>Color:</label>';
 								html = html+'</div>';
 								html = html+'<div class="col">';
-								html = html+'<p>'+value.color+'</p>';
+								html = html+'<p>'+ color+'</p>';
 								html = html+'</div>';
 								html = html+'</div>';
 								 
@@ -1432,7 +1439,7 @@ $(document).ready(function() {
 								html = html+'<label>Tamaño:</label>';
 								html = html+'</div>';
 								html = html+'<div class="col">';
-								html = html+'<p>'+value.tamano+'</p>';
+								html = html+'<p>'+tamano+'</p>';
 								html = html+'</div>';
 								html = html+'</div>';
 								 
@@ -1441,7 +1448,7 @@ $(document).ready(function() {
 								html = html+'<label>Tipo:</label>';
 								html = html+'</div>';
 								html = html+'<div class="col">';
-								html = html+'<p>'+value.tipo+'</p>';
+								html = html+'<p>'+tipo+'</p>';
 								html = html+'</div>';
 								html = html+'</div>';
 								 
@@ -1450,7 +1457,7 @@ $(document).ready(function() {
 								html = html+'<label>Particularidades:</label>';
 								html = html+'</div>';
 								html = html+'<div class="col">';
-								html = html+'<p>'+value.particularidades+'</p>';
+								html = html+'<p>'+particularidades+'</p>';
 								html = html+'</div>';
 								html = html+'</div>';
 								 
@@ -1459,7 +1466,7 @@ $(document).ready(function() {
 								html = html+'<label>Modificaciones:</label>';
 								html = html+'</div>';
 								html = html+'<div class="col">';
-								html = html+'<p>'+value.modificaciones+'</p>';
+								html = html+'<p>'+modificaciones+'</p>';
 								html = html+'</div>';
 								html = html+'</div>';
 
@@ -1469,7 +1476,7 @@ $(document).ready(function() {
 								html = html+'</div>';
 
 								html = html+'<div class="col">';
-								html = html+'<p>'+value.observaciones+'</p>';
+								html = html+'<p>'+observaciones+'</p>';
 								html = html+'</div>';
 								html = html+'</div>';
 

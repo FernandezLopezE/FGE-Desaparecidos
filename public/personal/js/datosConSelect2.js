@@ -56,7 +56,7 @@ $(document).ready(function(){
 				DOMICILIO PERSONA DESAPARECIDA
 	***********************************************************/
 
-	$('#idEstado').select2();
+	/*$('#idEstado').select2();
 
 	$('#idMunicipio').select2();
 
@@ -64,7 +64,7 @@ $(document).ready(function(){
 
     $('#idColonia').select2();
 
-    $('#idCodigoPostal').select2();
+    $('#idCodigoPostal').select2();*/
 
 	/***********************************************************
 				DOCUMENTOS DE IDENTIDAD Y ANTECEDES JUDICIALES
