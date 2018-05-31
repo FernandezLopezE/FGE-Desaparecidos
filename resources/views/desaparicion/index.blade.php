@@ -20,8 +20,8 @@
 	  	<div class="card border-primary">
 	  		<div class="card border-success">
 	  			<div class="card-header">	
-					<h5>Datos de la desaparición
-					<button type="submit" class="btn btn-dark pull-right"  id="btnGuardarDescripcionHechos">	GUARDAR		
+					<h5>Descripción de los hechos
+					<button type="submit" class="btn btn-dark pull-right"  id="btnGuardarDescripcionHechos">	Guardar		
 					</button>		
 					</h5>
 				</div>
@@ -103,8 +103,7 @@
 														old('calle'),
 														['class' => 'form-control mayuscula',
 															'id' => 'calle',
-															'data-validation' => 'required',
-															'data-validation-error-msg-required' => 'El campo es requerido'
+														
 														] )!!}				
 								</div>
 								<div class="form-group col">
@@ -177,8 +176,7 @@
 														'',
 														['class' => 'form-control mayuscula',
 															'id' => 'nombres',
-															'data-validation' => 'required',
-																	'data-validation-error-msg-required' => 'El campo es requerido'
+														
 														] )!!}
 									<div class="form-control-feedback" id="error_nombres"></div>
 								</div>
@@ -187,8 +185,7 @@
 									{!! Form::text ('primerAp',
 														'',
 														['class' => 'form-control mayuscula',
-															'id' => 'primerAp','data-validation' => 'required',
-																	'data-validation-error-msg-required' => 'El campo es requerido'
+															'id' => 'primerAp',
 														] )!!}
 									<div class="form-control-feedback" id="error_primerAp"></div>
 								</div>
@@ -317,7 +314,7 @@
    });
 	var vehiculoPlacas = "";
 	var vehiculoDescripcion = "";
-
+var routeIndex = '{!! route('desaparicion.index') !!}';
 $(btnGuardarDescripcionHechos).click (function(){
 			
 		 if ($('#sinInformacionVehiculo').is(':checked')) {
@@ -359,7 +356,7 @@ $(btnGuardarDescripcionHechos).click (function(){
 			console.log(dataString);
 
 			$.ajax({
-				url:'/desaparicion',
+				url: routeIndex,
 				//headers:{'X-CSRF-TOKEN':token},
 				type: 'POST',
 				data: dataString,

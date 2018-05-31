@@ -11,6 +11,7 @@ class Cedula extends Model
 		'entrevistadorSegundoAp',
 		'entrevistadorCargo',
 		'carpeta',
+		'idCarpeta',
 		'interpreteNombres' ,			
 		'interpretePrimerAp', 			
 		'interpreteSegundoAp',			

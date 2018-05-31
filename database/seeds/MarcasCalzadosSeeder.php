@@ -18,7 +18,7 @@ class MarcasCalzadosSeeder extends Seeder
         	['nombre' => 'VANS',					'image' => '3.jpg'],
         	['nombre' => 'LEVIS',					'image' => '4.jpg'],
         	['nombre' => 'NIKE',					'image' => '5.jpg'],
-        	['nombre' => 'ADIDAAS',					'image' => '6.jpg'],
+        	['nombre' => 'ADIDAS',					'image' => '6.jpg'],
         	['nombre' => 'PUMA',					'image' => '7.jpg'],
         	['nombre' => 'FILA',					'image' => '8.jpg'],
         	['nombre' => 'ECKO',					'image' => '9.jpg'],

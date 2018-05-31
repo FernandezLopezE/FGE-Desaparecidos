@@ -664,6 +664,7 @@ $("#sinInformacionIm").change(function () {
     })*/
 
 //Agregar antecedentes medicos
+var routeIndexAM = '{!! route('antecedentesmedicos.index') !!}';
   $('#nuevoAntecedenteMedico').click (function(){
 
     var dataString = {
@@ -684,7 +685,7 @@ $("#sinInformacionIm").change(function () {
     console.log(dataString);
     $.ajax({
       type: 'POST',
-      url: '/antecedentesmedicos/store',
+      url: routeIndexAM+'/store',
       data: dataString,
       dataType: 'json',
       success: function(data) {           
