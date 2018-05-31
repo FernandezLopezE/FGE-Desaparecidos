@@ -65,8 +65,14 @@ class DesaparicionController extends Controller
         //domicilio
       //  $desaparicionFecha = Carbon::createFromFormat('d/m/Y', $desaparicionFecha)->format('Y-m-d');
         $tipoDireccion = ($request['tipoDireccion']);
-        $calle            = ($request['calle']);
+         $calle            = ($request['calle']);
+        if(empty($calle)){
+            $calle= "SIN INFORMACION";
+        }
         $numExterno = ($request['numExterno']);
+        if(empty($numExterno)){
+            $numExterno = "S/N";
+        }
         $idEstado = ($request['idEstado']);
         $idMunicipio = ($request['idMunicipio']);
         $idLocalidad = ($request['idLocalidad']);
@@ -306,7 +312,13 @@ class DesaparicionController extends Controller
       //  $desaparicionFecha = Carbon::createFromFormat('d/m/Y', $desaparicionFecha)->format('Y-m-d');
         $tipoDireccion = ($request['tipoDireccion']);
         $calle            = ($request['calle']);
+        if(empty($calle)){
+            $calle= "SIN INFORMACION";
+        }
         $numExterno = ($request['numExterno']);
+        if(empty($numExterno)){
+            $numExterno = "S/N";
+        }
         $idEstado = ($request['idEstado']);
         $idMunicipio = ($request['idMunicipio']);
         $idLocalidad = ($request['idLocalidad']);
