@@ -48,11 +48,15 @@
 				<dt class="col-sm-3">Complexión:</dt>
 				<dd class="col-sm-8" id="idComplexion">
 				</dd>
-				
-<!--
-				<dt class="col-sm-3">Tipo de cabello:</dt>
-				<dd class="col-sm-8"id="idTipoCabello"> </dd>
--->
+				<dt class="col-sm-3">Cabello:</dt>
+				<dd class="col-sm-8"id="idCabello"> </dd>
+				<dt class="col-sm-3">Vello facial:</dt>
+				<dd class="col-sm-8"id="idVelloFacial"> </dd>
+				<dt class="col-sm-3">Ojos:</dt>
+				<dd class="col-sm-8"id="idOjos"> </dd>
+				<dt class="col-sm-3">Labios:</dt>
+				<dd class="col-sm-8"id="idLabios"> </dd>
+
 				
 <!--
 				<dt class="col-sm-3">Edad aparente:</dt>
