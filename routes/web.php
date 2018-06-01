@@ -100,6 +100,8 @@ Route::get('consultas/codigos2/{idColonia}', 'ConsultasController@jsonCodigos2')
 // Calcula la edad años meses dias al día actual.
 Route::get('consultas/edad/{fecha_nacimiento}', 'ConsultasController@getEdad');
 
+/************************* RUTAS DE VESTIMENTA **********************************/
+Route::get('consultas/json_partes_cuerpo/{idParteCuerpo}', 'ConsultasController@json_partes_cuerpo')->name('consultas.jsonPartes');
 Route::get('consultas/json_subparte_cuerpo/{idParteCuerpo}', 'ConsultasController@json_subparte_cuerpo')->name('consultas.jsonSubpartes');
 
 Route::get('consultas/get_senas', 'ConsultasController@jsonSenas')
