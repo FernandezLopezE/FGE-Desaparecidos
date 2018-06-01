@@ -36,6 +36,7 @@ class VestimentaController extends Controller
 	 */
 	public function store(VestimentaRequest $request)
 	{
+		define('DS', DIRECTORY_SEPARATOR);
 		$vestimenta = array(
 			'material' 			=> $request->input('material'),
 			'talla' 			=> $request->input('talla'),
@@ -52,14 +53,14 @@ class VestimentaController extends Controller
 	    	{	    			    		
 	    		$vestimenta['path'] = $data->path;
 			} else {
-				if($data->path != 'images/vestimenta_sin_imagen.png'){
+				if($data->path != 'images'.DS.'vestimenta_sin_imagen.png'){
 					\Storage::disk('local')->delete($data->path);
 				}				
 				$mime = $request->file('archivo')->getMimeType();
 				$extension = strtolower($request->file('archivo')->getClientOriginalExtension());
 				$fileName = uniqid().'.'.$extension;
-				$path = "upload/vestimenta/".$fileName;
-				\Storage::disk('local')->put('upload/vestimenta/'.$fileName,  \File::get($request->file('archivo')));
+				$path = "upload".DS."vestimenta".DS.$fileName;
+				\Storage::disk('local')->put('upload'.DS.'vestimenta'.DS.$fileName,  \File::get($request->file('archivo')));
 				$vestimenta['path'] = $path;
 			}
 			
@@ -68,13 +69,13 @@ class VestimentaController extends Controller
 			$vestimenta['idDesaparecido'] = $request->input('idDesaparecido');
 			if(is_null($request->file('archivo')))
 	    	{
-	    		$vestimenta['path'] = "images/vestimenta_sin_imagen.png";
+	    		$vestimenta['path'] = "images".DS."vestimenta_sin_imagen.png";
 			} else {
 				$mime = $request->file('archivo')->getMimeType();
 				$extension = strtolower($request->file('archivo')->getClientOriginalExtension());
 				$fileName = uniqid().'.'.$extension;
-				$path = "upload/vestimenta/".$fileName;
-				\Storage::disk('local')->put('upload/vestimenta/'.$fileName,  \File::get($request->file('archivo')));	
+				$path = "upload".DS."vestimenta".DS.$fileName;
+				\Storage::disk('local')->put('upload'.DS.'vestimenta'.DS.$fileName,  \File::get($request->file('archivo')));	
 				$vestimenta['path'] = $path;		
 			}
 

@@ -21,7 +21,7 @@ class CreateDesaparecidoDentaduraTable extends Migration
 
 
             //$table->enum('dienteCompleto', ['SIN INFORMACION','NO','SI']);
-            $table->enum('asistioDentista', ['SIN INFORMACION','NO','SI']);
+            //$table->enum('asistioDentista', ['SIN INFORMACION','NO','SI']);
             //$table->enum('tieneInfoDentista', ['SIN INFORMACION','NO','SI']);
             $table->string('nombres')->nullable();
             $table->string('primerAp')->nullable();
@@ -30,23 +30,23 @@ class CreateDesaparecidoDentaduraTable extends Migration
             $table->string('telefono')->nullable();
             $table->string('direccion')->nullable();
 
-            $table->json('tratamientos')->nullable();
+            $table->text('tratamientos')->nullable();
 
             //$table->enum('perdiodiente', ['SIN INFORMACION','NO','SI']);
             
             //$table->enum('higieneBucal', ['SIN INFORMACION','NO','SI']);
-            $table->string('describeHigBucal')->nullable();
+            //$table->string('describeHigBucal')->nullable();
 
             //$table->enum('caries', ['SIN INFORMACION','NO','SI']);
-            $table->string('describeCaries')->nullable();
+            //$table->string('describeCaries')->nullable();
 
             //$table->enum('abcesos', ['SIN INFORMACION','NO','SI']);
-            $table->string('describeAbcesos')->nullable();
+            //$table->string('describeAbcesos')->nullable();
 
-            $table->json('enfermedades')->nullable();
+            $table->text('enfermedades')->nullable();
 
-            $table->enum('maloshabitos', ['SIN INFORMACION','NO','SI']);
-            $table->json('arraymaloshabitos')->nullable();
+            //$table->enum('maloshabitos', ['SIN INFORMACION','NO','SI']);
+            $table->text('arraymaloshabitos')->nullable();
 
             $table->string('describeHabito')->nullable();
 

@@ -30,6 +30,21 @@
     }
     </style>-->
 <style type="text/css">
+  a.fancybox img {
+     width: 200px;
+height:150px;
+    }
+    a.div_tamano{
+
+
+    }
+    a.fancybox{
+ margin:10px auto;
+  width:180px;
+  height:180px;
+}
+
+    
 .gallery
     {
         display: inline-block;
@@ -69,7 +84,6 @@
         top: -10px;
         padding: 1px 5px;
     }
-
 </style>
 
 @endsection
@@ -348,7 +362,7 @@
           </div>
         </div>
         
-         @include('antecedentesmedicos.modals.modal_cargar_documento')
+         @include('antecedentesmedicos.modals.modal_cargar_documento')  
  
        <div class="container page-top">
         <div class="row">
@@ -357,8 +371,9 @@
 
             @if($images->count())
                 @foreach($images as $image)
-                <div class='col-md-3 thumb'>
+                <div class='col-md-2 thumb' >
                    @if(substr ($image->ruta, -3) == "pdf")
+                    <a id ="div_tamano">
                          <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}" target="_blank">              
                            <center>
                             <img class="img-responsive zoom img-fluid" alt="" src="../images/documentopdf.png" width="150" height="220"  align="center" />
@@ -368,8 +383,9 @@
                                 <small class='text-muted'>{{ $image->name }}</small>
                             </div> <!-- text-center / end -->
                         </a>
+                      </a>
                     @else
-                       
+                       <a id ="div_tamano">
                         <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}">                
                            <img class="img-responsive zoom img-fluid" alt="" src="..{{ $image->ruta }}" />
                               
@@ -377,6 +393,7 @@
                                 <small class='text-muted'>{{ $image->name }}</small>
                             </div> <!-- text-center / end -->
                         </a>
+                        <a id ="div_tamano">
                     @endif
                     <form action="{{ url('imagenAntecedentesM',$image->id) }}" method="POST">
                     <input type="hidden" name="_method" value="delete">
@@ -392,9 +409,9 @@
     </div> <!--termina el row-->
 
   </div>
+  <br>
 </div>
-
-                         
+                       
 
 @endsection	
 
@@ -647,6 +664,7 @@ $("#sinInformacionIm").change(function () {
     })*/
 
 //Agregar antecedentes medicos
+var routeIndexAM = '{!! route('antecedentesmedicos.index') !!}';
   $('#nuevoAntecedenteMedico').click (function(){
 
     var dataString = {
@@ -667,7 +685,7 @@ $("#sinInformacionIm").change(function () {
     console.log(dataString);
     $.ajax({
       type: 'POST',
-      url: '/antecedentesmedicos/store',
+      url: routeIndexAM+'/store',
       data: dataString,
       dataType: 'json',
       success: function(data) {           
@@ -739,11 +757,11 @@ var rutas = [];
                             } else if (rutas.indexOf($nombre) > -1) {
                                 //console.log($nombre + ' ya existe en la colección de verduras.');
                             }*/
-
+var routeIndex = '{!! route('anexoscontroller.index') !!}';
 $("#fileImagenes").fileinput({
                   language:'es',
                   theme: 'fa',
-                  uploadUrl: "/imagenAntecedentesM",
+                  uploadUrl: routeIndex + '/imagenAntecedentesM',
 
                   uploadExtraData: function() {
                    

@@ -54,6 +54,21 @@ return [
             'engine' => null,
         ],
 
+        'mysql2' => [
+            'driver' => 'mysql',
+            'host' => env('DBII_HOST', '127.0.0.1'),
+            'port' => env('DBII_PORT', '3306'),
+            'database' => env('DBII_DATABASE', 'forge'),
+            'username' => env('DBII_USERNAME', 'forge'),
+            'password' => env('DBII_PASSWORD', ''),
+            'unix_socket' => env('DBII_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),

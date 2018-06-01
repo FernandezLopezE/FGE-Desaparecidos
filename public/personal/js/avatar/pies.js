@@ -13,8 +13,13 @@ $(document).ready(function() {
 
 
   	//Cargar valores a select de particularidades de tobillo izquierdo
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+53,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+53,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -27,8 +32,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de modificaciones de tobillo izquierdo
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+53,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_modificaciones/'+53,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -41,8 +51,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de particularidades de talon izquierdo
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+51,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+51,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -55,8 +70,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de modificaciones de talon izquierdo
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+51,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_modificaciones/'+51,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -69,8 +89,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de particularidades de pie izquierdo
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+45,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+45,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -83,8 +108,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de modificaciones de pie izquierdo
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+45,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_modificaciones/'+45,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -97,8 +127,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de particularidades de tobillo derecho
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+52,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+52,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -111,8 +146,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de modificaciones de tobillo derecho
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+52,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_modificaciones/'+52,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -125,8 +165,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de particularidades de talon derecho
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+50,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+50,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -139,8 +184,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de modificaciones de talon derecho
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+50,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_modificaciones/'+50,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -153,8 +203,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de particularidades de pie derecho
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+44,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+44,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -167,8 +222,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de modificaciones de pie derecho
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+44,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_modificaciones/'+44,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 

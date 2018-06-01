@@ -26,11 +26,11 @@ class CreateDesaparecidosPersonasTable extends Migration
 			$table->boolean('antecedentesJudiciales')->nullable();
 			$table->string('organizacion')->nullable();
 			$table->enum('tipoPersona', ['ENTREVISTADOR','INTERPRETE','INFORMANTE','AUTORIZADAS', 'DESAPARECIDA', 'AVISTO']);
-			$table->string('otroDocIdentidad',20)->nullable();
+			$table->string('otroDocIdentidad',100)->nullable();
 			$table->string('numDocIdentidad',20)->nullable();
 			$table->string('otroParentesco',20)->nullable();
-			$table->string('correoElectronico')->unique()->nullable();
-			$table->json('telefonos')->nullable();			
+			$table->string('correoElectronico',250)->nullable();
+			$table->text('telefonos')->nullable();			
 			$table->boolean('tieneHijos')->default(0);
 			$table->boolean('informante')->default(0);
 			$table->boolean('notificaciones')->default(0);	

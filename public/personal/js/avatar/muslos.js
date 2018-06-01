@@ -12,8 +12,13 @@ $(document).ready(function() {
   	});
 
   	//Cargar valores a select de particularidades de muslo izquierdo
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+27,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+27,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -26,8 +31,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de modificaciones de muslo izquierdo
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+27,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_modificaciones/'+27,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -40,8 +50,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de particularidades de muslo derecho
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+28,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+28,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -54,8 +69,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de modificaciones de muslo derecho
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+28,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_modificaciones/'+28,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 

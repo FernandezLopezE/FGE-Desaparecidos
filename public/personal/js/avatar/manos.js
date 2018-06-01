@@ -12,8 +12,13 @@ $(document).ready(function() {
   });
 
   //Cargar valores a select de particularidades de Muneca izquierdo
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+26,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+26,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -26,8 +31,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de modificaciones de Muneca izquierdo
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+26,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_modificaciones/'+26,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -40,8 +50,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de particularidades de palma izquierdo
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+39,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+39,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -54,8 +69,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de modificaciones de palma izquierdo
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+39,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_modificaciones/'+39,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -68,8 +88,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de particularidades de uñas mano izquierda
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+59,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+59,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -82,8 +107,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de modificaciones de uñas mano izquierda
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+59,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_modificaciones/'+59,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -96,8 +126,13 @@ $(document).ready(function() {
     });*/
 
       //Cargar valores a select de particularidades de Muneca derecha
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+25,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+25,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -110,8 +145,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de modificaciones de Muneca derecha
+<<<<<<< HEAD
    /* $.ajax({
          url: '/descripcionfisica/get_modificaciones/'+25,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_modificaciones/'+25,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -124,8 +164,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de particularidades de palma derecha
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+38,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+38,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -138,8 +183,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de modificaciones de palma derecha
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+38,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_modificaciones/'+38,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -152,8 +202,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de particularidades de uñas
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+59,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+59,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -166,8 +221,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de particularidades de uñas mano derecha
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+59,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+59,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -180,8 +240,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de modificaciones de uñas mano derecha
+<<<<<<< HEAD
    /* $.ajax({
          url: '/descripcionfisica/get_modificaciones/'+59,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_modificaciones/'+59,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 

@@ -10,58 +10,6 @@
 {!! Html::style('personal/css/datos_dentales/datosDentales.css') !!}
 <link href="../plugins/bootstrap_fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-
-<style type="text/css">
-.gallery
-   {
-   	display: inline-block;
-   	margin-top: 20px;
-   	margin-left: 20px;
-   	margin-right: 20px;
-   }
-
-   .close-icon
-   {
-   	border-radius: 50%;
-   	position: absolute;
-   	right: 5px;
-   	top: -10px;
-   	padding: 5px 8px;
-   }
-
-   .form-image-upload
-   {
-   	background: #e8e8e8
-   	none repeat scroll 0 0;
-   	padding: 15px;
-   }
-
-    .transition 
-    {
-    	-webkit-transform: scale(1.2);
-    	-moz-transform: scale(1.2);
-    	-o-transform: scale(1.2);
-    	transform: scale(1.2);
-    }
-
-    img.zoom 
-    {
-    	-webkit-transition: all .3s ease-in-out;
-    	-moz-transition: all .3s ease-in-out;
-    	-o-transition: all .3s ease-in-out;
-    	-ms-transition: all .3s ease-in-out;
-    }
-
-    .close-icon
-    {
-    	border-radius: 10%;
-    	position: absolute;
-    	right: 5px;
-    	top: -10px;
-    	padding: 1px 5px;
-    }
-
-</style>
 @endsection
 
 
@@ -70,48 +18,47 @@
 <nav>
 	<div class="card border-primary">
 		<div class="card-header">	
-			<h5>DATOS RELEVANTES
-				<button type="button" class="btn btn-dark pull-right" id="agregaInformacion" data-toggle="collapse" href="#primeraseccion">AGREGAR</button>
-				<button type="button" class="btn btn-dark pull-right" id="editarInformacion">EDITAR</button>
-				<button type="button" class="btn btn-dark pull-right" id="updateInformacion">ACTUALIZAR</button>
+			<h5>DATOS, TRATAMIENTOS, HIGIENE & HÁBITOS DENTALES DE LA PERSONA DESAPARECIDA
+				<button type="button" class="btn btn-dark pull-right" id="agregaInformacion">Guardar</button>
+				<button type="button" class="btn btn-dark pull-right" id="editarInformacion">Editar</button>
+				<button type="button" class="btn btn-dark pull-right" id="updateInformacion">Actualizar</button>
 			</h5>
 		</div>
 		<div class="card-body" id="primeraseccion">
-		<h5>Su familiar tiene sus dientes:</h5>
-		<div class="form-group row">
-			<div class="col-2">
-				{!! Form::label ('dienteTamano','Tamaño:') !!}
-				{!! Form::select ('nombreTamano',$dienteTamano, '', ['class' => 'form-control', 'id' => 'dienteTamano'])!!}	
-			</div>
-			<div class="col-2">
-				{!! Form::label ('atencionOdonto','Asistió al dentista:') !!}
-				{!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'atencionOdonto'] ) !!}
-			</div>
-			<div id="infoDen" class="col-4">
-				{!! Form::label ('infoDentista','Tiene información del dentista:') !!}
-				{!! Form::submit('Agregar datos dentista', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'datosdentista']) !!}
-			</div>
-			<div id="verinfodentista">
-				{!! Form::label ('infoDentista','Tiene información del dentista:') !!}
-				{!! Form::submit('Ver datos dentista', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'verdatosdentista']) !!}
-			</div>
-			<div>
-				@include('includes.modal_datos_dentista')
-			</div>
-		</div>
-		<hr>
-		<div class="form-group row">
-        	<div class="col-4">
-        		<h5>Tipo de perfil</h5>	
-        	</div>
-        	<div class="col-4">
-        		<h5>Tipo de mordida</h5>
-        	</div>
-        	<div class="col-4">
-        		<h5>Tipo de sonrisa</h5>
-        	</div>
-        </div>
-        <div class="form-group row">
+			<h5>Su familiar tiene sus dientes:</h5>
+			<div class="form-group row">
+				<div class="col-2">
+					{!! Form::label ('dienteTamano','Tamaño:') !!}
+					{!! Form::select ('nombreTamano',$dienteTamano, '', ['class' => 'form-control', 'id' => 'dienteTamano'])!!}	
+				</div>
+				<div class="col-2">
+					{!! Form::label ('atencionOdonto','Asistió al dentista:') !!}
+					{!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'atencionOdonto'] ) !!}
+				</div>
+				<div id="infoDen" class="col-4">
+					{!! Form::label ('infoDentista','Tiene información del dentista:') !!}
+					{!! Form::submit('Agregar datos dentista', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'datosdentista']) !!}
+				</div>
+				<div id="verinfodentista">
+					{!! Form::label ('infoDentista','Tiene información del dentista:') !!}
+					{!! Form::submit('Ver datos dentista', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'verdatosdentista']) !!}
+				</div>
+				<div>
+					@include('includes.modal_datos_dentista')
+				</div>
+			</div><hr>
+			<div class="form-group row">
+	        	<div class="col-4">
+	        		<h5>Tipo de perfil</h5>	
+	        	</div>
+	        	<div class="col-4">
+	        		<h5>Tipo de mordida</h5>
+	        	</div>
+	        	<div class="col-4">
+	        		<h5>Tipo de sonrisa</h5>
+	        	</div>
+	        </div>
+        <!-- <div class="form-group row">
             <div class="col-md-4">
                 {!! Form::label ('tipoperfil','¿Conoce qué tipo de perfil tiene su familiar?') !!}
                 {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'perfil'] ) !!}
@@ -124,243 +71,212 @@
                 {!! Form::label ('tiposonrisa','¿Conoce qué tipo de sonrisa tiene su familiar?') !!}
                 {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tiposonrisa'] ) !!}
             </div>
-        </div>
-        <div class="form-group row">
-        	<div class="col-md-4 row" >
-        		<div class="col" id="tipoperfil">
-        			{!! Form::label ('selectperfil','Seleccionar perfil') !!}
-               		{!! Form::submit('Click aquí', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'selectPerfil']) !!}
-               		@include('includes.modal_perfilDiente')
-            	</div>
-        		<div class="col" style="margin-left: -2%;margin-right: -15px" id="perfilseleccionado">
-        			{!! Form::label ('perfilselec','Perfil seleccionado') !!}
-                	{!! Form::text ('perfilselec',old('perfilselec'), ['class' => 'form-control mayuscula', 'id' => 'valorPerfil', 'readonly' => 'readonly'] )!!}
-            	</div>
-            	<div>
-            		{{ Form::hidden('idperfilselec','', array('id' => 'idperfilselec')) }}
-            	</div>
+        </div> -->
+		        <div class="form-group row">
+		        	<div class="col-md-4 row" >
+		        		<div class="col" id="tipoperfil">
+		        			{!! Form::label ('selectperfil','Seleccionar perfil') !!}
+		               		{!! Form::submit('Click aquí', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'selectPerfil']) !!}
+		               		@include('includes.modal_perfilDiente')
+		            	</div>
+		        		<div class="col" style="margin-left: -2%;margin-right: -15px" id="perfilseleccionado">
+		        			{!! Form::label ('perfilselec','Perfil seleccionado') !!}
+		                	{!! Form::text ('perfilselec',old('perfilselec'), ['class' => 'form-control mayuscula, fa', 'id' => 'valorPerfil', 'readonly' => 'readonly'] )!!}
+		            	</div>
+		            	<div>
+		            		{{ Form::hidden('idperfilselec','', array('id' => 'idperfilselec')) }}
+		            	</div>
+		        	</div>
+		        	<div class="col-md-4 row">
+		        		<div class="col" style="margin-right: -10px;margin-left: 4%;" id="tipomordida">
+		        			{!! Form::label ('selectMordida','Seleccionar mordida') !!}
+		                	{!! Form::submit('Click aquí', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'selectMordida']) !!}
+		                	@include('includes.modal_tipoMordida')
+		            	</div>
+		        		<div class="col" style="margin-right: -22px;" id="mordidaseleccionada">
+		        			{!! Form::label ('mordidaselec','Mordida seleccionada') !!}
+		                	{!! Form::text ('mordidaselec',old('mordidaselec'), ['class' => 'form-control mayuscula', 'id' => 'valormordida', 'readonly' => 'readonly'] )!!}
+		            	</div>
+		            	<div>
+		            		{{ Form::hidden('idmordidaselec','', array('id' => 'idmordidaselec')) }}
+		            	</div>
+		        	</div>
+		        	<div class="col-md-4 row">
+		        		<div class="col" style="margin-left: 35px; margin-right: -10%;" id="selecsonrisa">
+		        			{!! Form::label ('selectSonrisa','Seleccionar sonrisa') !!}
+		                	{!! Form::submit('Click aquí', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'selectSonrisa']) !!}
+		                	@include('includes.modal_tipoSonrisa')
+		            	</div>
+		        		<div class="col" style="margin-left: 37px; margin-right: -11%;" id="sonrisaseleccionada">
+		        			{!! Form::label ('sonrisaselec','Sonrisa seleccionada') !!}
+		                	{!! Form::text ('sonrisaselec',old('sonrisaselec'), ['class' => 'form-control mayuscula', 'id' => 'dientes_girados', 'readonly' => 'readonly'] )!!}
+		            	</div>
+		            	<div>
+		            		{{ Form::hidden('idsonrisaselec','', array('id' => 'idsonrisaselec')) }}
+		            	</div>
+		        	</div>
+		        </div>
+		        <hr>
+		        <div class="form-group row">
+		        	<div>
+		                <h5>Tratamientos dentales</h5>
+		            </div>
+		            <div class="col" align="right" >
+		                {!! Form::label ('direccion','Activar ayuda visual') !!}
+		                <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="SÍ" data-off="NO" data-size="small" onchange="myFunction()">
+		            </div>
+		        </div>
+		        <div class="form-group row">
+		            <div class="col">
+		                <!--{!! Form::checkbox('AMALGAMA', '2') !!}-->
+		                <input class="form-check-input" name="trata[]" type="checkbox" id="AMALGAMA" value=2 style="margin-top: 5px; margin-left: 0px">
+		                <a rel="popover" style="margin-left: 20px" data-img="{{ URL::to('/images/Dientes/amalgama.jpg')}}"><B>AMALGAMA</B></a>
+		            </div>
+		            <div class="col">
+		                <!--{!! Form::checkbox('BLANQUEAMIENTO DENTAL', '3') !!}-->
+		                <input class="form-check-input" name="trata[]" style="margin-top: 6px" type="checkbox" id="BLANQUEAMIENTO_DENTAL" value=3>
+		                <a  rel="popover" data-img="{{ URL::to('/images/Dientes/amalgama.jpg')}}"><B>BLANQUEAMIENTO DENTAL</B></a>
+		                <!--{!! Form::label ('BLANQUEAMIENTO DENTAL','BLANQUEAMIENTO DENTAL') !!}-->
+		            </div>
+		            <div class="col">
+		                <!--{!! Form::checkbox('BRACKETS', '4') !!}-->
+		                <input class="form-check-input" name="trata[]" style="margin-top: 6px" type="checkbox" id="BRACKETS" value=4>
+		                <a  rel="popover" data-img="{{ URL::to('/images/Dientes/brackets.jpg') }}"><b>BRACKETS</b></a>
+		            </div>
+		            <div class="col">
+		                <!--{!! Form::checkbox('CARILLA', '5') !!}-->
+		                <input class="form-check-input" name="trata[]" style="margin-top: 6px" type="checkbox" id="CARILLA" value=5>
+		                <a  rel="popover" data-img="{{ URL::to('/images/Dientes/corona.jpg') }}"><b>CARILLA</b></a>
+		            </div>
+		            <div class="col">
+		                <!--{!! Form::checkbox('CORONA ESTETICA', '6') !!}-->
+		                <input class="form-check-input" name="trata[]" style="margin-top: 6px" type="checkbox" id="CORONA_ESTETICA" value=6>
+		                <a  rel="popover" style="margin-left: -2px" data-img="{{ URL::to('/images/Dientes/corona.jpg') }}"><b>CORONA ESTETICA</b></a>
+		            </div>
+		        </div>
+	        	<div class="form-group row">
+	                <div class="col">
+	                    <!--{!! Form::checkbox('ENDODONCIA', '7') !!}-->
+	                    <input class="form-check-input" name="trata[]" style="margin-left: 0px" type="checkbox" id="ENDODONCIA" value=7>
+	                    <a  rel="popover" style="margin-top: -8px; margin-left: 20px;" data-img="{{ URL::to('/images/Dientes/endodoncia.jpg') }}"><b>ENDODONCIA</b></a>
+	                </div>
+	                <div class="col">
+	                    <!--{!! Form::checkbox('IMPLANTE', '8') !!}-->
+	                    <input class="form-check-input" name="trata[]" type="checkbox" id="IMPLANTE" value=8>
+	                    <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>IMPLANTE</b></a>
+	                </div>
+	                <div class="col">
+	                    <!--{!! Form::checkbox('OBTURACIÓN TEMPORAL', '9') !!}-->
+	                    <!--{!! Form::label ('OBTURACIÓN TEMPORAL','OBTURACIÓN TEMPORAL') !!}-->
+	                    <input class="form-check-input" name="trata[]" type="checkbox" id="OBTURACION_TEMPORAL" value=9>
+	                    <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>OBTURACIÓN TEMPORAL</b></a>
+	                </div>
+	                <div class="col">
+	                    <!--{!! Form::checkbox('PROTESIS FIJA', '10') !!}-->
+	                    <!--{!! Form::label ('PROTESIS FIJA','PROTESIS FIJA') !!}-->
+	                    <input class="form-check-input" name="trata[]" type="checkbox" id="PROTESIS_FIJA" value=10>
+	                    <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>PROTESIS FIJA</b></a>
+	                </div>
+	                <div class="col">
+	                    <!--{!! Form::checkbox('PROTESIS REMOVIBLE', '11') !!}-->
+	                    <!--{!! Form::label ('PROTESIS REMOVIBLE','PROTESIS REMOVIBLE') !!}-->
+	                    <input class="form-check-input" name="trata[]" type="checkbox" id="PROTESIS_REMOVIBLE" value=11>
+	                    <a  rel="popover" style="margin-top: -10px; margin-left: 0px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>PROTESIS REMOVIBLE</b></a>
+	                </div>
+		        </div>
+		        <div class="form-group row">
+	            <div class="col">
+	                <!--{!! Form::checkbox('PROTESIS TOTAL', '12') !!}-->
+	                <!--{!! Form::label ('PROTESIS TOTAL','PROTESIS TOTAL') !!}-->
+	                <input class="form-check-input" name="trata[]" style="margin-left: -0px;" type="checkbox" id="PROTESIS_TOTAL" value=12>
+	                <a  rel="popover" style="margin-top: -8px; margin-left: 20px" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>PROTESIS TOTAL</b></a>
+	            </div>
+	            <div class="col">
+	                <!--{!! Form::checkbox('RESINA', '13') !!}-->
+	                <input class="form-check-input" name="trata[]" type="checkbox" id="RESINA" value=13>
+	                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RESINA</b></a>
+	            </div>
+	            <div class="col">
+	                <!--{!! Form::checkbox('RETENEDOR', '14') !!}-->
+	                <!--{!! Form::label ('RETENEDOR','RETENEDOR') !!}-->
+	                <input class="form-check-input" name="trata[]" type="checkbox" id="RETENEDOR" value=14>
+	                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RETENEDOR</b></a>
+	            </div>
+	            <div class="col">
+	                <!--{!! Form::checkbox('SELLADOR FS', '15') !!}-->
+	                <!--{!! Form::label ('SELLADOR FS','SELLADOR FS') !!}-->
+	                <input class="form-check-input" name="trata[]" type="checkbox" id="SELLADOR" value=15>
+	                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>SELLADOR FS</b></a>
+	            </div>
+	            <div class="col">
+	                <!--{!! Form::checkbox('OTRO', '16') !!}-->
+	                <!--{!! Form::label ('OTRO','OTRO') !!}-->
+	                <input class="form-check-input" name="trata[]" type="checkbox" id="OTRO" value=16>
+	                {!! Form::label ('OTRO','OTRO') !!}
+	                <!--<a  rel="popover" style="margin-top: -8px;"><b>OTRO</b></a>-->
+	            </div>
         	</div>
-        	<div class="col-md-4 row">
-        		<div class="col" style="margin-right: -10px;margin-left: 4%;" id="tipomordida">
-        			{!! Form::label ('selectMordida','Seleccionar mordida') !!}
-                	{!! Form::submit('Click aquí', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'selectMordida']) !!}
-                	@include('includes.modal_tipoMordida')
-            	</div>
-        		<div class="col" style="margin-right: -22px;" id="mordidaseleccionada">
-        			{!! Form::label ('mordidaselec','Mordida seleccionada') !!}
-                	{!! Form::text ('mordidaselec',old('mordidaselec'), ['class' => 'form-control mayuscula', 'id' => 'valormordida', 'readonly' => 'readonly'] )!!}
-            	</div>
-            	<div>
-            		{{ Form::hidden('idmordidaselec','', array('id' => 'idmordidaselec')) }}
-            	</div>
-        	</div>
-        	<div class="col-md-4 row">
-        		<div class="col" style="margin-left: 35px; margin-right: -10%;" id="selecsonrisa">
-        			{!! Form::label ('selectSonrisa','Seleccionar sonrisa') !!}
-                	{!! Form::submit('Click aquí', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'selectSonrisa']) !!}
-                	@include('includes.modal_tipoSonrisa')
-            	</div>
-        		<div class="col" style="margin-left: 37px; margin-right: -11%;" id="sonrisaseleccionada">
-        			{!! Form::label ('sonrisaselec','Sonrisa seleccionada') !!}
-                	{!! Form::text ('sonrisaselec',old('sonrisaselec'), ['class' => 'form-control mayuscula', 'id' => 'dientes_girados', 'readonly' => 'readonly'] )!!}
-            	</div>
-            	<div>
-            		{{ Form::hidden('idsonrisaselec','', array('id' => 'idsonrisaselec')) }}
-            	</div>
-        	</div>
-        </div>
+	        <div id="otroTrata" class="form-group row">
+	            <div class="col-md-12" >
+	                {!! Form::label ('especifique','Especifique:') !!}
+	                {!! Form::text ('tratamiento',old('tratamiento'), ['class' => 'form-control mayuscula', 'id' => 'otroTratamiento'] )!!}
+           		</div>
+        	</div><hr>
+        	<div>
+				<h5 class="card-title">Hábitos bucales</h5><br>
+			</div>
+			<div class="form-group row">
+                <div class="col">
+                    {!! Form::checkbox('higieneBucal[]', 'higieneBucal') !!}
+                    {!! Form::label ('higieneBuc','MALA HIGIENE') !!}
+                    <!-- {!! Form::label ('higieneBuc','Presenta buena higiene bucal') !!}
+                    {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'higieneBucal'] ) !!} -->
+                </div>
+                <div class="col" >
+                    {!! Form::checkbox('higieneBucal[]', 'tieneCaries') !!}
+                    {!! Form::label ('CARIES','CARIES') !!}
+                    <!-- {!! Form::label ('tieneCarie','¿Tiene caries?') !!}
+                    {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tieneCaries'] ) !!} -->
+                </div>
+                <div class="col">
+                    {!! Form::checkbox('higieneBucal[]', 'nombreAbceso') !!}
+                    {!! Form::label ('nombreAbcesos','ABSCESOS') !!}
+                    <!-- {!! Form::label ('nombreAbcesos','¿Tiene abscesos?') !!}
+                    {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'nombreAbceso'] ) !!} -->
+                </div>
+                <div class="col">
+                    {!! Form::checkbox('enfermedad[]', 'SARRO') !!}
+                    {!! Form::label ('SARRO','SARRO') !!}
+                </div>
+                <div class="col">
+                    {!! Form::checkbox('enfermedad[]', 'GINGIVITIS') !!}
+                    {!! Form::label ('GINGIVITIS','GINGIVITIS') !!}
+                </div>
+            </div>
+            <div class="form-group row">
+            	<div class="col">
+                    {!! Form::checkbox('enfermedad[]', 'PERIODONTITIS') !!}
+                    {!! Form::label ('PERIODONTITIS','PERIODONTITIS') !!}
+                </div>
+                <div class="col" style="margin-left: -29px;">
+                    {!! Form::checkbox('malhabito[]', 'MORDERSE LAS UÑAS') !!}
+                    {!! Form::label ('MORDERSE LAS UÑAS','MORDERSE LAS UÑAS') !!}
+                </div>
+                <div class="col" style="margin-left: -29px;">
+                    {!! Form::checkbox('malhabito[]', 'MORDER ALGÚN OBJETO') !!}
+                    {!! Form::label ('MORDER ALGÚN OBJETO','MORDER ALGÚN OBJETO') !!}
+                </div>
+                <div class="col" style="margin-left: 0px;">
+                    <input class="form-check-input" type="checkbox" id="OTROH" value="OTRO" name="malhabito[]">
+                    {!! Form::label ('OTRO','OTRO') !!}
+                </div>
+                <div class="col" style="margin-top: -10px;margin-left: -70px;">
+                    {!! Form::text ('otro',old('otro'), ['class' => 'form-control mayuscula', 'id' => 'escpecifiquehabito', 'placeholder' => 'ESPECIFIQUE'] )!!}
+                </div>
+            </div>
 		</div>
 	</div>
 	
-	<div class="card border-primary" id="cardTratamientos">
-		<div class="card-header">
-			<h5>TRATAMIENTOS, HIGIENE & HÁBITOS DENTALES DE LA PERSONA DESAPARECIDA
-				<button type="button" class="btn btn-dark pull-right" id="agregardatodental">GUARDAR</button>
-				<button type="button" class="btn btn-dark pull-right" id="editarSegInformacion">EDITAR</button>
-				<button type="button" class="btn btn-dark pull-right" id="updateSegInformacion">ACTUALIZAR</button>
-			</h5>	
-		</div>
-		<div class="card-body" id="segundaseccion">
-			<div class="form-group row">
-            	<div>
-            		{!! Form::label ('TRATA','Marque la casilla si su familiar tuvo algún tratamiento dental') !!}
-            	</div>
-            	<div class="col" align="right" >
-                    {!! Form::label ('direccion','Activar ayuda visual') !!}
-                    <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="SÍ" data-off="NO" data-size="small" onchange="myFunction()">
-                </div>
-			</div>
-			<div class="form-group row">
-				<div class="col">
-					<!--{!! Form::checkbox('AMALGAMA', '2') !!}-->
-					<input class="form-check-input" name="trata[]" type="checkbox" id="AMALGAMA" value=2 style="margin-top: 5px; margin-left: 0px">
-					<a rel="popover" style="margin-left: 20px" data-img="{{ URL::to('/images/Dientes/amalgama.jpg')}}"><B>AMALGAMA</B></a>
-				</div>
-				<div class="col">
-					<!--{!! Form::checkbox('BLANQUEAMIENTO DENTAL', '3') !!}-->
-					<input class="form-check-input" name="trata[]" style="margin-top: 6px" type="checkbox" id="BLANQUEAMIENTO_DENTAL" value=3>
-					<a  rel="popover" data-img="{{ URL::to('/images/Dientes/amalgama.jpg')}}"><B>BLANQUEAMIENTO DENTAL</B></a>
-					<!--{!! Form::label ('BLANQUEAMIENTO DENTAL','BLANQUEAMIENTO DENTAL') !!}-->
-				</div>
-				<div class="col">
-					<!--{!! Form::checkbox('BRACKETS', '4') !!}-->
-					<input class="form-check-input" name="trata[]" style="margin-top: 6px" type="checkbox" id="BRACKETS" value=4>
-					<a  rel="popover" data-img="{{ URL::to('/images/Dientes/brackets.jpg') }}"><b>BRACKETS</b></a>
-				</div>
-				<div class="col">
-					<!--{!! Form::checkbox('CARILLA', '5') !!}-->
-					<input class="form-check-input" name="trata[]" style="margin-top: 6px" type="checkbox" id="CARILLA" value=5>
-					<a  rel="popover" data-img="{{ URL::to('/images/Dientes/corona.jpg') }}"><b>CARILLA</b></a>
-				</div>
-				<div class="col">
-					<!--{!! Form::checkbox('CORONA ESTETICA', '6') !!}-->
-					<input class="form-check-input" name="trata[]" style="margin-top: 6px" type="checkbox" id="CORONA_ESTETICA" value=6>
-					<a  rel="popover" style="margin-left: -2px" data-img="{{ URL::to('/images/Dientes/corona.jpg') }}"><b>CORONA ESTETICA</b></a>
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col">
-					<!--{!! Form::checkbox('ENDODONCIA', '7') !!}-->
-					<input class="form-check-input" name="trata[]" style="margin-left: 0px" type="checkbox" id="ENDODONCIA" value=7>
-					<a  rel="popover" style="margin-top: -8px; margin-left: 20px;" data-img="{{ URL::to('/images/Dientes/endodoncia.jpg') }}"><b>ENDODONCIA</b></a>
-				</div>
-				<div class="col">
-					<!--{!! Form::checkbox('IMPLANTE', '8') !!}-->
-					<input class="form-check-input" name="trata[]" type="checkbox" id="IMPLANTE" value=8>
-					<a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>IMPLANTE</b></a>
-				</div>
-				<div class="col">
-					<!--{!! Form::checkbox('OBTURACIÓN TEMPORAL', '9') !!}-->
-					<!--{!! Form::label ('OBTURACIÓN TEMPORAL','OBTURACIÓN TEMPORAL') !!}-->
-					<input class="form-check-input" name="trata[]" type="checkbox" id="OBTURACION_TEMPORAL" value=9>
-					<a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>OBTURACIÓN TEMPORAL</b></a>
-				</div>
-				<div class="col">
-					<!--{!! Form::checkbox('PROTESIS FIJA', '10') !!}-->
-					<!--{!! Form::label ('PROTESIS FIJA','PROTESIS FIJA') !!}-->
-					<input class="form-check-input" name="trata[]" type="checkbox" id="PROTESIS_FIJA" value=10>
-					<a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>PROTESIS FIJA</b></a>
-				</div>
-				<div class="col">
-					<!--{!! Form::checkbox('PROTESIS REMOVIBLE', '11') !!}-->
-					<!--{!! Form::label ('PROTESIS REMOVIBLE','PROTESIS REMOVIBLE') !!}-->
-					<input class="form-check-input" name="trata[]" type="checkbox" id="PROTESIS_REMOVIBLE" value=11>
-					<a  rel="popover" style="margin-top: -10px; margin-left: 0px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>PROTESIS REMOVIBLE</b></a>
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col">
-					<!--{!! Form::checkbox('PROTESIS TOTAL', '12') !!}-->
-					<!--{!! Form::label ('PROTESIS TOTAL','PROTESIS TOTAL') !!}-->
-					<input class="form-check-input" name="trata[]" style="margin-left: -0px;" type="checkbox" id="PROTESIS_TOTAL" value=12>
-					<a  rel="popover" style="margin-top: -8px; margin-left: 20px" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>PROTESIS TOTAL</b></a>
-				</div>
-				<div class="col">
-					<!--{!! Form::checkbox('RESINA', '13') !!}-->
-					<input class="form-check-input" name="trata[]" type="checkbox" id="RESINA" value=13>
-					<a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RESINA</b></a>
-				</div>
-				<div class="col">
-					<!--{!! Form::checkbox('RETENEDOR', '14') !!}-->
-					<!--{!! Form::label ('RETENEDOR','RETENEDOR') !!}-->
-					<input class="form-check-input" name="trata[]" type="checkbox" id="RETENEDOR" value=14>
-					<a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RETENEDOR</b></a>
-				</div>
-				<div class="col">
-					<!--{!! Form::checkbox('SELLADOR FS', '15') !!}-->
-					<!--{!! Form::label ('SELLADOR FS','SELLADOR FS') !!}-->
-					<input class="form-check-input" name="trata[]" type="checkbox" id="SELLADOR" value=15>
-					<a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>SELLADOR FS</b></a>
-				</div>
-				<div class="col">
-					<!--{!! Form::checkbox('OTRO', '16') !!}-->
-					<!--{!! Form::label ('OTRO','OTRO') !!}-->
-					<input class="form-check-input" name="trata[]" type="checkbox" id="OTRO" value=16>
-					{!! Form::label ('OTRO','OTRO') !!}
-					<!--<a  rel="popover" style="margin-top: -8px;"><b>OTRO</b></a>-->
-				</div>
-			</div>
-			<div id="otroTrata" class="form-group row">
-				<div class="col-md-12" >
-					{!! Form::label ('especifique','Especifique:') !!}
-					{!! Form::text ('tratamiento',old('tratamiento'), ['class' => 'form-control mayuscula', 'id' => 'otroTratamiento'] )!!}
-				</div>
-			</div><hr>
-
-			<div class="form-group row">
-                <div class="col-4">
-                    <h5></h5>
-                </div>
-            </div>
-			<h5>Sabe usted si su familiar:</h5>
-			<div class="form-group row">
-				<div class="col-md-3">
-					{!! Form::checkbox('higieneBucal[]', 'higieneBucal') !!}
-					{!! Form::label ('higieneBuc','MALA HIGIENE') !!}
-					<!-- {!! Form::label ('higieneBuc','Presenta buena higiene bucal') !!}
-					{!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'higieneBucal'] ) !!} -->
-				</div>
-				<div class="col-md-3">
-					{!! Form::checkbox('higieneBucal[]', 'tieneCaries') !!}
-					{!! Form::label ('CARIES','CARIES') !!}
-					<!-- {!! Form::label ('tieneCarie','¿Tiene caries?') !!}
-					{!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tieneCaries'] ) !!} -->
-				</div>
-				<div class="col-md-3">
-					{!! Form::checkbox('higieneBucal[]', 'nombreAbceso') !!}
-					{!! Form::label ('nombreAbcesos','ABSCESOS') !!}
-					<!-- {!! Form::label ('nombreAbcesos','¿Tiene abscesos?') !!}
-					{!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'nombreAbceso'] ) !!} -->
-				</div>
-				<div class="col-md-3">
-					{!! Form::checkbox('enfermedad[]', 'SARRO') !!}
-					{!! Form::label ('SARRO','SARRO') !!}
-				</div>
-			</div>
-			<div class="form-group row">
-				<div class="col-md-4">
-					{!! Form::text ('describaHB',old('Describa'), ['class' => 'form-control mayuscula', 'id' => 'describahb', 'placeholder' => 'Describa porque?'] )!!}
-				</div>
-				<div class="col-md-4">
-					{!! Form::text ('tieneCarie',old('Describa'), ['class' => 'form-control mayuscula', 'id' => 'DescribaCaries', 'placeholder' => 'Describa en donde tiene caries'] )!!}
-				</div>
-				<div class="col-md-4">
-					{!! Form::text ('describaAbceso',old('Describa'), ['class' => 'form-control mayuscula', 'id' => 'describeAbceso', 'placeholder' => 'Describe donde tiene abcesos'] )!!}
-				</div>
-			</div>
-
-			<div class="form-group row">				
-				<div class="col-md-3">
-					{!! Form::checkbox('enfermedad[]', 'GINGIVITIS') !!}
-					{!! Form::label ('GINGIVITIS','GINGIVITIS') !!}
-				</div>
-				<div class="col-md-3">
-					{!! Form::checkbox('enfermedad[]', 'PERIODONTITIS') !!}
-					{!! Form::label ('PERIODONTITIS','PERIODONTITIS') !!}
-				</div>
-				<div class="col-md-3">
-                	{!! Form::checkbox('malhabito[]', 'MORDERSE LAS UÑAS') !!}
-                    {!! Form::label ('MORDERSE LAS UÑAS','MORDERSE LAS UÑAS') !!}
-                </div>
-                <div class="col-md-3">
-    	            {!! Form::checkbox('malhabito[]', 'MORDER ALGÚN OBJETO') !!}
-	                {!! Form::label ('MORDER ALGÚN OBJETO','MORDER ALGÚN OBJETO') !!}
-                </div>
-			</div>
-
-			
-            <div class="form-group row">
-            	<div class="col-1" style="margin-left: 20px;">
-            		<input class="form-check-input" type="checkbox" id="OTROH" value="OTRO" name="malhabito[]">
-                    {!! Form::label ('OTRO','OTRO') !!}
-            	</div>
-            	<div class="col-5" id="especifiquehabito">
-                    {!! Form::text ('otro',old('otro'), ['class' => 'form-control mayuscula', 'id' => 'escpecifiquehabito', 'placeholder' => 'ESPECIFIQUE'] )!!}
-                </div>
-            </div><hr>
-		</div>
-	</div>
-
 	<div class="card border-primary" id="cardDientes">
 		<div class="card-header">
 			<div class="row">
@@ -480,47 +396,47 @@
 			                  	<div class="input-group" style="margin-top: 10px" id="TMIID">
 			                    	{!! Form::text ('TMII',old('TMII'), ['class' => 'form-control mayuscula', 'id' => 'TMII', 'disabled'] )!!}
 			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'TMIIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','38', array('id' => 'dienteselec38')) }}
+			                    	{{ Form::hidden('dienteselec[]','18', array('id' => 'dienteselec38')) }}
 			                  	</div>
 			                  	<div class="input-group" style="margin-top: 10px" id="SMIID">
 			                    	{!! Form::text ('SMII',old('SMII'), ['class' => 'form-control mayuscula', 'id' => 'SMII', 'disabled'] )!!}
 			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SMIIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','37', array('id' => 'dienteselec37')) }}
+			                    	{{ Form::hidden('dienteselec[]','17', array('id' => 'dienteselec37')) }}
 			                  	</div>
 			                  	<div class="input-group" style="margin-top: 10px" id="PMIID">
 			                    	{!! Form::text ('PMII',old('PMII'), ['class' => 'form-control mayuscula', 'id' => 'PMII', 'disabled'] )!!}
 			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PMIIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','36', array('id' => 'dienteselec36')) }}
+			                    	{{ Form::hidden('dienteselec[]','16', array('id' => 'dienteselec36')) }}
 			                  	</div>
 			                  	<div class="input-group" style="margin-top: 10px" id="SPIID">
 			                    	{!! Form::text ('SPII',old('SPII'), ['class' => 'form-control mayuscula', 'id' => 'SPII', 'disabled'] )!!}
 			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SPIIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','35', array('id' => 'dienteselec35')) }}
+			                    	{{ Form::hidden('dienteselec[]','15', array('id' => 'dienteselec35')) }}
 			                  	</div>
 			                  	<div class="input-group" style="margin-top: 10px" id="PPIID">
 			                    	{!! Form::text ('PPII',old('PPII'), ['class' => 'form-control mayuscula', 'id' => 'PPII', 'disabled'] )!!}
 			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PPIIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','34', array('id' => 'dienteselec34')) }}
+			                    	{{ Form::hidden('dienteselec[]','14', array('id' => 'dienteselec34')) }}
 			                  	</div>
 			                  	<div class="input-group" style="margin-top: 10px" id="CIID">
 			                    	{!! Form::text ('CII',old('CII'), ['class' => 'form-control mayuscula', 'id' => 'CII', 'disabled'] )!!}
 			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'CIIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','33', array('id' => 'dienteselec33')) }}
+			                    	{{ Form::hidden('dienteselec[]','13', array('id' => 'dienteselec33')) }}
 			                  	</div>
 			                  	<div class="input-group" style="margin-top: 10px" id="ILIID">
 			                    	{!! Form::text ('ILII',old('ILII'), ['class' => 'form-control mayuscula', 'id' => 'ILII', 'disabled'] )!!}
 			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ILIIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','32', array('id' => 'dienteselec32')) }}
+			                    	{{ Form::hidden('dienteselec[]','12', array('id' => 'dienteselec32')) }}
 			                  	</div>
 			                  	<div class="input-group" style="margin-top: 10px" id="ICIID">
 			                    	{!! Form::text ('ICII',old('ICII'), ['class' => 'form-control mayuscula', 'id' => 'ICII', 'disabled'] )!!}
 			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ICIIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','31', array('id' => 'dienteselec31')) }}
+			                    	{{ Form::hidden('dienteselec[]','11', array('id' => 'dienteselec31')) }}
 			                  	</div>
 			                  	<div class="input-group" style="margin-top: 10px" id="ICIDD">
 			                    	{!! Form::text ('ICID',old('ICID'), ['class' => 'form-control mayuscula', 'id' => 'ICID', 'disabled'] )!!}
 			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ICIDP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','41', array('id' => 'dienteselec41')) }}
+			                    	{{ Form::hidden('dienteselec[]','11', array('id' => 'dienteselec41')) }}
 			                  	</div>
 			                  	<div class="input-group" style="margin-top: 10px" id="ILIDD">
 			                    	{!! Form::text ('ILID',old('ILID'), ['class' => 'form-control mayuscula', 'id' => 'ILID', 'disabled'] )!!}
@@ -557,8 +473,8 @@
 			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'TMIDP',] )!!}
 			                    	{{ Form::hidden('dienteselec[]','48', array('id' => 'dienteselec48')) }}
 			                  	</div>
-			                  	<button type="button" class="btn btn-dark pull-right" id="upDiente" onclick="ConfirmDemo()">EDITAR</button>
-        						<button type="button" class="btn btn-dark pull-right" id="btnDiente" style="margin-top: 15px;">GUARDAR</button>
+			                  	<button type="button" class="btn btn-dark pull-right" id="btnDiente" style="margin-top: 15px;">Guardar</button>
+			                  	<button type="button" class="btn btn-dark pull-right" id="upDiente" onclick="ConfirmDemo()">Editar</button>
                     		</div>
                     	</div>
                     </div>
@@ -566,49 +482,58 @@
           	</div>
 		</div>
 	</div>
-	<div class="card border-primary">
-	  <div class="card border-success">
-	    <div class="card-header"> 
-	      <h5>AGREGAR ANEXOS
-	        <button type="submit" class="btn btn-dark pull-right"  id="btnAgregarAnexo"> AGREGAR</button>   
-	      </h5>
-	    </div>
-	  </div>
-	  @include('datosdentales.modals.modal_cargar_documento')
-  <div class="container page-top">
-    <div class="row">
-      
-      @if($images->count())
-        @foreach($images as $image)
-          <div class='col-md-3 thumb'>
-            @if(substr ($image->ruta, -3) == "pdf")
-              <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}" target="_blank">              
-                <center>
-                  <img class="img-responsive zoom img-fluid" alt="" src="../images/documentopdf.png" width="150" height="220"  align="center" />
-                </center>
-                <div class='text-center'>
-                  <small class='text-muted'>{{ $image->name }}</small>
-                </div>
-              </a>
-            @else
-              <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}">                
-                <img class="img-responsive zoom img-fluid" alt="" src="..{{ $image->ruta }}" />
-                  <div class='text-center'>
-                    <small class='text-muted'>{{ $image->name }}</small>
-                  </div>
-              </a>
-            @endif
-
-            <form action="{{ url('imagenAntecedentesM',$image->id) }}" method="POST">
-              <input type="hidden" name="_method" value="delete">
-                {!! csrf_field() !!}
-                  <button type="submit" class="close-icon btn btn-danger"><i class="fa fa-window-close"></i></button>
-            </form>
+	
+	 
+  	<div class="card border-primary">
+        <div class="card border-success">
+          <div class="card-header"> 
+              <h5>AGREGAR ANEXOS
+              <button type="submit" class="btn btn-dark pull-right"  id="btnAgregarAnexo"> Agregar  
+              </button>   
+              </h5>
           </div>
-        @endforeach
-      @endif
-    </div> 
-  </div>
+        </div>        
+         @include('datosdentales.modals.modal_cargar_documento')
+ 
+       <div class="container page-top">
+        <div class="row">
+            @if($images->count())
+                @foreach($images as $image)
+                <div class='col-md-2 thumb' >
+                   @if(substr ($image->ruta, -3) == "pdf")
+                    <a id ="div_tamano">
+                         <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}" target="_blank">              
+                           <center>
+                            <img class="img-responsive zoom img-fluid" alt="" src="../images/documentopdf.png" width="150" height="220"  align="center" />
+                          </center>
+                              
+                            <div class='text-center'>
+                                <small class='text-muted'>{{ $image->name }}</small>
+                            </div> 
+                        </a>
+                      </a>
+                    @else
+                       <a id ="div_tamano">
+                        <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}">                
+                           <img class="img-responsive zoom img-fluid" alt="" src="..{{ $image->ruta }}" />
+                              
+                            <div class='text-center'>
+                                <small class='text-muted'>{{ $image->name }}</small>
+                            </div> 
+                        </a>
+                        <a id ="div_tamano">
+                    @endif
+                    <form action="{{ url('imagenAntecedentesM',$image->id) }}" method="POST">
+                    <input type="hidden" name="_method" value="delete">
+                    {!! csrf_field() !!}
+                    <button type="submit" class="close-icon btn btn-danger"><i class="fa fa-window-close"></i></button>
+                    </form>
+                </div> 
+                @endforeach
+            @endif
+        </div> 
+    </div>
+    <br>
 </div>
 </nav>
 @endsection
@@ -635,7 +560,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 
 <script type="text/javascript">
-	console.log('ID de la persona desaparecida: {!! $desaparecido->id !!}');
+	//console.log('ID de la persona desaparecida: {!! $desaparecido->id !!}');
 
 	/*************************************************************
 	********* función para los toltip's de tratamientos **********S
@@ -696,7 +621,6 @@
 	/**********************************************************************
 	*** Inicia segmento para ocultar y/o mostrar campos en el formulario***
 	**********************************************************************/
-		$('#editarSegInformacion').hide();
 		$('#cardDientes').hide();
 		$('#editarInformacion').hide();
 		$('#updateInformacion').hide();
@@ -714,13 +638,13 @@
 		$('#morderuna').hide();
 		$('#morderobjeto').hide();
 		$('#otrohabito').hide();
-		$('#escpecifiquehabito').hide();
-		$('#tipoperfil').hide();
-		$('#perfilseleccionado').hide();
-		$('#tipomordida').hide();
-		$('#mordidaseleccionada').hide();
-		$('#selecsonrisa').hide();
-		$('#sonrisaseleccionada').hide();
+		$('#escpecifiquehabito').prop('disabled','true');
+		// $('#tipoperfil').hide();
+		// $('#perfilseleccionado').hide();
+		// $('#tipomordida').hide();
+		// $('#mordidaseleccionada').hide();
+		// $('#selecsonrisa').hide();
+		// $('#sonrisaseleccionada').hide();
 		$('#dentistahr').hide();
 		$('#upDiente').hide();
 
@@ -756,11 +680,11 @@
 
 		$('#OTROH').change(function () {
 			if (this.checked) {
-				$('#escpecifiquehabito').show();
+				$('#escpecifiquehabito').removeAttr('disabled');
 				$('#escpecifiquehabito').focus();
 			}else{
 				$('#escpecifiquehabito').val('');
-				$('#escpecifiquehabito').hide();	
+				$('#escpecifiquehabito').prop('disabled','true');	
 			}
 		});
 
@@ -820,19 +744,19 @@
 			}
 		});
 
-		$('#malosHabitos').change(function(){
-			malosHabitos = $('#malosHabitos').val();
-			if (malosHabitos == 'NO' || malosHabitos == 'SIN INFORMACIÓN') {
-				$('#morderuna').hide();
-				$('#morderobjeto').hide();
-				$('#otrohabito').hide();
-				$('#escpecifiquehabito').hide();
-			}else{
-				$('#morderuna').show();
-				$('#morderobjeto').show();
-				$('#otrohabito').show();
-			}
-		});
+		// $('#malosHabitos').change(function(){
+		// 	malosHabitos = $('#malosHabitos').val();
+		// 	if (malosHabitos == 'NO' || malosHabitos == 'SIN INFORMACIÓN') {
+		// 		$('#morderuna').hide();
+		// 		$('#morderobjeto').hide();
+		// 		$('#otrohabito').hide();
+		// 		$('#escpecifiquehabito').hide();
+		// 	}else{
+		// 		$('#morderuna').show();
+		// 		$('#morderobjeto').show();
+		// 		$('#otrohabito').show();
+		// 	}
+		// });
 
 		// $('#mapDientes').on('click', '#diente', function(){
 		// 	console.log('Estas dando click en la imagen');
@@ -881,11 +805,11 @@
    		$('#cerrarModal').click (function(){
   			location.reload();
   		});
-
+var routeIndex = '{!! route('anexoscontroller.index') !!}';
 		$("#fileImagenes").fileinput({
 			language:'es',
 			theme: 'fa',
-            uploadUrl: "/imagenAntecedentesD",
+            uploadUrl:routeIndex + '/imagenAntecedentesD',
             uploadExtraData: function() {
             	return {
             		_token: $("input[name='_token']").val(),
@@ -905,58 +829,91 @@
           	}
           });
 
-   		/**********************************************************************
-	*** Declaración de rutas a usar de los campos en el formulario ****
+   	/**********************************************************************
+	*** Declaración de rutas a usar de los campos en el formulario ********
 	***********************************************************************/
 	
 	var routedatosDentales = '{!! route('datos_dentales.index') !!}';
 	var routedientesPerdidos = '{!! route('datos_dentales_dientes_perdidos.index') !!}';
+	var idDesaparecido = '{!! $desaparecido->id !!}'
 
+	/************************************************************************
+	*** función que muestra el botón de VER DATOS DENTISTA al agregar ***
+	************************************************************************/
+	$('#agregaDentista').click(function(event) {
+		$('#infoDen').hide();
+		$('#verinfodentista').show();
+	});	
 
-		/************************************************************************
-		*** función que limpia campos al dar CANCELAR en modal datos dentista ***
-		************************************************************************/
-		$('#cancelardentista').click(function(event) {
-				$("#nombres").val('');
-				$("#primerAp").val('');
-				$("#segundoAp").val('');
-				$("#empresa").val('');
-				$("#telefono").val('');
-				$("#direccion").val('');
-		});		
+	/************************************************************************
+	*** función que muestra modal datos dentista para capturar datos ********
+	************************************************************************/
 
-		/************************************************************************
-		*** función que muestra el botón de VER DATOS DENTISTA al agregar ***
-		************************************************************************/
-		$('#agregaDentista').click(function(event) {
-			$('#infoDen').hide();
-			$('#verinfodentista').show();
-		});	
+	$('#datosdentista').click(function(e){
+    	$('#modalDentista').modal('show');
+    	$('#nombres').focus();
+	}); 
 
-		/************************************************************************
-		*** función que muestra modal datos dentista para capturar datos ********
-		************************************************************************/
+	/************************************************************************
+	** función que muestra el modal con los datos capturados anteriormente **
+	************************************************************************/
 
-    	$('#datosdentista').click(function(e){
-        	$('#modalDentista').modal('show');
-        	$('#nombres').focus();
-    	}); 
+	$('#verdatosdentista').click(function(e){
+    	$('#modalDentista').modal('show');
+	}); 
 
-		/************************************************************************
-		** función que muestra el modal con los datos capturados anteriormente **
-		************************************************************************/
+	/************************************************************************
+	******** función para guardar datos de todo el formulario ***************
+	************************************************************************/
 
-		$('#verdatosdentista').click(function(e){
-        	$('#modalDentista').modal('show');
-    	}); 
-
-    	/************************************************************************
-		** función para guardar los datos del formulario de la primera sección***
-		************************************************************************/
-
-		$('#agregaInformacion').click(function(){
-			$.confirm({
-        		title: 'Datos',
+	$('#agregaInformacion').click(function()
+	{
+		var dataString = {
+			dienteTamano : $("#dienteTamano").val(),
+			dienteCompleto : $("#dienteCompleto").val(),
+			//atencionOdonto : $("#atencionOdonto").val(),
+			//infoDentista : $("#infoDentista").val(),
+			nombres : $("#nombres").val(),
+			primerAp : $("#primerAp").val(),
+			segundoAp : $("#segundoAp").val(),
+			empresa : $("#empresa").val(),
+			telefono : $("#telefono").val(),
+			direccion : $("#direccion").val(),
+			//tratamiento : $('#SININFORMACION').val(),
+			//tratamiento : $("input[name='trata[]']").map(function(){return $(this).val();}).get(),
+			tratamiento : $("input[name='trata[]']").map(function(){return $(this).is(':checked');}).get(),
+			//describatrata : $("#otroTratamiento").val(),
+			//perdiodiente : $("#dientePerdido").val(),
+			//higieneBucal : $("#higieneBucal").val(),
+			//describahb : $("#describahb").val(),
+			//tieneCaries : $("#tieneCaries").val(),
+			//DescribaCaries : $("#DescribaCaries").val(),
+			//nombreAbceso : $("#nombreAbceso").val(),
+			//describeAbceso : $("#describeAbceso").val(),
+			//enfermedad : $("input[name='enfermedad[]']").map(function(){return $(this).val();}).get(),
+			enfermedad : $("input[name='enfermedad[]']").map(function(){return $(this).is(':checked');}).get(),
+			//malosHabitos : $("#malosHabitos").val(),
+			//malhabitos : $("input[name='malhabito[]']").map(function(){return $(this).val();}).get(),
+			malhabitos : $("input[name='malhabito[]']").map(function(){return $(this).is(':checked');}).get(),
+			especifiqhabito : $("#escpecifiquehabito").val(),
+			valorPerfil : $("#idperfilselec").val(),
+			valormordida : $("#idmordidaselec").val(),
+			valorsonrisa : $("#idsonrisaselec").val(),
+			idDesaparecido: '{!! $desaparecido->id !!}'
+		}
+		$.ajax({
+			type: 'POST',
+			url: routedatosDentales,
+			data: dataString,
+			dataType: 'json',
+			success: function(data){
+				
+				$('#agregaInformacion').hide();
+				$('#editarInformacion').show();
+				$('#primeraseccion').hide();
+				$('#cardDientes').show();
+				$.confirm({
+        		title: 'Datos dentales',
         		content: 'Guardados exitosamente.',
         		type: 'dark',
         		typeAnimated: true,
@@ -969,32 +926,117 @@
                 		},
             		}
         		});
-			$('#primeraseccion').hide();
-			$('#agregaInformacion').hide();
-			$('#editarInformacion').show();
-			$('#cardTratamientos').show();
-			$('#updateSegInformacion').hide();
+			},
+			error: function(data){
+				
+			}
 		});
+	});
 
-		/************************************************************************
-		** función para mostrar los datos del formulario de la primera sección***
-		************************************************************************/
+	/************************************************************************
+	********** función para habilitar los datos para editar *****************
+	************************************************************************/
 
-		$('#editarInformacion').click(function(){
-			$('#primeraseccion').show();
-			$('#agregaInformacion').hide();
-			$('#updateInformacion').show();
-			$('#editarInformacion').hide();
+	$('#editarInformacion').click(function(){
+		$('#editarInformacion').hide();
+		$('#cardDientes').hide();
+		$('#primeraseccion').show();
+		$('#updateInformacion').show();
+	});
+
+	/************************************************************************
+	********** función para habilitar los datos para editar *****************
+	************************************************************************/
+
+	$('#updateInformacion').click(function(){
+		var dataString = {
+			dienteTamano : $("#dienteTamano").val(),
+			dienteCompleto : $("#dienteCompleto").val(),
+			nombres : $("#nombres").val(),
+			primerAp : $("#primerAp").val(),
+			segundoAp : $("#segundoAp").val(),
+			empresa : $("#empresa").val(),
+			telefono : $("#telefono").val(),
+			direccion : $("#direccion").val(),
+			tratamiento : $("input[name='trata[]']").map(function(){return $(this).is(':checked');}).get(),
+			enfermedad : $("input[name='enfermedad[]']").map(function(){return $(this).is(':checked');}).get(),
+			malhabitos : $("input[name='malhabito[]']").map(function(){return $(this).is(':checked');}).get(),
+			especifiqhabito : $("#escpecifiquehabito").val(),
+			valorPerfil : $("#idperfilselec").val(),
+			valormordida : $("#idmordidaselec").val(),
+			valorsonrisa : $("#idsonrisaselec").val(),
+			idDesaparecido: '{!! $desaparecido->id !!}'
+		}
+
+		$.ajax({
+			type: 'PUT',
+			url: routedatosDentales+'/'+idDesaparecido,
+			data: dataString,
+			dataType: 'json',
+			success: function(data){
+				console.log(data);
+				$('#agregaInformacion').hide();
+				$('#updateInformacion').hide();
+				$('#editarInformacion').show();
+				$('#primeraseccion').hide();
+				$('#cardDientes').show();
+				$.confirm({
+        		title: 'Datos dentales',
+        		content: 'actualizados exitosamente.',
+        		type: 'dark',
+        		typeAnimated: true,
+        			buttons: {
+            			tryAgain: {
+                    	text: 'Aceptar',
+                    	btnClass: 'btn-dark',
+	                    	action: function(){
+
+                    		}
+                		},
+            		}
+            	});
+			},
+			error: function(data){
+				
+			}
 		});
+	});
 
-		/************************************************************************
-		** función para actualizar datos del formulario de la primera sección***
-		************************************************************************/
+	/************************************************************************
+	******* función para mostrar los datos de todo el formulario ************
+	************************************************************************/
 
-		$('#updateInformacion').click(function(){
-			$.confirm({
-        		title: 'Datos',
-        		content: 'Actualizados exitosamente.',
+
+	/**}**********************************************************************
+	**** función para guardar los datos del form de dientes seleccionados ***
+	************************************************************************/
+
+	$('#btnDiente').click(function()
+	{
+		var dataString = {
+			idDiente 	 : $("input[name='dienteselec[]']").map(function(){return $(this).val();}).get(),
+			causaPerdida : $("input[name='perdio[]']").map(function(){return $(this).val();}).get(),
+			idDesaparecido: '{!! $desaparecido->id !!}'
+		}
+		$.ajax({
+			type: 'POST',
+			url:  routedientesPerdidos,
+			data: dataString,
+			dataType: 'json',
+			success: function(data){
+				$('#btnDiente').hide();
+				$('#upDiente').show();
+				$('#dientes').attr('usemap', '');
+				$('#PMSIP').prop('disabled', true);
+				$('#SPSIP').prop('disabled', true);
+				$('#PPSIP').prop('disabled', true);
+				$('#CSIP').prop('disabled', true);
+				$('#ILSIP').prop('disabled', true);
+				$('#ICSIP').prop('disabled', true);
+				$('#ICSDP').prop('disabled', true);
+				$.confirm({
+        		title: 'Datos guardados!',
+        		content: 'Dientes perdidos guardados exitosamente.',
         		type: 'dark',
         		typeAnimated: true,
         		buttons: {
@@ -1006,169 +1048,36 @@
                 		},
             		}
         		});
-			$('#primeraseccion').hide();
-			$('#agregaInformacion').hide();
-			$('#updateInformacion').hide();
-			$('#editarInformacion').show();
-		});
-
-		/************************************************************************
-		******** función para guardar datos de todo el formulario ***************
-		************************************************************************/
-
-		$('#agregardatodental').click(function()
-		{
-			var dataString = {
-				dienteTamano : $("#dienteTamano").val(),
-				dienteCompleto : $("#dienteCompleto").val(),
-				atencionOdonto : $("#atencionOdonto").val(),
-				//infoDentista : $("#infoDentista").val(),
-				nombres : $("#nombres").val(),
-				primerAp : $("#primerAp").val(),
-				segundoAp : $("#segundoAp").val(),
-				empresa : $("#empresa").val(),
-				telefono : $("#telefono").val(),
-				direccion : $("#direccion").val(),
-				//tratamiento : $('#SININFORMACION').val(),
-				//tratamiento : $("input[name='trata[]']").map(function(){return $(this).val();}).get(),
-				tratamiento : $("input[name='trata[]']").map(function(){return $(this).is(':checked');}).get(),
-				describatrata : $("#otroTratamiento").val(),
-				//perdiodiente : $("#dientePerdido").val(),
-				//higieneBucal : $("#higieneBucal").val(),
-				describahb : $("#describahb").val(),
-				//tieneCaries : $("#tieneCaries").val(),
-				DescribaCaries : $("#DescribaCaries").val(),
-				//nombreAbceso : $("#nombreAbceso").val(),
-				describeAbceso : $("#describeAbceso").val(),
-				//enfermedad : $("input[name='enfermedad[]']").map(function(){return $(this).val();}).get(),
-				enfermedad : $("input[name='enfermedad[]']").map(function(){return $(this).is(':checked');}).get(),
-				//malosHabitos : $("#malosHabitos").val(),
-				//malhabitos : $("input[name='malhabito[]']").map(function(){return $(this).val();}).get(),
-				malhabitos : $("input[name='malhabito[]']").map(function(){return $(this).is(':checked');}).get(),
-				especifiqhabito : $("#escpecifiquehabito").val(),
-				valorPerfil : $("#idperfilselec").val(),
-				valormordida : $("#idmordidaselec").val(),
-				valorsonrisa : $("#idsonrisaselec").val(),
-				idDesaparecido: '{!! $desaparecido->id !!}'
+			},
+			error: function(data){
 			}
-			$.ajax({
-				type: 'POST',
-				url: routedatosDentales,
-				data: dataString,
-				dataType: 'json',
-				success: function(data){
-					$('#dientePerdido').prop('disabled', false);
-					$('#agregardatodental').hide();
-					$('#segundaseccion').hide();
-					$('#updatedatodental').show();
-					$('#cardDientes').show();
-					$('#editarSegInformacion').show();
-					$.confirm({
-            		title: 'Datos dentales',
-            		content: 'Guardados exitosamente.',
-            		type: 'dark',
-            		typeAnimated: true,
-            		buttons: {
-            			tryAgain: {
-                    	text: 'Aceptar',
-                    	btnClass: 'btn-dark',
-                    	action: function(){
-                    			}
-                    		},
-                		}
-            		});
-				},
-				error: function(data){
-					
-				}
-			});
 		});
-
-		/**}**********************************************************************
-		**** función para habilitar los datos de la segunda sección para editar***
-		************************************************************************/
-
-		$('#editarSegInformacion').click(function(){
-			$('#editarSegInformacion').hide();
-			$('#segundaseccion').show();
-			$('#updateSegInformacion').show();
-		});
-
-		/**}**********************************************************************
-		**** función para guardar los datos del form de dientes seleccionados ***
-		************************************************************************/
-
-		$('#btnDiente').click(function()
-		{
-			var dataString = {
-				idDiente 	 : $("input[name='dienteselec[]']").map(function(){return $(this).val();}).get(),
-				causaPerdida : $("input[name='perdio[]']").map(function(){return $(this).val();}).get(),
-				idDesaparecido: '{!! $desaparecido->id !!}'
-			}
-			$.ajax({
-				type: 'POST',
-				url:  routedientesPerdidos,
-				data: dataString,
-				dataType: 'json',
-				success: function(data){
-					$('#btnDiente').hide();
-					$('#upDiente').show();
-					$('#dientes').attr('usemap', '');
-					$('#PMSIP').prop('disabled', true);
-					$('#SPSIP').prop('disabled', true);
-					$('#PPSIP').prop('disabled', true);
-					$('#CSIP').prop('disabled', true);
-					$('#ILSIP').prop('disabled', true);
-					$('#ICSIP').prop('disabled', true);
-					$('#ICSDP').prop('disabled', true);
-					$.confirm({
-            		title: 'Datos guardados!',
-            		content: 'Dientes perdidos guardados exitosamente.',
-            		type: 'dark',
-            		typeAnimated: true,
-            		buttons: {
-            			tryAgain: {
-                    	text: 'Aceptar',
-                    	btnClass: 'btn-dark',
-                    	action: function(){
-                    			}
-                    		},
-                		}
-            		});
-				},
-				error: function(data){
-				}
-			});
-		});
+	});
 
 		
 
-		/************************************************************************
-		** función para guardar los datos del formulario de la segunda sección***
-		************************************************************************/
+	/************************************************************************
+	** función para guardar los datos del formulario de la segunda sección***
+	************************************************************************/
 
-		$('#updateSegInformacion').click(function(){
-			$.confirm({
-        		title: 'Datos',
-        		content: 'Guardados exitosamente.',
-        		type: 'dark',
-        		typeAnimated: true,
-        		buttons: {
-        			tryAgain: {
-                	text: 'Aceptar',
-                	btnClass: 'btn-dark',
-                	action: function(){
-                			}
-                		},
-            		}
-        		});
-			$('#editarSegInformacion').show();
-			$('#segundaseccion').hide();
-			$('#updateSegInformacion').hide();
-		});
-
-		
-
-		
+	$('#updateSegInformacion').click(function(){
+		$.confirm({
+    		title: 'Datos',
+    		content: 'Guardados exitosamente.',
+    		type: 'dark',
+    		typeAnimated: true,
+    		buttons: {
+    			tryAgain: {
+            	text: 'Aceptar',
+            	btnClass: 'btn-dark',
+            	action: function(){
+            			}
+            		},
+        		}
+    		});
+		$('#editarSegInformacion').show();
+		$('#segundaseccion').hide();
+		$('#updateSegInformacion').hide();
+	});
 </script>
 @endsection

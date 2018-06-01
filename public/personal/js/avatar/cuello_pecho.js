@@ -1,8 +1,13 @@
 $(document).ready(function() {
 
   //obtener particularidades
+<<<<<<< HEAD
         /*$.ajax({
                 url: '/descripcionfisica/get_particularidades/'+78,
+=======
+        $.ajax({
+                url: routeDescrip+'/get_particularidades/'+78,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
                 type:"GET",
                 dataType:"json",
 
@@ -19,8 +24,13 @@ $(document).ready(function() {
         });*/
 
         //obtener modificaciones
+<<<<<<< HEAD
         /*$.ajax({
                 url: '/descripcionfisica/get_modificaciones/'+78,
+=======
+        $.ajax({
+                url: routeDescrip+'/get_modificaciones/'+78,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
                 type:"GET",
                 dataType:"json",
 
@@ -52,8 +62,13 @@ $(document).ready(function() {
 
   
 	//Cargar valores a select de particularidades de cuello
+<<<<<<< HEAD
 	/*$.ajax({
        url: '/descripcionfisica/get_particularidades/'+10,
+=======
+	$.ajax({
+       url: routeDescrip+'/get_particularidades/'+10,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
        type:"GET",
        dataType:"json",
 
@@ -66,8 +81,13 @@ $(document).ready(function() {
 	});*/
 
 	//Cargar valores a select de modificaciones de cuello
+<<<<<<< HEAD
 	/*$.ajax({
        url: '/descripcionfisica/get_modificaciones/'+10,
+=======
+	$.ajax({
+       url: routeDescrip+'/get_modificaciones/'+10,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
        type:"GET",
        dataType:"json",
 
@@ -100,8 +120,13 @@ $(document).ready(function() {
   });
 
   //Cargar valores a select de pecho
+<<<<<<< HEAD
  /* $.ajax({
        url: '/descripcionfisica/get_particularidades/'+10,
+=======
+  $.ajax({
+       url: routeDescrip+'/get_particularidades/'+10,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
        type:"GET",
        dataType:"json",
 
@@ -117,8 +142,13 @@ $(document).ready(function() {
    $("#posPecho").change(function(){
       var idPartesCuerpo = $(this).val();
       //obtener particularidades
+<<<<<<< HEAD
         /*$.ajax({
                 url: '/descripcionfisica/get_particularidades/'+idPartesCuerpo,
+=======
+        $.ajax({
+                url: routeDescrip+'/get_particularidades/'+idPartesCuerpo,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
                 type:"GET",
                 dataType:"json",
 
@@ -135,8 +165,13 @@ $(document).ready(function() {
         });*/
 
         //obtener modificaciones
+<<<<<<< HEAD
        /* $.ajax({
                 url: '/descripcionfisica/get_modificaciones/'+idPartesCuerpo,
+=======
+        $.ajax({
+                url: routeDescrip+'/get_modificaciones/'+idPartesCuerpo,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
                 type:"GET",
                 dataType:"json",
 

@@ -15,7 +15,7 @@ class CreateCatNacionalidadTable extends Migration
     {
         Schema::create('cat_nacionalidad', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre',50)->unique();
+            $table->string('nombre',50);
             $table->string('lada');
             $table->timestamps();
             $table->softDeletes();

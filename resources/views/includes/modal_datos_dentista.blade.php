@@ -1,9 +1,9 @@
-<div class="modal fade" id="modalDentista" rle="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalDentista" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header" style="height: 40px; background-color: #E6E6E6">
-        <h5 class="modal-title" style="margin-left: 30%; margin-top: -10px;" id="exampleModalLabel">DATOS DEL DENTISTA</h5>
-        <button  type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top: -25px;">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Datos del dentista</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -36,9 +36,9 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-dismiss="modal" id="agregaDentista" >AGREGAR</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal" id="cancelardentista">CANCELAR</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" id="agregaDentista">Aceptar</button>
       </div>
     </div>
   </div>
 </div>
+

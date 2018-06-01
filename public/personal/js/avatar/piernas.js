@@ -12,8 +12,13 @@ $(document).ready(function() {
   	});
 
   	//Cargar valores a select de particularidades de rodilla izquierdo
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+49,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+49,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -26,8 +31,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de modificaciones de rodilla izquierdo
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+49,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_modificaciones/'+49,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -40,8 +50,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de particularidades de espinilla izquierda
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+68,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+68,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -54,8 +69,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de modificaciones de espinilla izquierda
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+68,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_modificaciones/'+68,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -68,8 +88,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de particularidades de rodilla derecha
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+48,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+48,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -82,8 +107,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de modificaciones de rodilla derecha
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+48,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_modificaciones/'+48,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -96,8 +126,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de particularidades de espinilla derecha
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_particularidades/'+68,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_particularidades/'+68,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
@@ -110,8 +145,13 @@ $(document).ready(function() {
     });*/
 
     //Cargar valores a select de modificaciones de espinilla derecha
+<<<<<<< HEAD
     /*$.ajax({
          url: '/descripcionfisica/get_modificaciones/'+68,
+=======
+    $.ajax({
+         url: routeDescrip+'/get_modificaciones/'+68,
+>>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
          type:"GET",
          dataType:"json",
 
