@@ -10,6 +10,6 @@ class PivotSubPartiCuerpo extends Model
     protected $table = 'pivot_subparti_cuerpo';
 	protected $fillable = [
 		'idCedulaPartesCuerpo',
-		'idSubParticularidades',
+		'idParticularidades',
 	];
 }

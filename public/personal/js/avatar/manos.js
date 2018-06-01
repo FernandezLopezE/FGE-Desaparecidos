@@ -12,8 +12,8 @@ $(document).ready(function() {
   });
 
   //Cargar valores a select de particularidades de Muneca izquierdo
-    $.ajax({
-         url: routeDescrip+'/get_particularidades/'+26,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+26,
          type:"GET",
          dataType:"json",
 
@@ -23,11 +23,11 @@ $(document).ready(function() {
             $("#partMunecaIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de Muneca izquierdo
-    $.ajax({
-         url: routeDescrip+'/get_modificaciones/'+26,
+    /*$.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+26,
          type:"GET",
          dataType:"json",
 
@@ -37,11 +37,11 @@ $(document).ready(function() {
             $("#modMunecaIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de palma izquierdo
-    $.ajax({
-         url: routeDescrip+'/get_particularidades/'+39,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+39,
          type:"GET",
          dataType:"json",
 
@@ -51,11 +51,11 @@ $(document).ready(function() {
             $("#partPalmaIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de palma izquierdo
-    $.ajax({
-         url: routeDescrip+'/get_modificaciones/'+39,
+    /*$.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+39,
          type:"GET",
          dataType:"json",
 
@@ -65,11 +65,11 @@ $(document).ready(function() {
             $("#modPalmaIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de uñas mano izquierda
-    $.ajax({
-         url: routeDescrip+'/get_particularidades/'+59,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+59,
          type:"GET",
          dataType:"json",
 
@@ -79,11 +79,11 @@ $(document).ready(function() {
             $("#partUnas").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de uñas mano izquierda
-    $.ajax({
-         url: routeDescrip+'/get_modificaciones/'+59,
+    /*$.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+59,
          type:"GET",
          dataType:"json",
 
@@ -93,11 +93,11 @@ $(document).ready(function() {
             $("#modUnas").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
       //Cargar valores a select de particularidades de Muneca derecha
-    $.ajax({
-         url: routeDescrip+'/get_particularidades/'+25,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+25,
          type:"GET",
          dataType:"json",
 
@@ -107,11 +107,11 @@ $(document).ready(function() {
             $("#partMunecaDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de Muneca derecha
-    $.ajax({
-         url: routeDescrip+'/get_modificaciones/'+25,
+   /* $.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+25,
          type:"GET",
          dataType:"json",
 
@@ -121,11 +121,11 @@ $(document).ready(function() {
             $("#modMunecaDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de palma derecha
-    $.ajax({
-         url: routeDescrip+'/get_particularidades/'+38,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+38,
          type:"GET",
          dataType:"json",
 
@@ -135,11 +135,11 @@ $(document).ready(function() {
             $("#partPalmaDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de palma derecha
-    $.ajax({
-         url: routeDescrip+'/get_modificaciones/'+38,
+    /*$.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+38,
          type:"GET",
          dataType:"json",
 
@@ -149,11 +149,11 @@ $(document).ready(function() {
             $("#modPalmaDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de uñas
-    $.ajax({
-         url: routeDescrip+'/get_particularidades/'+59,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+59,
          type:"GET",
          dataType:"json",
 
@@ -163,11 +163,11 @@ $(document).ready(function() {
             $("#partUnas").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de uñas mano derecha
-    $.ajax({
-         url: routeDescrip+'/get_particularidades/'+59,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+59,
          type:"GET",
          dataType:"json",
 
@@ -177,11 +177,11 @@ $(document).ready(function() {
             $("#partUnasDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de uñas mano derecha
-    $.ajax({
-         url: routeDescrip+'/get_modificaciones/'+59,
+   /* $.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+59,
          type:"GET",
          dataType:"json",
 
@@ -191,7 +191,7 @@ $(document).ready(function() {
             $("#modUnasDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
 
 });
