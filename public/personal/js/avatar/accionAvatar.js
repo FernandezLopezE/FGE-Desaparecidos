@@ -43,7 +43,7 @@ $(document).ready(function(){
                     contenido = contenido+'<div class="form-group" id="contenidoForm">';
                     contenido = contenido +'</div>';
                 }else{
-                    contenido="";
+                   /* contenido="";
                     contenido = contenido+'<div class="form-group">';
                     contenido = contenido+'<label for="idPosicion">Posición:</label>';
                     contenido = contenido+'<select type="select" class="form-control" id="idPosicion">';
@@ -102,7 +102,7 @@ $(document).ready(function(){
                     contenido = contenido+'<label for="observaciones">Observaciones:</label>';
                     contenido = contenido+'<textarea type="text" class="form-control" id="observaciones"></textarea>';
                     contenido = contenido+'</div>';
-                    contenido = contenido+'<button type="submit" class="btn btn-primary">Guardar</button>';  
+                    contenido = contenido+'<button type="submit" class="btn btn-primary">Guardar</button>';*/  
                 }
                $('#formulario').append(contenido);
 
@@ -117,7 +117,12 @@ $(document).ready(function(){
     //$(this).next().toggle();
         //alert("hola");
         var v= $("#idPartecuerpo").val();
-        pintar_formulario(v);
+        $('#contenidoForm').empty();
+        formulario = pintar_formulario(v);
+        console.log(formulario);
+        $('#contenidoForm').append(formulario);
+
+
     });
 
    /* $("#idPartecuerpo").change(function(){
@@ -133,81 +138,84 @@ $(document).ready(function(){
             url: routeConsul+'/json_subparte_cuerpo/'+idParteCuerpo,            
             dataType: 'json',
             success: function(data) {
-                console.log(data);
-                $('#contenidoForm').empty();
+                //console.log(data);
+                //$('#contenidoForm').empty();
 
-                $.each(data.reglas, function(key,value){
+               /* $.each(data.reglas, function(key,value){
                     console.log("value"+value);
                     console.log("key"+key);
-                });
+                });*/
                 
-                    contenido="";
-                    contenido = contenido+'<div class="form-group">';
-                    contenido = contenido+'<label for="idPosicion">Posición:</label>';
-                    contenido = contenido+'<select type="select" class="form-control" id="idPosicion">';
-                    contenido = contenido+'<option value="1">NO APLICA</option>';
-                    contenido = contenido+'<option value="2">AMBOS</option>';
-                    contenido = contenido+'<option value="3">IZQUIERDA</option>';
-                    contenido = contenido+'<option value="4">DERECHA</option>';
-                    contenido = contenido+'</select>';
-                    contenido = contenido+'</div>';
-                    contenido = contenido+'<div class="form-group">';
-                    contenido = contenido+'<label for="idTipo">Tipo:</label>';
-                    contenido = contenido+'<select type="select" class="form-control" id="idTipo">'
+                    html="";
+                    html = html+'<div class="form-group">';
+                    html = html+'<label for="idPosicion">Posición:</label>';
+                    html = html+'<select type="select" class="form-control" id="idPosicion">';
+                    html = html+'<option value="1">NO APLICA</option>';
+                    html = html+'<option value="2">AMBOS</option>';
+                    html = html+'<option value="3">IZQUIERDA</option>';
+                    html = html+'<option value="4">DERECHA</option>';
+                    html = html+'</select>';
+                    html = html+'</div>';
+                    html = html+'<div class="form-group">';
+                    html = html+'<label for="idTipo">Tipo:</label>';
+                    html = html+'<select type="select" class="form-control" id="idTipo">'
                     $.each(data.tipos, function(key, value){
                         console.log(value);
-                        contenido = contenido+'<option value="'+value.id+'">'+value.nombre+'</option>';
+                        html = html+'<option value="'+value.id+'">'+value.nombre+'</option>';
                     });
-                    contenido = contenido+'</select>';
-                    contenido = contenido+'</div>';
-                    contenido = contenido+'<div class="form-group">';
-                    contenido = contenido+'<label for="idColor">Color:</label>';
-                    contenido = contenido+'<select type="select" class="form-control" id="idColor">'
+                    html = html+'</select>';
+                    html = html+'</div>';
+                    html = html+'<div class="form-group">';
+                    html = html+'<label for="idColor">Color:</label>';
+                    html = html+'<select type="select" class="form-control" id="idColor">'
                     $.each(data.colores, function(key, value){
                         console.log(value);
-                        contenido = contenido+'<option value="'+value.id+'">'+value.nombre+'</option>';
+                        html = html+'<option value="'+value.id+'">'+value.nombre+'</option>';
                     });
-                    contenido = contenido+'</select>';
-                    contenido = contenido+'</div>';
-                    contenido = contenido+'<div class="form-group">';
-                    contenido = contenido+'<label for="idTamano">Tamaño:</label>';
-                    contenido = contenido+'<select type="select" class="form-control" id="idTamano">'
+                    html = html+'</select>';
+                    html = html+'</div>';
+                    html = html+'<div class="form-group">';
+                    html = html+'<label for="idTamano">Tamaño:</label>';
+                    html = html+'<select type="select" class="form-control" id="idTamano">'
                     $.each(data.tamanos, function(key, value){
                         console.log(value);
-                        contenido = contenido+'<option value="'+value.id+'">'+value.nombre+'</option>';
+                        html = html+'<option value="'+value.id+'">'+value.nombre+'</option>';
                     });
-                    contenido = contenido+'</select>';
-                    contenido = contenido+'</div>';
-                    contenido = contenido+'<div class="form-group">';
-                    contenido = contenido+'<label for="idParticularidad">Particularidades:</label>';
-                    contenido = contenido+'<select type="select" class="form-control" id="idParticularidad">'
+                    html = html+'</select>';
+                    html = html+'</div>';
+                    html = html+'<div class="form-group">';
+                    html = html+'<label for="idParticularidad">Particularidades:</label>';
+                    html = html+'<select type="select" class="form-control" id="idParticularidad">'
                     $.each(data.particularidades, function(key, value){
                         console.log(value);
-                        contenido = contenido+'<option value="'+value.id+'">'+value.nombre+'</option>';
+                        html = html+'<option value="'+value.id+'">'+value.nombre+'</option>';
                     });
-                    contenido = contenido+'</select>';
-                    contenido = contenido+'</div>';
-                    contenido = contenido+'<div class="form-group">';
-                    contenido = contenido+'<label for="idModificacion">Modificaciones:</label>';
-                    contenido = contenido+'<select type="select" class="form-control" id="idModificacion">'
+                    html = html+'</select>';
+                    html = html+'</div>';
+                    html = html+'<div class="form-group">';
+                    html = html+'<label for="idModificacion">Modificaciones:</label>';
+                    html = html+'<select type="select" class="form-control" id="idModificacion">'
                     $.each(data.modificaciones, function(key, value){
                         console.log(value);
-                        contenido = contenido+'<option value="'+value.id+'">'+value.nombre+'</option>';
+                        html = html+'<option value="'+value.id+'">'+value.nombre+'</option>';
                     });
-                    contenido = contenido+'</select>';
-                    contenido = contenido+'</div>';
-                    contenido = contenido+'<div class="form-group">';
-                    contenido = contenido+'<label for="observaciones">Observaciones:</label>';
-                    contenido = contenido+'<textarea type="text" class="form-control" id="observaciones"></textarea>';
-                    contenido = contenido+'</div>';
-                    contenido = contenido+'<button type="submit" class="btn btn-primary">Guardar</button>';  
+                    html = html+'</select>';
+                    html = html+'</div>';
+                    html = html+'<div class="form-group">';
+                    html = html+'<label for="observaciones">Observaciones:</label>';
+                    html = html+'<textarea type="text" class="form-control" id="observaciones"></textarea>';
+                    html = html+'</div>';
+                    html = html+'<button type="submit" class="btn btn-primary">Guardar</button>';  
                 
-               $('#contenidoForm').append(contenido);
+               //$('#contenidoForm').append(contenido);
+               //console.log(contenido);
+               
           
             },
             error: function(data) {
             }
         });
+        return html;
     }
 
 });
