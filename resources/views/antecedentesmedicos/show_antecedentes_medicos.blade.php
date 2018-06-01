@@ -9,38 +9,84 @@
 @section('content')
 @include('navs.navs_datos',array('activar' => 'ant_medicos'))
 
-
- <div class="card-header"> 
-                <h5>ANTECEDENTES MÉDICOS
-                 <a href="{{route('desaparicion.edit', ['id' => $desaparecido->id])}}" class="btn btn-dark pull-right">
-						EDITAR </a>   
+<div class="card border-primary">
+        <div class="card border-success">
+          <div class="card-header"> 
+                <h5>Antecedentes médicos
+                 <a href="{{route('antecedentesmedicos.edit', ['id' => $desaparecido->id])}}" class="btn btn-dark pull-right">
+						Editar </a>   
                 </h5>
           </div>
+        </div>
+ 			
 
 <div class="card-body bg-white">
 	
 				
-	
+
 	<div class="row">
-		<div class="col">
+		<div class="col">				
 				<dl class="row">
-					<dt class="col-sm-8">ÚLTIMA PERSONA QUE LO VIO:</dt>
-				</dl>
-				<dl class="row">
-					<dt class="col-sm-3">Nombre:</dt>
+					<dt class="col-sm-2">Enfermedades:</dt>
 					<dd class="col-sm-5">
-						{!!  NOMBRE !!} 
-						{!!   NOMBRE !!} 
-						{!!  NOMBRE !!}  
-					</dd>
-					<dt class="col-sm-2">Parentesco:</dt>
-					<dd class="col-sm-2">
-						{!!  $datosDesaparicion->parentesco !!} 
-					</dd>
+						{!!  $enfermedades !!} 	  
+					</dd>					
+				</dl>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">				
+				<dl class="row">
+					<dt class="col-sm-2">Adicciones:</dt>
+					<dd class="col-sm-5">
+						{!!  $adicciones !!} 	  
+					</dd>					
+				</dl>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">				
+				<dl class="row">
+					<dt class="col-sm-2">Intervenciones quirúrgicas:</dt>
+					<dd class="col-sm-5">
+						{!!  $iq !!} 	  
+					</dd>					
+				</dl>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">				
+				<dl class="row">
+					<dt class="col-sm-2">Implantes:</dt>
+					<dd class="col-sm-5">
+						{!!  $implantes !!} 	  
+					</dd>					
+				</dl>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">				
+				<dl class="row">
+					<dt class="col-sm-2">Observaciones:</dt>
+					<dd class="col-sm-5">
+						{!!  $observaciones !!} 	  
+					</dd>					
+				</dl>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">				
+				<dl class="row">
+					<dt class="col-sm-2">Medicamentos que toma:</dt>
+					<dd class="col-sm-5">
+						{!!  $medicamentosToma !!} 	  
+					</dd>					
 				</dl>
 		</div>
 	</div>
 	
+
+
 	 {{--@if(is_null($desaparecido->cedula->vehiculoPlacas))
 			
 	@else
@@ -65,4 +111,9 @@
 			</div>
 	@endif--}}
 </div>	
+</div>
+
+{{--<dl class="row">
+		<dt class="col-sm-8">ÚLTIMA PERSONA QUE LO VIO:</dt>
+	</dl>--}}
 @endsection

@@ -360,3 +360,5 @@ Route::post('anexosC/imagenDesaparecido','AnexosController@store');
 
 
 Route::get('conexion/uipj/{carpeta}', 'ConexionUipjController@resolviendo_peticion');
+
+Route::put('antecedentesM/{id}', 'AntecedentesMedicosController@update');

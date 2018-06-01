@@ -30,7 +30,7 @@
     }
     </style>-->
 <style type="text/css">
-    a.fancybox img {
+  a.fancybox img {
      width: 200px;
 height:150px;
     }
@@ -84,7 +84,6 @@ height:150px;
         top: -10px;
         padding: 1px 5px;
     }
-
 </style>
 
 @endsection
@@ -102,10 +101,10 @@ height:150px;
                 </h5>
           </div>
         
-  <div class="card-body bg-white">
+	<div class="card-body bg-white">
    {{-- <button  type="button" class="btn btn-dark pull-right"  id="nuevoAntecedenteMedico">Agregar</button>
     <br>--}}
-    <br>  
+    <br>	
     <form id="formAntecedentesM">
       <div class="row">
             <div class="form-check col-8">
@@ -349,7 +348,7 @@ height:150px;
   
     </form>
     </div>   
-  </div>  
+	</div>	
 
 {{--LO SIGUIENTE ES EL FILE INPUT PARA CARGAR IMAGEN DE RADIOGRAFIAS--}}
  
@@ -363,7 +362,7 @@ height:150px;
           </div>
         </div>
         
-         @include('antecedentesmedicos.modals.modal_cargar_documento')
+         @include('antecedentesmedicos.modals.modal_cargar_documento')  
  
        <div class="container page-top">
         <div class="row">
@@ -375,7 +374,7 @@ height:150px;
                 <div class='col-md-2 thumb' >
                    @if(substr ($image->ruta, -3) == "pdf")
                     <a id ="div_tamano">
-                         <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}" target="_blank">              
+                         <a id="fancybox" class="fancybox" rel="ligthbox" href="{{asset($image->ruta) }}" target="_blank">              
                            <center>
                             <img class="img-responsive zoom img-fluid" alt="" src="../images/documentopdf.png" width="150" height="220"  align="center" />
                           </center>
@@ -387,7 +386,7 @@ height:150px;
                       </a>
                     @else
                        <a id ="div_tamano">
-                        <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}">                
+                        <a id="fancybox" class="fancybox" rel="ligthbox" href="{{asset($image->ruta) }}">                
                            <img class="img-responsive zoom img-fluid" alt="" src="..{{ $image->ruta }}" />
                               
                             <div class='text-center'>
@@ -412,10 +411,9 @@ height:150px;
   </div>
   <br>
 </div>
+                       
 
-                         
-
-@endsection 
+@endsection	
 
 @section('scripts')
 
@@ -438,9 +436,9 @@ height:150px;
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 <script type="text/javascript">
   
-  $(document).ready(function(){
-    var otraE;
-    var otraIq;
+	$(document).ready(function(){
+		var otraE;
+		var otraIq;
     var otraA;
     var otroIm;
     if ($('#sinInformacionE').is(':checked')) {
@@ -687,7 +685,7 @@ var routeIndexAM = '{!! route('antecedentesmedicos.index') !!}';
     console.log(dataString);
     $.ajax({
       type: 'POST',
-      url:  routeIndexAM+'/store',
+      url: routeIndexAM+'/store',
       data: dataString,
       dataType: 'json',
       success: function(data) {           
@@ -703,7 +701,6 @@ var routeIndexAM = '{!! route('antecedentesmedicos.index') !!}';
                     text: 'Aceptar',
                     btnClass: 'btn-dark',
                     action: function(){
-                      location.reload();
                     }
                 },
             }
@@ -803,5 +800,5 @@ $("#fileImagenes").fileinput({
 })
 
 
-  </script>
+	</script>
 @endsection
