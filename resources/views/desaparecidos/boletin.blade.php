@@ -170,7 +170,7 @@
 				<div>
 					<strong><code>Señas particulares: </code></strong> <h9><code>Tiene un lunar en medio de la frente, y un tatuaje en el brazo (mandala), cabello largo de color negro.</code> </h9></div>
 				<div>
-					<strong><code>Descripción de los hechos: </code></strong><h9><code>La persona salio de la escuela a las 15:00 horas, se subió a un auto dorado, no dejo dicho a quién pertenecia el automovil. </code></code></h9>
+					<strong><code>Descripción de los hechos: </code></strong><h9><code>La persona salió de la escuela a las 15:00 horas, se subió a un auto dorado, no dijo  a quién pertenecia el automovil. </code></code></h9>
 				</div>
 
 		</div>

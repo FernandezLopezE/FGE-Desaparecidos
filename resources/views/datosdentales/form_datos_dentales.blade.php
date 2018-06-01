@@ -502,7 +502,7 @@
                 <div class='col-md-2 thumb' >
                    @if(substr ($image->ruta, -3) == "pdf")
                     <a id ="div_tamano">
-                         <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}" target="_blank">              
+                         <a id="fancybox" class="fancybox" rel="ligthbox" href="{{asset($image->ruta) }}" target="_blank">              
                            <center>
                             <img class="img-responsive zoom img-fluid" alt="" src="../images/documentopdf.png" width="150" height="220"  align="center" />
                           </center>
@@ -514,7 +514,7 @@
                       </a>
                     @else
                        <a id ="div_tamano">
-                        <a id="fancybox" class="fancybox" rel="ligthbox" href="{{ $image->ruta }}">                
+                        <a id="fancybox" class="fancybox" rel="ligthbox" href="{{asset($image->ruta) }}">                
                            <img class="img-responsive zoom img-fluid" alt="" src="..{{ $image->ruta }}" />
                               
                             <div class='text-center'>
