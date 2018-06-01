@@ -1,12 +1,10 @@
 $(document).ready(function(){
-	console.log("Mi ruta es: "+routeDescrip);
 	//Ocultar tarjeta de datos físicos
 	$("#card").hide();
 	$("#datosFis").hover( function () {
 		$("#card").toggle();
   	});
 	console.log(aux);
-<<<<<<< HEAD
  //  	//Si ya tiene datos que no muestre el modal
  //  	if (aux == true) {
 	//     $("#talla").modal("hide");
@@ -74,75 +72,6 @@ $(document).ready(function(){
 	  //           type:"GET",
 	  //           dataType:"json",
 	  //           success:function(data) {
-=======
-  	//Si ya tiene datos que no muestre el modal
-  	if (aux == true) {
-	    $("#talla").modal("hide");
-	     $.ajax({
-	            url: routeDescrip+'/get_datosfisicos/'+extraviado,
-	            type:"GET",
-	            dataType:"json",
-	            success:function(data) {
-	              $.each(data, function(key, value){
-	                $("#estatura").val(value.estatura+" CM");
-	                $("#peso").val(value.peso+" KG");
-	                $("#complexion").val(value.complexion);
-	                $("#piel").val(value.piel);
-	            });
-	            }
-	          });
-	}else{
-    	$("#talla").modal("show");
-    	$("#esta").focus();
-	}
-
-	//Click para mostrar en el modal
-  	$("#datosFis").click(function(event) {
-      $.ajax({
-            url: routeDescrip+'/get_datosfisicos/'+extraviado,
-            type:"GET",
-            dataType:"json",
-            success:function(data) {
-              console.log(data);
-              $.each(data, function(key, value){
-                $("#esta").val(value.estatura);
-                $("#bulto").val(value.peso);
-                $('select#comple option[value="'+value.idComplexion+'"]').attr('selected', 'selected');
-                $('select#cPiel option[value="'+value.idColorPiel+'"]').attr('selected', 'selected');
-                $("#talla").modal("show");
-            });
-            }
-          });
-  	});
-  	//$('[data-toggle="tooltip"]').tooltip();
-
-  	//botón para guardar talla
-  	$("#guardarTalla").click(function(){
-	    console.log("entro");
-	    console.log("hhh"+extraviado);
-	    var dataString = {
-	      estatura: $('#esta').val(),
-	      peso: $('#bulto').val(),
-	      complexion: $('#comple').val(),
-	      colorPiel: $('#cPiel').val(),
-	      idExtraviado: extraviado,
-	    };
-	    console.log(dataString);
-      	$.ajax({
-	        type: 'POST',
-	        url: routeDescrip+'/store',
-	        data: dataString,
-	        dataType: 'json',
-	        success: function(data) {           
-	        //document.getElementById("colapsar2").click();
-	          $("#talla").modal("hide");
-	          
-	          $.ajax({
-	            url: routeDescrip+'/get_datosfisicos/'+extraviado,
-	            type:"GET",
-	            dataType:"json",
-	            success:function(data) {
->>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
 
 	  //             $.each(data, function(key, value){
 	  //               $("#estatura").val(value.estatura+" CM");

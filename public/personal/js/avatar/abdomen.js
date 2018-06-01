@@ -6,17 +6,10 @@ $(document).ready(function() {
   });
 
   //Cargar valores a select de particularidades de Abdomen
-<<<<<<< HEAD
     // $.ajax({
     //      url: '/descripcionfisica/get_particularidades/'+2,
     //      type:"GET",
     //      dataType:"json",
-=======
-    $.ajax({
-         url: routeDescrip+'/get_particularidades/'+2,
-         type:"GET",
-         dataType:"json",
->>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
 
     //      success:function(data) {
     //       $("#partAbdomen").empty();
@@ -27,17 +20,10 @@ $(document).ready(function() {
     // });
 
     //Cargar valores a select de modificaciones de Abdomen
-<<<<<<< HEAD
     // $.ajax({
     //      url: '/descripcionfisica/get_modificaciones/'+2,
     //      type:"GET",
     //      dataType:"json",
-=======
-    $.ajax({
-         url: routeDescrip+'/get_modificaciones/'+2,
-         type:"GET",
-         dataType:"json",
->>>>>>> 13ae179fdf61db27435ec7741d8f4fecfca74d1b
 
     //      success:function(data) {
     //       $("#modAbdomen").empty();
