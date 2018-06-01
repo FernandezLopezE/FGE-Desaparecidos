@@ -56,30 +56,14 @@
               </div>
             </div>
             <div class="col" style="margin-left:-350px; margin-top:-20px;">
-              <img src="/images/cuerpo2.gif" class="img-fluid" alt="" width="27" height="57" style="float: right;" data-toggle="tooltip" title="Atrás" data-placement="bottom" id="btnTras">
-              <img src="/images/cuerpo1.gif" class="img-fluid" alt="" width="27" height="57" style="float: right; display:none;" data-toggle="tooltip" title="Frente" data-placement="bottom" id="btnFrente">
+              <img src="{{asset('/images/cuerpo2.gif')}}" class="img-fluid" alt="" width="27" height="57" style="float: right;" data-toggle="tooltip" title="Atrás" data-placement="bottom" id="btnTras">
+              <img src="{{asset('/images/cuerpo1.gif')}}" class="img-fluid" alt="" width="27" height="57" style="float: right; display:none;" data-toggle="tooltip" title="Frente" data-placement="bottom" id="btnFrente">
 
               @include('descripcionfisica.avatar')
               @include('descripcionfisica.avatarTras')
             </div>
-            <div class="col-8">
-              @include('descripcionfisica.seccion_Cabello')
-              @include('descripcionfisica.seccion_Cara')
-              @include('descripcionfisica.seccion_Cuello')
-              @include('descripcionfisica.seccion_Pecho')
-              @include('descripcionfisica.seccion_HombroIzq')
-              @include('descripcionfisica.seccion_HombroDer')
-              @include('descripcionfisica.seccion_BrazoIzq')
-              @include('descripcionfisica.seccion_BrazoDer')
-              @include('descripcionfisica.seccion_ManoIZq') 
-              @include('descripcionfisica.seccion_ManoDer')
-              @include('descripcionfisica.seccion_Abdomen') 
-              @include('descripcionfisica.seccion_MusloIzq')
-              @include('descripcionfisica.seccion_MusloDer') 
-              @include('descripcionfisica.seccion_PiernaIzq')
-              @include('descripcionfisica.seccion_PiernaDer') 
-              @include('descripcionfisica.seccion_PieIzq')
-              @include('descripcionfisica.seccion_PieDer')  
+            <div class="col-8" id='formulario'>
+
               
             </div>
         </div>
@@ -94,6 +78,9 @@
   var extraviado = "{{$desaparecido->id}}";
   var showCabello2 = "{{$showCabello}}";
   var routeDescrip ="{!! route('descripcionfisica.index') !!}";
+
+  var routeConsul ="{!! route('consultas.index') !!}";
+
 
   //Boton frente
   $("#btnTras").click(function(event) {

@@ -14,12 +14,6 @@ $(document).ready(function(){
 
 	                          if(value.tenia == "SÍ"){
 	                            $("#pCabello").show();
-	                            color = (value.color) ? value.color : "SIN INFORMACIÓN";
-								tamano = (value.tamano) ? value.tamano : "SIN INFORMACIÓN";
-								tipo = (value.tipo) ? value.tipo : "SIN INFORMACIÓN";
-								observaciones = (value.observaciones) ? value.observaciones : "SIN INFORMACIÓN";
-								particularidades = (value.particularidades) ? value.particularidades : "SIN INFORMACIÓN";
-								modificaciones = (value.modificaciones) ? value.modificaciones : "SIN INFORMACIÓN";
 	                            $("#pCabello").append('<div class="card">'+
 	                                                      '<div class="card-header bg-white">'+
 	                                                          '<h5><b>Datos del cabello</b></h5>'+
@@ -30,7 +24,7 @@ $(document).ready(function(){
 	                                                              '<label>Color:</label>'+
 	                                                              '</div>'+
 	                                                              '<div class="col">'+
-	                                                              '<p>'+color+'</p>'+
+	                                                              '<p>'+value.color+'</p>'+
 	                                                              '</div>'+
 	                                                          '</div>'+
 
@@ -39,7 +33,7 @@ $(document).ready(function(){
 	                                                              '<label>Tamaño:</label>'+
 	                                                              '</div>'+
 	                                                              '<div class="col">'+
-	                                                              '<p>'+tamano+'</p>'+
+	                                                              '<p>'+value.tamano+'</p>'+
 	                                                              '</div>'+
 	                                                          '</div>'+
 
@@ -48,7 +42,7 @@ $(document).ready(function(){
 	                                                              '<label>Tipo:</label>'+
 	                                                              '</div>'+
 	                                                              '<div class="col">'+
-	                                                              '<p>'+tipo+'</p>'+
+	                                                              '<p>'+value.tipo+'</p>'+
 	                                                              '</div>'+
 	                                                          '</div>'+
 
@@ -57,7 +51,7 @@ $(document).ready(function(){
 	                                                              '<label>Particularidades:</label>'+
 	                                                              '</div>'+
 	                                                              '<div class="col">'+
-	                                                              '<p>'+particularidades+'</p>'+
+	                                                              '<p>'+value.particularidades+'</p>'+
 	                                                              '</div>'+
 	                                                          '</div>'+
 
@@ -66,7 +60,7 @@ $(document).ready(function(){
 	                                                              '<label>Modificaciones:</label>'+
 	                                                              '</div>'+
 	                                                              '<div class="col">'+
-	                                                              '<p>'+modificaciones+'</p>'+
+	                                                              '<p>'+value.modificaciones+'</p>'+
 	                                                              '</div>'+
 	                                                          '</div>'+
 
@@ -76,7 +70,7 @@ $(document).ready(function(){
 	                                                              '</div>'+
 
 	                                                              '<div class="col">'+
-	                                                              '<p>'+observaciones+'</p>'+
+	                                                              '<p>'+value.observaciones+'</p>'+
 	                                                              '</div>'+
 	                                                          '</div>'+
 	                                                      '</div>'+
@@ -107,11 +101,6 @@ $(document).ready(function(){
 	                          $("#pBarba").empty();
 	                          if(value.tenia == "SÍ"){
 	                            $("#pBarba").show();
-	                            color = (value.color) ? value.color : "SIN INFORMACIÓN";
-								tamano = (value.tamano) ? value.tamano : "SIN INFORMACIÓN";
-								tipo = (value.tipo) ? value.tipo : "SIN INFORMACIÓN";
-								observaciones = (value.observaciones) ? value.observaciones : "SIN INFORMACIÓN";
-								estilo = (value.estilo) ? value.estilo : "SIN INFORMACIÓN";
 	                            $("#pBarba").append('<div class="card">'+
 	                                                      '<div class="card-header bg-white">'+
 	                                                          '<h5><b>Datos de la barba</b></h5>'+
@@ -122,7 +111,7 @@ $(document).ready(function(){
 	                                                              '<label>Color:</label>'+
 	                                                              '</div>'+
 	                                                              '<div class="col">'+
-	                                                              '<p>'+color+'</p>'+
+	                                                              '<p>'+value.color+'</p>'+
 	                                                              '</div>'+
 	                                                          '</div>'+
 
@@ -131,7 +120,7 @@ $(document).ready(function(){
 	                                                              '<label>Tipo:</label>'+
 	                                                              '</div>'+
 	                                                              '<div class="col">'+
-	                                                              '<p>'+tipo+'</p>'+
+	                                                              '<p>'+value.tipo+'</p>'+
 	                                                              '</div>'+
 	                                                          '</div>'+
 
@@ -140,7 +129,7 @@ $(document).ready(function(){
 	                                                              '<label>Estilo:</label>'+
 	                                                              '</div>'+
 	                                                              '<div class="col">'+
-	                                                              '<p>'+estilo+'</p>'+
+	                                                              '<p>'+value.estilo+'</p>'+
 	                                                              '</div>'+
 	                                                          '</div>'+
 
@@ -150,7 +139,7 @@ $(document).ready(function(){
 	                                                              '</div>'+
 
 	                                                              '<div class="col">'+
-	                                                              '<p>'+observaciones+'</p>'+
+	                                                              '<p>'+value.observaciones+'</p>'+
 	                                                              '</div>'+
 	                                                          '</div>'+
 	                                                      '</div>'+
@@ -176,11 +165,6 @@ $(document).ready(function(){
 
 	                          if(value.tenia == "SÍ"){
 	                            $("#pBigote").show();
-	                            color = (value.color) ? value.color : "SIN INFORMACIÓN";
-								tamano = (value.tamano) ? value.tamano : "SIN INFORMACIÓN";
-								tipo = (value.tipo) ? value.tipo : "SIN INFORMACIÓN";
-								observaciones = (value.observaciones) ? value.observaciones : "SIN INFORMACIÓN";
-								estilo = (value.estilo) ? value.estilo : "SIN INFORMACIÓN";
 	                            $("#pBigote").append('<div class="card">'+
 	                                                      '<div class="card-header bg-white">'+
 	                                                          '<h5><b>Datos del bigote</b></h5>'+
@@ -191,7 +175,7 @@ $(document).ready(function(){
 	                                                              '<label>Color:</label>'+
 	                                                              '</div>'+
 	                                                              '<div class="col">'+
-	                                                              '<p>'+color+'</p>'+
+	                                                              '<p>'+value.color+'</p>'+
 	                                                              '</div>'+
 	                                                          '</div>'+
 
@@ -200,7 +184,7 @@ $(document).ready(function(){
 	                                                              '<label>Tipo:</label>'+
 	                                                              '</div>'+
 	                                                              '<div class="col">'+
-	                                                              '<p>'+tipo+'</p>'+
+	                                                              '<p>'+value.tipo+'</p>'+
 	                                                              '</div>'+
 	                                                          '</div>'+
 
@@ -209,7 +193,7 @@ $(document).ready(function(){
 	                                                              '<label>Estilo:</label>'+
 	                                                              '</div>'+
 	                                                              '<div class="col">'+
-	                                                              '<p>'+estilo+'</p>'+
+	                                                              '<p>'+value.estilo+'</p>'+
 	                                                              '</div>'+
 	                                                          '</div>'+
 
@@ -219,7 +203,7 @@ $(document).ready(function(){
 	                                                              '</div>'+
 
 	                                                              '<div class="col">'+
-	                                                              '<p>'+observaciones+'</p>'+
+	                                                              '<p>'+value.observaciones+'</p>'+
 	                                                              '</div>'+
 	                                                          '</div>'+
 	                                                      '</div>'+
@@ -248,11 +232,6 @@ $(document).ready(function(){
 
 	                          if(value.tenia == "SÍ"){
 	                            $("#pPatilla").show();
-	                            color = (value.color) ? value.color : "SIN INFORMACIÓN";
-								tamano = (value.tamano) ? value.tamano : "SIN INFORMACIÓN";
-								tipo = (value.tipo) ? value.tipo : "SIN INFORMACIÓN";
-								observaciones = (value.observaciones) ? value.observaciones : "SIN INFORMACIÓN";
-								estilo = (value.estilo) ? value.estilo : "SIN INFORMACIÓN";
 	                            $("#pPatilla").append('<div class="card">'+
 	                                                      '<div class="card-header bg-white">'+
 	                                                          '<h5><b>Datos de las patillas</b></h5>'+
@@ -263,7 +242,7 @@ $(document).ready(function(){
 	                                                              '<label>Color:</label>'+
 	                                                              '</div>'+
 	                                                              '<div class="col">'+
-	                                                              '<p>'+color+'</p>'+
+	                                                              '<p>'+value.color+'</p>'+
 	                                                              '</div>'+
 	                                                          '</div>'+
 
@@ -272,7 +251,7 @@ $(document).ready(function(){
 	                                                              '<label>Tipo:</label>'+
 	                                                              '</div>'+
 	                                                              '<div class="col">'+
-	                                                              '<p>'+tipo+'</p>'+
+	                                                              '<p>'+value.tipo+'</p>'+
 	                                                              '</div>'+
 	                                                          '</div>'+
 
@@ -281,7 +260,7 @@ $(document).ready(function(){
 	                                                              '<label>Estilo:</label>'+
 	                                                              '</div>'+
 	                                                              '<div class="col">'+
-	                                                              '<p>'+estilo+'</p>'+
+	                                                              '<p>'+value.estilo+'</p>'+
 	                                                              '</div>'+
 	                                                          '</div>'+
 
@@ -291,7 +270,7 @@ $(document).ready(function(){
 	                                                              '</div>'+
 
 	                                                              '<div class="col">'+
-	                                                              '<p>'+observaciones+'</p>'+
+	                                                              '<p>'+value.observaciones+'</p>'+
 	                                                              '</div>'+
 	                                                          '</div>'+
 	                                                      '</div>'+
@@ -323,10 +302,10 @@ $(document).ready(function(){
           $("#btnEditarC").hide();
           $("#datosCabello").show();
           
-          $('#tieneCabello').prop('selectedIndex',0);
-          $('#tieneBarba').prop('selectedIndex',0);
-          $('#tieneBigote').prop('selectedIndex',0);
-          $('#tienePatilla').prop('selectedIndex',0);
+          $('#tieneCabello').val(1).trigger('change');
+          $('#tieneBarba').val(1).trigger('change');
+          $('#tieneBigote').val(1).trigger('change');
+          $('#tienePatilla').val(1).trigger('change');
 
 
         }
@@ -393,7 +372,7 @@ $(document).ready(function(){
             $('#modiCabello').prop('selectedIndex',0); 
 
             //Limpiar cabello
-            //$('#tieneCabello').prop('selectedIndex',0);
+            $('#tieneCabello').prop('selectedIndex',0);
             $('#tamanoCabello').prop('selectedIndex',0);
             $('#tipoCabello').prop('selectedIndex',0);
             $('#colorCabello').prop('selectedIndex',0);
@@ -468,7 +447,7 @@ $(document).ready(function(){
             $('#modiBarba').prop('selectedIndex',0); 
 
             //Limpiar barba
-            //$('#tieneBarba').prop('selectedIndex',0);
+            $('#tieneBarba').prop('selectedIndex',0);
             $('#tipoBarba').prop('selectedIndex',0);
             $('#colorBarba').prop('selectedIndex',0);
             $('#otroTipoBar').val('');
@@ -534,7 +513,7 @@ $(document).ready(function(){
             $('#modiBigote').prop('selectedIndex',0); 
 
             //Limpiar bigote
-            //$('#tieneBigote').prop('selectedIndex',0);
+            $('#tieneBigote').prop('selectedIndex',0);
             $('#tipoBigote').prop('selectedIndex',0);
             $('#colorBigote').prop('selectedIndex',0);
             $('#otroTipoBig').val('');
@@ -599,7 +578,7 @@ $(document).ready(function(){
             $('#modiPatilla').prop('selectedIndex',0); 
 
             //Limpiar patilla
-            //$('#tienePatilla').prop('selectedIndex',0);
+            $('#tienePatilla').prop('selectedIndex',0);
             $('#tipoPatilla').prop('selectedIndex',0);
             $('#colorPatilla').prop('selectedIndex',0);
             $('#otroTipoPat').val('');

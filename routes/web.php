@@ -100,7 +100,7 @@ Route::get('consultas/codigos2/{idColonia}', 'ConsultasController@jsonCodigos2')
 // Calcula la edad años meses dias al día actual.
 Route::get('consultas/edad/{fecha_nacimiento}', 'ConsultasController@getEdad');
 
-
+Route::get('consultas/json_subparte_cuerpo/{idParteCuerpo}', 'ConsultasController@json_subparte_cuerpo')->name('consultas.jsonSubpartes');
 
 Route::get('consultas/get_senas', 'ConsultasController@jsonSenas')
 	->name('consultas.get_senas');	
@@ -198,6 +198,7 @@ Route::post('/descripcionfisica/store', 'DescripcionFisicaController@store')
 	->name('descripcionfisica.store');
 Route::post('/descripcionfisica/storeVelloFacial', 'DescripcionFisicaController@storeVelloFacial')->name('descripcionfisica.storeVelloFacial');
 Route::post('/descripcionfisica/storeCara', 'DescripcionFisicaController@storeCara')->name('descripcionfisica.storeCara');
+//Route::get('descripcionfisica/json_subparte_cuerpo/{idParteCuerpo}', 'DescripcionFisicaController@json_subparte_cuerpo')->name('descripcionfisica.jsonSubpartes');
 Route::resource('/descripcionfisica','DescripcionFisicaController');
 //fin de mis rutas
 //Rutas para antedecedentes medicos

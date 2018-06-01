@@ -41,7 +41,7 @@ class DatosDentalesController extends Controller
 
         $dentadura->idTamanoDiente = $request['dienteTamano'];
         //$dentadura->dienteCompleto = $request['dienteCompleto'];
-        $dentadura->asistioDentista = $request['atencionOdonto'];
+        //$dentadura->asistioDentista = $request['atencionOdonto'];
         //$dentadura->tieneInfoDentista = $request['infoDentista'];
         $dentadura->nombres = $request['nombres'];
         $dentadura->primerAp = $request['primerAp'];
@@ -65,11 +65,11 @@ class DatosDentalesController extends Controller
 
         //$dentadura->perdiodiente = $request['perdiodiente'];
         //$dentadura->higieneBucal = $request['higieneBucal'];
-        $dentadura->describeHigBucal = $request['describahb'];
+        //$dentadura->describeHigBucal = $request['describahb'];
         //$dentadura->caries = $request['tieneCaries'];
-        $dentadura->describeCaries = $request['DescribaCaries'];
+        //$dentadura->describeCaries = $request['DescribaCaries'];
         //$dentadura->abcesos = $request['nombreAbceso'];
-        $dentadura->describeAbcesos = $request['describeAbceso'];
+        //$dentadura->describeAbcesos = $request['describeAbceso'];
 
         $enferme = array();
         foreach ($request->input('enfermedad') as $index => $value) {
@@ -137,9 +137,39 @@ class DatosDentalesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $dentadura = \App\Models\Dentadura::where('idDesaparecido',$request['idDesaparecido'])->first();;
+        
+        $dentadura->idTamanoDiente = $request['dienteTamano'];
+        $dentadura->nombres = $request['nombres'];
+        $dentadura->primerAp = $request['primerAp'];
+        $dentadura->segundoAp = $request['segundoAp'];
+        $dentadura->empresa = $request['empresa'];
+        $dentadura->telefono = $request['telefono'];
+        $dentadura->direccion = $request['direccion'];
+
+        $trata = array();
+        foreach ($request->input('tratamiento') as $index => $value) {
+                array_push($trata,$value);
+        }
+
+        $dentadura->tratamientos = json_encode($trata);
+
+        $malhabitos = array();
+        foreach ($request->input('malhabitos') as $index => $value) {
+            array_push($malhabitos,$value);
+        }
+        $dentadura->arraymaloshabitos = json_encode($malhabitos);
+        $dentadura->describeHabito = $request['especifiqhabito'];
+        $dentadura->idTipoPerfil = $request['valorPerfil'];
+        $dentadura->idTipoMordida = $request['valormordida'];
+        $dentadura->idTipoSonrisa = $request['valorsonrisa'];
+        $dentadura->idDesaparecido = $request['idDesaparecido'];
+
+        $dentadura->save();
+
+        return response()->json("successfully");
     }
 
     /**

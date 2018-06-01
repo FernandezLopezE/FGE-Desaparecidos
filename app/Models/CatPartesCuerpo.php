@@ -10,7 +10,8 @@ class CatPartesCuerpo extends Model
     protected $table = 'cat_partes_cuerpo';
 	protected $fillable = [
 		'nombre',
-		'imagen',
+		'partePadre',
+		'reglas'
 	];
 
 	/*public function coloresCuerpo(){

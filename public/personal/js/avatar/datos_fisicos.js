@@ -1,12 +1,11 @@
 $(document).ready(function(){
-	console.log("Mi ruta es: "+routeDescrip);
 	//Ocultar tarjeta de datos físicos
 	$("#card").hide();
 	$("#datosFis").hover( function () {
 		$("#card").toggle();
   	});
 	console.log(aux);
-  	//Si ya tiene datos que no muestre el modal
+ //  	//Si ya tiene datos que no muestre el modal
   	if (aux == true) {
 	    $("#talla").modal("hide");
 	     $.ajax({
@@ -27,7 +26,7 @@ $(document).ready(function(){
     	$("#esta").focus();
 	}
 
-	//Click para mostrar en el modal
+	// //Click para mostrar en el modal
   	$("#datosFis").click(function(event) {
       $.ajax({
             url: routeDescrip+'/get_datosfisicos/'+extraviado,
@@ -45,18 +44,20 @@ $(document).ready(function(){
             }
           });
   	});
-  	//$('[data-toggle="tooltip"]').tooltip();
+  	$('[data-toggle="tooltip"]').tooltip();
 
   	//botón para guardar talla
   	$("#guardarTalla").click(function(){
 	    console.log("entro");
+	    console.log("hhh"+extraviado);
 	    var dataString = {
 	      estatura: $('#esta').val(),
 	      peso: $('#bulto').val(),
 	      complexion: $('#comple').val(),
 	      colorPiel: $('#cPiel').val(),
-	      idExtraviado: $('#idExtraviado').val(),
+	      idExtraviado: extraviado,
 	    };
+	    console.log(dataString);
       	$.ajax({
 	        type: 'POST',
 	        url: routeDescrip+'/store',

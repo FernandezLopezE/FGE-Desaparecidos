@@ -27,7 +27,7 @@ class ConsultasController extends Controller
                             ->leftJoin('persona as p', 'd.idPersona', '=', 'p.id')
                             ->leftJoin('cat_nacionalidad as n', 'p.idNacionalidad', '=', 'n.id')
                             //->where('d.tipoPersona','DESAPARECIDA')
-                            ->select('c.id','c.idDialecto', \DB::raw('DATE_FORMAT(c.created_at, "%d/%m/%Y %H:%m") as created_at'), 'p.nombres', 'p.primerAp', 'p.segundoAp', 'p.sexo','n.nombre as nacionalidad', 'd.apodo', 'd.edadExtravio')
+                            ->select('c.id','c.idDialecto', 'c.carpeta', 'c.idCarpeta', \DB::raw('DATE_FORMAT(c.created_at, "%d/%m/%Y %H:%m") as created_at'), 'p.nombres', 'p.primerAp', 'p.segundoAp', 'p.sexo','n.nombre as nacionalidad', 'd.apodo', 'd.edadExtravio')
                             ->get();
 
 		return response()->json($cedulas);
@@ -85,7 +85,16 @@ class ConsultasController extends Controller
         $tamanoCabello = $request->input('tamanoCabello');
         $colorCabello = $request->input('colorCabello');
         $tipoBarba = $request->input('tipoBarba');
-        $colorBarba = $request->input('colorBarba');
+        $colorBarba = $request->input('colorBarba');        
+        $tipoBigote = $request->input('tipoBigote');
+        $colorBigote = $request->input('colorBigote');
+        $tipoPatilla = $request->input('tipoPatilla');
+        $colorPatilla = $request->input('colorPatilla');
+        $tamanoOjos = $request->input('tamanoOjos');
+        $colorOjos = $request->input('colorOjos');
+        $tipoLabio = $request->input('tipoLabio');
+        
+        
         $masc = $request->input('masc');
         $fem = $request->input('fem');
         
@@ -100,7 +109,7 @@ class ConsultasController extends Controller
             $peso1 = $request->input('peso1');
         }
         if ($request->input('peso2') == '') {
-            $peso2=400;
+            $peso2=600;
         }else{
             $peso2 = $request->input('peso2');
         }
@@ -111,7 +120,7 @@ class ConsultasController extends Controller
             $estatura1 = $request->input('estatura1');
         }
         if ($request->input('estatura2') == '') {
-            $estatura2=300;
+            $estatura2=400;
         }else{
             $estatura2 = $request->input('estatura2');
         }
@@ -123,7 +132,7 @@ class ConsultasController extends Controller
 
         }
         if ($request->input('rg2') == '') {
-            $rg2=120;
+            $rg2=150;
         }else{
             $rg2 = $request->input('rg2');
 
@@ -158,7 +167,7 @@ class ConsultasController extends Controller
             $fechaRep2 = $request->input('fechaRep2');
             $reporteFecha2 = Carbon::createFromFormat('d/m/Y',$fechaRep2)->format('Y-m-d');
         }
-        //-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
+        //{-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
 //        {//dd($estados);
 //        $consulta = \DB::table('persona')
 //            ->whereIn('idEstadoOrigen', $estados)
@@ -185,7 +194,7 @@ class ConsultasController extends Controller
 //}        
         
         
-        $desaparecidos = \DB::table('desaparecidos_personas as des')                           
+    $desaparecidos = \DB::table('desaparecidos_personas as des')                           
     ->leftjoin('persona as p', 'des.idPersona', '=', 'p.id')
     ->leftjoin('desaparecidos_cedula_investigacion AS dci', 'dci.id', '=', 'des.idCedula')
     ->leftjoin('desaparecidos_domicilios as dd', 'dd.idDesaparecido', '=', 'des.id', 'and', 'dd.tipoDireccion', '=', 'LUGAR DE AVISTAMIENTO')
@@ -207,16 +216,12 @@ class ConsultasController extends Controller
                         //DB::raw('substr(id, 1, 4) as id')}
             ->select('des.id as id', \DB::raw('CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))AS nombre'), 'p.sexo as sexo',\DB::raw('substr(dci.desaparicionFecha, 1,10) as fecha'),'des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'),'des.estatura as estatura','des.peso as peso','cc.id as idComplexion','cc.nombre as complexion','ccp.id as idCPiel','ccp.nombre as cPiel','ce.id as idEstado','ce.nombre as estado','cm.id as idMuni','cm.nombre as municipio',
                      'cn.nombre as nacionalidad','dci.fechaVisita as fechaReporte', 'dci.desaparicionObservaciones as hechos')
-           // 'cn.nombre as nacionalidad',\DB::raw("({$subQuery->toSql()}) as sub"))
-//            ->from(\DB::raw(' ( ' . $subQuery->toSql() . ' ) AS counted '))
-            
-            
-            
             //{->where('des.edadExtravio', 'like', "$rg%")
                             //->where('des.edadExtravio', 'like', "$rg2%")
                             //->whereBetween('des.edadExtravio', [$rg, $rg2])}
                             
                             ->where('tipoPersona','DESAPARECIDA')
+                            ->where('tipoDireccion','LUGAR DE AVISTAMIENTO')
                             ->where('p.sexo',$masc)
                             ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
                             ->whereBetween(\DB::raw('CAST(des.estatura AS SIGNED)'), [$estatura1, $estatura2])
@@ -250,9 +255,27 @@ class ConsultasController extends Controller
                             ->when($colorBarba, function ($q) use ($colorBarba) {
                                 return $q->whereIn('cpc.idColoresCuerpo', $colorBarba);
                             })
+                             ->when($tamanoOjos, function ($q) use ($tamanoOjos) {
+                                return $q->whereIn('cpc.idTamanoCuerpo', $tamanoOjos);
+                            })
+                            ->when($colorOjos, function ($q) use ($colorOjos) {
+                                return $q->whereIn('cpc.idColoresCuerpo', $colorOjos);
+                            })
+                            ->when($tipoLabio, function ($q) use ($tipoLabio) {
+                                return $q->whereIn('cpc.idTipoCuerpo', $tipoLabio);
+                            })                            
+                            ->when($colorBigote, function ($q) use ($colorBigote) {
+                                return $q->whereIn('cpc.idColoresCuerpo', $colorBigote); })
+                            ->when($tipoBigote, function ($q) use ($tipoBigote) {
+                                return $q->whereIn('cpc.idTipoCuerpo', $tipoBigote); })
+                            ->when($colorPatilla, function ($q) use ($colorPatilla) {
+                                return $q->whereIn('cpc.idColoresCuerpo', $colorPatilla); })
+                            ->when($tipoPatilla, function ($q) use ($tipoPatilla) {
+                                return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
             
                             ->orWhere('p.sexo', $fem) 
                             ->where('tipoPersona','DESAPARECIDA')
+                            ->where('tipoDireccion','LUGAR DE AVISTAMIENTO')
                             ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
                             ->whereBetween(\DB::raw('CAST(des.estatura AS SIGNED)'), [$estatura1, $estatura2])
                             ->whereBetween(\DB::raw('CAST(des.peso AS SIGNED)'), [$peso1, $peso2])
@@ -285,16 +308,110 @@ class ConsultasController extends Controller
                             ->when($colorBarba, function ($q) use ($colorBarba) {
                                 return $q->whereIn('cpc.idColoresCuerpo', $colorBarba);
                             })
-                    
-            
+                             ->when($tamanoOjos, function ($q) use ($tamanoOjos) {
+                                return $q->whereIn('cpc.idTamanoCuerpo', $tamanoOjos);
+                            })
+                            ->when($colorOjos, function ($q) use ($colorOjos) {
+                                return $q->whereIn('cpc.idColoresCuerpo', $colorOjos);
+                            })
+                            ->when($tipoLabio, function ($q) use ($tipoLabio) {
+                                return $q->whereIn('cpc.idTipoCuerpo', $tipoLabio);
+                            })
+                            ->when($colorBigote, function ($q) use ($colorBigote) {
+                                return $q->whereIn('cpc.idColoresCuerpo', $colorBigote); })
+                            ->when($tipoBigote, function ($q) use ($tipoBigote) {
+                                return $q->whereIn('cpc.idTipoCuerpo', $tipoBigote); })
+                            ->when($colorPatilla, function ($q) use ($colorPatilla) {
+                                return $q->whereIn('cpc.idColoresCuerpo', $colorPatilla); })
+                            ->when($tipoPatilla, function ($q) use ($tipoPatilla) {
+                                return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
+                           
+
                             //->where('des.edadExtravio', 'like', "$rg2%")
                             ->distinct()
                             ->get();
-        
+
+        $i = 0;
+        $count = count($desaparecidos);
+        if($count > 0){
+            foreach ($desaparecidos as $value) {                   
+             $partesCuerpoRostro = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
+                        ->leftjoin('cat_colores_cuerpo as catcolores','catcolores.id','=','cpc.idColoresCuerpo')
+                        ->leftjoin('cat_tamano_cuerpo as tamaCuerpo','tamaCuerpo.id','=','cpc.idTamanoCuerpo')
+                        ->leftjoin('cat_tipos_cuerpo as tipoCuerpo','tipoCuerpo.id','=','cpc.idTipoCuerpo')
+                        ->select('cpc.idPartesCuerpo',
+                                'catpc.nombre as nombreCuerpo',
+                                'cpc.idColoresCuerpo',
+                                'catcolores.nombre as colorCuerpo',
+                                'cpc.idTamanoCuerpo',
+                                'tamaCuerpo.nombre as tamano',
+                                'cpc.idTipoCuerpo',
+                                'tipoCuerpo.nombre as tipo',
+                                'cpc.observaciones')
+                        ->where('cpc.idPersonaDesaparecida',$value->id)
+                        ->whereIn('cpc.idPartesCuerpo',[2,3,4,5,9,14])//2->CABELLO, 3->BARBA, 4->BIGOTE, 5->PATILLA, 9->OJOS, 14->LABIOS
+                        ->get();
+
+            //echo $partesCuerpo;
+
+            $longitud = count($partesCuerpoRostro);
+            $nCabello = '';$nVelloFacial   = ''; $nOjos = ''; $nLabios = '';
+            //$idParti  = array();
+            for($j=0;$j < $longitud; $j++){
+                if($partesCuerpoRostro[$j]->idPartesCuerpo == 2 ){ 
+                     $nCabello = '<i> '.$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo.', '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                    //array_push($idParti , $particularidades[$j]->idParticularidad); 
+                }else if($partesCuerpoRostro[$j]->idPartesCuerpo == 3){
+                    $nVelloFacial = ' <i>'.$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                }else if($partesCuerpoRostro[$j]->idPartesCuerpo == 4 ){
+                   $nVelloFacial = $nVelloFacial.' <i><br>' .$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                }else if($partesCuerpoRostro[$j]->idPartesCuerpo == 5 ){
+                    $nVelloFacial = $nVelloFacial.' <i><br>' .$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                }else if($partesCuerpoRostro[$j]->idPartesCuerpo == 9){
+                     $nOjos = $partesCuerpoRostro[$j]->nombreCuerpo.': '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                }else if($partesCuerpoRostro[$j]->idPartesCuerpo == 14){
+                     $nLabios = $partesCuerpoRostro[$j]->nombreCuerpo.': '.$partesCuerpoRostro[$j]->tipo;
+                 }
+            }
+                
+   
+           $registros[$i] = array('id' => $value->id,
+                                'nombre' => $value->nombre,
+                                'fecha' => $value->fecha,
+                                'sexo' => $value->sexo,
+                                'apodo' => $value->apodo,
+                                'edad' => $value->edad,
+                                'estatura' => $value->estatura,
+                                'peso' => $value->peso,
+                                'complexion' => $value->complexion,
+                                'cPiel' => $value->cPiel,
+                                'estado' => $value->estado,
+                                'municipio' => $value->municipio,
+                                'nacionalidad' => $value->nacionalidad,
+                                'fechaReporte' => $value->fechaReporte,
+                                'hechos' => $value->hechos,
+                                'cabello' => $nCabello,
+                                'velloFacial' => $nVelloFacial,
+                                'ojos' => $nOjos,
+                                'labios' => $nLabios
+                                  
+                                /*'color' => $partesCuerpo->colorCuerpo,
+                                'tamano' => $partesCuerpo->tamano,
+                                'tipo' => $partesCuerpo->tipo*/                              
+                                ); 
+
+                 $i++;
+            }
         //$desaparecidos = $desaparecidos->unique('idPersonaDesaparecida');
         //dd($reporteFecha1);
-        //dd($desaparecidos->ToArray());
-		return response()->json($desaparecidos);
+       // dd($partesCuerpo->toArray());
+          return response()->json($registros);
+        }
+        else
+        {
+           return response()->json($desaparecidos); 
+        }
 	}
 
 	public function jsonInformantes(Request $request, $idCedula)
@@ -358,6 +475,7 @@ class ConsultasController extends Controller
                      'cc.nombre as colonia',
                      'cc.codigoPostal as cp')
             ->where('idDesaparecido', $idDesaparecido)
+            ->where('tipoDireccion','!=', 'LUGAR DE AVISTAMIENTO')
                 ->get();        
 		return response()->json($domicilios);
         
@@ -555,7 +673,7 @@ class ConsultasController extends Controller
 
 	public function jsonColonias(Request $request, $id){
 		//if($request->ajax()){
-			$colonias = \App\Models\CatColonia::where('idMunicipio',$id)->get();
+			$colonias = \App\Models\CatColonia::where('idMunicipio',$id)->orderBy('nombre')->get();
 			return response()->json($colonias);
 		//}
 	}
@@ -697,6 +815,18 @@ class ConsultasController extends Controller
                                         ->get();
         
         return response()->json($prendas);
+    }
+
+    public function json_subparte_cuerpo(Request $request, $parte_cuerpo = null)
+    {
+        $data['subpartes']          = \App\Models\CatPartesCuerpo::where('partePadre', $parte_cuerpo)->get();
+        $data['tipos']              = \App\Models\CatTiposCuerpo::where('idPartesCuerpo', $parte_cuerpo)->get();
+        $data['tamanos']            = \App\Models\CatTamanoCuerpo::where('idPartesCuerpo', $parte_cuerpo)->get();
+        $data['colores']            = \App\Models\CatColoresCuerpo::where('idPartesCuerpo', $parte_cuerpo)->get();
+        $data['particularidades']   = \App\Models\CatParticularidadesCuerpo::where('idPartesCuerpo', $parte_cuerpo)->get();
+        $data['modificaciones']     = \App\Models\CatModificacionesCuerpo::where('idPartesCuerpo', $parte_cuerpo)->get();
+
+        return response()->json($data);
     }
 
 }

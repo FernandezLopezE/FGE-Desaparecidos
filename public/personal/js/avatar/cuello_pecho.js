@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
   //obtener particularidades
-        $.ajax({
-                url: routeDescrip+'/get_particularidades/'+78,
+        /*$.ajax({
+                url: '/descripcionfisica/get_particularidades/'+78,
                 type:"GET",
                 dataType:"json",
 
@@ -16,11 +16,11 @@ $(document).ready(function() {
 
                 },
                 
-        });
+        });*/
 
         //obtener modificaciones
-        $.ajax({
-                url: routeDescrip+'/get_modificaciones/'+78,
+        /*$.ajax({
+                url: '/descripcionfisica/get_modificaciones/'+78,
                 type:"GET",
                 dataType:"json",
 
@@ -34,7 +34,7 @@ $(document).ready(function() {
 
                 },
                 
-            });
+            });*/
 
 
 
@@ -52,8 +52,8 @@ $(document).ready(function() {
 
   
 	//Cargar valores a select de particularidades de cuello
-	$.ajax({
-       url: routeDescrip+'/get_particularidades/'+10,
+	/*$.ajax({
+       url: '/descripcionfisica/get_particularidades/'+10,
        type:"GET",
        dataType:"json",
 
@@ -63,11 +63,11 @@ $(document).ready(function() {
 		    	$("#idPartCuello").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
 	           });
 	        },  
-	});
+	});*/
 
 	//Cargar valores a select de modificaciones de cuello
-	$.ajax({
-       url: routeDescrip+'/get_modificaciones/'+10,
+	/*$.ajax({
+       url: '/descripcionfisica/get_modificaciones/'+10,
        type:"GET",
        dataType:"json",
 
@@ -77,7 +77,7 @@ $(document).ready(function() {
 		    	$("#idModCuello").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
 	           });
 	        },  
-	});
+	});*/
 
   //Mostrar otra particularidad cuello
   $("#idPartCuello").change(function(event) {
@@ -100,8 +100,8 @@ $(document).ready(function() {
   });
 
   //Cargar valores a select de pecho
-  $.ajax({
-       url: routeDescrip+'/get_particularidades/'+10,
+ /* $.ajax({
+       url: '/descripcionfisica/get_particularidades/'+10,
        type:"GET",
        dataType:"json",
 
@@ -111,14 +111,14 @@ $(document).ready(function() {
           $("#idPartCuello").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
              });
           },  
-  });
+  });*/
    
 
    $("#posPecho").change(function(){
       var idPartesCuerpo = $(this).val();
       //obtener particularidades
-        $.ajax({
-                url: routeDescrip+'/get_particularidades/'+idPartesCuerpo,
+        /*$.ajax({
+                url: '/descripcionfisica/get_particularidades/'+idPartesCuerpo,
                 type:"GET",
                 dataType:"json",
 
@@ -132,11 +132,11 @@ $(document).ready(function() {
 
                 },
                 
-        });
+        });*/
 
         //obtener modificaciones
-        $.ajax({
-                url: routeDescrip+'/get_modificaciones/'+idPartesCuerpo,
+       /* $.ajax({
+                url: '/descripcionfisica/get_modificaciones/'+idPartesCuerpo,
                 type:"GET",
                 dataType:"json",
 
@@ -150,6 +150,6 @@ $(document).ready(function() {
 
                 },
                 
-            });
+            });*/
    });
 });
