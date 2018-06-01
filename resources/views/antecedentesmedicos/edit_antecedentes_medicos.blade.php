@@ -1,14 +1,7 @@
 @extends('layouts.app_uipj')
 @section('css')
 
-  
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
 
- <!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-<script src="//cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>-->
-
-
-<link href="../plugins/bootstrap_fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
 <!--<style type="text/css">
     .gallery
     {
@@ -29,63 +22,7 @@
         padding: 15px;
     }
     </style>-->
-<style type="text/css">
-    a.fancybox img {
-     width: 200px;
-height:150px;
-    }
-    a.div_tamano{
 
-
-    }
-    a.fancybox{
- margin:10px auto;
-  width:180px;
-  height:180px;
-}
-
-    
-.gallery
-    {
-        display: inline-block;
-        margin-top: 20px;
-        margin-left: 20px;
-        margin-right: 20px;
-    }
-    .close-icon{
-      border-radius: 50%;
-        position: absolute;
-        right: 5px;
-        top: -10px;
-        padding: 5px 8px;
-    }
-    .form-image-upload{
-        background: #e8e8e8 none repeat scroll 0 0;
-        padding: 15px;
-    }
-     .transition {
-          -webkit-transform: scale(1.2); 
-          -moz-transform: scale(1.2);
-          -o-transform: scale(1.2);
-          transform: scale(1.2);
-      }
-      img.zoom {
-      
-          
-          -webkit-transition: all .3s ease-in-out;
-          -moz-transition: all .3s ease-in-out;
-          -o-transition: all .3s ease-in-out;
-          -ms-transition: all .3s ease-in-out;
-      }
-      .close-icon{
-      border-radius: 10%;
-        position: absolute;
-        right: 5px;
-        top: -10px;
-        padding: 1px 5px;
-    }
-
-</style>
 
 @endsection
 
@@ -102,16 +39,17 @@ height:150px;
                 </h5>
           </div>
         
-  <div class="card-body bg-white">
+	<div class="card-body bg-white">
    {{-- <button  type="button" class="btn btn-dark pull-right"  id="nuevoAntecedenteMedico">Agregar</button>
     <br>--}}
-    <br>  
+    <br>	
     <form id="formAntecedentesM">
       <div class="row">
             <div class="form-check col-8">
               <div class="row">
                 <div class="col">
                     {!! Form::label ('desaparecidoEnfermedad','ENFERMEDADES:') !!}
+        
                 </div>
                 <div class="col">
                     <input class="form-check-input" type="checkbox" id="sinInformacionE" checked="">
@@ -129,7 +67,7 @@ height:150px;
                                 ['class' => 'form-control',
                                   'id' => 'idEnfermedad',
                                   'multiple' => 'multiple',
-                                  'disabled' => 'disabled'
+                                  
                                 ] )!!}   
                   </div>
               </div>        
@@ -137,17 +75,17 @@ height:150px;
             <div class="form-check col" id="div_otraEnfermedad">
                 <div class="row">
                   <div class="col">
-                    <input class="form-check-input" type="checkbox" id="chckOtraEnfermedad"  disabled="true" checked="false">
+                    <input class="form-check-input" type="checkbox" id="chckOtraEnfermedad"   checked="false">
                     <label class="form-check-label" for="antecedentesmedicos">
                     OTRA 
                     </label>
                   </div>      
                 </div>
                 <div class="row">
-                  <div class="col" id="otra_Enfermedad" style="display:none" >
+                  <div class="col" id="otra_Enfermedad"  >
                       {!! Form::label ('otro','Especifique:') !!}
                       {!! Form::text ('otraEnfermedad',
-                              old('otro'),
+                              $idAM->otraEnfermedad,
                               ['class' => 'form-control mayuscula sinEnter',
                                 'placeholder' => 'Ingrese otra enfermedad',
                                 'id' => 'otraEnfermedad',
@@ -183,7 +121,7 @@ height:150px;
                           ['class' => 'form-control',
                             'id' => 'idAdicciones',
                             'multiple' => 'multiple',
-                            'disabled' => 'disabled'
+                            
                         ] )!!}   
                   </div>
               </div>        
@@ -191,17 +129,17 @@ height:150px;
             <div class="form-check col" id="div_otraAdiccion">
                 <div class="row">
                   <div class="col">
-                    <input class="form-check-input" type="checkbox" id="chckOtraAdiccion"  disabled="true" checked="false">
+                    <input class="form-check-input" type="checkbox" id="chckOtraAdiccion"   checked="false">
                     <label class="form-check-label" for="antecedentesmedicos">
                     OTRA 
                     </label>
                   </div>      
                 </div>
                 <div class="row">
-                  <div class="col" id="otra_Adiccion" style="display:none" >
+                  <div class="col" id="otra_Adiccion"  >
                     {!! Form::label ('otraAdic','Especifique:') !!}
                     {!! Form::text ('otraAdiccion',
-                          old('otraAdic'),
+                          $idAM->otraAdiccion,
                           ['class' => 'form-control mayuscula sinEnter',
                             'placeholder' => 'Ingrese otra adicción',
                             'id' => 'otraAdiccion',
@@ -237,7 +175,7 @@ height:150px;
                             ['class' => 'form-control',
                               'id' => 'idIQuirurgica',
                               'multiple' => 'multiple',
-                              'disabled' => 'disabled'
+                              
                             ] )!!}           
                   </div>
               </div>        
@@ -245,17 +183,17 @@ height:150px;
             <div class="form-check col" id="div_otraIQ">
                 <div class="row">
                   <div class="col">
-                    <input class="form-check-input" type="checkbox" id="chckOtraIQ"  disabled="true" checked="false">
+                    <input class="form-check-input" type="checkbox" id="chckOtraIQ"   checked="false">
                     <label class="form-check-label" for="antecedentesmedicos">
                     OTRA 
                     </label>
                   </div>      
                 </div>
                 <div class="row">
-                  <div class="col" id="otra_IQ" style="display:none" >
+                  <div class="col" id="otra_IQ"  >
                     {!! Form::label ('otraIQ','Especifique:') !!}
                     {!! Form::text ('otraIQuirurgica',
-                          old('otraIQ'),
+                          $idAM->otraIQ,
                           ['class' => 'form-control mayuscula sinEnter',
                             'placeholder' => 'Ingrese otra intervención quirúrgica',
                             'id' => 'otraIQuirurgica',
@@ -291,7 +229,7 @@ height:150px;
                             ['class' => 'form-control',
                               'id' => 'idImplantes',
                               'multiple' => 'multiple',
-                              'disabled' => 'disabled'
+                              
                             ] )!!}               
                   </div>
               </div>        
@@ -299,17 +237,17 @@ height:150px;
             <div class="form-check col" id="div_otroIm">
                 <div class="row">
                   <div class="col">
-                    <input class="form-check-input" type="checkbox" id="chckOtroImplante"  disabled="true" checked="false">
+                    <input class="form-check-input" type="checkbox" id="chckOtroImplante"   checked="false">
                     <label class="form-check-label" for="antecedentesmedicos">
                     OTRA 
                     </label>
                   </div>      
                 </div>
                 <div class="row">
-                  <div class="col" id="otro_Implante" style="display:none" >
+                  <div class="col" id="otro_Implante"  >
                     {!! Form::label ('otraIQ','Especifique:') !!}
                     {!! Form::text ('otroImplante',
-                          old('otroImplan'),
+                          $idAM->otroImplante,
                           ['class' => 'form-control mayuscula sinEnter',
                             'placeholder' => 'Ingrese otro implante',
                             'id' => 'otroImplante',
@@ -334,13 +272,13 @@ height:150px;
          <div class="col">
             {!! Form::label ('observacioneM','Observaciones:') !!}
             {!! Form::textarea  ('observacionesAM',
-                                old('observacioneM',null),
+                                $idAM->observaciones,
                                 ['class' => 'form-control mayuscula sinEnter', 'id' => 'observacionesAM','size' => '30x4', 'placeholder' => 'Ingrese las observaciones'])!!}
             </div>    
           <div class="col">
             {!! Form::label ('medicamentos','Medicamentos que toma:') !!}
             {!! Form::textarea  ('medicamentosToma',
-                                old('medicamentos',null),
+                                $idAM->medicamentosToma,
                                 ['class' => 'form-control mayuscula sinEnter', 'id' => 'medicamentosToma','size' => '30x4', 'placeholder' => 'Ingrese los medicamentos que toma'])!!}
             </div>                            
     </div> 
@@ -349,100 +287,28 @@ height:150px;
   
     </form>
     </div>   
-  </div>  
-
-{{--LO SIGUIENTE ES EL FILE INPUT PARA CARGAR IMAGEN DE RADIOGRAFIAS--}}
- 
-<div class="card border-primary">
-        <div class="card border-success">
-          <div class="card-header"> 
-              <h5>AGREGAR ANEXOS
-              <button type="submit" class="btn btn-dark pull-right"  id="btnAgregarAnexo"> AGREGAR   
-              </button>   
-              </h5>
-          </div>
-        </div>
-        
-         @include('antecedentesmedicos.modals.modal_cargar_documento')
- 
-       <div class="container page-top">
-        <div class="row">
-           
+	</div>	
 
 
-            @if($images->count())
-                @foreach($images as $image)
-                <div class='col-md-2 thumb' >
-                   @if(substr ($image->ruta, -3) == "pdf")
-                    <a id ="div_tamano">
-                         <a id="fancybox" class="fancybox" rel="ligthbox" href="{{asset($image->ruta) }}"target="_blank">              
-                           <center>
-                            <img class="img-responsive zoom img-fluid" alt="" src="../images/documentopdf.png" width="150" height="220"  align="center" />
-                          </center>
-                              
-                            <div class='text-center'>
-                                <small class='text-muted'>{{ $image->name }}</small>
-                            </div> <!-- text-center / end -->
-                        </a>
-                      </a>
-                    @else
-                       <a id ="div_tamano">
-                        <a id="fancybox" class="fancybox" rel="ligthbox" href="{{asset($image->ruta) }}">                
-                           <img class="img-responsive zoom img-fluid" alt="" src="..{{ $image->ruta }}" />
-                              
-                            <div class='text-center'>
-                                <small class='text-muted'>{{ $image->name }}</small>
-                            </div> <!-- text-center / end -->
-                        </a>
-                        <a id ="div_tamano">
-                    @endif
-                    <form action="{{ url('imagenAntecedentesM',$image->id) }}" method="POST">
-                    <input type="hidden" name="_method" value="delete">
-                    {!! csrf_field() !!}
-                    <button type="submit" class="close-icon btn btn-danger"><i class="fa fa-window-close"></i></button>
-                    </form>
-                </div> <!-- col-6 / end -->
-                @endforeach
-            @endif
+                       
 
-
-           <!-- list-group / end -->
-    </div> <!--termina el row-->
-
-  </div>
-  <br>
-</div>
-
-                         
-
-@endsection 
+@endsection	
 
 @section('scripts')
 
 
 
-<script src="../plugins/bootstrap_fileinput/js/popper.min.js" type="text/javascript"></script>
-
-
-<script src="../plugins/bootstrap_fileinput/js/bootstrap.min.js" type="text/javascript"></script>
-<!-- the main fileinput plugin file -->
-<script src="../plugins/bootstrap_fileinput/js/fileinput.js"></script>
-<!-- optionally uncomment line below for loading your theme assets for a theme like Font Awesome (`fa`) -->
- <script src="../plugins/bootstrap_fileinput/js/theme.js"></script>
-<!-- optionally if you need translation for your language then include  locale file as mentioned below -->
-<script src="../plugins/bootstrap_fileinput/js/es.js"></script>
-<!-- para la galeria de imagenes fancybox -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 <script type="text/javascript">
   
-  $(document).ready(function(){
-    var otraE;
-    var otraIq;
+	$(document).ready(function(){
+		var otraE;
+		var otraIq;
     var otraA;
     var otroIm;
+    var routeIndexAM = '{!! route('antecedentesmedicos.index') !!}';
     if ($('#sinInformacionE').is(':checked')) {
                     $('#div_enfermedades').hide();
                     $('#div_otraEnfermedad').hide();
@@ -475,24 +341,159 @@ height:150px;
                     $('#div_Im').show();
                     $('#div_otroIm').show();
                 }
-    
-    
+ 
 
+ var arrayEnf = @json ($idConsultaEnfermedades);
+$('#idEnfermedad').val(arrayEnf).trigger('change');
+var arrayAdi = @json ($idConsultaAdicciones);
+$('#idAdicciones').val(arrayAdi).trigger('change');
+var arrayIQ = @json ($idConsultaIQ);
+$('#idIQuirurgica').val(arrayIQ).trigger('change');
+var arrayIM = @json ($idConsultaIQ);
+$('#idImplantes').val(arrayIM).trigger('change');
+console.log(arrayEnf);
+var otEn = '{!! $idAM->otraEnfermedad !!}';
+var otAd = '{!! $idAM->otraAdiccion !!}';
+var otIQ = '{!! $idAM->otraIQ !!}';
+var otIM = '{!! $idAM->otroImplante !!}';
+var obse = '{!! $idAM->observaciones !!}';
+var meTo = '{!! $idAM->medicamentosToma !!}';
 
+console.log('{!! $idAM->otraEnfermedad !!}');
+
+/*********************************************************************/
+/***************ACCIONES QUE SE HACEN EN ENFERMEDAD   ****************/
+/*********************************************************************/
+if(arrayEnf == ""){
+   if (otEn != "") {
+                  $("#sinInformacionE").prop('checked', false);
+                  $('#div_enfermedades').show();
+                  $('#div_otraEnfermedad').show();
+                  $("#idEnfermedad").prop('enabled');
+                  $("#chckOtraEnfermedad").prop('checked', true);
+                }   
+                else{
+                   $('#div_otraEnfermedad').hide();
+                  $('#otra_Enfermedad').hide();
+                }
+}else{
+    $("#sinInformacionE").prop('checked', false);
+    $('#div_enfermedades').show();
+   $('#div_otraEnfermedad').show();
+    $("#idEnfermedad").prop('enabled');
+            if (otEn == "") {
+                  $("#chckOtraEnfermedad").prop('checked', false);
+                  $('#div_otraEnfermedad').show();
+                  $('#otra_Enfermedad').hide();
+                }
+                else{
+                  $("#chckOtraEnfermedad").prop('checked', true);
+                  $('#div_enfermedades').show();
+                  $('#div_otraEnfermedad').show();//termina oculta
+                }
+}
+
+/*********************************************************************/
+/***************ACCIONES QUE SE HACEN EN ADICCIONES   ****************/
+/*********************************************************************/
+if(arrayAdi == ""){
+   if (otAd != "") {
+                  $("#sinInformacionAd").prop('checked', false);
+                  $('#div_adicciones').show();
+                  $('#div_otraAdiccion').show();
+                  $("#idAdicciones").prop('enabled');                  
+                  $("#chckOtraAdiccion").prop('checked', true);
+                 //termina oculta
+                }   
+                else{
+                   $('#div_otraAdiccion').hide();
+                  $('#otra_Adiccion').hide();
+                }
+}else{
+    $("#sinInformacionAd").prop('checked', false);
+    $('#div_adicciones').show();
+   $('#div_otraAdiccion').show();
+    $("#idAdicciones").prop('enabled');
+            if (otAd == "") {
+                  $("#chckOtraAdiccion").prop('checked', false);
+                  $('#div_otraAdiccion').show();
+                  $('#otra_Adiccion').hide();
+                }
+                else{
+                  $("#chckOtraAdiccion").prop('checked', true);
+                  $('#div_adicciones').show();
+                  $('#div_otraAdiccion').show();//termina oculta
+                }
+}
+/*********************************************************************/
+/*********** ACCIONES QUE SE HACEN EN INTERVENCONES QUIRURGICAS*******/
+/*********************************************************************/
+if(arrayIQ == ""){
+   if (otIQ != "") {
+                  $("#sinInformacionIQ").prop('checked', false);
+                  $('#div_IQ').show();
+                  $('#div_otraIQ').show();
+                  $("#idIQuirurgica").prop('enabled');                  
+                  $("#chckOtraIQ").prop('checked', true);
+                  //termina oculta
+                }   
+                else{
+                   $('#div_IQ').hide();
+                  $('#otra_IQ').hide();
+                }
+}else{
+    $("#sinInformacionIQ").prop('checked', false);
+    $('#div_IQ').show();
+   $('#div_otraIQ').show();
+    $("#idIQuirurgica").prop('enabled');
+            if (otIQ == "") {
+                  $("#chckOtraIQ").prop('checked', false);
+                  $('#div_otraIQ').show();
+                  $('#otra_IQ').hide();
+                }
+                else{
+                  $("#chckOtraIQ").prop('checked', true);
+                  $('#div_IQ').show();
+                  $('#div_otraIQ').show();//termina oculta
+                }
+}
+/*********************************************************************/
+/*********** ACCIONES QUE SE HACEN EN IMPLANTES*******/
+/*********************************************************************/
+if(arrayIM == ""){
+   if (otIM != "") {
+                  $("#sinInformacionIm").prop('checked', false);
+                  $('#div_Im').show();
+                  $('#div_otroIm').show();
+                  $("#idIQuirurgica").prop('enabled');                  
+                  $("#chckOtroImplante").prop('checked', true);
+                  //termina oculta
+                }   
+                else{
+                   $('#div_Im').hide();
+                  $('#otro_Implante').hide();
+                }
+}else{
+    $("#sinInformacionIm").prop('checked', false);
+    $('#div_Im').show();
+   $('#div_otroIm').show();
+    $("#idIQuirurgica").prop('enabled');
+            if (otIM == "") {
+                  $("#chckOtroImplante").prop('checked', false);
+                  $('#div_otroIm').show();
+                  $('#otro_Implante').hide();
+                }
+                else{
+                  $("#chckOtroImplante").prop('checked', true);
+                  $('#div_Im').show();
+                  $('#div_otroIm').show();//termina oculta
+                }
+}
+/*************************************************************************/
+/*************************************************************************/
+/*************************************************************************/
    //los siguientes metodos los empleo en la galeria
-  $(".fancybox").fancybox({
-        openEffect: "none",
-        closeEffect: "none"
-    });
-    
-    $(".zoom").hover(function(){
-    
-    $(this).addClass('transition');
-  }, function(){
-        
-    $(this).removeClass('transition');
-  });
-        //aqui terminan los metodos de la galería
+ //aqui terminan los metodos de la galería
 
 //Aplicacion de select2
 $('#idEnfermedad').select2();
@@ -668,7 +669,7 @@ $("#sinInformacionIm").change(function () {
 //Agregar antecedentes medicos
 var routeIndexAM = '{!! route('antecedentesmedicos.index') !!}';
   $('#nuevoAntecedenteMedico').click (function(){
-
+$idExtraviado = $('#idExtraviado').val();
     var dataString = {
       idExtraviado: $('#idExtraviado').val(),
 
@@ -686,8 +687,8 @@ var routeIndexAM = '{!! route('antecedentesmedicos.index') !!}';
 
     console.log(dataString);
     $.ajax({
-      type: 'POST',
-      url:  routeIndexAM+'/store',
+      type: 'PUT',
+      url: routeIndexAM+'/'+$idExtraviado,
       data: dataString,
       dataType: 'json',
       success: function(data) {           
@@ -703,7 +704,7 @@ var routeIndexAM = '{!! route('antecedentesmedicos.index') !!}';
                     text: 'Aceptar',
                     btnClass: 'btn-dark',
                     action: function(){
-                      location.reload();
+                     window.location =  routeIndexAM +'/{!! $desaparecido->id !!}';
                     }
                 },
             }
@@ -760,48 +761,6 @@ var rutas = [];
                             } else if (rutas.indexOf($nombre) > -1) {
                                 //console.log($nombre + ' ya existe en la colección de verduras.');
                             }*/
-var routeIndex = '{!! route('anexoscontroller.index') !!}';
-$("#fileImagenes").fileinput({
-                  language:'es',
-                  theme: 'fa',
-                  uploadUrl: routeIndex + '/imagenAntecedentesM',
 
-                  uploadExtraData: function() {
-                   
-                      return {
-
-                          _token: $("input[name='_token']").val(),
-                          idDesaparecido:'{!! $desaparecido->id!!}',
-                          tipoAnexo: 'antecedentesMedicos',
-
-                      };
-                  },
-                  allowedFileExtensions: ['jpg', 'png', 'gif', 'pdf'],
-                  overwriteInitial: false,
-                  maxFileSize:2000,
-                  maxFilesNum: 10,
-
-                  
-                  slugCallback: function (filename) {
-                    /*$desaparecido = ('{!! $desaparecido->id!!}');
-                    console.log ( $desaparecido+"desaparecido");*/
-                    $nombre = $desaparecido+"_ant_medicos_"+filename.replace('(', '_').replace(']', '_');
-
-                    console.log($nombre);
-
-                      return  filename.replace('(', '_').replace(']', '_');
-                  }
-
-
-
-              });
-
-  $('#cerrarModal').click (function(){
-
-    location.reload();
-
-})
-
-
-  </script>
+	</script>
 @endsection
