@@ -17,7 +17,9 @@ class CreateCatModificacionesCuerpoTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->integer('idPartesCuerpo')->unsigned()->nullable();           
-            $table->foreign('idPartesCuerpo')->references('id')->on('cat_partes_cuerpo');
+            $table->foreign('idPartesCuerpo')->references('id')->on('cat_partes_cuerpo');                   
+            //$table->integer('idModificacionesCuerpo')->unsigned()->nullable();           
+            //$table->foreign('idModificacionesCuerpo')->references('id')->on('cat_modificaciones_cuerpo');
             $table->timestamps();
         });
     }

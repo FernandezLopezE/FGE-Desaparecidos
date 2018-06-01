@@ -15,7 +15,7 @@ class CreateCatDocumentoIdentidadTable extends Migration
     {
         Schema::create('cat_documento_identidad', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre',30)->unique();
+            $table->string('nombre',30);
             $table->timestamps();
         });
     }

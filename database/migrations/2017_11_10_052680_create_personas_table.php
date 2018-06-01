@@ -20,7 +20,7 @@ class CreatePersonasTable extends Migration
             $table->string('segundoAp', 50)->nullable();
             $table->dateTime('fechaNacimiento')->default("1900-01-01");
             $table->string('rfc', 20)->default("AAAA000101");
-            $table->string('curp', 20)->unique()->nullable();
+            $table->string('curp', 20)->nullable();
             $table->string('sexo', 20)->default("SIN INFORMACION");
             $table->boolean('esEmpresa')->default(false);
             
