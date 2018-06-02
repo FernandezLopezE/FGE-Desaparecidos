@@ -105,7 +105,7 @@ $(document).ready(function(){
                 if(parseInt(reglas.particularidades)){
                     html = html+'<div class="form-group">';
                     html = html+'<label for="idParticularidad">Particularidades:</label>';
-                    html = html+'<select type="select" class="form-control" id="idParticularidad">'
+                    html = html+'<select type="select" class="form-control" multiple data-live-search="true" id="idParticularidad">'
                     $.each(data.particularidades, function(key, value){
                         html = html+'<option value="'+value.id+'">'+value.nombre+'</option>';
                     });
@@ -115,7 +115,7 @@ $(document).ready(function(){
                 if(parseInt(reglas.modificaciones)){
                     html = html+'<div class="form-group">';
                     html = html+'<label for="idModificacion">Modificaciones:</label>';
-                    html = html+'<select type="select" class="form-control" id="idModificacion">'
+                    html = html+'<select type="select" class="form-control" multiple data-live-search="true" id="idModificacion">'
                     $.each(data.modificaciones, function(key, value){
                         html = html+'<option value="'+value.id+'">'+value.nombre+'</option>';
                     });
@@ -129,7 +129,10 @@ $(document).ready(function(){
 
                 html = html+'<button type="submit" id="btnGuardar" class="btn btn-primary">Guardar</button>';
                 
-                campo.append(html);            
+                campo.append(html);
+
+                $('#idParticularidad').selectpicker();
+                $('#idModificacion').selectpicker();  
             },
             error: function(data) {
             }
