@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\CedulaPartesCuerpo;
+use App\Models\PivotSubPartiCuerpo;
+use App\Models\PivotSubModiCuerpo;
 
 class SenasParticularesController extends Controller
 {
@@ -34,7 +37,38 @@ class SenasParticularesController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->toArray());
+        $data['error'] = null;
+        \DB::beginTransaction();
+        try {
+            $parteCuerpo = CedulaPartesCuerpo::create([
+                'posicion' 			        => $request->input('idPosicion'),
+                'idTipoCuerpo' 		        => $request->input('idTipo'),
+                'idColoresCuerpo'	        => $request->input('idColor'),
+                'idTamanoCuerpo'	        => $request->input('idTamano'),
+                'observaciones' 	        => $request->input('observaciones'),
+                'idPartesCuerpo'            => $request->input('idParteCuerpo'),
+                'idPersonaDesaparecida'     => $request->input('idPersonaDesaparecida')
+            ]);
+
+            foreach ($request->input('idParticularidad') as $particularidad) {
+                PivotSubPartiCuerpo::create(['idCedulaPartesCuerpo' => $parteCuerpo->id, 'idParticularidades' => $particularidad]);
+            }
+
+            foreach ($request->input('idModificacion') as $modificacion) {
+                PivotSubModiCuerpo::create(['idCedulaPartesCuerpo' => $parteCuerpo->id, 'idModificaciones' => $modificacion]);
+            }
+
+            \DB::commit();
+            $data['success'] = true;
+        } catch (\Exception $e) {
+            $data['success'] = false;
+            $data['error'] = $e->getMessage();
+            \DB::rollback();
+        }
+        
+        if ($data['success']) {
+            return response()->json($data);
+        }
     }
 
     /**
