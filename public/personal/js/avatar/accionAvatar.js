@@ -60,15 +60,15 @@ $(document).ready(function(){
             dataType: 'json',
             success: function(data) {                
                 reglas = $.parseJSON(data.parte.reglas);
-                html="";
+                html="<input type='hidden' id='idParteCuerpo' value='"+idParteCuerpo+"' \>";
                 if(parseInt(reglas.posicion)){
                 html = html+'<div class="form-group">';
                 html = html+'<label for="idPosicion">Posición:</label>';
                 html = html+'<select type="select" class="form-control" id="idPosicion">';
-                html = html+'<option value="1">NO APLICA</option>';
-                html = html+'<option value="2">AMBOS</option>';
-                html = html+'<option value="3">IZQUIERDA</option>';
-                html = html+'<option value="4">DERECHA</option>';
+                html = html+'<option value="NO APLICA">NO APLICA</option>';
+                html = html+'<option value="AMBOS">AMBOS</option>';
+                html = html+'<option value="IZQUIERDA">IZQUIERDA</option>';
+                html = html+'<option value="DERECHA">DERECHA</option>';
                 html = html+'</select>';
                 html = html+'</div>';
                 }
@@ -148,7 +148,9 @@ $(document).ready(function(){
             idTamano : ($("#idTamano").val() === undefined) ? null : $("#idTamano").val(),
             idParticularidad : ($("#idParticularidad").val() === undefined) ? null : $("#idParticularidad").val(),
             idModificacion : ($("#idModificacion").val() === undefined) ? null : $("#idModificacion").val(),
-            observaciones : ($("#observaciones").val() === undefined) ? null : $("#observaciones").val()          
+            observaciones : ($("#observaciones").val() === undefined) ? null : $("#observaciones").val(),
+            idParteCuerpo : ($("#idParteCuerpo").val() === undefined) ? null : $("#idParteCuerpo").val(),
+            idDesaparecido : idDesaparecido                      
         };
         console.log(dataString);
 
@@ -158,19 +160,19 @@ $(document).ready(function(){
             data: dataString,
             dataType: 'json',
             success: function(data) {
-                console.log('El dato es:'+data);
+                /*console.log('El dato es:'+data);
                 modalFamiliar.modal('hide');
-                table.bootstrapTable('refresh');
+                table.bootstrapTable('refresh');*/
             },
             error: function(data) {
-                var errors = data.responseJSON;	
+                /*var errors = data.responseJSON;	
                 $('.modal-body div.has-danger').removeClass('has-danger');
                 $('.form-control-feedback').empty();
                 $.each(errors.errors, function(key, value){			
                     $('#div_'+key).addClass('has-danger');
                     $('input#'+key).addClass('form-control-danger');
                     $('#error_'+key).append(value);						
-                });
+                });*/
             }
         });
     })
