@@ -30,7 +30,8 @@ class ReporteadorController extends Controller
            $coloresBigote = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','4')->pluck('nombre','id');
            $coloresPatilla = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','5')->pluck('nombre','id');
            $coloresOjos = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','9')->pluck('nombre','id');
-
+           $modificaciones = \App\Models\CatModificacionesCuerpo::where('nombre','!=','LUNARES')->where('nombre','!=','LARGA')->where('nombre','!=','DEPILADA')->where('nombre','!=','CERRADA')->where('nombre','!=','ALACIADO')
+               ->where('nombre','!=','RASURADA/DEPILADA')->where('nombre','!=','RASURADA')->groupby('nombre')->distinct()->pluck('nombre','nombre');
             return view('reporteador.index',compact(                                           
                       'estados',
                                             'municipios',
@@ -47,7 +48,8 @@ class ReporteadorController extends Controller
                                             'coloresBarba',
                                             'coloresBigote',
                                             'coloresPatilla',
-                                            'coloresOjos'
+                                            'coloresOjos',
+                                            'modificaciones'
                     ));
             
      
