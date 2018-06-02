@@ -517,6 +517,8 @@
                         data-sortable="true" data-filter-control="input" data-visible="false"></th>
                         <th data-field="Hechos" 
                         data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        <th data-field="Modificaciones" 
+                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
                <th data-field="Acciones"></th>
                 </tr>
             </thead>
@@ -935,6 +937,26 @@ var formatTableActions = function(value, row, index) {
               data: dataString
               //url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+ '/'+ estados
     });
+        
+//          var sexo = '';
+//                var femen = $("input#fem:checked").val();    
+//                var mascul = $("input#masc:checked").val();
+//        
+//                
+//                if (femen == null ){
+//                    sexo = '\''+mascul+'\'';
+//                     console.log('--------------------------');
+//                    console.log(sexo);
+//                }else{ if (mascul == null ){
+//                    sexo = '\''+femen+'\'';
+//                     console.log('--------------------------');
+//                    console.log(sexo);
+//                } else{
+//                    sexo = '\'' +femen + '\',\'' + mascul+ '\'';
+//                     console.log('--------------------------');
+//                    console.log(sexo);
+//                    
+//                } }
 
           var dataString = {
           estados: $('#estados').multipleSelect('getSelects'),
@@ -955,8 +977,9 @@ var formatTableActions = function(value, row, index) {
                 tamanoOjos: $('#tamanoOjos').multipleSelect('getSelects'),
                 colorOjos: $('#colorOjos').multipleSelect('getSelects'),
                 tipoLabio: $('#tipoLabio').multipleSelect('getSelects'),
-                fem : $("input#fem:checked").val(),     
-                masc : $("input#masc:checked").val(),
+              fem : $("input#fem:checked").val(),     
+              masc : $("input#masc:checked").val(),
+          //    sexo,
                 rg : $('#rng1').val(),
                 rg2 : $('#rng2').val(),
                 estatura1 : $('#estatura1').val(),
@@ -1057,7 +1080,11 @@ var formatTableActions = function(value, row, index) {
                     field: 'labios',
                     title: 'Labios',
 
-            },{         
+            },{            
+                   field: 'modificaciones',
+                   title: 'Modificaciones',
+
+           },{      
                     title: 'Acciones',
                     formatter: formatTableActions,
                     events: operateEvents
