@@ -857,9 +857,17 @@ class ConsultasController extends Controller
         return response()->json($prendas);
     }
 
+    public function json_partes_cuerpo(Request $request, $parte_cuerpo = null)
+    {
+        $data['partes']  = \App\Models\CatPartesCuerpo::where('partePadre', $parte_cuerpo)->get();
+        $data['padre']  = \App\Models\CatPartesCuerpo::find($parte_cuerpo);
+        
+        return response()->json($data);
+    }
+
     public function json_subparte_cuerpo(Request $request, $parte_cuerpo = null)
     {
-        $data['subpartes']          = \App\Models\CatPartesCuerpo::where('partePadre', $parte_cuerpo)->get();
+        $data['parte']              = \App\Models\CatPartesCuerpo::find($parte_cuerpo);
         $data['tipos']              = \App\Models\CatTiposCuerpo::where('idPartesCuerpo', $parte_cuerpo)->get();
         $data['tamanos']            = \App\Models\CatTamanoCuerpo::where('idPartesCuerpo', $parte_cuerpo)->get();
         $data['colores']            = \App\Models\CatColoresCuerpo::where('idPartesCuerpo', $parte_cuerpo)->get();
@@ -868,5 +876,4 @@ class ConsultasController extends Controller
 
         return response()->json($data);
     }
-
 }

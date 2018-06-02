@@ -52,67 +52,67 @@ DB::table('cat_partes_cuerpo')->insert([
     ['nombre' => 'HOMBRO IZQUIERDO', 'partePadre' => '18', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //18
 
 
-    ['nombre' => 'PECHO', 'partePadre' => '0', 'reglas' => json_encode(array('parte' => '1', 'posicion' => '1', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                                        //19
+    ['nombre' => 'PECHO', 'partePadre' => '19', 'reglas' => json_encode(array('parte' => '1', 'posicion' => '1', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                                        //19
 
 
-    ['nombre' => 'BRAZO IZQUIERDO', 'partePadre' => '68', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //20
+    ['nombre' => 'BRAZO', 'partePadre' => '68', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //20
 
 
-    ['nombre' => 'ANTEBRAZO IZQUIERDO', 'partePadre' => '68', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                      //21
+    ['nombre' => 'ANTEBRAZO', 'partePadre' => '68', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                      //21
 
 
-    ['nombre' => 'CODO IZQUIERDO', 'partePadre' => '68', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //22
+    ['nombre' => 'CODO', 'partePadre' => '68', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //22
 
 
     ['nombre' => 'MANO IZQUIERDA', 'partePadre' => '0', 'reglas' => json_encode(array('parte' => '1', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //23
 
 
-    ['nombre' => 'PALMA IZQUIERDA', 'partePadre' => '23', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //24
+    ['nombre' => 'PALMA', 'partePadre' => '23', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //24
 
 
-    ['nombre' => 'DEDO PULGAR IZQUIERDO', 'partePadre' => '23', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                      //25
+    ['nombre' => 'DEDO PULGAR', 'partePadre' => '23', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                      //25
 
 
-    ['nombre' => 'DEDO MEÑIQUE IZQUIERDO', 'partePadre' => '23', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                     //26
+    ['nombre' => 'DEDO MEÑIQUE', 'partePadre' => '23', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                     //26
 
 
-    ['nombre' => 'DEDO ANULAR IZQUIERDO', 'partePadre' => '23', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                      //27
+    ['nombre' => 'DEDO ANULAR', 'partePadre' => '23', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                      //27
 
 
-    ['nombre' => 'DEDO MEDIO IZQUIERDO', 'partePadre' => '23', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                       //28
+    ['nombre' => 'DEDO MEDIO', 'partePadre' => '23', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                       //28
 
 
-    ['nombre' => 'DEDO ÍNDICE IZQUIERDO', 'partePadre' => '23', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                      //29
+    ['nombre' => 'DEDO ÍNDICE', 'partePadre' => '23', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                      //29
 
 
-    ['nombre' => 'BRAZO DERECHO', 'partePadre' => '69', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //30
+    ['nombre' => 'BRAZO', 'partePadre' => '69', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //30
 
 
-    ['nombre' => 'ANTEBRAZO DERECHO', 'partePadre' => '69', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //31
+    ['nombre' => 'ANTEBRAZO', 'partePadre' => '69', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //31
 
 
-    ['nombre' => 'CODO DERECHO', 'partePadre' => '69', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //32
+    ['nombre' => 'CODO', 'partePadre' => '69', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //32
 
 
     ['nombre' => 'MANO DERECHA', 'partePadre' => '0', 'reglas' => json_encode(array('parte' => '1', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '0', 'modificaciones' => '0', 'observaciones' => '0',))],                            //33
 
 
-    ['nombre' => 'PALMA DERECHA', 'partePadre' => '33', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                          //34
+    ['nombre' => 'PALMA', 'partePadre' => '33', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                          //34
 
 
-    ['nombre' => 'DEDO MEÑIQUE DERECHO', 'partePadre' => '33', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                           //35
+    ['nombre' => 'DEDO MEÑIQUE', 'partePadre' => '33', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                           //35
 
 
-    ['nombre' => 'DEDO ANULAR DERECHO', 'partePadre' => '33', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //36
+    ['nombre' => 'DEDO ANULAR', 'partePadre' => '33', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //36
 
 
-    ['nombre' => 'DEDO MEDIO DERECHO', 'partePadre' => '33', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //37
+    ['nombre' => 'DEDO MEDIO', 'partePadre' => '33', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //37
 
 
-    ['nombre' => 'DEDO ÍNDICE DERECHO', 'partePadre' => '33', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //38
+    ['nombre' => 'DEDO ÍNDICE', 'partePadre' => '33', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //38
 
 
-    ['nombre' => 'DEDO PULGAR DERECHO', 'partePadre' => '33', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //39
+    ['nombre' => 'DEDO PULGAR', 'partePadre' => '33', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //39
 
 
     ['nombre' => 'ABDOMEN', 'partePadre' => '0', 'reglas' => json_encode(array('parte' => '1', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //40
@@ -121,10 +121,10 @@ DB::table('cat_partes_cuerpo')->insert([
     ['nombre' => 'CADERA', 'partePadre' => '40', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //41
 
 
-    ['nombre' => 'MUÑECA DERECHA', 'partePadre' => '33', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //42
+    ['nombre' => 'MUÑECA', 'partePadre' => '33', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //42
 
 
-    ['nombre' => 'MUÑECA IZQUIERDA', 'partePadre' => '23', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //43
+    ['nombre' => 'MUÑECA', 'partePadre' => '23', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //43
 
 
     ['nombre' => 'PIERNA IZQUIERDA', 'partePadre' => '0', 'reglas' => json_encode(array('parte' => '1', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '0', 'modificaciones' => '0', 'observaciones' => '0',))],                            //44
@@ -133,10 +133,10 @@ DB::table('cat_partes_cuerpo')->insert([
     ['nombre' => 'MUSLO IZQUIERDO', 'partePadre' => '45', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //45
 
 
-    ['nombre' => 'RODILLA IZQUIERDA', 'partePadre' => '44', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //46
+    ['nombre' => 'RODILLA', 'partePadre' => '44', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //46
 
 
-    ['nombre' => 'ESPINILLA IZQUIERDA', 'partePadre' => '44', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //47
+    ['nombre' => 'ESPINILLA', 'partePadre' => '44', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //47
 
 
     ['nombre' => 'PANTORRILLA IZQUIERDA', 'partePadre' => '48', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //48
@@ -145,10 +145,10 @@ DB::table('cat_partes_cuerpo')->insert([
     ['nombre' => 'PIE IZQUIERDO', 'partePadre' => '0', 'reglas' => json_encode(array('parte' => '1', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '0', 'modificaciones' => '0', 'observaciones' => '0',))],                            //49
 
 
-    ['nombre' => 'TOBILLO IZQUIERDO', 'partePadre' => '49', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //50
+    ['nombre' => 'TOBILLO', 'partePadre' => '49', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //50
 
 
-    ['nombre' => 'TALÓN IZQUIERDO', 'partePadre' => '49', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //51
+    ['nombre' => 'TALÓN', 'partePadre' => '49', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //51
 
 
     ['nombre' => 'OMBLIGO', 'partePadre' => '40', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //52
@@ -160,22 +160,22 @@ DB::table('cat_partes_cuerpo')->insert([
     ['nombre' => 'MUSLO DERECHO', 'partePadre' => '54', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //54
 
 
-    ['nombre' => 'RODILLA DERECHA', 'partePadre' => '53', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //55
+    ['nombre' => 'RODILLA', 'partePadre' => '53', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //55
 
 
-    ['nombre' => 'ESPINILLA DERECHA', 'partePadre' => '53', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //56
+    ['nombre' => 'ESPINILLA', 'partePadre' => '53', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //56
 
 
-    ['nombre' => 'PANTORRILLA DERECHA', 'partePadre' => '0', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //57
+    ['nombre' => 'PANTORRILLA DERECHA', 'partePadre' => '57', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //57
 
 
     ['nombre' => 'PIE DERECHO', 'partePadre' => '0', 'reglas' => json_encode(array('parte' => '1', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '0', 'modificaciones' => '0', 'observaciones' => '0',))],                            //58
 
 
-    ['nombre' => 'TALÓN DERECHO', 'partePadre' => '58', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //59
+    ['nombre' => 'TALÓN', 'partePadre' => '58', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //59
 
 
-    ['nombre' => 'TOBILLO DERECHO', 'partePadre' => '58', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //60
+    ['nombre' => 'TOBILLO', 'partePadre' => '58', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //60
 
 
     ['nombre' => 'NUCA', 'partePadre' => '61', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //61
@@ -190,7 +190,7 @@ DB::table('cat_partes_cuerpo')->insert([
     ['nombre' => 'UÑA', 'partePadre' => '0', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //64
 
 
-    ['nombre' => 'NALGA', 'partePadre' => '0', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '1', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //65
+    ['nombre' => 'NALGA', 'partePadre' => '65', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '1', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //65
 
 
     ['nombre' => 'FEMORAL IZQUIERDO', 'partePadre' => '66', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],               //66
@@ -199,8 +199,8 @@ DB::table('cat_partes_cuerpo')->insert([
     ['nombre' => 'FEMORAL DERECHO', 'partePadre' => '67', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],               //67
 
 
-    ['nombre' => 'BRAZO 1', 'partePadre' => '0', 'reglas' => json_encode(array('parte' => '1', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '0', 'modificaciones' => '0', 'observaciones' => '0',))],               //68     BRAZO IZQUIERDO
-    ['nombre' => 'BRAZO 2', 'partePadre' => '0', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '0', 'modificaciones' => '0', 'observaciones' => '0',))],               //69     BRAZO DERECHO
+    ['nombre' => 'BRAZO IZQUIERDO', 'partePadre' => '0', 'reglas' => json_encode(array('parte' => '1', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '0', 'modificaciones' => '0', 'observaciones' => '0',))],               //68     BRAZO IZQUIERDO
+    ['nombre' => 'BRAZO DERECHO', 'partePadre' => '0', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '0', 'modificaciones' => '0', 'observaciones' => '0',))],               //69     BRAZO DERECHO
 
 
         ]);

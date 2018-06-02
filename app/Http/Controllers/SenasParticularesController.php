@@ -34,15 +34,7 @@ class SenasParticularesController extends Controller
      */
     public function store(Request $request)
     {
-        
-        \DB::table('cedula_cat_senas')->insert([
-            'idCatsenas' => $request->input('senaP'),
-            'cantidad' => $request->input('cantidad'),
-            'idCatsenasParticulares' => $request->input('ubicacion'),
-            'caracteristicas' => $request->input('caracteristicas'),
-            'idCedula' => $request->input('idCedula'),
-        ]);
-        return response()->json('se inserto');
+        dd($request->toArray());
     }
 
     /**
@@ -53,17 +45,7 @@ class SenasParticularesController extends Controller
      */
     public function show($id)
     {       
-        $desaparecido= \App\Models\Desaparecido::find($id);
-        $senasParticulares = \App\Models\CatSenasParticulares::all()->pluck('nombre','id');
-        $senasParticularesUbica = \App\Models\CatSenasParticularesUbicaciones::all()->pluck('nombre','id');
-        $nombreTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
-        
-        return view('senasparticulares.form_senas_particulares', [                        
-                        'senasParticulares' => $senasParticulares,
-                        'senasParticularesUbica' => $senasParticularesUbica,
-                        'desaparecido' => $desaparecido,
-                        'nombreTamano' => $nombreTamano
-                    ]);
+
     }
 
     /**
