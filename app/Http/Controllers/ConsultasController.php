@@ -827,6 +827,7 @@ class ConsultasController extends Controller
 
     public function json_subparte_cuerpo(Request $request, $parte_cuerpo = null)
     {
+        $data['parte']              = \App\Models\CatPartesCuerpo::find($parte_cuerpo);
         $data['tipos']              = \App\Models\CatTiposCuerpo::where('idPartesCuerpo', $parte_cuerpo)->get();
         $data['tamanos']            = \App\Models\CatTamanoCuerpo::where('idPartesCuerpo', $parte_cuerpo)->get();
         $data['colores']            = \App\Models\CatColoresCuerpo::where('idPartesCuerpo', $parte_cuerpo)->get();

@@ -31,7 +31,6 @@ Route::get('/', 'InicioController@index');
 
 	Route::resource('vestimentas','VestimentaController');
 
-
 	Route::resource('senas_particulares','SenasParticularesController');
 
 	Route::resource('datos_dentales','DatosDentalesController');
