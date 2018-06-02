@@ -374,8 +374,47 @@ class ConsultasController extends Controller
                      $nLabios = $partesCuerpoRostro[$j]->nombreCuerpo.': '.$partesCuerpoRostro[$j]->tipo;
                  }
             }
+
+// se agrega para particularidades y pruebas
+            $caracteristicasCuerpo = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
+                        ->leftjoin('pivot_subparti_cuerpo as psubp','psubp.idCedulaPartesCuerpo','=','cpc.id')
+                         ->leftjoin('cat_particularidades_cuerpo as cparti','cparti.id','=','psubp.idParticularidades')
+                         ->leftjoin('pivot_submodi_cuerpo as psubm','psubm.idCedulaPartesCuerpo','=','cpc.id')
+                         ->leftjoin('cat_modificaciones_cuerpo as cmodi','cmodi.id','=','psubm.idModificaciones')
+                        ->select('cpc.idPartesCuerpo',
+                                'catpc.nombre as nombreCuerpo',
+                                'cmodi.nombre as modificaciones',
+                                'cpc.observaciones')
+                        ->where('cpc.idPersonaDesaparecida',$value->id)
+                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre',
+                                'cmodi.nombre',
+                                'cpc.observaciones')
+                        ->get();
+
+            $longitud = count($caracteristicasCuerpo);
+            $nparte = '';
+            $nModificaciones = '';
+            $parte_cuerpo = '';
+            for($j=0;$j < $longitud; $j++){
+                if($caracteristicasCuerpo[$j]->modificaciones !=''){
+                    if($caracteristicasCuerpo[$j]->nombreCuerpo == $parte_cuerpo)
+                    { 
+                        $nModificaciones = $nModificaciones.','.$caracteristicasCuerpo[$j]->modificaciones;
+                    }else{               
+                        $parte_cuerpo = $caracteristicasCuerpo[$j]->nombreCuerpo;
+                            if($nModificaciones != '')
+                            $nModificaciones = $nModificaciones.' <i>'.$parte_cuerpo.'</i>:'.$caracteristicasCuerpo[$j]->modificaciones;
+                            else
+                            $nModificaciones = '<i> '.$parte_cuerpo.'</i>: '.$caracteristicasCuerpo[$j]->modificaciones;//primera vez
+
+                    }
+                }
+               
+            }
+
                 
-   
+ /////////////  
            $registros[$i] = array('id' => $value->id,
                                 'nombre' => $value->nombre,
                                 'fecha' => $value->fecha,
@@ -394,7 +433,8 @@ class ConsultasController extends Controller
                                 'cabello' => $nCabello,
                                 'velloFacial' => $nVelloFacial,
                                 'ojos' => $nOjos,
-                                'labios' => $nLabios
+                                'labios' => $nLabios,
+                                'modificaciones' =>trim($nModificaciones,', '),
                                   
                                 /*'color' => $partesCuerpo->colorCuerpo,
                                 'tamano' => $partesCuerpo->tamano,
