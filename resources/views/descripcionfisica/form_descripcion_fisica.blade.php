@@ -75,11 +75,13 @@
 @section('scripts')
 <script type="text/javascript">
   var aux ="{{$aux}}";
-  var extraviado = "{{$desaparecido->id}}";
-  var showCabello2 = "{{$showCabello}}";
+  var idDesaparecido = "{{$desaparecido->id}}";
   var routeDescrip ="{!! route('descripcionfisica.index') !!}";
-  var routeSenas ="{!! route('senas_particulares.index') !!}}"
+  var routeSenas ="{!! route('senas_particulares.index') !!}";
   var routeConsul ="{!! route('consultas.index') !!}";
+  
+  var showCabello2 = "{{$showCabello}}";
+
 
 
   //Boton frente

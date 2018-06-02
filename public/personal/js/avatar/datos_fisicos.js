@@ -9,7 +9,7 @@ $(document).ready(function(){
   	if (aux == true) {
 	    $("#talla").modal("hide");
 	     $.ajax({
-	            url: routeDescrip+'/get_datosfisicos/'+extraviado,
+	            url: routeDescrip+'/get_datosfisicos/'+idDesaparecido,
 	            type:"GET",
 	            dataType:"json",
 	            success:function(data) {
@@ -29,7 +29,7 @@ $(document).ready(function(){
 	// //Click para mostrar en el modal
   	$("#datosFis").click(function(event) {
       $.ajax({
-            url: routeDescrip+'/get_datosfisicos/'+extraviado,
+            url: routeDescrip+'/get_datosfisicos/'+idDesaparecido,
             type:"GET",
             dataType:"json",
             success:function(data) {
@@ -49,13 +49,13 @@ $(document).ready(function(){
   	//botón para guardar talla
   	$("#guardarTalla").click(function(){
 	    console.log("entro");
-	    console.log("hhh"+extraviado);
+	    console.log("hhh"+idDesaparecido);
 	    var dataString = {
 	      estatura: $('#esta').val(),
 	      peso: $('#bulto').val(),
 	      complexion: $('#comple').val(),
 	      colorPiel: $('#cPiel').val(),
-	      idExtraviado: extraviado,
+	      idExtraviado: idDesaparecido,
 	    };
 	    console.log(dataString);
       	$.ajax({
@@ -68,7 +68,7 @@ $(document).ready(function(){
 	          $("#talla").modal("hide");
 	          
 	          $.ajax({
-	            url: routeDescrip+'/get_datosfisicos/'+extraviado,
+	            url: routeDescrip+'/get_datosfisicos/'+idDesaparecido,
 	            type:"GET",
 	            dataType:"json",
 	            success:function(data) {
