@@ -551,6 +551,8 @@
                         data-sortable="true" data-filter-control="input" data-visible="false"></th>
                         <th data-field="Modificaciones" 
                         data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        <th data-field="particularidades" 
+                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
                <th data-field="Acciones"></th>
                 </tr>
             </thead>
@@ -1124,7 +1126,15 @@ var formatTableActions = function(value, row, index) {
                     field: 'modificaciones',
                     title: 'Modificaciones',
 
-            },{        
+            },{             
+                    field: 'particularidades',
+                    title: 'Particularidades',
+
+            },{  
+                    field: 'observaciones',
+                    title: 'Observaciones',
+
+            },{                
                     title: 'Acciones',
                     formatter: formatTableActions,
                     events: operateEvents

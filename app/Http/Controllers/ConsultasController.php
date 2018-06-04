@@ -208,6 +208,8 @@ class ConsultasController extends Controller
     ->leftjoin('cat_tipos_cuerpo as ctc', 'cpc.idTipoCuerpo', '=', 'ctc.id' , 'and', 'ctc.idPartesCuerpo', '=', 'cpc.idPartesCuerpo')
     ->leftjoin('pivot_submodi_cuerpo as psubm', 'psubm.idCedulaPartesCuerpo', '=', 'cpc.id')
     ->leftjoin('cat_modificaciones_cuerpo as cat_mc', 'cat_mc.id', '=', 'psubm.idModificaciones')
+    ->leftjoin('pivot_subparti_cuerpo as psubp','psubp.idCedulaPartesCuerpo','=','cpc.id')
+    ->leftjoin('cat_particularidades_cuerpo as cparti','cparti.id','=','psubp.idParticularidades')
   
     
 //                           { ->leftJoin('cat_nacionalidad as n', 'p.idNacionalidad', '=', 'n.id')
@@ -384,44 +386,105 @@ class ConsultasController extends Controller
             }
 
 
-   // se agrega para particularidades y pruebas
-            $caracteristicasCuerpo = \DB::table('cedula_partes_cuerpo as cpc')
+   // se agrega consulta para particularidades y modificaciones
+            $caracteristicasCuerpoP = \DB::table('cedula_partes_cuerpo as cpc')
                         ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
                         ->leftjoin('pivot_subparti_cuerpo as psubp','psubp.idCedulaPartesCuerpo','=','cpc.id')
-                         ->leftjoin('cat_particularidades_cuerpo as cparti','cparti.id','=','psubp.idParticularidades')
+                        ->leftjoin('cat_particularidades_cuerpo as cparti','cparti.id','=','psubp.idParticularidades')
+                        ->select('cpc.idPartesCuerpo',
+                                'catpc.nombre as nombreCuerpo',
+                                'cparti.nombre as particularidades')
+                        ->where('cpc.idPersonaDesaparecida',$value->id)
+                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 'cparti.nombre')
+                        ->get();
+
+            $longitud = count($caracteristicasCuerpoP);
+            $nParticularidades = '';
+            $parte_cuerpo = '';
+            for($j=0;$j < $longitud; $j++){
+            if($caracteristicasCuerpoP[$j]->particularidades !=''){
+                if($caracteristicasCuerpoP[$j]->nombreCuerpo == $parte_cuerpo)
+                { 
+                    $nParticularidades = $nParticularidades.','.$caracteristicasCuerpoP[$j]->particularidades;
+                }
+                else{
+                    $parte_cuerpo = $caracteristicasCuerpoP[$j]->nombreCuerpo;
+                    if($nParticularidades != '')
+                        $nParticularidades = $nParticularidades.'<i>'.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoP[$j]->particularidades;
+                    else
+                        $nParticularidades = '<i> '.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoP[$j]->particularidades.' ';//primera vez
+
+                }
+            }        
+
+            }
+               
+
+
+            $caracteristicasCuerpoM = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
                          ->leftjoin('pivot_submodi_cuerpo as psubm','psubm.idCedulaPartesCuerpo','=','cpc.id')
                          ->leftjoin('cat_modificaciones_cuerpo as cmodi','cmodi.id','=','psubm.idModificaciones')
                         ->select('cpc.idPartesCuerpo',
                                 'catpc.nombre as nombreCuerpo',
-                                'cmodi.nombre as modificaciones',
+                                'cmodi.nombre as modificaciones')
+                        ->where('cpc.idPersonaDesaparecida',$value->id)
+                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 
+                                'cmodi.nombre')
+                        ->get();
+
+            $longitud = count($caracteristicasCuerpoM);
+            $nModificaciones = '';
+            $nObservaciones = '';
+            $parte_cuerpo = '';
+            for($j=0;$j < $longitud; $j++){
+            if($caracteristicasCuerpoM[$j]->modificaciones !=''){
+                if($caracteristicasCuerpoM[$j]->nombreCuerpo == $parte_cuerpo)
+                { 
+                    $nModificaciones = $nModificaciones.','.$caracteristicasCuerpoM[$j]->modificaciones;
+                }
+                else{
+                    $parte_cuerpo = $caracteristicasCuerpoM[$j]->nombreCuerpo;
+                    if($nModificaciones != '')
+                        $nModificaciones = $nModificaciones.'<i>'.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoM[$j]->modificaciones;
+                    else
+                        $nModificaciones = '<i> '.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoM[$j]->modificaciones.' ';//primera vez
+
+                }
+            }    
+
+            }//del for
+
+            $observacionesCuerpo = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
+                        ->select('cpc.idPartesCuerpo',
+                                'catpc.nombre as nombreCuerpo',
                                 'cpc.observaciones')
                         ->where('cpc.idPersonaDesaparecida',$value->id)
-                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre',
-                                'cmodi.nombre',
+                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 
                                 'cpc.observaciones')
                         ->get();
 
-            $longitud = count($caracteristicasCuerpo);
-            $nparte = '';
-            $nModificaciones = '';
+            $longitud = count($observacionesCuerpo);
+            $nObservaciones = '';
             $parte_cuerpo = '';
             for($j=0;$j < $longitud; $j++){
-            if($caracteristicasCuerpo[$j]->modificaciones !=''){
-                if($caracteristicasCuerpo[$j]->nombreCuerpo == $parte_cuerpo)
+            if($observacionesCuerpo[$j]->observaciones !=''){
+                if($observacionesCuerpo[$j]->nombreCuerpo == $parte_cuerpo)
                 { 
-                    $nModificaciones = $nModificaciones.','.$caracteristicasCuerpo[$j]->modificaciones;
+                    $nObservaciones = $nObservaciones.','.$observacionesCuerpo[$j]->observaciones;
                 }
                 else{
-                    $parte_cuerpo = $caracteristicasCuerpo[$j]->nombreCuerpo;
-                    if($nModificaciones != '')
-                        $nModificaciones = $nModificaciones.'<i>'.$parte_cuerpo.'</i>: '.$caracteristicasCuerpo[$j]->modificaciones;
+                    $parte_cuerpo = $observacionesCuerpo[$j]->nombreCuerpo;
+                    if($nObservaciones != '')
+                        $nObservaciones = $nObservaciones.'<i>'.$parte_cuerpo.'</i>: '.$observacionesCuerpo[$j]->observaciones;
                     else
-                        $nModificaciones = '<i> '.$parte_cuerpo.'</i>: '.$caracteristicasCuerpo[$j]->modificaciones.' ';//primera vez
+                        $nObservaciones = '<i> '.$parte_cuerpo.'</i>: '.$observacionesCuerpo[$j]->observaciones.' ';//primera vez
 
                 }
-            }
-               
-            }
+            }    
+
+            }//del for
 
                 
  
@@ -445,6 +508,8 @@ class ConsultasController extends Controller
                                 'ojos' => $nOjos,
                                 'labios' => $nLabios,
                                 'modificaciones' =>trim($nModificaciones,', '),
+                                'particularidades' =>trim($nParticularidades,', '),
+                                'observaciones' =>trim($nObservaciones,', ')
                                   
                                 /*'color' => $partesCuerpo->colorCuerpo,
                                 'tamano' => $partesCuerpo->tamano,
