@@ -102,8 +102,8 @@ Route::get('consultas/edad/{fecha_nacimiento}', 'ConsultasController@getEdad');
 
 Route::get('consultas/json_subparte_cuerpo/{idParteCuerpo}', 'ConsultasController@json_subparte_cuerpo')->name('consultas.jsonSubpartes');
 
-Route::get('consultas/get_senas', 'ConsultasController@jsonSenas')
-	->name('consultas.get_senas');	
+Route::get('consultas/get_diente/{id}', 'ConsultasController@json_diente')
+	->name('consultas.get_diente');	
 
 Route::resource('consultas','ConsultasController');
 

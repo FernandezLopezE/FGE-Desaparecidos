@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Input;
+use App\Models\CatDiente;
 
 class ConsultasController extends Controller
 {
@@ -712,6 +713,12 @@ class ConsultasController extends Controller
         $data['particularidades']   = \App\Models\CatParticularidadesCuerpo::where('idPartesCuerpo', $parte_cuerpo)->get();
         $data['modificaciones']     = \App\Models\CatModificacionesCuerpo::where('idPartesCuerpo', $parte_cuerpo)->get();
 
+        return response()->json($data);
+    }
+
+    public function json_diente($id)
+    {
+        $data = \App\Models\CatDiente::where('id', $id)->get();
         return response()->json($data);
     }
 

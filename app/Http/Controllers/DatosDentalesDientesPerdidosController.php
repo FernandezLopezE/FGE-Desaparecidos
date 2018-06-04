@@ -39,8 +39,13 @@ class DatosDentalesDientesPerdidosController extends Controller
         //dd($idDesaparecido);
 
         $dentadura = Dentadura::where('idDesaparecido',$idDesaparecido)->get();
+        // if ($dentadura != null) {
+        //     //dd($dentadura);
+        //     \DB::table('pivot_diente_perdido')->where('idDentadura',$dentadura)->delete();
 
-        //dd($dentadura[0]['id']);
+        // }
+
+        
 
         $dientes = $request->input('idDiente');
         foreach ($request->input('causaPerdida') as $index => $value) {
@@ -58,6 +63,23 @@ class DatosDentalesDientesPerdidosController extends Controller
     
         \DB::table('pivot_diente_perdido')->insert($dientesPer);
         return response()->json('successful');
+
+        //Dientes
+            $insertDiente  = (is_null($request['id'])) ? array() : $request['id'] ;
+            
+            $dato = count($insertDiente);
+
+            if($dato !=0){
+                \DB::table('pivot_diente_perdido')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
+                for($i=0; $i<$dato; $i++){
+                        $partiCabello = new PivotSubPartiCuerpo();
+                        $partiCabello->idCedulaPartesCuerpo = $parteCuerpo->id;
+                        $partiCabello->idSubParticularidades = $insertDiente[$i];
+                        $partiCabello->save();
+                    }
+            }else{
+                \DB::table('pivot_diente_perdido')->where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
+            }
     }
 
     /**
