@@ -63,8 +63,7 @@
               @include('descripcionfisica.avatarTras')
             </div>
             <div class="col-8" id='formulario'>
-
-              
+            
             </div>
         </div>
     </div>
