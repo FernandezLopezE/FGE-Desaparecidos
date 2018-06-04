@@ -62,7 +62,7 @@ $(document).ready(function(){
                 reglas = $.parseJSON(data.parte.reglas);
                 html="<input type='hidden' id='idParteCuerpo' value='"+idParteCuerpo+"' \>";
                 if(parseInt(reglas.posicion)){
-                html = html+'<div class="form-group">';
+                html = html+'<div class="form-group" id="div_idPosicion">';
                 html = html+'<label for="idPosicion">Posición:</label>';
                 html = html+'<select type="select" class="form-control" id="idPosicion">';
                 html = html+'<option value="NO APLICA">NO APLICA</option>';
@@ -73,7 +73,7 @@ $(document).ready(function(){
                 html = html+'</div>';
                 }
                 if(parseInt(reglas.tipo)){
-                    html = html+'<div class="form-group">';
+                    html = html+'<div class="form-group" id="div_idTipo">';
                     html = html+'<label for="idTipo">Tipo:</label>';
                     html = html+'<select type="select" class="form-control" id="idTipo">'
                     $.each(data.tipos, function(key, value){
@@ -83,7 +83,7 @@ $(document).ready(function(){
                     html = html+'</div>';
                 }
                 if(parseInt(reglas.color)){
-                    html = html+'<div class="form-group">';
+                    html = html+'<div class="form-group" id="div_idColor">';
                     html = html+'<label for="idColor">Color:</label>';
                     html = html+'<select type="select" class="form-control" id="idColor">'
                     $.each(data.colores, function(key, value){
@@ -93,7 +93,7 @@ $(document).ready(function(){
                     html = html+'</div>';
                 }
                 if(parseInt(reglas.tamano)){
-                    html = html+'<div class="form-group">';
+                    html = html+'<div class="form-group" id="div_idTamano">';
                     html = html+'<label for="idTamano">Tamaño:</label>';
                     html = html+'<select type="select" class="form-control" id="idTamano">'
                     $.each(data.tamanos, function(key, value){
@@ -103,7 +103,7 @@ $(document).ready(function(){
                     html = html+'</div>';
                 }
                 if(parseInt(reglas.particularidades)){
-                    html = html+'<div class="form-group">';
+                    html = html+'<div class="form-group" id="div_idParticularidad">';
                     html = html+'<label for="idParticularidad">Particularidades:</label>';
                     html = html+'<select type="select" class="form-control" multiple data-live-search="true" id="idParticularidad">'
                     $.each(data.particularidades, function(key, value){
@@ -113,7 +113,7 @@ $(document).ready(function(){
                     html = html+'</div>';
                 }
                 if(parseInt(reglas.modificaciones)){
-                    html = html+'<div class="form-group">';
+                    html = html+'<div class="form-group" id="div_idModificacion">';
                     html = html+'<label for="idModificacion">Modificaciones:</label>';
                     html = html+'<select type="select" class="form-control" multiple data-live-search="true" id="idModificacion">'
                     $.each(data.modificaciones, function(key, value){
@@ -176,5 +176,101 @@ $(document).ready(function(){
             }
         });
     })
+
+    //Arreglos de ids de opción otro
+    idOtroPati = [10,21,24,33,41,52,64,70,76,87,97,107,117,127,137,147,157,167,176,185,194,203,211,219,230,241,251,261,271,281,291,301,311,321,331,341,351,360,368,376,385,394,400,409,418,425,432,439,446,457,468,477,483,489,496,503,509,515,521,530,539];
+    idOtraModificacion = [10,14,20,24,33,41,49,57,63,70,77,83,88,93,99,105,112,119,125,131,135,139,143,147,153,159,166,173,180,187,194,201,208,215,222,229,236,243,249,255,261,265,269,273,279,283,287,291,295,299,303,307,311,317,321,325,329,333,337,341,345,349,353];
+    idOtroColor = [8,17,25,33,41];
+    idOtroTipo = [7,15,21,26,31,36,41,46,52];
+    idSinInfoPar = [1,11,22,25,34,42,53,65,71,77,88,98,108,118,128,138,148,158,168,177,186,195,204,212,220,231,242,252,262,272,282,292,302,312,322,332,342,352,361,369,377,386,395,401,410,419,426,433,440,447,458,469,478,484,490,497,504,510,516,522,531];
+    idSinInfoMod = [1,11,15,21,25,34,42,50,58,64,71,78,84,89,94,100,106,113,120,126,132,136,140,144,148,154,160,167,174,181,188,195,202,209,216,223,230,237,244,250,256,262,266,270,274,280,284,288,292,296,300,304,308,312,318,322,326,330,334,338,342,346,350];
+    
+    function pintar_otro_campo(campo,id){
+        otro = '<div class="form-group" id="otro_'+id+'">';
+        otro = otro+'<label for="otro">Otro:</label>';
+        otro = otro+'<input type="text" class="form-control" id="otro'+id +'"></input>';
+        otro = otro+'</div>';
+
+        if(id == 'idTipo')
+            arreglo = idOtroTipo;
+        if(id == 'idColor')
+            arreglo = idOtroColor;
+        if(id == 'idParticularidad')
+            arreglo = idOtroPati; arreglo2 = idSinInfoPar;
+        if(id == 'idModificacion')
+            arreglo = idOtraModificacion; arreglo2 = idSinInfoMod;
+
+        if(id == 'idParticularidad' || id == 'idModificacion'){
+            pym =campo.val();
+            console.log("pym "+pym)
+            //var aux = new Array();
+            for(var j=0;j<pym.length;j++){
+                
+                for(var i=0;i<arreglo.length;i++){
+                    //if para mostrar campo otro
+                    if(pym[j] == arreglo[i]){
+                        //formulario = pintar_otro_campo(campo);
+                        $("#div_"+id).after(otro);
+                        console.log("igual 1");
+                        break;
+                    }else{
+                        $("#otro_"+id).remove();
+                        console.log("no igual 1");
+                    }//fin if para mostrar campo otro
+                }
+            }
+                
+        }else{
+            for(var i=0;i<arreglo.length;i++){
+                if(campo.val() == arreglo[i]){
+                    //formulario = pintar_otro_campo(campo);
+                    $("#otro_"+id).after(otro);
+                    console.log("igual 2");
+                    break;
+                }else{
+                    $("#otro_"+id).remove();
+                    console.log("no igual 2");
+                }
+            }
+        }
+
+    }
+
+
+    var arrayOfInputs = ['#idTipo', '#idColor', '#idParticularidad', '#idModificacion'];
+    $(document).on("change", arrayOfInputs.join(","), function(){
+        var campo = $('#'+$(this).attr("id"));
+        var id = $(this).attr("id");
+        console.log(campo);
+        pym =campo.val();
+        var aux = new Array();
+
+        if(id == 'idParticularidad')
+            arreglo2 = idSinInfoPar;
+        if(id == 'idModificacion')
+            arreglo2 = idSinInfoMod;
+
+        if(id == 'idParticularidad' || id == 'idModificacion'){
+            for(var j=0;j<pym.length;j++){
+                for(var i=0;i<arreglo2.length;i++){
+                    if( pym.length <=1 && pym == arreglo2[i]){
+                        aux = pym;
+                    }else{
+                        if(pym[j] == arreglo2[i]){
+                            delete pym[j];
+                            console.log("Es igual a sin información");
+                            console.log(pym[j]+ "==" +arreglo2[i]);
+                            campo.val(pym).trigger("change");
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        console.log(pym);
+        //$('#contenidoForm').empty();
+        formulario = pintar_otro_campo(campo, id);
+        //campo.val(pym).trigger("change");
+    });
 
 });
