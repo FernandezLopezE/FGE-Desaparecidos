@@ -9,6 +9,13 @@
 		max-width: 80%;
 	}
 
+
+.class2:hover {
+    transform:scale(1.5);
+    
+}
+
+    
 </style>
 	
 @endsection
@@ -132,7 +139,7 @@
              <div class="col" style="padding-right:0px;padding-left:0px;">
                 <div class="card-header">
                            &nbsp;
-                           <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar5"></i>
+                           <i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar5"></i>
                            </div>
                             
                           <div class="list-group-flush small" style="Display:none" id="campoFechaR" >
@@ -220,7 +227,7 @@
                       <div class="col" style="padding-right:0px;padding-left:0px;">
                 <div class="card-header">
                             &nbsp;
-                           <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar2"></i>
+                           <i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar2"></i>
                            </div>
                         <div class=" list-group-flush small">
                           <div class="list-group-item list-group-item-action" style="Display:none" id="campoComplexion" >
@@ -276,7 +283,7 @@
               <div class="col" style="padding-right:0px;padding-left:0px;" >
                         <div class="card-header">
                            &nbsp;
-                           <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar3"></i>                           
+                           <i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar3"></i>                           
                            </div>
                         <div class=" list-group-flush small" style="Display:none" id="campoColorCabello">
                           <div class="list-group-item list-group-item-action"> 
@@ -311,7 +318,7 @@
               <div class="col" style="padding-right:0px;padding-left:0px;">
                         <div class="card-header">
                            &nbsp;    
-                           <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar4"></i>                       
+                           <i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar4"></i>                       
                            </div>
                         <div class=" list-group-flush small" style="Display:none" id="campoColorBarba">
                           <div class="list-group-item list-group-item-action"> 
@@ -346,7 +353,7 @@
               <div class="col" style="padding-right:0px;padding-left:0px;">
                         <div class="card-header">
                            &nbsp;    
-                           <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar6"></i>                       
+                           <i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar6"></i>                       
                            </div>
                         <div class=" list-group-flush small" style="Display:none" id="campoColorBigote">
                           <div class="list-group-item list-group-item-action"> 
@@ -379,7 +386,7 @@
               <div class="col" style="padding-right:0px;padding-left:0px;">
                         <div class="card-header">
                            &nbsp;    
-                           <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar7"></i>                       
+                           <i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar7"></i>                       
                            </div>
                         <div class=" list-group-flush small" style="Display:none" id="campoColorPatilla">
                           <div class="list-group-item list-group-item-action"> 
@@ -415,7 +422,7 @@
               <div class="col" style="padding-right:0px;padding-left:0px;">
                         <div class="card-header">
                            &nbsp;    
-                           <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar8"></i>                       
+                           <i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar8"></i>                       
                            </div>
                         <div class=" list-group-flush small" style="Display:none" id="campoColorOjos">
                           <div class="list-group-item list-group-item-action"> 
@@ -433,13 +440,37 @@
               <div class="col" style="padding-right:0px;padding-left:0px;">
                         <div class="card-header">
                            Labios   
-                           <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar9"></i>                       
+                           <i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar9"></i>                       
                            </div>
                         <div class=" list-group-flush small" style="Display:none" id="campoTipoLabio">
                           <div class="list-group-item list-group-item-action"> 
                               <div class=""  id="infoLabio1">
                                 {!! Form::label ('tipoLabios','Tipo de labios:') !!}
                             {!! Form::select('tipoLabio', $tipoLabios, '', ['class' => '', 'id' => 'tipoLabio','multiple' => 'multiple'] ) !!}
+                            </div> 
+                               
+                          </div>
+                      </div>
+              </div>                   
+            </div>             
+            </div>
+
+              </div>
+           
+            <div class="row" >
+             
+            <!--   MODIFICACIONES  --><div class="col-lg-6"><!--   COL-LG-6-->
+              <div class="row" >                            
+              <div class="col" style="padding-right:0px;padding-left:0px;">
+                        <div class="card-header">
+                           Modifiaciones   
+                           <i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar10"></i>                       
+                           </div>
+                        <div class=" list-group-flush small" style="Display:none" id="campoModificaciones">
+                          <div class="list-group-item list-group-item-action">                          
+                            <div class=""  id="infoLabio1">
+                                {!! Form::label ('tipoLabios','Modificaciones:') !!}
+                            {!! Form::select('modificaciones', $modificaciones, '', ['class' => '', 'id' => 'modificaciones','multiple' => 'multiple'] ) !!}
                             </div>    
                           </div>
                       </div>
@@ -448,6 +479,7 @@
             </div>
 
               </div>
+           
            
          </div>
        <div class="row" >
@@ -516,7 +548,8 @@
                         <th data-field="FechaR" 
                         data-sortable="true" data-filter-control="input" data-visible="false"></th>
                         <th data-field="Hechos" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th><th data-field="Modificaciones" 
+                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        <th data-field="Modificaciones" 
                         data-sortable="true" data-filter-control="input" data-visible="false"></th>
                <th data-field="Acciones"></th>
                 </tr>
@@ -623,6 +656,10 @@
             filter: true,
             width: '100%'
         });
+    $('#modificaciones').multipleSelect({
+            filter: true,
+            width: '100%'
+        });
     //-<<--<--<<--<<--<<-<<--<--<<--<<--<<-<<--<--<<--<<--<<-<<--<--<<-<<
 
     $("#colapsar2").click(function(event) {
@@ -667,6 +704,10 @@
     $("#colapsar9").click(function(event) {
         //$("#campoUbicacion").show();
          $("#campoTipoLabio").toggle();             
+    });
+    $("#colapsar10").click(function(event) {
+        //$("#campoUbicacion").show();
+         $("#campoModificaciones").toggle();             
     });
    
     
@@ -936,6 +977,26 @@ var formatTableActions = function(value, row, index) {
               data: dataString
               //url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+ '/'+ estados
     });
+        
+//          var sexo = '';
+//                var femen = $("input#fem:checked").val();    
+//                var mascul = $("input#masc:checked").val();
+//        
+//                
+//                if (femen == null ){
+//                    sexo = '\''+mascul+'\'';
+//                     console.log('--------------------------');
+//                    console.log(sexo);
+//                }else{ if (mascul == null ){
+//                    sexo = '\''+femen+'\'';
+//                     console.log('--------------------------');
+//                    console.log(sexo);
+//                } else{
+//                    sexo = '\'' +femen + '\',\'' + mascul+ '\'';
+//                     console.log('--------------------------');
+//                    console.log(sexo);
+//                    
+//                } }
 
           var dataString = {
           estados: $('#estados').multipleSelect('getSelects'),
@@ -956,8 +1017,10 @@ var formatTableActions = function(value, row, index) {
                 tamanoOjos: $('#tamanoOjos').multipleSelect('getSelects'),
                 colorOjos: $('#colorOjos').multipleSelect('getSelects'),
                 tipoLabio: $('#tipoLabio').multipleSelect('getSelects'),
-                fem : $("input#fem:checked").val(),     
-                masc : $("input#masc:checked").val(),
+                modif: $('#modificaciones').multipleSelect('getSelects'),
+              fem : $("input#fem:checked").val(),     
+              masc : $("input#masc:checked").val(),
+          //    sexo,
                 rg : $('#rng1').val(),
                 rg2 : $('#rng2').val(),
                 estatura1 : $('#estatura1').val(),
@@ -1057,7 +1120,6 @@ var formatTableActions = function(value, row, index) {
             },{             
                     field: 'labios',
                     title: 'Labios',
-
             },{             
                     field: 'modificaciones',
                     title: 'Modificaciones',

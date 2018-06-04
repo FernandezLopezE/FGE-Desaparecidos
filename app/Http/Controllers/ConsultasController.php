@@ -22,8 +22,7 @@ class ConsultasController extends Controller
 	{
 		//$cedulas = \DB::table('desaparecidos_cedula_investigacion')::all();
         $cedulas = \DB::table('desaparecidos_cedula_investigacion as c')
-                            ->leftJoin('desaparecidos_personas as d', 'c.id', '=',
-                                \DB::raw('d.idCedula AND d.tipoPersona = "DESAPARECIDA"'))
+                            ->leftJoin('desaparecidos_personas as d', 'c.id', '=',\DB::raw('d.idCedula AND d.tipoPersona = "DESAPARECIDA"'))
                             ->leftJoin('persona as p', 'd.idPersona', '=', 'p.id')
                             ->leftJoin('cat_nacionalidad as n', 'p.idNacionalidad', '=', 'n.id')
                             //->where('d.tipoPersona','DESAPARECIDA')
@@ -93,10 +92,11 @@ class ConsultasController extends Controller
         $tamanoOjos = $request->input('tamanoOjos');
         $colorOjos = $request->input('colorOjos');
         $tipoLabio = $request->input('tipoLabio');
-        
+        $modif = $request->input('modif');
         
         $masc = $request->input('masc');
         $fem = $request->input('fem');
+        //$sexo = $request->input('sexo');
         
         //dd($tamanoCabello);
         
@@ -206,6 +206,9 @@ class ConsultasController extends Controller
     ->leftjoin('cedula_partes_cuerpo as cpc', 'cpc.idPersonaDesaparecida', '=', 'des.id')
     ->leftjoin('cat_partes_cuerpo as cpartes', 'cpc.idPartesCuerpo', '=', 'cPartes.id')
     ->leftjoin('cat_tipos_cuerpo as ctc', 'cpc.idTipoCuerpo', '=', 'ctc.id' , 'and', 'ctc.idPartesCuerpo', '=', 'cpc.idPartesCuerpo')
+    ->leftjoin('pivot_submodi_cuerpo as psubm', 'psubm.idCedulaPartesCuerpo', '=', 'cpc.id')
+    ->leftjoin('cat_modificaciones_cuerpo as cat_mc', 'cat_mc.id', '=', 'psubm.idModificaciones')
+  
     
 //                           { ->leftJoin('cat_nacionalidad as n', 'p.idNacionalidad', '=', 'n.id')
                             //->where('d.tipoPersona','DESAPARECIDA')
@@ -272,7 +275,11 @@ class ConsultasController extends Controller
                                 return $q->whereIn('cpc.idColoresCuerpo', $colorPatilla); })
                             ->when($tipoPatilla, function ($q) use ($tipoPatilla) {
                                 return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
-            
+                            ->when($tipoPatilla, function ($q) use ($tipoPatilla) {
+                                return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
+                            ->when($modif, function ($q) use ($modif) {
+                                return $q->whereIn('cat_mc.nombre', $modif); })
+                            
                             ->orWhere('p.sexo', $fem) 
                             ->where('tipoPersona','DESAPARECIDA')
                             ->where('tipoDireccion','LUGAR DE AVISTAMIENTO')
@@ -325,7 +332,8 @@ class ConsultasController extends Controller
                                 return $q->whereIn('cpc.idColoresCuerpo', $colorPatilla); })
                             ->when($tipoPatilla, function ($q) use ($tipoPatilla) {
                                 return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
-                           
+                            ->when($modif, function ($q) use ($modif) {
+                                return $q->whereIn('cat_mc.nombre', $modif); })
 
                             //->where('des.edadExtravio', 'like', "$rg2%")
                             ->distinct()
@@ -375,7 +383,8 @@ class ConsultasController extends Controller
                  }
             }
 
-// se agrega para particularidades y pruebas
+
+   // se agrega para particularidades y pruebas
             $caracteristicasCuerpo = \DB::table('cedula_partes_cuerpo as cpc')
                         ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
                         ->leftjoin('pivot_subparti_cuerpo as psubp','psubp.idCedulaPartesCuerpo','=','cpc.id')
@@ -397,24 +406,25 @@ class ConsultasController extends Controller
             $nModificaciones = '';
             $parte_cuerpo = '';
             for($j=0;$j < $longitud; $j++){
-                if($caracteristicasCuerpo[$j]->modificaciones !=''){
-                    if($caracteristicasCuerpo[$j]->nombreCuerpo == $parte_cuerpo)
-                    { 
-                        $nModificaciones = $nModificaciones.','.$caracteristicasCuerpo[$j]->modificaciones;
-                    }else{               
-                        $parte_cuerpo = $caracteristicasCuerpo[$j]->nombreCuerpo;
-                            if($nModificaciones != '')
-                            $nModificaciones = $nModificaciones.' <i>'.$parte_cuerpo.'</i>:'.$caracteristicasCuerpo[$j]->modificaciones;
-                            else
-                            $nModificaciones = '<i> '.$parte_cuerpo.'</i>: '.$caracteristicasCuerpo[$j]->modificaciones;//primera vez
-
-                    }
+            if($caracteristicasCuerpo[$j]->modificaciones !=''){
+                if($caracteristicasCuerpo[$j]->nombreCuerpo == $parte_cuerpo)
+                { 
+                    $nModificaciones = $nModificaciones.','.$caracteristicasCuerpo[$j]->modificaciones;
                 }
+                else{
+                    $parte_cuerpo = $caracteristicasCuerpo[$j]->nombreCuerpo;
+                    if($nModificaciones != '')
+                        $nModificaciones = $nModificaciones.'<i>'.$parte_cuerpo.'</i>: '.$caracteristicasCuerpo[$j]->modificaciones;
+                    else
+                        $nModificaciones = '<i> '.$parte_cuerpo.'</i>: '.$caracteristicasCuerpo[$j]->modificaciones.' ';//primera vez
+
+                }
+            }
                
             }
 
                 
- /////////////  
+ 
            $registros[$i] = array('id' => $value->id,
                                 'nombre' => $value->nombre,
                                 'fecha' => $value->fecha,
