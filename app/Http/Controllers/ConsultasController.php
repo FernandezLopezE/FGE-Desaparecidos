@@ -363,6 +363,7 @@ class ConsultasController extends Controller
                         ->whereIn('cpc.idPartesCuerpo',[2,3,4,5,9,14])//2->CABELLO, 3->BARBA, 4->BIGOTE, 5->PATILLA, 9->OJOS, 14->LABIOS
                         ->get();
 
+
             //echo $partesCuerpo;
 
             $longitud = count($partesCuerpoRostro);
@@ -410,7 +411,7 @@ class ConsultasController extends Controller
                 else{
                     $parte_cuerpo = $caracteristicasCuerpoP[$j]->nombreCuerpo;
                     if($nParticularidades != '')
-                        $nParticularidades = $nParticularidades.'<i>'.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoP[$j]->particularidades;
+                        $nParticularidades = $nParticularidades.'<br><i>'.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoP[$j]->particularidades;
                     else
                         $nParticularidades = '<i> '.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoP[$j]->particularidades.' ';//primera vez
 
@@ -434,7 +435,6 @@ class ConsultasController extends Controller
                                 'cmodi.nombre',
                                 'cpc.observaciones')
                         ->get();
-
             $longitud = count($caracteristicasCuerpoM);
             $nModificaciones = '';
             $parte_cuerpo = '';
@@ -447,7 +447,7 @@ class ConsultasController extends Controller
                 else{
                     $parte_cuerpo = $caracteristicasCuerpoM[$j]->nombreCuerpo;
                     if($nModificaciones != '')
-                        $nModificaciones = $nModificaciones.'<i>'.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoM[$j]->modificaciones;
+                        $nModificaciones = $nModificaciones.'<br><i>'.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoM[$j]->modificaciones;
                     else
                         $nModificaciones = '<i> '.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoM[$j]->modificaciones.' ';//primera vez
 

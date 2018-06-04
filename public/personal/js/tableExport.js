@@ -36,7 +36,7 @@
           styles: {
               overflow: 'linebreak', 
               //tableWidth: 'auto',
-              columnWidth:'auto',
+              columnWidth:'20',
             cellPadding:   2,
             rowHeight:     12,
             fontSize:      6,
