@@ -16,474 +16,296 @@
 @section('content')
 @include('navs.navs_datos',array('activar' => 'dentadura'))
 <nav>
-	<div class="card border-primary">
-		<div class="card-header">	
-			<h5>DATOS, TRATAMIENTOS, HIGIENE & HÁBITOS DENTALES DE LA PERSONA DESAPARECIDA
-				<button type="button" class="btn btn-dark pull-right" id="agregaInformacion">Guardar</button>
-				<button type="button" class="btn btn-dark pull-right" id="editarInformacion">Editar</button>
-				<button type="button" class="btn btn-dark pull-right" id="updateInformacion">Actualizar</button>
-			</h5>
+	<div class="card-body bg-white">
+		<h5 class="card-title">Datos, tratamientos, higiene & hábitos dentales de la persona desaparecida
+			<button type="button" class="btn btn-dark pull-right" id="agregaInformacion">Guardar</button>
+			<button type="button" class="btn btn-dark pull-right" id="editarInformacion">Editar</button>
+			<button type="button" class="btn btn-dark pull-right" id="updateInformacion">Actualizar</button>
+		</h5>
+		<div id="primeraseccion">
+		<hr>
+		<div class="form-group row">
+			<div class="col-2">
+				{!! Form::label ('dienteTamano','Tamaño de dientes:') !!}
+				{!! Form::select ('nombreTamano',$dienteTamano, '', ['class' => 'form-control', 'id' => 'dienteTamano'])!!}	
+			</div>
+			<div class="col-2">
+				{!! Form::label ('atencionOdonto','Asistió al dentista:') !!}
+				{!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'atencionOdonto'] ) !!}
+			</div>
+			<div id="infoDen" class="col-4">
+				{!! Form::label ('infoDentista','Tiene información del dentista:') !!}
+				{!! Form::submit('Agregar datos dentista', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'datosdentista']) !!}
+			</div>
+			<div id="verinfodentista">
+				{!! Form::label ('infoDentista','Tiene información del dentista:') !!}
+				{!! Form::submit('Ver datos dentista', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'verdatosdentista']) !!}
+			</div>
+			<div>
+				@include('includes.modal_datos_dentista')
+			</div>
 		</div>
-		<div class="card-body" id="primeraseccion">
-			<h5>Su familiar tiene sus dientes:</h5>
-			<div class="form-group row">
-				<div class="col-2">
-					{!! Form::label ('dienteTamano','Tamaño:') !!}
-					{!! Form::select ('nombreTamano',$dienteTamano, '', ['class' => 'form-control', 'id' => 'dienteTamano'])!!}	
-				</div>
-				<div class="col-2">
-					{!! Form::label ('atencionOdonto','Asistió al dentista:') !!}
-					{!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'atencionOdonto'] ) !!}
-				</div>
-				<div id="infoDen" class="col-4">
-					{!! Form::label ('infoDentista','Tiene información del dentista:') !!}
-					{!! Form::submit('Agregar datos dentista', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'datosdentista']) !!}
-				</div>
-				<div id="verinfodentista">
-					{!! Form::label ('infoDentista','Tiene información del dentista:') !!}
-					{!! Form::submit('Ver datos dentista', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'verdatosdentista']) !!}
-				</div>
-				<div>
-					@include('includes.modal_datos_dentista')
-				</div>
-			</div><hr>
-			<div class="form-group row">
-	        	<div class="col-4">
-	        		<h5>Tipo de perfil</h5>	
+		<div class="form-group row">
+        	<div class="col-4">
+        		<h5>Tipo de perfil</h5>	
+        	</div>
+        	<div class="col-4">
+        		<h5>Tipo de mordida</56>
+        	</div>
+        	<div class="col-4">
+        		<h5>Tipo de sonrisa</56>
+        	</div>
+        </div>
+    
+	        <div class="form-group row">
+	        	<div class="col-md-4 row" >
+	        		<div class="col" id="tipoperfil">
+	        			{!! Form::label ('selectperfil','Seleccionar perfil') !!}
+	               		{!! Form::submit('Click aquí', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'selectPerfil']) !!}
+	               		@include('includes.modal_perfilDiente')
+	            	</div>
+	        		<div class="col" style="margin-left: -2%;margin-right: -15px" id="perfilseleccionado">
+	        			{!! Form::label ('perfilselec','Perfil seleccionado') !!}
+	                	{!! Form::text ('perfilselec',old('perfilselec'), ['class' => 'form-control mayuscula, fa', 'id' => 'valorPerfil', 'readonly' => 'readonly'] )!!}
+	            	</div>
+	            	<div>
+	            		{{ Form::hidden('idperfilselec','', array('id' => 'idperfilselec')) }}
+	            	</div>
 	        	</div>
-	        	<div class="col-4">
-	        		<h5>Tipo de mordida</h5>
+	        	<div class="col-md-4 row">
+	        		<div class="col" style="margin-right: -10px;margin-left: 4%;" id="tipomordida">
+	        			{!! Form::label ('selectMordida','Seleccionar mordida') !!}
+	                	{!! Form::submit('Click aquí', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'selectMordida']) !!}
+	                	@include('includes.modal_tipoMordida')
+	            	</div>
+	        		<div class="col" style="margin-right: -22px;" id="mordidaseleccionada">
+	        			{!! Form::label ('mordidaselec','Mordida seleccionada') !!}
+	                	{!! Form::text ('mordidaselec',old('mordidaselec'), ['class' => 'form-control mayuscula', 'id' => 'valormordida', 'readonly' => 'readonly'] )!!}
+	            	</div>
+	            	<div>
+	            		{{ Form::hidden('idmordidaselec','', array('id' => 'idmordidaselec')) }}
+	            	</div>
 	        	</div>
-	        	<div class="col-4">
-	        		<h5>Tipo de sonrisa</h5>
+	        	<div class="col-md-4 row">
+	        		<div class="col" style="margin-left: 35px; margin-right: -10%;" id="selecsonrisa">
+	        			{!! Form::label ('selectSonrisa','Seleccionar sonrisa') !!}
+	                	{!! Form::submit('Click aquí', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'selectSonrisa']) !!}
+	                	@include('includes.modal_tipoSonrisa')
+	            	</div>
+	        		<div class="col" style="margin-left: 37px; margin-right: -11%;" id="sonrisaseleccionada">
+	        			{!! Form::label ('sonrisaselec','Sonrisa seleccionada') !!}
+	                	{!! Form::text ('sonrisaselec',old('sonrisaselec'), ['class' => 'form-control mayuscula', 'id' => 'dientes_girados', 'readonly' => 'readonly'] )!!}
+	            	</div>
+	            	<div>
+	            		{{ Form::hidden('idsonrisaselec','', array('id' => 'idsonrisaselec')) }}
+	            	</div>
 	        	</div>
 	        </div>
-        <!-- <div class="form-group row">
-            <div class="col-md-4">
-                {!! Form::label ('tipoperfil','¿Conoce qué tipo de perfil tiene su familiar?') !!}
-                {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'perfil'] ) !!}
-            </div>
-             <div class="col-md-4">
-                {!! Form::label ('tipomordida','¿Conoce qué tipo de mordida tiene su familiar?') !!}
-                {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tipmordida'] ) !!}
-            </div>
-            <div class="col-md-4">
-                {!! Form::label ('tiposonrisa','¿Conoce qué tipo de sonrisa tiene su familiar?') !!}
-                {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tiposonrisa'] ) !!}
-            </div>
-        </div> -->
-		        <div class="form-group row">
-		        	<div class="col-md-4 row" >
-		        		<div class="col" id="tipoperfil">
-		        			{!! Form::label ('selectperfil','Seleccionar perfil') !!}
-		               		{!! Form::submit('Click aquí', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'selectPerfil']) !!}
-		               		@include('includes.modal_perfilDiente')
-		            	</div>
-		        		<div class="col" style="margin-left: -2%;margin-right: -15px" id="perfilseleccionado">
-		        			{!! Form::label ('perfilselec','Perfil seleccionado') !!}
-		                	{!! Form::text ('perfilselec',old('perfilselec'), ['class' => 'form-control mayuscula, fa', 'id' => 'valorPerfil', 'readonly' => 'readonly'] )!!}
-		            	</div>
-		            	<div>
-		            		{{ Form::hidden('idperfilselec','', array('id' => 'idperfilselec')) }}
-		            	</div>
-		        	</div>
-		        	<div class="col-md-4 row">
-		        		<div class="col" style="margin-right: -10px;margin-left: 4%;" id="tipomordida">
-		        			{!! Form::label ('selectMordida','Seleccionar mordida') !!}
-		                	{!! Form::submit('Click aquí', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'selectMordida']) !!}
-		                	@include('includes.modal_tipoMordida')
-		            	</div>
-		        		<div class="col" style="margin-right: -22px;" id="mordidaseleccionada">
-		        			{!! Form::label ('mordidaselec','Mordida seleccionada') !!}
-		                	{!! Form::text ('mordidaselec',old('mordidaselec'), ['class' => 'form-control mayuscula', 'id' => 'valormordida', 'readonly' => 'readonly'] )!!}
-		            	</div>
-		            	<div>
-		            		{{ Form::hidden('idmordidaselec','', array('id' => 'idmordidaselec')) }}
-		            	</div>
-		        	</div>
-		        	<div class="col-md-4 row">
-		        		<div class="col" style="margin-left: 35px; margin-right: -10%;" id="selecsonrisa">
-		        			{!! Form::label ('selectSonrisa','Seleccionar sonrisa') !!}
-		                	{!! Form::submit('Click aquí', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'selectSonrisa']) !!}
-		                	@include('includes.modal_tipoSonrisa')
-		            	</div>
-		        		<div class="col" style="margin-left: 37px; margin-right: -11%;" id="sonrisaseleccionada">
-		        			{!! Form::label ('sonrisaselec','Sonrisa seleccionada') !!}
-		                	{!! Form::text ('sonrisaselec',old('sonrisaselec'), ['class' => 'form-control mayuscula', 'id' => 'dientes_girados', 'readonly' => 'readonly'] )!!}
-		            	</div>
-		            	<div>
-		            		{{ Form::hidden('idsonrisaselec','', array('id' => 'idsonrisaselec')) }}
-		            	</div>
-		        	</div>
-		        </div>
-		        <hr>
-		        <div class="form-group row">
-		        	<div>
-		                <h5>Tratamientos dentales</h5>
-		            </div>
-		            <div class="col" align="right" >
-		                {!! Form::label ('direccion','Activar ayuda visual') !!}
-		                <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="SÍ" data-off="NO" data-size="small" onchange="myFunction()">
-		            </div>
-		        </div>
-		        <div class="form-group row">
-		            <div class="col">
-		                <!--{!! Form::checkbox('AMALGAMA', '2') !!}-->
-		                <input class="form-check-input" name="trata[]" type="checkbox" id="AMALGAMA" value=2 style="margin-top: 5px; margin-left: 0px">
-		                <a rel="popover" style="margin-left: 20px" data-img="{{ URL::to('/images/Dientes/amalgama.jpg')}}"><B>AMALGAMA</B></a>
-		            </div>
-		            <div class="col">
-		                <!--{!! Form::checkbox('BLANQUEAMIENTO DENTAL', '3') !!}-->
-		                <input class="form-check-input" name="trata[]" style="margin-top: 6px" type="checkbox" id="BLANQUEAMIENTO_DENTAL" value=3>
-		                <a  rel="popover" data-img="{{ URL::to('/images/Dientes/amalgama.jpg')}}"><B>BLANQUEAMIENTO DENTAL</B></a>
-		                <!--{!! Form::label ('BLANQUEAMIENTO DENTAL','BLANQUEAMIENTO DENTAL') !!}-->
-		            </div>
-		            <div class="col">
-		                <!--{!! Form::checkbox('BRACKETS', '4') !!}-->
-		                <input class="form-check-input" name="trata[]" style="margin-top: 6px" type="checkbox" id="BRACKETS" value=4>
-		                <a  rel="popover" data-img="{{ URL::to('/images/Dientes/brackets.jpg') }}"><b>BRACKETS</b></a>
-		            </div>
-		            <div class="col">
-		                <!--{!! Form::checkbox('CARILLA', '5') !!}-->
-		                <input class="form-check-input" name="trata[]" style="margin-top: 6px" type="checkbox" id="CARILLA" value=5>
-		                <a  rel="popover" data-img="{{ URL::to('/images/Dientes/corona.jpg') }}"><b>CARILLA</b></a>
-		            </div>
-		            <div class="col">
-		                <!--{!! Form::checkbox('CORONA ESTETICA', '6') !!}-->
-		                <input class="form-check-input" name="trata[]" style="margin-top: 6px" type="checkbox" id="CORONA_ESTETICA" value=6>
-		                <a  rel="popover" style="margin-left: -2px" data-img="{{ URL::to('/images/Dientes/corona.jpg') }}"><b>CORONA ESTETICA</b></a>
-		            </div>
-		        </div>
-	        	<div class="form-group row">
-	                <div class="col">
-	                    <!--{!! Form::checkbox('ENDODONCIA', '7') !!}-->
-	                    <input class="form-check-input" name="trata[]" style="margin-left: 0px" type="checkbox" id="ENDODONCIA" value=7>
-	                    <a  rel="popover" style="margin-top: -8px; margin-left: 20px;" data-img="{{ URL::to('/images/Dientes/endodoncia.jpg') }}"><b>ENDODONCIA</b></a>
-	                </div>
-	                <div class="col">
-	                    <!--{!! Form::checkbox('IMPLANTE', '8') !!}-->
-	                    <input class="form-check-input" name="trata[]" type="checkbox" id="IMPLANTE" value=8>
-	                    <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>IMPLANTE</b></a>
-	                </div>
-	                <div class="col">
-	                    <!--{!! Form::checkbox('OBTURACIÓN TEMPORAL', '9') !!}-->
-	                    <!--{!! Form::label ('OBTURACIÓN TEMPORAL','OBTURACIÓN TEMPORAL') !!}-->
-	                    <input class="form-check-input" name="trata[]" type="checkbox" id="OBTURACION_TEMPORAL" value=9>
-	                    <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>OBTURACIÓN TEMPORAL</b></a>
-	                </div>
-	                <div class="col">
-	                    <!--{!! Form::checkbox('PROTESIS FIJA', '10') !!}-->
-	                    <!--{!! Form::label ('PROTESIS FIJA','PROTESIS FIJA') !!}-->
-	                    <input class="form-check-input" name="trata[]" type="checkbox" id="PROTESIS_FIJA" value=10>
-	                    <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>PROTESIS FIJA</b></a>
-	                </div>
-	                <div class="col">
-	                    <!--{!! Form::checkbox('PROTESIS REMOVIBLE', '11') !!}-->
-	                    <!--{!! Form::label ('PROTESIS REMOVIBLE','PROTESIS REMOVIBLE') !!}-->
-	                    <input class="form-check-input" name="trata[]" type="checkbox" id="PROTESIS_REMOVIBLE" value=11>
-	                    <a  rel="popover" style="margin-top: -10px; margin-left: 0px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>PROTESIS REMOVIBLE</b></a>
-	                </div>
-		        </div>
-		        <div class="form-group row">
+	        <hr>
+	        <div class="form-group row">
+	        	<div>
+	                <h5>Tratamientos dentales</h5>
+	            </div>
+	            <div class="col" align="right" >
+	                {!! Form::label ('direccion','Activar ayuda visual') !!}
+	                <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="SÍ" data-off="NO" data-size="small" onchange="myFunction()">
+	            </div>
+	        </div>
+	        <div class="form-group row">
 	            <div class="col">
-	                <!--{!! Form::checkbox('PROTESIS TOTAL', '12') !!}-->
-	                <!--{!! Form::label ('PROTESIS TOTAL','PROTESIS TOTAL') !!}-->
-	                <input class="form-check-input" name="trata[]" style="margin-left: -0px;" type="checkbox" id="PROTESIS_TOTAL" value=12>
-	                <a  rel="popover" style="margin-top: -8px; margin-left: 20px" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>PROTESIS TOTAL</b></a>
+	                <!--{!! Form::checkbox('AMALGAMA', '2') !!}-->
+	                <input class="form-check-input" name="trata[]" type="checkbox" id="AMALGAMA" value=2 style="margin-top: 5px; margin-left: 0px">
+	                <a rel="popover" style="margin-left: 20px" data-img="{{ URL::to('/images/Dientes/amalgama.jpg')}}"><B>AMALGAMA</B></a>
 	            </div>
 	            <div class="col">
-	                <!--{!! Form::checkbox('RESINA', '13') !!}-->
-	                <input class="form-check-input" name="trata[]" type="checkbox" id="RESINA" value=13>
-	                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RESINA</b></a>
+	                <!--{!! Form::checkbox('BLANQUEAMIENTO DENTAL', '3') !!}-->
+	                <input class="form-check-input" name="trata[]" style="margin-top: 6px" type="checkbox" id="BLANQUEAMIENTO_DENTAL" value=3>
+	                <a  rel="popover" data-img="{{ URL::to('/images/Dientes/amalgama.jpg')}}"><B>BLANQUEAMIENTO DENTAL</B></a>
+	                <!--{!! Form::label ('BLANQUEAMIENTO DENTAL','BLANQUEAMIENTO DENTAL') !!}-->
 	            </div>
 	            <div class="col">
-	                <!--{!! Form::checkbox('RETENEDOR', '14') !!}-->
-	                <!--{!! Form::label ('RETENEDOR','RETENEDOR') !!}-->
-	                <input class="form-check-input" name="trata[]" type="checkbox" id="RETENEDOR" value=14>
-	                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RETENEDOR</b></a>
+	                <!--{!! Form::checkbox('BRACKETS', '4') !!}-->
+	                <input class="form-check-input" name="trata[]" style="margin-top: 6px" type="checkbox" id="BRACKETS" value=4>
+	                <a  rel="popover" data-img="{{ URL::to('/images/Dientes/brackets.jpg') }}"><b>BRACKETS</b></a>
 	            </div>
 	            <div class="col">
-	                <!--{!! Form::checkbox('SELLADOR FS', '15') !!}-->
-	                <!--{!! Form::label ('SELLADOR FS','SELLADOR FS') !!}-->
-	                <input class="form-check-input" name="trata[]" type="checkbox" id="SELLADOR" value=15>
-	                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>SELLADOR FS</b></a>
+	                <!--{!! Form::checkbox('CARILLA', '5') !!}-->
+	                <input class="form-check-input" name="trata[]" style="margin-top: 6px" type="checkbox" id="CARILLA" value=5>
+	                <a  rel="popover" data-img="{{ URL::to('/images/Dientes/corona.jpg') }}"><b>CARILLA</b></a>
 	            </div>
 	            <div class="col">
-	                <!--{!! Form::checkbox('OTRO', '16') !!}-->
-	                <!--{!! Form::label ('OTRO','OTRO') !!}-->
-	                <input class="form-check-input" name="trata[]" type="checkbox" id="OTRO" value=16>
-	                {!! Form::label ('OTRO','OTRO') !!}
-	                <!--<a  rel="popover" style="margin-top: -8px;"><b>OTRO</b></a>-->
+	                <!--{!! Form::checkbox('CORONA ESTETICA', '6') !!}-->
+	                <input class="form-check-input" name="trata[]" style="margin-top: 6px" type="checkbox" id="CORONA_ESTETICA" value=6>
+	                <a  rel="popover" style="margin-left: -2px" data-img="{{ URL::to('/images/Dientes/corona.jpg') }}"><b>CORONA ESTETICA</b></a>
 	            </div>
-        	</div>
-	        <div id="otroTrata" class="form-group row">
-	            <div class="col-md-12" >
-	                {!! Form::label ('especifique','Especifique:') !!}
-	                {!! Form::text ('tratamiento',old('tratamiento'), ['class' => 'form-control mayuscula', 'id' => 'otroTratamiento'] )!!}
-           		</div>
-        	</div><hr>
-        	<div>
-				<h5 class="card-title">Hábitos bucales</h5><br>
-			</div>
-			<div class="form-group row">
+	        </div>
+        	<div class="form-group row">
                 <div class="col">
-                    {!! Form::checkbox('higieneBucal[]', 'higieneBucal') !!}
-                    {!! Form::label ('higieneBuc','MALA HIGIENE') !!}
-                    <!-- {!! Form::label ('higieneBuc','Presenta buena higiene bucal') !!}
-                    {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'higieneBucal'] ) !!} -->
-                </div>
-                <div class="col" >
-                    {!! Form::checkbox('higieneBucal[]', 'tieneCaries') !!}
-                    {!! Form::label ('CARIES','CARIES') !!}
-                    <!-- {!! Form::label ('tieneCarie','¿Tiene caries?') !!}
-                    {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tieneCaries'] ) !!} -->
+                    <!--{!! Form::checkbox('ENDODONCIA', '7') !!}-->
+                    <input class="form-check-input" name="trata[]" style="margin-left: 0px" type="checkbox" id="ENDODONCIA" value=7>
+                    <a  rel="popover" style="margin-top: -8px; margin-left: 20px;" data-img="{{ URL::to('/images/Dientes/endodoncia.jpg') }}"><b>ENDODONCIA</b></a>
                 </div>
                 <div class="col">
-                    {!! Form::checkbox('higieneBucal[]', 'nombreAbceso') !!}
-                    {!! Form::label ('nombreAbcesos','ABSCESOS') !!}
-                    <!-- {!! Form::label ('nombreAbcesos','¿Tiene abscesos?') !!}
-                    {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'nombreAbceso'] ) !!} -->
+                    <!--{!! Form::checkbox('IMPLANTE', '8') !!}-->
+                    <input class="form-check-input" name="trata[]" type="checkbox" id="IMPLANTE" value=8>
+                    <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>IMPLANTE</b></a>
                 </div>
                 <div class="col">
-                    {!! Form::checkbox('enfermedad[]', 'SARRO') !!}
-                    {!! Form::label ('SARRO','SARRO') !!}
+                    <!--{!! Form::checkbox('OBTURACIÓN TEMPORAL', '9') !!}-->
+                    <!--{!! Form::label ('OBTURACIÓN TEMPORAL','OBTURACIÓN TEMPORAL') !!}-->
+                    <input class="form-check-input" name="trata[]" type="checkbox" id="OBTURACION_TEMPORAL" value=9>
+                    <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>OBTURACIÓN TEMPORAL</b></a>
                 </div>
                 <div class="col">
-                    {!! Form::checkbox('enfermedad[]', 'GINGIVITIS') !!}
-                    {!! Form::label ('GINGIVITIS','GINGIVITIS') !!}
+                    <!--{!! Form::checkbox('PROTESIS FIJA', '10') !!}-->
+                    <!--{!! Form::label ('PROTESIS FIJA','PROTESIS FIJA') !!}-->
+                    <input class="form-check-input" name="trata[]" type="checkbox" id="PROTESIS_FIJA" value=10>
+                    <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>PROTESIS FIJA</b></a>
                 </div>
+                <div class="col">
+                    <!--{!! Form::checkbox('PROTESIS REMOVIBLE', '11') !!}-->
+                    <!--{!! Form::label ('PROTESIS REMOVIBLE','PROTESIS REMOVIBLE') !!}-->
+                    <input class="form-check-input" name="trata[]" type="checkbox" id="PROTESIS_REMOVIBLE" value=11>
+                    <a  rel="popover" style="margin-top: -10px; margin-left: 0px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>PROTESIS REMOVIBLE</b></a>
+                </div>
+	        </div>
+	        <div class="form-group row">
+            <div class="col">
+                <!--{!! Form::checkbox('PROTESIS TOTAL', '12') !!}-->
+                <!--{!! Form::label ('PROTESIS TOTAL','PROTESIS TOTAL') !!}-->
+                <input class="form-check-input" name="trata[]" style="margin-left: -0px;" type="checkbox" id="PROTESIS_TOTAL" value=12>
+                <a  rel="popover" style="margin-top: -8px; margin-left: 20px" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>PROTESIS TOTAL</b></a>
             </div>
-            <div class="form-group row">
-            	<div class="col">
-                    {!! Form::checkbox('enfermedad[]', 'PERIODONTITIS') !!}
-                    {!! Form::label ('PERIODONTITIS','PERIODONTITIS') !!}
-                </div>
-                <div class="col" style="margin-left: -29px;">
-                    {!! Form::checkbox('malhabito[]', 'MORDERSE LAS UÑAS') !!}
-                    {!! Form::label ('MORDERSE LAS UÑAS','MORDERSE LAS UÑAS') !!}
-                </div>
-                <div class="col" style="margin-left: -29px;">
-                    {!! Form::checkbox('malhabito[]', 'MORDER ALGÚN OBJETO') !!}
-                    {!! Form::label ('MORDER ALGÚN OBJETO','MORDER ALGÚN OBJETO') !!}
-                </div>
-                <div class="col" style="margin-left: 0px;">
-                    <input class="form-check-input" type="checkbox" id="OTROH" value="OTRO" name="malhabito[]">
-                    {!! Form::label ('OTRO','OTRO') !!}
-                </div>
-                <div class="col" style="margin-top: -10px;margin-left: -70px;">
-                    {!! Form::text ('otro',old('otro'), ['class' => 'form-control mayuscula', 'id' => 'escpecifiquehabito', 'placeholder' => 'ESPECIFIQUE'] )!!}
-                </div>
+            <div class="col">
+                <!--{!! Form::checkbox('RESINA', '13') !!}-->
+                <input class="form-check-input" name="trata[]" type="checkbox" id="RESINA" value=13>
+                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RESINA</b></a>
             </div>
+            <div class="col">
+                <!--{!! Form::checkbox('RETENEDOR', '14') !!}-->
+                <!--{!! Form::label ('RETENEDOR','RETENEDOR') !!}-->
+                <input class="form-check-input" name="trata[]" type="checkbox" id="RETENEDOR" value=14>
+                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RETENEDOR</b></a>
+            </div>
+            <div class="col">
+                <!--{!! Form::checkbox('SELLADOR FS', '15') !!}-->
+                <!--{!! Form::label ('SELLADOR FS','SELLADOR FS') !!}-->
+                <input class="form-check-input" name="trata[]" type="checkbox" id="SELLADOR" value=15>
+                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>SELLADOR FS</b></a>
+            </div>
+            <div class="col">
+                <!--{!! Form::checkbox('OTRO', '16') !!}-->
+                <!--{!! Form::label ('OTRO','OTRO') !!}-->
+                <input class="form-check-input" name="trata[]" type="checkbox" id="OTRO" value=16>
+                {!! Form::label ('OTRO','OTRO') !!}
+                <!--<a  rel="popover" style="margin-top: -8px;"><b>OTRO</b></a>-->
+            </div>
+    	</div>
+        <div id="otroTrata" class="form-group row">
+            <div class="col-md-12" >
+                {!! Form::label ('especifique','Especifique:') !!}
+                {!! Form::text ('tratamiento',old('tratamiento'), ['class' => 'form-control mayuscula', 'id' => 'otroTratamiento'] )!!}
+       		</div>
+    	</div><hr>
+    	<div>
+			<h5 class="card-title">Hábitos bucales</h5><br>
 		</div>
+		<div class="form-group row">
+            <div class="col">
+                {!! Form::checkbox('higieneBucal[]', 'higieneBucal') !!}
+                {!! Form::label ('higieneBuc','MALA HIGIENE') !!}
+                <!-- {!! Form::label ('higieneBuc','Presenta buena higiene bucal') !!}
+                {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'higieneBucal'] ) !!} -->
+            </div>
+            <div class="col" >
+                {!! Form::checkbox('higieneBucal[]', 'tieneCaries') !!}
+                {!! Form::label ('CARIES','CARIES') !!}
+                <!-- {!! Form::label ('tieneCarie','¿Tiene caries?') !!}
+                {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'tieneCaries'] ) !!} -->
+            </div>
+            <div class="col">
+                {!! Form::checkbox('higieneBucal[]', 'nombreAbceso') !!}
+                {!! Form::label ('nombreAbcesos','ABSCESOS') !!}
+                <!-- {!! Form::label ('nombreAbcesos','¿Tiene abscesos?') !!}
+                {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'nombreAbceso'] ) !!} -->
+            </div>
+            <div class="col">
+                {!! Form::checkbox('enfermedad[]', 'SARRO') !!}
+                {!! Form::label ('SARRO','SARRO') !!}
+            </div>
+            <div class="col">
+                {!! Form::checkbox('enfermedad[]', 'GINGIVITIS') !!}
+                {!! Form::label ('GINGIVITIS','GINGIVITIS') !!}
+            </div>
+        </div>
+        <div class="form-group row">
+        	<div class="col">
+                {!! Form::checkbox('enfermedad[]', 'PERIODONTITIS') !!}
+                {!! Form::label ('PERIODONTITIS','PERIODONTITIS') !!}
+            </div>
+            <div class="col" style="margin-left: -29px;">
+                {!! Form::checkbox('malhabito[]', 'MORDERSE LAS UÑAS') !!}
+                {!! Form::label ('MORDERSE LAS UÑAS','MORDERSE LAS UÑAS') !!}
+            </div>
+            <div class="col" style="margin-left: -29px;">
+                {!! Form::checkbox('malhabito[]', 'MORDER ALGÚN OBJETO') !!}
+                {!! Form::label ('MORDER ALGÚN OBJETO','MORDER ALGÚN OBJETO') !!}
+            </div>
+            <div class="col" style="margin-left: 0px;">
+                <input class="form-check-input" type="checkbox" id="OTROH" value="OTRO" name="malhabito[]">
+                {!! Form::label ('OTRO','OTRO') !!}
+            </div>
+            <div class="col" style="margin-top: -10px;margin-left: -70px;">
+                {!! Form::text ('otro',old('otro'), ['class' => 'form-control mayuscula', 'id' => 'escpecifiquehabito', 'placeholder' => 'ESPECIFIQUE'] )!!}
+            </div>
+        </div>
+	</div>
 	</div>
 	
-	<div class="card border-primary" id="cardDientes">
-		<div class="card-header">
-			<div class="row">
-				<div class="col-lg-8">
-					<h5 class="card-title">DIENTES PERDIDOS DE LA PERSONA DESAPARECIDA</h5>	
-				</div>
-			</div>
+	<div class="card border-primary">
+		<div class="card-body bg-whithe">
+			<h5 class="card-title">Dientes perdidos de la persona desaparecida
+				<button type="button" class="btn btn-dark pull-right" id="btnDiente">Guardar</button>
+				<button type="button" class="btn btn-dark pull-right" id="upDiente" onclick="ConfirmDemo()">Editar</button>
+				<button type="button" id="UpdateDientes">Actualizar</button>
+				<hr>
+			</h5>
+			<div id="cardDientes">
+				<div class="form-group row">
+					<div class="col-md-4 dentadura">
+			            @if($edadExtraviado[0] > 14)
+			              @include('datosdentales.dentadura_adult')
+			            @endif
+			            
+			            @if($edadExtraviado[0] <= 6)
+			              @include('datosdentales.dentadura_child')
+			            @endif
+
+			            @if($edadExtraviado[0] > 6 && $edadExtraviado[0] <=14 )
+			               @include('datosdentales.dentadura_mixto')
+			            @endif
+	          		</div>
+	          		<div class="col-md-8">
+	          			<div class="row">
+	          				<div class="col-md-12">
+	          					<div class="form-group two-fields">
+	          						<div class="input-group">
+			                    		<label style="margin-left: 15%">Diente seleccionado</label>
+	                    				<label style="margin-left: 27%">Causa de pérdida</label>
+	                    			</div>
+
+	                    			<!--Inicia dientes superiores (Izquierda a derecha)-->
+									<div id="formDiente">
+										
+									</div>
+	                    		</div>
+	                    	</div>
+	                    </div>
+	                </div>
+	          	</div>
+	        </div>
 		</div>
-		<div class="card-body">
-			<div class="form-group row">
-				<div class="col-md-4 dentadura">
-		            @if($edadExtraviado[0] > 14)
-		              @include('datosdentales.dentadura_adult')
-		            @endif
-		            
-		            @if($edadExtraviado[0] <= 6)
-		              @include('datosdentales.dentadura_child')
-		            @endif
-
-		            @if($edadExtraviado[0] > 6 && $edadExtraviado[0] <=14 )
-		               @include('datosdentales.dentadura_mixto')
-		            @endif
-          		</div>
-          		<div class="col-md-8">
-          			<div class="row">
-          				<div class="col-md-12">
-          					<div class="form-group two-fields">
-          						<div class="input-group">
-		                    		<label style="margin-left: 15%">Diente seleccionado</label>
-                    				<label style="margin-left: 27%">Causa de pérdida</label>
-                    			</div>
-
-                    			<!--Inicia dientes superiores (Izquierda a derecha)-->
-                    			<div class="input-group" id="TMSDD"> 
-                    				{!! Form::text ('TMSD',old('TMSD'), ['class' => 'form-control mayuscula', 'id' => 'TMSD', 'disabled'])!!}
-                    				{!! Form::text ('perdio[]',old('TMSDP'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'TMSDP',] )!!}
-                    				{{ Form::hidden('dienteselec[]','18', array('id' => 'dienteselec18')) }}
-                  				</div>
-                  				<div class="input-group" style="margin-top: 10px" id="SMSDD">
-				                    {!! Form::text ('SMSD',old('SMSD'), ['class' => 'form-control mayuscula', 'id' => 'SMSD','disabled'] )!!}
-				                    {!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SMSDP',] )!!}
-				                    {{ Form::hidden('dienteselec[]','17', array('id' => 'dienteselec17')) }}
-				                </div>
-				                <div class="input-group" style="margin-top: 10px" id="PMSDD">
-				                    {!! Form::text ('PMSD',old('PMSD'), ['class' => 'form-control mayuscula', 'id' => 'PMSD', 'disabled'] )!!}
-				                    {!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PMSDP',] )!!}
-				                    {{ Form::hidden('dienteselec[]','16', array('id' => 'dienteselec16')) }}
-				                </div>
-				                <div class="input-group" style="margin-top: 10px" id="SPSDD">
-                    				{!! Form::text ('SPSD',old('SPSD'), ['class' => 'form-control mayuscula', 'id' => 'SPSD', 'disabled'] )!!}
-                    				{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SPSDP',] )!!}
-                    				{{ Form::hidden('dienteselec[]','15', array('id' => 'dienteselec15')) }}
-                  				</div>
-                  				<div class="input-group" style="margin-top: 10px" id="PPSDD">
-				                    {!! Form::text ('PPSD',old('PPSD'), ['class' => 'form-control mayuscula', 'id' => 'PPSD', 'disabled'] )!!}
-				                    {!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PPSDP',] )!!}
-				                    {{ Form::hidden('dienteselec[]','14', array('id' => 'dienteselec14')) }}
-				                </div>
-				                <div class="input-group" style="margin-top: 10px" id="CSDD">
-				                    {!! Form::text ('CSD',old('CSD'), ['class' => 'form-control mayuscula', 'id' => 'CSD', 'disabled'] )!!}
-				                    {!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'CSDP',] )!!}
-				                    {{ Form::hidden('dienteselec[]','13', array('id' => 'dienteselec13')) }}
-				                </div>
-				                <div class="input-group" style="margin-top: 10px" id="ILSDD">
-			                    	{!! Form::text ('ILSD',old('ILSD'), ['class' => 'form-control mayuscula', 'id' => 'ILSD', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ILSDP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','12', array('id' => 'dienteselec12')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="ICSDD">
-			                    	{!! Form::text ('ICSD',old('ICSD'), ['class' => 'form-control mayuscula', 'id' => 'ICSD', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ICSDDP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','11', array('id' => 'dienteselec11')) }}
-			                  	</div>
-
-			                  	<div class="input-group" style="margin-top: 10px" id="ICSID">
-			                    	{!! Form::text ('ICSI',old('ICSI'), ['class' => 'form-control mayuscula', 'id' => 'ICSI', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ICSIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','21', array('id' => 'dienteselec21')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="ILSID">
-			                    	{!! Form::text ('ILSI',old('ILSI'), ['class' => 'form-control mayuscula', 'id' => 'ILSI', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ILSIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','22', array('id' => 'dienteselec22')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="CSID">
-			                    	{!! Form::text ('CSI',old('CSI'), ['class' => 'form-control mayuscula', 'id' => 'CSI', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'CSIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','23', array('id' => 'dienteselec23')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="PPSID">
-			                    	{!! Form::text ('PPSI',old('PPSI'), ['class' => 'form-control mayuscula', 'id' => 'PPSI', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PPSIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','24', array('id' => 'dienteselec24')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="SPSID">
-			                    	{!! Form::text ('SPSI',old('SPSI'), ['class' => 'form-control mayuscula', 'id' => 'SPSI', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SPSIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','25', array('id' => 'dienteselec25')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="PMSID">
-			                    	{!! Form::text ('PMSI',old('PMSI'), ['class' => 'form-control mayuscula', 'id' => 'PMSI', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PMSIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','26', array('id' => 'dienteselec26')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="SMSID">
-			                    	{!! Form::text ('SMSI',old('SMSI'), ['class' => 'form-control mayuscula', 'id' => 'SMSI', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SMSIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','27', array('id' => 'dienteselec27')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="TMSID">
-			                    	{!! Form::text ('TMSI',old('TMSI'), ['class' => 'form-control mayuscula', 'id' => 'TMSI', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'TMSIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','28', array('id' => 'dienteselec28')) }}
-			                  	</div>
-
-			                  	<!-- PARTE INFERIOR -->
-			                  	<div class="input-group" style="margin-top: 10px" id="TMIID">
-			                    	{!! Form::text ('TMII',old('TMII'), ['class' => 'form-control mayuscula', 'id' => 'TMII', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'TMIIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','18', array('id' => 'dienteselec38')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="SMIID">
-			                    	{!! Form::text ('SMII',old('SMII'), ['class' => 'form-control mayuscula', 'id' => 'SMII', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SMIIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','17', array('id' => 'dienteselec37')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="PMIID">
-			                    	{!! Form::text ('PMII',old('PMII'), ['class' => 'form-control mayuscula', 'id' => 'PMII', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PMIIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','16', array('id' => 'dienteselec36')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="SPIID">
-			                    	{!! Form::text ('SPII',old('SPII'), ['class' => 'form-control mayuscula', 'id' => 'SPII', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SPIIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','15', array('id' => 'dienteselec35')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="PPIID">
-			                    	{!! Form::text ('PPII',old('PPII'), ['class' => 'form-control mayuscula', 'id' => 'PPII', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PPIIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','14', array('id' => 'dienteselec34')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="CIID">
-			                    	{!! Form::text ('CII',old('CII'), ['class' => 'form-control mayuscula', 'id' => 'CII', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'CIIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','13', array('id' => 'dienteselec33')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="ILIID">
-			                    	{!! Form::text ('ILII',old('ILII'), ['class' => 'form-control mayuscula', 'id' => 'ILII', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ILIIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','12', array('id' => 'dienteselec32')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="ICIID">
-			                    	{!! Form::text ('ICII',old('ICII'), ['class' => 'form-control mayuscula', 'id' => 'ICII', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ICIIP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','11', array('id' => 'dienteselec31')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="ICIDD">
-			                    	{!! Form::text ('ICID',old('ICID'), ['class' => 'form-control mayuscula', 'id' => 'ICID', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ICIDP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','11', array('id' => 'dienteselec41')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="ILIDD">
-			                    	{!! Form::text ('ILID',old('ILID'), ['class' => 'form-control mayuscula', 'id' => 'ILID', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'ILIDP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','42', array('id' => 'dienteselec42')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="CIDD">
-			                    	{!! Form::text ('CID',old('CID'), ['class' => 'form-control mayuscula', 'id' => 'CID', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'CIDP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','43', array('id' => 'dienteselec43')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="PPIDD">
-			                    	{!! Form::text ('PPID',old('PPID'), ['class' => 'form-control mayuscula', 'id' => 'PPID', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PPIDP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','44', array('id' => 'dienteselec44')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="SPIDD">
-			                    	{!! Form::text ('SPID',old('SPID'), ['class' => 'form-control mayuscula', 'id' => 'SPID', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SPIDP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','45', array('id' => 'dienteselec45')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="PMIDD">
-			                    	{!! Form::text ('PMID',old('PMID'), ['class' => 'form-control mayuscula', 'id' => 'PMID', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'PMIDP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','46', array('id' => 'dienteselec46')) }}
-			                  	</div>
-			                  	<div class="input-group" style="margin-top: 10px" id="SMIDD">
-			                    	{!! Form::text ('SMID',old('SMID'), ['class' => 'form-control mayuscula', 'id' => 'SMID', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'SMIDP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','47', array('id' => 'dienteselec47')) }}
-			                  	</div>
-                  				<div class="input-group" style="margin-top: 10px" id="TMIDD">
-			                    	{!! Form::text ('TMID',old('TMID'), ['class' => 'form-control mayuscula', 'id' => 'TMID', 'disabled'] )!!}
-			                    	{!! Form::text ('perdio[]',old('perdio'), ['class' => 'form-control mayuscula', 'placeholder' => 'ACCIDENTE, EXTRACCIÓN, NATURAL, ETC ' ,'id' => 'TMIDP',] )!!}
-			                    	{{ Form::hidden('dienteselec[]','48', array('id' => 'dienteselec48')) }}
-			                  	</div>
-			                  	<button type="button" class="btn btn-dark pull-right" id="btnDiente" style="margin-top: 15px;">Guardar</button>
-			                  	<button type="button" class="btn btn-dark pull-right" id="upDiente" onclick="ConfirmDemo()">Editar</button>
-                    		</div>
-                    	</div>
-                    </div>
-                </div>
-          	</div>
-		</div>
-	</div>
 	
-	 
   	<div class="card border-primary">
         <div class="card border-success">
           <div class="card-header"> 
@@ -567,6 +389,7 @@
 	**************************************************************/
 
 	$(function() {
+
         $('#toggle-event').change(function() {
             $('a[rel=popover]').popover({
                 html: true,
@@ -648,7 +471,7 @@
 		$('#dentistahr').hide();
 		$('#upDiente').hide();
 
-    });
+    
 
     $('#atencionOdonto').change(function() {
 			atencion = $('#atencionOdonto').val();
@@ -744,38 +567,6 @@
 			}
 		});
 
-		// $('#malosHabitos').change(function(){
-		// 	malosHabitos = $('#malosHabitos').val();
-		// 	if (malosHabitos == 'NO' || malosHabitos == 'SIN INFORMACIÓN') {
-		// 		$('#morderuna').hide();
-		// 		$('#morderobjeto').hide();
-		// 		$('#otrohabito').hide();
-		// 		$('#escpecifiquehabito').hide();
-		// 	}else{
-		// 		$('#morderuna').show();
-		// 		$('#morderobjeto').show();
-		// 		$('#otrohabito').show();
-		// 	}
-		// });
-
-		// $('#mapDientes').on('click', '#diente', function(){
-		// 	console.log('Estas dando click en la imagen');
-		// 	console.log('El ID_diente es: '+$(this).attr('value')+' nombre del diente: '+$(this).attr('alt'));
-		// 	cont1 = cont1 + 1;
-		// 	if (cont1 == 1) {
-		// 		$('#nombreDiente'+$(this).attr('value')).show();
-		// 		$('#observacionesDiente'+$(this).attr('value')).show();
-		// 		$('#nombreDiente'+$(this).attr('value')).value($(this).attr('alt'));
-		// 		$("input[id*='14']" ).name("PRIMER MOLAR SUPERIOR IZQUIERDO");
-		// 	}else{
-		// 		cont1 = 0;
-		// 		$('#PMSID').hide();
-		// 		$('#PMSIPDP').hide();
-		// 		$("#PMSI").val('');
-		// 	}
-
-		// })
-
 		$('#upDiente').click(function() {
    			alertify.confirm('Está seguro de editar esta sección?', 'Esta acción borrará los datos capturados anteriormente', 
    				function(){ 
@@ -792,6 +583,8 @@
 				},
 				function(){ 
 				});
+
+
    		});
 
 
@@ -871,29 +664,14 @@ var routeIndex = '{!! route('anexoscontroller.index') !!}';
 		var dataString = {
 			dienteTamano : $("#dienteTamano").val(),
 			dienteCompleto : $("#dienteCompleto").val(),
-			//atencionOdonto : $("#atencionOdonto").val(),
-			//infoDentista : $("#infoDentista").val(),
 			nombres : $("#nombres").val(),
 			primerAp : $("#primerAp").val(),
 			segundoAp : $("#segundoAp").val(),
 			empresa : $("#empresa").val(),
 			telefono : $("#telefono").val(),
 			direccion : $("#direccion").val(),
-			//tratamiento : $('#SININFORMACION').val(),
-			//tratamiento : $("input[name='trata[]']").map(function(){return $(this).val();}).get(),
 			tratamiento : $("input[name='trata[]']").map(function(){return $(this).is(':checked');}).get(),
-			//describatrata : $("#otroTratamiento").val(),
-			//perdiodiente : $("#dientePerdido").val(),
-			//higieneBucal : $("#higieneBucal").val(),
-			//describahb : $("#describahb").val(),
-			//tieneCaries : $("#tieneCaries").val(),
-			//DescribaCaries : $("#DescribaCaries").val(),
-			//nombreAbceso : $("#nombreAbceso").val(),
-			//describeAbceso : $("#describeAbceso").val(),
-			//enfermedad : $("input[name='enfermedad[]']").map(function(){return $(this).val();}).get(),
 			enfermedad : $("input[name='enfermedad[]']").map(function(){return $(this).is(':checked');}).get(),
-			//malosHabitos : $("#malosHabitos").val(),
-			//malhabitos : $("input[name='malhabito[]']").map(function(){return $(this).val();}).get(),
 			malhabitos : $("input[name='malhabito[]']").map(function(){return $(this).is(':checked');}).get(),
 			especifiqhabito : $("#escpecifiquehabito").val(),
 			valorPerfil : $("#idperfilselec").val(),
@@ -1011,13 +789,13 @@ var routeIndex = '{!! route('anexoscontroller.index') !!}';
 	**** función para guardar los datos del form de dientes seleccionados ***
 	************************************************************************/
 
-	$('#btnDiente').click(function()
-	{
+	$('#btnDiente').click(function(){
 		var dataString = {
 			idDiente 	 : $("input[name='dienteselec[]']").map(function(){return $(this).val();}).get(),
 			causaPerdida : $("input[name='perdio[]']").map(function(){return $(this).val();}).get(),
 			idDesaparecido: '{!! $desaparecido->id !!}'
 		}
+
 		$.ajax({
 			type: 'POST',
 			url:  routedientesPerdidos,
@@ -1079,5 +857,36 @@ var routeIndex = '{!! route('anexoscontroller.index') !!}';
 		$('#segundaseccion').hide();
 		$('#updateSegInformacion').hide();
 	});
+
+	$('#UpdateDientes').click(function(){
+		var dataString = {
+			idDiente 	 : $("input[name='dienteselec[]']").map(function(){return $(this).val();}).get(),
+			causaPerdida : $("input[name='perdio[]']").map(function(){return $(this).val();}).get(),
+			idDesaparecido: '{!! $desaparecido->id !!}'
+		}
+
+		$.ajax({
+			type: 'PUT',
+			url: routedientesPerdidos,
+			data: dataString,
+			dataType: 'json',
+			success: function(data){
+				console.log(data);
+				
+				
+			},
+			error: function(data){
+				
+			}
+		});
+	});
+
+	
+
+
+});
+	
+
+
 </script>
 @endsection
