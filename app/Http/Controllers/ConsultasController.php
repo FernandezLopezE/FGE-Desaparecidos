@@ -427,16 +427,15 @@ class ConsultasController extends Controller
                          ->leftjoin('cat_modificaciones_cuerpo as cmodi','cmodi.id','=','psubm.idModificaciones')
                         ->select('cpc.idPartesCuerpo',
                                 'catpc.nombre as nombreCuerpo',
-                                'cmodi.nombre as modificaciones',
-                                'cpc.observaciones')
+                                'cmodi.nombre as modificaciones')
                         ->where('cpc.idPersonaDesaparecida',$value->id)
                         ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 
-                                'cmodi.nombre',
-                                'cpc.observaciones')
+                                'cmodi.nombre')
                         ->get();
 
             $longitud = count($caracteristicasCuerpoM);
             $nModificaciones = '';
+            $nObservaciones = '';
             $parte_cuerpo = '';
             for($j=0;$j < $longitud; $j++){
             if($caracteristicasCuerpoM[$j]->modificaciones !=''){
@@ -452,7 +451,38 @@ class ConsultasController extends Controller
                         $nModificaciones = '<i> '.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoM[$j]->modificaciones.' ';//primera vez
 
                 }
-            }        
+            }    
+
+            }//del for
+
+            $observacionesCuerpo = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
+                        ->select('cpc.idPartesCuerpo',
+                                'catpc.nombre as nombreCuerpo',
+                                'cpc.observaciones')
+                        ->where('cpc.idPersonaDesaparecida',$value->id)
+                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 
+                                'cpc.observaciones')
+                        ->get();
+
+            $longitud = count($observacionesCuerpo);
+            $nObservaciones = '';
+            $parte_cuerpo = '';
+            for($j=0;$j < $longitud; $j++){
+            if($observacionesCuerpo[$j]->observaciones !=''){
+                if($observacionesCuerpo[$j]->nombreCuerpo == $parte_cuerpo)
+                { 
+                    $nObservaciones = $nObservaciones.','.$observacionesCuerpo[$j]->observaciones;
+                }
+                else{
+                    $parte_cuerpo = $observacionesCuerpo[$j]->nombreCuerpo;
+                    if($nObservaciones != '')
+                        $nObservaciones = $nObservaciones.'<i>'.$parte_cuerpo.'</i>: '.$observacionesCuerpo[$j]->observaciones;
+                    else
+                        $nObservaciones = '<i> '.$parte_cuerpo.'</i>: '.$observacionesCuerpo[$j]->observaciones.' ';//primera vez
+
+                }
+            }    
 
             }//del for
 
@@ -478,7 +508,8 @@ class ConsultasController extends Controller
                                 'ojos' => $nOjos,
                                 'labios' => $nLabios,
                                 'modificaciones' =>trim($nModificaciones,', '),
-                                'particularidades' =>trim($nParticularidades,', ')
+                                'particularidades' =>trim($nParticularidades,', '),
+                                'observaciones' =>trim($nObservaciones,', ')
                                   
                                 /*'color' => $partesCuerpo->colorCuerpo,
                                 'tamano' => $partesCuerpo->tamano,
