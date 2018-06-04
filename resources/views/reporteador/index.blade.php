@@ -1130,7 +1130,11 @@ var formatTableActions = function(value, row, index) {
                     field: 'particularidades',
                     title: 'Particularidades',
 
-            },{         
+            },{  
+                    field: 'observaciones',
+                    title: 'Observaciones',
+
+            },{                
                     title: 'Acciones',
                     formatter: formatTableActions,
                     events: operateEvents
