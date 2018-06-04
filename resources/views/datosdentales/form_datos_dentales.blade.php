@@ -266,8 +266,7 @@
 		<div class="card-body bg-whithe">
 			<h5 class="card-title">Dientes perdidos de la persona desaparecida
 				<button type="button" class="btn btn-dark pull-right" id="btnDiente">Guardar</button>
-				<button type="button" class="btn btn-dark pull-right" id="upDiente" onclick="ConfirmDemo()">Editar</button>
-				<button type="button" id="UpdateDientes">Actualizar</button>
+				
 				<hr>
 			</h5>
 			<div id="cardDientes">
@@ -306,7 +305,7 @@
 	        </div>
 		</div>
 	
-  	<div class="card border-primary">
+  	<div class="card border-primary" id="anexos">
         <div class="card border-success">
           <div class="card-header"> 
               <h5>AGREGAR ANEXOS
@@ -445,6 +444,8 @@
 	*** Inicia segmento para ocultar y/o mostrar campos en el formulario***
 	**********************************************************************/
 		$('#cardDientes').hide();
+		$('#anexos').hide();
+		$('#btnDiente').hide();
 		$('#editarInformacion').hide();
 		$('#updateInformacion').hide();
 		$('#verinfodentista').hide();
@@ -567,27 +568,6 @@
 			}
 		});
 
-		$('#upDiente').click(function() {
-   			alertify.confirm('Está seguro de editar esta sección?', 'Esta acción borrará los datos capturados anteriormente', 
-   				function(){ 
-   					$('#btnDiente').show();
-					$('#upDiente').hide();
-					$('#dientes').attr('usemap', '#dientes');
-					$('#PMSIP').prop('disabled', false);
-					$('#SPSIP').prop('disabled', false);
-					$('#PPSIP').prop('disabled', false);
-					$('#CSIP').prop('disabled', false);
-					$('#ILSIP').prop('disabled', false);
-					$('#ICSIP').prop('disabled', false);
-					$('#ICSDP').prop('disabled', false);
-				},
-				function(){ 
-				});
-
-
-   		});
-
-
    		$desaparecido = ('{!! $desaparecido->id!!}');
    		var modalAnexos = $('#modalAnexosDatosDentales');
 
@@ -598,7 +578,7 @@
    		$('#cerrarModal').click (function(){
   			location.reload();
   		});
-var routeIndex = '{!! route('anexoscontroller.index') !!}';
+		var routeIndex = '{!! route('anexoscontroller.index') !!}';
 		$("#fileImagenes").fileinput({
 			language:'es',
 			theme: 'fa',
@@ -690,6 +670,7 @@ var routeIndex = '{!! route('anexoscontroller.index') !!}';
 				$('#editarInformacion').show();
 				$('#primeraseccion').hide();
 				$('#cardDientes').show();
+				$('#btnDiente').show();
 				$.confirm({
         		title: 'Datos dentales',
         		content: 'Guardados exitosamente.',
@@ -804,6 +785,8 @@ var routeIndex = '{!! route('anexoscontroller.index') !!}';
 			success: function(data){
 				$('#btnDiente').hide();
 				$('#upDiente').show();
+				$('#anexos').show();
+				$('#cardDientes').hide();
 				$('#dientes').attr('usemap', '');
 				$('#PMSIP').prop('disabled', true);
 				$('#SPSIP').prop('disabled', true);
@@ -857,36 +840,6 @@ var routeIndex = '{!! route('anexoscontroller.index') !!}';
 		$('#segundaseccion').hide();
 		$('#updateSegInformacion').hide();
 	});
-
-	$('#UpdateDientes').click(function(){
-		var dataString = {
-			idDiente 	 : $("input[name='dienteselec[]']").map(function(){return $(this).val();}).get(),
-			causaPerdida : $("input[name='perdio[]']").map(function(){return $(this).val();}).get(),
-			idDesaparecido: '{!! $desaparecido->id !!}'
-		}
-
-		$.ajax({
-			type: 'PUT',
-			url: routedientesPerdidos,
-			data: dataString,
-			dataType: 'json',
-			success: function(data){
-				console.log(data);
-				
-				
-			},
-			error: function(data){
-				
-			}
-		});
-	});
-
-	
-
-
 });
-	
-
-
 </script>
 @endsection
