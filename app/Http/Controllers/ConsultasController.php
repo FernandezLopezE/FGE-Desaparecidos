@@ -411,7 +411,7 @@ class ConsultasController extends Controller
             if($caracteristicasCuerpoP[$j]->particularidades !=''){
                 if($caracteristicasCuerpoP[$j]->nombreCuerpo == $parte_cuerpo)
                 { 
-                    $nParticularidades = $nParticularidades.','.$caracteristicasCuerpoP[$j]->particularidades;
+                    $nParticularidades = $nParticularidades.', '.$caracteristicasCuerpoP[$j]->particularidades;
                 }
                 else{
                     $parte_cuerpo = $caracteristicasCuerpoP[$j]->nombreCuerpo;
@@ -446,7 +446,7 @@ class ConsultasController extends Controller
             if($caracteristicasCuerpoM[$j]->modificaciones !=''){
                 if($caracteristicasCuerpoM[$j]->nombreCuerpo == $parte_cuerpo)
                 { 
-                    $nModificaciones = $nModificaciones.','.$caracteristicasCuerpoM[$j]->modificaciones;
+                    $nModificaciones = $nModificaciones.', '.$caracteristicasCuerpoM[$j]->modificaciones;
                 }
                 else{
                     $parte_cuerpo = $caracteristicasCuerpoM[$j]->nombreCuerpo;
