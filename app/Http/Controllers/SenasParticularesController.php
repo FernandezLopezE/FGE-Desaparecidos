@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\CedulaPartesCuerpo;
+use App\Models\PivotSubPartiCuerpo;
+use App\Models\PivotSubModiCuerpo;
 
 class SenasParticularesController extends Controller
 {
@@ -34,15 +37,38 @@ class SenasParticularesController extends Controller
      */
     public function store(Request $request)
     {
+        $data['error'] = null;
+        \DB::beginTransaction();
+        try {
+            $parteCuerpo = CedulaPartesCuerpo::create([
+                'posicion' 			        => $request->input('idPosicion'),
+                'idTipoCuerpo' 		        => $request->input('idTipo'),
+                'idColoresCuerpo'	        => $request->input('idColor'),
+                'idTamanoCuerpo'	        => $request->input('idTamano'),
+                'observaciones' 	        => $request->input('observaciones'),
+                'idPartesCuerpo'            => $request->input('idParteCuerpo'),
+                'idPersonaDesaparecida'     => $request->input('idDesaparecido')
+            ]);
+
+            foreach ($request->input('idParticularidad') as $particularidad) {
+                PivotSubPartiCuerpo::create(['idCedulaPartesCuerpo' => $parteCuerpo->id, 'idParticularidades' => $particularidad]);
+            }
+
+            foreach ($request->input('idModificacion') as $modificacion) {
+                PivotSubModiCuerpo::create(['idCedulaPartesCuerpo' => $parteCuerpo->id, 'idModificaciones' => $modificacion]);
+            }
+
+            \DB::commit();
+            $data['success'] = true;
+        } catch (\Exception $e) {
+            $data['success'] = false;
+            $data['error'] = $e->getMessage();
+            \DB::rollback();
+        }
         
-        \DB::table('cedula_cat_senas')->insert([
-            'idCatsenas' => $request->input('senaP'),
-            'cantidad' => $request->input('cantidad'),
-            'idCatsenasParticulares' => $request->input('ubicacion'),
-            'caracteristicas' => $request->input('caracteristicas'),
-            'idCedula' => $request->input('idCedula'),
-        ]);
-        return response()->json('se inserto');
+        if ($data['success']) {
+            return response()->json($data);
+        }
     }
 
     /**
@@ -53,17 +79,7 @@ class SenasParticularesController extends Controller
      */
     public function show($id)
     {       
-        $desaparecido= \App\Models\Desaparecido::find($id);
-        $senasParticulares = \App\Models\CatSenasParticulares::all()->pluck('nombre','id');
-        $senasParticularesUbica = \App\Models\CatSenasParticularesUbicaciones::all()->pluck('nombre','id');
-        $nombreTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
-        
-        return view('senasparticulares.form_senas_particulares', [                        
-                        'senasParticulares' => $senasParticulares,
-                        'senasParticularesUbica' => $senasParticularesUbica,
-                        'desaparecido' => $desaparecido,
-                        'nombreTamano' => $nombreTamano
-                    ]);
+
     }
 
     /**

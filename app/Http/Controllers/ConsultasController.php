@@ -23,8 +23,7 @@ class ConsultasController extends Controller
 	{
 		//$cedulas = \DB::table('desaparecidos_cedula_investigacion')::all();
         $cedulas = \DB::table('desaparecidos_cedula_investigacion as c')
-                            ->leftJoin('desaparecidos_personas as d', 'c.id', '=',
-                                \DB::raw('d.idCedula AND d.tipoPersona = "DESAPARECIDA"'))
+                            ->leftJoin('desaparecidos_personas as d', 'c.id', '=',\DB::raw('d.idCedula AND d.tipoPersona = "DESAPARECIDA"'))
                             ->leftJoin('persona as p', 'd.idPersona', '=', 'p.id')
                             ->leftJoin('cat_nacionalidad as n', 'p.idNacionalidad', '=', 'n.id')
                             //->where('d.tipoPersona','DESAPARECIDA')
@@ -94,10 +93,12 @@ class ConsultasController extends Controller
         $tamanoOjos = $request->input('tamanoOjos');
         $colorOjos = $request->input('colorOjos');
         $tipoLabio = $request->input('tipoLabio');
-        
+        $modif = $request->input('modif');
+        $partic = $request->input('partic');
         
         $masc = $request->input('masc');
         $fem = $request->input('fem');
+        //$sexo = $request->input('sexo');
         
         //dd($tamanoCabello);
         
@@ -207,6 +208,11 @@ class ConsultasController extends Controller
     ->leftjoin('cedula_partes_cuerpo as cpc', 'cpc.idPersonaDesaparecida', '=', 'des.id')
     ->leftjoin('cat_partes_cuerpo as cpartes', 'cpc.idPartesCuerpo', '=', 'cPartes.id')
     ->leftjoin('cat_tipos_cuerpo as ctc', 'cpc.idTipoCuerpo', '=', 'ctc.id' , 'and', 'ctc.idPartesCuerpo', '=', 'cpc.idPartesCuerpo')
+    ->leftjoin('pivot_submodi_cuerpo as psubm', 'psubm.idCedulaPartesCuerpo', '=', 'cpc.id')
+    ->leftjoin('cat_modificaciones_cuerpo as cat_mc', 'cat_mc.id', '=', 'psubm.idModificaciones')
+    ->leftjoin('pivot_subparti_cuerpo as psubp','psubp.idCedulaPartesCuerpo','=','cpc.id')
+    ->leftjoin('cat_particularidades_cuerpo as cparti','cparti.id','=','psubp.idParticularidades')
+  
     
 //                           { ->leftJoin('cat_nacionalidad as n', 'p.idNacionalidad', '=', 'n.id')
                             //->where('d.tipoPersona','DESAPARECIDA')
@@ -273,7 +279,13 @@ class ConsultasController extends Controller
                                 return $q->whereIn('cpc.idColoresCuerpo', $colorPatilla); })
                             ->when($tipoPatilla, function ($q) use ($tipoPatilla) {
                                 return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
-            
+                            ->when($tipoPatilla, function ($q) use ($tipoPatilla) {
+                                return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
+                            ->when($modif, function ($q) use ($modif) {
+                                return $q->whereIn('cat_mc.nombre', $modif); })
+                            ->when($partic, function ($q) use ($partic) {
+                                return $q->whereIn('cparti.nombre', $partic); })
+                            
                             ->orWhere('p.sexo', $fem) 
                             ->where('tipoPersona','DESAPARECIDA')
                             ->where('tipoDireccion','LUGAR DE AVISTAMIENTO')
@@ -326,7 +338,10 @@ class ConsultasController extends Controller
                                 return $q->whereIn('cpc.idColoresCuerpo', $colorPatilla); })
                             ->when($tipoPatilla, function ($q) use ($tipoPatilla) {
                                 return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
-                           
+                            ->when($modif, function ($q) use ($modif) {
+                                return $q->whereIn('cat_mc.nombre', $modif); })
+                            ->when($partic, function ($q) use ($partic) {
+                                return $q->whereIn('cparti.nombre', $partic); })
 
                             //->where('des.edadExtravio', 'like', "$rg2%")
                             ->distinct()
@@ -354,6 +369,7 @@ class ConsultasController extends Controller
                         ->whereIn('cpc.idPartesCuerpo',[2,3,4,5,9,14])//2->CABELLO, 3->BARBA, 4->BIGOTE, 5->PATILLA, 9->OJOS, 14->LABIOS
                         ->get();
 
+
             //echo $partesCuerpo;
 
             $longitud = count($partesCuerpoRostro);
@@ -375,8 +391,109 @@ class ConsultasController extends Controller
                      $nLabios = $partesCuerpoRostro[$j]->nombreCuerpo.': '.$partesCuerpoRostro[$j]->tipo;
                  }
             }
+
+
+   // se agrega consulta para particularidades y modificaciones
+            $caracteristicasCuerpoP = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
+                        ->leftjoin('pivot_subparti_cuerpo as psubp','psubp.idCedulaPartesCuerpo','=','cpc.id')
+                        ->leftjoin('cat_particularidades_cuerpo as cparti','cparti.id','=','psubp.idParticularidades')
+                        ->select('cpc.idPartesCuerpo',
+                                'catpc.nombre as nombreCuerpo',
+                                'cparti.nombre as particularidades')
+                        ->where('cpc.idPersonaDesaparecida',$value->id)
+                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 'cparti.nombre')
+                        ->get();
+
+            $longitud = count($caracteristicasCuerpoP);
+            $nParticularidades = '';
+            $parte_cuerpo = '';
+            for($j=0;$j < $longitud; $j++){
+            if($caracteristicasCuerpoP[$j]->particularidades !=''){
+                if($caracteristicasCuerpoP[$j]->nombreCuerpo == $parte_cuerpo)
+                { 
+                    $nParticularidades = $nParticularidades.','.$caracteristicasCuerpoP[$j]->particularidades;
+                }
+                else{
+                    $parte_cuerpo = $caracteristicasCuerpoP[$j]->nombreCuerpo;
+                    if($nParticularidades != '')
+                        $nParticularidades = $nParticularidades.'<br><i>'.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoP[$j]->particularidades;
+                    else
+                        $nParticularidades = '<i> '.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoP[$j]->particularidades.' ';//primera vez
+
+                }
+            }        
+
+            }
+               
+
+
+            $caracteristicasCuerpoM = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
+                         ->leftjoin('pivot_submodi_cuerpo as psubm','psubm.idCedulaPartesCuerpo','=','cpc.id')
+                         ->leftjoin('cat_modificaciones_cuerpo as cmodi','cmodi.id','=','psubm.idModificaciones')
+                        ->select('cpc.idPartesCuerpo',
+                                'catpc.nombre as nombreCuerpo',
+                                'cmodi.nombre as modificaciones')
+                        ->where('cpc.idPersonaDesaparecida',$value->id)
+                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 
+                                'cmodi.nombre')
+                        ->get();
+            $longitud = count($caracteristicasCuerpoM);
+            $nModificaciones = '';
+            $nObservaciones = '';
+            $parte_cuerpo = '';
+            for($j=0;$j < $longitud; $j++){
+            if($caracteristicasCuerpoM[$j]->modificaciones !=''){
+                if($caracteristicasCuerpoM[$j]->nombreCuerpo == $parte_cuerpo)
+                { 
+                    $nModificaciones = $nModificaciones.','.$caracteristicasCuerpoM[$j]->modificaciones;
+                }
+                else{
+                    $parte_cuerpo = $caracteristicasCuerpoM[$j]->nombreCuerpo;
+                    if($nModificaciones != '')
+                        $nModificaciones = $nModificaciones.'<br><i>'.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoM[$j]->modificaciones;
+                    else
+                        $nModificaciones = '<i> '.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoM[$j]->modificaciones.' ';//primera vez
+
+                }
+            }    
+
+            }//del for
+
+            $observacionesCuerpo = \DB::table('cedula_partes_cuerpo as cpc')
+                        ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
+                        ->select('cpc.idPartesCuerpo',
+                                'catpc.nombre as nombreCuerpo',
+                                'cpc.observaciones')
+                        ->where('cpc.idPersonaDesaparecida',$value->id)
+                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 
+                                'cpc.observaciones')
+                        ->get();
+
+            $longitud = count($observacionesCuerpo);
+            $nObservaciones = '';
+            $parte_cuerpo = '';
+            for($j=0;$j < $longitud; $j++){
+            if($observacionesCuerpo[$j]->observaciones !=''){
+                if($observacionesCuerpo[$j]->nombreCuerpo == $parte_cuerpo)
+                { 
+                    $nObservaciones = $nObservaciones.','.$observacionesCuerpo[$j]->observaciones;
+                }
+                else{
+                    $parte_cuerpo = $observacionesCuerpo[$j]->nombreCuerpo;
+                    if($nObservaciones != '')
+                        $nObservaciones = $nObservaciones.'<i>'.$parte_cuerpo.'</i>: '.$observacionesCuerpo[$j]->observaciones;
+                    else
+                        $nObservaciones = '<i> '.$parte_cuerpo.'</i>: '.$observacionesCuerpo[$j]->observaciones.' ';//primera vez
+
+                }
+            }    
+
+            }//del for
+
                 
-   
+ 
            $registros[$i] = array('id' => $value->id,
                                 'nombre' => $value->nombre,
                                 'fecha' => $value->fecha,
@@ -395,7 +512,10 @@ class ConsultasController extends Controller
                                 'cabello' => $nCabello,
                                 'velloFacial' => $nVelloFacial,
                                 'ojos' => $nOjos,
-                                'labios' => $nLabios
+                                'labios' => $nLabios,
+                                'modificaciones' =>trim($nModificaciones,', '),
+                                'particularidades' =>trim($nParticularidades,', '),
+                                'observaciones' =>trim($nObservaciones,', ')
                                   
                                 /*'color' => $partesCuerpo->colorCuerpo,
                                 'tamano' => $partesCuerpo->tamano,
@@ -818,9 +938,17 @@ class ConsultasController extends Controller
         return response()->json($prendas);
     }
 
+    public function json_partes_cuerpo(Request $request, $parte_cuerpo = null)
+    {
+        $data['partes']  = \App\Models\CatPartesCuerpo::where('partePadre', $parte_cuerpo)->get();
+        $data['padre']  = \App\Models\CatPartesCuerpo::find($parte_cuerpo);
+        
+        return response()->json($data);
+    }
+
     public function json_subparte_cuerpo(Request $request, $parte_cuerpo = null)
     {
-        $data['subpartes']          = \App\Models\CatPartesCuerpo::where('partePadre', $parte_cuerpo)->get();
+        $data['parte']              = \App\Models\CatPartesCuerpo::find($parte_cuerpo);
         $data['tipos']              = \App\Models\CatTiposCuerpo::where('idPartesCuerpo', $parte_cuerpo)->get();
         $data['tamanos']            = \App\Models\CatTamanoCuerpo::where('idPartesCuerpo', $parte_cuerpo)->get();
         $data['colores']            = \App\Models\CatColoresCuerpo::where('idPartesCuerpo', $parte_cuerpo)->get();
@@ -829,6 +957,7 @@ class ConsultasController extends Controller
 
         return response()->json($data);
     }
+<<<<<<< HEAD
 
     public function json_diente($id)
     {
@@ -836,4 +965,6 @@ class ConsultasController extends Controller
         return response()->json($data);
     }
 
+=======
+>>>>>>> f84aa5f29079b9910ec1187aa114980867cae728
 }

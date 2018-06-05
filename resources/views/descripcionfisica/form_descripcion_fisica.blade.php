@@ -63,8 +63,7 @@
               @include('descripcionfisica.avatarTras')
             </div>
             <div class="col-8" id='formulario'>
-
-              
+            
             </div>
         </div>
     </div>
@@ -75,11 +74,13 @@
 @section('scripts')
 <script type="text/javascript">
   var aux ="{{$aux}}";
-  var extraviado = "{{$desaparecido->id}}";
-  var showCabello2 = "{{$showCabello}}";
+  var idDesaparecido = "{{$desaparecido->id}}";
   var routeDescrip ="{!! route('descripcionfisica.index') !!}";
-
+  var routeSenas ="{!! route('senas_particulares.index') !!}";
   var routeConsul ="{!! route('consultas.index') !!}";
+  
+  var showCabello2 = "{{$showCabello}}";
+
 
 
   //Boton frente
@@ -100,9 +101,11 @@
 
   
 </script>
+{!! Html::script('personal/js/avatar/accionAvatar.js') !!}
+
 {!! Html::script('personal/js/avatar/datos_fisicos.js') !!}
 {!! Html::script('personal/js/avatar/cabello.js') !!}
-{!! Html::script('personal/js/avatar/accionAvatar.js') !!}
+
 {!! Html::script('personal/js/avatar/cuello_pecho.js') !!}
 {!! Html::script('personal/js/avatar/hombros.js') !!}
 {!! Html::script('personal/js/avatar/brazos.js') !!}

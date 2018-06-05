@@ -356,7 +356,7 @@
     </div>
     <br>
 </div>
-<div class="card">
+<div class="card" id="preDientes">
 	<div class="card-header">
 	<h5>Datos, tratamientos, higiene & hábitos dentales de la persona desaparecida</h5>
 	</div>
@@ -364,23 +364,23 @@
 	<div class="card-body">
 		<div class="row">
 			<dt class="col-sm-2">Tamaño de dientes:</dt>
-			<dd class="col-sm-10">GRANDES</dd>
+			<dd class="col-sm-10" id="tamDiente">GRANDES</dd>
 			<dt class="col-sm-2">Datos del dentista</dt>
-			<dd class="col-sm-10">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT. DISTINCTIO DOLOREMQUE DOLORES MAGNI NESCIUNT SAEPE FACERE BLANDITIIS TEMPORIBUS EXCEPTURI EAQUE, ATQUE EARUM, VELIT NECESSITATIBUS AT QUOD MAXIME IURE ITAQUE, QUO NISI.</dd>
+			<dd class="col-sm-10" id="datosDent">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT. DISTINCTIO DOLOREMQUE DOLORES MAGNI NESCIUNT SAEPE FACERE BLANDITIIS TEMPORIBUS EXCEPTURI EAQUE, ATQUE EARUM, VELIT NECESSITATIBUS AT QUOD MAXIME IURE ITAQUE, QUO NISI.</dd>
 
 			<dt class="col-sm-2">Tipo de perfil:</dt>
-			<dd class="col-sm-10">CÓNVEXO</dd>
+			<dd class="col-sm-10" id="tPerfil">CÓNVEXO</dd>
 			<dt class="col-sm-2">Tipo de mordida:</dt>
-			<dd class="col-sm-10">CERRADA</dd>
+			<dd class="col-sm-10" id="tMordida">CERRADA</dd>
 			<dt class="col-sm-2">Tipo de sonrisa:</dt>
-			<dd class="col-sm-10">DIENTES SEPARADOS</dd>
+			<dd class="col-sm-10" id="tSonrisa">DIENTES SEPARADOS</dd>
 		</div>
 
 		<div class="row">
 			<dt class="col-sm-2">Tratamientos dentales:</dt>
-			<dd class="col-sm-10">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT. DISTINCTIO DOLOREMQUE DOLORES</dd>
+			<dd class="col-sm-10" id="tDentales">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT. DISTINCTIO DOLOREMQUE DOLORES</dd>
 			<dt class="col-sm-2">Hábitos bucales:</dt>
-			<dd class="col-sm-10">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT. DISTINCTIO DOLOREMQUE DOLORES</dd>
+			<dd class="col-sm-10" id="habBucales">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT. DISTINCTIO DOLOREMQUE DOLORES</dd>
 		</div>
 
 	</div>
@@ -416,7 +416,23 @@
 	/*************************************************************
 	********* función para los toltip's de tratamientos **********S
 	**************************************************************/
-
+$(document).ready(function(){
+	$.ajax({
+		url: routedatosDentales+'/get_datosDentales/'+idDesaparecido,
+		type: 'GET',
+		dataType: 'json',
+		data: {param1: 'value1'},
+	})
+	.done(function() {
+		console.log("success");
+	})
+	.fail(function() {
+		console.log("error");
+	})
+	.always(function() {
+		console.log("complete");
+	});
+	
 	$(function() {
         $('#toggle-event').change(function() {
             $('a[rel=popover]').popover({
@@ -456,7 +472,7 @@
         }
     }
 
-    $(document).ready(function(){
+    
 
     	$(".fancybox").fancybox({
 			openEffect: "none",
@@ -838,6 +854,7 @@
                 		},
             		}
         		});
+
 			},
 			error: function(data){
 			}
