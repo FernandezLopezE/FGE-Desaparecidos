@@ -358,7 +358,10 @@
 </div>
 <div class="card" id="preDientes">
 	<div class="card-header">
-	<h5>Datos, tratamientos, higiene & hábitos dentales de la persona desaparecida</h5>
+	<h5>
+		Datos, tratamientos, higiene & hábitos dentales de la persona desaparecida
+		<a href="#" class="btn btn-dark pull-right">Editar</a>   
+	</h5>
 	</div>
 
 	<div class="card-body">
