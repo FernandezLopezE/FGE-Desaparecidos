@@ -47,7 +47,7 @@ class SenasParticularesController extends Controller
                 'idTamanoCuerpo'	        => $request->input('idTamano'),
                 'observaciones' 	        => $request->input('observaciones'),
                 'idPartesCuerpo'            => $request->input('idParteCuerpo'),
-                'idPersonaDesaparecida'     => $request->input('idPersonaDesaparecida')
+                'idPersonaDesaparecida'     => $request->input('idDesaparecido')
             ]);
 
             foreach ($request->input('idParticularidad') as $particularidad) {

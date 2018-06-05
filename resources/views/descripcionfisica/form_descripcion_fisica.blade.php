@@ -63,8 +63,7 @@
               @include('descripcionfisica.avatarTras')
             </div>
             <div class="col-8" id='formulario'>
-
-              
+            
             </div>
         </div>
     </div>
@@ -102,9 +101,11 @@
 
   
 </script>
+{!! Html::script('personal/js/avatar/accionAvatar.js') !!}
+
 {!! Html::script('personal/js/avatar/datos_fisicos.js') !!}
 {!! Html::script('personal/js/avatar/cabello.js') !!}
-{!! Html::script('personal/js/avatar/accionAvatar.js') !!}
+
 {!! Html::script('personal/js/avatar/cuello_pecho.js') !!}
 {!! Html::script('personal/js/avatar/hombros.js') !!}
 {!! Html::script('personal/js/avatar/brazos.js') !!}

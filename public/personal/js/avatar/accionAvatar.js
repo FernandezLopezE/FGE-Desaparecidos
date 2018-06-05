@@ -1,5 +1,5 @@
 $(document).ready(function(){
-
+    cargar_elementos_seleccionados();
     $('g').click(function(){
         
         parteCuerpo = $(this).attr("data-cuerpo");
@@ -272,5 +272,22 @@ $(document).ready(function(){
         formulario = pintar_otro_campo(campo, id);
         //campo.val(pym).trigger("change");
     });
+
+    function cargar_elementos_seleccionados(){
+        html = '<ul class="nav nav-tabs" id="myTab" role="tablist">';
+        html = html+'<li class="nav-item">';
+        html = html+'<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>';
+        html = html+'</li>';                    
+        html = html+'</ul>';
+        html = html+'<div class="tab-content" id="myTabContent">';
+        html = html+'<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">';
+        html = html+'Pruebas';
+        html = html+'</div>';                
+        html = html+'</div>';
+
+        $('#formulario').append(html);
+        
+        
+    }
 
 });
