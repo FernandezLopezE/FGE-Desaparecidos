@@ -228,7 +228,7 @@ $(document).ready(function(){
             for(var i=0;i<arreglo.length;i++){
                 if(campo.val() == arreglo[i]){
                     //formulario = pintar_otro_campo(campo);
-                    $("#otro_"+id).after(otro);
+                    $("#div_"+id).after(otro);
                     console.log("igual 2");
                     break;
                 }else{
