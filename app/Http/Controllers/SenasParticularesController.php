@@ -47,6 +47,10 @@ class SenasParticularesController extends Controller
                 'idTamanoCuerpo'	        => $request->input('idTamano'),
                 'observaciones' 	        => $request->input('observaciones'),
                 'idPartesCuerpo'            => $request->input('idParteCuerpo'),
+                'otraParticularidad'        => $request->input('otraidParticularidad'),
+                'otraModificacion'          => $request->input('otraidModificacion'),
+                'otroTipo'                  => $request->input('otroTipo'),
+                'otroColor'                 => $request->input('otroColor'),
                 'idPersonaDesaparecida'     => $request->input('idDesaparecido')
             ]);
 

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    cargar_elementos_seleccionados();
+
     $('g').click(function(){
         
         parteCuerpo = $(this).attr("data-cuerpo");
@@ -149,8 +149,12 @@ $(document).ready(function(){
             idParticularidad : ($("#idParticularidad").val() === undefined) ? null : $("#idParticularidad").val(),
             idModificacion : ($("#idModificacion").val() === undefined) ? null : $("#idModificacion").val(),
             observaciones : ($("#observaciones").val() === undefined) ? null : $("#observaciones").val(),
+            otroidParticularidad : ($("#otroidParticularidad").val() === undefined) ? null : $("#otroidParticularidad").val(),
+            otroidModificacion : ($("#otroidModificacion").val() === undefined) ? null : $("#otroidModificacion").val(),
+            otrotipo : ($("#otrotipo").val() === undefined) ? null : $("#otrotipo").val(),
+            otrocolor : ($("#otrocolor").val() === undefined) ? null : $("#otrocolor").val(),
             idParteCuerpo : ($("#idParteCuerpo").val() === undefined) ? null : $("#idParteCuerpo").val(),
-            idDesaparecido : idDesaparecido                      
+            idDesaparecido : idDesaparecido
         };
         console.log(dataString);
 
@@ -273,19 +277,30 @@ $(document).ready(function(){
         //campo.val(pym).trigger("change");
     });
 
-    function cargar_elementos_seleccionados(){
-        html = '<ul class="nav nav-tabs" id="myTab" role="tablist">';
-        html = html+'<li class="nav-item">';
-        html = html+'<a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>';
-        html = html+'</li>';                    
-        html = html+'</ul>';
-        html = html+'<div class="tab-content" id="myTabContent">';
-        html = html+'<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">';
-        html = html+'Pruebas';
-        html = html+'</div>';                
-        html = html+'</div>';
+    var cargar_elementos_seleccionados = function(idDesaparecido){
+        alert(idDesaparecido);
+        $.getJSON( routeConsul+'/get_cat_partes_cuerpo/'+idDesaparecido, function(data) {
+            head = '<ul class="nav nav-tabs" id="myTab" role="tablist">';
+            body = '<div class="tab-content" id="myTabContent">';
+            $.each(data, function(key, value){
+                console.log(value);
+                head = head+'<li class="nav-item">';
+                head = head+'<a class="nav-link" id="nav-'+value.id+'-tab" data-toggle="tab" href="#parte-'+value.id+'" role="tab" aria-controls="nav-'+value.id+'" aria-selected="true">'+value.nombre+'</a>';
+                head = head+'</li>';
 
-        $('#formulario').append(html);
+                body = body+'<div class="tab-pane fade" id="parte-'+value.id+'" role="tabpanel" aria-labelledby="nav-'+value.id+'-tab">';
+                body = body+value.nombre;
+                body = body+'</div>';
+            });
+            head = head+'</ul>';  
+            body = body+'</div>';
+
+            $('#formulario').append(head);
+            $('#formulario').append(body);            
+        });        
+
+
+        
         
         
     }

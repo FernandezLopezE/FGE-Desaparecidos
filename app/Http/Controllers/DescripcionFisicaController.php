@@ -63,8 +63,15 @@ class DescripcionFisicaController extends Controller
      */
     public function show($idDesaparecido)
     {
-        //
         $desaparecido = Desaparecido::find($idDesaparecido);
+        $todasPartes    = \App\Models\CatPartesCuerpo::where('partePadre', '0')->get();
+        $activasPartes = \App\Models\CedulaPartesCuerpo::where('idPersonaDesaparecida', $idDesaparecido)->with('catpartescuerpo')->get();
+        /*$activasPartes = \App\Models\CatPartesCuerpo::with('partescuerpo')->get();*/
+        /*$activasPartes  = \App\Models\CedulaPartesCuerpo::where('idPersonaDesaparecida', $idDesaparecido)
+                                                                    ->select('idPartesCuerpo')
+                                                                    ->groupBy('idPartesCuerpo')
+                                                                    ->get();*/
+        
         $complexiones = \App\Models\CatComplexion::all()->pluck('nombre','id');
         $coloresPiel = \App\Models\CatColorPiel::all()->pluck('nombre','id');
 
@@ -83,7 +90,8 @@ class DescripcionFisicaController extends Controller
                 'desaparecido' => $desaparecido,
                 'complexiones' => $complexiones,
                 'coloresPiel' => $coloresPiel,
-                //'partesCuerpo' => $partesCuerpo,
+                'todasPartes' => $todasPartes,
+                'activasPartes' => $activasPartes,
                 'aux' => $aux,
                 'showCabello' => $showCabello
             ]);

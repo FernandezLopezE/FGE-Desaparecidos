@@ -63,7 +63,22 @@
               @include('descripcionfisica.avatarTras')
             </div>
             <div class="col-8" id='formulario'>
-            
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    @foreach ($activasPartes as $partes)
+                        <li class="nav-item">
+                            <a class="nav-link" id="nav-{!! $partes->catpartescuerpo->id !!}-tab" data-toggle="tab" href="#parte-{!! $partes->catpartescuerpo->id !!}" role="tab" aria-controls="nav-{!! $partes->catpartescuerpo->nombre !!}" aria-selected="true">{!! $partes->catpartescuerpo->nombre !!}</a>
+                        </li>
+                    @endforeach
+                </ul> 
+                
+                <div class="tab-content" id="myTabContent">
+                    @foreach ($activasPartes as $partes)
+                        <div class="tab-pane fade" id="parte-{!! $partes->catpartescuerpo->id !!}" role="tabpanel" aria-labelledby="nav-{!! $partes->catpartescuerpo->id !!}-tab">
+                                {!! $partes->catpartescuerpo->nombre !!}
+                        </div>
+                    @endforeach
+                </div>                
+
             </div>
         </div>
     </div>
@@ -80,8 +95,6 @@
   var routeConsul ="{!! route('consultas.index') !!}";
   
   var showCabello2 = "{{$showCabello}}";
-
-
 
   //Boton frente
   $("#btnTras").click(function(event) {
@@ -101,6 +114,7 @@
 
   
 </script>
+
 {!! Html::script('personal/js/avatar/accionAvatar.js') !!}
 
 {!! Html::script('personal/js/avatar/datos_fisicos.js') !!}
@@ -114,5 +128,4 @@
 {!! Html::script('personal/js/avatar/muslos.js') !!}
 {!! Html::script('personal/js/avatar/piernas.js') !!}
 {!! Html::script('personal/js/avatar/pies.js') !!}
-
 @endsection

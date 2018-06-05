@@ -951,4 +951,16 @@ class ConsultasController extends Controller
 
         return response()->json($data);
     }
+
+    public function json_cat_partes_cuerpo($idDesaparecido)
+    {
+        $data['todasPartes']    = \App\Models\CatPartesCuerpo::where('partePadre', '0')->get();
+        $data['activasPartes']  = \App\Models\CedulaPartesCuerpo::where('idPersonaDesaparecida', $idDesaparecido)
+                                                                    ->select('idPartesCuerpo')
+                                                                    ->groupBy('idPartesCuerpo')
+                                                                    ->get();
+         
+
+        return response()->json($partesCuerpo);
+    }
 }

@@ -14,7 +14,8 @@ class CatPartesCuerpo extends Model
 		'reglas'
 	];
 
-	/*public function coloresCuerpo(){
-		return $this->belongsTo('App\Models\CatColoresCuerpo','idColoresCuerpo','id');
-	}*/
+	public function partescuerpo()
+	{
+		return $this->hasMany('App\Models\CedulaPartesCuerpo', 'id', 'idPartesCuerpo');
+	}
 }
