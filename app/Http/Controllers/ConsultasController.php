@@ -93,6 +93,7 @@ class ConsultasController extends Controller
         $colorOjos = $request->input('colorOjos');
         $tipoLabio = $request->input('tipoLabio');
         $modif = $request->input('modif');
+        $partic = $request->input('partic');
         
         $masc = $request->input('masc');
         $fem = $request->input('fem');
@@ -281,6 +282,8 @@ class ConsultasController extends Controller
                                 return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
                             ->when($modif, function ($q) use ($modif) {
                                 return $q->whereIn('cat_mc.nombre', $modif); })
+                            ->when($partic, function ($q) use ($partic) {
+                                return $q->whereIn('cparti.nombre', $partic); })
                             
                             ->orWhere('p.sexo', $fem) 
                             ->where('tipoPersona','DESAPARECIDA')
@@ -336,6 +339,8 @@ class ConsultasController extends Controller
                                 return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
                             ->when($modif, function ($q) use ($modif) {
                                 return $q->whereIn('cat_mc.nombre', $modif); })
+                            ->when($partic, function ($q) use ($partic) {
+                                return $q->whereIn('cparti.nombre', $partic); })
 
                             //->where('des.edadExtravio', 'like', "$rg2%")
                             ->distinct()

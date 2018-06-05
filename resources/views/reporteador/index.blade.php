@@ -485,14 +485,23 @@
               <div class="row" >                            
               <div class="col" style="padding-right:0px;padding-left:0px;">
                         <div class="card-header">
-                           Modificaciones   
+                           Modificaciones y particularidades   
                            <i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar10"></i>                       
                            </div>
                         <div class=" list-group-flush small" style="Display:none" id="campoModificaciones">
                           <div class="list-group-item list-group-item-action">                          
                             <div class=""  id="infoLabio1">
-                                {!! Form::label ('tipoLabios','Modificaciones:') !!}
-                            {!! Form::select('modificaciones', $modificaciones, '', ['class' => '', 'id' => 'modificaciones','multiple' => 'multiple'] ) !!}
+                               <div class="row">
+                                   <div class="col">
+                                     {!! Form::label ('tipoLabios','Modificaciones:') !!}
+                                     {!! Form::select('modificaciones', $modificaciones, '', ['class' => '', 'id' => 'modificaciones','multiple' => 'multiple'] ) !!}
+                                   </div>
+                                   <div class="col">                                     
+                                     {!! Form::label ('tipoLabios','Particularidades:') !!}
+                                     {!! Form::select('particularidades', $particularidades, '', ['class' => '', 'id' => 'particularidades','multiple' => 'multiple'] ) !!}
+                                   </div>
+                               </div>
+                            
                             </div>    
                           </div>
                       </div>
@@ -501,17 +510,10 @@
             </div>
 
               </div>
-           
-           
-         </div>
-       <div class="row" >
-       </div> 
-        <!--<imput type="button" class="btn btn-dark pull-right" id="button2">PRUEBA</imput>-->
-       <!--<imput type="button" class="btn btn-dark pull-right" id="prueba">PRUEBA</imput>-->
-        <imput type="button" class="btn btn-dark pull-right" id="filtros">Buscar</imput>
-        
-       <br><br>
-           <div id="tablaGen" style="width:90%">
+           <br>
+           <imput type="button" class="btn btn-dark pull-right" id="filtros">Buscar</imput>
+           <br><br>
+           <div id="tablaGen" style="width:100%">
 
 
 <!-- data-id-table="advancedTable" 
@@ -575,10 +577,12 @@
                         data-sortable="true" data-filter-control="input" data-visible="false"></th>
                         <th data-field="particularidades" 
                         data-sortable="true" data-filter-control="input" data-visible="false"></th>
-               <th data-field="Acciones"></th>
+                        <th data-field="Observaciones" 
+                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+               <th data-field="Acciones"> </th>
                 </tr>
             </thead>
- <tbody>
+ <tbody >
     
     </tbody>
          </table>  
@@ -586,7 +590,13 @@
 
         </div>
 
-      <br><br><br><br><br><br><br><br><br>
+         </div>
+   
+        <!--<imput type="button" class="btn btn-dark pull-right" id="button2">PRUEBA</imput>-->
+       <!--<imput type="button" class="btn btn-dark pull-right" id="prueba">PRUEBA</imput>-->
+        
+        
+       
    
 </div><hr>
 
@@ -681,6 +691,10 @@
             width: '100%'
         });
     $('#modificaciones').multipleSelect({
+            filter: true,
+            width: '100%'
+        });
+    $('#particularidades').multipleSelect({
             filter: true,
             width: '100%'
         });
@@ -789,7 +803,7 @@ alert('Selected texts: ' + $('#estados').multipleSelect('getSelects', 'text'));
     //-->-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-
     
 var formatTableActions = function(value, row, index) {        
-      btn = '<button class="btn btn-dark " id="verReporte" value="'+row.id+'">Ver detalles</button>';
+      btn = '<p align="center"> <button class="btn btn-dark " id="verReporte" value="'+row.id+'">Ver detalles</button> </p>';
 
 
       return [btn].join('');
@@ -1042,6 +1056,7 @@ var formatTableActions = function(value, row, index) {
                 colorOjos: $('#colorOjos').multipleSelect('getSelects'),
                 tipoLabio: $('#tipoLabio').multipleSelect('getSelects'),
                 modif: $('#modificaciones').multipleSelect('getSelects'),
+                partic: $('#particularidades').multipleSelect('getSelects'),
               fem : $("input#fem:checked").val(),     
               masc : $("input#masc:checked").val(),
           //    sexo,

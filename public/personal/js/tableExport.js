@@ -36,9 +36,9 @@
           styles: {
               overflow: 'linebreak', 
               //tableWidth: 'auto',
-              columnWidth:'20',
+              columnWidth:'auto',
             cellPadding:   2,
-            rowHeight:     12,
+            rowHeight:     42,
             fontSize:      6,
             fillColor:     255,         // Color value or 'inherit' to use css background-color from html table
             textColor:     50,          // Color value or 'inherit' to use css color from html table
