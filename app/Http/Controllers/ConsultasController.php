@@ -359,10 +359,12 @@ class ConsultasController extends Controller
                                 'catpc.nombre as nombreCuerpo',
                                 'cpc.idColoresCuerpo',
                                 'catcolores.nombre as colorCuerpo',
+                                'cpc.otroColor',
                                 'cpc.idTamanoCuerpo',
                                 'tamaCuerpo.nombre as tamano',
                                 'cpc.idTipoCuerpo',
                                 'tipoCuerpo.nombre as tipo',
+                                'cpc.otroTipo',
                                 'cpc.observaciones')
                         ->where('cpc.idPersonaDesaparecida',$value->id)
                         ->whereIn('cpc.idPartesCuerpo',[2,3,4,5,9,14])//2->CABELLO, 3->BARBA, 4->BIGOTE, 5->PATILLA, 9->OJOS, 14->LABIOS
@@ -373,22 +375,86 @@ class ConsultasController extends Controller
 
             $longitud = count($partesCuerpoRostro);
             $nCabello = '';$nVelloFacial   = ''; $nOjos = ''; $nLabios = '';
-            //$idParti  = array();
             for($j=0;$j < $longitud; $j++){
-                if($partesCuerpoRostro[$j]->idPartesCuerpo == 2 ){ 
-                     $nCabello = '<i> '.$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo.', '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->colorCuerpo;
-                    //array_push($idParti , $particularidades[$j]->idParticularidad); 
+                if($partesCuerpoRostro[$j]->idPartesCuerpo == 2 ){
+                    if($partesCuerpoRostro[$j]->otroTipo != '' ) {
+                        $nCabello = '<i> '.$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->otroTipo.', '.$partesCuerpoRostro[$j]->tamano;
+                        if($partesCuerpoRostro[$j]->otroColor != '' )
+                            $nCabello = $nCabello.', '.$partesCuerpoRostro[$j]->otroColor;
+                        else
+                            $nCabello = $nCabello.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                    }
+                    else{
+                        $nCabello = '<i> '.$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo.', '.$partesCuerpoRostro[$j]->tamano;
+                        if($partesCuerpoRostro[$j]->otroColor != '' )
+                            $nCabello = $nCabello.', '.$partesCuerpoRostro[$j]->otroColor;
+                        else
+                            $nCabello = $nCabello.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                    }
+                   /* $nCabello = '<i> '.$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo.', '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->colorCuerpo;*/
                 }else if($partesCuerpoRostro[$j]->idPartesCuerpo == 3){
-                    $nVelloFacial = ' <i>'.$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                    if($partesCuerpoRostro[$j]->otroTipo != '' ) {
+                        $nVelloFacial = '<i> '.$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->otroTipo;
+                        if($partesCuerpoRostro[$j]->otroColor != '' )
+                            $nVelloFacial = $nVelloFacial.', '.$partesCuerpoRostro[$j]->otroColor;
+                        else
+                            $nVelloFacial = $nVelloFacial.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                    }
+                    else{
+                        $nVelloFacial = '<i> '.$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo;
+                        if($partesCuerpoRostro[$j]->otroColor != '' )
+                            $nVelloFacial = $nVelloFacial.', '.$partesCuerpoRostro[$j]->otroColor;
+                        else
+                            $nVelloFacial = $nVelloFacial.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                    }
+                   /* $nVelloFacial = ' <i>'.$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo.', '.$partesCuerpoRostro[$j]->colorCuerpo;*/
                 }else if($partesCuerpoRostro[$j]->idPartesCuerpo == 4 ){
-                   $nVelloFacial = $nVelloFacial.' <i><br>' .$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                    if($partesCuerpoRostro[$j]->otroTipo != '' ) {
+                        $nVelloFacial = $nVelloFacial.' <i><br>'.
+                                        $partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->otroTipo;
+                        if($partesCuerpoRostro[$j]->otroColor != '' )
+                            $nVelloFacial = $nVelloFacial.', '.$partesCuerpoRostro[$j]->otroColor;
+                        else
+                            $nVelloFacial = $nVelloFacial.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                    }
+                    else{
+                        $nVelloFacial = $nVelloFacial.' <i><br>'.
+                                        $partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo;
+                        if($partesCuerpoRostro[$j]->otroColor != '' )
+                            $nVelloFacial = $nVelloFacial.', '.$partesCuerpoRostro[$j]->otroColor;
+                        else
+                            $nVelloFacial = $nVelloFacial.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                    }
+                  /* $nVelloFacial = $nVelloFacial.' <i><br>' .$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo.', '.$partesCuerpoRostro[$j]->colorCuerpo;*/
                 }else if($partesCuerpoRostro[$j]->idPartesCuerpo == 5 ){
-                    $nVelloFacial = $nVelloFacial.' <i><br>' .$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                    if($partesCuerpoRostro[$j]->otroTipo != '' ) {
+                        $nVelloFacial = $nVelloFacial.' <i><br>'.
+                                        $partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->otroTipo;
+                        if($partesCuerpoRostro[$j]->otroColor != '' )
+                            $nVelloFacial = $nVelloFacial.', '.$partesCuerpoRostro[$j]->otroColor;
+                        else
+                            $nVelloFacial = $nVelloFacial.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                    }
+                    else{
+                        $nVelloFacial = $nVelloFacial.' <i><br>'.
+                                        $partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo;
+                        if($partesCuerpoRostro[$j]->otroColor != '' )
+                            $nVelloFacial = $nVelloFacial.', '.$partesCuerpoRostro[$j]->otroColor;
+                        else
+                            $nVelloFacial = $nVelloFacial.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                    }
+                   /* $nVelloFacial = $nVelloFacial.' <i><br>' .$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo.', '.$partesCuerpoRostro[$j]->colorCuerpo;*/
                 }else if($partesCuerpoRostro[$j]->idPartesCuerpo == 9){
-                     $nOjos = $partesCuerpoRostro[$j]->nombreCuerpo.': '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                    if($partesCuerpoRostro[$j]->otroColor != '' ) 
+                        $nOjos = $partesCuerpoRostro[$j]->nombreCuerpo.': '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->otroColor;
+                    else
+                        $nOjos = $partesCuerpoRostro[$j]->nombreCuerpo.': '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->colorCuerpo;
                 }else if($partesCuerpoRostro[$j]->idPartesCuerpo == 14){
-                     $nLabios = $partesCuerpoRostro[$j]->nombreCuerpo.': '.$partesCuerpoRostro[$j]->tipo;
-                 }
+                    if($partesCuerpoRostro[$j]->otroTipo != '' ) 
+                        $nLabios = $partesCuerpoRostro[$j]->nombreCuerpo.': '.$partesCuerpoRostro[$j]->tipo;
+                    else
+                        $nLabios = $partesCuerpoRostro[$j]->nombreCuerpo.': '.$partesCuerpoRostro[$j]->tipo;
+                }
             }
 
 
@@ -399,9 +465,10 @@ class ConsultasController extends Controller
                         ->leftjoin('cat_particularidades_cuerpo as cparti','cparti.id','=','psubp.idParticularidades')
                         ->select('cpc.idPartesCuerpo',
                                 'catpc.nombre as nombreCuerpo',
-                                'cparti.nombre as particularidades')
+                                'cparti.nombre as particularidades',
+                                'cpc.otraParticularidad')
                         ->where('cpc.idPersonaDesaparecida',$value->id)
-                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 'cparti.nombre')
+                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 'cparti.nombre', 'cpc.otraParticularidad')
                         ->get();
 
             $longitud = count($caracteristicasCuerpoP);
@@ -411,14 +478,19 @@ class ConsultasController extends Controller
             if($caracteristicasCuerpoP[$j]->particularidades !=''){
                 if($caracteristicasCuerpoP[$j]->nombreCuerpo == $parte_cuerpo)
                 { 
-                    $nParticularidades = $nParticularidades.','.$caracteristicasCuerpoP[$j]->particularidades;
+                        $nParticularidades = $nParticularidades.','.$caracteristicasCuerpoP[$j]->particularidades;
                 }
                 else{
-                    $parte_cuerpo = $caracteristicasCuerpoP[$j]->nombreCuerpo;
+                    $parte_cuerpo = $caracteristicasCuerpoP[$j]->nombreCuerpo; 
                     if($nParticularidades != '')
                         $nParticularidades = $nParticularidades.'<br><i>'.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoP[$j]->particularidades;
                     else
+                    {
+                        if($caracteristicasCuerpoP[$j]->particularidades == 'OTRO')
+                            $nParticularidades = '<i> '.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoP[$j]->otraParticularidad.' ';
+                        else
                         $nParticularidades = '<i> '.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoP[$j]->particularidades.' ';//primera vez
+                    }
 
                 }
             }        
@@ -426,17 +498,17 @@ class ConsultasController extends Controller
             }
                
 
-
             $caracteristicasCuerpoM = \DB::table('cedula_partes_cuerpo as cpc')
                         ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
                          ->leftjoin('pivot_submodi_cuerpo as psubm','psubm.idCedulaPartesCuerpo','=','cpc.id')
                          ->leftjoin('cat_modificaciones_cuerpo as cmodi','cmodi.id','=','psubm.idModificaciones')
                         ->select('cpc.idPartesCuerpo',
                                 'catpc.nombre as nombreCuerpo',
-                                'cmodi.nombre as modificaciones')
+                                'cmodi.nombre as modificaciones',
+                                'cpc.otraModificacion')
                         ->where('cpc.idPersonaDesaparecida',$value->id)
                         ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 
-                                'cmodi.nombre')
+                                'cmodi.nombre', 'cpc.otraModificacion')
                         ->get();
             $longitud = count($caracteristicasCuerpoM);
             $nModificaciones = '';
@@ -452,8 +524,12 @@ class ConsultasController extends Controller
                     $parte_cuerpo = $caracteristicasCuerpoM[$j]->nombreCuerpo;
                     if($nModificaciones != '')
                         $nModificaciones = $nModificaciones.'<br><i>'.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoM[$j]->modificaciones;
-                    else
+                    else{
+                         if($caracteristicasCuerpoM[$j]->modificaciones == 'OTRO')
+                            $nModificaciones = '<i> '.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoM[$j]->otraModificacion.' ';
+                        else
                         $nModificaciones = '<i> '.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoM[$j]->modificaciones.' ';//primera vez
+                    }
 
                 }
             }    
