@@ -30,9 +30,24 @@ class ReporteadorController extends Controller
            $coloresBigote = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','4')->pluck('nombre','id');
            $coloresPatilla = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','5')->pluck('nombre','id');
            $coloresOjos = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','9')->pluck('nombre','id');
-           $modificaciones = \App\Models\CatModificacionesCuerpo::where('nombre','!=','LUNARES')->where('nombre','!=','LARGA')->where('nombre','!=','DEPILADA')->where('nombre','!=','CERRADA')->where('nombre','!=','ALACIADO')
-               ->where('nombre','!=','RASURADA/DEPILADA')->where('nombre','!=','RASURADA')->groupby('nombre')->distinct()->pluck('nombre','nombre');
-            return view('reporteador.index',compact(                                           
+           
+           $modificaciones = \App\Models\CatModificacionesCuerpo::where('nombre','!=','LUNARES')->where('nombre','!=','LARGA')->where('nombre','!=','DEPILADA')->where('nombre','!=','CERRADA')->where('nombre','!=','ALACIADO')->where('nombre','!=','OTRO')
+               ->where('nombre','!=','SIN INFORMACIÓN')->where('nombre','!=','RASURADA/DEPILADA')->where('nombre','!=','RASURADA')->groupby('nombre')->distinct()->pluck('nombre','nombre');
+           
+           $particularidades = \App\Models\CatParticularidadesCuerpo::where('nombre','!=','CORTAS')->where('nombre','!=','OTRO')
+               ->where('nombre','!=','SIN INFORMACIÓN')->where('nombre','!=','LARGAS')->groupby('nombre')->distinct()->pluck('nombre','nombre');
+            
+           $tiposFiltros = array('A1' => 'FECHAS',
+								'A2' => 'CUERPO',
+								'A3' => 'CABELLO',
+                                'A4' => 'BARBA',
+                                'A5' => 'BIGOTE',
+                                'A6' => 'PATILLA',
+                                'A7' => 'OJOS',
+                                'A8' => 'LABIOS',
+                                'A9' => 'MODIFICACIONES Y PARTICULARIDADES');
+           
+           return view('reporteador.index',compact(                                           
                       'estados',
                                             'municipios',
                                             'complexiones',
@@ -49,7 +64,9 @@ class ReporteadorController extends Controller
                                             'coloresBigote',
                                             'coloresPatilla',
                                             'coloresOjos',
-                                            'modificaciones'
+                                            'modificaciones',
+                                            'particularidades',
+                                            'tiposFiltros'
                     ));
             
      

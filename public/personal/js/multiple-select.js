@@ -265,7 +265,7 @@
                 $el = $([
                     sprintf('<li class="%s %s" %s %s>', multiple, classes, title, style),
                     sprintf('<label class="%s">', disabled ? 'disabled' : ''),
-                    sprintf('<input type="%s" %s%s%s%s>',
+                    sprintf('<input id="id'+ $elm.val() +'" type="%s" %s%s%s%s>',
                         type, this.selectItemName,
                         selected ? ' checked="checked"' : '',
                         disabled ? ' disabled="disabled"' : '',
