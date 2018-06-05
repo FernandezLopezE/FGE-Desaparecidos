@@ -65,6 +65,73 @@ class InicioController extends Controller
 						'hecho' => 'Refiere la entrevistada que el día 2 de enero del 2017, a las 9 de la noche aproximadamente su hija Briseida le dijo que saldría a lavar un poco de ropa al patio exterior de la casa, y pasado unos 20 o 30 minutos salió a verla pero ya no la encontró, buscándola por toda la colonia donde vive junto con su esposo, siendo avisados eso de las 11 de la noche por un sujeto de nombre Omar X que la menor se había ido a México con Luis Fernando vecino de la colonia.']]);
 		Session::put('hecho', 'Refiere la entrevistada que el día 2 de enero del 2017, a las 9 de la noche aproximadamente su hija Briseida le dijo que saldría a lavar un poco de ropa al patio exterior de la casa, y pasado unos 20 o 30 minutos salió a verla pero ya no la encontró, buscándola por toda la colonia donde vive junto con su esposo, siendo avisados eso de las 11 de la noche por un sujeto de nombre Omar X que la menor se había ido a México con Luis Fernando vecino de la colonia.');
 
-		return view('inicio');
+
+		/*$datosMes = \DB::table('desaparecidos_cedula_investigacion as dp')
+            ->join('cat_complexion as cc','cc.id','=','dp.idComplexion')
+            ->join('cat_color_piel as ccp','ccp.id','=','dp.idColorPiel')
+            ->select('dp.estatura',
+                                'dp.peso',
+                                'cc.nombre as complexion',
+                                'ccp.nombre as piel',
+                                'dp.idComplexion',
+                                'dp.idColorPiel')
+            ->where('dp.id',$idExtraviado)
+            ->get();*/
+            
+            $datosMes = \DB::table('desaparecidos_cedula_investigacion')
+                 ->select(\DB::raw('MONTHNAME(created_at) as mes'), \DB::raw('count(*) as total'))
+                 ->groupBy(\DB::raw('MONTHNAME(created_at)'))
+                 ->get();
+                 //dd($datosMes);
+
+            function random_color_part() {
+			    return str_pad( dechex( mt_rand( 0, 255 ) ), 2, '0', STR_PAD_LEFT);
+			}
+
+			function random_color() {
+			    return random_color_part() . random_color_part() . random_color_part();
+			}
+
+
+			foreach ($datosMes as $key => $value) {
+            	$etiqueta[] = $value->mes;
+            	$total[] = $value->total;
+            	$colores[] ="#".random_color();
+            }
+			
+
+        $chartjs = app()->chartjs
+         ->name('barChartTest')
+         ->type('bar')
+         ->size(['width' => 400, 'height' => 200])
+         ->labels($etiqueta)
+         ->datasets([
+             [
+                 "label" => 'Total de personas no localizadas por mes.',
+                 'backgroundColor' => $colores,
+                 'data' => $total
+             ]
+         ])
+         ->options([]);
+
+		/*$chartjs = app()->chartjs
+        ->name('pieChartTest')
+        ->type('doughnut')
+        ->size(['width' => 400, 'height' => 200])
+        ->labels($etiqueta)
+        ->datasets([
+            [
+                'backgroundColor' => ["#db191c", "#cd501c", "#30613f", "#5db7e1", "#eef34d", "#4c98df", "#41f2c4", "#0cb222", "#4e48b0", "#e3a4b1", "#34d536", "#d56bfd"],
+                'hoverBackgroundColor' => ["#db191c", "#cd501c", "#30613f", "#5db7e1", "#eef34d", "#4c98df", "#41f2c4", "#0cb222", "#4e48b0", "#e3a4b1", "#34d536", "#d56bfd"],
+                'data' => $total,
+            ]
+        ])
+        ->options([]);*/
+
+		return view('inicio', compact('chartjs','colores'));
+
+		
+
+		//return view('inicio');
 	}
 }

@@ -152,7 +152,7 @@
                     <td><strong>CARPETA DE INVESTIGACIÓN:</strong> FEADPD/ZCX/00/2018-00</td>
                 </tr >
                 <tr>
-                    <td><strong>FECHA DE EXTRAVÍO:</strong> 4 DE JUILIO 2017</td>
+                    <td><strong>FECHA DE EXTRAVÍO:</strong> 4 DE JULIO 2017</td>
                 </tr>
                 <tr>
                     <td><strong>SEXO:</strong>{!! $desaparecido->persona->sexo !!}</td>
@@ -191,7 +191,7 @@
                     <td><strong>OJOS:</strong> CAFE CLARO</td>
                 </tr>
                 <tr>
-                    <td><strong>NARIZ:</strong> MORENO CLARO</td>
+                    <td><strong>COLOR DE PIEL:</strong> MORENO CLARO</td>
                 </tr>
                 <tr>
                   <td  class="text-sm-center">
