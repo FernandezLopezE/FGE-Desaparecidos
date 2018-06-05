@@ -37,13 +37,16 @@
         <imput type="button" class="btn btn-dark pull-right" id="filtrosTodos">Buscar todos los registros</imput>     
     </p> <br>
 -->
-      <div class="card-body bg-white">       
+      
+     
+      <div class="card-body bg-white">                              
+        <div class="row">
+               &nbsp;&nbsp;Datos generales                        
+          </div>    <hr>    
             <div class="row" id="idDatosGral">               
                <div class="col-lg-2" style="padding-right:0px;padding-left:0px;">
-                    <div class="">
-                        <div class="card-header">
-                           Datos generales                        
-                           </div>
+                    <div class=""> 
+                                                                           
                         <div class=" list-group-flush small">
                          
                           <div class="list-group-item list-group-item-action"  id="campoGenero"> 
@@ -63,9 +66,7 @@
               </div>
                <div class="col-lg-4"style="padding-right:0px;padding-left:0px;">
                     <div class="">
-                        <div class="card-header">
-                              &nbsp;                   
-                           </div>
+                       
                         <div class=" list-group-flush small" >
                         
                           <div class="list-group-item list-group-item-action"  id="campoEdad" > 
@@ -91,10 +92,7 @@
                     </div>
               </div>
                 <div class="col-lg-6" style="padding-right:0px;padding-left:0px;">
-                        <div class="card-header">
-                           &nbsp;
-                        <!-- <i class="fa fa-chevron-circle-down" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar1"></i>-->
-                           </div>
+                        
                         <div class=" list-group-flush small"  id="campoUbicacion">
                          
                           <div class="list-group-item list-group-item-action">
@@ -110,14 +108,20 @@
                                 {!! Form::label ('idEstados','Municipios:') !!} 
                                 {!! Form::select('idEstados',$municipios, '', ['class' => '', 'id' => 'municipios','multiple' => 'multiple'] ) !!}
                             </div></div>  
-                            </div>    
+                            </div>                                
                           </div>
                       </div>
               </div>                 
             </div>
+            <div class="col-lg-6">
+                {!! Form::label ('comple','Filtros de búsqueda') !!}<br>
+            {!! Form::select ('comple', $tiposFiltros, '',['class' => '', 'id' => 'filtrosAvanzados','multiple' => 'multiple'] )!!}
+            <br><br>
+            </div>
+            
              
              <div class="row" >
-                 <!--   FECHAS  --><div class="col-lg-6" >  
+                 <!--   FECHAS  --><div class="col-lg-6" style="display:none" id="catFechas">  
              <div class="row" >
              <div class="col" style="padding-right:0px;padding-left:0px;">
                 <div class="card-header">
@@ -196,7 +200,7 @@
            
              </div>
              
-             <!--   DESCRIPCIÓN FÍSICA  --><div class="col-lg-6" >  
+             <!--   DESCRIPCIÓN FÍSICA  --><div class="col-lg-6"  style="display:none" id="catCuerpo">  
              
              <div class="row" >
              <div class="col" style="padding-right:0px;padding-left:0px;">
@@ -269,7 +273,7 @@
              
              
             <div class="row" >
-             <!--   CABELLO  --><div class="col-lg-6">
+             <!--   CABELLO  --><div class="col-lg-6"  style="display:none" id="catCabello">
             <div class="row"  >               
                <div class="col" style="padding-right:0px;padding-left:0px;">
                     <div class="">
@@ -320,7 +324,7 @@
           
             </div>
              
-             <!--   BARBA  --><div class="col-lg-6"><!--   COL-LG-6-->
+             <!--   BARBA  --><div class="col-lg-6"  style="display:none" id="catBarba"><!--   COL-LG-6-->
               <div class="row" >               
                <div class="col" style="padding-right:0px;padding-left:0px;">
                         <div class="card-header">
@@ -355,7 +359,7 @@
             </div>
             </div>
              <div class="row" >
-                  <!--   BIGOTE  --><div class="col-lg-6"><!--   COL-LG-6-->
+                  <!--   BIGOTE  --><div class="col-lg-6"  style="display:none" id="catBigote"><!--   COL-LG-6-->
               <div class="row" >               
                <div class="col" style="padding-right:0px;padding-left:0px;">
                         <div class="card-header">
@@ -388,7 +392,7 @@
               </div>                   
             </div>             
             </div>
-              <!--   PATILLA  --><div class="col-lg-6"><!--   COL-LG-6-->
+              <!--   PATILLA  --><div class="col-lg-6"  style="display:none" id="catPatilla"><!--   COL-LG-6-->
               <div class="row" >               
                <div class="col" style="padding-right:0px;padding-left:0px;">
                         <div class="card-header">
@@ -424,7 +428,7 @@
              </div>
 
               <div class="row" >
-              <!--   OJOS  --><div class="col-lg-6"><!--   COL-LG-6-->
+              <!--   OJOS  --><div class="col-lg-6"  style="display:none" id="catOjos"><!--   COL-LG-6-->
               <div class="row" >               
                <div class="col" style="padding-right:0px;padding-left:0px;">
                         <div class="card-header">
@@ -457,7 +461,7 @@
               </div>                   
             </div>             
             </div>
-            <!--   LABIOS  --><div class="col-lg-6"><!--   COL-LG-6-->
+            <!--   LABIOS  --><div class="col-lg-6"  style="display:none" id="catLabios"><!--   COL-LG-6-->
               <div class="row" >                            
               <div class="col" style="padding-right:0px;padding-left:0px;">
                         <div class="card-header">
@@ -481,7 +485,7 @@
            
             <div class="row" >
              
-            <!--   MODIFICACIONES  --><div class="col-lg-6"><!--   COL-LG-6-->
+            <!--   MODIFICACIONES  --><div class="col-lg-6"  style="display:none" id="catModiParti"><!--   COL-LG-6-->
               <div class="row" >                            
               <div class="col" style="padding-right:0px;padding-left:0px;">
                         <div class="card-header">
@@ -513,7 +517,13 @@
            <br>
            <imput type="button" class="btn btn-dark pull-right" id="filtros">Buscar</imput>
            <br><br>
-           <div id="tablaGen" style="width:100%">
+           
+         </div>
+   
+        <!--<imput type="button" class="btn btn-dark pull-right" id="button2">PRUEBA</imput>-->
+       <!--<imput type="button" class="btn btn-dark pull-right" id="prueba">PRUEBA</imput>-->
+        
+        <div id="tablaGen" style="width:100%">
 
 
 <!-- data-id-table="advancedTable" 
@@ -590,13 +600,7 @@
 
         </div>
 
-         </div>
-   
-        <!--<imput type="button" class="btn btn-dark pull-right" id="button2">PRUEBA</imput>-->
-       <!--<imput type="button" class="btn btn-dark pull-right" id="prueba">PRUEBA</imput>-->
-        
-        
-       
+       <br><br><br><br><br><br><br><br>
    
 </div><hr>
 
@@ -620,9 +624,74 @@
 
 <script type="text/javascript">
    
+    
+
+    
+   $(function()
+    {
+      $('#idA1').change(function()
+      {if ($(this).is(':checked')) {
+            $('#catFechas').show();
+          
+        }else{
+            $('#catFechas').hide()
+        }; });  
+     $('#idA2').change(function()
+      {if ($(this).is(':checked')) {
+            $('#catCuerpo').show();
+        }else{
+            $('#catCuerpo').hide()
+        }; }); 
+     $('#idA3').change(function()
+      {if ($(this).is(':checked')) {
+            $('#catCabello').show();
+        }else{
+            $('#catCabello').hide()
+        }; });  
+     $('#idA4').change(function()
+      {if ($(this).is(':checked')) {
+            $('#catBarba').show();
+        }else{
+            $('#catBarba').hide()
+        }; });  
+     $('#idA5').change(function()
+      {if ($(this).is(':checked')) {
+            $('#catBigote').show();
+        }else{
+            $('#catBigote').hide()
+        }; }); 
+     $('#idA6').change(function()
+      {if ($(this).is(':checked')) {
+            $('#catPatilla').show();
+        }else{
+            $('#catPatilla').hide()
+        }; });  
+     $('#idA7').change(function()
+      {if ($(this).is(':checked')) {
+            $('#catOjos').show();
+        }else{
+            $('#catOjos').hide()
+        }; });  
+     $('#idA8').change(function()
+      {if ($(this).is(':checked')) {
+            $('#catLabios').show();
+        }else{
+            $('#catLabios').hide()
+        }; });  
+     $('#idA9').change(function()
+      {if ($(this).is(':checked')) {
+            $('#catModiParti').show();
+        }else{
+            $('#catModiParti').hide()
+        }; }); }); 
      //$("#campoUbicacion").hide();
     //-<<--<--<<--<<--<<-MULTISELECTS-<<--<--<<--<<--<<-<<--<--<<--<<--<<
-     $('#estados').multipleSelect({
+     $('#filtrosAvanzados').multipleSelect({
+            filter: true,
+            width: '100%'
+           
+        });
+    $('#estados').multipleSelect({
             filter: true,
             width: '100%'
            
