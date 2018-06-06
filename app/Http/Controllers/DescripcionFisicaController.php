@@ -66,12 +66,41 @@ class DescripcionFisicaController extends Controller
         $desaparecido = Desaparecido::find($idDesaparecido);
         $todasPartes    = \App\Models\CatPartesCuerpo::where('partePadre', '0')->get();
         $activasPartes = \App\Models\CedulaPartesCuerpo::where('idPersonaDesaparecida', $idDesaparecido)->with('catpartescuerpo')->get();
-        /*$activasPartes = \App\Models\CatPartesCuerpo::with('partescuerpo')->get();*/
-        /*$activasPartes  = \App\Models\CedulaPartesCuerpo::where('idPersonaDesaparecida', $idDesaparecido)
-                                                                    ->select('idPartesCuerpo')
-                                                                    ->groupBy('idPartesCuerpo')
-                                                                    ->get();*/
-        
+        $partesSeleccionadas = \DB::table('cedula_partes_cuerpo AS ce')
+                        ->leftJoin('cat_partes_cuerpo AS cu', 'ce.idPartesCuerpo', '=', 'cu.id')
+                        ->leftJoin('cat_partes_cuerpo AS pa', 'cu.partePadre', '=', 'pa.id')
+                        ->leftJoin('cat_tamano_cuerpo AS ta', 'ce.idPartesCuerpo', '=', 'ta.id')
+                        ->leftJoin('cat_tipos_cuerpo AS ti', 'ce.idTipoCuerpo', '=', 'ti.id')
+                        ->leftJoin('cat_colores_cuerpo AS co', 'ce.idColoresCuerpo', '=', 'co.id')
+                        ->where('idPersonaDesaparecida', $idDesaparecido)
+                        ->select('ce.id as idParteCuerpo','pa.id as idPadre', 'pa.nombre as partep', 'cu.nombre as parteh',
+                        'ta.nombre as tamano', 'ti.nombre as tipo', 'co.nombre as color', 'ce.posicion', 'ce.observaciones')
+                        ->get();
+
+
+        $partePadre = null;
+         foreach ($partesSeleccionadas as $parte) {
+            $modificaciones = $this->get_modificaciones($parte->idParteCuerpo);
+            foreach ($modificaciones as $value) {               
+                $modifi[] = $value->nombre;
+            }
+
+            $particularidades = $this->get_particularidades($parte->idParteCuerpo);
+            foreach ($particularidades as $value) {               
+                $parti[] = $value->nombre;
+            }
+            $parte->modificaciones = $modifi;
+            $parte->particularidades = $parti;
+           
+
+            if ($parte->idPadre != $partePadre) {
+                $dataPartes[$parte->partep] = array('idPadre' => $parte->idPadre                                
+                            );
+                $partePadre = $parte->idPadre;
+            }
+            $dataPartes[$parte->partep]['hijos'][] = $parte;
+        }
+    
         $complexiones = \App\Models\CatComplexion::all()->pluck('nombre','id');
         $coloresPiel = \App\Models\CatColorPiel::all()->pluck('nombre','id');
 
@@ -91,10 +120,33 @@ class DescripcionFisicaController extends Controller
                 'complexiones' => $complexiones,
                 'coloresPiel' => $coloresPiel,
                 'todasPartes' => $todasPartes,
-                'activasPartes' => $activasPartes,
+                'dataPartes' => $dataPartes,
                 'aux' => $aux,
-                'showCabello' => $showCabello
+                'showCabello' => $showCabello,
+                'partesSeleccionadas' => $partesSeleccionadas
             ]);
+    }
+
+    public function get_modificaciones($idParteCuerpo)
+    {
+        $modificaciones = \DB::table('pivot_submodi_cuerpo AS pi')
+                            ->leftJoin('cat_modificaciones_cuerpo AS mo', 'pi.idModificaciones', '=', 'mo.id')
+                            ->where('pi.idCedulaPartesCuerpo', $idParteCuerpo)
+                            ->select('mo.nombre')
+                            ->get();
+
+        return $modificaciones;
+    }
+
+    public function get_particularidades($idParteCuerpo)
+    {
+        $particularidades = \DB::table('pivot_subparti_cuerpo AS pi')
+                            ->leftJoin('cat_particularidades_cuerpo AS mo', 'pi.idParticularidades', '=', 'mo.id')
+                            ->where('pi.idCedulaPartesCuerpo', $idParteCuerpo)
+                            ->select('mo.nombre')
+                            ->get();
+
+        return $particularidades;
     }
 
     /**
