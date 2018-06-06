@@ -25,6 +25,6 @@ class CedulaPartesCuerpo extends Model
 
 	public function catpartescuerpo()
 	{
-		return $this->belongsTo('App\Models\CatPartesCuerpo','idPartesCuerpo', 'id');
+		return $this->belongsTo('App\Models\CatPartesCuerpo','idPartesCuerpo');
 	}
 }

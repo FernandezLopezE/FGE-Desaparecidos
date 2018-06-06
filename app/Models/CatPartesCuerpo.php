@@ -16,6 +16,6 @@ class CatPartesCuerpo extends Model
 
 	public function partescuerpo()
 	{
-		return $this->hasMany('App\Models\CedulaPartesCuerpo', 'id', 'idPartesCuerpo');
+		return $this->hasMany('App\Models\CedulaPartesCuerpo', 'idPartesCuerpo', 'id');
 	}
 }

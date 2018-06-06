@@ -164,6 +164,7 @@ $(document).ready(function(){
             data: dataString,
             dataType: 'json',
             success: function(data) {
+                location.reload();
                 /*console.log('El dato es:'+data);
                 modalFamiliar.modal('hide');
                 table.bootstrapTable('refresh');*/

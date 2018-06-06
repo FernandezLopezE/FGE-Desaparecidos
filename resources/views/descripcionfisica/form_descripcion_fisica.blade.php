@@ -64,20 +64,47 @@
             </div>
             <div class="col-8" id='formulario'>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
-                    @foreach ($activasPartes as $partes)
+                    @foreach ($dataPartes as $key => $parte)
                         <li class="nav-item">
-                            <a class="nav-link" id="nav-{!! $partes->catpartescuerpo->id !!}-tab" data-toggle="tab" href="#parte-{!! $partes->catpartescuerpo->id !!}" role="tab" aria-controls="nav-{!! $partes->catpartescuerpo->nombre !!}" aria-selected="true">{!! $partes->catpartescuerpo->nombre !!}</a>
+                            <a class="nav-link" id="nav-{!! $parte['idPadre'] !!}-tab" data-toggle="tab" href="#parte-{!! $parte['idPadre'] !!}" role="tab" aria-controls="nav-{!! $parte['idPadre'] !!}" aria-selected="true">{!! $key !!}</a>
                         </li>
                     @endforeach
                 </ul> 
                 
                 <div class="tab-content" id="myTabContent">
-                    @foreach ($activasPartes as $partes)
-                        <div class="tab-pane fade" id="parte-{!! $partes->catpartescuerpo->id !!}" role="tabpanel" aria-labelledby="nav-{!! $partes->catpartescuerpo->id !!}-tab">
-                                {!! $partes->catpartescuerpo->nombre !!}
+                    @foreach ($dataPartes as $key => $parte)
+                        <div class="tab-pane fade" id="parte-{!! $parte['idPadre'] !!}" role="tabpanel" aria-labelledby="nav-{!! $parte['idPadre'] !!}-tab">
+                            <div class="row">
+                                @foreach ($parte['hijos'] as $value)
+                                    <div class="col-sm-4">    
+                                        <div class="card" style="">
+                                                {{--<img class="card-img-top" style="width: 50%;"" src="{{asset("images/vestimenta_sin_imagen.png")}}" alt="Card image cap">--}}
+                                                <div class="card-body">
+                                                    <code class="card-title">{!! $value->parteh !!}</code>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p><strong>Tamaño: </strong>{!! $value->tamano !!}</p>
+                                                    <p><strong>Color: </strong>{!! $value->color !!}</p>
+                                                    <p><strong>Posición: </strong>{!! $value->posicion !!}</p>
+                                                    <label for="">Modificaciones:</label>
+                                                    @foreach ($value->modificaciones as $modificacion)
+                                                        {!! $modificacion !!}, 
+                                                    @endforeach
+                                                    <label for="">Particularidades:</label>
+                                                    @foreach ($value->particularidades as $particularidad)
+                                                        {!! $particularidad !!}, 
+                                                    @endforeach
+                                                    <label for="">Observaciones:</label>
+                                                    {!! $value->observaciones !!}
+
+                                                </div>
+                                            </div>
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     @endforeach
-                </div>                
+                </div>           
 
             </div>
         </div>
