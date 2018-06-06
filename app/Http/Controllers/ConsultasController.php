@@ -1016,13 +1016,21 @@ class ConsultasController extends Controller
     }
 
 
-    public function json_cat_partes_cuerpo($idDesaparecido)
+    public function json_cat_partes_cuerpo($idDesaparecido=null)
     {
-        $data['todasPartes']    = \App\Models\CatPartesCuerpo::where('partePadre', '0')->get();
-        $data['activasPartes']  = \App\Models\CedulaPartesCuerpo::where('idPersonaDesaparecida', $idDesaparecido)
-                                                                    ->select('idPartesCuerpo')
-                                                                    ->groupBy('idPartesCuerpo')
-                                                                    ->get();         
+        /*$partesCuerpo    = \App\Models\CatPartesCuerpo::where('partePadre', '0')->get();
+        $activasPartes  = \App\Models\CedulaPartesCuerpo::where('idPersonaDesaparecida', 2)
+                                                        ->get();*/
+        $partes = \DB::table('cedula_partes_cuerpo AS ce')
+                    ->leftJoin('cat_partes_cuerpo AS cu', 'ce.idPartesCuerpo', '=', 'cu.id')
+                    ->leftJoin('cat_partes_cuerpo AS pa', 'cu.partePadre', '=', 'pa.id')
+                    ->leftJoin('cat_tamano_cuerpo AS ta', 'ce.idPartesCuerpo', '=', 'ta.id')
+                    ->leftJoin('cat_tipos_cuerpo AS ti', 'ce.idTipoCuerpo', '=', 'ti.id')
+                    ->leftJoin('cat_colores_cuerpo AS co', 'ce.idColoresCuerpo', '=', 'co.id')
+                    ->where('idPersonaDesaparecida', $idDesaparecido)
+                    ->select('pa.nombre as partep', 'cu.nombre as parteh',
+                    'ta.nombre as tamano', 'ti.nombre as tipo', 'co.nombre as color', 'ce.posicion', 'ce.observaciones')
+                    ->get();
 
         return response()->json($partesCuerpo);
     }
