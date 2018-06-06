@@ -76,8 +76,8 @@ class DescripcionFisicaController extends Controller
                         ->select('ce.id as idParteCuerpo','pa.id as idPadre', 'pa.nombre as partep', 'cu.nombre as parteh',
                         'ta.nombre as tamano', 'ti.nombre as tipo', 'co.nombre as color', 'ce.posicion', 'ce.observaciones')
                         ->get();
-
-
+        
+        $dataPartes = array();
         $partePadre = null;
          foreach ($partesSeleccionadas as $parte) {
             $modificaciones = $this->get_modificaciones($parte->idParteCuerpo);
