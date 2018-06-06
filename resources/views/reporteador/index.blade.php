@@ -14,6 +14,46 @@
     transform:scale(1.5);
     
 }
+#return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#return-to-top i {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 16px;
+    top: 13px;
+    font-size: 19px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+#return-to-top:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+#return-to-top:hover i {
+    color: #fff;
+    top: 5px;
+}
 
     
 </style>
@@ -44,482 +84,291 @@
                &nbsp;&nbsp;Datos generales                        
           </div>    <hr>    
             <div class="row" id="idDatosGral">               
-               <div class="col-lg-2" style="padding-right:0px;padding-left:0px;">
+               <div class="col-lg-2" >
                     <div class=""> 
-                                                                           
-                        <div class=" list-group-flush small">
-                         
-                          <div class="list-group-item list-group-item-action"  id="campoGenero"> 
-                            <p style="text-align:LEFT"><b>Género</b></p>
-                             <div class=" form-check ">
-
-                                 <input class="" Value="H" type="checkbox" id="masc" checked> Hombre: 
-                                 &nbsp;
-                                 <input class="" Value="M" type="checkbox" id="fem" checked> Mujer:
-                            </div><br>
-                            <div class=" form-check ">
-
+                          <div class=""  id="campoGenero"> 
+                            <div>
+                               <p>&nbsp;</p>
+                                {!! Form::label ('comple','Género:') !!}<br>
+                                {!! Form::select ('comple', $generos, '',['class' => '', 'id' => 'generos','multiple' => 'multiple'] )!!}
+                            </div>
                             </div>      
-                          </div>
                       </div>
                     </div>
-              </div>
-               <div class="col-lg-4"style="padding-right:0px;padding-left:0px;">
-                    <div class="">
-                       
-                        <div class=" list-group-flush small" >
-                        
-                          <div class="list-group-item list-group-item-action"  id="campoEdad" > 
-                              
-                              <div class="" id="div_idEstado">
-                             {!! Form::label ('','Edad de desaparición ',['class' => '']) !!}<br>
-                                <div class="row">
-                                   <div class="col-lg-6">
-                                    {!! Form::label ('','Desde:',['class' => '']) !!}
-                                 {!! Form::number('count','value', ['min' => '0' ,'max' => '120' ,'class' => 'form-control', 'id' => 'rng1']) !!} 
-                                    </div> 
-                                    <div class="col-lg-6">
-                                    {!! Form::label ('','Hasta:',['class' => '']) !!}&nbsp;
-                                    {!! Form::number('count','value', ['min' => '0' ,'max' => '120' ,'class' => 'form-control', 'id' => 'rng2']) !!}
-                                    </div> 
-                                </div>
-                                    
-                                            
-                             
-                             </div>     
-                          </div>
-                      </div>
-                    </div>
-              </div>
-                <div class="col-lg-6" style="padding-right:0px;padding-left:0px;">
-                        
-                        <div class=" list-group-flush small"  id="campoUbicacion">
+         
+               
+               <div class="col-lg-5" >                             
+                      <div class="" id="">
+                       {!! Form::label ('','Fecha de desaparición',['class' => '']) !!} 
+                        <div class="row">
+                         <div class="col"> &nbsp;{!! Form::label ('','Desde:  ',['class' => '']) !!}</div> 
+                         <div class="col">  &nbsp;{!! Form::label ('','Hasta:  ',['class' => '']) !!}</div> </div>
                          
-                          <div class="list-group-item list-group-item-action">
-                             <p style="text-align:LEFT"><b>Ubicación de la desaparición</b></p>
-                             <div class="row"> 
-                             <div class="col-lg-6">
-                              <div class=""  id="infoCabello3">
-                                {!! Form::label ('idEstados','Estados:') !!} 
-                                {!! Form::select('idEstados',$estados, '', ['class' => '', 'id' => 'estados','multiple' => 'multiple'] ) !!}
-                            </div> </div>
-                            <div class="col-lg-6">
-                            <div class=""  id="infoCabello3">
-                                {!! Form::label ('idEstados','Municipios:') !!} 
-                                {!! Form::select('idEstados',$municipios, '', ['class' => '', 'id' => 'municipios','multiple' => 'multiple'] ) !!}
-                            </div></div>  
-                            </div>                                
+                          <div class="row">                              
+                          <div class="col-lg-6">
+                              {!! Form::text ('fechaNacimiento',
+                              '',
+                              ['class' => 'form-control',
+                                'id' => 'fechaDesaparicion1',
+                                'data-validation' =>'date',
+                                'data-validation-format'=>"dd/mm/yyyy",
+                                'data-validation-error-msg-date' => 'Ingrese fecha correcta',
+                                'placeholder' => 'dd/mm/yyyy'
+                              ] )!!} 
                           </div>
-                      </div>
-              </div>                 
-            </div>
-            <div class="col-lg-6">
-                {!! Form::label ('comple','Filtros de búsqueda') !!}<br>
-            {!! Form::select ('comple', $tiposFiltros, '',['class' => '', 'id' => 'filtrosAvanzados','multiple' => 'multiple'] )!!}
-            <br><br>
-            </div>
-            
-             
-             <div class="row" >
-                 <!--   FECHAS  --><div class="col-lg-6" style="display:none" id="catFechas">  
-             <div class="row" >
-             <div class="col" style="padding-right:0px;padding-left:0px;">
-                <div class="card-header">
-                           Fechas
-                           
-                           </div>
-                            
-                          <div class="list-group-flush small" style="Display:none" id="campoFechaD" >
-                             
-                              <div class="list-group-item list-group-item-action" id="div_idEstado">
-                                <p style="text-align:LEFT">    <b>Fecha de desaparición</b></p> 
-                                 <div class="row" >
-                                 <div class="col-lg-6">
-                                 {!! Form::label ('fechaDesaparicion','Desde:', ['class' => 'form-control-label']) !!}
-                     {!! Form::text ('fechaNacimiento',
-                      '',
-                      ['class' => 'form-control',
-                        'id' => 'fechaDesaparicion1',
-                        'data-validation' =>'date',
-                        'data-validation-format'=>"dd/mm/yyyy",
-                        'data-validation-error-msg-date' => 'Ingrese fecha correcta',
-                      ] )!!} </div>
-                               <div class="col-lg-6">
-                                {!! Form::label ('fechaDesaparicion','Hasta:', ['class' => 'form-control-label']) !!}
-                     {!! Form::text ('fechaNacimiento',
-                      '',
-                      ['class' => 'form-control',
-                        'id' => 'fechaDesaparicion2',
-                        'data-validation' =>'date',
-                        'data-validation-format'=>"dd/mm/yyyy",
-                        'data-validation-error-msg-date' => 'Ingrese fecha correcta',
-                      ] )!!}    
-                             </div>
-                             </div>     
-                             </div>     
-                          </div> 
-             </div>
-             <div class="col" style="padding-right:0px;padding-left:0px;">
-                <div class="card-header">
-                           &nbsp;
-                           <i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar5"></i>
-                           </div>
-                            
-                          <div class="list-group-flush small" style="Display:none" id="campoFechaR" >
-                             
-                              <div class="list-group-item list-group-item-action" id="div_idEstado">
-                                <p style="text-align:LEFT">    <b>Fecha de reporte</b></p> 
-                                <div class="row" >
-                                 <div class="col-lg-6">
-                                 {!! Form::label ('fechaReporte','Desde:', ['class' => 'form-control-label']) !!}
+                          <div class="col-lg-6">
+                              {!! Form::text ('fechaNacimiento',
+                              '',
+                              ['class' => 'form-control',
+                                'id' => 'fechaDesaparicion2',
+                                'data-validation' =>'date',
+                                'data-validation-format'=>"dd/mm/yyyy",
+                                'data-validation-error-msg-date' => 'Ingrese fecha correcta',
+                                'placeholder' => 'dd/mm/yyyy'
+                              ] )!!}
+                          </div>                    
+                        </div>
+                    </div>     
+              </div>
+               
+               <div class="col-lg-5" >
+                  <div class=""  id="" >                               
+                      <div class="" id="div_idEstado">
+                          {!! Form::label ('','Fecha de reporte  ',['class' => '']) !!}
+                          <div class="row">
+                         <div class="col"> &nbsp;{!! Form::label ('','Desde:  ',['class' => '']) !!}</div> 
+                         <div class="col">  &nbsp;{!! Form::label ('','Hasta:  ',['class' => '']) !!}</div> </div>
+                <div class="row"> 
+                    <div class="col-lg-6">
                      {!! Form::text ('fechaNacimiento',
                       '',
                       ['class' => 'form-control',
                         'id' => 'fechaReporte1',
                         'data-validation' =>'date',
                         'data-validation-format'=>"dd/mm/yyyy",
-                        'data-validation-error-msg-date' => 'Ingrese fecha correcta',
-                      ] )!!} </div>
-                               <div class="col-lg-6">
-                                {!! Form::label ('fechaDesaparicion','Hasta:', ['class' => 'form-control-label']) !!}
-                     {!! Form::text ('fechaNacimiento',
+                        'data-validation-error-msg-date' => 'Ingrese fecha correcta','placeholder' => 'dd/mm/yyyy'
+                      ] )!!}
+                </div>
+                <div class="col-lg-6"> 
+                      {!! Form::text ('fechaNacimiento',
                       '',
                       ['class' => 'form-control',
                         'id' => 'fechaReporte2',
                         'data-validation' =>'date',
                         'data-validation-format'=>"dd/mm/yyyy",
-                        'data-validation-error-msg-date' => 'Ingrese fecha correcta',
-                      ] )!!}    
-                               </div>
-                             </div>   
-                             </div>     
-                          </div> 
-             </div>
-          
-            </div>
-           
-             </div>
-             
-             <!--   DESCRIPCIÓN FÍSICA  --><div class="col-lg-6"  style="display:none" id="catCuerpo">  
-             
-             <div class="row" >
-             <div class="col" style="padding-right:0px;padding-left:0px;">
-                <div class="card-header">
-                           Cuerpo
-                           </div>
-
-                          <div class="list-group-flush small" style="Display:none" id="campoEstatura" >
-                                                          
-                              <div class="list-group-item list-group-item-action" id="div_idEstado">
-                              <p style="text-align:LEFT">    <b>Estatura</b></p> 
-                              <div class="row"> 
-                               
-                               <div class="col-lg-6">
-                                
-                                 {!! Form::label ('','Desde:',['class' => '']) !!}
-                                  {!! Form::number('count','value', ['min' => '0' ,'max' => '300' ,'class' => 'form-control', 'id' => 'estatura1']) !!}
-                                </div>
-                                <div class="col-lg-6"> 
-                                 {!! Form::label ('','Hasta:',['class' => '']) !!}&nbsp;
-                                    {!! Form::number('count','value', ['min' => '0' ,'max' => '300' ,'class' => 'form-control', 'id' => 'estatura2']) !!} 
-                                    </div></div>
-                             </div>     
-                          </div> 
-             </div>
-             
-              
-
-                     <div class="col" style="padding-right:0px;padding-left:0px;">
-                <div class="card-header">
-                            &nbsp;
-                           </div>
-                        <div class=" list-group-flush small">
-                          <div class="list-group-item list-group-item-action" style="Display:none" id="campoPeso" >
-                             <p style="text-align:LEFT">    <b>Peso</b></p>
-                             <div class="row"> 
-                               
-                               <div class="col-lg-6">  
-                              <div class="" id="div_idEstado">
-                                 {!! Form::label ('','Desde:',['class' => '']) !!}
-                                     {!! Form::number('count','value', ['min' => '0' ,'max' => '500' ,'class' => 'form-control', 'id' => 'peso1']) !!}
-                                 </div></div>
-                                <div class="col-lg-6">
-                                {!! Form::label ('','Hasta:',['class' => '']) !!}&nbsp;               
-                                     {!! Form::number('count','value', ['min' => '0' ,'max' => '500' ,'class' => 'form-control', 'id' => 'peso2']) !!}                        </div></div>        
-                          </div>
-                      </div>
-                      </div>
-                      <div class="col" style="padding-right:0px;padding-left:0px;">
-                <div class="card-header">
-                            &nbsp;<i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar2"></i>
-                           </div>
-                        <div class=" list-group-flush small">
-                          <div class="list-group-item list-group-item-action" style="Display:none" id="campoColorPiel" >
-                              
-                              <div class="" id="div_colorPiel">
-                                {!! Form::label ('idColorPiel','Color de piel') !!} <br>
-                                {!! Form::select('cPiel',$coloresPiel, '', ['class' => '', 'id' => 'cPiel','multiple' => 'multiple'] ) !!}
-                                {!! Form::label ('comple','Complexión') !!}<br>
-                              {!! Form::select ('comple', $complexiones, '',['class' => '', 'id' => 'complexion','multiple' => 'multiple'] )!!} 
-                             </div>     
-                          </div>
-                      </div>
-                      </div>                         
-            </div>
+                        'data-validation-error-msg-date' => 'Ingrese fecha correcta','placeholder' => 'dd/mm/yyyy'
+                      ] )!!}                        
+                </div>
+                   </div>
+                    </div>     
+                  </div>
+              </div>
+           </div> <!-- div class row end -->
             
+            <hr>
+            <div class="col-lg-6">
+                {!! Form::label ('comple','Filtros de búsqueda') !!}<br>
+            {!! Form::select ('comple', $tiposFiltros, '',['class' => '', 'id' => 'filtrosAvanzados','multiple' => 'multiple'] )!!}
+            <br><br>
+            </div> 
+            <hr>
+          <div id="catUbicacion" style="display:none">
+         <div class="row">
+                &nbsp;&nbsp;<b>Ubicación de la desaparición</b>                       
+          </div> <hr>      
+         <div class="row" id="idUbicación">
+             <div class="col-lg-4">
+                {!! Form::label ('idEstados','Nacionalidad:') !!} 
+                {!! Form::select('idEstados',$nacionalidades, '', ['class' => '', 'id' => 'nacionalidades','multiple' => 'multiple'] ) !!}
              </div>
-           
+             <div class="col-lg-4">
+                {!! Form::label ('idEstados','Estados:') !!} 
+                {!! Form::select('idEstados',$estados, '', ['class' => '', 'id' => 'estados','multiple' => 'multiple'] ) !!}
              </div>
-             
-             
-            <div class="row" >
-             <!--   CABELLO  --><div class="col-lg-6"  style="display:none" id="catCabello">
-            <div class="row"  >               
-               <div class="col" style="padding-right:0px;padding-left:0px;">
-                    <div class="">
-                        <div class="card-header">
-                           Cabello 
-                                                   
-                           </div>
-                        <div class=" list-group-flush small">
-                          <div class="list-group-item list-group-item-action" style="Display:none" id="campoTipoCabello"> 
-                             <div class=""  id="infoCabello3">
-                                {!! Form::label ('tipoCabello','Tipo de cabello') !!}
-                                {!! Form::select('tipoCabello', $tipoCabello, '', ['class' => '', 'id' => 'tipoCabello','multiple' => 'multiple'] ) !!}
-                            </div>      
+            <div class="col-lg-4">
+                {!! Form::label ('idEstados','Municipios:') !!} 
+                {!! Form::select('idEstados',$municipios, '', ['class' => '', 'id' => 'municipios','multiple' => 'multiple'] ) !!}
+            </div>
+          </div>
+          </div>
+         
+         <div id="CatDescripcionFis" style="display:none">
+         <br><div class="row">
+                &nbsp;&nbsp;<b>Descripción física </b>                       
+          </div> <hr>
+          <DIV id="idDesFisica">       
+          <div class="row" >
+              <div class="col-lg-4" >
+                  <div class=""  id="campoEdad" >                               
+                      <div class="" id="div_EdadDes">
+                          {!! Form::label ('','Edad de desaparición  ',['class' => '']) !!}
+                        <div class="row">
+                         <div class="col"> &nbsp;{!! Form::label ('','Desde:  ',['class' => '']) !!}</div> 
+                         <div class="col">  &nbsp;{!! Form::label ('','Hasta:  ',['class' => '']) !!}</div> </div>
                           </div>
-                      </div>
+                             <div class="row">                           
+                             <div class="col-lg-6">
+                                 {!! Form::number('count','value', ['min' => '0' ,'max' => '120' ,'class' => 'form-control', 'id' => 'rng1']) !!} 
+                           </div>
+                           <div class="col-lg-6"> 
+                                   {!! Form::number('count','value', ['min' => '0' ,'max' => '120' ,'class' => 'form-control', 'id' => 'rng2']) !!}             
+                           </div>
+                           </div>
+                    </div>     
+                  </div>
+             
+              
+              
+             <div class="col-lg-4"> 
+                 <div class=""  id="campoEstatura" >                               
+                      <div class="" id="div_EdadDes">           
+                  {!! Form::label ('','Estatura  ',['class' => '']) !!}
+                  <div class="row">
+                         <div class="col"> &nbsp;{!! Form::label ('','Desde:  ',['class' => '']) !!}</div> 
+                         <div class="col">  &nbsp;{!! Form::label ('','Hasta:  ',['class' => '']) !!}</div> </div>
+                          </div>
+                             <div class="row">                           
+                             <div class="col-lg-6">
+                    {!! Form::number('count','value', ['min' => '0' ,'max' => '300' ,'class' => 'form-control', 'id' => 'estatura1']) !!}
                     </div>
-              </div>
-               
-                <div class="col" style="padding-right:0px;padding-left:0px;">
-                        <div class="card-header">
-                           &nbsp;
-                                                      
-                           </div>                           
-                           <div class=" list-group-flush small">
-                          <div class="list-group-item list-group-item-action" style="Display:none" id="campoTamanoCabello"> 
-                             <div class=""  id="infoCabello3">
-                                {!! Form::label ('tamanoCabello','Tamaño de cabello:') !!}
-                            {!! Form::select('tamanoCabello', $tamanoCabello, '', ['class' => '', 'id' => 'tamanoCabello','multiple' => 'multiple'] ) !!}
-                            </div>      
-                          </div>
-                      </div>
-              </div>
-              <div class="col" style="padding-right:0px;padding-left:0px;" >
-                        <div class="card-header">
-                           &nbsp;
-                           <i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar3"></i>                           
-                           </div>
-                        <div class=" list-group-flush small" style="Display:none" id="campoColorCabello">
-                          <div class="list-group-item list-group-item-action"> 
-                              <div class=""  id="infoCabello3">
-                                {!! Form::label ('tipoCabe','Color de cabello') !!}
-                            {!! Form::select('colorCabello', $coloresCabello, '', ['class' => '', 'id' => 'colorCabello','multiple' => 'multiple'] ) !!}
-                            </div>    
-                          </div>
-                      </div>
-              </div>                  
-            </div>
-          
-            </div>
-             
-             <!--   BARBA  --><div class="col-lg-6"  style="display:none" id="catBarba"><!--   COL-LG-6-->
-              <div class="row" >               
-               <div class="col" style="padding-right:0px;padding-left:0px;">
-                        <div class="card-header">
-                           Barba                                                   
-                                         
-                           </div>
-                        <div class=" list-group-flush small" style="Display:none" id="campoTipoBarba">
-                          <div class="list-group-item list-group-item-action"> 
-                              <div class=""  id="infoCabello3">
-                                {!! Form::label ('tipoBarba','Tipo de barba:') !!}
-                            {!! Form::select('tipoBarba', $tipoBarba, '', ['class' => '', 'id' => 'tipoBarba','multiple' => 'multiple'] ) !!}
-                             </div>    
-                          </div>
-                      </div>
-              </div>
-              
-              <div class="col" style="padding-right:0px;padding-left:0px;">
-                        <div class="card-header">
-                           &nbsp;    
-                           <i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar4"></i>                       
-                           </div>
-                        <div class=" list-group-flush small" style="Display:none" id="campoColorBarba">
-                          <div class="list-group-item list-group-item-action"> 
-                              <div class=""  id="infoCabello3">
-                                {!! Form::label ('color','Color de barba:') !!}
-                            {!! Form::select('colorBarba', $coloresBarba, '', ['class' => '', 'id' => 'colorBarba','multiple' => 'multiple'] ) !!}
-                            </div>    
-                          </div>
-                      </div>
-              </div>                   
-            </div>             
-            </div>
-            </div>
-             <div class="row" >
-                  <!--   BIGOTE  --><div class="col-lg-6"  style="display:none" id="catBigote"><!--   COL-LG-6-->
-              <div class="row" >               
-               <div class="col" style="padding-right:0px;padding-left:0px;">
-                        <div class="card-header">
-                           Bigote                                                  
-                                         
-                           </div>
-                        <div class=" list-group-flush small" style="Display:none" id="campoTipoBigote">
-                          <div class="list-group-item list-group-item-action"> 
-                              <div class=""  id="infoBigote1">
-                                {!! Form::label ('tipoBigote','Tipo de bigote:') !!}
-                            {!! Form::select('tipoBigote', $tipoBigote, '', ['class' => '', 'id' => 'tipoBigote','multiple' => 'multiple'] ) !!}
-                             </div>    
-                          </div>
-                      </div>
-              </div>
-              
-              <div class="col" style="padding-right:0px;padding-left:0px;">
-                        <div class="card-header">
-                           &nbsp;    
-                           <i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar6"></i>                       
-                           </div>
-                        <div class=" list-group-flush small" style="Display:none" id="campoColorBigote">
-                          <div class="list-group-item list-group-item-action"> 
-                              <div class=""  id="infoBigote2">
-                                {!! Form::label ('colorBigotes','Color de bigote:') !!}
-                            {!! Form::select('colorBigote', $coloresBigote, '', ['class' => '', 'id' => 'colorBigote','multiple' => 'multiple'] ) !!}
-                            </div>    
-                          </div>
-                      </div>
-              </div>                   
-            </div>             
-            </div>
-              <!--   PATILLA  --><div class="col-lg-6"  style="display:none" id="catPatilla"><!--   COL-LG-6-->
-              <div class="row" >               
-               <div class="col" style="padding-right:0px;padding-left:0px;">
-                        <div class="card-header">
-                           Patilla                                                 
-                                         
-                           </div>
-                        <div class=" list-group-flush small" style="Display:none" id="campoTipoPatilla">
-                          <div class="list-group-item list-group-item-action"> 
-                              <div class=""  id="infoPatilla1">
-                                {!! Form::label ('tipoPatilla','Tipo de patilla:') !!}
-                            {!! Form::select('tipoPatilla', $tipoPatilla, '', ['class' => '', 'id' => 'tipoPatilla','multiple' => 'multiple'] ) !!}
-                             </div>    
-                          </div>
-                      </div>
-              </div>
-              
-              <div class="col" style="padding-right:0px;padding-left:0px;">
-                        <div class="card-header">
-                           &nbsp;    
-                           <i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar7"></i>                       
-                           </div>
-                        <div class=" list-group-flush small" style="Display:none" id="campoColorPatilla">
-                          <div class="list-group-item list-group-item-action"> 
-                              <div class=""  id="infoPatilla2">
-                                {!! Form::label ('colorPatillas','Color de patillas:') !!}
-                            {!! Form::select('colorPatillas', $coloresPatilla, '', ['class' => '', 'id' => 'colorPatilla','multiple' => 'multiple'] ) !!}
-                            </div>    
-                          </div>
-                      </div>
-              </div>                   
-            </div>             
-            </div>
+                           <div class="col-lg-6">
+                    {!! Form::number('count','value', ['min' => '0' ,'max' => '300' ,'class' => 'form-control', 'id' => 'estatura2']) !!}
              </div>
-
-              <div class="row" >
-              <!--   OJOS  --><div class="col-lg-6"  style="display:none" id="catOjos"><!--   COL-LG-6-->
-              <div class="row" >               
-               <div class="col" style="padding-right:0px;padding-left:0px;">
-                        <div class="card-header">
-                           Ojos                                                  
-                                         
                            </div>
-                        <div class=" list-group-flush small" style="Display:none" id="campoTamanoOjos">
-                          <div class="list-group-item list-group-item-action"> 
-                              <div class=""  id="infoTamanoOjos">
-                                {!! Form::label ('tamanoOjos','Tamaño de ojos:') !!}
-                            {!! Form::select('tamanoOjos', $tamanoOjos, '', ['class' => '', 'id' => 'tamanoOjos','multiple' => 'multiple'] ) !!}
-                             </div>    
+                    </div>     
+                  </div>
+                 
+            <div class="col-lg-4"> 
+                 <div class=""  id="campoPeso" >                               
+                      <div class="" id="div_EdadDes">           
+                  {!! Form::label ('','Peso  ',['class' => '']) !!}
+                  <div class="row">
+                         <div class="col"> &nbsp;{!! Form::label ('','Desde:  ',['class' => '']) !!}</div> 
+                         <div class="col">  &nbsp;{!! Form::label ('','Hasta:  ',['class' => '']) !!}</div> </div>
                           </div>
-                      </div>
+                             <div class="row">                           
+                             <div class="col-lg-6">
+                     {!! Form::number('count','value', ['min' => '0' ,'max' => '500' ,'class' => 'form-control', 'id' => 'peso1']) !!}
+                     </div>
+                           <div class="col-lg-6">
+                     {!! Form::number('count','value', ['min' => '0' ,'max' => '500' ,'class' => 'form-control', 'id' => 'peso2']) !!}
               </div>
-              
-              <div class="col" style="padding-right:0px;padding-left:0px;">
-                        <div class="card-header">
-                           &nbsp;    
-                           <i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar8"></i>                       
                            </div>
-                        <div class=" list-group-flush small" style="Display:none" id="campoColorOjos">
-                          <div class="list-group-item list-group-item-action"> 
-                              <div class=""  id="infoColorOjos">
-                                {!! Form::label ('colorOjoso','Color de ojos:') !!}
-                            {!! Form::select('colorOjos', $coloresOjos, '', ['class' => '', 'id' => 'colorOjos','multiple' => 'multiple'] ) !!}
-                            </div>    
-                          </div>
-                      </div>
-              </div>                   
-            </div>             
-            </div>
-            <!--   LABIOS  --><div class="col-lg-6"  style="display:none" id="catLabios"><!--   COL-LG-6-->
-              <div class="row" >                            
-              <div class="col" style="padding-right:0px;padding-left:0px;">
-                        <div class="card-header">
-                           Labios   
-                           <i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar9"></i>                       
-                           </div>
-                        <div class=" list-group-flush small" style="Display:none" id="campoTipoLabio">
-                          <div class="list-group-item list-group-item-action"> 
-                              <div class=""  id="infoLabio1">
-                                {!! Form::label ('tipoLabios','Tipo de labios:') !!}
-                            {!! Form::select('tipoLabio', $tipoLabios, '', ['class' => '', 'id' => 'tipoLabio','multiple' => 'multiple'] ) !!}
-                            </div> 
-                               
-                          </div>
-                      </div>
-              </div>                   
-            </div>             
-            </div>
-
+                    </div>     
+                  </div>
+          </div>
+          <br><div class="row" >
+             <div class="col-lg-6">
+                 {!! Form::label ('idColorPiel','Color de piel') !!} <br>
+                 {!! Form::select('cPiel',$coloresPiel, '', ['class' => '', 'id' => 'cPiel','multiple' => 'multiple'] ) !!}                             
+             </div>
+             <div class="col-lg-6">
+                  {!! Form::label ('comple','Complexión') !!}<br>
+                  {!! Form::select ('comple', $complexiones, '',['class' => '', 'id' => 'complexion','multiple' => 'multiple'] )!!}         
+             </div>
+        </div>
+    </DIV>        
+      </div>        
+          
+          <div id="catCabello" style="display:none"> 
+              <div class="row">
+                    &nbsp;&nbsp; <b>Características del cabello</b>                        
+              </div> <hr>      
+             <div class="row" id="idCabello">
+                 <div class="col-lg-4">
+                    {!! Form::label ('tipoCabello','Tipo de cabello') !!}
+                    {!! Form::select('tipoCabello', $tipoCabello, '', ['class' => '', 'id' => 'tipoCabello','multiple' => 'multiple'] ) !!}           
+                </div>
+                 <div class="col-lg-4">
+                   {!! Form::label ('tamanoCabello','Tamaño de cabello:') !!}
+                   {!! Form::select('tamanoCabello', $tamanoCabello, '', ['class' => '', 'id' => 'tamanoCabello','multiple' => 'multiple'] ) !!}
+                </div>
+                <div class="col-lg-4">  
+                    {!! Form::label ('tipoCabe','Color de cabello') !!}
+                    {!! Form::select('colorCabello', $coloresCabello, '', ['class' => '', 'id' => 'colorCabello','multiple' => 'multiple'] ) !!}
+                </div>
               </div>
-           
-            <div class="row" >
-             
-            <!--   MODIFICACIONES  --><div class="col-lg-6"  style="display:none" id="catModiParti"><!--   COL-LG-6-->
-              <div class="row" >                            
-              <div class="col" style="padding-right:0px;padding-left:0px;">
-                        <div class="card-header">
-                           Modificaciones y particularidades   
-                           <i class="fa fa-chevron-circle-down class2" style="float: right;" data-toggle="collapse" data-target="#areaTalla" aria-expanded="true" aria-controls="areaTalla" id="colapsar10"></i>                       
-                           </div>
-                        <div class=" list-group-flush small" style="Display:none" id="campoModificaciones">
-                          <div class="list-group-item list-group-item-action">                          
-                            <div class=""  id="infoLabio1">
-                               <div class="row">
-                                   <div class="col">
-                                     {!! Form::label ('tipoLabios','Modificaciones:') !!}
-                                     {!! Form::select('modificaciones', $modificaciones, '', ['class' => '', 'id' => 'modificaciones','multiple' => 'multiple'] ) !!}
-                                   </div>
-                                   <div class="col">                                     
-                                     {!! Form::label ('tipoLabios','Particularidades:') !!}
-                                     {!! Form::select('particularidades', $particularidades, '', ['class' => '', 'id' => 'particularidades','multiple' => 'multiple'] ) !!}
-                                   </div>
-                               </div>
-                            
-                            </div>    
-                          </div>
-                      </div>
-              </div>                   
-            </div>             
-            </div>
-
+          </div> 	
+          
+          <div id="catBarbaBigotePatilla" style="display:none"> 
+              <br><div class="row">
+                    &nbsp;&nbsp; <b>Características del vello facial</b>                        
+              </div> <hr>      
+             <div class="row">
+                 <div class="col-lg-4">
+                    {!! Form::label ('tipoBarba','Tipo de barba:') !!}
+                    {!! Form::select('tipoBarba', $tipoBarba, '', ['class' => '', 'id' => 'tipoBarba','multiple' => 'multiple'] ) !!}
+                 </div>
+                 <div class="col-lg-4">
+                     {!! Form::label ('color','Color de barba:') !!}
+                     {!! Form::select('colorBarba', $coloresBarba, '', ['class' => '', 'id' => 'colorBarba','multiple' => 'multiple'] ) !!}
+                </div>
+                <div class="col-lg-4">
+                      {!! Form::label ('tipoBigote','Tipo de bigote:') !!}
+                      {!! Form::select('tipoBigote', $tipoBigote, '', ['class' => '', 'id' => 'tipoBigote','multiple' => 'multiple'] ) !!}
+                 </div>                 
               </div>
-           <br>
+              <br><div class="row" >
+                  <div class="col-lg-4">
+                    {!! Form::label ('colorBigotes','Color de bigote:') !!}
+                    {!! Form::select('colorBigote', $coloresBigote, '', ['class' => '', 'id' => 'colorBigote','multiple' => 'multiple'] ) !!}
+                  </div>
+                  <div class="col-lg-4">
+                     {!! Form::label ('tipoPatilla','Tipo de patilla:') !!}
+                     {!! Form::select('tipoPatilla', $tipoPatilla, '', ['class' => '', 'id' => 'tipoPatilla','multiple' => 'multiple'] ) !!}
+                  </div>
+                  <div class="col-lg-4">
+                    {!! Form::label ('colorPatillas','Color de patillas:') !!}
+                    {!! Form::select('colorPatillas', $coloresPatilla, '', ['class' => '', 'id' => 'colorPatilla','multiple' => 'multiple'] ) !!}
+                  </div>
+              </div>
+          </div>
+                     
+          <div id="catLabiosOjos" style="display:none"> 
+              <br><div class="row">
+                    &nbsp;&nbsp; <b>Características de ojos y labios</b>                        
+              </div>  <hr>  
+             <div class="row" id="idOjos"> 
+                 <div class="col-lg-4">
+                    {!! Form::label ('tamanoOjos','Tamaño de ojos:') !!}
+                    {!! Form::select('tamanoOjos', $tamanoOjos, '', ['class' => '', 'id' => 'tamanoOjos','multiple' => 'multiple'] ) !!}
+                 </div>
+                 <div class="col-lg-4">
+                  {!! Form::label ('colorOjoso','Color de ojos:') !!}
+                  {!! Form::select('colorOjos', $coloresOjos, '', ['class' => '', 'id' => 'colorOjos','multiple' => 'multiple'] ) !!}
+                 </div>               
+                <div class="col-lg-4">  
+                       {!! Form::label ('tipoLabios','Tipo de labios:') !!}
+                       {!! Form::select('tipoLabio', $tipoLabios, '', ['class' => '', 'id' => 'tipoLabio','multiple' => 'multiple'] ) !!}
+                </div>
+ 	        </div>
+ 	        </div>
+          
+          <div id="catModiParti" style="display:none"> 
+              <br><div class="row">
+                    &nbsp;&nbsp; <b>Modificaciones y particularidades del cuerpo</b>                        
+              </div>  <hr>  
+             <div class="row" id=""> 
+                 <div class="col-lg-6">
+                    {!! Form::label ('tipoLabios','Modificaciones:') !!}
+                    {!! Form::select('modificaciones', $modificaciones, '', ['class' => '', 'id' => 'modificaciones','multiple' => 'multiple'] ) !!}
+                </div>
+                 <div class="col-lg-6">
+                  {!! Form::label ('tipoLabios','Particularidades:') !!}
+                  {!! Form::select('particularidades', $particularidades, '', ['class' => '', 'id' => 'particularidades','multiple' => 'multiple'] ) !!}
+                 </div>
+ 	        </div>
+ 	        </div>                      
+          
+                  
+                <br>
            <imput type="button" class="btn btn-dark pull-right" id="filtros">Buscar</imput>
            <br><br>
+           <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>           
+            </div> <!--  div class="card-body bg-white" END  -->
+            
            
-         </div>
-   
+           </div>
         <!--<imput type="button" class="btn btn-dark pull-right" id="button2">PRUEBA</imput>-->
        <!--<imput type="button" class="btn btn-dark pull-right" id="prueba">PRUEBA</imput>-->
         
@@ -624,23 +473,41 @@
 
 <script type="text/javascript">
    
-    
+    $(window).scroll(function() {
+    if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+        $('#return-to-top').fadeIn(200);    // Fade in the arrow
+    } else {
+        $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+    }
+});
+$('#return-to-top').click(function() {      // When arrow is clicked
+    $('body,html').animate({
+        scrollTop : 0                       // Scroll to top of body
+    }, 500);
+});
 
     
    $(function()
     {
-      $('#idA1').change(function()
+       $('#selectall').change(function()
       {if ($(this).is(':checked')) {
-            $('#catFechas').show();
+            $('#catUbicacion').show();$('#catUbicacion').show();$('#CatDescripcionFis').show();$('#catCabello').show();$('#catBarbaBigotePatilla').show(); $('#catLabiosOjos').show();$('#catModiParti').show();
           
         }else{
-            $('#catFechas').hide()
+            $('#catUbicacion').hide();$('#catUbicacion').hide();$('#CatDescripcionFis').hide();$('#catCabello').hide();$('#catBarbaBigotePatilla').hide(); $('#catLabiosOjos').hide();$('#catModiParti').hide();
+        }; });
+      $('#idA1').change(function()
+      {if ($(this).is(':checked')) {
+            $('#catUbicacion').show();
+          
+        }else{
+            $('#catUbicacion').hide()
         }; });  
      $('#idA2').change(function()
       {if ($(this).is(':checked')) {
-            $('#catCuerpo').show();
+            $('#CatDescripcionFis').show();
         }else{
-            $('#catCuerpo').hide()
+            $('#CatDescripcionFis').hide()
         }; }); 
      $('#idA3').change(function()
       {if ($(this).is(':checked')) {
@@ -650,43 +517,38 @@
         }; });  
      $('#idA4').change(function()
       {if ($(this).is(':checked')) {
-            $('#catBarba').show();
+            $('#catBarbaBigotePatilla').show();
         }else{
-            $('#catBarba').hide()
+            $('#catBarbaBigotePatilla').hide()
         }; });  
      $('#idA5').change(function()
       {if ($(this).is(':checked')) {
-            $('#catBigote').show();
+            $('#catLabiosOjos').show();
         }else{
-            $('#catBigote').hide()
+            $('#catLabiosOjos').hide()
         }; }); 
      $('#idA6').change(function()
-      {if ($(this).is(':checked')) {
-            $('#catPatilla').show();
-        }else{
-            $('#catPatilla').hide()
-        }; });  
-     $('#idA7').change(function()
-      {if ($(this).is(':checked')) {
-            $('#catOjos').show();
-        }else{
-            $('#catOjos').hide()
-        }; });  
-     $('#idA8').change(function()
-      {if ($(this).is(':checked')) {
-            $('#catLabios').show();
-        }else{
-            $('#catLabios').hide()
-        }; });  
-     $('#idA9').change(function()
       {if ($(this).is(':checked')) {
             $('#catModiParti').show();
         }else{
             $('#catModiParti').hide()
-        }; }); }); 
+        }; });  }); 
      //$("#campoUbicacion").hide();
     //-<<--<--<<--<<--<<-MULTISELECTS-<<--<--<<--<<--<<-<<--<--<<--<<--<<
-     $('#filtrosAvanzados').multipleSelect({
+      
+    $('#filtrosAvanzados').multipleSelect({
+            filter: true,
+            width: '100%'
+           
+        });
+    $('#generos').multipleSelect({
+            selectAll: false,
+            //isOpen: true,           
+            width: '100%'
+           
+        });
+    $('#generos').multipleSelect("setSelects", ['H','M']); 
+    $('#nacionalidades').multipleSelect({
             filter: true,
             width: '100%'
            
@@ -862,9 +724,9 @@ alert('Selected texts: ' + $('#estados').multipleSelect('getSelects', 'text'));
     var formatCheckInformante = function(value, row, index){
       texto = '';
       if (row.sexo =='H') {
-        texto = 'HOMBRE'
+        texto = 'MASCULINO'
       }else{
-                texto = 'MUJER'
+                texto = 'FEMENINO'
             }
 
       return [texto].join('');
@@ -872,6 +734,13 @@ alert('Selected texts: ' + $('#estados').multipleSelect('getSelects', 'text'));
     //-->-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-
     
 var formatTableActions = function(value, row, index) {        
+      btn = '<p align="center"> <button class="btn btn-dark " id="verReporte" value="'+row.id+'">Ver detalles</button> </p>';
+
+
+      return [btn].join('');
+    };
+    
+    var formatTableActionsSexo = function(value, row, index) {        
       btn = '<p align="center"> <button class="btn btn-dark " id="verReporte" value="'+row.id+'">Ver detalles</button> </p>';
 
 
@@ -898,13 +767,16 @@ var formatTableActions = function(value, row, index) {
             $("#idVelloFacial").empty();
             $("#idOjos").empty();
             $("#idLabios").empty();
+        $("#idModificaciones").empty();
+        $("#idParticularidades").empty();
+        $("#idObservaciones").empty();
             
       $("#idNombre").append(row.nombre);
             if(row.sexo =='H'){ 
-                $("#idGenero").append('Hombre'); 
+                $("#idGenero").append('Masculino'); 
                               }else{
                 if(row.sexo =='M'){ 
-                    $("#idGenero").append('Mujer');}
+                    $("#idGenero").append('Femenino');}
                              }
             $("#idEstatura").append(row.estatura+ ' cm'); 
             $("#idPeso").append(row.peso + ' kg'); 
@@ -921,6 +793,9 @@ var formatTableActions = function(value, row, index) {
             $("#idVelloFacial").append(row.velloFacial);
             $("#idOjos").append(row.ojos);
             $("#idLabios").append(row.labios);
+        $("#idModificaciones").append(row.modificaciones);
+        $("#idParticularidades").append(row.particularidades);
+        $("#idObservaciones").append(row.observaciones);
 }
     }
     //-o-|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-
@@ -1085,7 +960,7 @@ var formatTableActions = function(value, row, index) {
               //url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+ '/'+ estados
     });
         
-//          var sexo = '';
+//{          var sexo = '';
 //                var femen = $("input#fem:checked").val();    
 //                var mascul = $("input#masc:checked").val();
 //        
@@ -1103,7 +978,7 @@ var formatTableActions = function(value, row, index) {
 //                     console.log('--------------------------');
 //                    console.log(sexo);
 //                    
-//                } }
+//                } } } 
 
           var dataString = {
           estados: $('#estados').multipleSelect('getSelects'),
@@ -1126,8 +1001,9 @@ var formatTableActions = function(value, row, index) {
                 tipoLabio: $('#tipoLabio').multipleSelect('getSelects'),
                 modif: $('#modificaciones').multipleSelect('getSelects'),
                 partic: $('#particularidades').multipleSelect('getSelects'),
-              fem : $("input#fem:checked").val(),     
-              masc : $("input#masc:checked").val(),
+                genero: $('#generos').multipleSelect('getSelects'),
+                //fem : $("input#fem:checked").val(),     
+                //masc : $("input#masc:checked").val(),
           //    sexo,
                 rg : $('#rng1').val(),
                 rg2 : $('#rng2').val(),
@@ -1180,8 +1056,8 @@ var formatTableActions = function(value, row, index) {
                     field: 'fecha',
                     title: 'Fecha de desaparición',
             },{         
-                    field: 'sexo',
-                    title: 'Sexo',
+                    title: 'Género',
+                formatter: formatCheckInformante,
             },{         
                     field: 'apodo',
                     title: 'Apodo',
@@ -1251,10 +1127,10 @@ var formatTableActions = function(value, row, index) {
         fechar1 =$('#fechaReporte1');
 
         tablaGen.show();
-//
+//{
 //     table.bootstrapTable('hideColumn', 'nombres');
 //
-//        });
+//       
 //    
 //    $(function() {
 //$table = $('#tableDependencias');
@@ -1268,7 +1144,7 @@ var formatTableActions = function(value, row, index) {
 //   reorderableColumns: true,
 //  detailView: true
 //          });
-//  });
+//  }); } } }
 });
     //<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<-
 </script>

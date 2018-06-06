@@ -210,7 +210,7 @@
                 $ul.append([
                     '<li class="ms-select-all">',
                     '<label>',
-                    sprintf('<input type="checkbox" %s /> ', this.selectAllName),
+                    sprintf('<input id="selectall" type="checkbox" %s /> ', this.selectAllName),
                     this.options.selectAllDelimiter[0],
                     this.options.selectAllText,
                     this.options.selectAllDelimiter[1],
@@ -742,10 +742,10 @@
         filterAcceptOnEnter: false,
         hideOptgroupCheckboxes: false,
 
-        selectAllText: 'Select all',
-        allSelected: 'All selected',
-        countSelected: '# of % selected',
-        noMatchesFound: 'No matches found',
+        selectAllText: 'Seleccionar todos',
+        allSelected: 'Todos seleccionados',
+        countSelected: '# de % seleccionados',
+        noMatchesFound: 'No se encontraron coincidencias',
 
         styler: function () {
             return false;
