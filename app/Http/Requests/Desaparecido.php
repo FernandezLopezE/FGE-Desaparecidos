@@ -66,7 +66,7 @@ class DesaparecidoRequest extends FormRequest
             //Datos documentos de identificacion
             'identificacion' => 'required',
             'otraIdentificacion' => 'required',
-            'numIdentificacion' => 'required',
+            'numIdentificacion' => 'required_unless:idDocumentoIdentidad,1 ',
             
 
             //Datos Antecedentes
