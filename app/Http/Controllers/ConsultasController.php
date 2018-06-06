@@ -391,9 +391,9 @@ class ConsultasController extends Controller
                     if(str_contains($partesCuerpoRostro[$j]->posicion,'AMBOS'))
                     {
                         if($partesCuerpoRostro[$j]->otroColor != '' ) 
-                            $nOjos = '<i>'. str_replace("(AS)"," ",$partesCuerpoRostro[$j]->posicion).$partesCuerpoRostro[$j]->nombreCuerpo.'S:</i> '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->otroColor;
+                            $nOjos = '<i>'. str_replace("(AS)"," ",$partesCuerpoRostro[$j]->posicion).' '.$partesCuerpoRostro[$j]->nombreCuerpo.'S:</i> '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->otroColor;
                         else
-                            $nOjos = '<i>'.str_replace("(AS)"," ",$partesCuerpoRostro[$j]->posicion).$partesCuerpoRostro[$j]->nombreCuerpo.'S:</i> '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                            $nOjos = '<i>'.str_replace("(AS)"," ",$partesCuerpoRostro[$j]->posicion).' '.$partesCuerpoRostro[$j]->nombreCuerpo.'S:</i> '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->colorCuerpo;
                     }else{//izquierdo o derecho
                          if($partesCuerpoRostro[$j]->otroColor != '') {
                             if(str_contains($partesCuerpoRostro[$j]->posicion,'IZQUIERD'))
@@ -410,9 +410,9 @@ class ConsultasController extends Controller
                 }else if($partesCuerpoRostro[$j]->idPartesCuerpo == 14){
                     if(str_contains($partesCuerpoRostro[$j]->posicion,'AMBOS')){
                         if($partesCuerpoRostro[$j]->otroTipo != '' ) 
-                            $nLabios = '<i>'.str_replace("(AS)"," ",$partesCuerpoRostro[$j]->posicion).$partesCuerpoRostro[$j]->nombreCuerpo.':</i> '.$partesCuerpoRostro[$j]->otroTipo;
+                            $nLabios = '<i>'.str_replace("(AS)"," ",$partesCuerpoRostro[$j]->posicion).' '.$partesCuerpoRostro[$j]->nombreCuerpo.':</i> '.$partesCuerpoRostro[$j]->otroTipo;
                         else
-                            $nLabios = '<i>'.str_replace("(AS)"," ",$partesCuerpoRostro[$j]->posicion).$partesCuerpoRostro[$j]->nombreCuerpo.':</i> '.$partesCuerpoRostro[$j]->tipo;
+                            $nLabios = '<i>'.str_replace("(AS)"," ",$partesCuerpoRostro[$j]->posicion).' '.$partesCuerpoRostro[$j]->nombreCuerpo.':</i> '.$partesCuerpoRostro[$j]->;
 
                     }else{
                         if($partesCuerpoRostro[$j]->otroTipo != '' ) {

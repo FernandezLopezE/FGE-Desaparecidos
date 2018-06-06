@@ -103,7 +103,7 @@
 		});
 
 		var formatTableActions = function(value, row, index) {				
-			btn = '<button class="btn btn-warning btn-sm" id="editInformante"><i class="fa fa-edit"></i>&nbsp;Editar</button>';			
+			btn = '<button class="btn btn-dark btn-sm" id="editInformante">&nbsp;Editar</button>';			
 			return [btn].join('');
 		};
 
@@ -145,12 +145,15 @@
 				$("#numExterno").val(row.numExterno);
 				$("#numInterno").val(row.numInterno);
 				$('select#idEstado option[value="'+row.idEstado+'"]').attr("selected",true);
+				console.log(row.idDocumentoIdentidad);
+				$("#idDocumentoIdentidad").val(row.idDocumentoIdentidad);
+				//$('select#idDocumentoIdentidad option[value="'+row.idDocumentoIdentidad+'"]').attr("selected",true);
 
 				$.getJSON(routeIndex+'/get_municipios/'+row.idEstado)
 				.done(function(data){					
 					idSelect = row.idMunicipio;
 					selectedGeneral = $('#idMunicipio');
-					selectedGeneral.select2();
+					//selectedGeneral.select2();
 					//selectedGeneral.append('<option value="0">[ SELECCIONE TIPO]</option>');
 					$.each(data, function(key, value){						
 						optionSelect = '<option';
@@ -164,7 +167,7 @@
 				.done(function(data){					
 					idSelect = row.idLocalidad;
 					selectedGeneral = $('#idLocalidad');
-					selectedGeneral.select2();
+					//selectedGeneral.select2();
 					//selectedGeneral.append('<option value="0">[ SELECCIONE TIPO]</option>');
 					$.each(data, function(key, value){						
 						optionSelect = '<option';
@@ -178,7 +181,7 @@
 				.done(function(data){					
 					idSelect = row.idColonia;
 					selectedGeneral = $('#idColonia');
-					selectedGeneral.select2();
+					//selectedGeneral.select2();
 					//selectedGeneral.append('<option value="0">[ SELECCIONE TIPO]</option>');
 					$.each(data, function(key, value){						
 						optionSelect = '<option';
@@ -192,7 +195,7 @@
 				.done(function(data){					
 					idSelect = row.idCodigoPostal;
 					selectedGeneral = $('#idCodigoPostal');
-					selectedGeneral.select2();
+					//selectedGeneral.select2();
 					//selectedGeneral.append('<option value="0">[ SELECCIONE TIPO]</option>');
 					$.each(data, function(key, value){						
 						optionSelect = '<option';
@@ -299,7 +302,16 @@
 
 			$('.modal-body div.has-danger').removeClass('has-danger');
 			$('.form-control-feedback').empty();
-            
+            var tieneInformante = "{{count($informantes)}}";
+            console.log(tieneInformante);
+
+            if(tieneInformante == 0){
+            	console.log("Vacio");
+            	$("#informante").attr("disabled", true);
+            }else{
+            	console.log("lleno");
+            	$("#informante").removeAttr("disabled");
+            }
 			modalInformanteAgregar.modal('show');
 
             /*$( "#modalInformante" ).sisyphus( {
@@ -354,6 +366,7 @@
 					table.bootstrapTable('refresh');
                     modalInformanteAgregar.find('form')[0].reset();
                     modalInformanteAgregar.removeData('modal');
+                    location.reload();
                     
 				},
 				error: function(data) {
@@ -417,6 +430,21 @@
 			});
 
 		})
+
+		$("#idDocumentoIdentidad").change(function (){
+			documentosIdentidad();
+		});
+
+		function documentosIdentidad(){
+			if($("#idDocumentoIdentidad").val()==1){
+				$("#numDocIdentidad").attr("disabled", true);
+				$("#numDocIdentidad").val("");
+			}else{
+				$("#numDocIdentidad").removeAttr("disabled");
+			}
+		}
+
+		documentosIdentidad();
 	})
 </script>
 @endsection
