@@ -66,9 +66,9 @@ $(document).ready(function(){
                 html = html+'<label for="idPosicion">Posición:</label>';
                 html = html+'<select type="select" class="form-control" id="idPosicion">';
                 html = html+'<option value="NO APLICA">NO APLICA</option>';
-                html = html+'<option value="AMBOS">AMBOS</option>';
-                html = html+'<option value="IZQUIERDA">IZQUIERDA</option>';
-                html = html+'<option value="DERECHA">DERECHA</option>';
+                html = html+'<option value="AMBOS(AS)">AMBOS</option>';
+                html = html+'<option value="IZQUIERDO(A)">IZQUIERDA</option>';
+                html = html+'<option value="DERECHO(A)">DERECHA</option>';
                 html = html+'</select>';
                 html = html+'</div>';
                 }
@@ -228,7 +228,7 @@ $(document).ready(function(){
             for(var i=0;i<arreglo.length;i++){
                 if(campo.val() == arreglo[i]){
                     //formulario = pintar_otro_campo(campo);
-                    $("#otro_"+id).after(otro);
+                    $("#div_"+id).after(otro);
                     console.log("igual 2");
                     break;
                 }else{
