@@ -15,7 +15,7 @@ class CatParticularidadesCuerpoSeeder extends Seeder
          DB::table('cat_particularidades_cuerpo')->insert([
          	//CABELLO
             ['idPartesCuerpo'=>2, 'nombre' => 'SIN INFORMACION'],
-            ['idPartesCuerpo'=>2, 'nombre' => 'CALVO'],
+            ['idPartesCuerpo'=>2, 'nombre' => 'CORTE TIPO ESCOLAR'],
             ['idPartesCuerpo'=>2, 'nombre' => 'CORTE TIPO MILITAR'],
             ['idPartesCuerpo'=>2, 'nombre' => 'CORTE TIPO MOHICANO'],
             ['idPartesCuerpo'=>2, 'nombre' => 'ALOPECIA FRONTAL'],

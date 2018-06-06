@@ -77,10 +77,11 @@ class InicioController extends Controller
                                 'dp.idColorPiel')
             ->where('dp.id',$idExtraviado)
             ->get();*/
-            
+            \DB::statement('SET lc_time_names = "es_ES"');
             $datosMes = \DB::table('desaparecidos_cedula_investigacion')
-                 ->select(\DB::raw('MONTHNAME(created_at) as mes'), \DB::raw('count(*) as total'))
-                 ->groupBy(\DB::raw('MONTHNAME(created_at)'))
+                 ->select(\DB::raw('count(id) as total'), \DB::raw('DATE_FORMAT(created_at, "%M") as mes'),\DB::raw('DATE_FORMAT(created_at, "%m") as mes_numero'))
+                 ->groupBy(\DB::raw('DATE_FORMAT(created_at, "%M")'),\DB::raw('DATE_FORMAT(created_at, "%m")'))
+                 ->orderBy(\DB::raw('DATE_FORMAT(created_at, "%m")'))
                  ->get();
                  //dd($datosMes);
 
@@ -92,27 +93,40 @@ class InicioController extends Controller
 			    return random_color_part() . random_color_part() . random_color_part();
 			}
 
+			//dd($datosMes);
 
-			foreach ($datosMes as $key => $value) {
-            	$etiqueta[] = $value->mes;
-            	$total[] = $value->total;
+			if(count($datosMes) == 0){
+				$etiqueta[] = ["SIN INFORMACIÓN"];
+            	$total[] =null;
             	$colores[] ="#".random_color();
-            }
+			}else{
+				foreach ($datosMes as $key => $value) {
+            	
+	            	$etiqueta[] = $value->mes;
+	            	$total[] = $value->total;
+	            	$colores[] ="#".random_color();
+	            }
+			}
 			
-
-        $chartjs = app()->chartjs
-         ->name('barChartTest')
-         ->type('bar')
-         ->size(['width' => 400, 'height' => 200])
-         ->labels($etiqueta)
-         ->datasets([
-             [
-                 "label" => 'Total de personas no localizadas por mes.',
-                 'backgroundColor' => $colores,
-                 'data' => $total
-             ]
-         ])
-         ->options([]);
+			
+         $chartjs = app()->chartjs
+        ->name('lineChartTest')
+        ->type('line')
+        ->size(['width' => 400, 'height' => 200])
+        ->labels($etiqueta)
+        ->datasets([
+            [
+                "label" => "Total de personas no localizadas por mes.",
+                'backgroundColor' => "rgba(38, 185, 154, 0.31)",
+                'borderColor' => "rgba(38, 185, 154, 0.7)",
+                "pointBorderColor" => "rgba(38, 185, 154, 0.7)",
+                "pointBackgroundColor" => "rgba(38, 185, 154, 0.7)",
+                "pointHoverBackgroundColor" => "#fff",
+                "pointHoverBorderColor" => "rgba(220,220,220,1)",
+                'data' => $total,
+            ]
+        ])
+        ->options([]);
 
 		/*$chartjs = app()->chartjs
         ->name('pieChartTest')
