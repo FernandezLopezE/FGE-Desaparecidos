@@ -333,6 +333,7 @@ $(document).ready(function(){
 
 	$('#idDocumentoIdentidad').change(function(){
 		h = $('#idDocumentoIdentidad').val();
+		documentosIdentidad();
 		console.log('documento: '+h);		
 		if (h==9) {
 			$("#div_otroDocIdentidad").show();
@@ -340,6 +341,17 @@ $(document).ready(function(){
 			$("#div_otroDocIdentidad").hide();
 		}
 	})
+
+	 function documentosIdentidad(){
+			if($("#idDocumentoIdentidad").val() == 1){
+				$("#numDocIdentidad").attr("disabled", true);
+				$("#numDocIdentidad").val("");
+			}else{
+				$("#numDocIdentidad").removeAttr("disabled");
+			}
+		}
+
+		documentosIdentidad();
 
 });
 

@@ -310,7 +310,7 @@ class DesaparecidoController extends Controller
 								'CELULAR' => 'CELULAR');
 
 		$anios = array('2000' => '2000', '2001' => '2001');
-		$sexos = array('N' => 'SELECCIONE UN GENERO', 'H' => 'MASCULINO', 'M' => 'FEMENINO');
+		$sexos = array('N' => 'SELECCIONE UN GÉNERO', 'H' => 'MASCULINO', 'M' => 'FEMENINO');
 		
 		$tiposDireccion = array('PERSONAL' => 'PERSONAL', 'TRABAJO' => 'TRABAJO');
 		$parentescos = array('MADRE' => 'MADRE', 'PADRE' => 'PADRE', 'HIJO' => 'HIJO', 'OTRO' => 'OTRO');

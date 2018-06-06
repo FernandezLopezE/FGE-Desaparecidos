@@ -32,7 +32,7 @@ class InformanteRequest extends FormRequest
 			'idNacionalidad'			=> 'required',
 			'idDocumentoIdentidad'		=> 'required',
 			'otroDocIdentidad'			=> '',
-			'numDocIdentidad'			=> 'required|max:20',
+			'numDocIdentidad'			=> 'required_unless:idDocumentoIdentidad,1|max:20',
 			'tipoDireccion'				=> 'required',
 			'calle'						=> 'required',
 			'numExterno'				=> 'required',
@@ -52,4 +52,12 @@ class InformanteRequest extends FormRequest
 
 		return $rules;
 	}
+
+	public function messages()
+    {
+        return [
+            'numDocIdentidad.required_unless' => 'El campo número de identifiación es requerido.',
+          
+        ];
+    }
 }
