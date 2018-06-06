@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Dentadura;
+use App\Models\Desaparecido;
 use App\Models\Anexos;
 
 class DatosDentalesController extends Controller
@@ -40,9 +41,6 @@ class DatosDentalesController extends Controller
         $dentadura = new Dentadura();
 
         $dentadura->idTamanoDiente = $request['dienteTamano'];
-        //$dentadura->dienteCompleto = $request['dienteCompleto'];
-        //$dentadura->asistioDentista = $request['atencionOdonto'];
-        //$dentadura->tieneInfoDentista = $request['infoDentista'];
         $dentadura->nombres = $request['nombres'];
         $dentadura->primerAp = $request['primerAp'];
         $dentadura->segundoAp = $request['segundoAp'];
@@ -55,33 +53,13 @@ class DatosDentalesController extends Controller
                 array_push($trata,$value);
         }
         
-        // foreach ($trata as $key => $value) {
-        //     if ($value == "true") {
-        //         echo "hola";
-        //     }
-        // }
-        //$dentaduratrata = json_encode($trata);
         $dentadura->tratamientos = json_encode($trata);
-
-        //$dentadura->perdiodiente = $request['perdiodiente'];
-        //$dentadura->higieneBucal = $request['higieneBucal'];
-        //$dentadura->describeHigBucal = $request['describahb'];
-        //$dentadura->caries = $request['tieneCaries'];
-        //$dentadura->describeCaries = $request['DescribaCaries'];
-        //$dentadura->abcesos = $request['nombreAbceso'];
-        //$dentadura->describeAbcesos = $request['describeAbceso'];
 
         $enferme = array();
         foreach ($request->input('enfermedad') as $index => $value) {
             array_push($enferme,$value);
-            // if ($value == 'true') {
-            //     array_push($enferme,$value);
-            // }
         }
         $dentadura->enfermedades = json_encode($enferme);
-
-        //$dentadura->malosHabitos = $request['malosHabitos'];
-
         $malhabitos = array();
         foreach ($request->input('malhabitos') as $index => $value) {
             array_push($malhabitos,$value);
@@ -94,8 +72,7 @@ class DatosDentalesController extends Controller
         $dentadura->idDesaparecido = $request['idDesaparecido'];
 
         $dentadura->save();
-        //dd($datoDental);
-        //\DB::table('desaparecido_dentadura')->insert($datoDental);
+
         return response()->json('successful');
     }
 
@@ -106,17 +83,53 @@ class DatosDentalesController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {        
+    {          
         $desaparecido = \App\Models\Desaparecido::find($id);
-        $edad = explode(" ",$desaparecido->edadExtravio);
-        $dienteTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
-        $images = (Anexos::where('idDesaparecido', $id)->where('tipoAnexo', 'antecedentesdentales')->get());
-        return view('datosdentales.form_datos_dentales',[
-                    'dienteTamano' => $dienteTamano,
-                    'desaparecido' => $desaparecido,
-                    'edadExtraviado' => $edad,
-                    'images' => $images
-                ]);
+        $idDesaparecido = $id;
+
+        $dentadura = \DB::table('desaparecido_dentadura as ddp')
+                        ->where('ddp.idDesaparecido',$idDesaparecido)
+                        ->get();
+
+        //dd($dentadura->toArray());
+        //$idDentadura = ($dentadura[0] ->id);
+
+        if (count($dentadura)) {
+            //echo $dentadura;
+            $tamaDiente = $dentadura[0]->idTamanoDiente;
+            $tamanoDiente = \DB::table('cat_tamano_diente')
+                        ->select('nombreTamano')
+                        ->where('cat_tamano_diente.id',$tamaDiente)
+                        ->get();
+
+             $datosDentalesArreglo =  (object) array (
+                'tamanoDiente' => $tamanoDiente,
+            );
+            
+             $denta = \App\Models\Dentadura::find($dentadura[0]->id);
+
+            // dd($denta->cattiposonrisa->nombreTipoSonrisa);
+             
+
+
+            return view('datosdentales.show_datosDentales',compact([
+                'desaparecido',
+                'denta']
+            ));
+        }else{
+            $edad = explode(" ",$desaparecido->edadExtravio);
+            $dienteTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
+            $images = (Anexos::where('idDesaparecido', $id)->where('tipoAnexo', 'antecedentesdentales')->get());
+            return view('datosdentales.form_datos_dentales',[
+                        'dienteTamano' => $dienteTamano,
+                        'desaparecido' => $desaparecido,
+                        'edadExtraviado' => $edad,
+                        'images' => $images
+                    ]);
+        }
+
+
+        
     }
 
     /**
