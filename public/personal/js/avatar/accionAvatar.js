@@ -66,9 +66,9 @@ $(document).ready(function(){
                 html = html+'<label for="idPosicion">Posición:</label>';
                 html = html+'<select type="select" class="form-control" id="idPosicion">';
                 html = html+'<option value="NO APLICA">NO APLICA</option>';
-                html = html+'<option value="AMBOS(AS)">AMBOS</option>';
-                html = html+'<option value="IZQUIERDO(A)">IZQUIERDA</option>';
-                html = html+'<option value="DERECHO(A)">DERECHA</option>';
+                html = html+'<option value="AMBOS(AS)">AMBOS(AS)</option>';
+                html = html+'<option value="IZQUIERDO(A)">IZQUIERDO(A)</option>';
+                html = html+'<option value="DERECHO(A)">DERECHO(A)</option>';
                 html = html+'</select>';
                 html = html+'</div>';
                 }
