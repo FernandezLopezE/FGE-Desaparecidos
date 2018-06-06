@@ -77,4 +77,12 @@ class ExtraviadoRequest extends FormRequest
 		];
 	}
 
+	public function messages()
+    {
+        return [
+            'numDocIdentidad.required_unless' => 'El campo número de identificación es requerido.',
+          
+        ];
+    }
+
 }
