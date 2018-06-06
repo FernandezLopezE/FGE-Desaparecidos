@@ -760,6 +760,9 @@ var formatTableActions = function(value, row, index) {
             $("#idVelloFacial").empty();
             $("#idOjos").empty();
             $("#idLabios").empty();
+        $("#idModificaciones").empty();
+        $("#idParticularidades").empty();
+        $("#idObservaciones").empty();
             
       $("#idNombre").append(row.nombre);
             if(row.sexo =='H'){ 
@@ -783,6 +786,9 @@ var formatTableActions = function(value, row, index) {
             $("#idVelloFacial").append(row.velloFacial);
             $("#idOjos").append(row.ojos);
             $("#idLabios").append(row.labios);
+        $("#idModificaciones").append(row.modificaciones);
+        $("#idParticularidades").append(row.particularidades);
+        $("#idObservaciones").append(row.observaciones);
 }
     }
     //-o-|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-

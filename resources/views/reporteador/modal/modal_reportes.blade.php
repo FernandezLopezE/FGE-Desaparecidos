@@ -56,6 +56,13 @@
 				<dd class="col-sm-8"id="idOjos"> </dd>
 				<dt class="col-sm-3">Labios:</dt>
 				<dd class="col-sm-8"id="idLabios"> </dd>
+				
+				<dt class="col-sm-3">Modificaciones:</dt>
+				<dd class="col-sm-8"id="idModificaciones"> </dd>
+				<dt class="col-sm-3">Particularidades:</dt>
+				<dd class="col-sm-8"id="idParticularidades"> </dd>
+				<dt class="col-sm-3">Observaciones:</dt>
+				<dd class="col-sm-8"id="idObservaciones"> </dd>
 
 				
 <!--
