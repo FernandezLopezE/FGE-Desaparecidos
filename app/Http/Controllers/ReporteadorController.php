@@ -12,6 +12,8 @@ class ReporteadorController extends Controller
 
       //$dependencias      = \App\Models\CatDependencias::all()->pluck('nombre','id');
          //$documentos        = \App\Models\CatDocumentosCorreos::all()->pluck('nombre','id');
+           $nacionalidades 	= array('1' => 'MEXICANA',
+								 '2' => 'EXTRANJERO');
            $estados           = \App\Models\CatEstado::all()->pluck('nombre','id');
            //$municipios        = \App\Models\CatMunicipio::all()->pluck('nombre','id');
            $municipios        = \App\Models\CatMunicipio::where('idEstado', 30)->get()->pluck('nombre','id');
@@ -37,18 +39,18 @@ class ReporteadorController extends Controller
            $particularidades = \App\Models\CatParticularidadesCuerpo::where('nombre','!=','CORTAS')->where('nombre','!=','OTRO')
                ->where('nombre','!=','SIN INFORMACIÓN')->where('nombre','!=','LARGAS')->groupby('nombre')->distinct()->pluck('nombre','nombre');
             
-           $tiposFiltros = array('A1' => 'FECHAS',
-								'A2' => 'CUERPO',
+           $generos = array('H' => 'MASCULINO',
+								 'M' => 'FEMENINO');
+           $tiposFiltros = array('A1' => 'UBICACIÓN',
+								'A2' => 'DATOS GENERALES DEL DESAPARACIDO',
 								'A3' => 'CABELLO',
-                                'A4' => 'BARBA',
-                                'A5' => 'BIGOTE',
-                                'A6' => 'PATILLA',
-                                'A7' => 'OJOS',
-                                'A8' => 'LABIOS',
-                                'A9' => 'MODIFICACIONES Y PARTICULARIDADES');
+                                'A4' => 'BARBA, BIGOTE Y PATILLA',                              
+                                'A5' => 'LABIOS Y OJOS',                                
+                                'A6' => 'MODIFICACIONES Y PARTICULARIDADES');
            
-           return view('reporteador.index',compact(                                           
-                      'estados',
+           return view('reporteador.index',compact( 
+                                            'nacionalidades',
+                                            'estados',
                                             'municipios',
                                             'complexiones',
                                             'coloresPiel',
@@ -66,7 +68,8 @@ class ReporteadorController extends Controller
                                             'coloresOjos',
                                             'modificaciones',
                                             'particularidades',
-                                            'tiposFiltros'
+                                            'tiposFiltros',
+                                            'generos'
                     ));
             
      

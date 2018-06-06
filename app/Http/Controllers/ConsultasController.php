@@ -95,9 +95,10 @@ class ConsultasController extends Controller
         $tipoLabio = $request->input('tipoLabio');
         $modif = $request->input('modif');
         $partic = $request->input('partic');
+        $genero = $request->input('genero');
         
-        $masc = $request->input('masc');
-        $fem = $request->input('fem');
+        //$masc = $request->input('masc');
+        //$fem = $request->input('fem');
         //$sexo = $request->input('sexo');
         
         //dd($tamanoCabello);
@@ -229,7 +230,10 @@ class ConsultasController extends Controller
                             
                             ->where('tipoPersona','DESAPARECIDA')
                             ->where('tipoDireccion','LUGAR DE AVISTAMIENTO')
-                            ->where('p.sexo',$masc)
+                            ->when($genero, function ($q) use ($genero) {
+                                return $q->whereIn('p.sexo', $genero);
+                            })
+                            //->where('p.sexo',$masc)
                             ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
                             ->whereBetween(\DB::raw('CAST(des.estatura AS SIGNED)'), [$estatura1, $estatura2])
                             ->whereBetween(\DB::raw('CAST(des.peso AS SIGNED)'), [$peso1, $peso2])
@@ -285,63 +289,6 @@ class ConsultasController extends Controller
                                 return $q->whereIn('cat_mc.nombre', $modif); })
                             ->when($partic, function ($q) use ($partic) {
                                 return $q->whereIn('cparti.nombre', $partic); })
-                            
-                            ->orWhere('p.sexo', $fem) 
-                            ->where('tipoPersona','DESAPARECIDA')
-                            ->where('tipoDireccion','LUGAR DE AVISTAMIENTO')
-                            ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
-                            ->whereBetween(\DB::raw('CAST(des.estatura AS SIGNED)'), [$estatura1, $estatura2])
-                            ->whereBetween(\DB::raw('CAST(des.peso AS SIGNED)'), [$peso1, $peso2])
-                            ->whereBetween('dci.desaparicionFecha', [$desaparicionFecha1, $desaparicionFecha2])
-                            ->whereBetween('dci.fechaVisita', [$reporteFecha1, $reporteFecha2])
-                            ->when($estados, function ($q) use ($estados) {
-                                return $q->whereIn('ce.id', $estados);
-                            })
-                            ->when($municipios, function ($q) use ($municipios) {
-                                return $q->whereIn('cm.id', $municipios);
-                            })
-                            ->when($cPiel, function ($q) use ($cPiel) {
-                                return $q->whereIn('des.idColorPiel', $cPiel);
-                            })
-                            ->when($complexion, function ($q) use ($complexion) {
-                                return $q->whereIn('des.idComplexion', $complexion);
-                            })
-                            ->when($tipoCabello, function ($q) use ($tipoCabello) {
-                                return $q->whereIn('cpc.idTipoCuerpo', $tipoCabello);
-                            })
-                            ->when($tipoBarba, function ($q) use ($tipoBarba) {
-                                return $q->whereIn('cpc.idTipoCuerpo', $tipoBarba);
-                            })
-                             ->when($tamanoCabello, function ($q) use ($tamanoCabello) {
-                                return $q->whereIn('cpc.idTamanoCuerpo', $tamanoCabello);
-                            })
-                            ->when($colorCabello, function ($q) use ($colorCabello) {
-                                return $q->whereIn('cpc.idColoresCuerpo', $colorCabello);
-                            })
-                            ->when($colorBarba, function ($q) use ($colorBarba) {
-                                return $q->whereIn('cpc.idColoresCuerpo', $colorBarba);
-                            })
-                             ->when($tamanoOjos, function ($q) use ($tamanoOjos) {
-                                return $q->whereIn('cpc.idTamanoCuerpo', $tamanoOjos);
-                            })
-                            ->when($colorOjos, function ($q) use ($colorOjos) {
-                                return $q->whereIn('cpc.idColoresCuerpo', $colorOjos);
-                            })
-                            ->when($tipoLabio, function ($q) use ($tipoLabio) {
-                                return $q->whereIn('cpc.idTipoCuerpo', $tipoLabio);
-                            })
-                            ->when($colorBigote, function ($q) use ($colorBigote) {
-                                return $q->whereIn('cpc.idColoresCuerpo', $colorBigote); })
-                            ->when($tipoBigote, function ($q) use ($tipoBigote) {
-                                return $q->whereIn('cpc.idTipoCuerpo', $tipoBigote); })
-                            ->when($colorPatilla, function ($q) use ($colorPatilla) {
-                                return $q->whereIn('cpc.idColoresCuerpo', $colorPatilla); })
-                            ->when($tipoPatilla, function ($q) use ($tipoPatilla) {
-                                return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
-                            ->when($modif, function ($q) use ($modif) {
-                                return $q->whereIn('cat_mc.nombre', $modif); })
-                            ->when($partic, function ($q) use ($partic) {
-                                return $q->whereIn('cparti.nombre', $partic); })
 
                             //->where('des.edadExtravio', 'like', "$rg2%")
                             ->distinct()
@@ -366,16 +313,15 @@ class ConsultasController extends Controller
                                 'cpc.idTipoCuerpo',
                                 'tipoCuerpo.nombre as tipo',
                                 'cpc.otroTipo',
-                                'cpc.observaciones')
+                                'cpc.posicion')
                         ->where('cpc.idPersonaDesaparecida',$value->id)
                         ->whereIn('cpc.idPartesCuerpo',[2,3,4,5,9,14])//2->CABELLO, 3->BARBA, 4->BIGOTE, 5->PATILLA, 9->OJOS, 14->LABIOS
                         ->get();
 
 
             //echo $partesCuerpo;
-
             $longitud = count($partesCuerpoRostro);
-            $nCabello = '';$nVelloFacial   = ''; $nOjos = ''; $nLabios = '';
+            $nCabello = '';$nVelloFacial   = ''; $nOjos = ''; $nLabios = ''; $lado='';
             for($j=0;$j < $longitud; $j++){
                 if($partesCuerpoRostro[$j]->idPartesCuerpo == 2 ){
                     if($partesCuerpoRostro[$j]->otroTipo != '' ) {
@@ -392,7 +338,6 @@ class ConsultasController extends Controller
                         else
                             $nCabello = $nCabello.', '.$partesCuerpoRostro[$j]->colorCuerpo;
                     }
-                   /* $nCabello = '<i> '.$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo.', '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->colorCuerpo;*/
                 }else if($partesCuerpoRostro[$j]->idPartesCuerpo == 3){
                     if($partesCuerpoRostro[$j]->otroTipo != '' ) {
                         $nVelloFacial = '<i> '.$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->otroTipo;
@@ -408,7 +353,6 @@ class ConsultasController extends Controller
                         else
                             $nVelloFacial = $nVelloFacial.', '.$partesCuerpoRostro[$j]->colorCuerpo;
                     }
-                   /* $nVelloFacial = ' <i>'.$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo.', '.$partesCuerpoRostro[$j]->colorCuerpo;*/
                 }else if($partesCuerpoRostro[$j]->idPartesCuerpo == 4 ){
                     if($partesCuerpoRostro[$j]->otroTipo != '' ) {
                         $nVelloFacial = $nVelloFacial.' <i><br>'.
@@ -426,7 +370,6 @@ class ConsultasController extends Controller
                         else
                             $nVelloFacial = $nVelloFacial.', '.$partesCuerpoRostro[$j]->colorCuerpo;
                     }
-                  /* $nVelloFacial = $nVelloFacial.' <i><br>' .$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo.', '.$partesCuerpoRostro[$j]->colorCuerpo;*/
                 }else if($partesCuerpoRostro[$j]->idPartesCuerpo == 5 ){
                     if($partesCuerpoRostro[$j]->otroTipo != '' ) {
                         $nVelloFacial = $nVelloFacial.' <i><br>'.
@@ -444,17 +387,43 @@ class ConsultasController extends Controller
                         else
                             $nVelloFacial = $nVelloFacial.', '.$partesCuerpoRostro[$j]->colorCuerpo;
                     }
-                   /* $nVelloFacial = $nVelloFacial.' <i><br>' .$partesCuerpoRostro[$j]->nombreCuerpo.'</i>: '.$partesCuerpoRostro[$j]->tipo.', '.$partesCuerpoRostro[$j]->colorCuerpo;*/
                 }else if($partesCuerpoRostro[$j]->idPartesCuerpo == 9){
-                    if($partesCuerpoRostro[$j]->otroColor != '' ) 
-                        $nOjos = $partesCuerpoRostro[$j]->nombreCuerpo.': '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->otroColor;
-                    else
-                        $nOjos = $partesCuerpoRostro[$j]->nombreCuerpo.': '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                    if(str_contains($partesCuerpoRostro[$j]->posicion,'AMBOS'))
+                    {
+                        if($partesCuerpoRostro[$j]->otroColor != '' ) 
+                            $nOjos = '<i>'. str_replace("(AS)"," ",$partesCuerpoRostro[$j]->posicion).$partesCuerpoRostro[$j]->nombreCuerpo.'S:</i> '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->otroColor;
+                        else
+                            $nOjos = '<i>'.str_replace("(AS)"," ",$partesCuerpoRostro[$j]->posicion).$partesCuerpoRostro[$j]->nombreCuerpo.'S:</i> '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                    }else{//izquierdo o derecho
+                         if($partesCuerpoRostro[$j]->otroColor != '') {
+                            if(str_contains($partesCuerpoRostro[$j]->posicion,'IZQUIERD'))
+                             $nOjos = '<i>'.$partesCuerpoRostro[$j]->nombreCuerpo.' '.str_replace("(A)","",$partesCuerpoRostro[$j]->posicion).':</i> '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->otroColor;
+                            else
+                                $nOjos = $nOjos.' <i>'.$partesCuerpoRostro[$j]->nombreCuerpo.' '.str_replace("(A)","",$partesCuerpoRostro[$j]->posicion).':</i> '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->otroColor;
+                        }else{
+                            if(str_contains($partesCuerpoRostro[$j]->posicion,'IZQUIERD'))
+                                $nOjos = '<i>'.$partesCuerpoRostro[$j]->nombreCuerpo.' '.str_replace("(A)","",$partesCuerpoRostro[$j]->posicion).':</i> '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                            else
+                                $nOjos = $nOjos.' <i>'.$partesCuerpoRostro[$j]->nombreCuerpo.' '.str_replace("(A)","",$partesCuerpoRostro[$j]->posicion).':</i> '.$partesCuerpoRostro[$j]->tamano.', '.$partesCuerpoRostro[$j]->colorCuerpo;
+                            }
+                    }                   
                 }else if($partesCuerpoRostro[$j]->idPartesCuerpo == 14){
-                    if($partesCuerpoRostro[$j]->otroTipo != '' ) 
-                        $nLabios = $partesCuerpoRostro[$j]->nombreCuerpo.': '.$partesCuerpoRostro[$j]->tipo;
-                    else
-                        $nLabios = $partesCuerpoRostro[$j]->nombreCuerpo.': '.$partesCuerpoRostro[$j]->tipo;
+                    if(str_contains($partesCuerpoRostro[$j]->posicion,'AMBOS')){
+                        if($partesCuerpoRostro[$j]->otroTipo != '' ) 
+                            $nLabios = '<i>'.str_replace("(AS)"," ",$partesCuerpoRostro[$j]->posicion).$partesCuerpoRostro[$j]->nombreCuerpo.':</i> '.$partesCuerpoRostro[$j]->otroTipo;
+                        else
+                            $nLabios = '<i>'.str_replace("(AS)"," ",$partesCuerpoRostro[$j]->posicion).$partesCuerpoRostro[$j]->nombreCuerpo.':</i> '.$partesCuerpoRostro[$j]->tipo;
+
+                    }else{
+                        if($partesCuerpoRostro[$j]->otroTipo != '' ) {
+                            if(str_contains($partesCuerpoRostro[$j]->posicion,'IZQUIERD'))
+                                $nLabios = '<i>'.str_replace("S"," ",$partesCuerpoRostro[$j]->nombreCuerpo).str_replace("(A)",": ",$partesCuerpoRostro[$j]->posicion).'</i> '.$partesCuerpoRostro[$j]->otroTipo;
+                            else
+                                $nLabios = $nLabios.' <i>'.str_replace("S"," ",$partesCuerpoRostro[$j]->nombreCuerpo).str_replace("(A)",": ",$partesCuerpoRostro[$j]->posicion).'</i> '.$partesCuerpoRostro[$j]->tipo;
+                        }
+
+                    }
+                  
                 }
             }
 
@@ -466,25 +435,28 @@ class ConsultasController extends Controller
                         ->leftjoin('cat_particularidades_cuerpo as cparti','cparti.id','=','psubp.idParticularidades')
                         ->select('cpc.idPartesCuerpo',
                                 'catpc.nombre as nombreCuerpo',
+                                'cpc.posicion',
                                 'cparti.nombre as particularidades',
                                 'cpc.otraParticularidad')
                         ->where('cpc.idPersonaDesaparecida',$value->id)
-                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 'cparti.nombre', 'cpc.otraParticularidad')
+                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 'cpc.posicion','cparti.nombre', 'cpc.otraParticularidad')
                         ->get();
 
             $longitud = count($caracteristicasCuerpoP);
             $nParticularidades = '';
-            $parte_cuerpo = '';
+            $parte_cuerpo = ''; $cuerpoPosicion = '';
             for($j=0;$j < $longitud; $j++){
+            $cuerpoPosicion = $caracteristicasCuerpoP[$j]->nombreCuerpo.' '.$caracteristicasCuerpoP[$j]->posicion;
             if($caracteristicasCuerpoP[$j]->particularidades !=''){
-                if($caracteristicasCuerpoP[$j]->nombreCuerpo == $parte_cuerpo)
+                if($cuerpoPosicion == $parte_cuerpo)
                 { 
-
-                    $nParticularidades = $nParticularidades.', '.$caracteristicasCuerpoP[$j]->particularidades;
-
+                    if($caracteristicasCuerpoP[$j]->particularidades != 'OTRO')
+                        $nParticularidades = $nParticularidades.', '.$caracteristicasCuerpoP[$j]->particularidades;
+                    else
+                        $nParticularidades = $nParticularidades.', '.$caracteristicasCuerpoP[$j]->otraParticularidad;
                 }
                 else{
-                    $parte_cuerpo = $caracteristicasCuerpoP[$j]->nombreCuerpo; 
+                    $parte_cuerpo = $cuerpoPosicion; 
                     if($nParticularidades != '')
                         $nParticularidades = $nParticularidades.'<br><i>'.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoP[$j]->particularidades;
                     else
@@ -492,7 +464,7 @@ class ConsultasController extends Controller
                         if($caracteristicasCuerpoP[$j]->particularidades == 'OTRO')
                             $nParticularidades = '<i> '.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoP[$j]->otraParticularidad.' ';
                         else
-                        $nParticularidades = '<i> '.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoP[$j]->particularidades.' ';//primera vez
+                            $nParticularidades = '<i> '.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoP[$j]->particularidades.' ';//primera vez
                     }
 
                 }
@@ -507,10 +479,11 @@ class ConsultasController extends Controller
                          ->leftjoin('cat_modificaciones_cuerpo as cmodi','cmodi.id','=','psubm.idModificaciones')
                         ->select('cpc.idPartesCuerpo',
                                 'catpc.nombre as nombreCuerpo',
+                                'cpc.posicion',
                                 'cmodi.nombre as modificaciones',
                                 'cpc.otraModificacion')
                         ->where('cpc.idPersonaDesaparecida',$value->id)
-                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 
+                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 'cpc.posicion', 
                                 'cmodi.nombre', 'cpc.otraModificacion')
                         ->get();
             $longitud = count($caracteristicasCuerpoM);
@@ -518,13 +491,17 @@ class ConsultasController extends Controller
             $nObservaciones = '';
             $parte_cuerpo = '';
             for($j=0;$j < $longitud; $j++){
+            $cuerpoPosicion = $caracteristicasCuerpoM[$j]->nombreCuerpo.' '.$caracteristicasCuerpoM[$j]->posicion;
             if($caracteristicasCuerpoM[$j]->modificaciones !=''){
-                if($caracteristicasCuerpoM[$j]->nombreCuerpo == $parte_cuerpo)
+                if($cuerpoPosicion == $parte_cuerpo)
                 { 
-                    $nModificaciones = $nModificaciones.', '.$caracteristicasCuerpoM[$j]->modificaciones;
+                    if($caracteristicasCuerpoM[$j]->modificaciones != 'OTRO')
+                        $nModificaciones = $nModificaciones.', '.$caracteristicasCuerpoM[$j]->modificaciones;
+                    else
+                        $nModificaciones = $nModificaciones.', '.$caracteristicasCuerpoM[$j]->otraModificacion;
                 }
                 else{
-                    $parte_cuerpo = $caracteristicasCuerpoM[$j]->nombreCuerpo;
+                    $parte_cuerpo = $cuerpoPosicion;
                     if($nModificaciones != '')
                         $nModificaciones = $nModificaciones.'<br><i>'.$parte_cuerpo.'</i>: '.$caracteristicasCuerpoM[$j]->modificaciones;
                     else{
@@ -543,9 +520,10 @@ class ConsultasController extends Controller
                         ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
                         ->select('cpc.idPartesCuerpo',
                                 'catpc.nombre as nombreCuerpo',
+                                'cpc.posicion',
                                 'cpc.observaciones')
                         ->where('cpc.idPersonaDesaparecida',$value->id)
-                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 
+                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 'cpc.posicion', 
                                 'cpc.observaciones')
                         ->get();
 
@@ -553,15 +531,16 @@ class ConsultasController extends Controller
             $nObservaciones = '';
             $parte_cuerpo = '';
             for($j=0;$j < $longitud; $j++){
+            $cuerpoPosicion = $observacionesCuerpo[$j]->nombreCuerpo.' '.$observacionesCuerpo[$j]->posicion;
             if($observacionesCuerpo[$j]->observaciones !=''){
-                if($observacionesCuerpo[$j]->nombreCuerpo == $parte_cuerpo)
+                if($cuerpoPosicion == $parte_cuerpo)
                 { 
                     $nObservaciones = $nObservaciones.','.$observacionesCuerpo[$j]->observaciones;
                 }
                 else{
-                    $parte_cuerpo = $observacionesCuerpo[$j]->nombreCuerpo;
+                    $parte_cuerpo = $cuerpoPosicion;
                     if($nObservaciones != '')
-                        $nObservaciones = $nObservaciones.'<i>'.$parte_cuerpo.'</i>: '.$observacionesCuerpo[$j]->observaciones;
+                        $nObservaciones = $nObservaciones.'<br><i>'.$parte_cuerpo.'</i>: '.$observacionesCuerpo[$j]->observaciones;
                     else
                         $nObservaciones = '<i> '.$parte_cuerpo.'</i>: '.$observacionesCuerpo[$j]->observaciones.' ';//primera vez
 
