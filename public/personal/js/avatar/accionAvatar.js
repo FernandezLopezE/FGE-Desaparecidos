@@ -123,6 +123,10 @@ $(document).ready(function(){
                     html = html+'</div>';
                 }
                 html = html+'<div class="form-group">';
+                html = html+'<label for="observaciones">Seleccione archivo:</label>';
+                html = html+'<input type="file" class="form-control-file" id="exampleFormControlFile1">';
+                html = html+'</div>';
+                html = html+'<div class="form-group">';
                 html = html+'<label for="observaciones">Observaciones:</label>';
                 html = html+'<textarea type="text" class="form-control" id="observaciones"></textarea>';
                 html = html+'</div>';

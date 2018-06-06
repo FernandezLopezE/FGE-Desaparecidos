@@ -54,7 +54,7 @@ class ExtraviadoController extends Controller
 											->get()
 											->toArray();
 
-			$sexos = array('N' => 'SELECCIONE UN GENERO', 'H' => 'MASCULINO', 'M' => 'FEMENINO');
+			$sexos = array('N' => 'SELECCIONE UN GÉNERO', 'H' => 'MASCULINO', 'M' => 'FEMENINO');
 			$escolaridades      = \App\Models\CatEscolaridad::all()->pluck('nombre','id');
 			$ocupaciones        = \App\Models\CatOcupacion::orderBy('nombre')->get()->pluck('nombre','id');
 			$identificaciones   = \App\Models\CatDocumento::all()->pluck('nombre','id');
