@@ -412,7 +412,7 @@ class ConsultasController extends Controller
                         if($partesCuerpoRostro[$j]->otroTipo != '' ) 
                             $nLabios = '<i>'.str_replace("(AS)"," ",$partesCuerpoRostro[$j]->posicion).' '.$partesCuerpoRostro[$j]->nombreCuerpo.':</i> '.$partesCuerpoRostro[$j]->otroTipo;
                         else
-                            $nLabios = '<i>'.str_replace("(AS)"," ",$partesCuerpoRostro[$j]->posicion).' '.$partesCuerpoRostro[$j]->nombreCuerpo.':</i> '.$partesCuerpoRostro[$j]->;
+                            $nLabios = '<i>'.str_replace("(AS)"," ",$partesCuerpoRostro[$j]->posicion).' '.$partesCuerpoRostro[$j]->nombreCuerpo.':</i> '.$partesCuerpoRostro[$j]->tipo;
 
                     }else{
                         if($partesCuerpoRostro[$j]->otroTipo != '' ) {

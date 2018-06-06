@@ -41,12 +41,12 @@ class ReporteadorController extends Controller
             
            $generos = array('H' => 'MASCULINO',
 								 'M' => 'FEMENINO');
-           $tiposFiltros = array('A1' => 'UBICACIÓN',
-								'A2' => 'DATOS GENERALES DEL DESAPARACIDO',
-								'A3' => 'CABELLO',
-                                'A4' => 'BARBA, BIGOTE Y PATILLA',                              
-                                'A5' => 'LABIOS Y OJOS',                                
-                                'A6' => 'MODIFICACIONES Y PARTICULARIDADES');
+           $tiposFiltros = array('A1' => 'UBICACIÓN DE LA DESAPARICIÓN',
+								'A2' => 'DESCRIPCIÓN FÍSICA',
+								'A3' => 'CARACTERÍSTICAS DEL CABELLO',
+                                'A4' => 'CARACTERÍSTICAS DEL VELLO FACIAL',                              
+                                'A5' => 'CARACTERÍSTICAS DE LABIOS Y OJOS',                                
+                                'A6' => 'MODIFICACIONES Y PARTICULARIDADES DEL CUERPO');
            
            return view('reporteador.index',compact( 
                                             'nacionalidades',

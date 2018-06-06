@@ -174,7 +174,7 @@
             <hr>
           <div id="catUbicacion" style="display:none">
          <div class="row">
-                &nbsp;&nbsp;Ubicación de la desaparición                       
+                &nbsp;&nbsp;<b>Ubicación de la desaparición</b>                       
           </div> <hr>      
          <div class="row" id="idUbicación">
              <div class="col-lg-4">
@@ -194,7 +194,7 @@
          
          <div id="CatDescripcionFis" style="display:none">
          <br><div class="row">
-                &nbsp;&nbsp;<b>Datos generales del desaparecido </b>                       
+                &nbsp;&nbsp;<b>Descripción física </b>                       
           </div> <hr>
           <DIV id="idDesFisica">       
           <div class="row" >
@@ -272,7 +272,7 @@
           
           <div id="catCabello" style="display:none"> 
               <div class="row">
-                    &nbsp;&nbsp; <b>Cabello</b>                        
+                    &nbsp;&nbsp; <b>Características del cabello</b>                        
               </div> <hr>      
              <div class="row" id="idCabello">
                  <div class="col-lg-4">
@@ -292,7 +292,7 @@
           
           <div id="catBarbaBigotePatilla" style="display:none"> 
               <br><div class="row">
-                    &nbsp;&nbsp; <b>Barba, bigote y patilla</b>                        
+                    &nbsp;&nbsp; <b>Características del vello facial</b>                        
               </div> <hr>      
              <div class="row">
                  <div class="col-lg-4">
@@ -326,7 +326,7 @@
                      
           <div id="catLabiosOjos" style="display:none"> 
               <br><div class="row">
-                    &nbsp;&nbsp; <b>Ojos y labios</b>                        
+                    &nbsp;&nbsp; <b>Características de ojos y labios</b>                        
               </div>  <hr>  
              <div class="row" id="idOjos"> 
                  <div class="col-lg-4">
@@ -346,7 +346,7 @@
           
           <div id="catModiParti" style="display:none"> 
               <br><div class="row">
-                    &nbsp;&nbsp; <b>Modificaciones y particularidades</b>                        
+                    &nbsp;&nbsp; <b>Modificaciones y particularidades del cuerpo</b>                        
               </div>  <hr>  
              <div class="row" id=""> 
                  <div class="col-lg-6">
@@ -724,9 +724,9 @@ alert('Selected texts: ' + $('#estados').multipleSelect('getSelects', 'text'));
     var formatCheckInformante = function(value, row, index){
       texto = '';
       if (row.sexo =='H') {
-        texto = 'HOMBRE'
+        texto = 'MASCULINO'
       }else{
-                texto = 'MUJER'
+                texto = 'FEMENINO'
             }
 
       return [texto].join('');
@@ -734,6 +734,13 @@ alert('Selected texts: ' + $('#estados').multipleSelect('getSelects', 'text'));
     //-->-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-<_>-
     
 var formatTableActions = function(value, row, index) {        
+      btn = '<p align="center"> <button class="btn btn-dark " id="verReporte" value="'+row.id+'">Ver detalles</button> </p>';
+
+
+      return [btn].join('');
+    };
+    
+    var formatTableActionsSexo = function(value, row, index) {        
       btn = '<p align="center"> <button class="btn btn-dark " id="verReporte" value="'+row.id+'">Ver detalles</button> </p>';
 
 
@@ -766,10 +773,10 @@ var formatTableActions = function(value, row, index) {
             
       $("#idNombre").append(row.nombre);
             if(row.sexo =='H'){ 
-                $("#idGenero").append('Hombre'); 
+                $("#idGenero").append('Masculino'); 
                               }else{
                 if(row.sexo =='M'){ 
-                    $("#idGenero").append('Mujer');}
+                    $("#idGenero").append('Femenino');}
                              }
             $("#idEstatura").append(row.estatura+ ' cm'); 
             $("#idPeso").append(row.peso + ' kg'); 
@@ -1049,8 +1056,8 @@ var formatTableActions = function(value, row, index) {
                     field: 'fecha',
                     title: 'Fecha de desaparición',
             },{         
-                    field: 'sexo',
-                    title: 'Sexo',
+                    title: 'Género',
+                formatter: formatCheckInformante,
             },{         
                     field: 'apodo',
                     title: 'Apodo',
