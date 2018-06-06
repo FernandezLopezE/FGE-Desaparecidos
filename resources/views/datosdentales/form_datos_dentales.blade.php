@@ -66,7 +66,7 @@
 	            	</div>
 	        		<div class="col" style="margin-left: -2%;margin-right: -15px" id="perfilseleccionado">
 	        			{!! Form::label ('perfilselec','Perfil seleccionado') !!}
-	                	{!! Form::text ('perfilselec',old('perfilselec'), ['class' => 'form-control mayuscula, fa', 'id' => 'valorPerfil', 'readonly' => 'readonly'] )!!}
+	                	{!! Form::text ('perfilselec',old('perfilselec'), ['class' => 'form-control mayuscula, fa', 'id' => 'valorPerfil'] )!!}
 	            	</div>
 	            	<div>
 	            		{{ Form::hidden('idperfilselec','', array('id' => 'idperfilselec')) }}
@@ -80,7 +80,7 @@
 	            	</div>
 	        		<div class="col" style="margin-right: -22px;" id="mordidaseleccionada">
 	        			{!! Form::label ('mordidaselec','Mordida seleccionada') !!}
-	                	{!! Form::text ('mordidaselec',old('mordidaselec'), ['class' => 'form-control mayuscula', 'id' => 'valormordida', 'readonly' => 'readonly'] )!!}
+	                	{!! Form::text ('mordidaselec',old('mordidaselec'), ['class' => 'form-control mayuscula', 'id' => 'valormordida'] )!!}
 	            	</div>
 	            	<div>
 	            		{{ Form::hidden('idmordidaselec','', array('id' => 'idmordidaselec')) }}
@@ -94,7 +94,7 @@
 	            	</div>
 	        		<div class="col" style="margin-left: 37px; margin-right: -11%;" id="sonrisaseleccionada">
 	        			{!! Form::label ('sonrisaselec','Sonrisa seleccionada') !!}
-	                	{!! Form::text ('sonrisaselec',old('sonrisaselec'), ['class' => 'form-control mayuscula', 'id' => 'dientes_girados', 'readonly' => 'readonly'] )!!}
+	                	{!! Form::text ('sonrisaselec',old('sonrisaselec'), ['class' => 'form-control mayuscula', 'id' => 'dientes_girados'] )!!}
 	            	</div>
 	            	<div>
 	            		{{ Form::hidden('idsonrisaselec','', array('id' => 'idsonrisaselec')) }}
@@ -104,7 +104,9 @@
 	        <hr>
 	        <div class="form-group row">
 	        	<div>
-	                <h5>Tratamientos dentales</h5>
+	                <h5>Tratamientos dentales
+	                	<button type="button" class="btn btn-dark pull-right" id="PRUEBA">Guardar</button>
+	                </h5>
 	            </div>
 	            <div class="col" align="right" >
 	                {!! Form::label ('direccion','Activar ayuda visual') !!}
@@ -114,7 +116,7 @@
 	        <div class="form-group row">
 	            <div class="col">
 	                <!--{!! Form::checkbox('AMALGAMA', '2') !!}-->
-	                <input class="form-check-input" name="trata[]" type="checkbox" id="AMALGAMA" value=2 style="margin-top: 5px; margin-left: 0px">
+	                <input class="form-check-input" name="trata[]" type="checkbox" id="AMALGAMA" value="AMALGAMA" style="margin-top: 5px; margin-left: 0px">
 	                <a rel="popover" style="margin-left: 20px" data-img="{{ URL::to('/images/Dientes/amalgama.jpg')}}"><B>AMALGAMA</B></a>
 	            </div>
 	            <div class="col">
@@ -356,39 +358,6 @@
     </div>
     <br>
 </div>
-<div class="card" id="preDientes">
-	<div class="card-header">
-	<h5>
-		Datos, tratamientos, higiene & hábitos dentales de la persona desaparecida
-		<a href="#" class="btn btn-dark pull-right">Editar</a>   
-	</h5>
-	</div>
-
-	<div class="card-body">
-		<div class="row">
-			<dt class="col-sm-2">Tamaño de dientes:</dt>
-			<dd class="col-sm-10" id="tamDiente">GRANDES</dd>
-			<dt class="col-sm-2">Datos del dentista</dt>
-			<dd class="col-sm-10" id="datosDent">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT. DISTINCTIO DOLOREMQUE DOLORES MAGNI NESCIUNT SAEPE FACERE BLANDITIIS TEMPORIBUS EXCEPTURI EAQUE, ATQUE EARUM, VELIT NECESSITATIBUS AT QUOD MAXIME IURE ITAQUE, QUO NISI.</dd>
-
-			<dt class="col-sm-2">Tipo de perfil:</dt>
-			<dd class="col-sm-10" id="tPerfil">CÓNVEXO</dd>
-			<dt class="col-sm-2">Tipo de mordida:</dt>
-			<dd class="col-sm-10" id="tMordida">CERRADA</dd>
-			<dt class="col-sm-2">Tipo de sonrisa:</dt>
-			<dd class="col-sm-10" id="tSonrisa">DIENTES SEPARADOS</dd>
-		</div>
-
-		<div class="row">
-			<dt class="col-sm-2">Tratamientos dentales:</dt>
-			<dd class="col-sm-10" id="tDentales">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT. DISTINCTIO DOLOREMQUE DOLORES</dd>
-			<dt class="col-sm-2">Hábitos bucales:</dt>
-			<dd class="col-sm-10" id="habBucales">LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT. DISTINCTIO DOLOREMQUE DOLORES</dd>
-		</div>
-
-	</div>
-</div>
-
 </nav>
 @endsection
 
@@ -435,6 +404,8 @@ $(document).ready(function(){
 	.always(function() {
 		console.log("complete");
 	});
+
+
 	
 	$(function() {
         $('#toggle-event').change(function() {
@@ -449,6 +420,7 @@ $(document).ready(function(){
         })
     })
 
+    
     function myFunction() {
         var checkBox = document.getElementById("toggle-event");
         if (checkBox.checked == true) {
@@ -689,6 +661,23 @@ $(document).ready(function(){
 
 	$('#agregaInformacion').click(function()
 	{
+		if ($("#idperfilselec").val() == '') {
+			$valorPerfil = 1;
+		}else{
+			$valorPerfil = $("#idperfilselec").val();
+		}
+
+		if ($("#idmordidaselec").val() == '') {
+			$valorMordida = 1;
+		}else{
+			$valorMordida = $("#idmordidaselec").val();
+		}
+
+		if ($("#idsonrisaselec").val() == '') {
+			$valorSonrisa = 1;
+		}else{
+			$valorSonrisa = $("#idsonrisaselec").val();
+		}
 		var dataString = {
 			dienteTamano : $("#dienteTamano").val(),
 			dienteCompleto : $("#dienteCompleto").val(),
@@ -702,9 +691,9 @@ $(document).ready(function(){
 			enfermedad : $("input[name='enfermedad[]']").map(function(){return $(this).is(':checked');}).get(),
 			malhabitos : $("input[name='malhabito[]']").map(function(){return $(this).is(':checked');}).get(),
 			especifiqhabito : $("#escpecifiquehabito").val(),
-			valorPerfil : $("#idperfilselec").val(),
-			valormordida : $("#idmordidaselec").val(),
-			valorsonrisa : $("#idsonrisaselec").val(),
+			valorPerfil : $valorPerfil,
+			valormordida : $valorMordida,
+			valorsonrisa : $valorSonrisa,
 			idDesaparecido: '{!! $desaparecido->id !!}'
 		}
 		$.ajax({
@@ -756,6 +745,7 @@ $(document).ready(function(){
 	************************************************************************/
 
 	$('#updateInformacion').click(function(){
+
 		var dataString = {
 			dienteTamano : $("#dienteTamano").val(),
 			dienteCompleto : $("#dienteCompleto").val(),
