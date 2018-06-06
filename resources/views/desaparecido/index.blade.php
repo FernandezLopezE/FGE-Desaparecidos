@@ -466,17 +466,6 @@ var btnLimpiar = $('#btnLimpiar');
 	   }
    });
 
-	 /*function documentosIdentidad(){
-			if($("#idDocumentoIdentidad").val()==1){
-				$("#numDocIdentidad").attr("disabled", true);
-				$("#numDocIdentidad").val("");
-			}else{
-				$("#numDocIdentidad").removeAttr("disabled");
-			}
-		}
-
-		documentosIdentidad();*/
-
 </script>
 
 @endsection
