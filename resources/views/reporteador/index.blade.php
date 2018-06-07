@@ -68,7 +68,7 @@
 
 <div class="card border-success" id="divDependencias">
 	<div class="card-header">
-		<h5 class="card-title">Buscador
+		<h5 class="card-title">Buscador de personas no localizadas
 		</h5>
 	</div>	
   <div class=""> 
@@ -81,7 +81,7 @@
      
       <div class="card-body bg-white">                              
         <div class="row">
-               &nbsp;&nbsp;Datos generales                        
+               &nbsp;&nbsp;<h5>Datos generales</h5>                        
           </div>    <hr>    
             <div class="row" id="idDatosGral">               
                <div class="col-lg-2" >
@@ -113,7 +113,7 @@
                                 'data-validation' =>'date',
                                 'data-validation-format'=>"dd/mm/yyyy",
                                 'data-validation-error-msg-date' => 'Ingrese fecha correcta',
-                                'placeholder' => 'dd/mm/yyyy'
+                                'placeholder' => 'dd/mm/aaaa'
                               ] )!!} 
                           </div>
                           <div class="col-lg-6">
@@ -124,7 +124,7 @@
                                 'data-validation' =>'date',
                                 'data-validation-format'=>"dd/mm/yyyy",
                                 'data-validation-error-msg-date' => 'Ingrese fecha correcta',
-                                'placeholder' => 'dd/mm/yyyy'
+                                'placeholder' => 'dd/mm/aaaa'
                               ] )!!}
                           </div>                    
                         </div>
@@ -146,7 +146,7 @@
                         'id' => 'fechaReporte1',
                         'data-validation' =>'date',
                         'data-validation-format'=>"dd/mm/yyyy",
-                        'data-validation-error-msg-date' => 'Ingrese fecha correcta','placeholder' => 'dd/mm/yyyy'
+                        'data-validation-error-msg-date' => 'Ingrese una fecha válida o menor a la actual','placeholder' => 'dd/mm/aaaa'
                       ] )!!}
                 </div>
                 <div class="col-lg-6"> 
@@ -155,8 +155,8 @@
                       ['class' => 'form-control',
                         'id' => 'fechaReporte2',
                         'data-validation' =>'date',
-                        'data-validation-format'=>"dd/mm/yyyy",
-                        'data-validation-error-msg-date' => 'Ingrese fecha correcta','placeholder' => 'dd/mm/yyyy'
+                        'data-validation-format'=>"dd/mm/aaaa",
+                        'data-validation-error-msg-date' => 'Ingrese una fecha válida o menor a la actual','placeholder' => 'dd/mm/yyyy'
                       ] )!!}                        
                 </div>
                    </div>
@@ -167,14 +167,14 @@
             
             <hr>
             <div class="col-lg-6">
-                {!! Form::label ('comple','Filtros de búsqueda') !!}<br>
+                {!! Form::label ('comple','Filtros de búsqueda:') !!}<br>
             {!! Form::select ('comple', $tiposFiltros, '',['class' => '', 'id' => 'filtrosAvanzados','multiple' => 'multiple'] )!!}
             <br><br>
             </div> 
             <hr>
           <div id="catUbicacion" style="display:none">
          <div class="row">
-                &nbsp;&nbsp;<b>Ubicación de la desaparición</b>                       
+                &nbsp;&nbsp;<h5>Ubicación de la desaparición</h5>                       
           </div> <hr>      
          <div class="row" id="idUbicación">
              <div class="col-lg-4">
@@ -194,7 +194,7 @@
          
          <div id="CatDescripcionFis" style="display:none">
          <br><div class="row">
-                &nbsp;&nbsp;<b>Descripción física </b>                       
+                &nbsp;&nbsp;<h5>Descripción física </h5>                       
           </div> <hr>
           <DIV id="idDesFisica">       
           <div class="row" >
@@ -271,8 +271,8 @@
       </div>        
           
           <div id="catCabello" style="display:none"> 
-              <div class="row">
-                    &nbsp;&nbsp; <b>Características del cabello</b>                        
+              <br><div class="row">
+                    &nbsp;&nbsp; <h5>Características del cabello</h5>                        
               </div> <hr>      
              <div class="row" id="idCabello">
                  <div class="col-lg-4">
@@ -292,7 +292,7 @@
           
           <div id="catBarbaBigotePatilla" style="display:none"> 
               <br><div class="row">
-                    &nbsp;&nbsp; <b>Características del vello facial</b>                        
+                    &nbsp;&nbsp; <h5>Características del vello facial</h5>                        
               </div> <hr>      
              <div class="row">
                  <div class="col-lg-4">
@@ -326,7 +326,7 @@
                      
           <div id="catLabiosOjos" style="display:none"> 
               <br><div class="row">
-                    &nbsp;&nbsp; <b>Características de ojos y labios</b>                        
+                    &nbsp;&nbsp; <h5>Características de ojos y labios</h5>                        
               </div>  <hr>  
              <div class="row" id="idOjos"> 
                  <div class="col-lg-4">
@@ -346,7 +346,7 @@
           
           <div id="catModiParti" style="display:none"> 
               <br><div class="row">
-                    &nbsp;&nbsp; <b>Modificaciones y particularidades del cuerpo</b>                        
+                    &nbsp;&nbsp; <h5>Modificaciones y particularidades del cuerpo</h5>                        
               </div>  <hr>  
              <div class="row" id=""> 
                  <div class="col-lg-6">
@@ -534,6 +534,62 @@ $('#return-to-top').click(function() {      // When arrow is clicked
             $('#catModiParti').hide()
         }; });  }); 
      //$("#campoUbicacion").hide();
+    
+     //******VALIDACIONES DE LAS FECHAS******
+    $('#fechaDesaparicion1').change(function(){  
+    from = $("#fechaDesaparicion1").val().split("/");
+    fechaDesaparicion1 = from[2] + "-" + from[1] + "-" + from[0];
+    fechaInicioDesaparicion = Date.parse(fechaDesaparicion1);
+     
+    fechaActual= new Date();
+     
+     if (fechaInicioDesaparicion > fechaActual)
+     {
+       $("#fechaDesaparicion1").val("");
+     }
+   });
+
+    $('#fechaDesaparicion2').change(function(){  
+    from = $("#fechaDesaparicion1").val().split("/");
+    fechaDesaparicion1 = from[2] + "-" + from[1] + "-" + from[0];
+    fechaInicioDesaparicion = Date.parse(fechaDesaparicion1);
+    from2 = $("#fechaDesaparicion2").val().split("/");
+    fechaDesaparicion2 = from2[2] + "-" + from2[1] + "-" + from2[0];
+    fechaFinDesaparicion = Date.parse(fechaDesaparicion2);
+     
+    fechaActual= new Date();
+     
+    if (fechaFinDesaparicion > fechaActual || fechaFinDesaparicion < fechaInicioDesaparicion)
+      $("#fechaDesaparicion2").val("");
+   });
+/////
+    $('#fechaReporte1').change(function(){  
+    from = $("#fechaReporte1").val().split("/");
+    fechaReporte1 = from[2] + "-" + from[1] + "-" + from[0];
+    fechaInicioReporte = Date.parse(fechaReporte1);
+     
+    fechaActual= new Date();
+     
+     if (fechaInicioReporte > fechaActual)
+     {
+       $("#fechaReporte1").val("");
+     }
+   });
+
+    $('#fechaReporte2').change(function(){  
+    from = $("#fechaReporte1").val().split("/");
+    fechaReporte1 = from[2] + "-" + from[1] + "-" + from[0];
+    fechaInicioReporte = Date.parse(fechaReporte1);
+    from2 = $("#fechaReporte2").val().split("/");
+    fechaReporte2 = from2[2] + "-" + from2[1] + "-" + from2[0];
+    fechaFinReporte = Date.parse(fechaReporte2);
+     
+    fechaActual= new Date();
+     
+    if (fechaFinReporte > fechaActual || fechaFinReporte < fechaInicioReporte)
+      $("#fechaReporte2").val("");
+   });
+  //*****************************
     //-<<--<--<<--<<--<<-MULTISELECTS-<<--<--<<--<<--<<-<<--<--<<--<<--<<
       
     $('#filtrosAvanzados').multipleSelect({
@@ -920,14 +976,14 @@ var formatTableActions = function(value, row, index) {
      //-o-|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-
     filtros.click(function(){
 
-            from = $("#fechaDesaparicion1").val().split("/");
+        /*    from = $("#fechaDesaparicion1").val().split("/");
             fechaDesaparicion1 = from[2] + "-" + from[1] + "-" + from[0];
             fechaInicio = Date.parse(fechaDesaparicion1);
             from2 = $("#fechaDesaparicion2").val().split("/");
             fechaDesaparicion2 = from2[2] + "-" + from2[1] + "-" + from2[0];
             fechaFin = Date.parse(fechaDesaparicion2);
             console.log("FECHA");                           
-    console.log(fechaInicio);
+    console.log(fechaInicio);*/
 
           tablaGenTodos.hide();
           var estados = $('#estados').multipleSelect('getSelects');
