@@ -9,114 +9,147 @@ use App\Models\PivotSubModiCuerpo;
 
 class SenasParticularesController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index()
+	{
+		//
+	}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function create()
+	{
+		//
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $data['error'] = null;
-        \DB::beginTransaction();
-        try {
-            $parteCuerpo = CedulaPartesCuerpo::create([
-                'posicion' 			        => $request->input('idPosicion'),
-                'idTipoCuerpo' 		        => $request->input('idTipo'),
-                'idColoresCuerpo'	        => $request->input('idColor'),
-                'idTamanoCuerpo'	        => $request->input('idTamano'),
-                'observaciones' 	        => $request->input('observaciones'),
-                'idPartesCuerpo'            => $request->input('idParteCuerpo'),
-                'otraParticularidad'        => $request->input('otraidParticularidad'),
-                'otraModificacion'          => $request->input('otraidModificacion'),
-                'otroTipo'                  => $request->input('otroTipo'),
-                'otroColor'                 => $request->input('otroColor'),
-                'idPersonaDesaparecida'     => $request->input('idDesaparecido')
-            ]);
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function store(Request $request)
+	{
+		define('DS', DIRECTORY_SEPARATOR);        
+		if(is_null($request->file('archivo')))
+		{
+			if($request->input('method') == 'PUT'){            
+				$rutaImagen = "no tiene datos y es por PUT";// Se queda con la imagen anterior.
+			} else {
+				$rutaImagen = "images".DS."vestimenta_sin_imagen.png";
+			}
+		} else {
+			if($request->input('method') == 'PUT'){
+				if($data->path != 'images'.DS.'vestimenta_sin_imagen.png'){
+					\Storage::disk('local')->delete($data->path);
+				}
+			}				
+			$mime = $request->file('archivo')->getMimeType();
+			$extension = strtolower($request->file('archivo')->getClientOriginalExtension());
+			$fileName = uniqid().'.'.$extension;
+			$path = "upload".DS."descripcion_fisica".DS.$fileName;
+			\Storage::disk('local')->put($path,  \File::get($request->file('archivo')));
+			$rutaImagen = $path;           
+		}
+		
+		($request->input('idPosicion') == 'null') ? null : $request->input('idPosicion') ;
+		$dataPartes['posicion']				= ($request->input('idPosicion') == 'null') ? null : $request->input('idPosicion') ;
+		$dataPartes['idTipoCuerpo']			= ($request->input('idTipo') == 'null') ? null : $request->input('idTipo') ;
+		$dataPartes['idColoresCuerpo']		= ($request->input('idColor') == 'null') ? null : $request->input('idColor') ;
+		$dataPartes['idTamanoCuerpo']	    = ($request->input('idTamano') == 'null') ? null : $request->input('idTamano') ;
+		$dataPartes['observaciones'] 	    = ($request->input('observaciones') == 'null') ? null : $request->input('observaciones') ;
+		$dataPartes['otraParticularidad']	= ($request->input('otraidParticularidad') == 'null') ? null : $request->input('otraidParticularidad') ;
+		$dataPartes['otraModificacion']		= ($request->input('otraidModificacion') == 'null') ? null : $request->input('otraidModificacion') ;
+		$dataPartes['otroTipo']				= ($request->input('otroTipo') == 'null') ? null : $request->input('otroTipo') ;
+		$dataPartes['otroColor']			= ($request->input('otroColor') == 'null') ? null : $request->input('otroColor') ;
+		$dataPartes['imagen']				= $rutaImagen;
+		
+		$data['error'] = null;
+		\DB::beginTransaction();
+		try {
+			if($request->input('method') == 'PUT'){
+				$parteCuerpo = CedulaPartesCuerpo::find($request->input('idParteCuerpo'))->update($dataPartes);
+			} else {
+				$dataPartes['idPartesCuerpo']			= $request->input('idParteCuerpo');
+				$dataPartes['idPersonaDesaparecida']	= $request->input('idDesaparecido');
+				$parteCuerpo = CedulaPartesCuerpo::create($dataPartes);
+			}
+			
+			PivotSubPartiCuerpo::where('idCedulaPartesCuerpo', $request->input('idParteCuerpo'))->delete();			
+			$eliminar = PivotSubModiCuerpo::where('idCedulaPartesCuerpo', $request->input('idParteCuerpo'))->delete();
 
-            foreach ($request->input('idParticularidad') as $particularidad) {
-                PivotSubPartiCuerpo::create(['idCedulaPartesCuerpo' => $parteCuerpo->id, 'idParticularidades' => $particularidad]);
-            }
+			$particularidades = ($request->input('idParticularidad') == 'null') ? array() : explode(",", $request->input('idParticularidad')) ;
+			foreach ($particularidades as $particularidad) {
+				PivotSubPartiCuerpo::create(['idCedulaPartesCuerpo' => $parteCuerpo->id, 'idParticularidades' => $particularidad]);
+			}
 
-            foreach ($request->input('idModificacion') as $modificacion) {
-                PivotSubModiCuerpo::create(['idCedulaPartesCuerpo' => $parteCuerpo->id, 'idModificaciones' => $modificacion]);
-            }
+			$modificaciones = ($request->input('idModificacion') == 'null') ? array() : explode(",", $request->input('idModificacion')) ;			
+			foreach ($modificaciones as $modificacion) {
+				PivotSubModiCuerpo::create(['idCedulaPartesCuerpo' => $parteCuerpo->id, 'idModificaciones' => $modificacion]);
+			}
 
-            \DB::commit();
-            $data['success'] = true;
-        } catch (\Exception $e) {
-            $data['success'] = false;
-            $data['error'] = $e->getMessage();
-            \DB::rollback();
-        }
-        
-        if ($data['success']) {
-            return response()->json($data);
-        }
-    }
+			\DB::commit();
+			$data['success'] = true;
+		} catch (\Exception $e) {
+			$data['success'] = false;
+			$data['error'] = $e->getMessage();
+			\DB::rollback();
+		}
+		
+		if ($data['success']) {
+			return response()->json($data);
+		}
+	}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {       
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function show($id)
+	{       
 
-    }
+	}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function edit($id)
+	{
+		//
+	}
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function update(Request $request, $id)
+	{
+		//
+	}
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function destroy($id)
+	{
+		//
+	}
 }

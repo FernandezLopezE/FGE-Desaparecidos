@@ -79,30 +79,40 @@
                         <div class="tab-pane fade @if ($x < 1) show active @endif" id="parte-{!! $parte['idPadre'] !!}" role="tabpanel" aria-labelledby="nav-{!! $parte['idPadre'] !!}-tab">
                             <div class="row">
                                 @foreach ($parte['hijos'] as $value)
-                                    <div class="col-sm-4">    
-                                        <div class="card" style="">
-                                                {{--<img class="card-img-top" style="width: 50%;"" src="{{asset("images/vestimenta_sin_imagen.png")}}" alt="Card image cap">--}}
-                                                <div class="card-body">
-                                                    <code class="card-title">{!! $value->parteh !!}</code>
+                                    <section>
+                                    <div class="container">    
+                                        <div class="card">
+                                            <div class="row">
+                                                <div class="col-md-8">
+                                                    <div class="card-block">
+                                                            <code class="card-title">{!! $value->parteh !!}</code>
+                                                            <p><strong>Tamaño: </strong>{!! $value->tamano !!}</p>
+                                                            <p><strong>Color: </strong>{!! $value->color !!}</p>
+                                                            <p><strong>Posición: </strong>{!! $value->posicion !!}</p>
+                                                            <label for="">Modificaciones:</label>
+                                                            @foreach ($value->modificaciones as $modificacion)
+                                                                {!! $modificacion !!}, 
+                                                            @endforeach
+                                                            <br>
+                                                            <label for="">Particularidades:</label>
+                                                            @foreach ($value->particularidades as $particularidad)
+                                                                {!! $particularidad !!}, 
+                                                            @endforeach
+                                                            <br>
+                                                            <label for="">Observaciones:</label>
+                                                            {!! $value->observaciones !!}
+                                                    </div>
                                                 </div>
-                                                <div class="card-body">
-                                                    <p><strong>Tamaño: </strong>{!! $value->tamano !!}</p>
-                                                    <p><strong>Color: </strong>{!! $value->color !!}</p>
-                                                    <p><strong>Posición: </strong>{!! $value->posicion !!}</p>
-                                                    <label for="">Modificaciones:</label>
-                                                    @foreach ($value->modificaciones as $modificacion)
-                                                        {!! $modificacion !!}, 
-                                                    @endforeach
-                                                    <label for="">Particularidades:</label>
-                                                    @foreach ($value->particularidades as $particularidad)
-                                                        {!! $particularidad !!}, 
-                                                    @endforeach
-                                                    <label for="">Observaciones:</label>
-                                                    {!! $value->observaciones !!}
+                                                <div class="col-md-4">
+                                                        <div class="card-block">
+                                                            <img class="card-img-left" style="width: 100%;" src="{{asset($value->imagen)}}" alt="Card image cap"/>
+                                                        </div>
+                                                </div>    
+                                            </div>                                                                                                
 
-                                                </div>
-                                            </div>
+                                        </div>
                                     </div>
+                                    </section>
                                 @endforeach
                             </div>
                         </div>
