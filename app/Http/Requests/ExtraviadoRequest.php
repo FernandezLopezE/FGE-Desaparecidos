@@ -81,6 +81,7 @@ class ExtraviadoRequest extends FormRequest
     {
         return [
             'numDocIdentidad.required_unless' => 'El campo número de identificación es requerido.',
+            'fechaNacimiento.date_format' => 'El campo fecha de nacimiento no corresponde al formato dd/mm/aaaa. ',
           
         ];
     }
