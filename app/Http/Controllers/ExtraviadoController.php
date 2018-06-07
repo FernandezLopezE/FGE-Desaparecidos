@@ -357,4 +357,26 @@ class ExtraviadoController extends Controller
 	{
 		//
 	}
+
+	public function cargarFoto(Request $request){
+
+		//dd($request->toArray());
+		define('DS', DIRECTORY_SEPARATOR);
+		$desaparecido = \App\Models\Desaparecido::find($request['idDesaparecido']);
+
+		if(is_null($request->file('archivo')))
+	    	{
+	    		$path = "images".DS."vestimenta_sin_imagen.png";
+			} else {
+				$mime = $request->file('archivo')->getMimeType();
+				$extension = strtolower($request->file('archivo')->getClientOriginalExtension());
+				$fileName = uniqid().'.'.$extension;
+				$path = "upload".DS."desaparecido".DS.$fileName;
+				\Storage::disk('local')->put($path,  \File::get($request->file('archivo')));	
+				$desaparecido->fotoDesaparecido = $path;		
+			}
+
+		$desaparecido->save();
+
+	}
 }
