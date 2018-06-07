@@ -36,6 +36,7 @@ class CreateDesaparecidosPersonasTable extends Migration
 			$table->boolean('notificaciones')->default(0);	
 			$table->string('estatura')->nullable();
 			$table->string('peso')->nullable();				
+			$table->string('fotoDesaparecido')->nullable();	
 
 
 			$table->integer('idPersona')->unsigned();
