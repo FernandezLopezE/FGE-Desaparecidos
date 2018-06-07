@@ -21,6 +21,7 @@ class CreateCedulaPartesCuerpoTable extends Migration
             $table->string('otraModificacion')->nullable();
             $table->string('otroTipo')->nullable();
             $table->string('otroColor')->nullable();
+            $table->string('imagen')->nullable();
             $table->enum('posicion',['NO APLICA','AMBOS(AS)','IZQUIERDO(A)','DERECHO(A)'])->nullable();
             $table->integer('idPartesCuerpo')->unsigned()->nullable();           
             $table->foreign('idPartesCuerpo')->references('id')->on('cat_partes_cuerpo');

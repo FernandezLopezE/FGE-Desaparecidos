@@ -19,6 +19,7 @@ Route::get('/', 'InicioController@index');
 
 	Route::get('extraviado/create/{idCedula}', 'ExtraviadoController@create')
 		->name('extraviado.create_desaparecido');
+	Route::post('extraviado/cargarfoto', 'ExtraviadoController@cargarFoto')->name('extraviado.cargar_foto');		
 	Route::resource('extraviado','ExtraviadoController');
 
 	Route::resource('familiar','FamiliarController');

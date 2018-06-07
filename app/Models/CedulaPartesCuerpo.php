@@ -15,6 +15,7 @@ class CedulaPartesCuerpo extends Model
 		'otraModificacion',
 		'otroTipoCuerpo',
 		'otroColor',
+		'imagen',
 		'posicion',
 		'idPartesCuerpo',
 		'idTamanoCuerpo',

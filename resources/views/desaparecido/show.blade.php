@@ -143,8 +143,19 @@ height:150px;
 			</dl>
 		</div>
 		<div class="col-2">
-			{{ HTML::image('images/perfil3.png', 'Fiscal', array('class' => 'rounded w-100 p-3 float-right')) }}	
-		</div>		
+      @if($desaparecido->fotoDesaparecido == null)
+        {{ HTML::image('images/perfil3.png', 'Fiscal', array('class' => 'rounded w-100 p-3 float-right')) }}    
+      @else
+        {{ HTML::image(asset($desaparecido->fotoDesaparecido), 'Fiscal', array('class' => 'rounded w-100 p-3 float-right')) }}
+      @endif
+			
+      <div class="form-group col-md" id="div_archivo">
+        <!--{!! Form::label ('archivo','Foto:',['class' => 'form-control-label']) !!}-->
+        {!! Form::file('archivo', ['class' => 'form-control']) !!}
+        <div class="form-control-feedback" id="error_archivo"></div>
+      </div>	
+		</div>
+
 	</div>
 </div>	
 </div>
@@ -292,6 +303,46 @@ height:150px;
 
 	})
 
+  var routeDesaparecido = '{!! route('extraviado.index') !!}';
+  var idDesaparecido = '{{ $desaparecido->id }}';
+  //var btnPrendaGuardar = $('#btnGuardarPrenda');
+  $("#archivo").change(function(){
+    //alert("cambio");
+    var fileToUpload = $('#archivo')[0].files[0];
+    if (fileToUpload == 'undefined') { fileToUpload = null }
+
+    var formData = new FormData();
+    formData.append("archivo",fileToUpload);
+    formData.append("idDesaparecido",idDesaparecido);
+
+    $.ajax({
+      type: 'POST',
+      url: routeDesaparecido+"/cargarfoto",       
+      data: formData,
+      dataType: 'json',
+      processData: false,
+      contentType: false,
+      success: function(data) {           
+        console.log(data);
+
+        /*table.bootstrapTable('refresh');
+        $("#modalVestimenta").modal("hide");*/
+      },
+      error: function(data) {
+        /*var errors = data.responseJSON; 
+        $('.modal-body div.has-danger').removeClass('has-danger');
+        $('.form-control-feedback').empty();
+        $.each(errors.errors, function(key, value){         
+          $('#div_'+key).addClass('has-danger');
+          $('input#'+key).addClass('form-control-danger');
+          $('#error_'+key).append(value);           
+        });*/
+      }
+    });
+
+    location.reload();
+
+  });
 
 </script>
 

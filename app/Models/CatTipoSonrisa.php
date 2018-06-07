@@ -1,10 +1,10 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CatTipoSonrisaTable extends Model
+class CatTipoSonrisa extends Model
 {
     protected $table = 'cat_tipo_sonrisa';
 	protected $fillable = [
