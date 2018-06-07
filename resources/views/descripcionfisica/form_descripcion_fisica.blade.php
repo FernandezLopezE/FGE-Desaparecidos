@@ -137,6 +137,8 @@
   
   var showCabello2 = "{{$showCabello}}";
 
+  $('g[data-cuerpo="44"] path').css({"fill":"#17a4da", "stroke":"#ffffff","stroke-width":"2-"});
+  //input[name='ext[]']
   //Boton frente
   $("#btnTras").click(function(event) {
     $("#AvatarFront").hide();
