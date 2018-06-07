@@ -97,24 +97,28 @@ class DatosDentalesController extends Controller
         if (count($dentadura)) {
             //echo $dentadura;
             $tamaDiente = $dentadura[0]->idTamanoDiente;
-            $tamanoDiente = \DB::table('cat_tamano_diente')
-                        ->select('nombreTamano')
-                        ->where('cat_tamano_diente.id',$tamaDiente)
-                        ->get();
-
-             $datosDentalesArreglo =  (object) array (
-                'tamanoDiente' => $tamanoDiente,
-            );
+            // $tamanoDiente = \DB::table('cat_tamano_diente')
+            //             ->select('nombreTamano')
+            //             ->where('cat_tamano_diente.id',$tamaDiente)
+            //             ->get();
             
              $denta = \App\Models\Dentadura::find($dentadura[0]->id);
 
+             $dentavalor = $dentadura[0]->id;
+
+             $dientesPerdidos = \DB::table('pivot_diente_perdido')
+                        ->join('cat_dientes', 'pivot_diente_perdido.idDiente', '=', 'cat_dientes.numDiente')
+                        ->select('nombreDiente','causaPerdida')
+                        ->where('pivot_diente_perdido.idDentadura',$dentavalor)
+                        ->get();
+
+            //dd($dientesPerdidos);
+
             // dd($denta->cattiposonrisa->nombreTipoSonrisa);
-             
-
-
             return view('datosdentales.show_datosDentales',compact([
                 'desaparecido',
-                'denta']
+                'denta',
+                'dientesPerdidos']
             ));
         }else{
             $edad = explode(" ",$desaparecido->edadExtravio);

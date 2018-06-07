@@ -257,7 +257,7 @@
 	</div>
 	
 	<div class="card border-primary">
-		<div class="card-body bg-whithe">
+		<div class="card-body bg-whithe" id="formularioDientes">
 			<h5 class="card-title">Dientes perdidos de la persona desaparecida
 				<button type="button" class="btn btn-dark pull-right" id="btnDiente">Guardar</button>
 				
@@ -362,7 +362,7 @@
 {!! Html::script('personal/js/functions.js') !!}
 {!! Html::script('personal/js/datos_dentales/accionDientes.js') !!}
 {!! Html::script('personal/js/datos_dentales/sliders_dentales.js') !!}
-{!! Html::script('personal/js/datos_dentales/dentadura_adulto.js') !!}
+
 <script src="../plugins/bootstrap_fileinput/js/popper.min.js" type="text/javascript"></script>
 <script src="../plugins/bootstrap_fileinput/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- the main fileinput plugin file -->
