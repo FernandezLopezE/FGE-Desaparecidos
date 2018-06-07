@@ -18,28 +18,28 @@ $(document).ready(function(){
 		$('#ILSDD').hide();
 		$('#ICSDD').hide();
 
-var diente18, diente17, diente16, diente15, diente14, diente13, diente12, diente11, 
+var diente8, diente17, diente16, diente15, diente14, diente13, diente12, diente11, 
 	diente21, diente22, diente23, diente24, diente25, diente26, diente27, diente28,
 	cont18, cont17, cont16, cont15, cont14, cont13, cont12, cont11,
 	cont21, cont22, cont23, cont24, cont25, cont26, cont27, cont28,
 
-		diente18 = $('#diente18').attr('value');
+		/*diente8 = $('#diente8').attr('value');
 		cont18 = 0;
-		$('#diente18').click(function(event) {
+		$('#diente8').click(function(event) {
 			cont18 = cont18 + 1;
 			if (cont18 == 1) {
 				$('#TMSDD').show();
-				$("#TMSD").val(diente18);
+				$("#TMSD").val(diente8);
 				$('#TMSDP').focus();
-				$("#path18").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
+				$("#path8").css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
 			}else{
 				cont18 = 0;
 				$('#TMSDD').hide();
 				$("#TMSD").val('');
 				$("#TMSDP").val('');
-				$("#path18").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
+				$("#path8").css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
 			}
-		});  
+		});  */
 
 		diente17 = $('#diente17').attr("value");
 		cont17 = 0;

@@ -183,11 +183,11 @@
              </div>
              <div class="col-lg-4">
                 {!! Form::label ('idEstados','Estados:') !!} 
-                {!! Form::select('idEstados',$estados, '', ['class' => '', 'id' => 'estados','multiple' => 'multiple'] ) !!}
+                {!! Form::select('idEstados',$estados, '', ['class' => '', 'id' => 'idEstado','multiple' => 'multiple'] ) !!}
              </div>
             <div class="col-lg-4">
                 {!! Form::label ('idEstados','Municipios:') !!} 
-                {!! Form::select('idEstados',$municipios, '', ['class' => '', 'id' => 'municipios','multiple' => 'multiple'] ) !!}
+                {!! Form::select('idEstados',$municipios, '', ['class' => '', 'id' => 'idMunicipio','multiple' => 'multiple'] ) !!}
             </div>
           </div>
           </div>
@@ -362,6 +362,7 @@
           
                   
                 <br>
+                <!--<imput type="button" class="btn btn-dark pull-right" id="try">prueba</imput>-->
            <imput type="button" class="btn btn-dark pull-right" id="filtros">Buscar</imput>
            <br><br>
            <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>           
@@ -419,25 +420,24 @@
                         <th data-field="velloFacial" 
                         data-sortable="true" data-filter-control="input" data-visible="false"></th>
                         <th data-field="ojos" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        data-sortable="true" data-filter-control="input"  data-visible="false" ></th>
                         <th data-field="labios" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>                   
-                        <th data-field="Estado" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>         <th data-field="Estado" 
+                        data-sortable="true" data-filter-control="input" data-visible="false" ></th>
                         <th data-field="Municipio" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>
                         <th data-field="Nacionalidad" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>
                         <th data-field="FechaR" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>
                         <th data-field="Hechos" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>
                         <th data-field="Modificaciones" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>
                         <th data-field="particularidades" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>
                         <th data-field="Observaciones" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>
                <th data-field="Acciones"> </th>
                 </tr>
             </thead>
@@ -455,13 +455,15 @@
 
 @endsection
 
-@section('scripts') 
+@section('scripts')
+{!! HTML::script('personal/js/datosgral.js') !!}
 {!! HTML::script('personal/js/multiple-select.js') !!}
 {!! HTML::script('personal/js/bootstrap-table-multiple-search.js') !!}
 {!! HTML::script('personal/js/bootstrap-table-toolbar.js') !!}
 {!! HTML::script('personal/js/bootstrap-table-export.js') !!}
 {!! HTML::script('personal/js/tableExport.js') !!}
 {!! HTML::script('personal/js/jspdf.min.js') !!}  
+{!! HTML::script('personal/js/pdfmake.min.js') !!}  
 {!! HTML::script('personal/js/jspdf.plugin.autotable.js') !!} 
 {!! HTML::script('personal/js/FileSaver.min.js') !!} 
 {!! HTML::script('personal/js/bootstrap-table-filter-control.js') !!}
@@ -496,38 +498,38 @@ $('#return-to-top').click(function() {      // When arrow is clicked
         }else{
             $('#catUbicacion').hide();$('#catUbicacion').hide();$('#CatDescripcionFis').hide();$('#catCabello').hide();$('#catBarbaBigotePatilla').hide(); $('#catLabiosOjos').hide();$('#catModiParti').hide();
         }; });
-      $('#idA1').change(function()
+      $('#A1').change(function()
       {if ($(this).is(':checked')) {
             $('#catUbicacion').show();
           
         }else{
             $('#catUbicacion').hide()
         }; });  
-     $('#idA2').change(function()
+     $('#A2').change(function()
       {if ($(this).is(':checked')) {
             $('#CatDescripcionFis').show();
         }else{
             $('#CatDescripcionFis').hide()
         }; }); 
-     $('#idA3').change(function()
+     $('#A3').change(function()
       {if ($(this).is(':checked')) {
             $('#catCabello').show();
         }else{
             $('#catCabello').hide()
         }; });  
-     $('#idA4').change(function()
+     $('#A4').change(function()
       {if ($(this).is(':checked')) {
             $('#catBarbaBigotePatilla').show();
         }else{
             $('#catBarbaBigotePatilla').hide()
         }; });  
-     $('#idA5').change(function()
+     $('#A5').change(function()
       {if ($(this).is(':checked')) {
             $('#catLabiosOjos').show();
         }else{
             $('#catLabiosOjos').hide()
         }; }); 
-     $('#idA6').change(function()
+     $('#A6').change(function()
       {if ($(this).is(':checked')) {
             $('#catModiParti').show();
         }else{
@@ -609,12 +611,12 @@ $('#return-to-top').click(function() {      // When arrow is clicked
             width: '100%'
            
         });
-    $('#estados').multipleSelect({
+    $('#idEstado').multipleSelect({
             filter: true,
             width: '100%'
            
         });
-    $('#municipios').multipleSelect({
+    $('#idMunicipio').multipleSelect({
             filter: true,
             width: '100%'
         });
@@ -777,7 +779,7 @@ alert('Selected texts: ' + $('#estados').multipleSelect('getSelects', 'text'));
           var routeIndex = '{!! route('consultas.index') !!}';
           var routeReporteador = '{!! route('reporteador.index') !!}';
     
-    var formatCheckInformante = function(value, row, index){
+    var formatCheckGenero = function(value, row, index){
       texto = '';
       if (row.sexo =='H') {
         texto = 'MASCULINO'
@@ -890,16 +892,16 @@ var formatTableActions = function(value, row, index) {
     }
      filtrosTodos.click(function(){
           tablaGen.hide();
-          var estados = $('#estados').multipleSelect('getSelects');
-          console.log("El string:")
-        console.log(estados)
-        var array = JSON.parse("[" + estados + "]");
-         // estados.toString();
-          //estados.replace(/['"]+/g, '');
-          console.log("El arreglo:")
-          console.log(array)
-          
-          console.log('ids de estados:'+' ' + estados);
+//          var estados = $('#estados').multipleSelect('getSelects');
+//          console.log("El string:")
+//        console.log(estados)
+//        var array = JSON.parse("[" + estados + "]");
+//         // estados.toString();
+//          //estados.replace(/['"]+/g, '');
+//          console.log("El arreglo:")
+//          console.log(array)
+//          
+//          console.log('ids de estados:'+' ' + estados);
          // var quote_str =  "'" + str + "'";
           var rg = $('#rng1').val();
           var rg2 = $('#rng2').val();
@@ -918,7 +920,7 @@ var formatTableActions = function(value, row, index) {
     });
   
           var dataString = {
-          estados: $('#estados').multipleSelect('getSelects'),
+          estados: $('#idEstado').multipleSelect('getSelects'),
                 fem : $("input#fem:checked").val(),     
                 masc : $("input#masc:checked").val(),
                 rg : $('#rng1').val(),
@@ -948,7 +950,7 @@ var formatTableActions = function(value, row, index) {
         title: 'Nombre',
         }, {          
         title: 'Género',
-                formatter: formatCheckInformante
+                formatter: formatCheckGenero
       }, {          
         field: 'edad',
         title: 'Edad de extravío',
@@ -975,6 +977,9 @@ var formatTableActions = function(value, row, index) {
         });
      //-o-|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-
     filtros.click(function(){
+        
+        
+        
 
         /*    from = $("#fechaDesaparicion1").val().split("/");
             fechaDesaparicion1 = from[2] + "-" + from[1] + "-" + from[0];
@@ -986,8 +991,8 @@ var formatTableActions = function(value, row, index) {
     console.log(fechaInicio);*/
 
           tablaGenTodos.hide();
-          var estados = $('#estados').multipleSelect('getSelects');
-          var municipios = $('#municipios').multipleSelect('getSelects');
+          var estados = $('#idEstado').multipleSelect('getSelects');
+          var municipios = $('#idMunicipio').multipleSelect('getSelects');
           console.log("El string:")
         console.log(estados)
         var arrayEst = JSON.parse("[" + estados + "]");
@@ -1037,8 +1042,9 @@ var formatTableActions = function(value, row, index) {
 //                } } } 
 
           var dataString = {
-          estados: $('#estados').multipleSelect('getSelects'),
-                municipios: $('#municipios').multipleSelect('getSelects'),
+                nacionalidad: $('#nacionalidades').multipleSelect('getSelects'),              
+                estados: $('#idEstado').multipleSelect('getSelects'),
+                municipios: $('#idMunicipio').multipleSelect('getSelects'),
                 cPiel: $('#cPiel').multipleSelect('getSelects'),
                 complexion: $('#complexion').multipleSelect('getSelects'),
                 tipoCabello: $('#tipoCabello').multipleSelect('getSelects'),
@@ -1113,7 +1119,7 @@ var formatTableActions = function(value, row, index) {
                     title: 'Fecha de desaparición',
             },{         
                     title: 'Género',
-                formatter: formatCheckInformante,
+                formatter: formatCheckGenero,
             },{         
                     field: 'apodo',
                     title: 'Apodo',
@@ -1183,6 +1189,38 @@ var formatTableActions = function(value, row, index) {
         fechar1 =$('#fechaReporte1');
 
         tablaGen.show();
+         $("#idLiExport").remove();
+         $("#ulExport").append("<li id='idLiExport' data-type='Pdf'><a href='javascript:void(0)' id = 'exportPdf'>Pdf</a></li>");
+
+        var try2 = $('#exportPdf');
+        console.log('hiiiiiiiiiiiiiiiiii');
+       
+         try2.click(function(){
+        var doc = new jsPDF('l', 'pt');
+    var res = doc.autoTableHtmlToJson(document.getElementById('tableDependencias'));
+   doc.autoTable(res.columns, res.data, {
+        theme: 'striped', 
+        styles: {
+            cellPadding: 1.5,
+            overflow: 'linebreak',
+            valign: 'middle',
+            halign: 'center',
+            lineColor: [0, 0, 0],
+            lineWidth: 0.2 
+        },
+       grid: {
+            table: { fillColor: 255, textColor: 80, fontStyle: 'normal', lineWidth: 0.1 },
+            header: { textColor: 255, fillColor: [26, 188, 156], fontStyle: 'bold', lineWidth: 0 },
+            body: {},
+            alternateRow: {}
+        }
+       
+    });
+    doc.save('table.pdf');
+        });
+        
+        
+        
 //{
 //     table.bootstrapTable('hideColumn', 'nombres');
 //
@@ -1202,6 +1240,8 @@ var formatTableActions = function(value, row, index) {
 //          });
 //  }); } } }
 });
+    
+   
     //<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<-
 </script>
 @endsection

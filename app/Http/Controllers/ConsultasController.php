@@ -77,6 +77,7 @@ class ConsultasController extends Controller
         //$array = explode(",", $estados);}  
         // dd($request->ToArray());
         //$estados = Input::get('estados');
+        $nacionalidad = $request->input('nacionalidad');
         $estados = $request->input('estados');
         $municipios = $request->input('municipios');
         $cPiel = $request->input('cPiel');
@@ -227,9 +228,19 @@ class ConsultasController extends Controller
             //{->where('des.edadExtravio', 'like', "$rg%")
                             //->where('des.edadExtravio', 'like', "$rg2%")
                             //->whereBetween('des.edadExtravio', [$rg, $rg2])}
+        
+        
                             
                             ->where('tipoPersona','DESAPARECIDA')
                             ->where('tipoDireccion','LUGAR DE AVISTAMIENTO')
+                            ->where( function ($q) use ($nacionalidad) {
+                               if ($nacionalidad == ['1']) {                                      
+                                        $q->whereIn('p.idNacionalidad', $nacionalidad);
+                                     }else if($nacionalidad == ['2']) {
+                                      $nacionalidad = '1';
+                                        $q->where('p.idNacionalidad','!=', $nacionalidad);
+                                     }
+                            })
                             ->when($genero, function ($q) use ($genero) {
                                 return $q->whereIn('p.sexo', $genero);
                             })

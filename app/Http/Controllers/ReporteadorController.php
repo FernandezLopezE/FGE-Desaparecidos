@@ -14,9 +14,9 @@ class ReporteadorController extends Controller
          //$documentos        = \App\Models\CatDocumentosCorreos::all()->pluck('nombre','id');
            $nacionalidades 	= array('1' => 'MEXICANA',
 								 '2' => 'EXTRANJERO');
-           $estados           = \App\Models\CatEstado::all()->pluck('nombre','id');
-           //$municipios        = \App\Models\CatMunicipio::all()->pluck('nombre','id');
-           $municipios        = \App\Models\CatMunicipio::where('idEstado', 30)->get()->pluck('nombre','id');
+           $estados            = \App\Models\CatEstado::all()->pluck('nombre','id');
+
+		   $municipios = array();
            $complexiones = \App\Models\CatComplexion::all()->pluck('nombre','id');
            $coloresPiel = \App\Models\CatColorPiel::all()->pluck('nombre','id');
            $tipoCabello = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','2')->pluck('nombre','id');
