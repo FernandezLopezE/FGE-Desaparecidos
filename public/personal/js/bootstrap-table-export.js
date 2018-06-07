@@ -48,7 +48,7 @@
                             '<i class="fa fa-chevron-circle-down"></i> ',
                             '<span class="caret"></span>',
                         '</button>',
-                        '<ul class="dropdown-menu" role="menu">',
+                        '<ul id="ulExport" class="dropdown-menu" role="menu">',
                         '</ul>',
                     '</div>'].join('')).appendTo($btnGroup);
 
