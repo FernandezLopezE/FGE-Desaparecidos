@@ -37,21 +37,24 @@
               overflow: 'linebreak', 
               //tableWidth: 'auto',
               columnWidth:'auto',
-            cellPadding:   2,
+            cellPadding:   1.5,
             rowHeight:     42,
             fontSize:      6,
             fillColor:     255,         // Color value or 'inherit' to use css background-color from html table
             textColor:     50,          // Color value or 'inherit' to use css color from html table
             fontStyle:     'normal',    // normal, bold, italic, bolditalic or 'inherit' to use css font-weight and fonst-style from html table
-            //overflow:      'ellipsize', // visible, hidden, ellipsize or linebreak
-            halign:        'left',      // left, center, right
-            valign:        'middle'     // top, middle, bottom
+          //overflow:      'ellipsize', // visible, hidden, ellipsize or linebreak
+            halign:        'center',      // left, center, right
+            valign:        'middle',     // top, middle, bottom
+            lineWidth:      0.2,
+            pageBreak: 'always'
           },
           headerStyles: {
             fillColor:     [52, 73, 94],
             textColor:     255,
             fontStyle:     'bold',
-            halign:        'center'
+            halign:        'center',
+            lineWidth:      0.2
           },
           alternateRowStyles: {
             fillColor:     245
@@ -95,7 +98,7 @@
       pdfmake: {
         enabled:           false,       // true: use pdfmake instead of jspdf and jspdf-autotable (experimental)
         docDefinition: {
-          pageOrientation: 'portrait',  // 'portrait' or 'landscape'
+          pageOrientation: 'landscape',  // 'portrait' or 'landscape'
           defaultStyle: {
             font:          'Roboto'     // Default is 'Roboto', for arabic font set this option to 'Mirza' and include mirza_fonts.js
           }
@@ -1050,7 +1053,7 @@
         });
 
       }
-      else if ( defaults.jspdf.autotable === false ) {
+      else if ( defaults.jspdf.autotable === true ) {
         // pdf output using jsPDF's core html support
 
         var addHtmlOptions = {

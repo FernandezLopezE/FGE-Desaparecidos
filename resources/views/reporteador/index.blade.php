@@ -68,7 +68,7 @@
 
 <div class="card border-success" id="divDependencias">
 	<div class="card-header">
-		<h5 class="card-title">Buscador
+		<h5 class="card-title">Buscador de personas no localizadas
 		</h5>
 	</div>	
   <div class=""> 
@@ -81,7 +81,7 @@
      
       <div class="card-body bg-white">                              
         <div class="row">
-               &nbsp;&nbsp;Datos generales                        
+               &nbsp;&nbsp;<h5>Datos generales</h5>                        
           </div>    <hr>    
             <div class="row" id="idDatosGral">               
                <div class="col-lg-2" >
@@ -113,7 +113,7 @@
                                 'data-validation' =>'date',
                                 'data-validation-format'=>"dd/mm/yyyy",
                                 'data-validation-error-msg-date' => 'Ingrese fecha correcta',
-                                'placeholder' => 'dd/mm/yyyy'
+                                'placeholder' => 'dd/mm/aaaa'
                               ] )!!} 
                           </div>
                           <div class="col-lg-6">
@@ -124,7 +124,7 @@
                                 'data-validation' =>'date',
                                 'data-validation-format'=>"dd/mm/yyyy",
                                 'data-validation-error-msg-date' => 'Ingrese fecha correcta',
-                                'placeholder' => 'dd/mm/yyyy'
+                                'placeholder' => 'dd/mm/aaaa'
                               ] )!!}
                           </div>                    
                         </div>
@@ -146,7 +146,7 @@
                         'id' => 'fechaReporte1',
                         'data-validation' =>'date',
                         'data-validation-format'=>"dd/mm/yyyy",
-                        'data-validation-error-msg-date' => 'Ingrese fecha correcta','placeholder' => 'dd/mm/yyyy'
+                        'data-validation-error-msg-date' => 'Ingrese una fecha válida o menor a la actual','placeholder' => 'dd/mm/aaaa'
                       ] )!!}
                 </div>
                 <div class="col-lg-6"> 
@@ -155,8 +155,8 @@
                       ['class' => 'form-control',
                         'id' => 'fechaReporte2',
                         'data-validation' =>'date',
-                        'data-validation-format'=>"dd/mm/yyyy",
-                        'data-validation-error-msg-date' => 'Ingrese fecha correcta','placeholder' => 'dd/mm/yyyy'
+                        'data-validation-format'=>"dd/mm/aaaa",
+                        'data-validation-error-msg-date' => 'Ingrese una fecha válida o menor a la actual','placeholder' => 'dd/mm/yyyy'
                       ] )!!}                        
                 </div>
                    </div>
@@ -167,14 +167,14 @@
             
             <hr>
             <div class="col-lg-6">
-                {!! Form::label ('comple','Filtros de búsqueda') !!}<br>
+                {!! Form::label ('comple','Filtros de búsqueda:') !!}<br>
             {!! Form::select ('comple', $tiposFiltros, '',['class' => '', 'id' => 'filtrosAvanzados','multiple' => 'multiple'] )!!}
             <br><br>
             </div> 
             <hr>
           <div id="catUbicacion" style="display:none">
          <div class="row">
-                &nbsp;&nbsp;<b>Ubicación de la desaparición</b>                       
+                &nbsp;&nbsp;<h5>Ubicación de la desaparición</h5>                       
           </div> <hr>      
          <div class="row" id="idUbicación">
              <div class="col-lg-4">
@@ -183,18 +183,18 @@
              </div>
              <div class="col-lg-4">
                 {!! Form::label ('idEstados','Estados:') !!} 
-                {!! Form::select('idEstados',$estados, '', ['class' => '', 'id' => 'estados','multiple' => 'multiple'] ) !!}
+                {!! Form::select('idEstados',$estados, '', ['class' => '', 'id' => 'idEstado','multiple' => 'multiple'] ) !!}
              </div>
             <div class="col-lg-4">
                 {!! Form::label ('idEstados','Municipios:') !!} 
-                {!! Form::select('idEstados',$municipios, '', ['class' => '', 'id' => 'municipios','multiple' => 'multiple'] ) !!}
+                {!! Form::select('idEstados',$municipios, '', ['class' => '', 'id' => 'idMunicipio','multiple' => 'multiple'] ) !!}
             </div>
           </div>
           </div>
          
          <div id="CatDescripcionFis" style="display:none">
          <br><div class="row">
-                &nbsp;&nbsp;<b>Descripción física </b>                       
+                &nbsp;&nbsp;<h5>Descripción física </h5>                       
           </div> <hr>
           <DIV id="idDesFisica">       
           <div class="row" >
@@ -271,8 +271,8 @@
       </div>        
           
           <div id="catCabello" style="display:none"> 
-              <div class="row">
-                    &nbsp;&nbsp; <b>Características del cabello</b>                        
+              <br><div class="row">
+                    &nbsp;&nbsp; <h5>Características del cabello</h5>                        
               </div> <hr>      
              <div class="row" id="idCabello">
                  <div class="col-lg-4">
@@ -292,7 +292,7 @@
           
           <div id="catBarbaBigotePatilla" style="display:none"> 
               <br><div class="row">
-                    &nbsp;&nbsp; <b>Características del vello facial</b>                        
+                    &nbsp;&nbsp; <h5>Características del vello facial</h5>                        
               </div> <hr>      
              <div class="row">
                  <div class="col-lg-4">
@@ -326,7 +326,7 @@
                      
           <div id="catLabiosOjos" style="display:none"> 
               <br><div class="row">
-                    &nbsp;&nbsp; <b>Características de ojos y labios</b>                        
+                    &nbsp;&nbsp; <h5>Características de ojos y labios</h5>                        
               </div>  <hr>  
              <div class="row" id="idOjos"> 
                  <div class="col-lg-4">
@@ -346,7 +346,7 @@
           
           <div id="catModiParti" style="display:none"> 
               <br><div class="row">
-                    &nbsp;&nbsp; <b>Modificaciones y particularidades del cuerpo</b>                        
+                    &nbsp;&nbsp; <h5>Modificaciones y particularidades del cuerpo</h5>                        
               </div>  <hr>  
              <div class="row" id=""> 
                  <div class="col-lg-6">
@@ -362,6 +362,7 @@
           
                   
                 <br>
+                <!--<imput type="button" class="btn btn-dark pull-right" id="try">prueba</imput>-->
            <imput type="button" class="btn btn-dark pull-right" id="filtros">Buscar</imput>
            <br><br>
            <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>           
@@ -419,25 +420,24 @@
                         <th data-field="velloFacial" 
                         data-sortable="true" data-filter-control="input" data-visible="false"></th>
                         <th data-field="ojos" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        data-sortable="true" data-filter-control="input"  data-visible="false" ></th>
                         <th data-field="labios" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>                   
-                        <th data-field="Estado" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>         <th data-field="Estado" 
+                        data-sortable="true" data-filter-control="input" data-visible="false" ></th>
                         <th data-field="Municipio" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>
                         <th data-field="Nacionalidad" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>
                         <th data-field="FechaR" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>
                         <th data-field="Hechos" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>
                         <th data-field="Modificaciones" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>
                         <th data-field="particularidades" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>
                         <th data-field="Observaciones" 
-                        data-sortable="true" data-filter-control="input" data-visible="false"></th>
+                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>
                <th data-field="Acciones"> </th>
                 </tr>
             </thead>
@@ -455,13 +455,15 @@
 
 @endsection
 
-@section('scripts') 
+@section('scripts')
+{!! HTML::script('personal/js/datosgral.js') !!}
 {!! HTML::script('personal/js/multiple-select.js') !!}
 {!! HTML::script('personal/js/bootstrap-table-multiple-search.js') !!}
 {!! HTML::script('personal/js/bootstrap-table-toolbar.js') !!}
 {!! HTML::script('personal/js/bootstrap-table-export.js') !!}
 {!! HTML::script('personal/js/tableExport.js') !!}
 {!! HTML::script('personal/js/jspdf.min.js') !!}  
+{!! HTML::script('personal/js/pdfmake.min.js') !!}  
 {!! HTML::script('personal/js/jspdf.plugin.autotable.js') !!} 
 {!! HTML::script('personal/js/FileSaver.min.js') !!} 
 {!! HTML::script('personal/js/bootstrap-table-filter-control.js') !!}
@@ -496,44 +498,100 @@ $('#return-to-top').click(function() {      // When arrow is clicked
         }else{
             $('#catUbicacion').hide();$('#catUbicacion').hide();$('#CatDescripcionFis').hide();$('#catCabello').hide();$('#catBarbaBigotePatilla').hide(); $('#catLabiosOjos').hide();$('#catModiParti').hide();
         }; });
-      $('#idA1').change(function()
+      $('#A1').change(function()
       {if ($(this).is(':checked')) {
             $('#catUbicacion').show();
           
         }else{
             $('#catUbicacion').hide()
         }; });  
-     $('#idA2').change(function()
+     $('#A2').change(function()
       {if ($(this).is(':checked')) {
             $('#CatDescripcionFis').show();
         }else{
             $('#CatDescripcionFis').hide()
         }; }); 
-     $('#idA3').change(function()
+     $('#A3').change(function()
       {if ($(this).is(':checked')) {
             $('#catCabello').show();
         }else{
             $('#catCabello').hide()
         }; });  
-     $('#idA4').change(function()
+     $('#A4').change(function()
       {if ($(this).is(':checked')) {
             $('#catBarbaBigotePatilla').show();
         }else{
             $('#catBarbaBigotePatilla').hide()
         }; });  
-     $('#idA5').change(function()
+     $('#A5').change(function()
       {if ($(this).is(':checked')) {
             $('#catLabiosOjos').show();
         }else{
             $('#catLabiosOjos').hide()
         }; }); 
-     $('#idA6').change(function()
+     $('#A6').change(function()
       {if ($(this).is(':checked')) {
             $('#catModiParti').show();
         }else{
             $('#catModiParti').hide()
         }; });  }); 
      //$("#campoUbicacion").hide();
+    
+     //******VALIDACIONES DE LAS FECHAS******
+    $('#fechaDesaparicion1').change(function(){  
+    from = $("#fechaDesaparicion1").val().split("/");
+    fechaDesaparicion1 = from[2] + "-" + from[1] + "-" + from[0];
+    fechaInicioDesaparicion = Date.parse(fechaDesaparicion1);
+     
+    fechaActual= new Date();
+     
+     if (fechaInicioDesaparicion > fechaActual)
+     {
+       $("#fechaDesaparicion1").val("");
+     }
+   });
+
+    $('#fechaDesaparicion2').change(function(){  
+    from = $("#fechaDesaparicion1").val().split("/");
+    fechaDesaparicion1 = from[2] + "-" + from[1] + "-" + from[0];
+    fechaInicioDesaparicion = Date.parse(fechaDesaparicion1);
+    from2 = $("#fechaDesaparicion2").val().split("/");
+    fechaDesaparicion2 = from2[2] + "-" + from2[1] + "-" + from2[0];
+    fechaFinDesaparicion = Date.parse(fechaDesaparicion2);
+     
+    fechaActual= new Date();
+     
+    if (fechaFinDesaparicion > fechaActual || fechaFinDesaparicion < fechaInicioDesaparicion)
+      $("#fechaDesaparicion2").val("");
+   });
+/////
+    $('#fechaReporte1').change(function(){  
+    from = $("#fechaReporte1").val().split("/");
+    fechaReporte1 = from[2] + "-" + from[1] + "-" + from[0];
+    fechaInicioReporte = Date.parse(fechaReporte1);
+     
+    fechaActual= new Date();
+     
+     if (fechaInicioReporte > fechaActual)
+     {
+       $("#fechaReporte1").val("");
+     }
+   });
+
+    $('#fechaReporte2').change(function(){  
+    from = $("#fechaReporte1").val().split("/");
+    fechaReporte1 = from[2] + "-" + from[1] + "-" + from[0];
+    fechaInicioReporte = Date.parse(fechaReporte1);
+    from2 = $("#fechaReporte2").val().split("/");
+    fechaReporte2 = from2[2] + "-" + from2[1] + "-" + from2[0];
+    fechaFinReporte = Date.parse(fechaReporte2);
+     
+    fechaActual= new Date();
+     
+    if (fechaFinReporte > fechaActual || fechaFinReporte < fechaInicioReporte)
+      $("#fechaReporte2").val("");
+   });
+  //*****************************
     //-<<--<--<<--<<--<<-MULTISELECTS-<<--<--<<--<<--<<-<<--<--<<--<<--<<
       
     $('#filtrosAvanzados').multipleSelect({
@@ -553,12 +611,12 @@ $('#return-to-top').click(function() {      // When arrow is clicked
             width: '100%'
            
         });
-    $('#estados').multipleSelect({
+    $('#idEstado').multipleSelect({
             filter: true,
             width: '100%'
            
         });
-    $('#municipios').multipleSelect({
+    $('#idMunicipio').multipleSelect({
             filter: true,
             width: '100%'
         });
@@ -721,7 +779,7 @@ alert('Selected texts: ' + $('#estados').multipleSelect('getSelects', 'text'));
           var routeIndex = '{!! route('consultas.index') !!}';
           var routeReporteador = '{!! route('reporteador.index') !!}';
     
-    var formatCheckInformante = function(value, row, index){
+    var formatCheckGenero = function(value, row, index){
       texto = '';
       if (row.sexo =='H') {
         texto = 'MASCULINO'
@@ -834,16 +892,16 @@ var formatTableActions = function(value, row, index) {
     }
      filtrosTodos.click(function(){
           tablaGen.hide();
-          var estados = $('#estados').multipleSelect('getSelects');
-          console.log("El string:")
-        console.log(estados)
-        var array = JSON.parse("[" + estados + "]");
-         // estados.toString();
-          //estados.replace(/['"]+/g, '');
-          console.log("El arreglo:")
-          console.log(array)
-          
-          console.log('ids de estados:'+' ' + estados);
+//          var estados = $('#estados').multipleSelect('getSelects');
+//          console.log("El string:")
+//        console.log(estados)
+//        var array = JSON.parse("[" + estados + "]");
+//         // estados.toString();
+//          //estados.replace(/['"]+/g, '');
+//          console.log("El arreglo:")
+//          console.log(array)
+//          
+//          console.log('ids de estados:'+' ' + estados);
          // var quote_str =  "'" + str + "'";
           var rg = $('#rng1').val();
           var rg2 = $('#rng2').val();
@@ -862,7 +920,7 @@ var formatTableActions = function(value, row, index) {
     });
   
           var dataString = {
-          estados: $('#estados').multipleSelect('getSelects'),
+          estados: $('#idEstado').multipleSelect('getSelects'),
                 fem : $("input#fem:checked").val(),     
                 masc : $("input#masc:checked").val(),
                 rg : $('#rng1').val(),
@@ -892,7 +950,7 @@ var formatTableActions = function(value, row, index) {
         title: 'Nombre',
         }, {          
         title: 'Género',
-                formatter: formatCheckInformante
+                formatter: formatCheckGenero
       }, {          
         field: 'edad',
         title: 'Edad de extravío',
@@ -919,19 +977,22 @@ var formatTableActions = function(value, row, index) {
         });
      //-o-|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-
     filtros.click(function(){
+        
+        
+        
 
-            from = $("#fechaDesaparicion1").val().split("/");
+        /*    from = $("#fechaDesaparicion1").val().split("/");
             fechaDesaparicion1 = from[2] + "-" + from[1] + "-" + from[0];
             fechaInicio = Date.parse(fechaDesaparicion1);
             from2 = $("#fechaDesaparicion2").val().split("/");
             fechaDesaparicion2 = from2[2] + "-" + from2[1] + "-" + from2[0];
             fechaFin = Date.parse(fechaDesaparicion2);
             console.log("FECHA");                           
-    console.log(fechaInicio);
+    console.log(fechaInicio);*/
 
           tablaGenTodos.hide();
-          var estados = $('#estados').multipleSelect('getSelects');
-          var municipios = $('#municipios').multipleSelect('getSelects');
+          var estados = $('#idEstado').multipleSelect('getSelects');
+          var municipios = $('#idMunicipio').multipleSelect('getSelects');
           console.log("El string:")
         console.log(estados)
         var arrayEst = JSON.parse("[" + estados + "]");
@@ -981,8 +1042,9 @@ var formatTableActions = function(value, row, index) {
 //                } } } 
 
           var dataString = {
-          estados: $('#estados').multipleSelect('getSelects'),
-                municipios: $('#municipios').multipleSelect('getSelects'),
+                nacionalidad: $('#nacionalidades').multipleSelect('getSelects'),              
+                estados: $('#idEstado').multipleSelect('getSelects'),
+                municipios: $('#idMunicipio').multipleSelect('getSelects'),
                 cPiel: $('#cPiel').multipleSelect('getSelects'),
                 complexion: $('#complexion').multipleSelect('getSelects'),
                 tipoCabello: $('#tipoCabello').multipleSelect('getSelects'),
@@ -1057,7 +1119,7 @@ var formatTableActions = function(value, row, index) {
                     title: 'Fecha de desaparición',
             },{         
                     title: 'Género',
-                formatter: formatCheckInformante,
+                formatter: formatCheckGenero,
             },{         
                     field: 'apodo',
                     title: 'Apodo',
@@ -1127,6 +1189,38 @@ var formatTableActions = function(value, row, index) {
         fechar1 =$('#fechaReporte1');
 
         tablaGen.show();
+         $("#idLiExport").remove();
+         $("#ulExport").append("<li id='idLiExport' data-type='Pdf'><a href='javascript:void(0)' id = 'exportPdf'>Pdf</a></li>");
+
+        var try2 = $('#exportPdf');
+        console.log('hiiiiiiiiiiiiiiiiii');
+       
+         try2.click(function(){
+        var doc = new jsPDF('l', 'pt');
+    var res = doc.autoTableHtmlToJson(document.getElementById('tableDependencias'));
+   doc.autoTable(res.columns, res.data, {
+        theme: 'striped', 
+        styles: {
+            cellPadding: 1.5,
+            overflow: 'linebreak',
+            valign: 'middle',
+            halign: 'center',
+            lineColor: [0, 0, 0],
+            lineWidth: 0.2 
+        },
+       grid: {
+            table: { fillColor: 255, textColor: 80, fontStyle: 'normal', lineWidth: 0.1 },
+            header: { textColor: 255, fillColor: [26, 188, 156], fontStyle: 'bold', lineWidth: 0 },
+            body: {},
+            alternateRow: {}
+        }
+       
+    });
+    doc.save('table.pdf');
+        });
+        
+        
+        
 //{
 //     table.bootstrapTable('hideColumn', 'nombres');
 //
@@ -1146,6 +1240,8 @@ var formatTableActions = function(value, row, index) {
 //          });
 //  }); } } }
 });
+    
+   
     //<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<->.<-
 </script>
 @endsection

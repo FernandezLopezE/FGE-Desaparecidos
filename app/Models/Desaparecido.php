@@ -38,6 +38,7 @@ class Desaparecido extends Model
 		'idCedula',
 		'estatura',
 		'peso',
+		'fotoDesaparecido',
 		'idComplexion',
 		'idColorPiel',
 	];

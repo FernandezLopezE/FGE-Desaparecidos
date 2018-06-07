@@ -37,7 +37,7 @@ class DescripcionFisicaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(DescripcionFisicaRequest $request)
-    {
+    {        
         //
     //try {
         $desaparecido = Desaparecido::find($request['idExtraviado']);
@@ -74,18 +74,20 @@ class DescripcionFisicaController extends Controller
                         ->leftJoin('cat_colores_cuerpo AS co', 'ce.idColoresCuerpo', '=', 'co.id')
                         ->where('idPersonaDesaparecida', $idDesaparecido)
                         ->select('ce.id as idParteCuerpo','pa.id as idPadre', 'pa.nombre as partep', 'cu.nombre as parteh',
-                        'ta.nombre as tamano', 'ti.nombre as tipo', 'co.nombre as color', 'ce.posicion', 'ce.observaciones')
+                        'ta.nombre as tamano', 'ti.nombre as tipo', 'co.nombre as color', 'ce.posicion', 'ce.observaciones', 'ce.imagen')
                         ->get();
         
         $dataPartes = array();
         $partePadre = null;
          foreach ($partesSeleccionadas as $parte) {
             $modificaciones = $this->get_modificaciones($parte->idParteCuerpo);
+            $modifi = array();
             foreach ($modificaciones as $value) {               
                 $modifi[] = $value->nombre;
             }
 
             $particularidades = $this->get_particularidades($parte->idParteCuerpo);
+            $parti = array();
             foreach ($particularidades as $value) {               
                 $parti[] = $value->nombre;
             }
@@ -100,7 +102,7 @@ class DescripcionFisicaController extends Controller
             }
             $dataPartes[$parte->partep]['hijos'][] = $parte;
         }
-    
+       
         $complexiones = \App\Models\CatComplexion::all()->pluck('nombre','id');
         $coloresPiel = \App\Models\CatColorPiel::all()->pluck('nombre','id');
 

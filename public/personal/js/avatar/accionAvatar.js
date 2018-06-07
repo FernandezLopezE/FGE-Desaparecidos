@@ -123,8 +123,8 @@ $(document).ready(function(){
                     html = html+'</div>';
                 }
                 html = html+'<div class="form-group">';
-                html = html+'<label for="observaciones">Seleccione archivo:</label>';
-                html = html+'<input type="file" class="form-control-file" id="exampleFormControlFile1">';
+                html = html+'<label for="archivo">Seleccione archivo:</label>';
+                html = html+'<input type="file" class="form-control-file" id="archivo">';
                 html = html+'</div>';
                 html = html+'<div class="form-group">';
                 html = html+'<label for="observaciones">Observaciones:</label>';
@@ -145,39 +145,44 @@ $(document).ready(function(){
 
     $('#formulario').on('click', '#btnGuardar', function(){
 			
-        var dataString = {
-            idPosicion : ($("#idPosicion").val() === undefined) ? null : $("#idPosicion").val(),
-            idTipo : ($("#idTipo").val() === undefined) ? null : $("#idTipo").val(),
-            idColor : ($("#idColor").val() === undefined) ? null : $("#idColor").val(),
-            idTamano : ($("#idTamano").val() === undefined) ? null : $("#idTamano").val(),
-            idParticularidad : ($("#idParticularidad").val() === undefined) ? null : $("#idParticularidad").val(),
-            idModificacion : ($("#idModificacion").val() === undefined) ? null : $("#idModificacion").val(),
-            observaciones : ($("#observaciones").val() === undefined) ? null : $("#observaciones").val(),
-            otroidParticularidad : ($("#otroidParticularidad").val() === undefined) ? null : $("#otroidParticularidad").val(),
-            otroidModificacion : ($("#otroidModificacion").val() === undefined) ? null : $("#otroidModificacion").val(),
-            otrotipo : ($("#otrotipo").val() === undefined) ? null : $("#otrotipo").val(),
-            otrocolor : ($("#otrocolor").val() === undefined) ? null : $("#otrocolor").val(),
-            idParteCuerpo : ($("#idParteCuerpo").val() === undefined) ? null : $("#idParteCuerpo").val(),
-            idDesaparecido : idDesaparecido
-        };
-        console.log(dataString);
+        var fileToUpload = $('#archivo')[0].files[0];
+        if (fileToUpload == 'undefined') { fileToUpload = null }
+
+        var formData = new FormData();
+        formData.append("archivo",fileToUpload);
+        formData.append('idPosicion', ($("#idPosicion").val() === undefined) ? 'NO APLICA' : $("#idPosicion").val());
+        formData.append('idTipo', ($("#idTipo").val() === undefined) ? null : $("#idTipo").val());
+        formData.append('idColor', ($("#idColor").val() === undefined) ? null : $("#idColor").val());
+        formData.append('idTamano', ($("#idTamano").val() === undefined) ? null : $("#idTamano").val());
+        formData.append('idParticularidad', ($("#idParticularidad").val() === undefined) ? null : $("#idParticularidad").val());
+        formData.append('idModificacion', ($("#idModificacion").val() === undefined) ? null : $("#idModificacion").val());
+        formData.append('observaciones', ($("#observaciones").val() === undefined) ? null : $("#observaciones").val());
+        formData.append('otroidParticularidad', ($("#otroidParticularidad").val() === undefined) ? null : $("#otroidParticularidad").val());
+        formData.append('otroidModificacion', ($("#otroidModificacion").val() === undefined) ? null : $("#otroidModificacion").val());
+        formData.append('otrotipo', ($("#otrotipo").val() === undefined) ? null : $("#otrotipo").val());
+        formData.append('otrocolor', ($("#otrocolor").val() === undefined) ? null : $("#otrocolor").val());
+        formData.append('idParteCuerpo', ($("#idParteCuerpo").val() === undefined) ? null : $("#idParteCuerpo").val());
+        formData.append('idDesaparecido', idDesaparecido);
+        console.log(formData);
 
         $.ajax({
             type: 'POST',
-            url: routeSenas,
-            data: dataString,
+            url: routeSenas,				
+            data: formData,
             dataType: 'json',
-            success: function(data) {
+            processData: false,
+            contentType: false,
+            success: function(data) {						
                 location.reload();
-                /*console.log('El dato es:'+data);
-                modalFamiliar.modal('hide');
-                table.bootstrapTable('refresh');*/
+                /*table.bootstrapTable('refresh');
+                $("#modalVestimenta").modal("hide");*/
             },
             error: function(data) {
+                console.log(data);
                 /*var errors = data.responseJSON;	
                 $('.modal-body div.has-danger').removeClass('has-danger');
                 $('.form-control-feedback').empty();
-                $.each(errors.errors, function(key, value){			
+                $.each(errors.errors, function(key, value){					
                     $('#div_'+key).addClass('has-danger');
                     $('input#'+key).addClass('form-control-danger');
                     $('#error_'+key).append(value);						
