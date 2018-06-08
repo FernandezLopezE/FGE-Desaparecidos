@@ -120,7 +120,7 @@
 	            <div class="col">
 	                <!--{!! Form::checkbox('BLANQUEAMIENTO DENTAL', '3') !!}-->
 	                <input class="form-check-input" name="trata[]" style="margin-top: 6px" type="checkbox" id="BLANQUEAMIENTO_DENTAL" value="BLANQUEAMIENTO_DENTAL">
-	                <a  rel="popover" data-img="{{ URL::to('/images/Dientes/amalgama.jpg')}}"><B>BLANQUEAMIENTO DENTAL</B></a>
+	                <a  rel="popover" data-img="{{ URL::to('/images/Dientes/blanqueamiento_dental.jpg')}}"><B>BLANQUEAMIENTO DENTAL</B></a>
 	                <!--{!! Form::label ('BLANQUEAMIENTO DENTAL','BLANQUEAMIENTO DENTAL') !!}-->
 	            </div>
 	            <div class="col">
@@ -160,7 +160,7 @@
                     <!--{!! Form::checkbox('PROTESIS FIJA', '10') !!}-->
                     <!--{!! Form::label ('PROTESIS FIJA','PROTESIS FIJA') !!}-->
                     <input class="form-check-input" name="trata[]" type="checkbox" id="PROTESIS_FIJA" value="PROTESIS_FIJA">
-                    <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/implante.jpg') }}"><b>PROTESIS FIJA</b></a>
+                    <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/protesis_fija.jpg') }}"><b>PROTESIS FIJA</b></a>
                 </div>
                 <div class="col">
                     <!--{!! Form::checkbox('PROTESIS REMOVIBLE', '11') !!}-->
@@ -191,7 +191,7 @@
                 <!--{!! Form::checkbox('SELLADOR FS', '15') !!}-->
                 <!--{!! Form::label ('SELLADOR FS','SELLADOR FS') !!}-->
                 <input class="form-check-input" name="trata[]" type="checkbox" id="SELLADOR" value="SELLADOR">
-                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>SELLADOR FS</b></a>
+                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/sellador_fs.jpg') }}"><b>SELLADOR FS</b></a>
             </div>
             <div class="col">
                 <!--{!! Form::checkbox('OTRO', '16') !!}-->

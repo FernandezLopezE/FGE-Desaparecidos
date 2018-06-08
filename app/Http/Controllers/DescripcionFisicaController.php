@@ -69,7 +69,7 @@ class DescripcionFisicaController extends Controller
         $partesSeleccionadas = \DB::table('cedula_partes_cuerpo AS ce')
                         ->leftJoin('cat_partes_cuerpo AS cu', 'ce.idPartesCuerpo', '=', 'cu.id')
                         ->leftJoin('cat_partes_cuerpo AS pa', 'cu.partePadre', '=', 'pa.id')
-                        ->leftJoin('cat_tamano_cuerpo AS ta', 'ce.idPartesCuerpo', '=', 'ta.id')
+                        ->leftJoin('cat_tamano_cuerpo AS ta', 'ce.idTamanoCuerpo', '=', 'ta.id')
                         ->leftJoin('cat_tipos_cuerpo AS ti', 'ce.idTipoCuerpo', '=', 'ti.id')
                         ->leftJoin('cat_colores_cuerpo AS co', 'ce.idColoresCuerpo', '=', 'co.id')
                         ->where('idPersonaDesaparecida', $idDesaparecido)
@@ -115,7 +115,7 @@ class DescripcionFisicaController extends Controller
         //consulta cabello
         $cedulaPartesCuerpo = CedulaPartesCuerpo::where('idPersonaDesaparecida',$idDesaparecido)->get();
         $showCabello = false;
-    
+        
         return view('descripcionfisica.form_descripcion_fisica',
             [
                 'desaparecido' => $desaparecido,
