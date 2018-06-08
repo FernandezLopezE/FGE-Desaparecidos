@@ -62,7 +62,7 @@ $(document).ready(function(){
                 reglas = $.parseJSON(data.parte.reglas);
                 html="<input type='hidden' id='idParteCuerpo' value='"+idParteCuerpo+"' \>";
                 if(parseInt(reglas.posicion)){
-                html = html+'<div class="form-group border border-danger" id="div_idPosicion">';
+                html = html+'<div class="form-group" id="div_idPosicion">';
                 html = html+'<label for="idPosicion">Posición:</label>';
                 html = html+'<select type="select" class="form-control" id="idPosicion">';
                 html = html+'<option value="NO APLICA">NO APLICA</option>';
@@ -146,6 +146,10 @@ $(document).ready(function(){
 
     $('#formulario').on('click', '#btnCancelar', function(){
         location.reload();
+    })
+
+    $('#formulario').on('click', '#btnEditar', function(){
+        console.log('Preparando para editar');
     })
 
     $('#formulario').on('click', '#btnGuardar', function(){

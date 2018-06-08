@@ -85,7 +85,7 @@
                                             <div class="row">
                                                 <div class="col-md-8">
                                                     <div class="card-block">
-                                                            <code class="card-title">{!! $value->parteh !!}</code>
+                                                            <code class="card-title">{!! $value->parteh !!}</code>                                                            
                                                             <p><strong>Tamaño: </strong>{!! $value->tamano !!}</p>
                                                             <p><strong>Color: </strong>{!! $value->color !!}</p>
                                                             <p><strong>Posición: </strong>{!! $value->posicion !!}</p>
@@ -101,13 +101,16 @@
                                                             <br>
                                                             <label for="">Observaciones:</label>
                                                             {!! $value->observaciones !!}
+                                                            <br>
+                                                            {{--<button class="btn btn-dark" id="btnEditar">Editar</button>--}}
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
                                                         <div class="card-block">
                                                             <img class="card-img-left" style="width: 100%;" src="{{asset($value->imagen)}}" alt="Card image cap"/>
                                                         </div>
-                                                </div>    
+                                                </div>
+                                                    
                                             </div>                                                                                                
 
                                         </div>
