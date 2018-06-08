@@ -82,11 +82,11 @@ height:150px;
       </a>   
     </h5>
   </div>
-  
+  FOTO:{!! $desaparecido->fotoDesaparecido !!}
   <div class="card-body">
     <div class="form-group row">
       <div class="col-4" style="width: 18rem; margin: 0 auto;">
-        @if($desaparecido->fotoDesaparecido == null)
+        @if(empty($desaparecido->fotoDesaparecido))
         <center>{{ HTML::image('images/perfil3.png', 'Fiscal', array('class' => '','style' => "width: 80%;")) }}</center>
           @else
             <center>{{ HTML::image(asset($desaparecido->fotoDesaparecido), 'Fiscal', array('class' => '', 'style' => "width: 80%;")) }}</center>
@@ -98,6 +98,7 @@ height:150px;
           <div class="form-control-feedback" id="error_archivo"></div>
         </div>  
       </div>
+      
 
       <div class="col">
         <div class="row">
@@ -433,6 +434,7 @@ height:150px;
 
   var routeDesaparecido = '{!! route('extraviado.index') !!}';
   var idDesaparecido = '{{ $desaparecido->id }}';
+  var idCedula = '{{ $desaparecido->idCedula }}';
   //var btnPrendaGuardar = $('#btnGuardarPrenda');
   $("#archivo").change(function(){
     //alert("cambio");
@@ -467,8 +469,8 @@ height:150px;
         });*/
       }
     });
-
-    location.reload();
+    window.location.replace(routeDesaparecido+'/'+idCedula);
+    //location.reload();
 
   });
 
