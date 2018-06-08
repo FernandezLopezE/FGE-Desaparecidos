@@ -466,10 +466,9 @@
 {!! HTML::script('personal/js/FileSaver.min.js') !!} 
 {!! HTML::script('personal/js/bootstrap-table-filter-control.js') !!}
 <script type="text/javascript">
- 
+  var variable= 0;
     $('#idEstadoC').on('change', function(){
         console.log($(this).val());
-
         var idMunicipio = $(this).val();
         if(idMunicipio) {
             $.ajax({
@@ -485,6 +484,8 @@
                        $("#idMunicipioC").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                         
                     });  
+                    variable=1;
+                    console.log(variable);
                         $('#idMunicipioC').multipleSelect({
                             filter: true,
                             width: '100%'
@@ -998,19 +999,12 @@ var formatTableActions = function(value, row, index) {
         });
      //-o-|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-
     filtros.click(function(){
-        
-        
-        
-
-        /*    from = $("#fechaDesaparicion1").val().split("/");
-            fechaDesaparicion1 = from[2] + "-" + from[1] + "-" + from[0];
-            fechaInicio = Date.parse(fechaDesaparicion1);
-            from2 = $("#fechaDesaparicion2").val().split("/");
-            fechaDesaparicion2 = from2[2] + "-" + from2[1] + "-" + from2[0];
-            fechaFin = Date.parse(fechaDesaparicion2);
-            console.log("FECHA");                           
-    console.log(fechaInicio);*/
-
+        var municipiosData='';
+    if(variable==0){
+        municipiosData='';
+    }else if(variable==1){
+        municipiosData= $('#idMunicipioC').multipleSelect('getSelects');
+    }
           tablaGenTodos.hide();
           var estados = $('#idEstado').multipleSelect('getSelects');
           var municipios = $('#idMunicipio').multipleSelect('getSelects');
@@ -1065,7 +1059,7 @@ var formatTableActions = function(value, row, index) {
           var dataString = {
                 nacionalidad: $('#nacionalidades').multipleSelect('getSelects'),              
                 estados: $('#idEstadoC').multipleSelect('getSelects'),
-                municipios: $('#idMunicipioC').multipleSelect('getSelects'),
+                municipios: municipiosData,
                 cPiel: $('#cPiel').multipleSelect('getSelects'),
                 complexion: $('#complexion').multipleSelect('getSelects'),
                 tipoCabello: $('#tipoCabello').multipleSelect('getSelects'),
@@ -1211,7 +1205,7 @@ var formatTableActions = function(value, row, index) {
 
         tablaGen.show();
          $("#idLiExport").remove();
-         $("#ulExport").append("<li id='idLiExport' data-type='Pdf'><a href='javascript:void(0)' id = 'exportPdf'>Pdf</a></li>");
+         $("#ulExport").append("<li id='idLiExport' data-type='Pdf'><a href='javascript:void(0)' id = 'exportPdf'>PDF</a></li>");
 
         var try2 = $('#exportPdf');
         console.log('hiiiiiiiiiiiiiiiiii');
@@ -1225,7 +1219,7 @@ var formatTableActions = function(value, row, index) {
             cellPadding: 1.5,
             overflow: 'linebreak',
             valign: 'middle',
-            halign: 'center',
+            halign: 'left',
             lineColor: [0, 0, 0],
             lineWidth: 0.2 
         },
@@ -1237,7 +1231,7 @@ var formatTableActions = function(value, row, index) {
         }
        
     });
-    doc.save('table.pdf');
+    doc.save('no_localizados.pdf');
         });
         
         
