@@ -82,22 +82,23 @@ height:150px;
       </a>   
     </h5>
   </div>
-  
+  FOTO:{!! $desaparecido->fotoDesaparecido !!}
   <div class="card-body">
     <div class="form-group row">
       <div class="col-4" style="width: 18rem; margin: 0 auto;">
-        @if($desaparecido->fotoDesaparecido == null)
-        <center>{{ HTML::image('images/perfil3.png', 'Fiscal', array('class' => '','width' => '200', 'height' => '260')) }}</center>
+        @if(empty($desaparecido->fotoDesaparecido))
+        <center>{{ HTML::image('images/perfil3.png', 'Fiscal', array('class' => '','style' => "width: 80%;")) }}</center>
           @else
-            <center>{{ HTML::image(asset($desaparecido->fotoDesaparecido), 'Fiscal', array('class' => '','width' => '200', 'height' => '260')) }}</center>
+            <center>{{ HTML::image(asset($desaparecido->fotoDesaparecido), 'Fiscal', array('class' => '', 'style' => "width: 80%;")) }}</center>
         @endif
         <div class="form-group col-md" id="div_archivo">
           <!--{!! Form::label ('archivo','Foto:',['class' => 'form-control-label']) !!}-->
           {!! Form::file('archivo', ['class' => 'form-control', 'style' => 'display:none']) !!}
-          <center><i class="fa fa-camera"" id="camara" style="font-size:40px; margin-top: 4px;" data-toggle="tooltip" title="Subir foto" data-placement="right"></i></center>
+          <center><i class="fa fa-camera" id="camara" style="font-size:40px; margin-top: 4px;" data-toggle="tooltip" title="Subir foto" data-placement="right"></i></center>
           <div class="form-control-feedback" id="error_archivo"></div>
         </div>  
       </div>
+      
 
       <div class="col">
         <div class="row">
@@ -433,6 +434,7 @@ height:150px;
 
   var routeDesaparecido = '{!! route('extraviado.index') !!}';
   var idDesaparecido = '{{ $desaparecido->id }}';
+  var idCedula = '{{ $desaparecido->idCedula }}';
   //var btnPrendaGuardar = $('#btnGuardarPrenda');
   $("#archivo").change(function(){
     //alert("cambio");
@@ -467,8 +469,8 @@ height:150px;
         });*/
       }
     });
-
-    location.reload();
+    window.location.replace(routeDesaparecido+'/'+idCedula);
+    //location.reload();
 
   });
 

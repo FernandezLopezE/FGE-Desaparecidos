@@ -218,6 +218,7 @@ class ExtraviadoController extends Controller
 											->get();
 
 		$desaparecido = \App\Models\Desaparecido::find($datos[0]->id);
+		//dd($desaparecido);
 
 		$images = (Anexos::where('idDesaparecido', $datos[0]->id)->where('tipoAnexo', 'desaparecido')->get());
 		return view('desaparecido.show',compact('desaparecido',
@@ -377,6 +378,7 @@ class ExtraviadoController extends Controller
 			}
 
 		$desaparecido->save();
+		dd($desaparecido);
 
 	}
 }
