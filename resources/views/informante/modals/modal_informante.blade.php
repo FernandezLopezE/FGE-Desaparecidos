@@ -215,7 +215,7 @@
 			
 			<div class="row" id=""  > 
 				<div class="form-group col-md-2">
-					{!! Form::label ('tipoTelefono','Tipo de telefono:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('tipoTelefono','Tipo de teléfono:',['class' => 'form-control-label']) !!}
 					{!! Form::select ('tipoTelefono[]',
 										$tiposTelefonos,
 										'',

@@ -257,7 +257,7 @@
 	</div>
 	
 	<div class="card border-primary">
-		<div class="card-body bg-whithe">
+		<div class="card-body bg-whithe" id="formularioDientes">
 			<h5 class="card-title">Dientes perdidos de la persona desaparecida
 				<button type="button" class="btn btn-dark pull-right" id="btnDiente">Guardar</button>
 				
@@ -309,6 +309,7 @@
           </div>
         </div>        
          @include('datosdentales.modals.modal_cargar_documento')
+
  
        <div class="container page-top">
         <div class="row">
@@ -362,7 +363,7 @@
 {!! Html::script('personal/js/functions.js') !!}
 {!! Html::script('personal/js/datos_dentales/accionDientes.js') !!}
 {!! Html::script('personal/js/datos_dentales/sliders_dentales.js') !!}
-{!! Html::script('personal/js/datos_dentales/dentadura_adulto.js') !!}
+
 <script src="../plugins/bootstrap_fileinput/js/popper.min.js" type="text/javascript"></script>
 <script src="../plugins/bootstrap_fileinput/js/bootstrap.min.js" type="text/javascript"></script>
 <!-- the main fileinput plugin file -->
@@ -545,13 +546,13 @@ $(document).ready(function(){
 	$desaparecido = ('{!! $desaparecido->id!!}');
 	var modalAnexos = $('#modalAnexosDatosDentales');
 
-	$('#btnAgregarAnexo').click (function(){  
-	modalAnexos.modal('show');
-	});
+	// $('#btnAgregarAnexo').click (function(){  
+	// modalAnexos.modal('show');
+	// });
 
-	$('#cerrarModal').click (function(){
-		location.reload();
-	});
+	// $('#cerrarModal').click (function(){
+	// 	location.reload();
+	// });
 
 	var routeIndex = '{!! route('anexoscontroller.index') !!}';
 	$("#fileImagenes").fileinput({
@@ -814,7 +815,6 @@ $(document).ready(function(){
 			causaPerdida : $("input[name='perdio[]']").map(function(){return $(this).val();}).get(),
 			idDesaparecido: '{!! $desaparecido->id !!}'
 		}
-
 		$.ajax({
 			type: 'POST',
 			url:  routedientesPerdidos,
@@ -823,7 +823,7 @@ $(document).ready(function(){
 			success: function(data){
 				//$('#btnDiente').hide();
 				$('#upDiente').show();
-				$('#anexos').show();
+				//$('#anexos').show();
 				$('#cardDientes').hide();
 				$('#dientes').attr('usemap', '');
 				$('#PMSIP').prop('disabled', true);
@@ -843,6 +843,7 @@ $(document).ready(function(){
                 	text: 'Aceptar',
                 	btnClass: 'btn-dark',
                 	action: function(){
+                		location.reload();
                 			}
                 		},
             		}

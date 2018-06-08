@@ -11,7 +11,7 @@
         <div>
           {!! Form::label ('nombres','Nombre del dentista:') !!}
           {!! Form::text ('nombres',old('nombres'), ['class' => 'form-control mayuscula', 'id' => 'nombres', 'placeholder' => 'Ingrese el nombre'] )!!}
-        </div>
+        </div><br>
         <div class="form-group row">
           <div class="col">
             {!! Form::label ('primerAp','Primer apellido:') !!}
@@ -25,11 +25,11 @@
         <div >
           {!! Form::label ('empresa','Empresa  ó institución:') !!}
           {!! Form::text ('empresa',old('empresa'), ['class' => 'form-control mayuscula', 'id' => 'empresa', 'placeholder' => 'Ingrese el nombre de la empresa o institución'] )!!}
-        </div>  
-        <div >
+        </div><br>  
+        <div>
           {!! Form::label ('telefono','Teléfono de contacto:') !!}
           {!! Form::text ('telefono',old('telefono'), ['class' => 'form-control mayuscula', 'id' => 'telefono', 'placeholder' => 'Ingrese el número telefónico'] )!!}
-        </div>
+        </div><br>
         <div>
           {!! Form::label ('direccion','Dirección/referencias de la empresa ó institución:') !!}
           {!! Form::textarea ('direccion',old('direccion'), ['class' => 'form-control mayuscula', 'id' => 'direccion', 'rows' => '3', 'placeholder' => 'Ingrese la dirección'] )!!}

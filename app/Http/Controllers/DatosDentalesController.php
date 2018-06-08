@@ -49,22 +49,41 @@ class DatosDentalesController extends Controller
         $dentadura->direccion = $request['direccion'];
 
         $trata = array();
-        foreach ($request->input('tratamiento') as $index => $value) {
+        if ($request->input('tratamiento') == null) {
+            $valor = 'SIN_INFORMACION';
+            array_push($trata,$valor);
+        }else{
+            foreach ($request->input('tratamiento') as $index => $value) {
                 array_push($trata,$value);
+            }
         }
         
         $dentadura->tratamientos = json_encode($trata);
 
         $enferme = array();
-        foreach ($request->input('enfermedad') as $index => $value) {
-            array_push($enferme,$value);
+        if ($request->input('enfermedad') == null) {
+            $valor = 'SIN_INFORMACION';
+            array_push($enferme,$valor);
+        }else{
+            foreach ($request->input('enfermedad') as $index => $value) {
+                array_push($enferme,$value);
+            }
         }
+
         $dentadura->enfermedades = json_encode($enferme);
+        
         $malhabitos = array();
-        foreach ($request->input('malhabitos') as $index => $value) {
-            array_push($malhabitos,$value);
+        if ($request->input('enfermedad') == null) {
+            $valor = 'SIN_INFORMACION';
+            array_push($malhabitos,$valor);
+        }else{
+            foreach ($request->input('malhabitos') as $index => $value) {
+                array_push($malhabitos,$value);
+            }
         }
+        
         $dentadura->arraymaloshabitos = json_encode($malhabitos);
+        
         $dentadura->describeHabito = $request['especifiqhabito'];
         $dentadura->idTipoPerfil = $request['valorPerfil'];
         $dentadura->idTipoMordida = $request['valormordida'];
@@ -97,24 +116,32 @@ class DatosDentalesController extends Controller
         if (count($dentadura)) {
             //echo $dentadura;
             $tamaDiente = $dentadura[0]->idTamanoDiente;
-            $tamanoDiente = \DB::table('cat_tamano_diente')
-                        ->select('nombreTamano')
-                        ->where('cat_tamano_diente.id',$tamaDiente)
-                        ->get();
-
-             $datosDentalesArreglo =  (object) array (
-                'tamanoDiente' => $tamanoDiente,
-            );
+            // $tamanoDiente = \DB::table('cat_tamano_diente')
+            //             ->select('nombreTamano')
+            //             ->where('cat_tamano_diente.id',$tamaDiente)
+            //             ->get();
             
              $denta = \App\Models\Dentadura::find($dentadura[0]->id);
 
+             $dentavalor = $dentadura[0]->id;
+             $edad = explode(" ",$desaparecido->edadExtravio);
+
+             $dientesPerdidos = \DB::table('pivot_diente_perdido as pdp')
+                        ->join('cat_dientes as cd', 'pdp.idDiente', '=', 'cd.id')
+                        ->select('cd.id','cd.nombreDiente','pdp.causaPerdida')
+                        ->where('pdp.idDentadura',$dentavalor)
+                        ->get();
+
+            //$dientesPerdido = json_encode($dientesPerdidos);
+
+            //dd($dientesPerdidos);
+
             // dd($denta->cattiposonrisa->nombreTipoSonrisa);
-             
-
-
             return view('datosdentales.show_datosDentales',compact([
                 'desaparecido',
-                'denta']
+                'denta',
+                'dientesPerdidos',
+                'edad']
             ));
         }else{
             $edad = explode(" ",$desaparecido->edadExtravio);
