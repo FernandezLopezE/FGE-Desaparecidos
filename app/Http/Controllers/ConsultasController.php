@@ -60,23 +60,6 @@ class ConsultasController extends Controller
 	}
     public function jsonDesaparecidosPersona(Request $request)
 	{
-		//{$cedulas = \DB::table('desaparecidos_cedula_investigacion')::all();
-//        
-//         $subs = \DB::table('desaparecidos_personas as desap')
-//
-//            ->select (\DB::raw('substr(desap.edadExtravio, 1,3)'))
-//             ->where('tipoPersona','DESAPARECIDA')
-//             ->get();
-//        dd($subs);
-//         $edad = \DB::table('desaparecidos_personas as desa')
-//
-//            ->select (\DB::raw('CAST ('$subs' AS SIGNED) '))
-//             ->where('tipoPersona','DESAPARECIDA')
-//             ->get();
-        //$estados = "uno,dos,tres,cuatro,cinco";
-        //$array = explode(",", $estados);}  
-        // dd($request->ToArray());
-        //$estados = Input::get('estados');
         $nacionalidad = $request->input('nacionalidad');
         $estados = $request->input('estados');
         $municipios = $request->input('municipios');
@@ -97,13 +80,6 @@ class ConsultasController extends Controller
         $modif = $request->input('modif');
         $partic = $request->input('partic');
         $genero = $request->input('genero');
-        
-        //$masc = $request->input('masc');
-        //$fem = $request->input('fem');
-        //$sexo = $request->input('sexo');
-        
-        //dd($tamanoCabello);
-        
         $fechaRep1 = $request->input('fechaRep1');
         $fechaRep2 = $request->input('fechaRep2');
         //-o-o-o-o-o-o-o-o-PESO-o-o-o-o-o-o-o-o-o-o-o-o
@@ -141,9 +117,7 @@ class ConsultasController extends Controller
             $rg2 = $request->input('rg2');
 
         }
-        //-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
-
-        
+        //-o-o-o-o-o-o-oFECHA DESAPARICIONo-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
         if ($request->input('fechaDes1') == '') {
             $desaparicionFecha1='1900-01-01';
         }else{
@@ -157,7 +131,7 @@ class ConsultasController extends Controller
             $desaparicionFecha2 = Carbon::createFromFormat('d/m/Y',$fechaDes2)->format('Y-m-d');
 
         }
-        //-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
+        //-o-o-o-o-o-FECHA REPORTEo-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
          if ($request->input('fechaRep1') == '') {
             $reporteFecha1='1900-01-01';
              
@@ -170,34 +144,8 @@ class ConsultasController extends Controller
         }else{
             $fechaRep2 = $request->input('fechaRep2');
             $reporteFecha2 = Carbon::createFromFormat('d/m/Y',$fechaRep2)->format('Y-m-d');
-        }
-        //{-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-o-
-//        {//dd($estados);
-//        $consulta = \DB::table('persona')
-//            ->whereIn('idEstadoOrigen', $estados)
-//             ->get();
-//        dd($consulta->toArray());}
-        
-//  {      $subQuery = \DB::table('desaparecidos_personas as dp')
-//        ->leftjoin('cedula_partes_cuerpo as cpc', 'cpc.idPersonaDesaparecida', '=', 'dp.id')    
-//         ->leftjoin('cat_tipos_cuerpo as ctc', 'cpc.idTipoCuerpo', '=', 'ctc.id' , 'and', 'ctc.idPartesCuerpo', '=', 'cpc.idPartesCuerpo')   
-//        ->select(\DB::raw('ctc.nombre as tipocab'))
-//        ->whereRaw('tipoPersona','DESAPARECIDA')
-//        ->whereRaw('ctc.idPartesCuerpo', 55)
-//        ->whereRaw('ctc.nombre', 'LACIO'); 
-        
-//        DB::table('branch_tbl')
-//->select('branch_tbl.id','branch_tbl.branchname',
-//    DB::raw("(" . $subQuery->toSql() . ") as 'total expenses'")
-//)
-            
-//            select  ctc.nombre from desaparecidos_personas as dp  
-//join (cat_tipos_cuerpo as ctc) join (cedula_partes_cuerpo as cpc) 
-//where dp.tipoPersona = 'DESAPARECIDA' and ctc.id = cpc.idTipoCuerpo and
-//dp.id = cpc.idPersonaDesaparecida and ctc.idPartesCuerpo = 56
-//}        
-        
-        
+        }    
+                
     $desaparecidos = \DB::table('desaparecidos_personas as des')                           
     ->leftjoin('persona as p', 'des.idPersona', '=', 'p.id')
     ->leftjoin('desaparecidos_cedula_investigacion AS dci', 'dci.id', '=', 'des.idCedula')
@@ -215,95 +163,80 @@ class ConsultasController extends Controller
     ->leftjoin('pivot_subparti_cuerpo as psubp','psubp.idCedulaPartesCuerpo','=','cpc.id')
     ->leftjoin('cat_particularidades_cuerpo as cparti','cparti.id','=','psubp.idParticularidades')
   
-    
-//                           { ->leftJoin('cat_nacionalidad as n', 'p.idNacionalidad', '=', 'n.id')
-                            //->where('d.tipoPersona','DESAPARECIDA')
-//            ->join('cat_estado AS ce', 'dd.idEstado', '=', 'ce.id')
-//             'ce.id as idEstado',
-//                     'ce.nombre as estado',
-                       
-                        //DB::raw('substr(id, 1, 4) as id')}
-            ->select('des.id as id', \DB::raw('CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))AS nombre'), 'p.sexo as sexo',\DB::raw('substr(dci.desaparicionFecha, 1,10) as fecha'),'des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'),'des.estatura as estatura','des.peso as peso','cc.id as idComplexion','cc.nombre as complexion','ccp.id as idCPiel','ccp.nombre as cPiel','ce.id as idEstado','ce.nombre as estado','cm.id as idMuni','cm.nombre as municipio',
-                     'cn.nombre as nacionalidad','dci.fechaVisita as fechaReporte', 'dci.desaparicionObservaciones as hechos')
-            //{->where('des.edadExtravio', 'like', "$rg%")
-                            //->where('des.edadExtravio', 'like', "$rg2%")
-                            //->whereBetween('des.edadExtravio', [$rg, $rg2])}
-        
-        
-                            
-                            ->where('tipoPersona','DESAPARECIDA')
-                            ->where('tipoDireccion','LUGAR DE AVISTAMIENTO')
-                            ->where( function ($q) use ($nacionalidad) {
-                               if ($nacionalidad == ['1']) {                                      
-                                        $q->whereIn('p.idNacionalidad', $nacionalidad);
-                                     }else if($nacionalidad == ['2']) {
-                                      $nacionalidad = '1';
-                                        $q->where('p.idNacionalidad','!=', $nacionalidad);
-                                     }
-                            })
-                            ->when($genero, function ($q) use ($genero) {
-                                return $q->whereIn('p.sexo', $genero);
-                            })
-                            //->where('p.sexo',$masc)
-                            ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
-                            ->whereBetween(\DB::raw('CAST(des.estatura AS SIGNED)'), [$estatura1, $estatura2])
-                            ->whereBetween(\DB::raw('CAST(des.peso AS SIGNED)'), [$peso1, $peso2])
-                            ->whereBetween('dci.desaparicionFecha', [$desaparicionFecha1, $desaparicionFecha2])
-                            ->whereBetween('dci.fechaVisita', [$reporteFecha1, $reporteFecha2])
-                            ->when($estados, function ($q) use ($estados) {
-                                return $q->whereIn('ce.id', $estados);
-                            })
-                            ->when($municipios, function ($q) use ($municipios) {
-                                return $q->whereIn('cm.id', $municipios);
-                            })
-                            ->when($cPiel, function ($q) use ($cPiel) {
-                                return $q->whereIn('des.idColorPiel', $cPiel);
-                            })
-                            ->when($complexion, function ($q) use ($complexion) {
-                                return $q->whereIn('des.idComplexion', $complexion);
-                            })
-                            ->when($tipoCabello, function ($q) use ($tipoCabello) {
-                                return $q->whereIn('cpc.idTipoCuerpo', $tipoCabello);
-                            })
-                            ->when($tipoBarba, function ($q) use ($tipoBarba) {
-                                return $q->whereIn('cpc.idTipoCuerpo', $tipoBarba);
-                            })
-                            ->when($tamanoCabello, function ($q) use ($tamanoCabello) {
-                                return $q->whereIn('cpc.idTamanoCuerpo', $tamanoCabello);
-                            })
-                            ->when($colorCabello, function ($q) use ($colorCabello) {
-                                return $q->whereIn('cpc.idColoresCuerpo', $colorCabello);
-                            })
-                            ->when($colorBarba, function ($q) use ($colorBarba) {
-                                return $q->whereIn('cpc.idColoresCuerpo', $colorBarba);
-                            })
-                             ->when($tamanoOjos, function ($q) use ($tamanoOjos) {
-                                return $q->whereIn('cpc.idTamanoCuerpo', $tamanoOjos);
-                            })
-                            ->when($colorOjos, function ($q) use ($colorOjos) {
-                                return $q->whereIn('cpc.idColoresCuerpo', $colorOjos);
-                            })
-                            ->when($tipoLabio, function ($q) use ($tipoLabio) {
-                                return $q->whereIn('cpc.idTipoCuerpo', $tipoLabio);
-                            })                            
-                            ->when($colorBigote, function ($q) use ($colorBigote) {
-                                return $q->whereIn('cpc.idColoresCuerpo', $colorBigote); })
-                            ->when($tipoBigote, function ($q) use ($tipoBigote) {
-                                return $q->whereIn('cpc.idTipoCuerpo', $tipoBigote); })
-                            ->when($colorPatilla, function ($q) use ($colorPatilla) {
-                                return $q->whereIn('cpc.idColoresCuerpo', $colorPatilla); })
-                            ->when($tipoPatilla, function ($q) use ($tipoPatilla) {
-                                return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
-                            ->when($tipoPatilla, function ($q) use ($tipoPatilla) {
-                                return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
-                            ->when($modif, function ($q) use ($modif) {
-                                return $q->whereIn('cat_mc.nombre', $modif); })
-                            ->when($partic, function ($q) use ($partic) {
-                                return $q->whereIn('cparti.nombre', $partic); })
 
-                            //->where('des.edadExtravio', 'like', "$rg2%")
-                            ->distinct()
-                            ->get();
+    ->select('des.id as id', \DB::raw('CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))AS nombre'), 'p.sexo as sexo',\DB::raw('substr(dci.desaparicionFecha, 1,10) as fecha'),'des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'),'des.estatura as estatura','des.peso as peso','cc.id as idComplexion','cc.nombre as complexion','ccp.id as idCPiel','ccp.nombre as cPiel','ce.id as idEstado','ce.nombre as estado','cm.id as idMuni','cm.nombre as municipio',
+                     'cn.nombre as nacionalidad','dci.fechaVisita as fechaReporte', 'dci.desaparicionObservaciones as hechos')
+
+                        ->where('tipoPersona','DESAPARECIDA')
+                        ->where('tipoDireccion','LUGAR DE AVISTAMIENTO')
+                        ->where( function ($q) use ($nacionalidad) {
+                            if ($nacionalidad == ['1']) {                                      
+                                    $q->whereIn('p.idNacionalidad', $nacionalidad);
+                            }else if($nacionalidad == ['2']) {
+                                    $nacionalidad = '1';
+                                    $q->where('p.idNacionalidad','!=', $nacionalidad);
+                            }
+                        })
+                        ->when($genero, function ($q) use ($genero) {
+                            return $q->whereIn('p.sexo', $genero);
+                        })
+                        ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
+                        ->whereBetween(\DB::raw('CAST(des.estatura AS SIGNED)'), [$estatura1, $estatura2])
+                        ->whereBetween(\DB::raw('CAST(des.peso AS SIGNED)'), [$peso1, $peso2])
+                        ->whereBetween('dci.desaparicionFecha', [$desaparicionFecha1, $desaparicionFecha2])
+                        ->whereBetween('dci.fechaVisita', [$reporteFecha1, $reporteFecha2])
+                        ->when($estados, function ($q) use ($estados) {
+                            return $q->whereIn('ce.id', $estados);
+                        })
+                        ->when($municipios, function ($q) use ($municipios) {
+                            return $q->whereIn('cm.id', $municipios);
+                        })
+                        ->when($cPiel, function ($q) use ($cPiel) {
+                            return $q->whereIn('des.idColorPiel', $cPiel);
+                        })
+                        ->when($complexion, function ($q) use ($complexion) {
+                            return $q->whereIn('des.idComplexion', $complexion);
+                        })
+                        ->when($tipoCabello, function ($q) use ($tipoCabello) {
+                            return $q->whereIn('cpc.idTipoCuerpo', $tipoCabello);
+                        })
+                        ->when($tipoBarba, function ($q) use ($tipoBarba) {
+                            return $q->whereIn('cpc.idTipoCuerpo', $tipoBarba);
+                        })
+                        ->when($tamanoCabello, function ($q) use ($tamanoCabello) {
+                            return $q->whereIn('cpc.idTamanoCuerpo', $tamanoCabello);
+                        })
+                        ->when($colorCabello, function ($q) use ($colorCabello) {
+                            return $q->whereIn('cpc.idColoresCuerpo', $colorCabello);
+                        })
+                        ->when($colorBarba, function ($q) use ($colorBarba) {
+                            return $q->whereIn('cpc.idColoresCuerpo', $colorBarba);
+                        })
+                        ->when($tamanoOjos, function ($q) use ($tamanoOjos) {
+                            return $q->whereIn('cpc.idTamanoCuerpo', $tamanoOjos);
+                        })
+                        ->when($colorOjos, function ($q) use ($colorOjos) {
+                            return $q->whereIn('cpc.idColoresCuerpo', $colorOjos);
+                        })
+                        ->when($tipoLabio, function ($q) use ($tipoLabio) {
+                            return $q->whereIn('cpc.idTipoCuerpo', $tipoLabio);
+                        })                            
+                        ->when($colorBigote, function ($q) use ($colorBigote) {
+                            return $q->whereIn('cpc.idColoresCuerpo', $colorBigote); })
+                        ->when($tipoBigote, function ($q) use ($tipoBigote) {
+                            return $q->whereIn('cpc.idTipoCuerpo', $tipoBigote); })
+                        ->when($colorPatilla, function ($q) use ($colorPatilla) {
+                            return $q->whereIn('cpc.idColoresCuerpo', $colorPatilla); })
+                        ->when($tipoPatilla, function ($q) use ($tipoPatilla) {
+                             return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
+                        ->when($tipoPatilla, function ($q) use ($tipoPatilla) {
+                            return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
+                        ->when($modif, function ($q) use ($modif) {
+                            return $q->whereIn('cat_mc.nombre', $modif); })
+                        ->when($partic, function ($q) use ($partic) {
+                            return $q->whereIn('cparti.nombre', $partic); })
+                        ->distinct()
+                        ->get();
 
         $i = 0;
         $count = count($desaparecidos);
@@ -437,7 +370,6 @@ class ConsultasController extends Controller
                   
                 }
             }
-
 
    // se agrega consulta para particularidades y modificaciones
             $caracteristicasCuerpoP = \DB::table('cedula_partes_cuerpo as cpc')
@@ -634,10 +566,6 @@ class ConsultasController extends Controller
                                 'modificaciones' =>trim($nModificaciones,', '),
                                 'particularidades' =>trim($nParticularidades,', '),
                                 'observaciones' =>trim($nObservaciones,', ')
-                                  
-                                /*'color' => $partesCuerpo->colorCuerpo,
-                                'tamano' => $partesCuerpo->tamano,
-                                'tipo' => $partesCuerpo->tipo*/                              
                                 ); 
 
                  $i++;
