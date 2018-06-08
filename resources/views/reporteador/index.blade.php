@@ -1205,7 +1205,7 @@ var formatTableActions = function(value, row, index) {
 
         tablaGen.show();
          $("#idLiExport").remove();
-         $("#ulExport").append("<li id='idLiExport' data-type='Pdf'><a href='javascript:void(0)' id = 'exportPdf'>Pdf</a></li>");
+         $("#ulExport").append("<li id='idLiExport' data-type='Pdf'><a href='javascript:void(0)' id = 'exportPdf'>PDF</a></li>");
 
         var try2 = $('#exportPdf');
         console.log('hiiiiiiiiiiiiiiiiii');
@@ -1219,7 +1219,7 @@ var formatTableActions = function(value, row, index) {
             cellPadding: 1.5,
             overflow: 'linebreak',
             valign: 'middle',
-            halign: 'center',
+            halign: 'left',
             lineColor: [0, 0, 0],
             lineWidth: 0.2 
         },
@@ -1231,7 +1231,7 @@ var formatTableActions = function(value, row, index) {
         }
        
     });
-    doc.save('table.pdf');
+    doc.save('no_localizados.pdf');
         });
         
         
