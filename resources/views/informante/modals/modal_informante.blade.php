@@ -206,7 +206,7 @@
 				</div>
 			</div>
 			<div class="row pull-right">
-				<button type="button" class="btn btn-dark btn-sm"  id="btnAgregarTelefono">AGREGAR OTRO TELÉFONO</button>
+				<button type="button" class="btn btn-dark btn-sm"  id="btnAgregarTelefono">Agregar otro teléfono</button>
 			</div>
 			<div class='hr'>
 				<span class='hr-title'> Datos de contacto </span>				
@@ -277,7 +277,7 @@
 	  <div class="modal-footer">
 	    <button type="button" class="btn btn-dark" id="btnEditarInformante" style="display:none">Guardar</button>
 		<button type="button" class="btn btn-dark" id="btnGuardarInformante" >Guardar</button>
-		<button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+		<button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
 	  </div>
 	</div>
   </div>
