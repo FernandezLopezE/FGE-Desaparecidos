@@ -549,9 +549,9 @@ $(document).ready(function(){
 	modalAnexos.modal('show');
 	});
 
-	$('#cerrarModal').click (function(){
-		location.reload();
-	});
+	// $('#cerrarModal').click (function(){
+	// 	location.reload();
+	// });
 
 	var routeIndex = '{!! route('anexoscontroller.index') !!}';
 	$("#fileImagenes").fileinput({
@@ -814,7 +814,6 @@ $(document).ready(function(){
 			causaPerdida : $("input[name='perdio[]']").map(function(){return $(this).val();}).get(),
 			idDesaparecido: '{!! $desaparecido->id !!}'
 		}
-
 		$.ajax({
 			type: 'POST',
 			url:  routedientesPerdidos,
@@ -823,7 +822,7 @@ $(document).ready(function(){
 			success: function(data){
 				//$('#btnDiente').hide();
 				$('#upDiente').show();
-				$('#anexos').show();
+				//$('#anexos').show();
 				$('#cardDientes').hide();
 				$('#dientes').attr('usemap', '');
 				$('#PMSIP').prop('disabled', true);
@@ -843,6 +842,7 @@ $(document).ready(function(){
                 	text: 'Aceptar',
                 	btnClass: 'btn-dark',
                 	action: function(){
+                		location.reload();
                 			}
                 		},
             		}
