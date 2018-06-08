@@ -133,11 +133,17 @@
   var idDesaparecido = "{{$desaparecido->id}}";
   var routeDescrip ="{!! route('descripcionfisica.index') !!}";
   var routeSenas ="{!! route('senas_particulares.index') !!}";
-  var routeConsul ="{!! route('consultas.index') !!}";
-  
+  var routeConsul ="{!! route('consultas.index') !!}";  
   var showCabello2 = "{{$showCabello}}";
+  var partesCuerpo = @json($dataPartes);
+  
+  $.each(partesCuerpo, function(key, value){	
+    console.log(value.idPadre);
+    $('g[data-cuerpo="'+value.idPadre+'"] path').css({"fill":"#fb77bd", "stroke":"#626362","stroke-width":"2-"});
+  })
+  
 
-  $('g[data-cuerpo="44"] path').css({"fill":"#17a4da", "stroke":"#ffffff","stroke-width":"2-"});
+  
   //input[name='ext[]']
   //Boton frente
   $("#btnTras").click(function(event) {

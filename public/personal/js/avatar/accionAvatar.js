@@ -62,7 +62,7 @@ $(document).ready(function(){
                 reglas = $.parseJSON(data.parte.reglas);
                 html="<input type='hidden' id='idParteCuerpo' value='"+idParteCuerpo+"' \>";
                 if(parseInt(reglas.posicion)){
-                html = html+'<div class="form-group" id="div_idPosicion">';
+                html = html+'<div class="form-group border border-danger" id="div_idPosicion">';
                 html = html+'<label for="idPosicion">Posición:</label>';
                 html = html+'<select type="select" class="form-control" id="idPosicion">';
                 html = html+'<option value="NO APLICA">NO APLICA</option>';
@@ -128,10 +128,11 @@ $(document).ready(function(){
                 html = html+'</div>';
                 html = html+'<div class="form-group">';
                 html = html+'<label for="observaciones">Observaciones:</label>';
-                html = html+'<textarea type="text" class="form-control" id="observaciones"></textarea>';
+                html = html+'<textarea type="text" class="form-control mayusculas" id="observaciones"></textarea>';
                 html = html+'</div>';
 
                 html = html+'<button type="submit" id="btnGuardar" class="btn btn-primary">Guardar</button>';
+                html = html+'<button type="submit" id="btnCancelar" class="btn btn-primary float-right">Cancelar</button>';
                 
                 campo.append(html);
 
@@ -142,6 +143,10 @@ $(document).ready(function(){
             }
         });
     }
+
+    $('#formulario').on('click', '#btnCancelar', function(){
+        location.reload();
+    })
 
     $('#formulario').on('click', '#btnGuardar', function(){
 			

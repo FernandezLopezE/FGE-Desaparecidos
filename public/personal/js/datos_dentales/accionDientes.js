@@ -61,31 +61,26 @@ $(document).ready(function(){
                 
                 
                 $(pintar).css({"fill":"#17a4da", "stroke":"#BDBDBD","stroke-width":"2-"});
-                console.log("Aqui se debe pintar el diente: "+ pintar);
+                //console.log("Aqui se debe pintar el diente: "+ pintar);
 
             }
         });
-        }      
-        //console.log($(this).attr("data-diente"));
-        //console.log('El valor es: '+this.id);
-        $("#formDiente").on('click', 'i', function(){
-            var deletCamp = ($(this).attr("id"));
-            console.log('diente_'+deletCamp);
-            
-            if ($('#diente_'+deletCamp).length) {
-                $('#diente_'+deletCamp).remove();
-                $("#path"+deletCamp).css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
-                console.log("#path"+deletCamp);
-            }
-
-        });
-        
-        
+        }  
        
     }); 
 
+    $("#formDiente").on('click', 'i', function(){
+            var deletCamp = ($(this).attr("id"));
+            //alert('diente_'+deletCamp);
 
+            if ($('#diente_'+deletCamp).length) {
+                    $('#diente_'+deletCamp).remove();
+                    $("#path"+deletCamp).css({"fill":"#f6f6f6", "stroke":"#BDBDBD","stroke-width":"0"});
+                    //console.log("#path"+deletCamp);
+    
+            }
 
+    });
 
 
 });  

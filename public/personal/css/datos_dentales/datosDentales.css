@@ -79,6 +79,6 @@ img.zoom {
     padding: 1px 5px;
 }
 
-#bote:hover {
+.fa:hover {
     transform: scale(2);
     }
