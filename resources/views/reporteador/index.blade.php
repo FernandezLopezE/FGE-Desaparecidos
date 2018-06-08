@@ -830,11 +830,11 @@ var formatTableActions = function(value, row, index) {
     window.operateEvents = {
     'click #verReporte': function (e, value, row, index) {
                   modalReportes.modal('show');
- 
+ console.log(row);
             $("#idNombre").empty();
             $("#idGenero").empty(); 
-            $("#idEstado").empty();
-            $("#idMunicipio").empty();
+            $("#idEstadoM").empty();
+            $("#idMunicipioM").empty();
             $("#idFecha").empty();
             $("#idEdad").empty();
             $("#apodo").empty();            
@@ -862,8 +862,8 @@ var formatTableActions = function(value, row, index) {
             $("#idPeso").append(row.peso + ' kg'); 
             $("#idCPiel").append(row.cPiel); 
             $("#idComplexion").append(row.complexion); 
-            $("#idEstado").append(row.estado);
-            $("#idMunicipio").append(row.municipio);
+            $("#idEstadoM").append(row.estado);
+            $("#idMunicipioM").append(row.municipio);
             $("#idFecha").append(row.fecha);
             $("#idEdad").append(row.edad + ' años');
             $("#apodo").append(row.apodo);
@@ -876,6 +876,7 @@ var formatTableActions = function(value, row, index) {
         $("#idModificaciones").append(row.modificaciones);
         $("#idParticularidades").append(row.particularidades);
         $("#idObservaciones").append(row.observaciones);
+        
 }
     }
     //-o-|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-
@@ -999,6 +1000,7 @@ var formatTableActions = function(value, row, index) {
         });
      //-o-|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-
     filtros.click(function(){
+        
         var municipiosData='';
     if(variable==0){
         municipiosData='';
@@ -1010,8 +1012,7 @@ var formatTableActions = function(value, row, index) {
           var municipios = $('#idMunicipio').multipleSelect('getSelects');
           console.log("El string:")
         console.log(estados)
-        var arrayEst = JSON.parse("[" + estados + "]");
-        var arrayMun = JSON.parse("[" + municipios + "]");
+        
          // estados.toString();
           //estados.replace(/['"]+/g, '');
           console.log("El arreglo:")
@@ -1225,7 +1226,7 @@ var formatTableActions = function(value, row, index) {
         },
        grid: {
             table: { fillColor: 255, textColor: 80, fontStyle: 'normal', lineWidth: 0.1 },
-            header: { textColor: 255, fillColor: [26, 188, 156], fontStyle: 'bold', lineWidth: 0 },
+            header: { textColor: 255, fillColor: [16, 8, 6], fontStyle: 'bold', lineWidth: 0 },
             body: {},
             alternateRow: {}
         }

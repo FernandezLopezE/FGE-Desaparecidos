@@ -29,9 +29,9 @@
 				<dt class="col-sm-3">Nacionalidad:</dt>
 				<dd class="col-sm-8" id="idNacionalidad"> </dd>
 				<dt class="col-sm-3">Estado de desaparición:</dt>
-				<dd class="col-sm-8"id="idEstado"> </dd>
+				<dd class="col-sm-8" id="idEstadoM"> </dd>
 				<dt class="col-sm-3">Municipio de desaparición:</dt>
-				<dd class="col-sm-8"id="idMunicipio"> </dd>
+				<dd class="col-sm-8" id="idMunicipioM"> </dd>
 				<dt class="col-sm-3">Fecha de desaparición:</dt>
 				<dd class="col-sm-8"id="idFecha"> </dd>
 				<dt class="col-sm-3">Edad de extravio:</dt>
@@ -101,7 +101,7 @@
 	  </div>
 	  <div class="modal-footer">
 	   
-		<button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
+		<button type="button" class="btn btn-dark" data-dismiss="modal">CERRAR</button>
 	  </div>
 	</div>
   </div>
