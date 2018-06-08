@@ -299,7 +299,7 @@
 	        </div>
 		</div>
 	
-  	<div class="card border-primary" id="#">
+  	<div class="card border-primary" id="anexos">
         <div class="card border-success">
           <div class="card-header"> 
               <h5>AGREGAR ANEXOS
@@ -546,9 +546,9 @@ $(document).ready(function(){
 	$desaparecido = ('{!! $desaparecido->id!!}');
 	var modalAnexos = $('#modalAnexosDatosDentales');
 
-	$('#btnAgregarAnexo').click (function(){  
-	modalAnexos.modal('show');
-	});
+	// $('#btnAgregarAnexo').click (function(){  
+	// modalAnexos.modal('show');
+	// });
 
 	// $('#cerrarModal').click (function(){
 	// 	location.reload();
