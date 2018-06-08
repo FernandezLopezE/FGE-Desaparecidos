@@ -60,6 +60,12 @@ height:150px;
         padding: 1px 5px;
     }
 
+    #camara:hover {
+    transform: scale(1.5);
+    }
+
+
+
 </style>
 @endsection
 
@@ -68,97 +74,217 @@ height:150px;
 @section('content')
 @include('navs.navs_datos',array('activar' => 'desaparecido'))
 
-<div class="card border-primary">
-        <div class="card border-success">
-          <div class="card-header"> 
-              <h5>DATOS DE LA PERSONA NO LOCALIZADA
-              	<a href="{{route('extraviado.edit', ['id' => $desaparecido->id])}}" class="btn btn-dark pull-right">
-					Editar
-				</a>   
-              </h5>
+<div class="card" >
+  <div class="card-header"> 
+    <h5>Datos de la persona no localizada
+      <a href="{{route('extraviado.edit', ['id' => $desaparecido->id])}}" class="btn btn-dark pull-right">
+        Editar
+      </a>   
+    </h5>
+  </div>
+  
+  <div class="card-body">
+    <div class="form-group row">
+      <div class="col-4" style="width: 18rem; margin: 0 auto;">
+        @if($desaparecido->fotoDesaparecido == null)
+        <center>{{ HTML::image('images/perfil3.png', 'Fiscal', array('class' => '','width' => '200', 'height' => '260')) }}</center>
+          @else
+            <center>{{ HTML::image(asset($desaparecido->fotoDesaparecido), 'Fiscal', array('class' => '','width' => '200', 'height' => '260')) }}</center>
+        @endif
+        <div class="form-group col-md" id="div_archivo">
+          <!--{!! Form::label ('archivo','Foto:',['class' => 'form-control-label']) !!}-->
+          {!! Form::file('archivo', ['class' => 'form-control', 'style' => 'display:none']) !!}
+          <center><i class="fa fa-camera"" id="camara" style="font-size:40px; margin-top: 4px;" data-toggle="tooltip" title="Subir foto" data-placement="right"></i></center>
+          <div class="form-control-feedback" id="error_archivo"></div>
+        </div>  
+      </div>
+
+      <div class="col">
+        <div class="row">
+          <div class="col-3">
+            <dt>Nombres:</dt>
+          </div>
+          <div class="col">
+            <dd>
+            {!! $desaparecido->persona->nombres !!} 
+            {!! $desaparecido->persona->primerAp !!} 
+            {!! $desaparecido->persona->segundoAp !!} 
+          </dd>
           </div>
         </div>
-<div class="card-body bg-white">
-	<div class="row">
-		<div class="col-10">
-			<dl class="row">
-				<dt class="col-sm-4">Nombres:</dt>
-				<dd class="col-sm-8">
-					{!! $desaparecido->persona->nombres !!} 
-					{!! $desaparecido->persona->primerAp !!} 
-					{!! $desaparecido->persona->segundoAp !!} 
-				</dd>
-				<dt class="col-sm-4">Apodo:</dt>
-				<dd class="col-sm-8">
-					{!! $desaparecido->apodo !!}
-				</dd>
-				<dt class="col-sm-4">Género:</dt>
-				<dd class="col-sm-8">
-					@switch($desaparecido->persona->sexo)
-						@case('M')
-							MUJER
-							@break
-						@case('H')
-							HOMBRE
-							@break
-						@default
-							NO DEFINIDO
-					@endswitch
-				</dd>
-				<dt class="col-sm-4">Nacionalidad:</dt>
-				<dd class="col-sm-8">{!! $desaparecido->persona->nacionalidad->nombre !!} </dd>
-				<dt class="col-sm-4">Estado natal:</dt>
-				<dd class="col-sm-8">{!! $desaparecido->persona->estado->nombre !!} </dd>
-				<dt class="col-sm-4">Fecha nacimiento:</dt>
-				<dd class="col-sm-8">{!! Carbon\Carbon::parse($desaparecido->persona->fechaNacimiento)->format('d/m/Y') !!} </dd>
-				<dt class="col-sm-4">Edad de extravio:</dt>
-				<dd class="col-sm-8">{!! $desaparecido->edadExtravio !!} </dd>
-				<dt class="col-sm-4">Edad aparente:</dt>
-				<dd class="col-sm-8">{!! $desaparecido->edadAparente !!} </dd>
-				<dt class="col-sm-4">CURP:</dt>
-				<dd class="col-sm-8">{!! $desaparecido->persona->curp !!} </dd>
-				<dt class="col-sm-4">Escolaridad:</dt>
-				<dd class="col-sm-8">{!! $desaparecido->escolaridad->nombre !!} </dd>
-				<dt class="col-sm-4">Ocupación:</dt>
-				<dd class="col-sm-8">{!! $desaparecido->ocupacion->nombre !!}</dd>
-				<dt class="col-sm-4">Identificación:</dt>
-				<dd class="col-sm-8">{!! $desaparecido->documento->nombre !!}</dd>
-				@if ($desaparecido->idDocumentoIdentidad === '7')
-					<dt class="col-sm-4">Otra identificación:</dt>
-					<dd class="col-sm-8">{!! $desaparecido->otroDocIdentidad !!}</dd>
-				@endif
-				<dt class="col-sm-4">Número de identificación:</dt>
-				<dd class="col-sm-8">{!! $desaparecido->numDocIdentidad !!}</dd>
-				<dt class="col-sm-4">Estado civil:</dt>
-				<dd class="col-sm-8">{!! $desaparecido->edocivil->nombre !!} </dd>
-				@if ($desaparecido->persona->sexo === 'M')
-					<dt class="col-sm-4">Embarazada:</dt>
-					<dd class="col-sm-8">{!! $desaparecido->embarazo !!}</dd>
-					<dt class="col-sm-4">Periodo:</dt>
-					<dd class="col-sm-8">{!! $desaparecido->numGestacion !!} {!! $desaparecido->tipoGestacion !!}</dd>
-					<dt class="col-sm-4">Por menores:</dt>
-					<dd class="col-sm-8">{!! $desaparecido->pormenores !!}</dd>
-				@endif
 
-			</dl>
-		</div>
-		<div class="col-2">
-      @if($desaparecido->fotoDesaparecido == null)
-        {{ HTML::image('images/perfil3.png', 'Fiscal', array('class' => 'rounded w-100 p-3 float-right')) }}    
-      @else
-        {{ HTML::image(asset($desaparecido->fotoDesaparecido), 'Fiscal', array('class' => 'rounded w-100 p-3 float-right')) }}
-      @endif
-			
-      <div class="form-group col-md" id="div_archivo">
-        <!--{!! Form::label ('archivo','Foto:',['class' => 'form-control-label']) !!}-->
-        {!! Form::file('archivo', ['class' => 'form-control']) !!}
-        <div class="form-control-feedback" id="error_archivo"></div>
-      </div>	
-		</div>
+        <div class="row">
+          <div class="col-3">
+            <dt>Apodo:</dt>
+          </div>
+          <div class="col">
+            <dd>
+              {!! $desaparecido->apodo !!}
+            </dd>
+          </div>
+        </div>
 
-	</div>
-</div>	
+        <div class="row">
+          <div class="col-3">
+            <dt>Género:</dt>
+          </div>
+          <div class="col">
+            <dd>
+              @switch($desaparecido->persona->sexo)
+                @case('M')
+                  MUJER
+                  @break
+                @case('H')
+                  HOMBRE
+                  @break
+                @default
+                  NO DEFINIDO
+              @endswitch
+            </dd>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <dt>Nacionalidad:</dt>
+          </div>
+          <div class="col">
+            <dd>{!! $desaparecido->persona->nacionalidad->nombre !!} </dd>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <dt>Estado natal:</dt>
+          </div>
+          <div class="col">
+            <dd>{!! $desaparecido->persona->estado->nombre !!} </dd>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <dt>Fecha nacimiento:</dt>
+          </div>
+          <div class="col">
+            <dd>{!! Carbon\Carbon::parse($desaparecido->persona->fechaNacimiento)->format('d/m/Y') !!} </dd>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <dt>Edad de extravio:</dt>
+          </div>
+          <div class="col">
+            <dd>{!! $desaparecido->edadExtravio !!} </dd>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <dt>Edad aparente:</dt>
+          </div>
+          <div class="col">
+            <dd>{!! $desaparecido->edadAparente !!} </dd>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <dt>CURP:</dt>
+          </div>
+          <div class="col">
+            <dd>{!! $desaparecido->persona->curp !!} </dd>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <dt>Escolaridad:</dt>
+          </div>
+          <div class="col">
+            <dd>{!! $desaparecido->escolaridad->nombre !!} </dd>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <dt>Ocupación:</dt>
+          </div>
+          <div class="col">
+            <dd>{!! $desaparecido->ocupacion->nombre !!}</dd>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <dt>Identificación:</dt>
+          </div>
+          <div class="col">
+            <dd>{!! $desaparecido->documento->nombre !!}</dd>
+              @if ($desaparecido->idDocumentoIdentidad === '7')
+                <dt class="col-sm">Otra identificación:</dt>
+                <dd class="col-sm-9">{!! $desaparecido->otroDocIdentidad !!}</dd>
+              @endif
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <dt>Número de identificación:</dt>
+          </div>
+          <div class="col">
+            <dd>{!! $desaparecido->numDocIdentidad !!}</dd>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <dt>Estado civil:</dt>
+          </div>
+          <div class="col">
+            <dd>{!! $desaparecido->edocivil->nombre !!} </dd>
+              @if ($desaparecido->persona->sexo === 'M')
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <dt>Embarazada:</dt>
+          </div>
+          <div class="col">
+            <dd>{!! $desaparecido->embarazo !!}</dd>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <dt>Periodo:</dt>
+          </div>
+          <div class="col">
+            <dd>{!! $desaparecido->numGestacion !!} {!! $desaparecido->tipoGestacion !!}</dd>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-3">
+            <dt>Por menores:</dt>
+          </div>
+          <div class="col">
+            <dd>{!! $desaparecido->pormenores !!}</dd>
+            @endif
+          </div>
+        </div>
+      </div>
+        
+    </div>
+  </div>
+      
 </div>
+  
+
+
+
 {{--LO SIGUIENTE ES EL FILE INPUT PARA CARGAR IMAGEN DE RADIOGRAFIAS--}}
  
 <div class="card border-primary">
@@ -218,6 +344,8 @@ height:150px;
     </div> <!--termina el row-->
     <br>
   </div>
+</div>
+</div>
 </div>
 {{--LO SIGUIENTE ES EL FILE INPUT PARA CARGAR IMAGEN DE RADIOGRAFIAS--}}
 @endsection
@@ -343,6 +471,11 @@ height:150px;
     location.reload();
 
   });
+
+  $("#camara").click(function(){
+    $("#archivo").click();
+  });
+
 
 </script>
 
