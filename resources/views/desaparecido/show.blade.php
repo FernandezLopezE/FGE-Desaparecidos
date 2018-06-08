@@ -82,7 +82,7 @@ height:150px;
       </a>   
     </h5>
   </div>
-  FOTO:{!! $desaparecido->fotoDesaparecido !!}
+  
   <div class="card-body">
     <div class="form-group row">
       <div class="col-4" style="width: 18rem; margin: 0 auto;">

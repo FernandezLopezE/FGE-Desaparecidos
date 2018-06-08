@@ -31,7 +31,7 @@
 @include('navs.navs_datos',array('activar' => 'informante'))
 
 <button type="button" class="btn btn-dark pull-right"  id="btnAgregarInformante">
-	AGREGAR
+	Agregar
 </button>	
 <div class="card-body bg-white">
 	<table id="tableInformantes" ></table>

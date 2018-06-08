@@ -65,7 +65,7 @@
 			}
 		}
 		var formatTableActions = function(value, row, index) {				
-			btn = '<button class="btn btn-dark btn-sm" id="edit"><i class="fa fa-edit"></i></button>&nbsp;';			
+			btn = '<button class="btn btn-dark btn-sm" id="edit">Editar</button>&nbsp;';			
 			return [btn].join('');
 		};
 
@@ -87,8 +87,8 @@
 				$("#segundoAp").val(row.segundoAp);
 				$("#fechaNacimiento").val(fechaNacimiento);
 				$("#edad").val(row.edad);
-				$('select#idParentesco option[value="'+row.idParentesco+'"]').attr("selected",true);
-                
+				//$('select#idParentesco option[value="'+row.idParentesco+'"]').attr("selected",true);
+                $('#idParentesco').val(row.idParentesco);
 				//modalFooter.empty();
 				$("#btnEditarFamiliar").show();
 				$("#btnGuardarFamiliar").hide();
@@ -139,6 +139,7 @@
 			$('#formulario')[0].reset();
 			$("#btnEditarFamiliar").hide();
 			$("#btnGuardarFamiliar").show();
+			$("#idParentesco").val(1);
 			modalFamiliar.modal('show');
 			/*$( "#modalFamiliar" ).sisyphus( {
 				excludeFields: $('input[name=_token]')

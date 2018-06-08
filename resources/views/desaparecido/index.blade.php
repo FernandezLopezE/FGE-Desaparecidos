@@ -11,7 +11,7 @@
 
 @include('navs.navs_datos',array('activar' => 'desaparecido'))
 <button type="submit" class="btn btn-dark pull-right"  id="btnAgregarDesaparecido">
-	GUARDAR		
+	Guardar		
 </button>
 <div class="card-body bg-white">
 	<form>

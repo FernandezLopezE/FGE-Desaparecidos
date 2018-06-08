@@ -79,9 +79,9 @@
 	  </div>
 	  <div class="modal-footer">
 	    
-	  <button type="button" class="btn btn-dark" id="btnEditarFamiliar" style="display:none">EDITAR</button>
-		<button type="button" class="btn btn-dark" id="btnGuardarFamiliar" >GUARDAR</button>
-		<button type="button" class="btn btn-light" data-dismiss="modal">CERRAR</button>
+	  <button type="button" class="btn btn-dark" id="btnEditarFamiliar" style="display:none">Guardar</button>
+		<button type="button" class="btn btn-dark" id="btnGuardarFamiliar" >Guardar</button>
+		<button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
 	  </div>
 	</div>
   </div>

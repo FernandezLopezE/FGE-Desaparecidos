@@ -166,7 +166,8 @@
 					contacto = $.parseJSON(row.datos);
 					switch(contacto.tipoContacto) {
 						case 'TELEFONO':
-							return contacto.lada+' '+contacto.telefono+' '+contacto.ext;
+							ext = (contacto.ext === null) ? "" : contacto.ext;
+							return contacto.lada+' '+contacto.telefono+' '+ext;
 							break;
 						case 'CORREO':
 							return contacto.correo;

@@ -66,7 +66,7 @@
 	            	</div>
 	        		<div class="col" style="margin-left: -2%;margin-right: -15px" id="perfilseleccionado">
 	        			{!! Form::label ('perfilselec','Perfil seleccionado') !!}
-	                	{!! Form::text ('perfilselec',old('perfilselec'), ['class' => 'form-control mayuscula, fa', 'id' => 'valorPerfil'] )!!}
+	                	{!! Form::text ('perfilselec',old('perfilselec'), ['class' => 'form-control mayuscula', 'id' => 'valorPerfil'] )!!}
 	            	</div>
 	            	<div>
 	            		{{ Form::hidden('idperfilselec','', array('id' => 'idperfilselec')) }}
