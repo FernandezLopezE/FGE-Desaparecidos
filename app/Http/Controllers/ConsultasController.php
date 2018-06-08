@@ -167,77 +167,88 @@ class ConsultasController extends Controller
     ->select('des.id as id', \DB::raw('CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))AS nombre'), 'p.sexo as sexo',\DB::raw('substr(dci.desaparicionFecha, 1,10) as fecha'),'des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'),'des.estatura as estatura','des.peso as peso','cc.id as idComplexion','cc.nombre as complexion','ccp.id as idCPiel','ccp.nombre as cPiel','ce.id as idEstado','ce.nombre as estado','cm.id as idMuni','cm.nombre as municipio',
                      'cn.nombre as nacionalidad','dci.fechaVisita as fechaReporte', 'dci.desaparicionObservaciones as hechos')
 
-                        ->where('tipoPersona','DESAPARECIDA')
-                        ->where('tipoDireccion','LUGAR DE AVISTAMIENTO')
-                        ->where( function ($q) use ($nacionalidad) {
-                            if ($nacionalidad == ['1']) {                                      
-                                    $q->whereIn('p.idNacionalidad', $nacionalidad);
-                            }else if($nacionalidad == ['2']) {
-                                    $nacionalidad = '1';
-                                    $q->where('p.idNacionalidad','!=', $nacionalidad);
-                            }
-                        })
-                        ->when($genero, function ($q) use ($genero) {
-                            return $q->whereIn('p.sexo', $genero);
-                        })
-                        ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
-                        ->whereBetween(\DB::raw('CAST(des.estatura AS SIGNED)'), [$estatura1, $estatura2])
-                        ->whereBetween(\DB::raw('CAST(des.peso AS SIGNED)'), [$peso1, $peso2])
-                        ->whereBetween('dci.desaparicionFecha', [$desaparicionFecha1, $desaparicionFecha2])
-                        ->whereBetween('dci.fechaVisita', [$reporteFecha1, $reporteFecha2])
-                        ->when($estados, function ($q) use ($estados) {
-                            return $q->whereIn('ce.id', $estados);
-                        })
-                        ->when($municipios, function ($q) use ($municipios) {
-                            return $q->whereIn('cm.id', $municipios);
-                        })
-                        ->when($cPiel, function ($q) use ($cPiel) {
-                            return $q->whereIn('des.idColorPiel', $cPiel);
-                        })
-                        ->when($complexion, function ($q) use ($complexion) {
-                            return $q->whereIn('des.idComplexion', $complexion);
-                        })
-                        ->when($tipoCabello, function ($q) use ($tipoCabello) {
-                            return $q->whereIn('cpc.idTipoCuerpo', $tipoCabello);
-                        })
-                        ->when($tipoBarba, function ($q) use ($tipoBarba) {
-                            return $q->whereIn('cpc.idTipoCuerpo', $tipoBarba);
-                        })
-                        ->when($tamanoCabello, function ($q) use ($tamanoCabello) {
-                            return $q->whereIn('cpc.idTamanoCuerpo', $tamanoCabello);
-                        })
-                        ->when($colorCabello, function ($q) use ($colorCabello) {
-                            return $q->whereIn('cpc.idColoresCuerpo', $colorCabello);
-                        })
-                        ->when($colorBarba, function ($q) use ($colorBarba) {
-                            return $q->whereIn('cpc.idColoresCuerpo', $colorBarba);
-                        })
-                        ->when($tamanoOjos, function ($q) use ($tamanoOjos) {
-                            return $q->whereIn('cpc.idTamanoCuerpo', $tamanoOjos);
-                        })
-                        ->when($colorOjos, function ($q) use ($colorOjos) {
-                            return $q->whereIn('cpc.idColoresCuerpo', $colorOjos);
-                        })
-                        ->when($tipoLabio, function ($q) use ($tipoLabio) {
-                            return $q->whereIn('cpc.idTipoCuerpo', $tipoLabio);
-                        })                            
-                        ->when($colorBigote, function ($q) use ($colorBigote) {
-                            return $q->whereIn('cpc.idColoresCuerpo', $colorBigote); })
-                        ->when($tipoBigote, function ($q) use ($tipoBigote) {
-                            return $q->whereIn('cpc.idTipoCuerpo', $tipoBigote); })
-                        ->when($colorPatilla, function ($q) use ($colorPatilla) {
-                            return $q->whereIn('cpc.idColoresCuerpo', $colorPatilla); })
-                        ->when($tipoPatilla, function ($q) use ($tipoPatilla) {
-                             return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
-                        ->when($tipoPatilla, function ($q) use ($tipoPatilla) {
-                            return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
-                        ->when($modif, function ($q) use ($modif) {
-                            return $q->whereIn('cat_mc.nombre', $modif); })
-                        ->when($partic, function ($q) use ($partic) {
-                            return $q->whereIn('cparti.nombre', $partic); })
-                        ->distinct()
-                        ->get();
+            //{->where('des.edadExtravio', 'like', "$rg%")
+                            //->where('des.edadExtravio', 'like', "$rg2%")
+                            //->whereBetween('des.edadExtravio', [$rg, $rg2])}
+        
+        
+                            
+                            ->where('tipoPersona','DESAPARECIDA')
+                            ->where('tipoDireccion','LUGAR DE AVISTAMIENTO')
+                            ->where( function ($q) use ($nacionalidad) {
+                               if ($nacionalidad == ['1']) {                                      
+                                        $q->whereIn('p.idNacionalidad', $nacionalidad);
+                                     }else if($nacionalidad == ['2']) {
+                                      $nacionalidad = '1';
+                                        $q->where('p.idNacionalidad','!=', $nacionalidad);
+                                     }
+                            })
+                            ->when($genero, function ($q) use ($genero) {
+                                return $q->whereIn('p.sexo', $genero);
+                            })
+                            //->where('p.sexo',$masc)
+                            ->whereBetween(\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED)'), [$rg, $rg2])
+                            ->whereBetween(\DB::raw('CAST(des.estatura AS SIGNED)'), [$estatura1, $estatura2])
+                            ->whereBetween(\DB::raw('CAST(des.peso AS SIGNED)'), [$peso1, $peso2])
+                            ->whereBetween('dci.desaparicionFecha', [$desaparicionFecha1, $desaparicionFecha2])
+                            ->whereBetween('dci.fechaVisita', [$reporteFecha1, $reporteFecha2])
+                            ->when($estados, function ($q) use ($estados) {
+                                return $q->whereIn('dd.idEstado', $estados);
+                            })
+                            ->when($municipios, function ($q) use ($municipios) {
+                                return $q->whereIn('dd.idMunicipio', $municipios);
+                            })
+                            ->when($cPiel, function ($q) use ($cPiel) {
+                                return $q->whereIn('des.idColorPiel', $cPiel);
+                            })
+                            ->when($complexion, function ($q) use ($complexion) {
+                                return $q->whereIn('des.idComplexion', $complexion);
+                            })
+                            ->when($tipoCabello, function ($q) use ($tipoCabello) {
+                                return $q->whereIn('cpc.idTipoCuerpo', $tipoCabello);
+                            })
+                            ->when($tipoBarba, function ($q) use ($tipoBarba) {
+                                return $q->whereIn('cpc.idTipoCuerpo', $tipoBarba);
+                            })
+                            ->when($tamanoCabello, function ($q) use ($tamanoCabello) {
+                                return $q->whereIn('cpc.idTamanoCuerpo', $tamanoCabello);
+                            })
+                            ->when($colorCabello, function ($q) use ($colorCabello) {
+                                return $q->whereIn('cpc.idColoresCuerpo', $colorCabello);
+                            })
+                            ->when($colorBarba, function ($q) use ($colorBarba) {
+                                return $q->whereIn('cpc.idColoresCuerpo', $colorBarba);
+                            })
+                             ->when($tamanoOjos, function ($q) use ($tamanoOjos) {
+                                return $q->whereIn('cpc.idTamanoCuerpo', $tamanoOjos);
+                            })
+                            ->when($colorOjos, function ($q) use ($colorOjos) {
+                                return $q->whereIn('cpc.idColoresCuerpo', $colorOjos);
+                            })
+                            ->when($tipoLabio, function ($q) use ($tipoLabio) {
+                                return $q->whereIn('cpc.idTipoCuerpo', $tipoLabio);
+                            })                            
+                            ->when($colorBigote, function ($q) use ($colorBigote) {
+                                return $q->whereIn('cpc.idColoresCuerpo', $colorBigote); })
+                            ->when($tipoBigote, function ($q) use ($tipoBigote) {
+                                return $q->whereIn('cpc.idTipoCuerpo', $tipoBigote); })
+                            ->when($colorPatilla, function ($q) use ($colorPatilla) {
+                                return $q->whereIn('cpc.idColoresCuerpo', $colorPatilla); })
+                            ->when($tipoPatilla, function ($q) use ($tipoPatilla) {
+                                return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
+                            ->when($tipoPatilla, function ($q) use ($tipoPatilla) {
+                                return $q->whereIn('cpc.idTipoCuerpo', $tipoPatilla); })
+                            ->when($modif, function ($q) use ($modif) {
+                                return $q->whereIn('cat_mc.nombre', $modif); })
+                            ->when($partic, function ($q) use ($partic) {
+                                return $q->whereIn('cparti.nombre', $partic); })
 
+                            //->where('des.edadExtravio', 'like', "$rg2%")
+                            ->distinct()
+                            ->get();
+
+
+                        
         $i = 0;
         $count = count($desaparecidos);
         if($count > 0){

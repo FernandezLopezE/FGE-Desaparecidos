@@ -156,7 +156,7 @@
                         'id' => 'fechaReporte2',
                         'data-validation' =>'date',
                         'data-validation-format'=>"dd/mm/aaaa",
-                        'data-validation-error-msg-date' => 'Ingrese una fecha válida o menor a la actual','placeholder' => 'dd/mm/yyyy'
+                        'data-validation-error-msg-date' => 'Ingrese una fecha válida o menor a la actual','placeholder' => 'dd/mm/aaaa'
                       ] )!!}                        
                 </div>
                    </div>
@@ -177,17 +177,16 @@
                 &nbsp;&nbsp;<h5>Ubicación de la desaparición</h5>                       
           </div> <hr>      
          <div class="row" id="idUbicación">
-             <div class="col-lg-4">
+             <div class="col">
                 {!! Form::label ('idEstados','Nacionalidad:') !!} 
                 {!! Form::select('idEstados',$nacionalidades, '', ['class' => '', 'id' => 'nacionalidades','multiple' => 'multiple'] ) !!}
              </div>
-             <div class="col-lg-4">
+             <div class="col">
                 {!! Form::label ('idEstados','Estados:') !!} 
-                {!! Form::select('idEstados',$estados, '', ['class' => '', 'id' => 'idEstado','multiple' => 'multiple'] ) !!}
+                {!! Form::select('idEstados',$estados, '', ['class' => '', 'id' => 'idEstadoC','multiple' => 'multiple'] ) !!}
              </div>
-            <div class="col-lg-4">
-                {!! Form::label ('idEstados','Municipios:') !!} 
-                {!! Form::select('idEstados',$municipios, '', ['class' => '', 'id' => 'idMunicipio','multiple' => 'multiple'] ) !!}
+            <div class="col-lg-4" id="posicionMunicipio" style="display:none">
+               
             </div>
           </div>
           </div>
@@ -456,25 +455,51 @@
 @endsection
 
 @section('scripts')
-{!! HTML::script('personal/js/datosgral.js') !!}
+
 {!! HTML::script('personal/js/multiple-select.js') !!}
 {!! HTML::script('personal/js/bootstrap-table-multiple-search.js') !!}
 {!! HTML::script('personal/js/bootstrap-table-toolbar.js') !!}
 {!! HTML::script('personal/js/bootstrap-table-export.js') !!}
 {!! HTML::script('personal/js/tableExport.js') !!}
-{!! HTML::script('personal/js/jspdf.min.js') !!}  
-{!! HTML::script('personal/js/pdfmake.min.js') !!}  
+{!! HTML::script('personal/js/jspdf.min.js') !!}   
 {!! HTML::script('personal/js/jspdf.plugin.autotable.js') !!} 
 {!! HTML::script('personal/js/FileSaver.min.js') !!} 
 {!! HTML::script('personal/js/bootstrap-table-filter-control.js') !!}
-
-<!--
-{!! HTML::script('personal/js/bootstrap-table.js') !!}
-{!! HTML::script('personal/js/bootstrap-table-print.js') !!}
--->
-
 <script type="text/javascript">
-   
+ 
+    $('#idEstadoC').on('change', function(){
+        console.log($(this).val());
+
+        var idMunicipio = $(this).val();
+        if(idMunicipio) {
+            $.ajax({
+                url: '/consultas/get_municipios/'+idMunicipio,
+                type:"GET",
+                dataType:"json",
+                success:function(data) {
+                    console.log(data);
+                         $('#posicionMunicipio').empty();
+                     $('#posicionMunicipio').append('<label>Municipios:</label><br> <select name="idMunicipios" id="idMunicipioC" multiple="multiple"></select>');
+                     $('#posicionMunicipio').show();
+                    $.each(data, function(key, value){
+                       $("#idMunicipioC").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
+                        
+                    });  
+                        $('#idMunicipioC').multipleSelect({
+                            filter: true,
+                            width: '100%'
+                        });
+                }              
+            });
+           
+             
+        } else {
+            $('#idEstadoC').empty();
+        }
+        
+    });
+    
+    
     $(window).scroll(function() {
     if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
         $('#return-to-top').fadeIn(200);    // Fade in the arrow
@@ -611,15 +636,12 @@ $('#return-to-top').click(function() {      // When arrow is clicked
             width: '100%'
            
         });
-    $('#idEstado').multipleSelect({
+    $('#idEstadoC').multipleSelect({
             filter: true,
             width: '100%'
            
         });
-    $('#idMunicipio').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
+   
     $('#cPiel').multipleSelect({
             filter: true,
             width: '100%'
@@ -750,8 +772,7 @@ $('#return-to-top').click(function() {      // When arrow is clicked
         var fem = "";  
 
     prueba.click(function(e){
-      alert("FGFg");
-      modalReportes.modal('show');   
+      $('#idMunicipio').multipleSelect();
     });
     
     btnVerReporte.click(function(e){
@@ -1043,8 +1064,8 @@ var formatTableActions = function(value, row, index) {
 
           var dataString = {
                 nacionalidad: $('#nacionalidades').multipleSelect('getSelects'),              
-                estados: $('#idEstado').multipleSelect('getSelects'),
-                municipios: $('#idMunicipio').multipleSelect('getSelects'),
+                estados: $('#idEstadoC').multipleSelect('getSelects'),
+                municipios: $('#idMunicipioC').multipleSelect('getSelects'),
                 cPiel: $('#cPiel').multipleSelect('getSelects'),
                 complexion: $('#complexion').multipleSelect('getSelects'),
                 tipoCabello: $('#tipoCabello').multipleSelect('getSelects'),
