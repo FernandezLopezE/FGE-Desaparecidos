@@ -299,7 +299,7 @@
 	        </div>
 		</div>
 	
-  	<div class="card border-primary" id="anexos">
+  	<div class="card border-primary" id="#">
         <div class="card border-success">
           <div class="card-header"> 
               <h5>AGREGAR ANEXOS
@@ -309,6 +309,7 @@
           </div>
         </div>        
          @include('datosdentales.modals.modal_cargar_documento')
+
  
        <div class="container page-top">
         <div class="row">
