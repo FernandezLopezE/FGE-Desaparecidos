@@ -251,10 +251,10 @@ class ConsultasController extends Controller
                             ->whereBetween('dci.desaparicionFecha', [$desaparicionFecha1, $desaparicionFecha2])
                             ->whereBetween('dci.fechaVisita', [$reporteFecha1, $reporteFecha2])
                             ->when($estados, function ($q) use ($estados) {
-                                return $q->whereIn('ce.id', $estados);
+                                return $q->whereIn('dd.idEstado', $estados);
                             })
                             ->when($municipios, function ($q) use ($municipios) {
-                                return $q->whereIn('cm.id', $municipios);
+                                return $q->whereIn('dd.idMunicipio', $municipios);
                             })
                             ->when($cPiel, function ($q) use ($cPiel) {
                                 return $q->whereIn('des.idColorPiel', $cPiel);
