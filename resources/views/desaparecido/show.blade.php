@@ -76,7 +76,7 @@ height:150px;
 
 <div class="card" >
   <div class="card-header"> 
-    <h5>DATOS DE LA PERSONA NO LOCALIZADA
+    <h5>Datos de la persona no localizada
       <a href="{{route('extraviado.edit', ['id' => $desaparecido->id])}}" class="btn btn-dark pull-right">
         Editar
       </a>   
