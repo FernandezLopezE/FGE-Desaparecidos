@@ -87,12 +87,16 @@ class SenasParticularesController extends Controller
 
 			$particularidades = ($request->input('idParticularidad') == 'null') ? array() : explode(",", $request->input('idParticularidad')) ;
 			foreach ($particularidades as $particularidad) {
-				PivotSubPartiCuerpo::create(['idCedulaPartesCuerpo' => $parteCuerpo->id, 'idParticularidades' => $particularidad]);
+				if(!empty($particularidad)){
+					PivotSubPartiCuerpo::create(['idCedulaPartesCuerpo' => $parteCuerpo->id, 'idParticularidades' => $particularidad]);
+				}				
 			}
 
 			$modificaciones = ($request->input('idModificacion') == 'null') ? array() : explode(",", $request->input('idModificacion')) ;			
 			foreach ($modificaciones as $modificacion) {
-				PivotSubModiCuerpo::create(['idCedulaPartesCuerpo' => $parteCuerpo->id, 'idModificaciones' => $modificacion]);
+				if(!empty($modificacion)){
+					PivotSubModiCuerpo::create(['idCedulaPartesCuerpo' => $parteCuerpo->id, 'idModificaciones' => $modificacion]);
+				}
 			}
 
 			\DB::commit();
