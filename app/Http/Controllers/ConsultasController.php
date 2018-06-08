@@ -446,18 +446,36 @@ class ConsultasController extends Controller
                         ->leftjoin('cat_particularidades_cuerpo as cparti','cparti.id','=','psubp.idParticularidades')
                         ->select('cpc.idPartesCuerpo',
                                 'catpc.nombre as nombreCuerpo',
+                                'catpc.partePadre',
                                 'cpc.posicion',
                                 'cparti.nombre as particularidades',
                                 'cpc.otraParticularidad')
                         ->where('cpc.idPersonaDesaparecida',$value->id)
-                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 'cpc.posicion','cparti.nombre', 'cpc.otraParticularidad')
+                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 'catpc.partePadre', 'cpc.posicion','cparti.nombre', 'cpc.otraParticularidad')
                         ->get();
 
             $longitud = count($caracteristicasCuerpoP);
             $nParticularidades = '';
             $parte_cuerpo = ''; $cuerpoPosicion = '';
             for($j=0;$j < $longitud; $j++){
-            $cuerpoPosicion = $caracteristicasCuerpoP[$j]->nombreCuerpo.' '.$caracteristicasCuerpoP[$j]->posicion;
+            if(str_contains($caracteristicasCuerpoP[$j]->posicion,'APLICA')){
+                if($caracteristicasCuerpoP[$j]->partePadre == 68 || $caracteristicasCuerpoP[$j]->partePadre == 23 || $caracteristicasCuerpoP[$j]->partePadre == 49)
+                        $cuerpoPosicion = $caracteristicasCuerpoP[$j]->nombreCuerpo.' IZQUIERDO';
+                else if($caracteristicasCuerpoP[$j]->partePadre == 69 || $caracteristicasCuerpoP[$j]->partePadre == 33 || $caracteristicasCuerpoP[$j]->partePadre == 58)
+                        $cuerpoPosicion = $caracteristicasCuerpoP[$j]->nombreCuerpo.' DERECHO';
+                else if($caracteristicasCuerpoP[$j]->partePadre == 44)
+                        $cuerpoPosicion = $caracteristicasCuerpoP[$j]->nombreCuerpo.' IZQUIERDA';
+                else if($caracteristicasCuerpoP[$j]->partePadre == 53)
+                        $cuerpoPosicion = $caracteristicasCuerpoP[$j]->nombreCuerpo.' DERECHA'; 
+                    else
+                        $cuerpoPosicion = $caracteristicasCuerpoP[$j]->nombreCuerpo;
+            }
+            else if(str_contains($caracteristicasCuerpoP[$j]->posicion,'AMBOS'))
+                $cuerpoPosicion = $caracteristicasCuerpoP[$j]->posicion.' '.$caracteristicasCuerpoP[$j]->nombreCuerpo;
+            else
+                $cuerpoPosicion = $caracteristicasCuerpoP[$j]->nombreCuerpo.' '.$caracteristicasCuerpoP[$j]->posicion;
+
+            //empieza a concatenar las particularidades
             if($caracteristicasCuerpoP[$j]->particularidades !=''){
                 if($cuerpoPosicion == $parte_cuerpo)
                 { 
@@ -490,11 +508,12 @@ class ConsultasController extends Controller
                          ->leftjoin('cat_modificaciones_cuerpo as cmodi','cmodi.id','=','psubm.idModificaciones')
                         ->select('cpc.idPartesCuerpo',
                                 'catpc.nombre as nombreCuerpo',
+                                'catpc.partePadre',
                                 'cpc.posicion',
                                 'cmodi.nombre as modificaciones',
                                 'cpc.otraModificacion')
                         ->where('cpc.idPersonaDesaparecida',$value->id)
-                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 'cpc.posicion', 
+                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 'cpc.posicion', 'catpc.partePadre',
                                 'cmodi.nombre', 'cpc.otraModificacion')
                         ->get();
             $longitud = count($caracteristicasCuerpoM);
@@ -502,7 +521,22 @@ class ConsultasController extends Controller
             $nObservaciones = '';
             $parte_cuerpo = '';
             for($j=0;$j < $longitud; $j++){
-            $cuerpoPosicion = $caracteristicasCuerpoM[$j]->nombreCuerpo.' '.$caracteristicasCuerpoM[$j]->posicion;
+            if(str_contains($caracteristicasCuerpoM[$j]->posicion,'APLICA')){
+                if($caracteristicasCuerpoM[$j]->partePadre == 68 || $caracteristicasCuerpoM[$j]->partePadre == 23 || $caracteristicasCuerpoM[$j]->partePadre == 49)
+                        $cuerpoPosicion = $caracteristicasCuerpoM[$j]->nombreCuerpo.' IZQUIERDO';
+                else if($caracteristicasCuerpoM[$j]->partePadre == 69 || $caracteristicasCuerpoM[$j]->partePadre == 33 || $caracteristicasCuerpoM[$j]->partePadre == 58)
+                        $cuerpoPosicion = $caracteristicasCuerpoM[$j]->nombreCuerpo.' DERECHO';
+                else if($caracteristicasCuerpoM[$j]->partePadre == 44)
+                        $cuerpoPosicion = $caracteristicasCuerpoM[$j]->nombreCuerpo.' IZQUIERDA';
+                else if($caracteristicasCuerpoM[$j]->partePadre == 53)
+                        $cuerpoPosicion = $caracteristicasCuerpoM[$j]->nombreCuerpo.' DERECHA'; 
+                    else
+                        $cuerpoPosicion = $caracteristicasCuerpoM[$j]->nombreCuerpo;
+            }
+            else if(str_contains($caracteristicasCuerpoM[$j]->posicion,'AMBOS')) 
+                $cuerpoPosicion = $caracteristicasCuerpoM[$j]->posicion.' '.$caracteristicasCuerpoM[$j]->nombreCuerpo;
+            else   
+                $cuerpoPosicion = $caracteristicasCuerpoM[$j]->nombreCuerpo.' '.$caracteristicasCuerpoM[$j]->posicion;
             if($caracteristicasCuerpoM[$j]->modificaciones !=''){
                 if($cuerpoPosicion == $parte_cuerpo)
                 { 
@@ -531,10 +565,11 @@ class ConsultasController extends Controller
                         ->leftjoin('cat_partes_cuerpo as catpc','catpc.id','=','cpc.idPartesCuerpo')
                         ->select('cpc.idPartesCuerpo',
                                 'catpc.nombre as nombreCuerpo',
+                                'catpc.partePadre',
                                 'cpc.posicion',
                                 'cpc.observaciones')
                         ->where('cpc.idPersonaDesaparecida',$value->id)
-                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 'cpc.posicion', 
+                        ->groupBy('cpc.idPartesCuerpo','catpc.nombre', 'cpc.posicion', 'catpc.partePadre',
                                 'cpc.observaciones')
                         ->get();
 
@@ -542,7 +577,22 @@ class ConsultasController extends Controller
             $nObservaciones = '';
             $parte_cuerpo = '';
             for($j=0;$j < $longitud; $j++){
-            $cuerpoPosicion = $observacionesCuerpo[$j]->nombreCuerpo.' '.$observacionesCuerpo[$j]->posicion;
+            if(str_contains($observacionesCuerpo[$j]->posicion,'APLICA')){
+                if($observacionesCuerpo[$j]->partePadre == 68 || $observacionesCuerpo[$j]->partePadre == 23 || $observacionesCuerpo[$j]->partePadre == 49)
+                        $cuerpoPosicion = $observacionesCuerpo[$j]->nombreCuerpo.' IZQUIERDO';
+                else if($observacionesCuerpo[$j]->partePadre == 69 || $observacionesCuerpo[$j]->partePadre == 33 || $observacionesCuerpo[$j]->partePadre == 58)
+                        $cuerpoPosicion = $observacionesCuerpo[$j]->nombreCuerpo.' DERECHO';
+                else if($observacionesCuerpo[$j]->partePadre == 44)
+                        $cuerpoPosicion = $observacionesCuerpo[$j]->nombreCuerpo.' IZQUIERDA';
+                else if($observacionesCuerpo[$j]->partePadre == 53)
+                        $cuerpoPosicion = $observacionesCuerpo[$j]->nombreCuerpo.' DERECHA'; 
+                    else
+                        $cuerpoPosicion = $observacionesCuerpo[$j]->nombreCuerpo;
+            }
+            else if(str_contains($observacionesCuerpo[$j]->posicion,'AMBOS')) 
+                $cuerpoPosicion = $observacionesCuerpo[$j]->posicion.' '.$observacionesCuerpo[$j]->nombreCuerpo;
+            else   
+                $cuerpoPosicion = $observacionesCuerpo[$j]->nombreCuerpo.' '.$observacionesCuerpo[$j]->posicion;
             if($observacionesCuerpo[$j]->observaciones !=''){
                 if($cuerpoPosicion == $parte_cuerpo)
                 { 
