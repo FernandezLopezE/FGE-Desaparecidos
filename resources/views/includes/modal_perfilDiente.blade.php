@@ -17,25 +17,16 @@
           </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>PERFIL RECTO</h5>
-                <P>SE FORMA UNA LÍNEA CASI RECTA ENTRE LA PUNTA DE LA MANDÍBULA Y LA BARBILLA</P>
-              </div>
               <img class="d-block w-100" src="/images/TiposPerfil/RECTO/TEAM-recto.jpg" alt="PERFIL RECTO" id="perfilRecto" value="2">
+              <center><b><h3>PERFIL RECTO</h3></b></center>
             </div>
             <div class="carousel-item">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>PERFIL CÓNCAVO</h5>
-                <P>LAS LÍNEAS QUE UNEN LA PUNTA DE LA NARIZ CON LOS DIENTES SUPERIORES,LOS DIENTES SUPERIORES CON LA BARBILLA SE JUNTAN FORMANDO UN SIGNO MENOR "<".</P>
-              </div>
               <img class="d-block w-100" src="/images/TiposPerfil/CONCAVO/TEAM-concavo.jpg" alt="PERFIL CÓNCAVO" id="perfilConcavo" value="3">
+              <center><b><h3>PERFIL CÓNCAVO</h3></b></center>
             </div>
             <div class="carousel-item">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>PERFIL CONVEXO</h5>
-                <p>LA PARTE SUPERIOR DE LA MANDÍBULA SE ENCUENTRA ADELANTADA CON RESPECTO A LA BARBILLA, FORMANDO ASÍ UN ÁNGULO CONVEXO CON LA PUNTA DE LA NARIZ</p>
-              </div>
               <img class="d-block w-100" src="/images/TiposPerfil/CONVEXO/TEAM-convexo.jpg" alt="PERFIL CÓNVEXO" id="perfilConvexo" value="4">
+              <center><b><h3>PERFIL CONVEXO</h3></b></center>
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselPDiente" role="button" data-slide="prev">
