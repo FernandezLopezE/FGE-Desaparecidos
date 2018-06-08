@@ -140,7 +140,7 @@
 
         // restore class and title from select element
         this.$parent = $(sprintf(
-            '<div class="ms-parent %s" %s/>',
+            '<div id = "div'+ $el.attr('name') +'" class="ms-parent %s" %s/>',
             $el.attr('class') || '',
             sprintf('title="%s"', $el.attr('title'))));
 
@@ -194,7 +194,7 @@
 
         init: function () {
             var that = this,
-                $ul = $('<ul></ul>');
+                $ul = $('<ul id="idUl"></ul>');
 
             this.$drop.html('');
 
@@ -210,7 +210,7 @@
                 $ul.append([
                     '<li class="ms-select-all">',
                     '<label>',
-                    sprintf('<input type="checkbox" %s /> ', this.selectAllName),
+                    sprintf('<input id="selectall" type="checkbox" %s /> ', this.selectAllName),
                     this.options.selectAllDelimiter[0],
                     this.options.selectAllText,
                     this.options.selectAllDelimiter[1],
@@ -265,7 +265,7 @@
                 $el = $([
                     sprintf('<li class="%s %s" %s %s>', multiple, classes, title, style),
                     sprintf('<label class="%s">', disabled ? 'disabled' : ''),
-                    sprintf('<input type="%s" %s%s%s%s>',
+                    sprintf('<input id="'+ $elm.val() +'" type="%s" %s%s%s%s>',
                         type, this.selectItemName,
                         selected ? ' checked="checked"' : '',
                         disabled ? ' disabled="disabled"' : '',
@@ -742,10 +742,10 @@
         filterAcceptOnEnter: false,
         hideOptgroupCheckboxes: false,
 
-        selectAllText: 'Select all',
-        allSelected: 'All selected',
-        countSelected: '# of % selected',
-        noMatchesFound: 'No matches found',
+        selectAllText: 'Seleccionar todos',
+        allSelected: 'Todos seleccionados',
+        countSelected: '# de % seleccionados',
+        noMatchesFound: 'No se encontraron coincidencias',
 
         styler: function () {
             return false;

@@ -10,10 +10,12 @@ class CatPartesCuerpo extends Model
     protected $table = 'cat_partes_cuerpo';
 	protected $fillable = [
 		'nombre',
-		'partePadre'
+		'partePadre',
+		'reglas'
 	];
 
-	/*public function coloresCuerpo(){
-		return $this->belongsTo('App\Models\CatColoresCuerpo','idColoresCuerpo','id');
-	}*/
+	public function partescuerpo()
+	{
+		return $this->hasMany('App\Models\CedulaPartesCuerpo', 'idPartesCuerpo', 'id');
+	}
 }

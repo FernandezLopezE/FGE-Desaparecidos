@@ -206,7 +206,7 @@
 				</div>
 			</div>
 			<div class="row pull-right">
-				<button type="button" class="btn btn-dark btn-sm"  id="btnAgregarTelefono">AGREGAR OTRO TELÉFONO</button>
+				<button type="button" class="btn btn-dark btn-sm"  id="btnAgregarTelefono">Agregar otro teléfono</button>
 			</div>
 			<div class='hr'>
 				<span class='hr-title'> Datos de contacto </span>				
@@ -215,7 +215,7 @@
 			
 			<div class="row" id=""  > 
 				<div class="form-group col-md-2">
-					{!! Form::label ('tipoTelefono','Tipo de telefono:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('tipoTelefono','Tipo de teléfono:',['class' => 'form-control-label']) !!}
 					{!! Form::select ('tipoTelefono[]',
 										$tiposTelefonos,
 										'',
@@ -275,10 +275,9 @@
 		<!-- Fin del Contenido del formulario-->
 	  </div>
 	  <div class="modal-footer">
-	    <button type="button" class="btn btn-dark mr-auto" id="btnLimpiar"> LIMPIAR CAMPOS</button>
-	    <button type="button" class="btn btn-dark" id="btnEditarInformante" style="display:none">EDITAR</button>
-		<button type="button" class="btn btn-dark" id="btnGuardarInformante" >GUARDAR</button>
-		<button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
+	    <button type="button" class="btn btn-dark" id="btnEditarInformante" style="display:none">Guardar</button>
+		<button type="button" class="btn btn-dark" id="btnGuardarInformante" >Guardar</button>
+		<button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
 	  </div>
 	</div>
   </div>

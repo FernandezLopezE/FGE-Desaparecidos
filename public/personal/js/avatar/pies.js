@@ -13,8 +13,8 @@ $(document).ready(function() {
 
 
   	//Cargar valores a select de particularidades de tobillo izquierdo
-    $.ajax({
-         url: routeDescrip+'/get_particularidades/'+53,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+53,
          type:"GET",
          dataType:"json",
 
@@ -24,11 +24,11 @@ $(document).ready(function() {
             $("#partTobilloIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de tobillo izquierdo
-    $.ajax({
-         url: routeDescrip+'/get_modificaciones/'+53,
+    /*$.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+53,
          type:"GET",
          dataType:"json",
 
@@ -38,11 +38,11 @@ $(document).ready(function() {
             $("#modTobilloIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de talon izquierdo
-    $.ajax({
-         url: routeDescrip+'/get_particularidades/'+51,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+51,
          type:"GET",
          dataType:"json",
 
@@ -52,11 +52,11 @@ $(document).ready(function() {
             $("#partTalonIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de talon izquierdo
-    $.ajax({
-         url: routeDescrip+'/get_modificaciones/'+51,
+    /*$.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+51,
          type:"GET",
          dataType:"json",
 
@@ -66,11 +66,11 @@ $(document).ready(function() {
             $("#modTalonIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de pie izquierdo
-    $.ajax({
-         url: routeDescrip+'/get_particularidades/'+45,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+45,
          type:"GET",
          dataType:"json",
 
@@ -80,11 +80,11 @@ $(document).ready(function() {
             $("#partPieIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de pie izquierdo
-    $.ajax({
-         url: routeDescrip+'/get_modificaciones/'+45,
+    /*$.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+45,
          type:"GET",
          dataType:"json",
 
@@ -94,11 +94,11 @@ $(document).ready(function() {
             $("#modPieIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de tobillo derecho
-    $.ajax({
-         url: routeDescrip+'/get_particularidades/'+52,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+52,
          type:"GET",
          dataType:"json",
 
@@ -108,11 +108,11 @@ $(document).ready(function() {
             $("#partTobilloDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de tobillo derecho
-    $.ajax({
-         url: routeDescrip+'/get_modificaciones/'+52,
+    /*$.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+52,
          type:"GET",
          dataType:"json",
 
@@ -122,11 +122,11 @@ $(document).ready(function() {
             $("#modTobilloDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de talon derecho
-    $.ajax({
-         url: routeDescrip+'/get_particularidades/'+50,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+50,
          type:"GET",
          dataType:"json",
 
@@ -136,11 +136,11 @@ $(document).ready(function() {
             $("#partTalonDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de talon derecho
-    $.ajax({
-         url: routeDescrip+'/get_modificaciones/'+50,
+    /*$.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+50,
          type:"GET",
          dataType:"json",
 
@@ -150,11 +150,11 @@ $(document).ready(function() {
             $("#modTalonDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de pie derecho
-    $.ajax({
-         url: routeDescrip+'/get_particularidades/'+44,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+44,
          type:"GET",
          dataType:"json",
 
@@ -164,11 +164,11 @@ $(document).ready(function() {
             $("#partPieDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de pie derecho
-    $.ajax({
-         url: routeDescrip+'/get_modificaciones/'+44,
+    /*$.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+44,
          type:"GET",
          dataType:"json",
 
@@ -178,6 +178,6 @@ $(document).ready(function() {
             $("#modPieDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
 });

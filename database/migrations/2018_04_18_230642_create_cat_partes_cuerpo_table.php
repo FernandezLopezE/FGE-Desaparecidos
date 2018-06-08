@@ -16,7 +16,8 @@ class CreateCatPartesCuerpoTable extends Migration
         Schema::create('cat_partes_cuerpo', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->integer('partePadre')->nullabel();
+            $table->char('partePadre',2)->nullabel();
+            $table->text('reglas')->nullabel();
             //$table->string('imagen');
             $table->timestamps();
         });

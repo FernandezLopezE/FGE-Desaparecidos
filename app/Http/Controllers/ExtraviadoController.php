@@ -54,7 +54,7 @@ class ExtraviadoController extends Controller
 											->get()
 											->toArray();
 
-			$sexos = array('N' => 'SELECCIONE UN GENERO', 'H' => 'MASCULINO', 'M' => 'FEMENINO');
+			$sexos = array('N' => 'SELECCIONE UN GÉNERO', 'H' => 'MASCULINO', 'M' => 'FEMENINO');
 			$escolaridades      = \App\Models\CatEscolaridad::all()->pluck('nombre','id');
 			$ocupaciones        = \App\Models\CatOcupacion::orderBy('nombre')->get()->pluck('nombre','id');
 			$identificaciones   = \App\Models\CatDocumento::all()->pluck('nombre','id');
@@ -218,6 +218,7 @@ class ExtraviadoController extends Controller
 											->get();
 
 		$desaparecido = \App\Models\Desaparecido::find($datos[0]->id);
+		//dd($desaparecido);
 
 		$images = (Anexos::where('idDesaparecido', $datos[0]->id)->where('tipoAnexo', 'desaparecido')->get());
 		return view('desaparecido.show',compact('desaparecido',
@@ -356,5 +357,28 @@ class ExtraviadoController extends Controller
 	public function destroy($id)
 	{
 		//
+	}
+
+	public function cargarFoto(Request $request){
+
+		//dd($request->toArray());
+		define('DS', DIRECTORY_SEPARATOR);
+		$desaparecido = \App\Models\Desaparecido::find($request['idDesaparecido']);
+
+		if(is_null($request->file('archivo')))
+	    	{
+	    		$path = "images".DS."vestimenta_sin_imagen.png";
+			} else {
+				$mime = $request->file('archivo')->getMimeType();
+				$extension = strtolower($request->file('archivo')->getClientOriginalExtension());
+				$fileName = uniqid().'.'.$extension;
+				$path = "upload".DS."desaparecido".DS.$fileName;
+				\Storage::disk('local')->put($path,  \File::get($request->file('archivo')));	
+				$desaparecido->fotoDesaparecido = $path;		
+			}
+
+		$desaparecido->save();
+		dd($desaparecido);
+
 	}
 }

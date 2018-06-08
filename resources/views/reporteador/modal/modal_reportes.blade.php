@@ -29,9 +29,9 @@
 				<dt class="col-sm-3">Nacionalidad:</dt>
 				<dd class="col-sm-8" id="idNacionalidad"> </dd>
 				<dt class="col-sm-3">Estado de desaparición:</dt>
-				<dd class="col-sm-8"id="idEstado"> </dd>
+				<dd class="col-sm-8" id="idEstadoM"> </dd>
 				<dt class="col-sm-3">Municipio de desaparición:</dt>
-				<dd class="col-sm-8"id="idMunicipio"> </dd>
+				<dd class="col-sm-8" id="idMunicipioM"> </dd>
 				<dt class="col-sm-3">Fecha de desaparición:</dt>
 				<dd class="col-sm-8"id="idFecha"> </dd>
 				<dt class="col-sm-3">Edad de extravio:</dt>
@@ -48,11 +48,22 @@
 				<dt class="col-sm-3">Complexión:</dt>
 				<dd class="col-sm-8" id="idComplexion">
 				</dd>
+				<dt class="col-sm-3">Cabello:</dt>
+				<dd class="col-sm-8"id="idCabello"> </dd>
+				<dt class="col-sm-3">Vello facial:</dt>
+				<dd class="col-sm-8"id="idVelloFacial"> </dd>
+				<dt class="col-sm-3">Ojos:</dt>
+				<dd class="col-sm-8"id="idOjos"> </dd>
+				<dt class="col-sm-3">Labios:</dt>
+				<dd class="col-sm-8"id="idLabios"> </dd>
 				
-<!--
-				<dt class="col-sm-3">Tipo de cabello:</dt>
-				<dd class="col-sm-8"id="idTipoCabello"> </dd>
--->
+				<dt class="col-sm-3">Modificaciones:</dt>
+				<dd class="col-sm-8"id="idModificaciones"> </dd>
+				<dt class="col-sm-3">Particularidades:</dt>
+				<dd class="col-sm-8"id="idParticularidades"> </dd>
+				<dt class="col-sm-3">Observaciones:</dt>
+				<dd class="col-sm-8"id="idObservaciones"> </dd>
+
 				
 <!--
 				<dt class="col-sm-3">Edad aparente:</dt>
@@ -90,7 +101,7 @@
 	  </div>
 	  <div class="modal-footer">
 	   
-		<button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
+		<button type="button" class="btn btn-dark" data-dismiss="modal">CERRAR</button>
 	  </div>
 	</div>
   </div>

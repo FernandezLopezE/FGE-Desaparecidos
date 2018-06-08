@@ -10,7 +10,7 @@
 @section('content')
 <div class="card">
 	<div class="card-header">
-		<h4><i class="fa fa-paste"></i> Cedulas</h4>
+		<h4><i class="fa fa-paste"></i> Cédulas</h4>
 	</div>
 	<div class="card-body bg-white">
 		<table id="table"style="overflow:auto;"></table>

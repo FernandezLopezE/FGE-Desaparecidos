@@ -12,8 +12,8 @@ $(document).ready(function() {
   	});
 
     //Cargar valores a select de particularidades de brazo izquierdo
-    $.ajax({
-         url: routeDescri+'/get_particularidades/'+4,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+4,
          type:"GET",
          dataType:"json",
 
@@ -23,11 +23,11 @@ $(document).ready(function() {
             $("#partBrazoIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de brazo izquierdo
-    $.ajax({
-         url: routeDescri+'/get_modificaciones/'+4,
+    /*$.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+4,
          type:"GET",
          dataType:"json",
 
@@ -37,11 +37,11 @@ $(document).ready(function() {
             $("#modBrazoIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de codo izquierdo
-    $.ajax({
-         url: routeDescri+'/get_particularidades/'+8,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+8,
          type:"GET",
          dataType:"json",
 
@@ -51,11 +51,11 @@ $(document).ready(function() {
             $("#partCodoIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de codo izquierdo
-    $.ajax({
-         url: routeDescri+'/get_modificaciones/'+8,
+    /*$.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+8,
          type:"GET",
          dataType:"json",
 
@@ -65,11 +65,11 @@ $(document).ready(function() {
             $("#modCodoIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de antebrazo izquierdo
-    $.ajax({
-         url: routeDescri+'/get_particularidades/'+3,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+3,
          type:"GET",
          dataType:"json",
 
@@ -79,11 +79,11 @@ $(document).ready(function() {
             $("#partAntebrazoIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de antebrazo izquierdo
-    $.ajax({
-         url: routeDescri+'/get_modificaciones/'+3,
+    /*$.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+3,
          type:"GET",
          dataType:"json",
 
@@ -93,11 +93,11 @@ $(document).ready(function() {
             $("#modAntebrazoIzq").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de brazo derecho
-    $.ajax({
-         url: routeDescri+'/get_particularidades/'+61,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+61,
          type:"GET",
          dataType:"json",
 
@@ -107,11 +107,11 @@ $(document).ready(function() {
             $("#partBrazoDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de brazo derecho
-    $.ajax({
-         url: routeDescri+'/get_modificaciones/'+61,
+    /*$.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+61,
          type:"GET",
          dataType:"json",
 
@@ -121,11 +121,11 @@ $(document).ready(function() {
             $("#modBrazoDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de codo derecho
-    $.ajax({
-         url: routeDescri+'/get_particularidades/'+9,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+9,
          type:"GET",
          dataType:"json",
 
@@ -135,11 +135,11 @@ $(document).ready(function() {
             $("#partCodoDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de codo derecho
-    $.ajax({
-         url: routeDescri+'/get_modificaciones/'+9,
+    /*$.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+9,
          type:"GET",
          dataType:"json",
 
@@ -149,11 +149,11 @@ $(document).ready(function() {
             $("#modCodoDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de particularidades de antebrazo derecho
-    $.ajax({
-         url: routeDescri+'/get_particularidades/'+62,
+    /*$.ajax({
+         url: '/descripcionfisica/get_particularidades/'+62,
          type:"GET",
          dataType:"json",
 
@@ -163,11 +163,11 @@ $(document).ready(function() {
             $("#partAntebrazoDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
     //Cargar valores a select de modificaciones de antebrazo derecho
-    $.ajax({
-         url: routeDescri+'/get_modificaciones/'+62,
+    /*$.ajax({
+         url: '/descripcionfisica/get_modificaciones/'+62,
          type:"GET",
          dataType:"json",
 
@@ -177,7 +177,7 @@ $(document).ready(function() {
             $("#modAntebrazoDer").append('<option value="'+ value.id +'">' +  value.nombre + '</option>');
                });
             },  
-    });
+    });*/
 
   //Información de brazo izquierdo
   $("#infoBrazoIzq").change(function(event) {

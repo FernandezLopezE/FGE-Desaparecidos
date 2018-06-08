@@ -95,10 +95,9 @@
 		<!-- Fin del Contenido del formulario-->
 	  </div>
 	  <div class="modal-footer">
-	    <button type="button" class="btn btn-dark mr-auto" id="btnLimpiar"> LIMPIAR CAMPOS</button>
-	    <button type="button" class="btn btn-dark" id="btnEditarContacto" style="display:none">EDITAR</button>
-		<button type="button" class="btn btn-dark" id="btnGuardarContacto" >GUARDAR</button>
-		<button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
+	    <button type="button" class="btn btn-dark" id="btnEditarContacto" style="display:none">Guardar</button>
+		<button type="button" class="btn btn-dark" id="btnGuardarContacto" >Guardar</button>
+		<button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
 	  </div>
 	</div>
   </div>

@@ -11,7 +11,7 @@
 
 @include('navs.navs_datos',array('activar' => 'desaparecido'))
 <button type="submit" class="btn btn-dark pull-right"  id="btnAgregarDesaparecido">
-	GUARDAR		
+	Guardar		
 </button>
 <div class="card-body bg-white">
 	<form>
@@ -112,8 +112,11 @@
 						{!! Form::label ('edadAparente','Edad aparente:', ['class' => 'form-control-label']) !!}
 						{!! Form::text ('edadAparente',
 										old('edadAparente'),
-										['class' => 'form-control',
-											'id' => 'edadAparente'
+										['class' => 'form-control sinEnter soloNumeros',
+											'id' => 'edadAparente',
+											'maxlength' => 3,
+											'data-validation' =>'number',
+											'data-validation-allowing' =>'range[1;150]'
 										] )!!}
 						<div class="form-control-feedback" id="error_edadAparente"></div>
 					</div>

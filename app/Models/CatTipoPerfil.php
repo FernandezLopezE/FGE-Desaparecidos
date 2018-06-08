@@ -4,9 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CatTipoPerfilTable extends Model
+class CatTipoPerfil extends Model
 {
-    protected $table = 'cat_ubicacion_diente';
+    protected $table = 'cat_tipo_perfil';
 	protected $fillable = [
 		'id',
 		'nombrePerfil'	

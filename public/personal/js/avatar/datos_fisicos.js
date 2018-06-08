@@ -1,16 +1,15 @@
 $(document).ready(function(){
-	console.log("Mi ruta es: "+routeDescrip);
 	//Ocultar tarjeta de datos físicos
 	$("#card").hide();
 	$("#datosFis").hover( function () {
 		$("#card").toggle();
   	});
 	console.log(aux);
-  	//Si ya tiene datos que no muestre el modal
+ //  	//Si ya tiene datos que no muestre el modal
   	if (aux == true) {
 	    $("#talla").modal("hide");
 	     $.ajax({
-	            url: routeDescrip+'/get_datosfisicos/'+extraviado,
+	            url: routeDescrip+'/get_datosfisicos/'+idDesaparecido,
 	            type:"GET",
 	            dataType:"json",
 	            success:function(data) {
@@ -27,10 +26,10 @@ $(document).ready(function(){
     	$("#esta").focus();
 	}
 
-	//Click para mostrar en el modal
+	// //Click para mostrar en el modal
   	$("#datosFis").click(function(event) {
       $.ajax({
-            url: routeDescrip+'/get_datosfisicos/'+extraviado,
+            url: routeDescrip+'/get_datosfisicos/'+idDesaparecido,
             type:"GET",
             dataType:"json",
             success:function(data) {
@@ -45,18 +44,18 @@ $(document).ready(function(){
             }
           });
   	});
-  	//$('[data-toggle="tooltip"]').tooltip();
+  	$('[data-toggle="tooltip"]').tooltip();
 
   	//botón para guardar talla
   	$("#guardarTalla").click(function(){
 	    console.log("entro");
-	    console.log("hhh"+extraviado);
+	    console.log("hhh"+idDesaparecido);
 	    var dataString = {
 	      estatura: $('#esta').val(),
 	      peso: $('#bulto').val(),
 	      complexion: $('#comple').val(),
 	      colorPiel: $('#cPiel').val(),
-	      idExtraviado: extraviado,
+	      idExtraviado: idDesaparecido,
 	    };
 	    console.log(dataString);
       	$.ajax({
@@ -69,7 +68,7 @@ $(document).ready(function(){
 	          $("#talla").modal("hide");
 	          
 	          $.ajax({
-	            url: routeDescrip+'/get_datosfisicos/'+extraviado,
+	            url: routeDescrip+'/get_datosfisicos/'+idDesaparecido,
 	            type:"GET",
 	            dataType:"json",
 	            success:function(data) {

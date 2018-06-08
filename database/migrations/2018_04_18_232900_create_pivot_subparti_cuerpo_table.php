@@ -14,10 +14,10 @@ class CreatePivotSubpartiCuerpoTable extends Migration
     public function up()
     {
         Schema::create('pivot_subparti_cuerpo', function (Blueprint $table) {
-            $table->integer('idCedulaPartesCuerpo')->unsigned()->nullable();           
+            $table->integer('idCedulaPartesCuerpo')->unsigned();           
             $table->foreign('idCedulaPartesCuerpo')->references('id')->on('cedula_partes_cuerpo');
-            $table->integer('idSubParticularidades')->unsigned()->nullable();           
-            $table->foreign('idSubParticularidades')->references('id')->on('cat_sub_particularidades');
+            $table->integer('idParticularidades')->unsigned();           
+            $table->foreign('idParticularidades')->references('id')->on('cat_particularidades_cuerpo');
             $table->timestamps();
         });
     }

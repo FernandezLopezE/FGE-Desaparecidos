@@ -34,7 +34,7 @@ class ExtraviadoRequest extends FormRequest
 			'idEstadoOrigen'		=> 'required_unless:idDocumentoIdentidad,1',
 			'fechaNacimiento'		=> 'required_unless:idDocumentoIdentidad,1|date_format:d/m/Y|before_or_equal:'.date('Y-m-d'),
 			'edadExtravio'			=> 'required_unless:idDocumentoIdentidad,1',
-			'edadAparente'			=> 'required',
+			'edadAparente'			=> 'required|Integer|Min:1|Max:150',
 			'curp'					=> 'required_unless:idDocumentoIdentidad,1|unique:persona,curp,'.$this->request->get('idPersona').',id',
 			'otroDocIdentidad' 		=> 'required_if:idDocumentoIdentidad,9',
 			'numDocIdentidad' 		=> 'required_unless:idDocumentoIdentidad,1',
@@ -76,5 +76,14 @@ class ExtraviadoRequest extends FormRequest
 
 		];
 	}
+
+	public function messages()
+    {
+        return [
+            'numDocIdentidad.required_unless' => 'El campo número de identificación es requerido.',
+            'fechaNacimiento.date_format' => 'El campo fecha de nacimiento no corresponde al formato dd/mm/aaaa. ',
+          
+        ];
+    }
 
 }

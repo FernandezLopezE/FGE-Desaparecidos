@@ -19,6 +19,7 @@ Route::get('/', 'InicioController@index');
 
 	Route::get('extraviado/create/{idCedula}', 'ExtraviadoController@create')
 		->name('extraviado.create_desaparecido');
+	Route::post('extraviado/cargarfoto', 'ExtraviadoController@cargarFoto')->name('extraviado.cargar_foto');		
 	Route::resource('extraviado','ExtraviadoController');
 
 	Route::resource('familiar','FamiliarController');
@@ -31,7 +32,6 @@ Route::get('/', 'InicioController@index');
 
 	Route::resource('vestimentas','VestimentaController');
 
-
 	Route::resource('senas_particulares','SenasParticularesController');
 
 	Route::resource('datos_dentales','DatosDentalesController');
@@ -40,17 +40,24 @@ Route::get('/', 'InicioController@index');
     Route::resource('dependencia_destinatario','AgregarDependenciaController');
 
 	Route::resource('datos_dentales_dientes_perdidos','DatosDentalesDientesPerdidosController');
+	// inician rutas descripción física
+	Route::post('/descripcionfisica/store', 'DescripcionFisicaController@store')->name('descripcionfisica.store');
+
+	Route::get('/descripcionfisica/descripcionf/{idPersonaDesaparecida}', 'DescripcionFisicaController@show')->name('descripcionfisica.show');
+
+	Route::get('/descripcionfisica/get_datosfisicos/{idExtraviado}', 'DescripcionFisicaController@getdatosfisicos')->name('descripcionfisica.get_datosfisicos');
+
+	Route::resource('/descripcionfisica','DescripcionFisicaController');
+
+	//finalizan rutas descripción física
+	Route::get('consultas/get_cedulas', 'ConsultasController@jsonCedulas');
 
 
-
-
-Route::get('consultas/get_cedulas', 'ConsultasController@jsonCedulas');
-
-
-Route::resource('reporteador', 'ReporteadorController');
-Route::post('consultas/get_desaparecidos_personas_todos', 'ConsultasController@jsonDesaparecidosPersonaTodos')->name('consultas.get_desaparecidos_personas_todos');
-Route::post('consultas/get_desaparecidos_personas', 'ConsultasController@jsonDesaparecidosPersona')->name('consultas.get_desaparecidos_personas');
-//Route::post('remover-permiso/{idCarpeta}/{idTipo}/{id}', 'CarpetaController@removerPermiso')->name('remover.permiso');
+	Route::resource('reporteador', 'ReporteadorController');
+	Route::post('consultas/get_desaparecidos_personas_todos', 'ConsultasController@jsonDesaparecidosPersonaTodos')->name('consultas.get_desaparecidos_personas_todos');
+	Route::post('consultas/get_desaparecidos_personas', 'ConsultasController@jsonDesaparecidosPersona')->name('consultas.get_desaparecidos_personas');
+	Route::get('consultas/get_cat_partes_cuerpo', 'ConsultasController@json_cat_partes_cuerpo');
+	//Route::post('remover-permiso/{idCarpeta}/{idTipo}/{id}', 'CarpetaController@removerPermiso')->name('remover.permiso');
 
 
 
@@ -100,10 +107,12 @@ Route::get('consultas/codigos2/{idColonia}', 'ConsultasController@jsonCodigos2')
 // Calcula la edad años meses dias al día actual.
 Route::get('consultas/edad/{fecha_nacimiento}', 'ConsultasController@getEdad');
 
+/************************* RUTAS DE VESTIMENTA **********************************/
+Route::get('consultas/json_partes_cuerpo/{idParteCuerpo}', 'ConsultasController@json_partes_cuerpo')->name('consultas.jsonPartes');
 Route::get('consultas/json_subparte_cuerpo/{idParteCuerpo}', 'ConsultasController@json_subparte_cuerpo')->name('consultas.jsonSubpartes');
 
-Route::get('consultas/get_senas', 'ConsultasController@jsonSenas')
-	->name('consultas.get_senas');	
+Route::get('consultas/get_diente/{id}', 'ConsultasController@json_diente')
+	->name('consultas.get_diente');	
 
 Route::resource('consultas','ConsultasController');
 
@@ -171,35 +180,10 @@ Route::post('/desaparecido/update_vestimenta', 'DesaparecidoController@update_ve
 	->name('desaparecido.update_vestimenta');
 
 //Rutas para descripcion fisica
-Route::get('/descripcionfisica/get_deleteVello/{idParteCuerpo}','DescripcionFisicaController@deleteVelloFacial');
-Route::get('/descripcionfisica/get_coloresCuerpo/{idParteCuerpo}', 'DescripcionFisicaController@getColoresCuerpo')
-	->name('descripcionfisica.get_coloresCuerpo');
-Route::get('/descripcionfisica/get_particularidades/{idParteCuerpo}', 'DescripcionFisicaController@getParticularidades')
-	->name('descripcionfisica.get_particularidades');
-Route::get('/descripcionfisica/get_modificaciones/{idParteCuerpo}', 'DescripcionFisicaController@getModificaciones')
-	->name('descripcionfisica.get_modificaciones');
-Route::get('/descripcionfisica/get_tamano/{idParteCuerpo}', 'DescripcionFisicaController@getTamanoCuerpo')->name('descripcionfisica.get_tamano');
-Route::get('/descripcionfisica/get_cabello/{idExtraviado}', 'DescripcionFisicaController@getCabello')
-	->name('descripcionfisica.get_cabello');
+			
 
-Route::get('/descripcionfisica/get_rostro/{idExtraviado}', 'DescripcionFisicaController@getRostro')
-	->name('descripcionfisica.get_rostro');
-Route::get('/descripcionfisica/get_barba/{idExtraviado}', 'DescripcionFisicaController@getBarba')
-	->name('descripcionfisica.get_barba');
-Route::get('/descripcionfisica/get_bigote/{idExtraviado}', 'DescripcionFisicaController@getBigote')
-	->name('descripcionfisica.get_bigote');
-Route::get('/descripcionfisica/get_patilla/{idExtraviado}', 'DescripcionFisicaController@getPatilla')
-	->name('descripcionfisica.get_patilla');			
-Route::get('/descripcionfisica/get_datosfisicos/{idExtraviado}', 'DescripcionFisicaController@getdatosfisicos')->name('descripcionfisica.get_datosfisicos');
-Route::get('/descripcionfisica/descripcionf/{idPersonaDesaparecida}', 'DescripcionFisicaController@show')
-	->name('descripcionfisica.show');
-Route::get('/descripcionfisica/get_tipos/{idParteCuerpo}', 'DescripcionFisicaController@getTipoCuerpo')->name('descripcionfisica.get_tipos');
-Route::post('/descripcionfisica/store', 'DescripcionFisicaController@store')
-	->name('descripcionfisica.store');
-Route::post('/descripcionfisica/storeVelloFacial', 'DescripcionFisicaController@storeVelloFacial')->name('descripcionfisica.storeVelloFacial');
-Route::post('/descripcionfisica/storeCara', 'DescripcionFisicaController@storeCara')->name('descripcionfisica.storeCara');
 //Route::get('descripcionfisica/json_subparte_cuerpo/{idParteCuerpo}', 'DescripcionFisicaController@json_subparte_cuerpo')->name('descripcionfisica.jsonSubpartes');
-Route::resource('/descripcionfisica','DescripcionFisicaController');
+
 //fin de mis rutas
 //Rutas para antedecedentes medicos
 Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'AntecedentesMedicosController@show')

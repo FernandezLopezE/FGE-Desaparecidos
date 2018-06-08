@@ -10,6 +10,11 @@
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 	{!! Html::style('bootstrap4/dist/css/bootstrap.min.css') !!}
+	{{--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--}}
+
+		<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
+
 	<link rel="stylesheet" type="text/css" href="{{ asset('plugins/font-awesome/css/font-awesome.css') }}">
 	<link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}">
 	
@@ -53,14 +58,10 @@
 						</h4>
 					</div><!-- /.col -->
 					<div class="col-sm-6">
-						<ol class="breadcrumb float-sm-right">
-						   
-								<li class="breadcrumb-item"><a href="#">Carpeta</a></li>
-							
-
-								<li class="breadcrumb-item"><a href="#">Home</a></li>
-						   
-							<li class="breadcrumb-item active">Pruebas</li>
+						<ol class="breadcrumb float-sm-right">						   
+							{{--<li class="breadcrumb-item"><a href="#">Carpeta</a></li>
+							<li class="breadcrumb-item"><a href="#">Home</a></li>						   
+							<li class="breadcrumb-item active">Pruebas</li>--}}
 						</ol>
 					</div><!-- /.col -->
 				</div><!-- /.row -->
@@ -87,7 +88,13 @@
 	</div>
 	{!! HTML::script('personal/js/jquery-3.3.1.js') !!}
 	<script src="{{ asset('plugins/tether/js/tether.min.js')}}" ></script>
-	{!! HTML::script('bootstrap4/dist/js/bootstrap.min.js') !!}
+	{{-- {!! HTML::script('bootstrap4/dist/js/bootstrap.min.js') !!} --}}
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 	
 	{!! HTML::script('personal/js/jquery.form-validator.min.js') !!}
 	{!! HTML::script('personal/js/jquery.mask.js') !!}

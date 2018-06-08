@@ -15,13 +15,14 @@ class CreateCedulaPartesCuerpoTable extends Migration
     {
         Schema::create('cedula_partes_cuerpo', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tenia')->nullable();//campo para preguntas ejemplo ¿Tenia Cabello?
+            //$table->string('tenia')->nullable();//campo para preguntas ejemplo ¿Tenia Cabello?
             $table->text('observaciones')->nullable();
             $table->string('otraParticularidad')->nullable();
             $table->string('otraModificacion')->nullable();
-            $table->string('otroTipoCuerpo')->nullable();
+            $table->string('otroTipo')->nullable();
             $table->string('otroColor')->nullable();
-            $table->enum('posicion',['NO APLICA','IZQUIERDA','DERECHA','AMBOS'])->nullable();
+            $table->string('imagen')->nullable();
+            $table->enum('posicion',['NO APLICA','AMBOS(AS)','IZQUIERDO(A)','DERECHO(A)'])->nullable();
             $table->integer('idPartesCuerpo')->unsigned()->nullable();           
             $table->foreign('idPartesCuerpo')->references('id')->on('cat_partes_cuerpo');
             $table->integer('idTamanoCuerpo')->unsigned()->nullable();           

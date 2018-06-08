@@ -37,27 +37,41 @@ class DatosDentalesDientesPerdidosController extends Controller
     {
         $idDesaparecido = $request['idDesaparecido'];
         //dd($idDesaparecido);
+        $dentadura = Dentadura::where('idDesaparecido',$idDesaparecido)->select('id')->get();
 
-        $dentadura = Dentadura::where('idDesaparecido',$idDesaparecido)->get();
+        $query = \DB::table('desaparecido_dentadura as ddp')
+                        ->where('ddp.idDesaparecido',$request['idDesaparecido'])
+                        ->get();
 
-        //dd($dentadura[0]['id']);
+        if ($dentadura != null) {
+            \DB::table('pivot_diente_perdido')->where('idDentadura', $query->toArray()[0]->id)->delete();
 
-        $dientes = $request->input('idDiente');
-        foreach ($request->input('causaPerdida') as $index => $value) {
-            if (!empty($value)) {
-                $dientesPer[] = array(
-                                    'idDiente' => $dientes[$index],
-                                    'causaPerdida' => $value,
-                                    //'idDentadura' => $request->input('idDentadura')
-                                    'idDentadura' => $dentadura[0]['id']
-                                );
+            $dientes = $request->input('idDiente');
+            foreach ($request->input('causaPerdida') as $index => $value) {
+                if (!empty($value)) {
+                    $dientesPer[] = array(
+                                        'idDiente' => $dientes[$index],
+                                        'causaPerdida' => $value,
+                                        //'idDentadura' => $request->input('idDentadura')
+                                        'idDentadura' => $dentadura[0]['id']
+                                    );
+                }
+            }
+        }else{
+            $dientes = $request->input('idDiente');
+            foreach ($request->input('causaPerdida') as $index => $value) {
+                if (!empty($value)) {
+                    $dientesPer[] = array(
+                                        'idDiente' => $dientes[$index],
+                                        'causaPerdida' => $value,
+                                        //'idDentadura' => $request->input('idDentadura')
+                                        'idDentadura' => $dentadura[0]['id']
+                                    );
+                }
             }
         }
-
-        //dd($debtadu1);
-    
         \DB::table('pivot_diente_perdido')->insert($dientesPer);
-        return response()->json('successful');
+        return response()->json('Guardado');
     }
 
     /**
