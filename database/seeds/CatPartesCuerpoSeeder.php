@@ -40,7 +40,7 @@ DB::table('cat_partes_cuerpo')->insert([
 
     ['nombre' => 'BOCA', 'partePadre' => '6', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '1', 'color' => '0', 'tamano' => '1', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //13
 
-    ['nombre' => 'LABIOS', 'partePadre' => '6', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '1', 'tipo' => '0', 'color' => '0', 'tamano' => '1', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //14
+    ['nombre' => 'LABIOS', 'partePadre' => '6', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '1', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //14
 
     ['nombre' => 'MENTÓN', 'partePadre' => '6', 'reglas' => json_encode(array('parte' => '0', 'posicion' => '0', 'tipo' => '0', 'color' => '0', 'tamano' => '0', 'particularidades' => '1', 'modificaciones' => '1', 'observaciones' => '1',))],                            //15
 

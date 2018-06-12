@@ -31,9 +31,9 @@
 		var routeMail = '{!! route('mail.index') !!}';
 
 		var formatTableActions = function(value, row, index) {				
-			btn = '<a href="'+routeCedula+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit"><i class="fa fa-address-card"></i></a>&nbsp;';
-			btn = btn+'<a href="'+routeBoletin+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit"><i class="fa fa-file"></i></a>&nbsp;';
-			btn = btn+'<a href="'+routeMail+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit"><i class="fa fa-envelope"></i></a>&nbsp;';
+			btn = '<a href="'+routeCedula+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit " data-toggle="tooltip" data-placement="right" title="Editar cédula" ><i class="fa fa-address-card"></i></a>&nbsp;';
+			btn = btn+'<a href="'+routeBoletin+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit" data-toggle="tooltip" data-placement="right" title="Boletín"><i class="fa fa-file"></i></a>&nbsp;';
+			/*btn = btn+'<a href="'+routeMail+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit"><i class="fa fa-envelope"></i></a>&nbsp;';*/
 			/*btn = '<div class="btn-group">';
 			btn = btn+'<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 			btn = btn+'Acciones';
