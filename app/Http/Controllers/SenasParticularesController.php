@@ -41,7 +41,7 @@ class SenasParticularesController extends Controller
 		if(is_null($request->file('archivo')))
 		{
 			if($request->input('method') == 'PUT'){            
-				$rutaImagen = "n;// Se queda con la imagen anterior.
+				$rutaImagen = null;
 			} else {
 				$rutaImagen = "images".DS."vestimenta_sin_imagen.png";
 			}
