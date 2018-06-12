@@ -37,7 +37,7 @@ class ReporteadorController extends Controller
                ->where('nombre','!=','SIN INFORMACIÓN')->where('nombre','!=','RASURADA/DEPILADA')->where('nombre','!=','RASURADA')->groupby('nombre')->distinct()->pluck('nombre','nombre');
            
            $particularidades = \App\Models\CatParticularidadesCuerpo::where('nombre','!=','CORTAS')->where('nombre','!=','OTRO')
-               ->where('nombre','!=','SIN INFORMACIÓN')->where('nombre','!=','LARGAS')->groupby('nombre')->distinct()->pluck('nombre','nombre');
+               ->where('nombre','!=','SIN INFORMACIÓN')->where('nombre','!=','LARGAS')->where('nombre','!=','CORTE TIPO ESCOLAR')->where('nombre','!=','CORTE TIPO MILITAR')->where('nombre','!=','CORTE TIPO MOHICANO')->groupby('nombre')->distinct()->pluck('nombre','nombre');
             
            $generos = array('H' => 'MASCULINO',
 								 'M' => 'FEMENINO');

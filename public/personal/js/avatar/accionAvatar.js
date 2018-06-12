@@ -52,7 +52,46 @@ $(document).ready(function(){
         $('#contenidoForm').empty();
         formulario = pintar_formulario(v, campo);
     });
+    function pintar_cabeceras(idParteCuerpo, campo){
+        $.ajax({
+            type: 'GET',
+            url: routeConsul+'/json_cabecera_partes/'+idParteCuerpo,            
+            dataType: 'json',
+            success: function(data) {
+                console.log(data);
+                contenido = '<div class="form-group">';
+                $.each(data.padre, function(key, value){ 
+                contenido = contenido+'<h4><code>'+value.partep+' - '+data.hijo.nombre+'</code></h4>';
+                });
+                contenido = contenido+'<div class="form-group" id="contenidoForm">';
+                contenido = contenido +'</div>';
+                contenido = contenido +'</div>';
+                /*reglas = $.parseJSON(data.parte.reglas);
+                html="<input type='hidden' id='idParteCuerpo' value='"+idParteCuerpo+"' \>";
+                if(parseInt(reglas.posicion)){
+                html = html+'<div class="form-group" id="div_idPosicion">';
+                html = html+'<label for="idPosicion">Posición:</label>';
+                html = html+'<select type="select" class="form-control" id="idPosicion">';
+                html = html+'<option value="NO APLICA">NO APLICA</option>';
+                html = html+'<option value="AMBOS(AS)">AMBOS(AS)</option>';
+                html = html+'<option value="IZQUIERDO(A)">IZQUIERDO(A)</option>';
+                html = html+'<option value="DERECHO(A)">DERECHO(A)</option>';
+                html = html+'</select>';
+                html = html+'</div>';
+                }
+                
+                
+                campo.append(html);
 
+                $('#idParticularidad').selectpicker();
+                $('#idModificacion').selectpicker();  */
+                campo.append(contenido);
+            },
+            error: function(data) {
+            }
+        });
+        console.log("entro asas");
+    }
     function pintar_formulario(idParteCuerpo, campo){            
         $.ajax({
             type: 'GET',
@@ -149,7 +188,28 @@ $(document).ready(function(){
     })
 
     $('#formulario').on('click', '#btnEditar', function(){
-        console.log('Preparando para editar');
+        console.log('Preparando para editar'+$(this).val());
+        var v = $(this).val();
+        var campo = $('#formulario');
+        
+        $('#formulario').empty();
+        pintar_cabeceras(v,campo);
+        formulario = pintar_formulario(v, campo);
+
+        $.getJSON( routeConsul+'/get_cat_partes_cuerpo/'+idDesaparecido+'/'+v, function(data) {
+            console.log(data);
+            $("#idTipo").val(data.idtipo);
+            $("#idColor").val(data.idcolor);
+            $("#idTamano").val(data.idtamano);
+            $("#idPosicion").val(data.posicion);
+            $("#idParticularidad").val(data.particularidades).trigger("change");
+            $("#idModificacion").val(data.modificaciones).trigger("change");
+            $("#observaciones").val(data.observaciones);
+            $("#archivo").val(data.rutaimagen).trigger("change");
+        });
+        console.log("hecho");
+
+
     })
 
     $('#formulario').on('click', '#btnGuardar', function(){

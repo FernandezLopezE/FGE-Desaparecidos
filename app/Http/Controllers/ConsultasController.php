@@ -21,13 +21,15 @@ class ConsultasController extends Controller
 
 	public function jsonCedulas(Request $request)
 	{
-		//$cedulas = \DB::table('desaparecidos_cedula_investigacion')::all();
-        $cedulas = \DB::table('desaparecidos_cedula_investigacion as c')
+        \DB::statement('SET @rownum = 0');
+       $cedulas = \DB::table('desaparecidos_cedula_investigacion as c')
                             ->leftJoin('desaparecidos_personas as d', 'c.id', '=',\DB::raw('d.idCedula AND d.tipoPersona = "DESAPARECIDA"'))
                             ->leftJoin('persona as p', 'd.idPersona', '=', 'p.id')
                             ->leftJoin('cat_nacionalidad as n', 'p.idNacionalidad', '=', 'n.id')
-                            //->where('d.tipoPersona','DESAPARECIDA')
-                            ->select('c.id','c.idDialecto', 'c.carpeta', 'c.idCarpeta', \DB::raw('DATE_FORMAT(c.created_at, "%d/%m/%Y %H:%m") as created_at'), 'p.nombres', 'p.primerAp', 'p.segundoAp', 'p.sexo','n.nombre as nacionalidad', 'd.apodo', 'd.edadExtravio')
+
+                            
+                            ->select('c.id','c.idDialecto', 'c.carpeta', 'c.idCarpeta', \DB::raw('DATE_FORMAT(c.created_at, "%d/%m/%Y %H:%m") as created_at'), 'p.nombres', \DB::raw('ifnull(p.primerAp,"")as primerAp') , \DB::raw('ifnull(p.segundoAp,"") as segundoAp'), 'p.sexo','n.nombre as nacionalidad', 'd.apodo', 'd.edadExtravio',\DB::raw('@rownum := @rownum + 1 AS rownum'))
+                            //->orderByRaw('rownum','CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))')
                             ->get();
 
 		return response()->json($cedulas);
@@ -164,8 +166,8 @@ class ConsultasController extends Controller
     ->leftjoin('cat_particularidades_cuerpo as cparti','cparti.id','=','psubp.idParticularidades')
   
 
-    ->select('des.id as id', \DB::raw('CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))AS nombre'), 'p.sexo as sexo',\DB::raw('substr(dci.desaparicionFecha, 1,10) as fecha'),'des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'),'des.estatura as estatura','des.peso as peso','cc.id as idComplexion','cc.nombre as complexion','ccp.id as idCPiel','ccp.nombre as cPiel','ce.id as idEstado','ce.nombre as estado','cm.id as idMuni','cm.nombre as municipio',
-                     'cn.nombre as nacionalidad','dci.fechaVisita as fechaReporte', 'dci.desaparicionObservaciones as hechos')
+    ->select('des.id as id', \DB::raw('CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))AS nombre'), 'p.sexo as sexo',\DB::raw('DATE_FORMAT(substr(dci.desaparicionFecha, 1,10), "%d/%m/%Y") as fecha'),'des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'),'des.estatura as estatura','des.peso as peso','cc.id as idComplexion','cc.nombre as complexion','ccp.id as idCPiel','ccp.nombre as cPiel','ce.id as idEstado','ce.nombre as estado','cm.id as idMuni','cm.nombre as municipio',
+                     'cn.nombre as nacionalidad',\DB::raw('DATE_FORMAT(dci.fechaVisita,"%d/%m/%Y")  as fechaReporte'), 'dci.desaparicionObservaciones as hechos')
 
             //{->where('des.edadExtravio', 'like', "$rg%")
                             //->where('des.edadExtravio', 'like', "$rg2%")
@@ -1003,6 +1005,17 @@ class ConsultasController extends Controller
         return response()->json($data);
     }
 
+    public function json_cabecera_partes($parte_cuerpo = null){
+        $data['hijo'] = \App\Models\CatPartesCuerpo::find($parte_cuerpo);
+
+        $data['padre'] = \DB::table('cat_partes_cuerpo AS pa')
+                    ->where('pa.id',$data['hijo']->partePadre)
+                    ->select('pa.nombre as partep')
+                    ->get();
+
+        return response()->json($data);
+    }
+
     public function json_subparte_cuerpo(Request $request, $parte_cuerpo = null)
     {
         $data['parte']              = \App\Models\CatPartesCuerpo::find($parte_cuerpo);
@@ -1016,7 +1029,7 @@ class ConsultasController extends Controller
     }
 
 
-    public function json_cat_partes_cuerpo($idDesaparecido=null)
+    public function json_cat_partes_cuerpo($idDesaparecido=null, $idParteCuerpo)
     {
         /*$partesCuerpo    = \App\Models\CatPartesCuerpo::where('partePadre', '0')->get();
         $activasPartes  = \App\Models\CedulaPartesCuerpo::where('idPersonaDesaparecida', 2)
@@ -1027,12 +1040,62 @@ class ConsultasController extends Controller
                     ->leftJoin('cat_tamano_cuerpo AS ta', 'ce.idPartesCuerpo', '=', 'ta.id')
                     ->leftJoin('cat_tipos_cuerpo AS ti', 'ce.idTipoCuerpo', '=', 'ti.id')
                     ->leftJoin('cat_colores_cuerpo AS co', 'ce.idColoresCuerpo', '=', 'co.id')
-                    ->where('idPersonaDesaparecida', $idDesaparecido)
-                    ->select('pa.nombre as partep', 'cu.nombre as parteh',
-                    'ta.nombre as tamano', 'ti.nombre as tipo', 'co.nombre as color', 'ce.posicion', 'ce.observaciones')
+                    ->where('ce.idPersonaDesaparecida', $idDesaparecido)
+                    ->where('ce.idPartesCuerpo', $idParteCuerpo)
+                    ->select('ce.id as idParteCuerpo','pa.nombre as partep', 'cu.nombre as parteh',
+                    'ce.idTamanoCuerpo as tamano', 'ce.idTipoCuerpo as tipo', 'ce.idColoresCuerpo as color', 'ce.posicion as posicion', 'ce.observaciones as observaciones','ce.imagen as imagen')
                     ->get();
 
-        return response()->json($partesCuerpo);
+        foreach ($partes as $parte) {
+            $modificaciones = $this->get_modificaciones($parte->idParteCuerpo);
+            $modifi = array();
+            foreach ($modificaciones as $value) {               
+                $modifi[] = $value->id;
+            }
+
+            $particularidades = $this->get_particularidades($parte->idParteCuerpo);
+            $parti = array();
+            foreach ($particularidades as $value) {               
+                $parti[] = $value->id;
+            }
+
+            $cuerpo = [
+                        'idtamano' => $parte->tamano,
+                        'idtipo' =>$parte->tipo,
+                        'idcolor' => $parte->color,
+                        'posicion' => $parte->posicion,
+                        'observaciones' => $parte->observaciones,
+                        'rutaimagen' => $parte->imagen,
+                        'particularidades' => $parti,
+                        'modificaciones' => $modifi
+                    ];
+        }
+
+        
+
+        return response()->json($cuerpo);
+    }
+
+    public function get_modificaciones($idParteCuerpo)
+    {
+        $modificaciones = \DB::table('pivot_submodi_cuerpo AS pi')
+                            ->leftJoin('cat_modificaciones_cuerpo AS mo', 'pi.idModificaciones', '=', 'mo.id')
+                            ->where('pi.idCedulaPartesCuerpo', $idParteCuerpo)
+                            ->select('mo.id')
+                            ->get();
+
+        return $modificaciones;
+    }
+
+    public function get_particularidades($idParteCuerpo)
+    {
+        $particularidades = \DB::table('pivot_subparti_cuerpo AS pi')
+                            ->leftJoin('cat_particularidades_cuerpo AS mo', 'pi.idParticularidades', '=', 'mo.id')
+                            ->where('pi.idCedulaPartesCuerpo', $idParteCuerpo)
+                            ->select('mo.id')
+                            ->get();
+
+        return $particularidades;
     }
 
     public function json_diente($id)
