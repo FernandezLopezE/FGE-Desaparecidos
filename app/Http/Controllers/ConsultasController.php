@@ -1003,6 +1003,17 @@ class ConsultasController extends Controller
         return response()->json($data);
     }
 
+    public function json_cabecera_partes($parte_cuerpo = null){
+        $data['hijo'] = \App\Models\CatPartesCuerpo::find($parte_cuerpo);
+
+        $data['padre'] = \DB::table('cat_partes_cuerpo AS pa')
+                    ->where('pa.id',$data['hijo']->partePadre)
+                    ->select('pa.nombre as partep')
+                    ->get();
+
+        return response()->json($data);
+    }
+
     public function json_subparte_cuerpo(Request $request, $parte_cuerpo = null)
     {
         $data['parte']              = \App\Models\CatPartesCuerpo::find($parte_cuerpo);
