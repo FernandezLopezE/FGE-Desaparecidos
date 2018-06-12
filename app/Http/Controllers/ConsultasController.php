@@ -21,13 +21,15 @@ class ConsultasController extends Controller
 
 	public function jsonCedulas(Request $request)
 	{
-		//$cedulas = \DB::table('desaparecidos_cedula_investigacion')::all();
-        $cedulas = \DB::table('desaparecidos_cedula_investigacion as c')
+        \DB::statement('SET @rownum = 0');
+       $cedulas = \DB::table('desaparecidos_cedula_investigacion as c')
                             ->leftJoin('desaparecidos_personas as d', 'c.id', '=',\DB::raw('d.idCedula AND d.tipoPersona = "DESAPARECIDA"'))
                             ->leftJoin('persona as p', 'd.idPersona', '=', 'p.id')
                             ->leftJoin('cat_nacionalidad as n', 'p.idNacionalidad', '=', 'n.id')
-                            //->where('d.tipoPersona','DESAPARECIDA')
-                            ->select('c.id','c.idDialecto', 'c.carpeta', 'c.idCarpeta', \DB::raw('DATE_FORMAT(c.created_at, "%d/%m/%Y %H:%m") as created_at'), 'p.nombres', 'p.primerAp', 'p.segundoAp', 'p.sexo','n.nombre as nacionalidad', 'd.apodo', 'd.edadExtravio')
+
+                            
+                            ->select('c.id','c.idDialecto', 'c.carpeta', 'c.idCarpeta', \DB::raw('DATE_FORMAT(c.created_at, "%d/%m/%Y %H:%m") as created_at'), 'p.nombres', \DB::raw('ifnull(p.primerAp,"")as primerAp') , \DB::raw('ifnull(p.segundoAp,"") as segundoAp'), 'p.sexo','n.nombre as nacionalidad', 'd.apodo', 'd.edadExtravio',\DB::raw('@rownum := @rownum + 1 AS rownum'))
+                            //->orderByRaw('rownum','CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))')
                             ->get();
 
 		return response()->json($cedulas);
@@ -164,8 +166,8 @@ class ConsultasController extends Controller
     ->leftjoin('cat_particularidades_cuerpo as cparti','cparti.id','=','psubp.idParticularidades')
   
 
-    ->select('des.id as id', \DB::raw('CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))AS nombre'), 'p.sexo as sexo',\DB::raw('substr(dci.desaparicionFecha, 1,10) as fecha'),'des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'),'des.estatura as estatura','des.peso as peso','cc.id as idComplexion','cc.nombre as complexion','ccp.id as idCPiel','ccp.nombre as cPiel','ce.id as idEstado','ce.nombre as estado','cm.id as idMuni','cm.nombre as municipio',
-                     'cn.nombre as nacionalidad','dci.fechaVisita as fechaReporte', 'dci.desaparicionObservaciones as hechos')
+    ->select('des.id as id', \DB::raw('CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))AS nombre'), 'p.sexo as sexo',\DB::raw('DATE_FORMAT(substr(dci.desaparicionFecha, 1,10), "%d/%m/%Y") as fecha'),'des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'),'des.estatura as estatura','des.peso as peso','cc.id as idComplexion','cc.nombre as complexion','ccp.id as idCPiel','ccp.nombre as cPiel','ce.id as idEstado','ce.nombre as estado','cm.id as idMuni','cm.nombre as municipio',
+                     'cn.nombre as nacionalidad',\DB::raw('DATE_FORMAT(dci.fechaVisita,"%d/%m/%Y")  as fechaReporte'), 'dci.desaparicionObservaciones as hechos')
 
             //{->where('des.edadExtravio', 'like', "$rg%")
                             //->where('des.edadExtravio', 'like', "$rg2%")

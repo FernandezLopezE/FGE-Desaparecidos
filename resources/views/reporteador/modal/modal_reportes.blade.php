@@ -49,9 +49,9 @@
 				<dd class="col-sm-8" id="idComplexion">
 				</dd>
 				<dt class="col-sm-3">Cabello:</dt>
-				<dd class="col-sm-8"id="idCabello"> </dd>
+				<dd class="col-sm-8"id="idCabelloM"> </dd>
 				<dt class="col-sm-3">Vello facial:</dt>
-				<dd class="col-sm-8"id="idVelloFacial"> </dd>
+				<dd class="col-sm-8"id="idVelloFacialM"> </dd>
 				<dt class="col-sm-3">Ojos:</dt>
 				<dd class="col-sm-8"id="idOjos"> </dd>
 				<dt class="col-sm-3">Labios:</dt>
