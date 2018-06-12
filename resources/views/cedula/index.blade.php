@@ -49,6 +49,16 @@
 			return [btn].join('');envelope-square
 		};
 
+		var formatGenero = function(value, row, index){
+      		texto = '';
+      		if (row.sexo =='H') 
+        		texto = 'MASCULINO'
+      		else
+                texto = 'FEMENINO'
+
+     		return [texto].join('');
+    	}
+
 		window.operateEvents = {
 			'click #edit': function (e, value, row, index) {
 			}
@@ -68,9 +78,9 @@
 			search: true,
 			rowStyle: rowStyle,				
 			url: routeIndex+'/get_cedulas',
-			columns: [{					
-				field: 'id',
-				title: '#',
+			columns: [{		
+				title: 'No.',			
+				field: 'rownum'
 			}, {					
 				title: 'Nombres',
 				formatter: (value, row, index, field) => {
@@ -84,8 +94,8 @@
 				field: 'apodo',
 				title: 'Apodo',
 			}, {					
-				field: 'sexo',
-				title: 'Sexo',
+				title: 'Género',
+				formatter: formatGenero
 			}, {				
 				field: 'edadExtravio',
 				title: 'Edad extravio',
