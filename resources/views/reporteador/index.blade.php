@@ -1069,8 +1069,8 @@ var formatTableActions = function(value, row, index) {
                 tipoBarba: $('#tipoBarba').multipleSelect('getSelects'),
                 colorBarba: $('#colorBarba').multipleSelect('getSelects'),
               
-                tipoBarba: $('#tipoBigote').multipleSelect('getSelects'),
-                colorBarba: $('#colorBigote').multipleSelect('getSelects'),
+                tipoBigote: $('#tipoBigote').multipleSelect('getSelects'),
+                colorBigote: $('#colorBigote').multipleSelect('getSelects'),
                 tipoPatilla: $('#tipoPatilla').multipleSelect('getSelects'),
                 colorPatilla: $('#colorPatilla').multipleSelect('getSelects'),
               
