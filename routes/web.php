@@ -56,7 +56,7 @@ Route::get('/', 'InicioController@index');
 	Route::resource('reporteador', 'ReporteadorController');
 	Route::post('consultas/get_desaparecidos_personas_todos', 'ConsultasController@jsonDesaparecidosPersonaTodos')->name('consultas.get_desaparecidos_personas_todos');
 	Route::post('consultas/get_desaparecidos_personas', 'ConsultasController@jsonDesaparecidosPersona')->name('consultas.get_desaparecidos_personas');
-	Route::get('consultas/get_cat_partes_cuerpo', 'ConsultasController@json_cat_partes_cuerpo');
+	Route::get('consultas/get_cat_partes_cuerpo/{idDesaparecido}/{idParteCuerpo}', 'ConsultasController@json_cat_partes_cuerpo');
 	//Route::post('remover-permiso/{idCarpeta}/{idTipo}/{id}', 'CarpetaController@removerPermiso')->name('remover.permiso');
 
 
@@ -113,7 +113,7 @@ Route::get('consultas/json_subparte_cuerpo/{idParteCuerpo}', 'ConsultasControlle
 
 Route::get('consultas/get_diente/{id}', 'ConsultasController@json_diente')
 	->name('consultas.get_diente');	
-
+Route::get('consultas/json_cabecera_partes/{idParteCuerpo}', 'ConsultasController@json_cabecera_partes')->name('consultas.jsonCabecerasPartes');
 Route::resource('consultas','ConsultasController');
 
 // Consultar todas la cedulas de investigación.
