@@ -1027,7 +1027,7 @@ class ConsultasController extends Controller
     }
 
 
-    public function json_cat_partes_cuerpo($idDesaparecido=null)
+    public function json_cat_partes_cuerpo($idDesaparecido=null, $idParteCuerpo)
     {
         /*$partesCuerpo    = \App\Models\CatPartesCuerpo::where('partePadre', '0')->get();
         $activasPartes  = \App\Models\CedulaPartesCuerpo::where('idPersonaDesaparecida', 2)
@@ -1038,12 +1038,62 @@ class ConsultasController extends Controller
                     ->leftJoin('cat_tamano_cuerpo AS ta', 'ce.idPartesCuerpo', '=', 'ta.id')
                     ->leftJoin('cat_tipos_cuerpo AS ti', 'ce.idTipoCuerpo', '=', 'ti.id')
                     ->leftJoin('cat_colores_cuerpo AS co', 'ce.idColoresCuerpo', '=', 'co.id')
-                    ->where('idPersonaDesaparecida', $idDesaparecido)
-                    ->select('pa.nombre as partep', 'cu.nombre as parteh',
-                    'ta.nombre as tamano', 'ti.nombre as tipo', 'co.nombre as color', 'ce.posicion', 'ce.observaciones')
+                    ->where('ce.idPersonaDesaparecida', $idDesaparecido)
+                    ->where('ce.idPartesCuerpo', $idParteCuerpo)
+                    ->select('ce.id as idParteCuerpo','pa.nombre as partep', 'cu.nombre as parteh',
+                    'ce.idTamanoCuerpo as tamano', 'ce.idTipoCuerpo as tipo', 'ce.idColoresCuerpo as color', 'ce.posicion as posicion', 'ce.observaciones as observaciones','ce.imagen as imagen')
                     ->get();
 
-        return response()->json($partesCuerpo);
+        foreach ($partes as $parte) {
+            $modificaciones = $this->get_modificaciones($parte->idParteCuerpo);
+            $modifi = array();
+            foreach ($modificaciones as $value) {               
+                $modifi[] = $value->id;
+            }
+
+            $particularidades = $this->get_particularidades($parte->idParteCuerpo);
+            $parti = array();
+            foreach ($particularidades as $value) {               
+                $parti[] = $value->id;
+            }
+
+            $cuerpo = [
+                        'idtamano' => $parte->tamano,
+                        'idtipo' =>$parte->tipo,
+                        'idcolor' => $parte->color,
+                        'posicion' => $parte->posicion,
+                        'observaciones' => $parte->observaciones,
+                        'rutaimagen' => $parte->imagen,
+                        'particularidades' => $parti,
+                        'modificaciones' => $modifi
+                    ];
+        }
+
+        
+
+        return response()->json($cuerpo);
+    }
+
+    public function get_modificaciones($idParteCuerpo)
+    {
+        $modificaciones = \DB::table('pivot_submodi_cuerpo AS pi')
+                            ->leftJoin('cat_modificaciones_cuerpo AS mo', 'pi.idModificaciones', '=', 'mo.id')
+                            ->where('pi.idCedulaPartesCuerpo', $idParteCuerpo)
+                            ->select('mo.id')
+                            ->get();
+
+        return $modificaciones;
+    }
+
+    public function get_particularidades($idParteCuerpo)
+    {
+        $particularidades = \DB::table('pivot_subparti_cuerpo AS pi')
+                            ->leftJoin('cat_particularidades_cuerpo AS mo', 'pi.idParticularidades', '=', 'mo.id')
+                            ->where('pi.idCedulaPartesCuerpo', $idParteCuerpo)
+                            ->select('mo.id')
+                            ->get();
+
+        return $particularidades;
     }
 
     public function json_diente($id)

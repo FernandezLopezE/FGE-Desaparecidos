@@ -195,6 +195,18 @@ $(document).ready(function(){
         $('#formulario').empty();
         pintar_cabeceras(v,campo);
         formulario = pintar_formulario(v, campo);
+
+        $.getJSON( routeConsul+'/get_cat_partes_cuerpo/'+idDesaparecido+'/'+v, function(data) {
+            console.log(data);
+            $("#idTipo").val(data.idtipo);
+            $("#idColor").val(data.idcolor);
+            $("#idTamano").val(data.idtamano);
+            $("#idPosicion").val(data.posicion);
+            $("#idParticularidad").val(data.particularidades).trigger("change");
+            $("#idModificacion").val(data.modificaciones).trigger("change");
+            $("#observaciones").val(data.observaciones);
+            $("#archivo").val(data.rutaimagen).trigger("change");
+        });
         console.log("hecho");
 
 
