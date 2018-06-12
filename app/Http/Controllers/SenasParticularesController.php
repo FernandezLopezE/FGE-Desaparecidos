@@ -41,7 +41,7 @@ class SenasParticularesController extends Controller
 		if(is_null($request->file('archivo')))
 		{
 			if($request->input('method') == 'PUT'){            
-				$rutaImagen = "no tiene datos y es por PUT";// Se queda con la imagen anterior.
+				$rutaImagen = "n;// Se queda con la imagen anterior.
 			} else {
 				$rutaImagen = "images".DS."vestimenta_sin_imagen.png";
 			}
@@ -83,7 +83,7 @@ class SenasParticularesController extends Controller
 			}
 			
 			PivotSubPartiCuerpo::where('idCedulaPartesCuerpo', $request->input('idParteCuerpo'))->delete();			
-			$eliminar = PivotSubModiCuerpo::where('idCedulaPartesCuerpo', $request->input('idParteCuerpo'))->delete();
+			PivotSubModiCuerpo::where('idCedulaPartesCuerpo', $request->input('idParteCuerpo'))->delete();
 
 			$particularidades = ($request->input('idParticularidad') == 'null') ? array() : explode(",", $request->input('idParticularidad')) ;
 			foreach ($particularidades as $particularidad) {
@@ -154,6 +154,21 @@ class SenasParticularesController extends Controller
 	 */
 	public function destroy($id)
 	{
-		//
+	\DB::beginTransaction();
+	try {
+		$parteCuerpo = CedulaPartesCuerpo::find($id)->delete();
+		PivotSubPartiCuerpo::where('idCedulaPartesCuerpo', $id)->delete();
+		PivotSubModiCuerpo::where('idCedulaPartesCuerpo', $id)->delete();
+		\DB::commit();
+		$data['success'] = true;
+	} catch (\Exception $e) {
+		$data['success'] = false;
+		$data['error'] = $e->getMessage();
+		\DB::rollback();
+	}
+	
+	if ($data['success']) {
+		return response()->json($data);
+	}	
 	}
 }
