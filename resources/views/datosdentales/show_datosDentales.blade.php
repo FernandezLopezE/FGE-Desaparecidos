@@ -17,11 +17,13 @@
 @section('content')
 @include('navs.navs_datos',array('activar' => 'dentadura'))
 
+
 <div class="card" id="preDientes">
 	<div class="card-header">
 		<h5>Datos, tratamientos, higiene & hábitos dentales de la persona desaparecida
 			<!-- <a id="mostrarFormulario" class="btn btn-dark pull-right">Editar</a> -->
-			<button type="button" class="btn btn-dark pull-right">Editar</button>   
+      <a href="{{route('datos_dentales.edit', ['id' => $desaparecido->id])}}" class="btn btn-dark pull-right">
+            Editar </a>    
 		</h5>
 	</div>
 	<div class="card-body">
@@ -120,11 +122,32 @@
 
 @section('scripts')
 <script type="text/javascript">
-	var dientes = @JSON("$dientesPerdidos");
-	console.log(dientes);
-		$.each(JSON.parse(dientes), function(key,value){
-			console.log(value.id);
-			$('g[data-diente="'+value.id+'"] path').css({"fill":"#17a4da","stroke":"#ffffff","stroke-width":"2-"});
-		});
+   var dientes = @JSON("$dientesPerdidos");
+    console.log(dientes);
+      $.each(JSON.parse(dientes), function(key,value){
+        console.log(value.id);
+        $('g[data-diente="'+value.id+'"] path').css({"fill":"#17a4da","stroke":"#ffffff","stroke-width":"2-"});
+      });
+
+    // $("#editDientes").click(function(event) {
+    //   $.ajax({
+    //     url: routedatosDentales+'/edit_datos_dentales/'+idDesaparecido,
+    //     type: 'GET',
+    //     dataType: 'json',
+      
+    //   })
+    //   .done(function() {
+    //     console.log("success");
+    //   })
+    //   .fail(function() {
+    //     console.log("error");
+    //   })
+    //   .always(function() {
+    //     console.log("complete");
+    //   });
+      
+    // });
+
+	
 </script>
 @endsection

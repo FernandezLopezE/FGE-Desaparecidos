@@ -167,7 +167,19 @@ class DatosDentalesController extends Controller
      */
     public function edit($id)
     {
-        //
+        
+        $desaparecido = \App\Models\Desaparecido::find($id);
+        $idDesaparecido = $id;
+        $edad = explode(" ",$desaparecido->edadExtravio);
+        $dienteTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
+        $images = (Anexos::where('idDesaparecido', $id)->where('tipoAnexo', 'antecedentesdentales')->get());
+        //$edad = explode(" ",$desaparecido->edadExtravio);
+         return view('datosdentales.edit_datosDentales',[
+            'dienteTamano' => $dienteTamano,
+            'desaparecido' => $desaparecido,
+            'edadExtraviado' => $edad,
+            'images' => $images
+         ]);
     }
 
     /**
