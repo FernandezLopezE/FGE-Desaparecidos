@@ -73,7 +73,7 @@ class DescripcionFisicaController extends Controller
                         ->leftJoin('cat_tipos_cuerpo AS ti', 'ce.idTipoCuerpo', '=', 'ti.id')
                         ->leftJoin('cat_colores_cuerpo AS co', 'ce.idColoresCuerpo', '=', 'co.id')
                         ->where('idPersonaDesaparecida', $idDesaparecido)
-                        ->select('ce.id as idParteCuerpo','pa.id as idPadre', 'pa.nombre as partep', 'cu.nombre as parteh',
+                        ->select('ce.id as idParteCuerpo','pa.id as idPadre', 'pa.nombre as partep','cu.id as idParteh' ,'cu.nombre as parteh',
                         'ta.nombre as tamano', 'ti.nombre as tipo', 'co.nombre as color', 'ce.posicion', 'ce.observaciones', 'ce.imagen')
                         ->get();
         
