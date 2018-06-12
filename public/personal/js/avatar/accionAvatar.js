@@ -201,15 +201,18 @@ $(document).ready(function(){
 
         $.getJSON( routeConsul+'/get_cat_partes_cuerpo/'+idDesaparecido+'/'+v, function(data) {
             console.log(data);
-            $("#idTipo").val(data.idtipo);
-            $("#idColor").val(data.idcolor);
+            $("#idTipo").val(data.idtipo).trigger("change");
+            $("#idColor").val(data.idcolor).trigger("change");
             $("#idTamano").val(data.idtamano);
             $("#idPosicion").val(data.posicion);
             $("#idParticularidad").val(data.particularidades).trigger("change");
             $("#idModificacion").val(data.modificaciones).trigger("change");
             $("#observaciones").val(data.observaciones);
-            $("#archivo").val(data.rutaimagen).trigger("change");
-            $("#btnGuardar").attr("value","PUT");
+            $("#otroidColor").val(data.otroColor);
+            $("#otroidParticularidad").val(data.otraP);
+            $("#otroidModificacion").val(data.otraM);
+            /*$("#archivo").val(data.rutaimagen).trigger("change");
+            $("#btnGuardar").attr("value","PUT");*/
         });
 
 
