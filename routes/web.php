@@ -113,7 +113,7 @@ Route::get('consultas/json_subparte_cuerpo/{idParteCuerpo}', 'ConsultasControlle
 
 Route::get('consultas/get_diente/{id}', 'ConsultasController@json_diente')
 	->name('consultas.get_diente');	
-
+Route::get('consultas/json_cabecera_partes/{idParteCuerpo}', 'ConsultasController@json_cabecera_partes')->name('consultas.jsonCabecerasPartes');
 Route::resource('consultas','ConsultasController');
 
 // Consultar todas la cedulas de investigación.
