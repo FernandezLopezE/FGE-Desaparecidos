@@ -92,7 +92,7 @@ $(document).ready(function(){
         });
         console.log("entro asas");
     }
-    function pintar_formulario(idParteCuerpo, campo){            
+    function pintar_formulario(idParteCuerpo, campo, method = 'POST'){            
         $.ajax({
             type: 'GET',
             url: routeConsul+'/json_subparte_cuerpo/'+idParteCuerpo,            
@@ -165,12 +165,12 @@ $(document).ready(function(){
                 html = html+'<label for="archivo">Seleccione archivo:</label>';
                 html = html+'<input type="file" class="form-control-file" id="archivo">';
                 html = html+'</div>';
-                html = html+'<div class="form-group">';
+                html = html+'<div class="form-group" id="div_observaciones">';
                 html = html+'<label for="observaciones">Observaciones:</label>';
                 html = html+'<textarea type="text" class="form-control mayusculas" id="observaciones"></textarea>';
                 html = html+'</div>';
 
-                html = html+'<button type="submit" id="btnGuardar" class="btn btn-primary">Guardar</button>';
+                html = html+'<button type="submit" id="btnGuardar"  value="'+method+'" class="btn btn-primary">Guardar</button>';
                 html = html+'<button type="submit" id="btnCancelar" class="btn btn-primary float-right">Cancelar</button>';
                 
                 campo.append(html);
@@ -194,7 +194,10 @@ $(document).ready(function(){
         
         $('#formulario').empty();
         pintar_cabeceras(v,campo);
-        formulario = pintar_formulario(v, campo);
+        formulario = pintar_formulario(v, campo,"PUT");
+        
+
+        //$("#div_observaciones").after('<button type="submit" id="btnGuardar"  value="PUT" class="btn btn-primary">Guardar</button>');
 
         $.getJSON( routeConsul+'/get_cat_partes_cuerpo/'+idDesaparecido+'/'+v, function(data) {
             console.log(data);
@@ -206,7 +209,10 @@ $(document).ready(function(){
             $("#idModificacion").val(data.modificaciones).trigger("change");
             $("#observaciones").val(data.observaciones);
             $("#archivo").val(data.rutaimagen).trigger("change");
+            $("#btnGuardar").attr("value","PUT");
         });
+
+
         console.log("hecho");
 
 
@@ -232,6 +238,7 @@ $(document).ready(function(){
         formData.append('otrocolor', ($("#otrocolor").val() === undefined) ? null : $("#otrocolor").val());
         formData.append('idParteCuerpo', ($("#idParteCuerpo").val() === undefined) ? null : $("#idParteCuerpo").val());
         formData.append('idDesaparecido', idDesaparecido);
+        formData.append('method', $(this).val());
         console.log(formData);
 
         $.ajax({
