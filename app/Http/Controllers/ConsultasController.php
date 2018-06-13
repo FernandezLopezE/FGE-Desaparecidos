@@ -1071,7 +1071,8 @@ class ConsultasController extends Controller
                         'otraP' => $parte->otraP,
                         'otraM' => $parte->otraM,
                         'otroT' => $parte->otroT,
-                        'otroColor' => $parte->otroColor
+                        'otroColor' => $parte->otroColor,
+                        'idCedulaParteCuerpo' => $parte->idParteCuerpo
                     ];
         }
 

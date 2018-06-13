@@ -211,6 +211,8 @@ $(document).ready(function(){
             $("#otroidColor").val(data.otroColor);
             $("#otroidParticularidad").val(data.otraP);
             $("#otroidModificacion").val(data.otraM);
+
+            $("#formulario").append('<input type="hidden" id="idCedulaParteCuerpo" value="'+data.idCedulaParteCuerpo+'"/>');
             /*$("#archivo").val(data.rutaimagen).trigger("change");
             $("#btnGuardar").attr("value","PUT");*/
         });
@@ -241,7 +243,7 @@ $(document).ready(function(){
         formData.append('otrocolor', ($("#otrocolor").val() === undefined) ? null : $("#otrocolor").val());
         formData.append('idParteCuerpo', ($("#idParteCuerpo").val() === undefined) ? null : $("#idParteCuerpo").val());
         formData.append('idDesaparecido', idDesaparecido);
-        formData.append('method', $(this).val());
+        formData.append('idCedulaParteCuerpo', ($("#idCedulaParteCuerpo").val() === undefined) ? null : $("#idCedulaParteCuerpo").val());
         console.log(formData);
 
         $.ajax({
