@@ -1044,7 +1044,7 @@ class ConsultasController extends Controller
                     ->where('ce.idPersonaDesaparecida', $idDesaparecido)
                     ->where('ce.idPartesCuerpo', $idParteCuerpo)
                     ->select('ce.id as idParteCuerpo','pa.nombre as partep', 'cu.nombre as parteh',
-                    'ce.idTamanoCuerpo as tamano', 'ce.idTipoCuerpo as tipo', 'ce.idColoresCuerpo as color', 'ce.posicion as posicion', 'ce.observaciones as observaciones','ce.imagen as imagen')
+                    'ce.idTamanoCuerpo as tamano', 'ce.idTipoCuerpo as tipo', 'ce.idColoresCuerpo as color', 'ce.posicion as posicion', 'ce.observaciones as observaciones','ce.imagen as imagen','ce.otraParticularidad as otraP', 'ce.otraModificacion as otraM', 'ce.otroTipo as otroTi', 'ce.otroColor as otroColor')
                     ->get();
 
         foreach ($partes as $parte) {
@@ -1068,7 +1068,12 @@ class ConsultasController extends Controller
                         'observaciones' => $parte->observaciones,
                         'rutaimagen' => $parte->imagen,
                         'particularidades' => $parti,
-                        'modificaciones' => $modifi
+                        'modificaciones' => $modifi,
+                        'otraP' => $parte->otraP,
+                        'otraM' => $parte->otraM,
+                        'otroTi' => $parte->otroTi,
+                        'otroColor' => $parte->otroColor,
+                        'idCedulaParteCuerpo' => $parte->idParteCuerpo
                     ];
         }
 

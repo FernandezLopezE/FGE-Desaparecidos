@@ -85,7 +85,7 @@ class DescripcionFisicaController extends Controller
             foreach ($modificaciones as $value) {               
                 $modifi[] = $value->nombre;
             }
-
+        
             $particularidades = $this->get_particularidades($parte->idParteCuerpo);
             $parti = array();
             foreach ($particularidades as $value) {               
@@ -102,7 +102,7 @@ class DescripcionFisicaController extends Controller
             }
             $dataPartes[$parte->partep]['hijos'][] = $parte;
         }
-       
+        
         $complexiones = \App\Models\CatComplexion::all()->pluck('nombre','id');
         $coloresPiel = \App\Models\CatColorPiel::all()->pluck('nombre','id');
 
