@@ -76,7 +76,25 @@
   								<dd>{!! $denta->cattiposonrisa->nombreTipoSonrisa !!}</dd>
   							</div>
   						</div>
+              <div class="row">
+                <div class="col">
+                  <dt>Tratamientos dentales:</dt>
+                </div>
+                <div class="col">
+                    <dd id="tratDientes"></dd>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <dt>Hábitos bucales:</dt>
+                </div>
+                <div class="col">
+                  <dd id="enfDientes"></dd>
+                  <dd id="MalosDientes"></dd>
+                </div>
+              </div>
   					</div>
+
   					<div class="col">
   						<div class="col">
 	  						<dt>Datos del dentista:</dt>
@@ -128,6 +146,40 @@
         console.log(value.id);
         $('g[data-diente="'+value.id+'"] path').css({"fill":"#17a4da","stroke":"#ffffff","stroke-width":"2-"});
       });
+
+      //asignar tratamiento a una variable
+      var trataDient = @JSON($denta);
+      var trata = JSON.parse(trataDient.tratamientos);
+
+      var verTrata = "";
+      $.each(trata, function(key, value) {
+        verTrata = value+", "+verTrata;
+      });
+
+     $("#tratDientes").html(verTrata);
+
+     //asignar enfermedades en una variable
+     var enf = @JSON($denta);
+     var enfDen = JSON.parse(enf.enfermedades);
+
+     var verEnfer = "";
+     $.each(enfDen, function(key, value) {
+        verEnfer = value+", "+verEnfer;
+      });
+
+     $("#enfDientes").html(verEnfer);
+
+     //asignar malos habitos en una variable
+     var malHab = @JSON($denta);
+     var malosHab = JSON.parse(malHab.arraymaloshabitos);
+
+     var verMalosHab = "";
+     $.each(malosHab, function(key, value) {
+        verMalosHab = value+", "+verMalosHab;
+      });
+
+     $("#MalosDientes").html(verMalosHab);
+
 
     // $("#editDientes").click(function(event) {
     //   $.ajax({
