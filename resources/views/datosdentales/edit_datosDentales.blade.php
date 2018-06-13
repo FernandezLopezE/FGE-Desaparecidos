@@ -19,8 +19,6 @@
 <nav>
 	<div class="card-body bg-white">
 		<h5 class="card-title">Datos, tratamientos, higiene & hábitos dentales de la persona desaparecida
-			<button type="button" class="btn btn-dark pull-right" id="agregaInformacion">Guardar</button>
-			<button type="button" class="btn btn-dark pull-right" id="editarInformacion">Editar</button>
 			<button type="button" class="btn btn-dark pull-right" id="updateInformacion">Actualizar</button>
 		</h5>
 		<div id="primeraseccion">
@@ -46,6 +44,61 @@
 					@include('includes.modal_datos_dentista')
 				</div>
 			</div>
+			<div class="form-group row">
+	        	<div class="col-4">
+	        		<h5>Tipo de perfil</h5>	
+	        	</div>
+	        	<div class="col-4">
+	        		<h5>Tipo de mordida</56>
+	        	</div>
+	        	<div class="col-4">
+	        		<h5>Tipo de sonrisa</56>
+	        	</div>
+        	</div>
+        	<div class="form-group row">
+	        	<div class="col-md-4 row" >
+	        		<div class="col" id="tipoperfil">
+	        			{!! Form::label ('selectperfil','Seleccionar perfil') !!}
+	               		{!! Form::submit('Click aquí', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'selectPerfil']) !!}
+	               		@include('includes.modal_perfilDiente')
+	            	</div>
+	        		<div class="col" style="margin-left: -2%;margin-right: -15px" id="perfilseleccionado">
+	        			{!! Form::label ('perfilselec','Perfil seleccionado') !!}
+	                	{!! Form::text ('perfilselec',old('perfilselec'), ['class' => 'form-control mayuscula', 'id' => 'valorPerfil'] )!!}
+	            	</div>
+	            	<div>
+	            		{{ Form::hidden('idperfilselec','', array('id' => 'idperfilselec')) }}
+	            	</div>
+	        	</div>
+	        	<div class="col-md-4 row">
+	        		<div class="col" style="margin-right: -10px;margin-left: 4%;" id="tipomordida">
+	        			{!! Form::label ('selectMordida','Seleccionar mordida') !!}
+	                	{!! Form::submit('Click aquí', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'selectMordida']) !!}
+	                	@include('includes.modal_tipoMordida')
+	            	</div>
+	        		<div class="col" style="margin-right: -22px;" id="mordidaseleccionada">
+	        			{!! Form::label ('mordidaselec','Mordida seleccionada') !!}
+	                	{!! Form::text ('mordidaselec',old('mordidaselec'), ['class' => 'form-control mayuscula', 'id' => 'valormordida'] )!!}
+	            	</div>
+	            	<div>
+	            		{{ Form::hidden('idmordidaselec','', array('id' => 'idmordidaselec')) }}
+	            	</div>
+	        	</div>
+	        	<div class="col-md-4 row">
+	        		<div class="col" style="margin-left: 35px; margin-right: -10%;" id="selecsonrisa">
+	        			{!! Form::label ('selectSonrisa','Seleccionar sonrisa') !!}
+	                	{!! Form::submit('Click aquí', ['class' => 'form-control btn btn-outline-secondary', 'id' => 'selectSonrisa']) !!}
+	                	@include('includes.modal_tipoSonrisa')
+	            	</div>
+	        		<div class="col" style="margin-left: 37px; margin-right: -11%;" id="sonrisaseleccionada">
+	        			{!! Form::label ('sonrisaselec','Sonrisa seleccionada') !!}
+	                	{!! Form::text ('sonrisaselec',old('sonrisaselec'), ['class' => 'form-control mayuscula', 'id' => 'dientes_girados'] )!!}
+	            	</div>
+	            	<div>
+	            		{{ Form::hidden('idsonrisaselec','', array('id' => 'idsonrisaselec')) }}
+	            	</div>
+	        	</div>
+	        </div>
 			<hr>
 	        <div class="form-group row">
 	        	<div>
@@ -115,50 +168,91 @@
                 </div>
 	        </div>
 	        <div class="form-group row">
-            <div class="col">
-                <!--{!! Form::checkbox('PROTESIS TOTAL', '12') !!}-->
-                <!--{!! Form::label ('PROTESIS TOTAL','PROTESIS TOTAL') !!}-->
-                <input class="form-check-input" name="trata[]" style="margin-left: -0px;" type="checkbox" id="PROTESIS_TOTAL" value="PROTESIS_TOTAL">
-                <a  rel="popover" style="margin-top: -8px; margin-left: 20px" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>PROTESIS TOTAL</b></a>
-            </div>
-            <div class="col">
-                <!--{!! Form::checkbox('RESINA', '13') !!}-->
-                <input class="form-check-input" name="trata[]" type="checkbox" id="RESINA" value="RESINA">
-                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RESINA</b></a>
-            </div>
-            <div class="col">
-                <!--{!! Form::checkbox('RETENEDOR', '14') !!}-->
-                <!--{!! Form::label ('RETENEDOR','RETENEDOR') !!}-->
-                <input class="form-check-input" name="trata[]" type="checkbox" id="RETENEDOR" value="RETENEDOR">
-                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RETENEDOR</b></a>
-            </div>
-            <div class="col">
-                <!--{!! Form::checkbox('SELLADOR FS', '15') !!}-->
-                <!--{!! Form::label ('SELLADOR FS','SELLADOR FS') !!}-->
-                <input class="form-check-input" name="trata[]" type="checkbox" id="SELLADOR" value="SELLADOR">
-                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/sellador_fs.jpg') }}"><b>SELLADOR FS</b></a>
-            </div>
-            <div class="col">
-                <!--{!! Form::checkbox('OTRO', '16') !!}-->
-                <!--{!! Form::label ('OTRO','OTRO') !!}-->
-                <input class="form-check-input" name="trata[]" type="checkbox" id="OTRO" value=16>
-                {!! Form::label ('OTRO','OTRO') !!}
-                <!--<a  rel="popover" style="margin-top: -8px;"><b>OTRO</b></a>-->
-            </div>
-    	</div>
-        <div id="otroTrata" class="form-group row">
-            <div class="col-md-12" >
-                {!! Form::label ('especifique','Especifique:') !!}
-                {!! Form::text ('tratamiento',old('tratamiento'), ['class' => 'form-control mayuscula', 'id' => 'otroTratamiento'] )!!}
-       		</div>
-    	</div><hr>
+	            <div class="col">
+	                <!--{!! Form::checkbox('PROTESIS TOTAL', '12') !!}-->
+	                <!--{!! Form::label ('PROTESIS TOTAL','PROTESIS TOTAL') !!}-->
+	                <input class="form-check-input" name="trata[]" style="margin-left: -0px;" type="checkbox" id="PROTESIS_TOTAL" value="PROTESIS_TOTAL">
+	                <a  rel="popover" style="margin-top: -8px; margin-left: 20px" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>PROTESIS TOTAL</b></a>
+	            </div>
+	            <div class="col">
+	                <!--{!! Form::checkbox('RESINA', '13') !!}-->
+	                <input class="form-check-input" name="trata[]" type="checkbox" id="RESINA" value="RESINA">
+	                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RESINA</b></a>
+	            </div>
+	            <div class="col">
+	                <!--{!! Form::checkbox('RETENEDOR', '14') !!}-->
+	                <!--{!! Form::label ('RETENEDOR','RETENEDOR') !!}-->
+	                <input class="form-check-input" name="trata[]" type="checkbox" id="RETENEDOR" value="RETENEDOR">
+	                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RETENEDOR</b></a>
+	            </div>
+	            <div class="col">
+	                <!--{!! Form::checkbox('SELLADOR FS', '15') !!}-->
+	                <!--{!! Form::label ('SELLADOR FS','SELLADOR FS') !!}-->
+	                <input class="form-check-input" name="trata[]" type="checkbox" id="SELLADOR" value="SELLADOR">
+	                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/sellador_fs.jpg') }}"><b>SELLADOR FS</b></a>
+	            </div>
+	            <div class="col">
+	                <!--{!! Form::checkbox('OTRO', '16') !!}-->
+	                <!--{!! Form::label ('OTRO','OTRO') !!}-->
+	                <input class="form-check-input" name="trata[]" type="checkbox" id="OTRO" value="OTRO">
+	                {!! Form::label ('OTRO','OTRO') !!}
+	                <!--<a  rel="popover" style="margin-top: -8px;"><b>OTRO</b></a>-->
+	            </div>
+    		</div>
+	        <div id="otroTrata" class="form-group row">
+	            <div class="col-md-12" >
+	                {!! Form::label ('especifique','Especifique:') !!}
+	                {!! Form::text ('tratamiento',old('tratamiento'), ['class' => 'form-control mayuscula', 'id' => 'otroTratamiento'] )!!}
+	       		</div>
+	    	</div><hr>
+	    	<div>
+				<h5 class="card-title">Hábitos bucales</h5><br>
+			</div>
+			<div class="form-group row">
+            	<div class="col">
+                	<input class="form-check-input" name="enfermedad[]" style="margin-top: 6px" type="checkbox" id="MALA_HIGIENE" value="MALA_HIGIENE">
+                	{!! Form::label ('higieneBuc','MALA HIGIENE') !!}
+            	</div>
+            	<div class="col" >
+                	<input class="form-check-input" name="enfermedad[]" style="margin-top: 6px" type="checkbox" id="CARIES" value="CARIES">
+                	{!! Form::label ('CARIES','CARIES') !!}
+            	</div>
+            	<div class="col">
+                	<input class="form-check-input" name="enfermedad[]" style="margin-top: 6px" type="checkbox" id="ABSCESOS" value="ABSCESOS">
+                	{!! Form::label ('nombreAbcesos','ABSCESOS') !!}
+            	</div>
+            	<div class="col">
+	            	<input class="form-check-input" name="enfermedad[]" style="margin-top: 6px" type="checkbox" id="SARRO" value="SARRO">
+    	            {!! Form::label ('SARRO','SARRO') !!}
+        	    </div>
+            	<div class="col">
+                	<input class="form-check-input" name="enfermedad[]" style="margin-top: 6px" type="checkbox" id="GINGIVITIS" value="GINGIVITIS">
+                	{!! Form::label ('GINGIVITIS','GINGIVITIS') !!}
+            	</div>
+        	</div>
+        	<div class="form-group row">
+        		<div class="col">
+                	<input class="form-check-input" name="enfermedad[]" style="margin-top: 6px" type="checkbox" id="PERIODONTITIS" value="PERIODONTITIS">
+                	{!! Form::label ('PERIODONTITIS','PERIODONTITIS') !!}
+            	</div>
+            	<div class="col" style="margin-left: -29px;">
+                	<input class="form-check-input" name="malhabito[]" style="margin-top: 6px" type="checkbox" id="MORDERSE_LAS_UNAS" value="MORDERSE_LAS_UNAS">
+                	{!! Form::label ('MORDERSE LAS UÑAS','MORDERSE LAS UÑAS') !!}
+            	</div>
+            	<div class="col" style="margin-left: -29px;">
+	                <input class="form-check-input" name="malhabito[]" style="margin-top: 6px" type="checkbox" id="MORDER_ALGUN_OBJETO" value="MORDER_ALGUN_OBJETO">
+    	            {!! Form::label ('MORDER ALGÚN OBJETO','MORDER ALGÚN OBJETO') !!}
+        	    </div>
+            	<div class="col" style="margin-left: 0px;">
+            		<input class="form-check-input" name="malhabito[]" style="margin-top: 6px" type="checkbox" id="OTROH" value="OTROH">
+                	{!! Form::label ('OTRO','OTRO') !!}
+            	</div>
+            	<div class="col" style="margin-top: -10px;margin-left: -70px;">
+	                {!! Form::text ('otro',old('otro'), ['class' => 'form-control mayuscula', 'id' => 'escpecifiquehabito', 'placeholder' => 'ESPECIFIQUE'] )!!}
+    	        </div>
+        	</div>
 		</div>
 	</div>	
-
-
-		
-	
-	
 </nav>
 @endsection
 
@@ -218,7 +312,10 @@ function myFunction() {
 }
 
 $(document).ready(function(){
-	//var datosDental = "{{$denta->idTamanoDiente}}";
+
+	$('#otroTrata').hide();
+
+
 	var datosDental = @JSON($denta);
 	
 	function mostrarDatos(){
@@ -240,15 +337,58 @@ $(document).ready(function(){
 
 		}
 
+		$('#valorPerfil').val(datosDental.idTipoPerfil);
+
+
+
+		//Recuperamos el arreglo de tratamientos para poblar en el edit
 		var arreTrata = datosDental.tratamientos;
 		var mostrarTrata = JSON.parse(arreTrata);
-		if (mostrarTrata = 'AMALGAMA' || 'BLANQUEAMIENTO_DENTAL') {
-			$("#AMALGAMA").prop('checked', true);
-			$("#BLANQUEAMIENTO_DENTAL").prop('checked', true);
+		var arrayTrata = ['AMALGAMA', 'BLANQUEAMIENTO_DENTAL', 'BRACKETS', 'CARILLA','CORONA_ESTETICA', 'ENDODONCIA', 'IMPLANTE', 'OBTURACION_TEMPORAL','PROTESIS_FIJA', 'PROTESIS_REMOVIBLE', 'PROTESIS_TOTAL', 'RESINA','RETENEDOR','SELLADOR'];
+		for (var i = 0; i < mostrarTrata.length; i++) {
+			for (var j = 0; j < arrayTrata.length; j++) {
+				if (mostrarTrata[i] == arrayTrata[j]) {
+					$("#"+mostrarTrata[i]).prop('checked', true);
+
+				} else {
+					
+				}
+			}
 		}
-		
+
+		//Recuperamos el arreglo de enfermedades para poblar en el edit
+		var arreEnfer = datosDental.enfermedades;
+		var mostrarEnfer = JSON.parse(arreEnfer);
+		var arrayEnfer = ['MALA_HIGIENE', 'CARIES', 'ABSCESOS', 'PERIODONTITIS','SARRO', 'GINGIVITIS'];
+		for (var i = 0; i < mostrarEnfer.length; i++) {
+			for (var j = 0; j < arrayEnfer.length; j++) {
+				if (mostrarEnfer[i] == arrayEnfer[j]) {
+					$("#"+mostrarEnfer[i]).prop('checked', true);
+				} else {
+					
+				}
+			}
+		}
+
+		//Recuperamos el arreglo de malos habitos para poblar en el edit
+		var arreMalosH = datosDental.arraymaloshabitos;
+		var mostrarHabitos = JSON.parse(arreMalosH);
+		var arrayHabBuc = ['MORDERSE_LAS_UNAS', 'MORDER_ALGUN_OBJETO', 'OTROH'];
+		for (var i = 0; i < mostrarHabitos.length; i++) {
+			for (var j = 0; j < arrayHabBuc.length; j++) {
+				if (mostrarHabitos[i] == arrayHabBuc[j]) {
+					$("#"+mostrarHabitos[i]).prop('checked', true);
+				} else {
+					
+				}
+			}
+		}
+
 	}
+
+	//llamado de función para poblar el formulario para editar
 	mostrarDatos();
+
 	//Mostrar-ocultar modal datos dentista
 	$("#datosdentista").click(function(event) {
 		$('#modalDentista').modal('show');
