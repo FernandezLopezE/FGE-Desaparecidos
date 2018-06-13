@@ -868,9 +868,9 @@ var formatTableActions = function(value, row, index) {
             $("#idEdad").append(row.edad + ' años');
             $("#apodo").append(row.apodo);
             $("#idNacionalidad").append(row.nacionalidad);
-            $("#idTipoCabello").append(row.tipoCabello);
-            $("#idCabello").append(row.cabello);
-            $("#idVelloFacial").append(row.velloFacial);
+            //$("#idTipoCabello").append(row.tipoCabello);
+            $("#idCabelloM").append(row.cabello);
+            $("#idVelloFacialM").append(row.velloFacial);
             $("#idOjos").append(row.ojos);
             $("#idLabios").append(row.labios);
         $("#idModificaciones").append(row.modificaciones);

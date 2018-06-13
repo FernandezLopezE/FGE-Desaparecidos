@@ -85,7 +85,8 @@
                                             <div class="row">
                                                 <div class="col-md-8">
                                                     <div class="card-block">
-                                                            <code class="card-title">{!! $value->parteh !!}</code>                                                            
+                                                            <code class="card-title">{!! $value->parteh !!}</code>
+                                                                                                                     
                                                             <p><strong>Tamaño: </strong>{!! $value->tamano !!}</p>
                                                             <p><strong>Color: </strong>{!! $value->color !!}</p>
                                                             <p><strong>Posición: </strong>{!! $value->posicion !!}</p>
@@ -102,7 +103,8 @@
                                                             <label for="">Observaciones:</label>
                                                             {!! $value->observaciones !!}
                                                             <br>
-                                                            {{--<button class="btn btn-dark" id="btnEditar">Editar</button>--}}
+                                                            <button class="btn btn-dark" id="btnEditar" value='{!! $value->idParteh !!}'>Editar</button>
+                                                            <button class="btn btn-dark pull-right" id="btnEliminar" value='{!! $value->idParteCuerpo !!}'>Eliminar</button>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
