@@ -619,64 +619,65 @@ $('#return-to-top').click(function() {      // When arrow is clicked
    });
     
     
-    $('#rng1').change(function(){  
-    desde = $("#rng1").val();
-    hasta = $("#rng2").val();
-        if(hasta=='' ){            
-        }else{
-            if (desde > hasta)
-            { $("#rng1").val(""); }
-        }
-     
-   });
-    $('#rng2').change(function(){  
-    desde2 = $("#rng1").val();
-    hasta2 = $("#rng2").val();
-      if(desde2=='' ){           
-        }else{
-            if (hasta2 < desde2)
-            { $("#rng2").val(""); } 
-        }
-   });
-    
-    $('#estatura1').change(function(){  
-    desde = $("#estatura1").val();
-    hasta = $("#estatura2").val();
-        if(hasta=='' ){            
-        }else{
-            if (desde > hasta)
-            { $("#estatura1").val(""); }
-        }
-     
-   });
-    $('#estatura2').change(function(){  
-    desde2 = $("#estatura1").val();
-    hasta2 = $("#estatura2").val();
-      if(desde2=='' ){           
-        }else{
-            if (hasta2 < desde2)
-            { $("#estatura2").val(""); } 
-        }
-   });
-    $('#peso1').change(function(){  
-    desde = $("#peso1").val();
-    hasta = $("#peso2").val();
-        if(hasta=='' ){            
-        }else{
-            if (desde > hasta)
-            { $("#peso1").val(""); }
-        }
-     
-   });
-    $('#peso2').change(function(){  
-    desde2 = $("#peso1").val();
-    hasta2 = $("#peso2").val();
-      if(desde2=='' ){           
-        }else{
-            if (hasta2 < desde2)
-            { $("#peso2").val(""); } 
-        }
-   });
+//    $('#rng1').change(function(){  
+//    desde = $("#rng1").val();
+//    hasta = $("#rng2").val();
+//        if(hasta=='' ){            
+//        }else{
+//            if (desde > hasta)
+//            { $("#rng1").val(""); }
+//        }
+//     
+//   });
+//    $('#rng2').change(function(){  
+//    desde2 = $("#rng1").val();
+//    hasta2 = $("#rng2").val();
+//      if(desde2=='' ){           
+//        }else{
+//            if (hasta2 < desde2)
+//            { $("#rng2").val(""); } 
+//        }
+//   });
+//    
+//    $('#estatura1').change(function(){  
+//    desde = $("#estatura1").val();
+//    hasta = $("#estatura2").val();
+//        if(hasta=='' ){            
+//        }else{
+//            if (desde > hasta)
+//            { $("#estatura1").val(""); }
+//        }
+//     
+//   });
+//    $('#estatura2').change(function(){  
+//    desde2 = $("#estatura1").val();
+//    hasta2 = $("#estatura2").val();
+//      if(desde2=='' ){           
+//        }else{
+//            if (hasta2 < desde2)
+//            { $("#estatura2").val(""); } 
+//        }
+//   });
+//    $('#peso1').change(function(){  
+//    desde = $("#peso1").val();
+//    hasta = $("#peso2").val();
+//        if(hasta=='' ){            
+//        }else{
+//            if (desde > hasta)
+//            { $("#peso1").val(""); }
+//        }
+//     
+//   });
+//    $('#peso2').change(function(){  
+//    desde2 = $("#peso1").val();
+//    hasta2 = $("#peso2").val();
+//      if(desde2=='' ){           
+//        }else{
+//            if (hasta2 < desde2)
+//            { $("#peso2").val(""); } 
+//        }
+//   });
+//    
   //*****************************
     //-<<--<--<<--<<--<<-MULTISELECTS-<<--<--<<--<<--<<-<<--<--<<--<<--<<
       
@@ -1323,7 +1324,7 @@ var formatTableActions = function(value, row, index) {
         margin : {
       top: 40,
       bottom: 60,
-      left: 130,
+      left: 120,
       width: 522
     },
        grid: {
@@ -1338,7 +1339,7 @@ var formatTableActions = function(value, row, index) {
              doc.text(300, 20, "Listado de personas desaparecidas")
      doc.addImage(image, 'JPG', 15, 40, 100, 100);
 
-    doc.save('no_localizados.pdf');
+    doc.save('extraviados.pdf');
         });
         
         
