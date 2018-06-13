@@ -1293,6 +1293,20 @@ var formatTableActions = function(value, row, index) {
         var try2 = $('#exportPdf');
         console.log('hiiiiiiiiiiiiiiiiii');
        
+        //var imgData = 'data:images/Diente/amalgama.jpg'
+
+//var pdf = new jsPDF();
+// var img = new Image;
+//        img.crossOrigin = "";  
+// img.src = "images/Diente/amalgama.jpg";
+
+        var image = new Image();
+
+    var src = 'images/fge-logo.jpg'; //Esta es la variable que contiene la url de una imagen ejemplo, luego puedes poner la que quieras
+    image.src = src;
+  
+        
+        
          try2.click(function(){
         var doc = new jsPDF('l', 'pt');
     var res = doc.autoTableHtmlToJson(document.getElementById('tableDependencias'));
@@ -1306,6 +1320,12 @@ var formatTableActions = function(value, row, index) {
             lineColor: [0, 0, 0],
             lineWidth: 0.2 
         },
+        margin : {
+      top: 40,
+      bottom: 60,
+      left: 130,
+      width: 522
+    },
        grid: {
             table: { fillColor: 255, textColor: 80, fontStyle: 'normal', lineWidth: 0.1 },
             header: { textColor: 255, fillColor: [16, 8, 6], fontStyle: 'bold', lineWidth: 0 },
@@ -1314,6 +1334,10 @@ var formatTableActions = function(value, row, index) {
         }
        
     });
+      
+             doc.text(300, 20, "Listado de personas desaparecidas")
+     doc.addImage(image, 'JPG', 15, 40, 100, 100);
+
     doc.save('no_localizados.pdf');
         });
         
