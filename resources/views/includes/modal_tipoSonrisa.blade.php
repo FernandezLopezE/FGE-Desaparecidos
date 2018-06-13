@@ -21,7 +21,7 @@
                 <h5>DIENTES SEPARADOS</h5>
                 <p>ES LA SEPARACIÓN GRANDE ENTRE DIENTES, SUELE APARECER ENTRE LOS DOS DIENTES FRONTALES SUPERIORES</p>
               </div>
-              <img class="d-block w-100" src="/images/TiposDentadura/separados.png" alt="DIENTES SEPARADOS" id="DientesSeparados" value="2">
+              <img class="d-block w-100" src="/images/TiposDentadura/separados.jpg" alt="DIENTES SEPARADOS" id="DientesSeparados" value="2">
             </div>
             <div class="carousel-item">
                <div class="carousel-caption d-none d-md-block">
