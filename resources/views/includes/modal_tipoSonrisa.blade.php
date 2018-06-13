@@ -10,32 +10,18 @@
       <div class="modal-body">
         <!-- Contenido del formulario-->
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-          <ol class="carousel-indicators">
-            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-          </ol>
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>DIENTES SEPARADOS</h5>
-                <p>ES LA SEPARACIÓN GRANDE ENTRE DIENTES, SUELE APARECER ENTRE LOS DOS DIENTES FRONTALES SUPERIORES</p>
-              </div>
               <img class="d-block w-100" src="/images/TiposDentadura/separados.jpg" alt="DIENTES SEPARADOS" id="DientesSeparados" value="2">
+              <center><b><h3>DIENTES SEPARADOS</h3></b></center>
             </div>
             <div class="carousel-item">
-               <div class="carousel-caption d-none d-md-block">
-                <h5>Dientes girados</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur esse, labore blanditiis aut magni libero optio incidunt autem omnis, pariatur, in praesentium excepturi. Assumenda, quibusdam? Iusto, assumenda dolore nemo libero.</p>
-              </div>
               <img class="d-block w-100" src="/images/TiposDentadura/apinados.jpg" alt="DIENTES GIRADOS" id="DientesGirados" value="3">
+              <center><b><h3>Dientes girados</h3></b></center>
             </div>
             <div class="carousel-item">
-              <div class="carousel-caption d-none d-md-block">
-                <h5>DIENTES APIÑADOS</h5>
-                <p>ES CUANDO LOS DIENTES CRECEN JUNTOS, SIN ESPACIO Y AMONTONADOS UNOS SOBRE OTROS, PUEDEN CRECER  GIRADOS O MAL COLOCADOS</p>
-              </div>
               <img class="d-block w-100" src="/images/TiposDentadura/girados.jpg" alt="DIENTES APIÑADOS" id="DientesApinados" value="4">
+              <center><b><h3>DIENTES APIÑADOS</h3></b></center>
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
