@@ -104,7 +104,7 @@
                                                             {!! $value->observaciones !!}
                                                             <br>
                                                             <button class="btn btn-dark" id="btnEditar" value='{!! $value->idParteh !!}'>Editar</button>
-                                                            <button class="btn btn-dark pull-right" id="btnEliminar" value='{!! $value->idParteh !!}'>Eliminar</button>
+                                                            <button class="btn btn-dark pull-right" id="btnEliminar" value='{!! $value->idParteCuerpo !!}'>Eliminar</button>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">

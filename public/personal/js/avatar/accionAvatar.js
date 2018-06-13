@@ -58,7 +58,7 @@ $(document).ready(function(){
             url: routeConsul+'/json_cabecera_partes/'+idParteCuerpo,            
             dataType: 'json',
             success: function(data) {
-                console.log(data);
+              
                 contenido = '<div class="form-group">';
                 $.each(data.padre, function(key, value){ 
                 contenido = contenido+'<h4><code>'+value.partep+' - '+data.hijo.nombre+'</code></h4>';
@@ -90,7 +90,6 @@ $(document).ready(function(){
             error: function(data) {
             }
         });
-        console.log("entro asas");
     }
     function pintar_formulario(idParteCuerpo, campo, method = 'POST'){            
         $.ajax({
@@ -188,7 +187,6 @@ $(document).ready(function(){
     })
 
     $('#formulario').on('click', '#btnEditar', function(){
-        console.log('Preparando para editar'+$(this).val());
         var v = $(this).val();
         var campo = $('#formulario');
         
@@ -200,7 +198,6 @@ $(document).ready(function(){
         //$("#div_observaciones").after('<button type="submit" id="btnGuardar"  value="PUT" class="btn btn-primary">Guardar</button>');
 
         $.getJSON( routeConsul+'/get_cat_partes_cuerpo/'+idDesaparecido+'/'+v, function(data) {
-            console.log(data);
             $("#idTipo").val(data.idtipo).trigger("change");
             $("#idColor").val(data.idcolor).trigger("change");
             $("#idTamano").val(data.idtamano);
@@ -217,11 +214,21 @@ $(document).ready(function(){
             /*$("#archivo").val(data.rutaimagen).trigger("change");
             $("#btnGuardar").attr("value","PUT");*/
         });
+    })
 
-
-        console.log("hecho");
-
-
+    $('#formulario').on('click', '#btnEliminar', function(){
+        idCedulaParteCuerpo = $(this).val();
+        $.ajax({
+            type: 'DELETE',
+            url: routeSenas+'/'+idCedulaParteCuerpo,
+            dataType: 'json',
+            success: function(data) {						
+                location.reload();
+            },
+            error: function(data) {
+                console.log(data);
+            }
+        });
     })
 
     $('#formulario').on('click', '#btnGuardar', function(){
@@ -245,7 +252,7 @@ $(document).ready(function(){
         formData.append('idParteCuerpo', ($("#idParteCuerpo").val() === undefined) ? null : $("#idParteCuerpo").val());
         formData.append('idDesaparecido', idDesaparecido);
         formData.append('idCedulaParteCuerpo', ($("#idCedulaParteCuerpo").val() === undefined) ? null : $("#idCedulaParteCuerpo").val());
-        console.log(formData);
+        //console.log(formData);
 
         $.ajax({
             type: 'POST',
@@ -297,8 +304,7 @@ $(document).ready(function(){
             arreglo = idOtraModificacion; arreglo2 = idSinInfoMod;
 
         if(id == 'idParticularidad' || id == 'idModificacion'){
-            pym =campo.val();
-            console.log("pym "+pym)
+            pym =campo.val();            
             //var aux = new Array();
             for(var j=0;j<pym.length;j++){
                 
@@ -307,11 +313,11 @@ $(document).ready(function(){
                     if(pym[j] == arreglo[i]){
                         //formulario = pintar_otro_campo(campo);
                         $("#div_"+id).after(otro);
-                        console.log("igual 1");
+                        
                         break;
                     }else{
                         $("#otro_"+id).remove();
-                        console.log("no igual 1");
+                        
                     }//fin if para mostrar campo otro
                 }
             }
@@ -321,11 +327,11 @@ $(document).ready(function(){
                 if(campo.val() == arreglo[i]){
                     //formulario = pintar_otro_campo(campo);
                     $("#div_"+id).after(otro);
-                    console.log("igual 2");
+                    
                     break;
                 }else{
                     $("#otro_"+id).remove();
-                    console.log("no igual 2");
+                    
                 }
             }
         }
@@ -337,7 +343,7 @@ $(document).ready(function(){
     $(document).on("change", arrayOfInputs.join(","), function(){
         var campo = $('#'+$(this).attr("id"));
         var id = $(this).attr("id");
-        console.log(campo);
+       
         pym =campo.val();
         var aux = new Array();
 
@@ -354,8 +360,6 @@ $(document).ready(function(){
                     }else{
                         if(pym[j] == arreglo2[i]){
                             delete pym[j];
-                            console.log("Es igual a sin información");
-                            console.log(pym[j]+ "==" +arreglo2[i]);
                             campo.val(pym).trigger("change");
                             break;
                         }
@@ -363,7 +367,7 @@ $(document).ready(function(){
                 }
             }
         }
-        console.log(pym);
+    
         //$('#contenidoForm').empty();
         formulario = pintar_otro_campo(campo, id);
         //campo.val(pym).trigger("change");
@@ -375,7 +379,7 @@ $(document).ready(function(){
             head = '<ul class="nav nav-tabs" id="myTab" role="tablist">';
             body = '<div class="tab-content" id="myTabContent">';
             $.each(data, function(key, value){
-                console.log(value);
+                
                 head = head+'<li class="nav-item">';
                 head = head+'<a class="nav-link" id="nav-'+value.id+'-tab" data-toggle="tab" href="#parte-'+value.id+'" role="tab" aria-controls="nav-'+value.id+'" aria-selected="true">'+value.nombre+'</a>';
                 head = head+'</li>';
