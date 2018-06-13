@@ -402,6 +402,32 @@ $(document).ready(function(){
 		});
 
 
+		var dientes = @JSON("$dientesPerdidos");
+	    //alert(dientes);
+	      $.each(JSON.parse(dientes), function(key,value){
+	        //console.log(value.id);
+	        $('g[data-diente="'+value.id+'"] path').css({"fill":"#17a4da","stroke":"#ffffff","stroke-width":"2-"});
+	        //$('g[data-diente="'+value.id+'"]').click();
+	        
+	        contenido = '<div class="form-group row" id="diente_'+value.id+'">';
+				contenido = contenido+ '<div class="col">';
+				contenido = contenido+'<input type="text" class="form-control" name="" value="'+value.nombreDiente+'" disabled>';
+				contenido = contenido+'</div>'
+				contenido = contenido+'<div class="col">';
+				contenido = contenido+'<input type="text" class="form-control" name="perdio[]" value="'+value.causaPerdida+'">';
+				contenido = contenido+'<input type="hidden" name="dienteselec[]" value="'+value.id+'">';
+				contenido = contenido+'</div>';
+				contenido = contenido+'<div class="col-1" id="borrar">';
+				contenido = contenido+'<i class="fa fa-trash" style="font-size:20px; margin-top: 10px" id="'+value.id+'" value="prueba"></i>';
+				pintar = "#path"+value.id;
+				contenido = contenido+'</div>';
+				contenido = contenido+'</div>';
+
+				$('#formDiente').append(contenido);
+
+	      });
+
+	    
 
 		//Recuperamos el arreglo de tratamientos para poblar en el edit
 		var arreTrata = datosDental.tratamientos;
@@ -581,7 +607,7 @@ $(document).ready(function(){
                 	text: 'Aceptar',
                 	btnClass: 'btn-dark',
                 	action: function(){
-                		location.reload();
+                		window.location.href = routedatosDentales+"/"+idDesaparecido;
                 			}
                 		},
             		}

@@ -195,6 +195,13 @@ class DatosDentalesController extends Controller
                     ->where('cat_tipo_sonrisa.id',$idsonrisa)
                     ->get();
 
+        $dentavalor = $dentadura[0]->id;
+        $dientesPerdidos = \DB::table('pivot_diente_perdido as pdp')
+                        ->join('cat_dientes as cd', 'pdp.idDiente', '=', 'cd.id')
+                        ->select('cd.id','cd.nombreDiente','pdp.causaPerdida')
+                        ->where('pdp.idDentadura',$dentavalor)
+                        ->get();
+
 
         $edad = explode(" ",$desaparecido->edadExtravio);
         $dienteTamano = \App\Models\CatTamanoDiente::all()->pluck('nombreTamano','id');
@@ -208,8 +215,11 @@ class DatosDentalesController extends Controller
             'denta' => $denta,
             'nombrePerfil' => $nombrePerfil,
             'nombreMordida' => $nombreMordida,
-            'nombreSonrisa' => $nombreSonrisa
+            'nombreSonrisa' => $nombreSonrisa,
+            'dientesPerdidos' => $dientesPerdidos
          ]);
+
+
 
 
     }
