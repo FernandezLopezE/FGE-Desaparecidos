@@ -746,6 +746,24 @@ $(document).ready(function(){
 
 	$('#updateInformacion').click(function(){
 
+		if ($("#idperfilselec").val() == '') {
+			$valorPerfil = 1;
+		}else{
+			$valorPerfil = $("#idperfilselec").val();
+		}
+
+		if ($("#idmordidaselec").val() == '') {
+			$valorMordida = 1;
+		}else{
+			$valorMordida = $("#idmordidaselec").val();
+		}
+
+		if ($("#idsonrisaselec").val() == '') {
+			$valorSonrisa = 1;
+		}else{
+			$valorSonrisa = $("#idsonrisaselec").val();
+		}
+
 		var dataString = {
 			dienteTamano : $("#dienteTamano").val(),
 			dienteCompleto : $("#dienteCompleto").val(),
@@ -759,9 +777,9 @@ $(document).ready(function(){
 			enfermedad : $("input[name='enfermedad[]']").map(function(){return $(this).is(':checked');}).get(),
 			malhabitos : $("input[name='malhabito[]']").map(function(){return $(this).is(':checked');}).get(),
 			especifiqhabito : $("#escpecifiquehabito").val(),
-			valorPerfil : $("#idperfilselec").val(),
-			valormordida : $("#idmordidaselec").val(),
-			valorsonrisa : $("#idsonrisaselec").val(),
+			valorPerfil : $valorPerfil,
+			valormordida : $valorMordida,
+			valorsonrisa : $valorSonrisa,
 			idDesaparecido: '{!! $desaparecido->id !!}'
 		}
 
