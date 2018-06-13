@@ -20,6 +20,7 @@
 	<div class="card-body bg-white">
 		<h5 class="card-title">Datos, tratamientos, higiene & hábitos dentales de la persona desaparecida
 			<button type="button" class="btn btn-dark pull-right" id="updateInformacion">Actualizar</button>
+			<button type="button" class="btn btn-dark pull-right" id="editarInformacion">Editar</button>
 		</h5>
 		<div id="primeraseccion">
 		<hr>
@@ -64,7 +65,7 @@
 	            	</div>
 	        		<div class="col" style="margin-left: -2%;margin-right: -15px" id="perfilseleccionado">
 	        			{!! Form::label ('perfilselec','Perfil seleccionado') !!}
-	                	{!! Form::text ('perfilselec',old('perfilselec'), ['class' => 'form-control mayuscula', 'id' => 'valorPerfil'] )!!}
+	                	{!! Form::text ('perfilselec','', ['class' => 'form-control mayuscula', 'id' => 'valorPerfil'] )!!}
 	            	</div>
 	            	<div>
 	            		{{ Form::hidden('idperfilselec','', array('id' => 'idperfilselec')) }}
@@ -255,6 +256,49 @@
         </div>
         	</div>
 		</div>
+	
+	<div class="card border-primary">
+		<div class="card-body bg-whithe" id="formularioDientes">
+			<h5 class="card-title">Dientes perdidos de la persona desaparecida
+				<button type="button" class="btn btn-dark pull-right" id="btnDiente">Guardar</button>
+				
+				<hr>
+			</h5>
+			<div id="cardDientes">
+				<div class="form-group row">
+					<div class="col-md-4 dentadura">
+			            @if($edadExtraviado[0] > 14)
+			              @include('datosdentales.dentadura_adult')
+			            @endif
+			            
+			            @if($edadExtraviado[0] <= 6)
+			              @include('datosdentales.dentadura_child')
+			            @endif
+
+			            @if($edadExtraviado[0] > 6 && $edadExtraviado[0] <=14 )
+			               @include('datosdentales.dentadura_mixto')
+			            @endif
+	          		</div>
+	          		<div class="col-md-8">
+	          			<div class="row">
+	          				<div class="col-md-12">
+	          					<div class="form-group two-fields">
+	          						<div class="input-group">
+			                    		<label style="margin-left: 15%">Diente seleccionado</label>
+	                    				<label style="margin-left: 27%">Causa de pérdida</label>
+	                    			</div>
+
+	                    			<!--Inicia dientes superiores (Izquierda a derecha)-->
+									<div id="formDiente">
+										
+									</div>
+	                    		</div>
+	                    	</div>
+	                    </div>
+	                </div>
+	          	</div>
+	        </div>
+		</div>
 	</div>	
 </nav>
 @endsection
@@ -317,8 +361,13 @@ function myFunction() {
 $(document).ready(function(){
 
 	$('#otroTrata').hide();
-
-
+	$('#cardDientes').hide();
+	$('#btnDiente').hide();
+	$('#editarInformacion').hide();
+	
+	var datoperfil = @JSON($nombrePerfil);
+	var datomordida = @JSON($nombreMordida);
+	var datosonrisa = @JSON($nombreSonrisa);
 	var datosDental = @JSON($denta);
 	
 	function mostrarDatos(){
@@ -340,7 +389,17 @@ $(document).ready(function(){
 
 		}
 
-		$('#valorPerfil').val(datosDental.idTipoPerfil);
+		$.each(datoperfil,function(key,value){
+			$("#valorPerfil").val(value.nombrePerfil);
+		});
+
+		$.each(datomordida,function(key,value){
+			$("#valormordida").val(value.nombreTipoMordida);
+		});
+
+		$.each(datosonrisa,function(key,value){
+			$("#dientes_girados").val(value.nombreTipoSonrisa);
+		});
 
 
 
@@ -414,14 +473,209 @@ $(document).ready(function(){
 			$('#telefono').val('');
 			$('#direccion').val('');
 			$('#infoDen').hide();
-			
-			$('#infoDen').hide();
 			$('#verinfodentista').hide();
 		}
 	});
-
-
-
 });
+
+	/**********************************************************************
+	*** Declaración de rutas a usar de los campos en el formulario ********
+	***********************************************************************/
+	
+	var routedatosDentales = '{!! route('datos_dentales.index') !!}';
+	var routedientesPerdidos = '{!! route('datos_dentales_dientes_perdidos.index') !!}';
+	var idDesaparecido = '{!! $desaparecido->id !!}';
+	var auxTrata = new Array();
+	var auxEnfer = new Array();
+	var auxHabBuc = new Array();
+
+	/************************************************************************
+	********** función para guardar los datos de tratamientos ***************
+	************************************************************************/
+
+	var arrayOfInputsTrata = ['#AMALGAMA', '#BLANQUEAMIENTO_DENTAL', '#BRACKETS', '#CARILLA','#CORONA_ESTETICA', '#ENDODONCIA', '#IMPLANTE', '#OBTURACION_TEMPORAL',
+						'#PROTESIS_FIJA', '#PROTESIS_REMOVIBLE', '#PROTESIS_TOTAL', '#RESINA','#RETENEDOR','#SELLADOR'];
+	
+	$(document).on("change", arrayOfInputsTrata.join(","), function(){
+		if ($(this).is(":checked")) {
+			var id = $(this).attr("id");
+			var valor = $(this).attr("value");
+			auxTrata.push(valor);
+		}
+	});
+
+	/************************************************************************
+	********** función para guardar los datos de enfermedades ***************
+	************************************************************************/
+
+	var arrayOfInputsEnfer = ['#MALA_HIGIENE', '#CARIES', '#ABSCESOS', '#PERIODONTITIS','#SARRO', '#GINGIVITIS'];
+	
+	$(document).on("change", arrayOfInputsEnfer.join(","), function(){
+		if ($(this).is(":checked")) {
+			var id = $(this).attr("id");
+			var valor = $(this).attr("value");
+			auxEnfer.push(valor);
+		}
+	});
+
+	/************************************************************************
+	******* función para guardar los datos de habitos bucales ***************
+	************************************************************************/
+
+	var arrayOfInputsHabBuc = ['#MORDERSE_LAS_UNAS', '#MORDER_ALGUN_OBJETO', '#OTROH'];
+	
+	$(document).on("change", arrayOfInputsHabBuc.join(","), function(){
+		if ($(this).is(":checked")) {
+			var id = $(this).attr("id");
+			var valor = $(this).attr("value");
+			auxHabBuc.push(valor);
+		}
+	});
+
+	/************************************************************************
+	********** función para habilitar los datos para editar *****************
+	************************************************************************/
+
+	$('#editarInformacion').click(function(){
+		$('#editarInformacion').hide();
+		$('#cardDientes').hide();
+		$('#primeraseccion').show();
+		$('#updateInformacion').show();
+	});
+
+	/**}**********************************************************************
+	**** función para guardar los datos del form de dientes seleccionados ***
+	************************************************************************/
+
+	$('#btnDiente').click(function(){
+		var dataString = {
+			idDiente 	 : $("input[name='dienteselec[]']").map(function(){return $(this).val();}).get(),
+			causaPerdida : $("input[name='perdio[]']").map(function(){return $(this).val();}).get(),
+			idDesaparecido: '{!! $desaparecido->id !!}'
+		}
+		$.ajax({
+			type: 'POST',
+			url:  routedientesPerdidos,
+			data: dataString,
+			dataType: 'json',
+			success: function(data){
+				//$('#btnDiente').hide();
+				$('#upDiente').show();
+				//$('#anexos').show();
+				$('#cardDientes').hide();
+				$('#dientes').attr('usemap', '');
+				$('#PMSIP').prop('disabled', true);
+				$('#SPSIP').prop('disabled', true);
+				$('#PPSIP').prop('disabled', true);
+				$('#CSIP').prop('disabled', true);
+				$('#ILSIP').prop('disabled', true);
+				$('#ICSIP').prop('disabled', true);
+				$('#ICSDP').prop('disabled', true);
+				$.confirm({
+        		title: 'Datos guardados!',
+        		content: 'Dientes perdidos guardados exitosamente.',
+        		type: 'dark',
+        		typeAnimated: true,
+        		buttons: {
+        			tryAgain: {
+                	text: 'Aceptar',
+                	btnClass: 'btn-dark',
+                	action: function(){
+                		location.reload();
+                			}
+                		},
+            		}
+        		});
+
+			},
+			error: function(data){
+			}
+		});
+	});
+
+	/************************************************************************
+	********** función para habilitar los datos para editar *****************
+	************************************************************************/
+
+	$('#updateInformacion').click(function(){
+		if ($("#idperfilselec").val() == '') {
+			$valorPerfil = 1;
+		}else{
+			$valorPerfil = $("#idperfilselec").val();
+		}
+
+		if ($("#idmordidaselec").val() == '') {
+			$valorMordida = 1;
+		}else{
+			$valorMordida = $("#idmordidaselec").val();
+		}
+
+		if ($("#idsonrisaselec").val() == '') {
+			$valorSonrisa = 1;
+		}else{
+			$valorSonrisa = $("#idsonrisaselec").val();
+		}
+
+		var dataString = {
+			dienteTamano : $("#dienteTamano").val(),
+			dienteCompleto : $("#dienteCompleto").val(),
+			nombres : $("#nombres").val(),
+			primerAp : $("#primerAp").val(),
+			segundoAp : $("#segundoAp").val(),
+			empresa : $("#empresa").val(),
+			telefono : $("#telefono").val(),
+			direccion : $("#direccion").val(),
+			tratamiento : auxTrata,
+			enfermedad : auxEnfer,
+			malhabitos : auxHabBuc,
+			especifiqhabito : $("#escpecifiquehabito").val(),
+			valorPerfil : $valorPerfil,
+			valormordida : $valorMordida,
+			valorsonrisa : $valorSonrisa,
+			idDesaparecido: '{!! $desaparecido->id !!}'
+		}
+
+		$.ajax({
+			type: 'PUT',
+			url: routedatosDentales+'/'+idDesaparecido,
+			data: dataString,
+			dataType: 'json',
+			success: function(data){
+				console.log(data);
+				$('#cardDientes').show();
+				$('#btnDiente').show();
+				$('#primeraseccion').hide();
+				$('#updateInformacion').hide();
+				$('#editarInformacion').show();
+				$.confirm({
+        		title: 'Datos dentales',
+        		content: 'actualizados exitosamente.',
+        		type: 'dark',
+        		typeAnimated: true,
+        			buttons: {
+            			tryAgain: {
+                    	text: 'Aceptar',
+                    	btnClass: 'btn-dark',
+	                    	action: function(){
+
+                    		}
+                		},
+            		}
+            	});
+			},
+			error: function(data){
+				
+			}
+		});
+	});
+
+	$('#OTRO').change(function () {
+		if (this.checked) {
+			$('#otroTrata').show();
+			$('#otroTratamiento').focus();
+		}else{
+			$('#otroTrata').hide();	
+		}
+	});
 </script>
 @endsection
