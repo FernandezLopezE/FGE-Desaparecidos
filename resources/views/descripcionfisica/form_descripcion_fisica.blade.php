@@ -85,7 +85,7 @@
                                             <div class="row">
                                                 <div class="col-md-8">
                                                     <div class="card-block">
-                                                            <code class="card-title">{!! $value->parteh !!} {!! $value->idParteh !!} {!! $value->idPadre !!}</code>
+                                                            <code class="card-title">{!! $value->parteh !!}</code>
                                                                                                                      
                                                             <p><strong>Tamaño: </strong>{!! $value->tamano !!}</p>
                                                             <p><strong>Color: </strong>{!! $value->color !!}</p>
