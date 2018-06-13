@@ -211,6 +211,7 @@ $(document).ready(function(){
             $("#otroidColor").val(data.otroColor);
             $("#otroidParticularidad").val(data.otraP);
             $("#otroidModificacion").val(data.otraM);
+            $("#otroidTipo").val(data.otroTi);
 
             $("#formulario").append('<input type="hidden" id="idCedulaParteCuerpo" value="'+data.idCedulaParteCuerpo+'"/>');
             /*$("#archivo").val(data.rutaimagen).trigger("change");
@@ -239,8 +240,8 @@ $(document).ready(function(){
         formData.append('observaciones', ($("#observaciones").val() === undefined) ? null : $("#observaciones").val());
         formData.append('otroidParticularidad', ($("#otroidParticularidad").val() === undefined) ? null : $("#otroidParticularidad").val());
         formData.append('otroidModificacion', ($("#otroidModificacion").val() === undefined) ? null : $("#otroidModificacion").val());
-        formData.append('otrotipo', ($("#otrotipo").val() === undefined) ? null : $("#otrotipo").val());
-        formData.append('otrocolor', ($("#otrocolor").val() === undefined) ? null : $("#otrocolor").val());
+        formData.append('otroTipo', ($("#otroidTipo").val() === undefined) ? null : $("#otroidTipo").val());
+        formData.append('otroColor', ($("#otroidColor").val() === undefined) ? null : $("#otroidColor").val());
         formData.append('idParteCuerpo', ($("#idParteCuerpo").val() === undefined) ? null : $("#idParteCuerpo").val());
         formData.append('idDesaparecido', idDesaparecido);
         formData.append('idCedulaParteCuerpo', ($("#idCedulaParteCuerpo").val() === undefined) ? null : $("#idCedulaParteCuerpo").val());
