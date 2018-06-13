@@ -206,50 +206,53 @@
 	       		</div>
 	    	</div><hr>
 	    	<div>
-				<h5 class="card-title">Hábitos bucales</h5><br>
-			</div>
-			<div class="form-group row">
-            	<div class="col">
-                	<input class="form-check-input" name="enfermedad[]" style="margin-top: 6px" type="checkbox" id="MALA_HIGIENE" value="MALA_HIGIENE">
-                	{!! Form::label ('higieneBuc','MALA HIGIENE') !!}
-            	</div>
-            	<div class="col" >
-                	<input class="form-check-input" name="enfermedad[]" style="margin-top: 6px" type="checkbox" id="CARIES" value="CARIES">
-                	{!! Form::label ('CARIES','CARIES') !!}
-            	</div>
-            	<div class="col">
-                	<input class="form-check-input" name="enfermedad[]" style="margin-top: 6px" type="checkbox" id="ABSCESOS" value="ABSCESOS">
-                	{!! Form::label ('nombreAbcesos','ABSCESOS') !!}
-            	</div>
-            	<div class="col">
-	            	<input class="form-check-input" name="enfermedad[]" style="margin-top: 6px" type="checkbox" id="SARRO" value="SARRO">
-    	            {!! Form::label ('SARRO','SARRO') !!}
-        	    </div>
-            	<div class="col">
-                	<input class="form-check-input" name="enfermedad[]" style="margin-top: 6px" type="checkbox" id="GINGIVITIS" value="GINGIVITIS">
-                	{!! Form::label ('GINGIVITIS','GINGIVITIS') !!}
-            	</div>
-        	</div>
-        	<div class="form-group row">
-        		<div class="col">
-                	<input class="form-check-input" name="enfermedad[]" style="margin-top: 6px" type="checkbox" id="PERIODONTITIS" value="PERIODONTITIS">
-                	{!! Form::label ('PERIODONTITIS','PERIODONTITIS') !!}
-            	</div>
-            	<div class="col" style="margin-left: -29px;">
-                	<input class="form-check-input" name="malhabito[]" style="margin-top: 6px" type="checkbox" id="MORDERSE_LAS_UNAS" value="MORDERSE_LAS_UNAS">
-                	{!! Form::label ('MORDERSE LAS UÑAS','MORDERSE LAS UÑAS') !!}
-            	</div>
-            	<div class="col" style="margin-left: -29px;">
-	                <input class="form-check-input" name="malhabito[]" style="margin-top: 6px" type="checkbox" id="MORDER_ALGUN_OBJETO" value="MORDER_ALGUN_OBJETO">
-    	            {!! Form::label ('MORDER ALGÚN OBJETO','MORDER ALGÚN OBJETO') !!}
-        	    </div>
-            	<div class="col" style="margin-left: 0px;">
-            		<input class="form-check-input" name="malhabito[]" style="margin-top: 6px" type="checkbox" id="OTROH" value="OTROH">
-                	{!! Form::label ('OTRO','OTRO') !!}
-            	</div>
-            	<div class="col" style="margin-top: -10px;margin-left: -70px;">
-	                {!! Form::text ('otro',old('otro'), ['class' => 'form-control mayuscula', 'id' => 'escpecifiquehabito', 'placeholder' => 'ESPECIFIQUE'] )!!}
-    	        </div>
+			<h5 class="card-title">Hábitos bucales</h5><br>
+		</div>
+		<div class="form-group row">
+            <div class="col">
+                <input class="form-check-input" name="enfermedad[]"  type="checkbox" id="MALA_HIGIENE" value="MALA_HIGIENE" style="margin-top: 5px; margin-left: 0px">
+                <label id="higieneBuc" style="margin-left: 20px">MALA HIGIENE</label>
+                
+            </div>
+            <div class="col" >
+                <input class="form-check-input" name="enfermedad[]"  type="checkbox" id="CARIES" value="CARIES">
+                {!! Form::label ('CARIES','CARIES') !!}
+            </div>
+            <div class="col">
+                <input class="form-check-input" name="enfermedad[]"  type="checkbox" id="ABSCESOS" value="ABSCESOS">
+                {!! Form::label ('nombreAbcesos','ABSCESOS') !!}
+            </div>
+            <div class="col">
+            	<input class="form-check-input" name="enfermedad[]"  type="checkbox" id="SARRO" value="SARRO">
+                {!! Form::label ('SARRO','SARRO') !!}
+            </div>
+            <div class="col">
+                <input class="form-check-input" name="enfermedad[]"  type="checkbox" id="GINGIVITIS" value="GINGIVITIS">
+                {!! Form::label ('GINGIVITIS','GINGIVITIS') !!}
+            </div>
+        </div>
+
+        <div class="form-group row">
+        	<div class="col">
+                <input class="form-check-input" name="enfermedad[]"  type="checkbox" id="PERIODONTITIS" value="PERIODONTITIS" style="margin-top: 5px; margin-left: 0px">
+                <label id="PERIODONTITIS" style="margin-left: 20px">PERIODONTITIS</label>
+            </div>
+            <div class="col" >
+                <input class="form-check-input" name="malhabito[]"  type="checkbox" id="MORDERSE_LAS_UNAS" value="MORDERSE_LAS_UNAS">
+                {!! Form::label ('MORDERSE LAS UÑAS','MORDERSE LAS UÑAS') !!}
+            </div>
+            <div class="col" >
+                <input class="form-check-input" name="malhabito[]"  type="checkbox" id="MORDER_ALGUN_OBJETO" value="MORDER_ALGUN_OBJETO">
+                {!! Form::label ('MORDER ALGÚN OBJETO','MORDER ALGÚN OBJETO') !!}
+            </div>
+            <div class="col">
+            	<input class="form-check-input" name="malhabito[]"  type="checkbox" id="OTROH" value="OTROH">
+                {!! Form::label ('OTRO','OTRO') !!}
+            </div>
+            <div class="col">
+                {!! Form::text ('otro',old('otro'), ['class' => 'form-control mayuscula', 'id' => 'escpecifiquehabito', 'placeholder' => 'ESPECIFIQUE'] )!!}
+            </div>
+        </div>
         	</div>
 		</div>
 	</div>	
