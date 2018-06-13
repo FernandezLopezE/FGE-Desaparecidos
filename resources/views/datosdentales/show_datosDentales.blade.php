@@ -89,8 +89,15 @@
                   <dt>Hábitos bucales:</dt>
                 </div>
                 <div class="col">
-                  <dd id="enfDientes"></dd>
                   <dd id="MalosDientes"></dd>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <dt>Higiene bucal:</dt>
+                </div>
+                <div class="col">
+                  <dd id="enfDientes"></dd>
                 </div>
               </div>
   					</div>
