@@ -24,6 +24,21 @@ class CedulaPartesCuerpo extends Model
 		'idPersonaDesaparecida',
 	];
 
+	public function catTamanoCuerpo()
+	{
+		return $this->belongsTo('App\Models\CatTamanoCuerpo','idTamanoCuerpo');
+	}
+
+	public function catTipoCuerpo()
+	{
+		return $this->belongsTo('App\Models\CatTiposCuerpo','idTipoCuerpo');
+	}
+
+	public function catColoresCuerpo()
+	{
+		return $this->belongsTo('App\Models\CatColoresCuerpo','idColoresCuerpo');
+	}
+
 	public function catpartescuerpo()
 	{
 		return $this->belongsTo('App\Models\CatPartesCuerpo','idPartesCuerpo');

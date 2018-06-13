@@ -92,4 +92,19 @@ class Desaparecido extends Model
 		return $this->belongsTo('App\Models\Cedula', 'idCedula');
 	}	
 
+	public function colorpiel()
+	{
+		return $this->belongsTo('App\Models\CatColorPiel', 'idColorPiel');
+	}
+
+	public function complexion()
+	{
+		return $this->belongsTo('App\Models\CatComplexion', 'idComplexion');
+	}
+
+	public function partescuerpo()
+	{
+		return $this->hasMany('App\Models\CedulaPartesCuerpo', 'idPersonaDesaparecida', 'id');
+	}
+	
 }

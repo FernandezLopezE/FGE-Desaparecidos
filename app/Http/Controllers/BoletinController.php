@@ -16,12 +16,13 @@ class BoletinController extends Controller
                                             ->get();
         
         $desaparecido = \App\Models\Desaparecido::find($datos[0]->id);
+        //dd($desaparecido->partescuerpo->toArray());
         $view = view('desaparecidos.boletin', compact('desaparecido'))->render();
         $pdf =\App::make('dompdf.wrapper');
         $pdf -> loadHTML($view);
         
         
-        $pdf->setPaper('A5');
+        $pdf->setPaper('carta');
 
         return $pdf->stream('formato_'.time().'.pdf');
 

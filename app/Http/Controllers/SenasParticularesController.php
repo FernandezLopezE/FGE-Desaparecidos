@@ -40,14 +40,15 @@ class SenasParticularesController extends Controller
 		define('DS', DIRECTORY_SEPARATOR);        
 		if(is_null($request->file('archivo')))
 		{
-			if($request->input('method') == 'PUT'){            
-				$rutaImagen = "no tiene datos y es por PUT";// Se queda con la imagen anterior.
+			if($request->input('idCedulaParteCuerpo') != "null"){            
+				//$rutaImagen = "images".DS."vestimenta_sin_imagen.png";
 			} else {
-				$rutaImagen = "images".DS."vestimenta_sin_imagen.png";
+				$dataPartes['imagen'] = "images".DS."vestimenta_sin_imagen.png";
 			}
 		} else {
-			if($request->input('method') == 'PUT'){
-				if($data->path != 'images'.DS.'vestimenta_sin_imagen.png'){
+			if($request->input('idCedulaParteCuerpo') != "null"){
+				$data = CedulaPartesCuerpo::find($request->input('idCedulaParteCuerpo'));
+				if($data->imagen != 'images'.DS.'vestimenta_sin_imagen.png'){
 					\Storage::disk('local')->delete($data->path);
 				}
 			}				
@@ -56,7 +57,7 @@ class SenasParticularesController extends Controller
 			$fileName = uniqid().'.'.$extension;
 			$path = "upload".DS."descripcion_fisica".DS.$fileName;
 			\Storage::disk('local')->put($path,  \File::get($request->file('archivo')));
-			$rutaImagen = $path;           
+			$dataPartes['imagen'] = $path;           
 		}
 		
 		($request->input('idPosicion') == 'null') ? null : $request->input('idPosicion') ;
@@ -65,26 +66,28 @@ class SenasParticularesController extends Controller
 		$dataPartes['idColoresCuerpo']		= ($request->input('idColor') == 'null') ? null : $request->input('idColor') ;
 		$dataPartes['idTamanoCuerpo']	    = ($request->input('idTamano') == 'null') ? null : $request->input('idTamano') ;
 		$dataPartes['observaciones'] 	    = ($request->input('observaciones') == 'null') ? null : $request->input('observaciones') ;
-		$dataPartes['otraParticularidad']	= ($request->input('otraidParticularidad') == 'null') ? null : $request->input('otraidParticularidad') ;
-		$dataPartes['otraModificacion']		= ($request->input('otraidModificacion') == 'null') ? null : $request->input('otraidModificacion') ;
+		$dataPartes['otraParticularidad']	= ($request->input('otroidParticularidad') == 'null') ? null : $request->input('otroidParticularidad') ;
+		$dataPartes['otraModificacion']		= ($request->input('otroidModificacion') == 'null') ? null : $request->input('otroidModificacion') ;
 		$dataPartes['otroTipo']				= ($request->input('otroTipo') == 'null') ? null : $request->input('otroTipo') ;
 		$dataPartes['otroColor']			= ($request->input('otroColor') == 'null') ? null : $request->input('otroColor') ;
-		$dataPartes['imagen']				= $rutaImagen;
+		//$dataPartes['imagen']				= $rutaImagen;
 		
 		$data['error'] = null;
 		\DB::beginTransaction();
 		try {
-			if($request->input('method') == 'PUT'){
-				$parteCuerpo = CedulaPartesCuerpo::find($request->input('idParteCuerpo'))->update($dataPartes);
+			if($request->input('idCedulaParteCuerpo') != "null"){
+				$parteCuerpo = CedulaPartesCuerpo::find($request->input('idCedulaParteCuerpo'))->update($dataPartes);
+				$parteCuerpo = CedulaPartesCuerpo::find($request->input('idCedulaParteCuerpo'));
 			} else {
 				$dataPartes['idPartesCuerpo']			= $request->input('idParteCuerpo');
 				$dataPartes['idPersonaDesaparecida']	= $request->input('idDesaparecido');
 				$parteCuerpo = CedulaPartesCuerpo::create($dataPartes);
 			}
 			
+		
 			PivotSubPartiCuerpo::where('idCedulaPartesCuerpo', $request->input('idParteCuerpo'))->delete();			
-			$eliminar = PivotSubModiCuerpo::where('idCedulaPartesCuerpo', $request->input('idParteCuerpo'))->delete();
-
+			PivotSubModiCuerpo::where('idCedulaPartesCuerpo', $request->input('idParteCuerpo'))->delete();
+			
 			$particularidades = ($request->input('idParticularidad') == 'null') ? array() : explode(",", $request->input('idParticularidad')) ;
 			foreach ($particularidades as $particularidad) {
 				if(!empty($particularidad)){
@@ -106,7 +109,7 @@ class SenasParticularesController extends Controller
 			$data['error'] = $e->getMessage();
 			\DB::rollback();
 		}
-		
+		//dd($data);
 		if ($data['success']) {
 			return response()->json($data);
 		}
@@ -154,6 +157,22 @@ class SenasParticularesController extends Controller
 	 */
 	public function destroy($id)
 	{
-		//
+		\DB::beginTransaction();
+		try {
+			
+			PivotSubPartiCuerpo::where('idCedulaPartesCuerpo', $id)->delete();
+			PivotSubModiCuerpo::where('idCedulaPartesCuerpo', $id)->delete();
+			$parteCuerpo = CedulaPartesCuerpo::find($id)->delete();
+			\DB::commit();
+			$data['success'] = true;
+		} catch (\Exception $e) {
+			$data['success'] = false;
+			$data['error'] = $e->getMessage();
+			\DB::rollback();
+		}
+		
+		if ($data['success']) {
+			return response()->json($data);
+		}	
 	}
 }

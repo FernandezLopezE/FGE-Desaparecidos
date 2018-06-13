@@ -97,8 +97,9 @@
                     </div>
          
                
-               <div class="col-lg-5" >                             
-                      <div class="" id="">
+               <div class="col-lg-5" align="center">                             
+                      <div class="" id="" >
+                      
                        {!! Form::label ('','Fecha de desaparición',['class' => '']) !!} 
                         <div class="row">
                          <div class="col"> &nbsp;{!! Form::label ('','Desde:  ',['class' => '']) !!}</div> 
@@ -131,7 +132,7 @@
                     </div>     
               </div>
                
-               <div class="col-lg-5" >
+               <div class="col-lg-5" align="center">
                   <div class=""  id="" >                               
                       <div class="" id="div_idEstado">
                           {!! Form::label ('','Fecha de reporte  ',['class' => '']) !!}
@@ -166,7 +167,7 @@
            </div> <!-- div class row end -->
             
             <hr>
-            <div class="col-lg-6">
+            <div class="col-lg-12">
                 {!! Form::label ('comple','Filtros de búsqueda:') !!}<br>
             {!! Form::select ('comple', $tiposFiltros, '',['class' => '', 'id' => 'filtrosAvanzados','multiple' => 'multiple'] )!!}
             <br><br>
@@ -513,7 +514,6 @@ $('#return-to-top').click(function() {      // When arrow is clicked
         scrollTop : 0                       // Scroll to top of body
     }, 500);
 });
-
     
    $(function()
     {
@@ -617,12 +617,74 @@ $('#return-to-top').click(function() {      // When arrow is clicked
     if (fechaFinReporte > fechaActual || fechaFinReporte < fechaInicioReporte)
       $("#fechaReporte2").val("");
    });
+    
+    
+    $('#rng1').change(function(){  
+    desde = $("#rng1").val();
+    hasta = $("#rng2").val();
+        if(hasta=='' ){            
+        }else{
+            if (desde > hasta)
+            { $("#rng1").val(""); }
+        }
+     
+   });
+    $('#rng2').change(function(){  
+    desde2 = $("#rng1").val();
+    hasta2 = $("#rng2").val();
+      if(desde2=='' ){           
+        }else{
+            if (hasta2 < desde2)
+            { $("#rng2").val(""); } 
+        }
+   });
+    
+    $('#estatura1').change(function(){  
+    desde = $("#estatura1").val();
+    hasta = $("#estatura2").val();
+        if(hasta=='' ){            
+        }else{
+            if (desde > hasta)
+            { $("#estatura1").val(""); }
+        }
+     
+   });
+    $('#estatura2').change(function(){  
+    desde2 = $("#estatura1").val();
+    hasta2 = $("#estatura2").val();
+      if(desde2=='' ){           
+        }else{
+            if (hasta2 < desde2)
+            { $("#estatura2").val(""); } 
+        }
+   });
+    $('#peso1').change(function(){  
+    desde = $("#peso1").val();
+    hasta = $("#peso2").val();
+        if(hasta=='' ){            
+        }else{
+            if (desde > hasta)
+            { $("#peso1").val(""); }
+        }
+     
+   });
+    $('#peso2').change(function(){  
+    desde2 = $("#peso1").val();
+    hasta2 = $("#peso2").val();
+      if(desde2=='' ){           
+        }else{
+            if (hasta2 < desde2)
+            { $("#peso2").val(""); } 
+        }
+   });
   //*****************************
     //-<<--<--<<--<<--<<-MULTISELECTS-<<--<--<<--<<--<<-<<--<--<<--<<--<<
       
     $('#filtrosAvanzados').multipleSelect({
-            filter: true,
-            width: '100%'
+            width: '100%',
+            multiple: true,
+            multipleWidth: 390,
+            filter: true
            
         });
     $('#generos').multipleSelect({
@@ -843,14 +905,17 @@ var formatTableActions = function(value, row, index) {
             $("#idCPiel").empty();
             $("#idComplexion").empty();            
             $("#idNacionalidad").empty();
-            $("#idCabello").empty();
-            $("#idVelloFacial").empty();
+            $("#idCabelloM").empty();
+            $("#idVelloFacialM").empty();
             $("#idOjos").empty();
             $("#idLabios").empty();
         $("#idModificaciones").empty();
         $("#idParticularidades").empty();
         $("#idObservaciones").empty();
-            
+        $("#foto").empty();
+          
+        console.log("MENSAJE DE FOTO");
+        console.log(row.foto);
       $("#idNombre").append(row.nombre);
             if(row.sexo =='H'){ 
                 $("#idGenero").append('Masculino'); 
@@ -868,14 +933,31 @@ var formatTableActions = function(value, row, index) {
             $("#idEdad").append(row.edad + ' años');
             $("#apodo").append(row.apodo);
             $("#idNacionalidad").append(row.nacionalidad);
-            $("#idTipoCabello").append(row.tipoCabello);
-            $("#idCabello").append(row.cabello);
-            $("#idVelloFacial").append(row.velloFacial);
+            //$("#idTipoCabello").append(row.tipoCabello);
+            $("#idCabelloM").append(row.cabello);
+            $("#idVelloFacialM").append(row.velloFacial);
             $("#idOjos").append(row.ojos);
             $("#idLabios").append(row.labios);
         $("#idModificaciones").append(row.modificaciones);
         $("#idParticularidades").append(row.particularidades);
         $("#idObservaciones").append(row.observaciones);
+        
+        
+        if(row.foto ==null  ){ 
+                $("#foto").append('<img src="images/perfil3.png" class="rounded w-100 p-3 float-right">'); 
+                              }else{
+                $("#foto").append('<img src="'+row.foto+'" class="rounded w-100 p-3 float-right" width="80%">'); 
+                                  
+                             }
+        //<img src="html/imagenes/prueba.jpg" border="1" alt="Este es el ejemplo de un texto alternativo" width="400" height="300">
+//        {{ HTML::image('images/perfil3.png', 'Fiscal', array('class' => 'rounded w-100 p-3 float-right')) }}
+//         @if(empty($desaparecido->fotoDesaparecido))
+//        <center>{{ HTML::image('images/perfil3.png', 'Fiscal', array('class' => '','style' => "width: 80%;")) }}</center>
+//         <p>sin foto</p>
+//          @else
+//            <center>{{ HTML::image(asset($desaparecido->fotoDesaparecido), 'Fiscal', array('class' => '', 'style' => "width: 80%;")) }}</center>
+//        @endif
+        
         
 }
     }
@@ -1069,8 +1151,8 @@ var formatTableActions = function(value, row, index) {
                 tipoBarba: $('#tipoBarba').multipleSelect('getSelects'),
                 colorBarba: $('#colorBarba').multipleSelect('getSelects'),
               
-                tipoBarba: $('#tipoBigote').multipleSelect('getSelects'),
-                colorBarba: $('#colorBigote').multipleSelect('getSelects'),
+                tipoBigote: $('#tipoBigote').multipleSelect('getSelects'),
+                colorBigote: $('#colorBigote').multipleSelect('getSelects'),
                 tipoPatilla: $('#tipoPatilla').multipleSelect('getSelects'),
                 colorPatilla: $('#colorPatilla').multipleSelect('getSelects'),
               
