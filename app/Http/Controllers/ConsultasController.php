@@ -167,7 +167,7 @@ class ConsultasController extends Controller
   
 
     ->select('des.id as id', \DB::raw('CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))AS nombre'), 'p.sexo as sexo',\DB::raw('DATE_FORMAT(substr(dci.desaparicionFecha, 1,10), "%d/%m/%Y") as fecha'),'des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'),'des.estatura as estatura','des.peso as peso','cc.id as idComplexion','cc.nombre as complexion','ccp.id as idCPiel','ccp.nombre as cPiel','ce.id as idEstado','ce.nombre as estado','cm.id as idMuni','cm.nombre as municipio',
-                     'cn.nombre as nacionalidad',\DB::raw('DATE_FORMAT(dci.fechaVisita,"%d/%m/%Y")  as fechaReporte'), 'dci.desaparicionObservaciones as hechos')
+                     'cn.nombre as nacionalidad',\DB::raw('DATE_FORMAT(dci.fechaVisita,"%d/%m/%Y")  as fechaReporte'), 'dci.desaparicionObservaciones as hechos','des.fotoDesaparecido as foto')
 
             //{->where('des.edadExtravio', 'like', "$rg%")
                             //->where('des.edadExtravio', 'like', "$rg2%")
@@ -578,7 +578,8 @@ class ConsultasController extends Controller
                                 'labios' => $nLabios,
                                 'modificaciones' =>trim($nModificaciones,', '),
                                 'particularidades' =>trim($nParticularidades,', '),
-                                'observaciones' =>trim($nObservaciones,', ')
+                                'observaciones' =>trim($nObservaciones,', '),
+                                'foto' => $value->foto
                                 ); 
 
                  $i++;
