@@ -67,6 +67,10 @@ $(document).ready(function(){
     	}
 	});
 
+	$("body").on('keypress', '.longitudNumero', function(event){		
+	  if(this.value.length == 3)  { return false;} 
+	});
+
 
 	/******************************************************
 				DATOS DEL ENTREVISTADOR
