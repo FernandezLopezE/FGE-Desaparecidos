@@ -84,10 +84,9 @@ class SenasParticularesController extends Controller
 				$parteCuerpo = CedulaPartesCuerpo::create($dataPartes);
 			}
 			
-		
-			PivotSubPartiCuerpo::where('idCedulaPartesCuerpo', $request->input('idParteCuerpo'))->delete();			
-			PivotSubModiCuerpo::where('idCedulaPartesCuerpo', $request->input('idParteCuerpo'))->delete();
-			
+			//dd($request->input('idCedulaParteCuerpo'));
+			PivotSubPartiCuerpo::where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();			
+			PivotSubModiCuerpo::where('idCedulaPartesCuerpo', $parteCuerpo->id)->delete();
 			$particularidades = ($request->input('idParticularidad') == 'null') ? array() : explode(",", $request->input('idParticularidad')) ;
 			foreach ($particularidades as $particularidad) {
 				if(!empty($particularidad)){
