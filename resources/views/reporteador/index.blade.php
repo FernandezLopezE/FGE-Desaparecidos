@@ -199,19 +199,19 @@
           <DIV id="idDesFisica">       
           <div class="row" >
               <div class="col-lg-4" >
-                  <div class=""  id="campoEdad" >                               
+                  <div class=""  id="campoEdad" align="center" >                               
                       <div class="" id="div_EdadDes">
-                          {!! Form::label ('','Edad de desaparición  ',['class' => '']) !!}
+                          {!! Form::label ('','Edad de desaparición  ',['class' => '', ]) !!}
                         <div class="row">
                          <div class="col"> &nbsp;{!! Form::label ('','Desde:  ',['class' => '']) !!}</div> 
                          <div class="col">  &nbsp;{!! Form::label ('','Hasta:  ',['class' => '']) !!}</div> </div>
                           </div>
                              <div class="row">                           
                              <div class="col-lg-6">
-                                 {!! Form::number('count','value', ['min' => '0' ,'max' => '120' ,'class' => 'form-control', 'id' => 'rng1']) !!} 
+                                 {!! Form::number('count','value', ['min' => '0' ,'max' => '120' ,'class' => 'form-control longitudNumero', 'id' => 'rng1']) !!} 
                            </div>
                            <div class="col-lg-6"> 
-                                   {!! Form::number('count','value', ['min' => '0' ,'max' => '120' ,'class' => 'form-control', 'id' => 'rng2']) !!}             
+                                   {!! Form::number('count','value', ['min' => '0' ,'max' => '120' ,'class' => 'form-control longitudNumero', 'id' => 'rng2']) !!}             
                            </div>
                            </div>
                     </div>     
@@ -220,7 +220,7 @@
               
               
              <div class="col-lg-4"> 
-                 <div class=""  id="campoEstatura" >                               
+                 <div class=""  id="campoEstatura" align="center">                               
                       <div class="" id="div_EdadDes">           
                   {!! Form::label ('','Estatura  ',['class' => '']) !!}
                   <div class="row">
@@ -229,17 +229,17 @@
                           </div>
                              <div class="row">                           
                              <div class="col-lg-6">
-                    {!! Form::number('count','value', ['min' => '0' ,'max' => '300' ,'class' => 'form-control', 'id' => 'estatura1']) !!}
+                    {!! Form::number('count','value', ['min' => '0' ,'max' => '300' ,'class' => 'form-control longitudNumero', 'id' => 'estatura1']) !!}
                     </div>
                            <div class="col-lg-6">
-                    {!! Form::number('count','value', ['min' => '0' ,'max' => '300' ,'class' => 'form-control', 'id' => 'estatura2']) !!}
+                    {!! Form::number('count','value', ['min' => '0' ,'max' => '300' ,'class' => 'form-control longitudNumero', 'id' => 'estatura2']) !!}
              </div>
                            </div>
                     </div>     
                   </div>
                  
             <div class="col-lg-4"> 
-                 <div class=""  id="campoPeso" >                               
+                 <div class=""  id="campoPeso" align="center">                               
                       <div class="" id="div_EdadDes">           
                   {!! Form::label ('','Peso  ',['class' => '']) !!}
                   <div class="row">
@@ -248,10 +248,10 @@
                           </div>
                              <div class="row">                           
                              <div class="col-lg-6">
-                     {!! Form::number('count','value', ['min' => '0' ,'max' => '500' ,'class' => 'form-control', 'id' => 'peso1']) !!}
+                     {!! Form::number('count','value', ['min' => '0' ,'max' => '500' ,'class' => 'form-control longitudNumero', 'id' => 'peso1']) !!}
                      </div>
                            <div class="col-lg-6">
-                     {!! Form::number('count','value', ['min' => '0' ,'max' => '500' ,'class' => 'form-control', 'id' => 'peso2']) !!}
+                     {!! Form::number('count','value', ['min' => '0' ,'max' => '500' ,'class' => 'form-control longitudNumero', 'id' => 'peso2']) !!}
               </div>
                            </div>
                     </div>     
