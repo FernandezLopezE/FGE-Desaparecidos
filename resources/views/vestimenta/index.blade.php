@@ -5,6 +5,9 @@
 	.modal-lg {
 		max-width: 80%;
 	}
+	#diseno{
+		height: 40%;
+	}
 </style>
 
 <link rel="stylesheet" href="{{ asset('plugins/bootstrap-colorselector/bootstrap-colorselector.min.css') }}">
@@ -12,7 +15,7 @@
 @endsection
 @section('content')
 @include('navs.navs_datos',array('activar' => 'vestimenta'))
-<button type="button" class="btn btn-dark pull-right"  id="btnAgregarPrenda">AGREGAR PRENDA</button>
+<button type="button" class="btn btn-dark pull-right"  id="btnAgregarPrenda">AGREGAR</button>
 
 <div class="card-body bg-white">	
 	@include('vestimenta.modals.modal_vestimenta')
@@ -35,7 +38,7 @@
 		var routeAsset = '{{asset("")}}';
 		
 		var formatTableActions = function(value, row, index) {				
-			btn = '<button class="btn btn-dark btn-xs edit" id="editVestimenta"><i class="fa fa-edit"></i>&nbsp;</button>';	
+			btn = '<button class="btn btn-dark btn-xs edit" id="editVestimenta">EDITAR</button>';	
 			
 			return [btn].join('');
 		};
@@ -49,7 +52,6 @@
 				$('select#idMarca option[value="'+row.idMarca+'"]').attr("selected",true);
 				$('#talla').val(row.talla);
 				$('#diseno').val(row.diseno);
-
 				$('#idPrenda').prop('disabled', false);
 				btnPrendaActualizar.show();
 				btnPrendaGuardar.hide();
@@ -197,9 +199,7 @@
 				}
 			});
 		});
-
-
-		btnPrendaActualizar.click (function(){
+		/*btnPrendaActualizar.click (function(){
 
 			//var archivo = $('input[name=archivo]');
 			var fileToUpload = $('#archivo')[0].files[0];
@@ -241,12 +241,7 @@
 					});
 				}
 			});
-		});
-
-
-
-
-
+		});*/
 	});
 </script>
 @endsection

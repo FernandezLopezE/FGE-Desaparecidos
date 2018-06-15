@@ -9,12 +9,12 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body"> 
+				<div class="modal-body" id="modalbody"> 
 					<form id="formVestimenta">
 					<!-- Contenido del formulario-->
 					<div class="row">
 						<div class="form-group col-md-4" id="div_idVestimenta">
-							{!! Form::label ('idVestimenta','Tipo de vestimenta:',['class' => 'form-control-label']) !!}
+							{!! Form::label ('idVestimenta','Tipo de prenda:',['class' => 'form-control-label']) !!}
 							{!! Form::select('idVestimenta',
 											 $vestimentas,
 											 null,
@@ -69,6 +69,7 @@
 							{!! Form::textarea ('diseno',
 											old('Dibujo/Bordado/Franjas'),
 											['class' => 'form-control mayuscula',
+												'id' => 'diseno',
 												'data-validation' => 'required',
 												'data-validation-error-msg-required' => 'Ingrese observaciones',
 												'placeholder' => 'Ingrese el bordado, dibujo, franja u observaciones de la prenda'] )!!}
@@ -87,7 +88,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-dark" id="btnGuardarPrenda">GUARDAR</button>
-					<button type="button" class="btn btn-dark" id="btnActualizarPrenda">ACTUALIZAR</button>
+					<button type="button" class="btn btn-dark" id="btnActualizarPrenda">GUARDAR</button>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
 				</div>
 			</div>

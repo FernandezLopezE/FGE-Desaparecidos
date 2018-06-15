@@ -9,21 +9,14 @@
 @section('content')
 @include('navs.navs_datos',array('activar' => 'desaparicion'))
 <div class="card border-primary">
-        <div class="card border-success">
-          <div class="card-header"> 
-                <h5>Descripción de los hechos
-                 <a href="{{route('desaparicion.edit', ['id' => $desaparecido->id])}}" class="btn btn-dark pull-right">
-						Editar </a>   
-                </h5>
-          </div>
-        </div>
-
 <div class="card-body bg-white">
 	<div class="row">
 		<div class="col">
-			
+			<div> 
+            	<a href="{{route('desaparicion.edit', ['id' => $desaparecido->id])}}" class="btn btn-dark pull-right">Editar </a>   
+          	</div>
 			<dl class="row">
-					<dt class="col-sm-8">ÚLTIMA FECHA QUE VIERON A LA PERSONA:</dt>
+				<dt class="col-sm-8">ÚLTIMA FECHA QUE VIERON A LA PERSONA:</dt>
 			</dl>
 			<dl class="row">
 				<dt class="col-sm-4">Día:</dt>

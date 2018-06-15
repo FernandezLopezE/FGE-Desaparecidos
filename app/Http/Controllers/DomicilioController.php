@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Domicilio;
 use App\Models\Desaparecido;
+use App\Http\Requests\DomicilioRequest;
 
 class DomicilioController extends Controller
 {
@@ -34,7 +35,7 @@ class DomicilioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DomicilioRequest $request)
     {        
         $telefonos[] = array('telefono' => $request->input('telefonos'),
                             'ext' => $request->input('ext')
@@ -112,7 +113,7 @@ class DomicilioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DomicilioRequest $request, $id)
     {
         $desaparecido = Desaparecido::find($id);
 	   $domicilios = Domicilio::find($desaparecido->domicilios[0]['id']);

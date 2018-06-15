@@ -41,6 +41,35 @@
 		var idDesaparecido = '{!! $desaparecido->id !!}'
         var btnLimpiar = $('#btnLimpiar');
 		
+		var formatTableActions = function(value, row, index) {				
+			btn = '<button class="btn btn-dark pull-left" id="editAnte">Editar</button>';	
+			
+			return [btn].join('');
+		};
+
+		window.operateEvents = {
+			'click #editAnte': function (e, value, row, index) {					
+				console.log(row);
+				
+				if(row.fecha){
+					fechaAct = row.fecha.split('-');
+					ActFecha = fechaAct[1]+'/'+fechaAct[0];
+				}else{
+					ActFecha = '';
+				}
+		
+				$('#idDesaparecido').val(row.id);
+				$('#mesAnio').val(row.fecha);
+				$('#observaciones').val(row.observaciones);
+				$('#idDelito').val(row.idDelito);
+				$('#idCentroReclusion').val(row.idCentroReclusion);
+				$("#btnEditarAntecedente").show();
+				$("#btnGuardarAntecedente").hide();
+                $("#btnEditarAntecedente").val(row.id);
+				modalAntecedentes.modal('show');
+			}
+		}
+
 		table.bootstrapTable({				
 			url: routeIndex+'/get_antecedentes/{!! $desaparecido->id !!}',
 			columns: [{					
@@ -49,31 +78,36 @@
 			}, {					
 				field: 'observaciones',
 				title: 'Observaciones',
+			}, {				
+				title: 'Acciones',
+				formatter: formatTableActions,
+				events: operateEvents,
 			}]			
 		})
 
 		btnAgregarAntecedente.click(function(e){
+			$('#formDesaparecido')[0].reset();
+			$("#btnEditarAntecedente").hide();
+			$("#btnGuardarAntecedente").show();
 			modalAntecedentes.modal('show');
-	           $( "#modalAntecedentes" ).sisyphus( {
+	        $( "#modalAntecedentes" ).sisyphus( {
 	           excludeFields: $('input[name=_token]')
             });
 		})
         
         btnLimpiar.click(function(){
-          $('#modalAntecedentes').find('form')[0].reset();
-          $('#modalAntecedentes').removeData('modal');
-             })
+          	$('#modalAntecedentes').find('form')[0].reset();
+          	$('#modalAntecedentes').removeData('modal');
+        })
 
 		btnGuardarAntecedente.click (function(){
-			
 			var dataString = {
 				mesAnio : $("#mesAnio").val(),
 				idDelito : $("#idDelito").val(),
 				idCentroReclusion : $("#idCentroReclusion").val(),
 				observaciones : $("#observaciones").val(),
 				idDesaparecido: idDesaparecido,
-			};			
-
+			};
 			$.ajax({
 				type: 'POST',
 				url: routeAntecedente,
@@ -85,6 +119,29 @@
 					table.bootstrapTable('refresh');
 				},
 				error: function(data) {
+					console.log(data);
+				}
+			});
+		})
+		modalFooter.on('click', '#btnEditarAntecedente', function(){
+			var dataString = {
+				mesAnio : $("#mesAnio").val(),
+				idDelito : $("#idDelito").val(),
+				idCentroReclusion : $("#idCentroReclusion").val(),
+				observaciones : $("#observaciones").val(),
+			};
+			idAntecedente = $("#btnEditarAntecedente").val();
+			$.ajax({
+				type: 'PUT',
+				url: routeAntecedente+'/'+idAntecedente,
+				data: dataString,
+				dataType: 'json',
+				success: function(data){
+					modalAntecedentes.modal('hide');
+					table.bootstrapTable('refresh');
+				},
+				error: function(data){
+					var errors = data.responseJSON;
 					console.log(data);
 				}
 			});
