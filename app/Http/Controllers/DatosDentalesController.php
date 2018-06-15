@@ -177,7 +177,7 @@ class DatosDentalesController extends Controller
 
         $idperfil = $denta->idTipoPerfil;
         $nombrePerfil = \DB::table('cat_tipo_perfil')
-                    ->select('nombrePerfil')
+                    ->select('id','nombrePerfil')
                     ->where('cat_tipo_perfil.id',$idperfil)
                     ->get();
 
@@ -185,13 +185,13 @@ class DatosDentalesController extends Controller
 
         $idmordida = $denta->idTipoMordida;
         $nombreMordida = \DB::table('cat_tipo_mordida')
-                    ->select('nombreTipoMordida')
+                    ->select('id','nombreTipoMordida')
                     ->where('cat_tipo_mordida.id',$idmordida)
                     ->get();
 
         $idsonrisa = $denta->idTipoSonrisa;
         $nombreSonrisa = \DB::table('cat_tipo_sonrisa')
-                    ->select('nombreTipoSonrisa')
+                    ->select('id','nombreTipoSonrisa')
                     ->where('cat_tipo_sonrisa.id',$idsonrisa)
                     ->get();
 
