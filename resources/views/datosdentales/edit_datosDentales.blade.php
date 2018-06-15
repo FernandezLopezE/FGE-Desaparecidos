@@ -107,7 +107,7 @@
 	            </div>
 	            <div class="col" align="right" >
 	                {!! Form::label ('direccion','Activar ayuda visual') !!}
-	                <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="SÍ" data-off="NO" data-size="small" onchange="myFunction()">
+	                <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="SÍ" data-off="NO" data-size="small">
 	            </div>
 	        </div>
 	        <div class="form-group row">
@@ -173,7 +173,7 @@
 	                <!--{!! Form::checkbox('PROTESIS TOTAL', '12') !!}-->
 	                <!--{!! Form::label ('PROTESIS TOTAL','PROTESIS TOTAL') !!}-->
 	                <input class="form-check-input" name="trata[]" style="margin-left: -0px;" type="checkbox" id="PROTESIS_TOTAL" value="PROTESIS_TOTAL">
-	                <a  rel="popover" style="margin-top: -8px; margin-left: 20px" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>PROTESIS TOTAL</b></a>
+	                <a  rel="popover" style="margin-top: -8px; margin-left: 20px" data-img="{{ URL::to('/images/Dientes/protesis_total.jpg') }}"><b>PROTESIS TOTAL</b></a>
 	            </div>
 	            <div class="col">
 	                <!--{!! Form::checkbox('RESINA', '13') !!}-->
@@ -184,7 +184,7 @@
 	                <!--{!! Form::checkbox('RETENEDOR', '14') !!}-->
 	                <!--{!! Form::label ('RETENEDOR','RETENEDOR') !!}-->
 	                <input class="form-check-input" name="trata[]" type="checkbox" id="RETENEDOR" value="RETENEDOR">
-	                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RETENEDOR</b></a>
+	                <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/retenedores.jpg') }}"><b>RETENEDOR</b></a>
 	            </div>
 	            <div class="col">
 	                <!--{!! Form::checkbox('SELLADOR FS', '15') !!}-->
@@ -327,7 +327,7 @@
 <script type="text/javascript">
 //Toltips de ayuda visual
 $(function() {
-    $('#toggle-event').change(function() {
+    /*$('#toggle-event').change(function() {
         $('a[rel=popover]').popover({
             html: true,
             trigger: 'hover',
@@ -336,10 +336,30 @@ $(function() {
                 return '<img src="' + $(this).data('img') + '" />';
             }
         });
-    })
+    })*/
+
+    $('#toggle-event').change(function(){
+            console.log($(this).val());
+            if($(this).val() == 'on'){
+                $('a[rel=popover]').popover({
+                    html: true,
+                    trigger: 'hover',
+                    placement: 'bottom',
+                    content: function() {
+                        return '<img src="' + $(this).data('img') + '" />';
+                    }
+                });
+                $("a[rel=popover]").popover('enable');
+                $(this).attr('value','off');
+            }else{
+                //$("a[rel=popover]").popover('hide');
+                $("a[rel=popover]").popover('disable');
+                $(this).attr('value','on');
+            }
+        });
 });
 
-function myFunction() {
+/*function myFunction() {
     var checkBox = document.getElementById("toggle-event");
     if (checkBox.checked == true) {
         $("a[rel=popover]").popover('enable');
@@ -356,7 +376,7 @@ function myFunction() {
         $("a[rel=popover]").popover('hide');
         $("a[rel=popover]").popover('disable');
     }
-}
+}*/
 
 $(document).ready(function(){
 
@@ -388,17 +408,21 @@ $(document).ready(function(){
 			$('#direccion').val(datosDental.direccion);
 
 		}
-
+		console.log(datoperfil);
 		$.each(datoperfil,function(key,value){
 			$("#valorPerfil").val(value.nombrePerfil);
+			$("#idperfilselec").val(value.id);
+			console.log(value.id);
 		});
 
 		$.each(datomordida,function(key,value){
 			$("#valormordida").val(value.nombreTipoMordida);
+			$("#idmordidaselec").val(value.id);
 		});
 
 		$.each(datosonrisa,function(key,value){
 			$("#dientes_girados").val(value.nombreTipoSonrisa);
+			$("#idsonrisaselec").val(value.id);
 		});
 
 
@@ -436,10 +460,8 @@ $(document).ready(function(){
 		for (var i = 0; i < mostrarTrata.length; i++) {
 			for (var j = 0; j < arrayTrata.length; j++) {
 				if (mostrarTrata[i] == arrayTrata[j]) {
-					$("#"+mostrarTrata[i]).prop('checked', true);
+					$("#"+mostrarTrata[i]).prop('checked', true).trigger('change');
 
-				} else {
-					
 				}
 			}
 		}
@@ -451,9 +473,7 @@ $(document).ready(function(){
 		for (var i = 0; i < mostrarEnfer.length; i++) {
 			for (var j = 0; j < arrayEnfer.length; j++) {
 				if (mostrarEnfer[i] == arrayEnfer[j]) {
-					$("#"+mostrarEnfer[i]).prop('checked', true);
-				} else {
-					
+					$("#"+mostrarEnfer[i]).prop('checked', true).trigger('change');
 				}
 			}
 		}
@@ -465,9 +485,7 @@ $(document).ready(function(){
 		for (var i = 0; i < mostrarHabitos.length; i++) {
 			for (var j = 0; j < arrayHabBuc.length; j++) {
 				if (mostrarHabitos[i] == arrayHabBuc[j]) {
-					$("#"+mostrarHabitos[i]).prop('checked', true);
-				} else {
-					
+					$("#"+mostrarHabitos[i]).prop('checked', true).trigger('change');
 				}
 			}
 		}
@@ -527,6 +545,15 @@ $(document).ready(function(){
 			var id = $(this).attr("id");
 			var valor = $(this).attr("value");
 			auxTrata.push(valor);
+			console.log("trata"+auxTrata);
+		}else{
+
+			var valor = $(this).attr("value");
+			auxTrata = jQuery.grep(auxTrata, function(value) {
+			  return value != valor;
+			});
+
+			console.log(auxTrata);
 		}
 	});
 
@@ -541,6 +568,14 @@ $(document).ready(function(){
 			var id = $(this).attr("id");
 			var valor = $(this).attr("value");
 			auxEnfer.push(valor);
+			console.log("Mala Higiene "+auxEnfer);
+		}else{
+			var valor = $(this).attr("value");
+			auxEnfer = jQuery.grep(auxEnfer, function(value) {
+			  return value != valor;
+			});
+
+			console.log(auxEnfer);
 		}
 	});
 
@@ -555,6 +590,14 @@ $(document).ready(function(){
 			var id = $(this).attr("id");
 			var valor = $(this).attr("value");
 			auxHabBuc.push(valor);
+			console.log("Morder"+auxHabBuc);
+		}else{
+			var valor = $(this).attr("value");
+			auxHabBuc = jQuery.grep(auxHabBuc, function(value) {
+			  return value != valor;
+			});
+
+			console.log(auxHabBuc);
 		}
 	});
 
