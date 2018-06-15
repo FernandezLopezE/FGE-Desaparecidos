@@ -112,7 +112,8 @@
             </div>
             <div class="col" align="right" >
                 {!! Form::label ('direccion','Activar ayuda visual') !!}
-                <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="SÍ" data-off="NO" data-size="small" onchange="myFunction()">
+                <input id="toggle-event" type="checkbox" data-toggle="toggle" data-on="SÍ" data-off="NO" data-size="small">
+                
             </div>
         </div>
 
@@ -181,7 +182,7 @@
 	            <!--{!! Form::checkbox('PROTESIS TOTAL', '12') !!}-->
 	            <!--{!! Form::label ('PROTESIS TOTAL','PROTESIS TOTAL') !!}-->
 	            <input class="form-check-input" name="trata[]" style="margin-left: -0px;" type="checkbox" id="PROTESIS_TOTAL" value="PROTESIS_TOTAL">
-	            <a  rel="popover" style="margin-top: -8px; margin-left: 20px" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>PROTESIS TOTAL</b></a>
+	            <a  rel="popover" style="margin-top: -8px; margin-left: 20px" data-img="{{ URL::to('/images/Dientes/protesis_total.jpg') }}"><b>PROTESIS TOTAL</b></a>
 	        </div>
 	        <div class="col">
 	            <!--{!! Form::checkbox('RESINA', '13') !!}-->
@@ -192,7 +193,7 @@
 	            <!--{!! Form::checkbox('RETENEDOR', '14') !!}-->
 	            <!--{!! Form::label ('RETENEDOR','RETENEDOR') !!}-->
 	            <input class="form-check-input" name="trata[]" type="checkbox" id="RETENEDOR" value="RETENEDOR">
-	            <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/resina.jpg') }}"><b>RETENEDOR</b></a>
+	            <a  rel="popover" style="margin-top: -8px;" data-img="{{ URL::to('/images/Dientes/retenedores.jpg') }}"><b>RETENEDOR</b></a>
 	        </div>
 	        <div class="col">
 	            <!--{!! Form::checkbox('SELLADOR FS', '15') !!}-->
@@ -399,7 +400,8 @@
 	**************************************************************/
 $(document).ready(function(){
 	$(function() {
-        $('#toggle-event').change(function() {
+        /*$('#toggle-event').change(function() {
+            console.log($(this).val());
             $('a[rel=popover]').popover({
                 html: true,
                 trigger: 'hover',
@@ -408,11 +410,31 @@ $(document).ready(function(){
                     return '<img src="' + $(this).data('img') + '" />';
                 }
             });
-        })
+        })*/
+
+        $('#toggle-event').change(function(){
+            console.log($(this).val());
+            if($(this).val() == 'on'){
+                $('a[rel=popover]').popover({
+                    html: true,
+                    trigger: 'hover',
+                    placement: 'bottom',
+                    content: function() {
+                        return '<img src="' + $(this).data('img') + '" />';
+                    }
+                });
+                $("a[rel=popover]").popover('enable');
+                $(this).attr('value','off');
+            }else{
+                //$("a[rel=popover]").popover('hide');
+                $("a[rel=popover]").popover('disable');
+                $(this).attr('value','on');
+            }
+        });
     })
 
     
-    function myFunction() {
+    /*function myFunction() {
         var checkBox = document.getElementById("toggle-event");
         if (checkBox.checked == true) {
             $("a[rel=popover]").popover('enable');
@@ -429,7 +451,7 @@ $(document).ready(function(){
             $("a[rel=popover]").popover('hide');
             $("a[rel=popover]").popover('disable');
         }
-    }
+    }*/
 
     function myFunctionTeeth() {
         var checkBox = document.getElementById("toggle-teeth");
@@ -620,7 +642,15 @@ $(document).ready(function(){
 			var id = $(this).attr("id");
 			var valor = $(this).attr("value");
 			auxTrata.push(valor);
-		}
+		}else{
+
+            var valor = $(this).attr("value");
+            auxTrata = jQuery.grep(auxTrata, function(value) {
+              return value != valor;
+            });
+
+            console.log(auxTrata);
+        }
 	});
 
 	/************************************************************************
@@ -634,7 +664,14 @@ $(document).ready(function(){
 			var id = $(this).attr("id");
 			var valor = $(this).attr("value");
 			auxEnfer.push(valor);
-		}
+		}else{
+            var valor = $(this).attr("value");
+            auxEnfer = jQuery.grep(auxEnfer, function(value) {
+              return value != valor;
+            });
+
+            console.log(auxEnfer);
+        }
 	});
 
 	/************************************************************************
@@ -648,7 +685,14 @@ $(document).ready(function(){
 			var id = $(this).attr("id");
 			var valor = $(this).attr("value");
 			auxHabBuc.push(valor);
-		}
+		}else{
+            var valor = $(this).attr("value");
+            auxHabBuc = jQuery.grep(auxHabBuc, function(value) {
+              return value != valor;
+            });
+
+            console.log(auxHabBuc);
+        }
 	});
 
 	/************************************************************************

@@ -200,7 +200,7 @@
   
   $.each(partesCuerpo, function(key, value){	
     console.log(value.idPadre);
-    $('g[data-cuerpo="'+value.idPadre+'"] path').css({"fill":"#fb77bd", "stroke":"#626362","stroke-width":"2-"});
+    $('g[data-cuerpo="'+value.idPadre+'"] path').css({"fill":"#17a4da", "stroke":"#626362","stroke-width":"2-"});
   })
   
 
