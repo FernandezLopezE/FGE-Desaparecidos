@@ -20,7 +20,9 @@
                         					'',
                         					['class' => 'form-control',
                         						'id' => 'mesAnio',
-                        						'data-validation-format'=>"dd/mm/yyyy"
+                        						'data-validation-format'=>"dd/mm/yyyy",
+                                                'data-validation' =>'required',
+                                                'data-validation-error-msg-required' =>'Este campo es requerido.'
                         					] )!!}
                     </div>
                 </div>
@@ -43,7 +45,13 @@
                         {!! Form::label ('observaciones','Observaciones:') !!}
                         {!! Form::textarea('observaciones',
                                             '',
-                                            ['class' => 'form-control mayuscula', 'data-validation' =>'required','data-validation-depends-on' => 'identificacion','data-validation-depends-on-value' => '1','data-validation-error-msg-required' =>'Este campo es requerido.'] )!!}
+                                            ['class' => 'form-control mayuscula',
+                                                'id' => 'observaciones',
+                                                'data-validation' =>'required',
+                                                'data-validation-depends-on' => 'identificacion',
+                                                'data-validation-depends-on-value' => '1',
+                                                'data-validation-error-msg-required' =>'Este campo es requerido.'
+                                            ] )!!}
                     </div>
                 </div>
             </div>
@@ -51,7 +59,7 @@
 		<!-- Fin del Contenido del formulario-->
 	  </div>
 	  <div class="modal-footer">
-	  	<button type="button" class="btn btn-dark mr-auto" id="btnLimpiar"> LIMPIAR CAMPOS</button>
+        <button type="button" class="btn btn-dark" id="btnEditarAntecedente"><i class="fa fa-save"></i>  GUARDAR</button>
 		<button type="button" class="btn btn-dark" id="btnGuardarAntecedente"><i class="fa fa-save"></i>  GUARDAR</button>
 		<button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
 	  </div>

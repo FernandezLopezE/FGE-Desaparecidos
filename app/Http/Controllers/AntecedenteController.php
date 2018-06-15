@@ -81,7 +81,13 @@ class AntecedenteController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		//
+		$Antecedente = \App\Models\Antecedente::find($id)->update([
+			'mesAnio'				=> $request->input('mesAnio'),
+			'observaciones'			=> $request->input('observaciones'),
+			'idDelito'				=> $request->input('idDelito'),
+			'idCentroReclusion'		=> $request->input('idCentroReclusion'),
+		]);
+		return response()->json($Antecedente);
 	}
 
 	/**

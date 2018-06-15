@@ -13,7 +13,7 @@
 	  <div class="modal-body">
 		<!-- Contenido del formulario-->
 <!-- Contenido del formulario-->
-		<form>	
+		<form id="formulario">	
 			<div class="row" id=""  > 
 				<div class="form-group col-lg-6">
 					{!! Form::label ('tipoContacto','Tipo de contacto:') !!}
