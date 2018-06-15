@@ -908,8 +908,8 @@ var formatTableActions = function(value, row, index) {
             $("#idNacionalidad").empty();
             $("#idCabelloM").empty();
             $("#idVelloFacialM").empty();
-            $("#idOjos").empty();
-            $("#idLabios").empty();
+            $("#idOjosM").empty();
+            $("#idLabiosM").empty();
         $("#idModificaciones").empty();
         $("#idParticularidades").empty();
         $("#idObservaciones").empty();
@@ -937,8 +937,8 @@ var formatTableActions = function(value, row, index) {
             //$("#idTipoCabello").append(row.tipoCabello);
             $("#idCabelloM").append(row.cabello);
             $("#idVelloFacialM").append(row.velloFacial);
-            $("#idOjos").append(row.ojos);
-            $("#idLabios").append(row.labios);
+            $("#idOjosM").append(row.ojos);
+            $("#idLabiosM").append(row.labios);
         $("#idModificaciones").append(row.modificaciones);
         $("#idParticularidades").append(row.particularidades);
         $("#idObservaciones").append(row.observaciones);
@@ -1139,27 +1139,48 @@ var formatTableActions = function(value, row, index) {
 //                    console.log(sexo);
 //                    
 //                } } } 
+        var tamCab= $('#tamanoCabello').multipleSelect('getSelects');
+        var tamOjo= $('#tamanoOjos').multipleSelect('getSelects');
+        
+        var tipBarb = $('#tipoBarba').multipleSelect('getSelects');
+        var tipBig =$('#tipoBigote').multipleSelect('getSelects');
+        var tipCab= $('#tipoCabello').multipleSelect('getSelects');
+        var tipoPat= $('#tipoPatilla').multipleSelect('getSelects');
+        var tipoLab= $('#tipoLabio').multipleSelect('getSelects');
+        
+        colCab= $('#colorCabello').multipleSelect('getSelects');
+        colBar= $('#colorBarba').multipleSelect('getSelects');             
+        colBig= $('#colorBigote').multipleSelect('getSelects');
+        colPat= $('#colorPatilla').multipleSelect('getSelects');
+        colOjo= $('#colorOjos').multipleSelect('getSelects');
 
+        
+        var tipos = [];var tamanos = [];var colores = []; 
+        
+        tipos =  tipBarb.concat(tipBig);
+        tipos =  tipos.concat(tipCab);
+        tipos =  tipos.concat(tipoPat);
+        tipos =  tipos.concat(tipoLab);
+        
+        tamanos = tamCab.concat(tamOjo);
+        
+        colores = colCab.concat(colBar);
+        colores = colores.concat(colBig);
+        colores = colores.concat(colPat);
+        colores = colores.concat(colOjo);
+        
+        console.log('Array de tipos: '+tipos);
+        console.log('Array de tamanos: '+tamanos);
+        console.log('Array de colores: '+colores);
           var dataString = {
                 nacionalidad: $('#nacionalidades').multipleSelect('getSelects'),              
                 estados: $('#idEstadoC').multipleSelect('getSelects'),
                 municipios: municipiosData,
                 cPiel: $('#cPiel').multipleSelect('getSelects'),
                 complexion: $('#complexion').multipleSelect('getSelects'),
-                tipoCabello: $('#tipoCabello').multipleSelect('getSelects'),
-                tamanoCabello: $('#tamanoCabello').multipleSelect('getSelects'),
-                colorCabello: $('#colorCabello').multipleSelect('getSelects'),
-                tipoBarba: $('#tipoBarba').multipleSelect('getSelects'),
-                colorBarba: $('#colorBarba').multipleSelect('getSelects'),
-              
-                tipoBigote: $('#tipoBigote').multipleSelect('getSelects'),
-                colorBigote: $('#colorBigote').multipleSelect('getSelects'),
-                tipoPatilla: $('#tipoPatilla').multipleSelect('getSelects'),
-                colorPatilla: $('#colorPatilla').multipleSelect('getSelects'),
-              
-                tamanoOjos: $('#tamanoOjos').multipleSelect('getSelects'),
-                colorOjos: $('#colorOjos').multipleSelect('getSelects'),
-                tipoLabio: $('#tipoLabio').multipleSelect('getSelects'),
+                tiposAll: tipos,
+                tamanosAll:tamanos,
+                coloresAll:colores,
                 modif: $('#modificaciones').multipleSelect('getSelects'),
                 partic: $('#particularidades').multipleSelect('getSelects'),
                 genero: $('#generos').multipleSelect('getSelects'),
@@ -1301,17 +1322,15 @@ var formatTableActions = function(value, row, index) {
 //        img.crossOrigin = "";  
 // img.src = "images/Diente/amalgama.jpg";
 
-        var image = new Image();
-
-    var src = 'images/fge-logo.jpg'; //Esta es la variable que contiene la url de una imagen ejemplo, luego puedes poner la que quieras
-    image.src = src;
+         var image = new Image();
+         var src = 'images/fge-logo.jpg'; //Esta es la variable que contiene la url de una imagen ejemplo, luego puedes poner la que quieras
+         image.src = src;
   
-        
-        
          try2.click(function(){
-        var doc = new jsPDF('l', 'pt');
+         var doc = new jsPDF('l', 'pt');
+         var height = doc.internal.pageSize.height;
     var res = doc.autoTableHtmlToJson(document.getElementById('tableDependencias'));
-   doc.autoTable(res.columns, res.data, {
+    doc.autoTable(res.columns, res.data, {
         theme: 'striped', 
         styles: {
             cellPadding: 1.5,
@@ -1320,30 +1339,31 @@ var formatTableActions = function(value, row, index) {
             halign: 'left',
             lineColor: [0, 0, 0],
             lineWidth: 0.2 
-        },
-        margin : {
-      top: 40,
-      bottom: 60,
-      left: 120,
-      width: 522
-    },
+            },
+       margin : {
+            top: 40,
+            bottom: 60,
+            left: 120,
+            width: 522
+            },
        grid: {
             table: { fillColor: 255, textColor: 80, fontStyle: 'normal', lineWidth: 0.1 },
             header: { textColor: 255, fillColor: [16, 8, 6], fontStyle: 'bold', lineWidth: 0 },
             body: {},
             alternateRow: {}
-        }
-       
-    });
-      
-             doc.text(300, 20, "Listado de personas desaparecidas")
-     doc.addImage(image, 'JPG', 15, 40, 100, 100);
-
-    doc.save('extraviados.pdf');
+            },
+            beforePageContent: function(data) {
+            doc.setTextColor(50,50,50)
+            doc.setFontSize(18)
+            doc.text(300, 20, "Listado de personas desaparecidas")
+            doc.addImage(image, 'JPG', 15, 40, 100, 100);
+           }
+            
+    });      
+            
+            doc.save('extraviados.pdf');
         });
-        
-        
-        
+    
 //{
 //     table.bootstrapTable('hideColumn', 'nombres');
 //
