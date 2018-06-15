@@ -140,8 +140,7 @@ class DescripcionFisicaController extends Controller
                 'dataPartes' => $dataPartes,
                 'aux' => $aux,
                 'showCabello' => $showCabello,
-                'partesSeleccionadas' => $partesSeleccionadas,
-                'otras' =>$otras
+                'partesSeleccionadas' => $partesSeleccionadas
             ]);
     }
 
