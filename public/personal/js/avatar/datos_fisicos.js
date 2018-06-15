@@ -28,19 +28,21 @@ $(document).ready(function(){
 
 	// //Click para mostrar en el modal
   	$("#datosFis").click(function(event) {
+  		
       $.ajax({
             url: routeDescrip+'/get_datosfisicos/'+idDesaparecido,
             type:"GET",
             dataType:"json",
             success:function(data) {
-              console.log(data);
+              console.log("entro: "+data);
               $.each(data, function(key, value){
                 $("#esta").val(value.estatura);
                 $("#bulto").val(value.peso);
                 $('select#comple option[value="'+value.idComplexion+'"]').attr('selected', 'selected');
                 $('select#cPiel option[value="'+value.idColorPiel+'"]').attr('selected', 'selected');
-                $("#talla").modal("show");
+                
             });
+            $("#talla").modal("show");
             }
           });
   	});

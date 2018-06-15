@@ -74,7 +74,7 @@ class DescripcionFisicaController extends Controller
                         ->leftJoin('cat_colores_cuerpo AS co', 'ce.idColoresCuerpo', '=', 'co.id')
                         ->where('idPersonaDesaparecida', $idDesaparecido)
                         ->select('ce.id as idParteCuerpo','pa.id as idPadre', 'pa.nombre as partep','cu.id as idParteh' ,'cu.nombre as parteh',
-                        'ta.nombre as tamano', 'ti.nombre as tipo', 'co.nombre as color', 'ce.posicion', 'ce.observaciones', 'ce.imagen')
+                        'ta.nombre as tamano', 'ti.nombre as tipo', 'co.nombre as color', 'ce.posicion', 'ce.observaciones', 'ce.imagen', 'cu.reglas')
                         ->get();
         
         $dataPartes = array();
@@ -102,7 +102,7 @@ class DescripcionFisicaController extends Controller
             }
             $dataPartes[$parte->partep]['hijos'][] = $parte;
         }
-        
+        //dd($dataPartes);
         $complexiones = \App\Models\CatComplexion::all()->pluck('nombre','id');
         $coloresPiel = \App\Models\CatColorPiel::all()->pluck('nombre','id');
 
