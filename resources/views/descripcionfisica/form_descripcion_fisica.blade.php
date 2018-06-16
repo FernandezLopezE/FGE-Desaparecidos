@@ -90,8 +90,16 @@
                                                           @foreach (json_decode($value->reglas) as $ket => $regla)                                            
                                                           @switch($ket)
                                                             @case('tipo')
-                                                              @if($regla == 1)          
-                                                                <p><strong>Tipo: </strong>{!! $value->tipo !!}</p>
+                                                              @if($regla == 1)
+                                                                @if($value->tipo == 'OTRO')
+                                                                
+                                                                  <p><strong>Tipo: </strong>{!! $value->otroTipo !!}</p>
+                                                                
+                                                                @else
+                                                                  <p><strong>Tipo: </strong>{!! $value->tipo !!}</p>
+
+                                                                @endif          
+                                                                
                                                                 @break
                                                               @else
                                                                   @break
@@ -106,8 +114,17 @@
                                                               @endif
 
                                                             @case('color')
-                                                              @if($regla == 1)          
-                                                                <p><strong>Color: </strong>{!! $value->color !!}</p>
+                                                              @if($regla == 1)
+                                                                @if($value->color == 'OTRO')
+                                                                
+                                                                    <p><strong>Color: </strong>{!! $value->otroColor !!}</p>
+                                                                
+                                                                
+                                                                @else
+                                                                  <p><strong>Color: </strong>{!! $value->color !!}</p>
+
+                                                                @endif                    
+                                                                
                                                                 @break
                                                               @else
                                                                   @break

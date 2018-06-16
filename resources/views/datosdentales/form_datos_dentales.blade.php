@@ -204,8 +204,8 @@
 	        <div class="col">
 	            <!--{!! Form::checkbox('OTRO', '16') !!}-->
 	            <!--{!! Form::label ('OTRO','OTRO') !!}-->
-	            <input class="form-check-input" name="trata[]" type="checkbox" id="OTRO" value=16>
-	            {!! Form::label ('OTRO','OTRO') !!}
+	            <!--<input class="form-check-input" name="trata[]" type="checkbox" id="OTRO" value=16>
+	            {!! Form::label ('OTRO','OTRO') !!}-->
 	            <!--<a  rel="popover" style="margin-top: -8px;"><b>OTRO</b></a>-->
 	        </div>
 		</div>
@@ -257,13 +257,33 @@
                 <input class="form-check-input" name="malhabito[]"  type="checkbox" id="MORDER_ALGUN_OBJETO" value="MORDER_ALGUN_OBJETO">
                 {!! Form::label ('MORDER ALGÚN OBJETO','MORDER ALGÚN OBJETO') !!}
             </div>
-            <div class="col">
+            <!--<div class="col">
             	<input class="form-check-input" name="malhabito[]"  type="checkbox" id="OTROH" value="OTROH">
                 {!! Form::label ('OTRO','OTRO') !!}
             </div>
             <div class="col">
                 {!! Form::text ('otro',old('otro'), ['class' => 'form-control mayuscula', 'id' => 'escpecifiquehabito', 'placeholder' => 'ESPECIFIQUE'] )!!}
+            </div>-->
+        </div>
+         <hr>
+        <div class="form-group">
+            <div class="row">
+                <div class="col">
+                    <h5 class="card-title">¿Tenía su dentadura completa?</h5>
+                    <br>
+                </div>
+                
+                    
             </div>
+            <div class="row">
+                <div class="col-3">
+                    <select type="select" class="form-control" id="idDentaCompleta">
+                        <option value="SÍ">SÍ</option>
+                        <option value="NO">NO</option>
+                    </select>
+                </div>
+            </div>
+            
         </div>
     </div>
 </div>    
@@ -271,7 +291,7 @@
     <div class="card border-primary">
 		<div class="card-body bg-whithe" id="formularioDientes">
 			<h5 class="card-title">Dientes perdidos de la persona desaparecida
-				<button type="button" class="btn btn-dark pull-right" id="btnDiente">Guardar</button>
+				<!--<button type="button" class="btn btn-dark pull-right" id="btnDiente">Guardar</button>-->
 				
 				<hr>
 			</h5>
@@ -399,18 +419,9 @@
 	********* función para los toltip's de tratamientos **********S
 	**************************************************************/
 $(document).ready(function(){
-	$(function() {
-        /*$('#toggle-event').change(function() {
-            console.log($(this).val());
-            $('a[rel=popover]').popover({
-                html: true,
-                trigger: 'hover',
-                placement: 'bottom',
-                content: function() {
-                    return '<img src="' + $(this).data('img') + '" />';
-                }
-            });
-        })*/
+	$('#toggle-dien').click();
+    $(function() {
+        
 
         $('#toggle-event').change(function(){
             console.log($(this).val());
@@ -698,6 +709,13 @@ $(document).ready(function(){
 	/************************************************************************
 	******** función para guardar datos de todo el formulario ***************
 	************************************************************************/
+    $("#idDentaCompleta").change(function(){
+        if($(this).val() == 'NO'){
+            $('#cardDientes').show();
+        }else{
+            $('#cardDientes').hide();
+        }
+    });
 
 	$('#agregaInformacion').click(function()
 	{
@@ -737,7 +755,16 @@ $(document).ready(function(){
 			valorPerfil : $valorPerfil,
 			valormordida : $valorMordida,
 			valorsonrisa : $valorSonrisa,
-			idDesaparecido: '{!! $desaparecido->id !!}'
+            dentaCompleta: $("#idDentaCompleta").val(),
+			idDesaparecido: '{!! $desaparecido->id !!}',
+
+            idDiente     : $("input[name='dienteselec[]']").map(function(){return $(this).val();}).get(),
+            causaPerdida : $("input[name='perdio[]']").map(function(){return $(this).val();}).get(),
+
+            //idDesaparecido: '{!! $desaparecido->id !!}'
+
+
+
 		}
 		console.log(dataString);
 		$.ajax({
@@ -750,8 +777,10 @@ $(document).ready(function(){
 				$('#agregaInformacion').hide();
 				$('#editarInformacion').show();
 				$('#primeraseccion').hide();
-				$('#cardDientes').show();
-				$('#btnDiente').show();
+                
+                    location.reload();
+                
+				
 				$.confirm({
         		title: 'Datos dentales',
         		content: 'Guardados exitosamente.',
@@ -771,6 +800,46 @@ $(document).ready(function(){
 				
 			}
 		});
+
+        //dientes perdidos
+        $.ajax({
+            type: 'POST',
+            url:  routedientesPerdidos,
+            data: dataString,
+            dataType: 'json',
+            success: function(data){
+                //$('#btnDiente').hide();
+                $('#upDiente').show();
+                //$('#anexos').show();
+                $('#cardDientes').hide();
+                $('#dientes').attr('usemap', '');
+                $('#PMSIP').prop('disabled', true);
+                $('#SPSIP').prop('disabled', true);
+                $('#PPSIP').prop('disabled', true);
+                $('#CSIP').prop('disabled', true);
+                $('#ILSIP').prop('disabled', true);
+                $('#ICSIP').prop('disabled', true);
+                $('#ICSDP').prop('disabled', true);
+                $.confirm({
+                title: 'Datos guardados!',
+                content: 'Dientes perdidos guardados exitosamente.',
+                type: 'dark',
+                typeAnimated: true,
+                buttons: {
+                    tryAgain: {
+                    text: 'Aceptar',
+                    btnClass: 'btn-dark',
+                    action: function(){
+                        location.reload();
+                            }
+                        },
+                    }
+                });
+
+            },
+            error: function(data){
+            }
+        });
 	});
 
 	/************************************************************************
@@ -865,7 +934,7 @@ $(document).ready(function(){
 	**** función para guardar los datos del form de dientes seleccionados ***
 	************************************************************************/
 
-	$('#btnDiente').click(function(){
+	/*$('#btnDiente').click(function(){
 		var dataString = {
 			idDiente 	 : $("input[name='dienteselec[]']").map(function(){return $(this).val();}).get(),
 			causaPerdida : $("input[name='perdio[]']").map(function(){return $(this).val();}).get(),
@@ -909,7 +978,7 @@ $(document).ready(function(){
 			error: function(data){
 			}
 		});
-	});
+	});*/
 });
 </script>
 @endsection
