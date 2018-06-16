@@ -30,6 +30,7 @@ class ConsultasController extends Controller
                             
                             ->select('c.id','c.idDialecto', 'c.carpeta', 'c.idCarpeta', \DB::raw('DATE_FORMAT(c.created_at, "%d/%m/%Y %H:%m") as created_at'), 'p.nombres', \DB::raw('ifnull(p.primerAp,"")as primerAp') , \DB::raw('ifnull(p.segundoAp,"") as segundoAp'), 'p.sexo','n.nombre as nacionalidad', 'd.apodo', 'd.edadExtravio',\DB::raw('@rownum := @rownum + 1 AS rownum'))
                             //->orderByRaw('rownum','CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))')
+                            ->orderBy('created_at', 'desc')
                             ->get();
 
 		return response()->json($cedulas);
