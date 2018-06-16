@@ -37,6 +37,7 @@ class SenasParticularesController extends Controller
 	 */
 	public function store(Request $request)
 	{
+		//dd($request->input('otroTipo'));
 		define('DS', DIRECTORY_SEPARATOR);        
 		if(is_null($request->file('archivo')))
 		{
@@ -71,13 +72,14 @@ class SenasParticularesController extends Controller
 		$dataPartes['otroTipo']				= ($request->input('otroTipo') == 'null') ? null : $request->input('otroTipo') ;
 		$dataPartes['otroColor']			= ($request->input('otroColor') == 'null') ? null : $request->input('otroColor') ;
 		//$dataPartes['imagen']				= $rutaImagen;
-		
+		//dd($dataPartes);
 		$data['error'] = null;
 		\DB::beginTransaction();
 		try {
 			if($request->input('idCedulaParteCuerpo') != "null"){
 				$parteCuerpo = CedulaPartesCuerpo::find($request->input('idCedulaParteCuerpo'))->update($dataPartes);
 				$parteCuerpo = CedulaPartesCuerpo::find($request->input('idCedulaParteCuerpo'));
+				//dd($dataPartes);
 			} else {
 				$dataPartes['idPartesCuerpo']			= $request->input('idParteCuerpo');
 				$dataPartes['idPersonaDesaparecida']	= $request->input('idDesaparecido');

@@ -38,6 +38,8 @@ class DatosDentalesController extends Controller
     public function store(Request $request)
     {
 
+
+        //dd($request->toArray());
         $dentadura = new Dentadura();
 
         $dentadura->idTamanoDiente = $request['dienteTamano'];
@@ -88,11 +90,12 @@ class DatosDentalesController extends Controller
         $dentadura->idTipoPerfil = $request['valorPerfil'];
         $dentadura->idTipoMordida = $request['valormordida'];
         $dentadura->idTipoSonrisa = $request['valorsonrisa'];
+        $dentadura->dentaCompleta = $request['dentaCompleta'];
         $dentadura->idDesaparecido = $request['idDesaparecido'];
 
         $dentadura->save();
 
-        return response()->json('successful');
+        return response()->json($dentadura);
     }
 
     /**
@@ -141,7 +144,7 @@ class DatosDentalesController extends Controller
                 'desaparecido',
                 'denta',
                 'dientesPerdidos',
-                'edad']
+                'edad', 'dentadura']
             ));
         }else{
             $edad = explode(" ",$desaparecido->edadExtravio);
@@ -151,7 +154,8 @@ class DatosDentalesController extends Controller
                         'dienteTamano' => $dienteTamano,
                         'desaparecido' => $desaparecido,
                         'edadExtraviado' => $edad,
-                        'images' => $images
+                        'images' => $images,
+                        'dentadura' => $dentadura
                     ]);
         }
 
@@ -216,7 +220,8 @@ class DatosDentalesController extends Controller
             'nombrePerfil' => $nombrePerfil,
             'nombreMordida' => $nombreMordida,
             'nombreSonrisa' => $nombreSonrisa,
-            'dientesPerdidos' => $dientesPerdidos
+            'dientesPerdidos' => $dientesPerdidos,
+            'dentadura' => $dentadura
          ]);
 
 
@@ -283,6 +288,7 @@ class DatosDentalesController extends Controller
         $dentadura->idTipoPerfil = $request['valorPerfil'];
         $dentadura->idTipoMordida = $request['valormordida'];
         $dentadura->idTipoSonrisa = $request['valorsonrisa'];
+        $dentadura->dentaCompleta = $request['dentaCompleta'];
         $dentadura->idDesaparecido = $request['idDesaparecido'];
 
         $dentadura->save();
@@ -298,8 +304,13 @@ class DatosDentalesController extends Controller
      */
     public function destroy($id)
     {
-        Anexos::find($id)->delete();
+        
+        $dientesP = \DB::table('pivot_diente_perdido')->where('idDentadura',$id)->delete();
+
+        return response()->json("success");
+
+        /*Anexos::find($id)->delete();
         return back()
-            ->with('success','Image removed successfully.');    
+            ->with('success','Image removed successfully.');    */
     }
 }
