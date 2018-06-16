@@ -269,82 +269,7 @@
         </div>
     </DIV>        
       </div>        
-          
-          <div id="catCabello" style="display:none"> 
-              <br><div class="row">
-                    &nbsp;&nbsp; <h5>Características del cabello</h5>                        
-              </div> <hr>      
-             <div class="row" id="idCabello">
-                 <div class="col-lg-4">
-                    {!! Form::label ('tipoCabello','Tipo de cabello') !!}
-                    {!! Form::select('tipoCabello', $tipoCabello, '', ['class' => '', 'id' => 'tipoCabello','multiple' => 'multiple'] ) !!}           
-                </div>
-                 <div class="col-lg-4">
-                   {!! Form::label ('tamanoCabello','Tamaño de cabello:') !!}
-                   {!! Form::select('tamanoCabello', $tamanoCabello, '', ['class' => '', 'id' => 'tamanoCabello','multiple' => 'multiple'] ) !!}
-                </div>
-                <div class="col-lg-4">  
-                    {!! Form::label ('tipoCabe','Color de cabello') !!}
-                    {!! Form::select('colorCabello', $coloresCabello, '', ['class' => '', 'id' => 'colorCabello','multiple' => 'multiple'] ) !!}
-                </div>
-              </div>
-          </div> 	
-          
-          <div id="catBarbaBigotePatilla" style="display:none"> 
-              <br><div class="row">
-                    &nbsp;&nbsp; <h5>Características del vello facial</h5>                        
-              </div> <hr>      
-             <div class="row">
-                 <div class="col-lg-4">
-                    {!! Form::label ('tipoBarba','Tipo de barba:') !!}
-                    {!! Form::select('tipoBarba', $tipoBarba, '', ['class' => '', 'id' => 'tipoBarba','multiple' => 'multiple'] ) !!}
-                 </div>
-                 <div class="col-lg-4">
-                     {!! Form::label ('color','Color de barba:') !!}
-                     {!! Form::select('colorBarba', $coloresBarba, '', ['class' => '', 'id' => 'colorBarba','multiple' => 'multiple'] ) !!}
-                </div>
-                <div class="col-lg-4">
-                      {!! Form::label ('tipoBigote','Tipo de bigote:') !!}
-                      {!! Form::select('tipoBigote', $tipoBigote, '', ['class' => '', 'id' => 'tipoBigote','multiple' => 'multiple'] ) !!}
-                 </div>                 
-              </div>
-              <br><div class="row" >
-                  <div class="col-lg-4">
-                    {!! Form::label ('colorBigotes','Color de bigote:') !!}
-                    {!! Form::select('colorBigote', $coloresBigote, '', ['class' => '', 'id' => 'colorBigote','multiple' => 'multiple'] ) !!}
-                  </div>
-                  <div class="col-lg-4">
-                     {!! Form::label ('tipoPatilla','Tipo de patilla:') !!}
-                     {!! Form::select('tipoPatilla', $tipoPatilla, '', ['class' => '', 'id' => 'tipoPatilla','multiple' => 'multiple'] ) !!}
-                  </div>
-                  <div class="col-lg-4">
-                    {!! Form::label ('colorPatillas','Color de patillas:') !!}
-                    {!! Form::select('colorPatillas', $coloresPatilla, '', ['class' => '', 'id' => 'colorPatilla','multiple' => 'multiple'] ) !!}
-                  </div>
-              </div>
-          </div>
-                     
-          <div id="catLabiosOjos" style="display:none"> 
-              <br><div class="row">
-                    &nbsp;&nbsp; <h5>Características de ojos y labios</h5>                        
-              </div>  <hr>  
-             <div class="row" id="idOjos"> 
-                 <div class="col-lg-4">
-                    {!! Form::label ('tamanoOjos','Tamaño de ojos:') !!}
-                    {!! Form::select('tamanoOjos', $tamanoOjos, '', ['class' => '', 'id' => 'tamanoOjos','multiple' => 'multiple'] ) !!}
-                 </div>
-                 <div class="col-lg-4">
-                  {!! Form::label ('colorOjoso','Color de ojos:') !!}
-                  {!! Form::select('colorOjos', $coloresOjos, '', ['class' => '', 'id' => 'colorOjos','multiple' => 'multiple'] ) !!}
-                 </div>               
-                <div class="col-lg-4">  
-                       {!! Form::label ('tipoLabios','Tipo de labios:') !!}
-                       {!! Form::select('tipoLabio', $tipoLabios, '', ['class' => '', 'id' => 'tipoLabio','multiple' => 'multiple'] ) !!}
-                </div>
- 	        </div>
- 	        </div>
-          
-          <div id="catModiParti" style="display:none"> 
+         <div id="catModiParti" style="display:none"> 
               <br><div class="row">
                     &nbsp;&nbsp; <h5>Modificaciones y particularidades del cuerpo</h5>                        
               </div>  <hr>  
@@ -364,6 +289,7 @@
                 <br>
                 <!--<imput type="button" class="btn btn-dark pull-right" id="try">prueba</imput>-->
            <imput type="button" class="btn btn-dark pull-right" id="filtros">Buscar</imput>
+           <imput type="button" class="btn btn-dark pull-right" id="reset">Reset</imput>
            <br><br>
            <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>           
             </div> <!--  div class="card-body bg-white" END  -->
@@ -378,7 +304,7 @@
 
 <!-- data-id-table="advancedTable" 
  -->          <table id="tableDependencias"
-              data-search="true"
+              
               data-advanced-search="true"
               data-toolbar="#toolbar"
               data-show-refresh="true"
@@ -422,7 +348,8 @@
                         <th data-field="ojos" 
                         data-sortable="true" data-filter-control="input"  data-visible="false" ></th>
                         <th data-field="labios" 
-                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>         <th data-field="Estado" 
+                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>         
+                        <th data-field="Estado" 
                         data-sortable="true" data-filter-control="input" data-visible="false" ></th>
                         <th data-field="Municipio" 
                         data-sortable="true" data-filter-control="input"  data-visible="false"></th>
@@ -538,24 +465,6 @@ $('#return-to-top').click(function() {      // When arrow is clicked
             $('#CatDescripcionFis').hide()
         }; }); 
      $('#A3').change(function()
-      {if ($(this).is(':checked')) {
-            $('#catCabello').show();
-        }else{
-            $('#catCabello').hide()
-        }; });  
-     $('#A4').change(function()
-      {if ($(this).is(':checked')) {
-            $('#catBarbaBigotePatilla').show();
-        }else{
-            $('#catBarbaBigotePatilla').hide()
-        }; });  
-     $('#A5').change(function()
-      {if ($(this).is(':checked')) {
-            $('#catLabiosOjos').show();
-        }else{
-            $('#catLabiosOjos').hide()
-        }; }); 
-     $('#A6').change(function()
       {if ($(this).is(':checked')) {
             $('#catModiParti').show();
         }else{
@@ -714,57 +623,6 @@ $('#return-to-top').click(function() {      // When arrow is clicked
             filter: true,
             width: '100%'
         });
-    $('#tipoCabello').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
-    $('#tamanoCabello').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
-    $('#colorCabello').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
-    $('#tipoBarba').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
-    $('#colorBarba').multipleSelect({
-            filter: true,
-            width: '100%'
-        }); 
-
-    $('#tipoBigote').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
-    $('#colorBigote').multipleSelect({
-            filter: true,
-            width: '100%'
-        }); 
-
-     $('#tipoPatilla').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
-    $('#colorPatilla').multipleSelect({
-            filter: true,
-            width: '100%'
-        }); 
-
-    $('#tamanoOjos').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
-    $('#colorOjos').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
-     $('#tipoLabio').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
     $('#modificaciones').multipleSelect({
             filter: true,
             width: '100%'
@@ -781,42 +639,9 @@ $('#return-to-top').click(function() {      // When arrow is clicked
         $("#campoColorPiel").toggle();
         $("#campoComplexion").toggle();
     });
-    $("#colapsar3").click(function(event) {
-        //$("#campoUbicacion").show();
-        $("#campoTipoCabello").toggle();
-        $("#campoTamanoCabello").toggle();
-        $("#campoColorCabello").toggle();
- 
-    });
-    
-     $("#colapsar4").click(function(event) {
-        //$("#campoUbicacion").show();
-         $("#campoTipoBarba").toggle();        
-        $("#campoColorBarba").toggle();
-        
-    });
     $("#colapsar5").click(function(event) {
         $("#campoFechaD").toggle();
         $("#campoFechaR").toggle();
-    });
-    $("#colapsar6").click(function(event) {
-         $("#campoTipoBigote").toggle();        
-        $("#campoColorBigote").toggle();
-        
-    });
-    $("#colapsar7").click(function(event) {
-         $("#campoTipoPatilla").toggle();        
-        $("#campoColorPatilla").toggle();
-        
-    });
-     $("#colapsar8").click(function(event) {
-         $("#campoTamanoOjos").toggle(); 
-         $("#campoColorOjos").toggle();               
-    });
-
-    $("#colapsar9").click(function(event) {
-        //$("#campoUbicacion").show();
-         $("#campoTipoLabio").toggle();             
     });
     $("#colapsar10").click(function(event) {
         //$("#campoUbicacion").show();
@@ -831,6 +656,7 @@ $('#return-to-top').click(function() {      // When arrow is clicked
     var CheckMasc = $('#masc');
     var filtros = $('#filtros');
     var filtrosTodos = $('#filtrosTodos');
+    var reset = $('#reset');
         var CheckFem = $('#fem');
     
         var fem = "";  
@@ -1048,7 +874,7 @@ var formatTableActions = function(value, row, index) {
           console.log('Error en la consulta')
         }
       });
-          
+
           table2.bootstrapTable({     
 
       columns: [{         
@@ -1082,6 +908,7 @@ var formatTableActions = function(value, row, index) {
         //console.log("entrando")
         });
      //-o-|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-
+
     filtros.click(function(){
         
         var municipiosData='';
@@ -1114,7 +941,8 @@ var formatTableActions = function(value, row, index) {
           
           var fem =' ';
           var masc =' ';
-   
+   	
+        
           table.bootstrapTable("refresh", {
               data: dataString
               //url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+ '/'+ estados
@@ -1123,70 +951,16 @@ var formatTableActions = function(value, row, index) {
 //{          var sexo = '';
 //                var femen = $("input#fem:checked").val();    
 //                var mascul = $("input#masc:checked").val();
-//        
-//                
-//                if (femen == null ){
-//                    sexo = '\''+mascul+'\'';
-//                     console.log('--------------------------');
-//                    console.log(sexo);
-//                }else{ if (mascul == null ){
-//                    sexo = '\''+femen+'\'';
-//                     console.log('--------------------------');
-//                    console.log(sexo);
-//                } else{
-//                    sexo = '\'' +femen + '\',\'' + mascul+ '\'';
-//                     console.log('--------------------------');
-//                    console.log(sexo);
-//                    
-//                } } } 
-        var tamCab= $('#tamanoCabello').multipleSelect('getSelects');
-        var tamOjo= $('#tamanoOjos').multipleSelect('getSelects');
-        
-        var tipBarb = $('#tipoBarba').multipleSelect('getSelects');
-        var tipBig =$('#tipoBigote').multipleSelect('getSelects');
-        var tipCab= $('#tipoCabello').multipleSelect('getSelects');
-        var tipoPat= $('#tipoPatilla').multipleSelect('getSelects');
-        var tipoLab= $('#tipoLabio').multipleSelect('getSelects');
-        
-        colCab= $('#colorCabello').multipleSelect('getSelects');
-        colBar= $('#colorBarba').multipleSelect('getSelects');             
-        colBig= $('#colorBigote').multipleSelect('getSelects');
-        colPat= $('#colorPatilla').multipleSelect('getSelects');
-        colOjo= $('#colorOjos').multipleSelect('getSelects');
-
-        
-        var tipos = [];var tamanos = [];var colores = []; 
-        
-        tipos =  tipBarb.concat(tipBig);
-        tipos =  tipos.concat(tipCab);
-        tipos =  tipos.concat(tipoPat);
-        tipos =  tipos.concat(tipoLab);
-        
-        tamanos = tamCab.concat(tamOjo);
-        
-        colores = colCab.concat(colBar);
-        colores = colores.concat(colBig);
-        colores = colores.concat(colPat);
-        colores = colores.concat(colOjo);
-        
-        console.log('Array de tipos: '+tipos);
-        console.log('Array de tamanos: '+tamanos);
-        console.log('Array de colores: '+colores);
+ 
           var dataString = {
                 nacionalidad: $('#nacionalidades').multipleSelect('getSelects'),              
                 estados: $('#idEstadoC').multipleSelect('getSelects'),
                 municipios: municipiosData,
                 cPiel: $('#cPiel').multipleSelect('getSelects'),
-                complexion: $('#complexion').multipleSelect('getSelects'),
-                tiposAll: tipos,
-                tamanosAll:tamanos,
-                coloresAll:colores,
+                complexion: $('#complexion').multipleSelect('getSelects'),                
                 modif: $('#modificaciones').multipleSelect('getSelects'),
                 partic: $('#particularidades').multipleSelect('getSelects'),
                 genero: $('#generos').multipleSelect('getSelects'),
-                //fem : $("input#fem:checked").val(),     
-                //masc : $("input#masc:checked").val(),
-          //    sexo,
                 rg : $('#rng1').val(),
                 rg2 : $('#rng2').val(),
                 estatura1 : $('#estatura1').val(),
@@ -1363,6 +1137,12 @@ var formatTableActions = function(value, row, index) {
             
             doc.save('extraviados.pdf');
         });
+        
+         $('.search input').val('');
+    table.bootstrapTable('refresh', {
+        query: {search: ''}
+    });
+    $('.search input').focus().val('').blur();
     
 //{
 //     table.bootstrapTable('hideColumn', 'nombres');

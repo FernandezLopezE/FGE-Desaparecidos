@@ -67,9 +67,6 @@ class ConsultasController extends Controller
         $municipios = $request->input('municipios');
         $cPiel = $request->input('cPiel');
         $complexion = $request->input('complexion'); 
-        $tiposAll = $request->input('tiposAll');
-        $tamanosAll = $request->input('tamanosAll');
-        $coloresAll = $request->input('coloresAll');
         $modif = $request->input('modif');
         $partic = $request->input('partic');
         $genero = $request->input('genero');
@@ -193,19 +190,7 @@ class ConsultasController extends Controller
                             })
                             ->when($complexion, function ($q_complexion) use ($complexion) {
                                 return $q_complexion->whereIn('des.idComplexion', $complexion);
-                            }) //-------------------TIPOS---------------------------------------------
-                            ->when($tiposAll, function ($q_tiposAll) use ($tiposAll) {
-                                return $q_tiposAll->whereIn('cpc.idTipoCuerpo', $tiposAll);
-                                //dd($q_tipoCabello);
-                            })
-                            
-                            //------------------------------------------------------------------------
-                            ->when($tamanosAll, function ($q_tamanosAll) use ($tamanosAll) {
-                                return $q_tamanosAll->orWhereIn('cpc.idTamanoCuerpo', $tamanosAll);
-                            })                                            
-                            ->when($coloresAll, function ($q_coloresAll) use ($coloresAll) {
-                                return $q_coloresAll->orWhereIn('cpc.idColoresCuerpo', $coloresAll); })                                
-        
+                            }) 
                             ->when($modif, function ($q_modif) use ($modif) {
                                 return $q_modif->whereIn('cat_mc.nombre', $modif); 
                            

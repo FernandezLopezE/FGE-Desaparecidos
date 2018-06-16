@@ -13,15 +13,38 @@
 		<h4><i class="fa fa-paste"></i> Cédulas</h4>
 	</div>
 	<div class="card-body bg-white">
-		<table id="table"style="overflow:auto;"></table>
+		<table id="table"style="overflow:auto;"
+		    data-search="true"
+		    data-trim-on-search="false">
+		<thead>
+                <tr>
+                    <th data-field="no" 
+                        data-sortable="true"></th>
+                    <th data-field="nombres" 
+                        data-sortable="true"></th>
+                    <th data-field="apodo" 
+                        data-sortable="true"></th>
+                    <th data-field="genero" 
+                        data-sortable="true"></th>
+                    <th data-field="edadExtravio" 
+                        data-sortable="true"></th>
+                    <th data-field="nacionalidad" 
+                        data-sortable="true"></th>
+                    <th data-field="created_at" 
+                        data-sortable="true"></th>
+                    <th data-field="acciones" 
+                        data-sortable="true"></th>
+                    
+                </tr>
+        </thead>        
+        </table>
 	</div>
 </div>
 
 @endsection
 
 @section('scripts')
-{!! HTML::script('personal/js/sisyphus.min.js') !!}
-{!! HTML::script('personal/js/sisyphus.js') !!}
+{!! HTML::script('personal/js/bootstrap-table-multiple-search.js') !!}
 <script type="text/javascript">
 	$(function (){
 		var table = $('#table');
@@ -75,7 +98,6 @@
 		table.bootstrapTable({
 			pagination: true,
 			pageList: [10, 25, 50, 100],
-			search: true,
 			rowStyle: rowStyle,				
 			url: routeIndex+'/get_cedulas',
 			columns: [{		
