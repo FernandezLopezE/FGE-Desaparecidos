@@ -19,20 +19,7 @@ class ReporteadorController extends Controller
 		   $municipios = array();
            $complexiones = \App\Models\CatComplexion::all()->pluck('nombre','id');
            $coloresPiel = \App\Models\CatColorPiel::all()->pluck('nombre','id');
-           $tipoCabello = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','2')->pluck('nombre','id');
-           $tipoBarba = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','3')->pluck('nombre','id');
-           $tipoBigote = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','4')->pluck('nombre','id');
-           $tipoPatilla= \App\Models\CatTiposCuerpo::where('idPartesCuerpo','5')->pluck('nombre','id');
-           $tipoLabios = \App\Models\CatTiposCuerpo::where('idPartesCuerpo','14')->pluck('nombre','id');
-           $tamanoCabello = \App\Models\CatTamanoCuerpo::where('idPartesCuerpo','2')->pluck('nombre','id');
-           $tamanoOjos = \App\Models\CatTamanoCuerpo::where('idPartesCuerpo','9')->pluck('nombre','id');
-           $coloresCuerpo = \App\Models\CatColoresCuerpo::all()->pluck('nombre','id');
-           $coloresCabello = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','2')->pluck('nombre','id');
-           $coloresBarba = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','3')->pluck('nombre','id');
-           $coloresBigote = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','4')->pluck('nombre','id');
-           $coloresPatilla = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','5')->pluck('nombre','id');
-           $coloresOjos = \App\Models\CatColoresCuerpo::where('idPartesCuerpo','9')->pluck('nombre','id');
-           
+ 
            $modificaciones = \App\Models\CatModificacionesCuerpo::where('nombre','!=','LUNARES')->where('nombre','!=','LARGA')->where('nombre','!=','DEPILADA')->where('nombre','!=','CERRADA')->where('nombre','!=','ALACIADO')->where('nombre','!=','OTRO')
                ->where('nombre','!=','SIN INFORMACIÓN')->where('nombre','!=','RASURADA/DEPILADA')->where('nombre','!=','RASURADA')->groupby('nombre')->distinct()->pluck('nombre','nombre');
            
@@ -42,30 +29,15 @@ class ReporteadorController extends Controller
            $generos = array('H' => 'MASCULINO',
 								 'M' => 'FEMENINO');
            $tiposFiltros = array('A1' => 'UBICACIÓN DE LA DESAPARICIÓN',
-								'A2' => 'DESCRIPCIÓN FÍSICA',
-								'A3' => 'CARACTERÍSTICAS DEL CABELLO',
-                                'A4' => 'CARACTERÍSTICAS DEL VELLO FACIAL',                              
-                                'A5' => 'CARACTERÍSTICAS DE LABIOS Y OJOS',                                
-                                'A6' => 'MODIFICACIONES Y PARTICULARIDADES DEL CUERPO');
+								'A2' => 'DESCRIPCIÓN FÍSICA',								                                
+                                'A3' => 'MODIFICACIONES Y PARTICULARIDADES DEL CUERPO');
            
            return view('reporteador.index',compact( 
                                             'nacionalidades',
                                             'estados',
                                             'municipios',
                                             'complexiones',
-                                            'coloresPiel',
-                                            'tipoCabello',
-                                            'tipoBarba',
-                                            'tipoBigote',
-                                            'tipoPatilla',
-                                            'tipoLabios',
-                                            'tamanoCabello',
-                                            'tamanoOjos',
-                                            'coloresCabello',
-                                            'coloresBarba',
-                                            'coloresBigote',
-                                            'coloresPatilla',
-                                            'coloresOjos',
+                                            'coloresPiel',                                            
                                             'modificaciones',
                                             'particularidades',
                                             'tiposFiltros',
