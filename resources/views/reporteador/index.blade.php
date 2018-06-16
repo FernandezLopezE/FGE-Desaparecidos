@@ -289,7 +289,6 @@
                 <br>
                 <!--<imput type="button" class="btn btn-dark pull-right" id="try">prueba</imput>-->
            <imput type="button" class="btn btn-dark pull-right" id="filtros">Buscar</imput>
-           <imput type="button" class="btn btn-dark pull-right" id="reset">Reset</imput>
            <br><br>
            <a href="javascript:" id="return-to-top"><i class="fa fa-chevron-up"></i></a>           
             </div> <!--  div class="card-body bg-white" END  -->
@@ -303,8 +302,14 @@
 
 
 <!-- data-id-table="advancedTable" 
- -->          <table id="tableDependencias"
-              
+ -->          <div id="toolbar">
+                  <select class="form-control">
+                    <option value="">Exportar página</option>
+                    <option value="all">Exportar todos</option>
+                    <option value="selected">Exportar Selecccionados</option>
+                  </select>
+                </div>
+             <table id="tableDependencias"              
               data-advanced-search="true"
               data-toolbar="#toolbar"
               data-show-refresh="true"
@@ -319,14 +324,18 @@
               data-show-print="true"
               data-filter-control="true"
               data-trim-on-search="false"
-              data-page-list="[10, 50, 70, 100]"> 
+              data-page-list="[10, 50, 70, 100]"
+              data-export-options='{                 
+                 "ignoreColumn": ["state","Acciones"]
+               }'> 
 
              <thead>
                 <tr>
-                    <th data-field="nombres" 
-                        data-sortable="true" data-filter-control="input"></th>
-                    <th data-field="Fecha de desaparición" 
-                        data-sortable="true" data-filter-control="input"></th>
+                        <th data-field="steate" data-checkbox="true"></th>
+                        <th data-field="nombres" 
+                            data-sortable="true" data-filter-control="input"></th>
+                        <th data-field="Fecha de desaparición" 
+                            data-sortable="true" data-filter-control="input"></th>
                         <th data-field="Sexo" 
                         data-sortable="true" data-filter-control="input" data-visible="false"></th>
                         <th data-field="Apodo" 
@@ -365,7 +374,7 @@
                         data-sortable="true" data-filter-control="input"  data-visible="false"></th>
                         <th data-field="Observaciones" 
                         data-sortable="true" data-filter-control="input"  data-visible="false"></th>
-               <th data-field="Acciones"> </th>
+                       <th data-field="Acciones" data-tableexport-display="none"> </th>
                 </tr>
             </thead>
  <tbody >
@@ -394,6 +403,66 @@
 {!! HTML::script('personal/js/FileSaver.min.js') !!} 
 {!! HTML::script('personal/js/bootstrap-table-filter-control.js') !!}
 <script type="text/javascript">
+       $(function () {
+         $('#toolbar').find('select').change(function () {
+          var expType = $(this).val(); 
+             console.log(expType);
+    table.bootstrapTable('refreshOptions', {
+         
+      exportDataType: $(this).val()
+    });
+             $("#idLiExport").remove();
+         $("#ulExport").append("<li id='idLiExport' data-type='Pdf'><a href='javascript:void(0)' id = 'exportPdf'>PDF</a></li>");
+   var try2 = $('#exportPdf');
+         var image = new Image();
+         var src = 'images/fge-logo.jpg'; //Esta es la variable que contiene la url de una imagen ejemplo, luego puedes poner la que quieras
+         image.src = src;
+  
+         try2.click(function(){
+         var doc = new jsPDF('l', 'pt');
+         var height = doc.internal.pageSize.height;
+    var res = doc.autoTableHtmlToJson(document.getElementById('tableDependencias'));
+    table.bootstrapTable('refreshOptions', {
+         
+      exportDataType: expType
+    });
+             
+     doc.autoTable(res.columns, res.data, {
+         theme: 'striped', 
+        styles: {
+            cellPadding: 1.5,
+            overflow: 'linebreak',
+            valign: 'middle',
+            halign: 'left',
+            lineColor: [0, 0, 0],
+            lineWidth: 0.2 
+            },
+       margin : {
+            top: 40,
+            bottom: 60,
+            left: 120,
+            width: 522
+            },
+       grid: {
+            table: { fillColor: 255, textColor: 80, fontStyle: 'normal', lineWidth: 0.1 },
+            header: { textColor: 255, fillColor: [16, 8, 6], fontStyle: 'bold', lineWidth: 0 },
+            body: {},
+            alternateRow: {}
+            },
+            beforePageContent: function(data) {
+            doc.setTextColor(50,50,50)
+            doc.setFontSize(18)
+            doc.text(250, 20, "Listado de personas no localizadas")
+            doc.addImage(image, 'JPG', 15, 40, 100, 100);
+           }
+            
+    });      
+            
+            doc.save('Extraviados.pdf');
+        }); 
+     });
+             });
+    
   var variable= 0;
     $('#idEstadoC').on('change', function(){
         console.log($(this).val());
@@ -656,10 +725,8 @@ $('#return-to-top').click(function() {      // When arrow is clicked
     var CheckMasc = $('#masc');
     var filtros = $('#filtros');
     var filtrosTodos = $('#filtrosTodos');
-    var reset = $('#reset');
-        var CheckFem = $('#fem');
-    
-        var fem = "";  
+    var CheckFem = $('#fem');
+    var fem = "";  
 
     prueba.click(function(e){
       $('#idMunicipio').multipleSelect();
@@ -823,6 +890,9 @@ var formatTableActions = function(value, row, index) {
 }
     }
      filtrosTodos.click(function(){
+      
+         
+         
           tablaGen.hide();
 //          var estados = $('#estados').multipleSelect('getSelects');
 //          console.log("El string:")
@@ -1006,6 +1076,8 @@ var formatTableActions = function(value, row, index) {
             //data: data,
       //url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+'/'+ estados,
       columns: [{         
+                    field: 'state',
+            },{
                     field: 'nombre',
                     title: 'Nombre',
             },{
@@ -1129,20 +1201,20 @@ var formatTableActions = function(value, row, index) {
             beforePageContent: function(data) {
             doc.setTextColor(50,50,50)
             doc.setFontSize(18)
-            doc.text(300, 20, "Listado de personas desaparecidas")
+            doc.text(250, 20, "Listado de personas no localizadas")
             doc.addImage(image, 'JPG', 15, 40, 100, 100);
            }
             
     });      
             
-            doc.save('extraviados.pdf');
+            doc.save('Extraviados.pdf');
         });
         
          $('.search input').val('');
-    table.bootstrapTable('refresh', {
-        query: {search: ''}
-    });
-    $('.search input').focus().val('').blur();
+            table.bootstrapTable('refresh', {
+                query: {search: ''}
+            });
+        $('.search input').focus().val('').blur();
     
 //{
 //     table.bootstrapTable('hideColumn', 'nombres');

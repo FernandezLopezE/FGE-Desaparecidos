@@ -12,6 +12,7 @@
 	<div class="card-header">
 		<h4><i class="fa fa-paste"></i> Cédulas</h4>
 	</div>
+	 
 	<div class="card-body bg-white">
 		<table id="table"style="overflow:auto;"
 		    data-search="true"
@@ -47,6 +48,7 @@
 {!! HTML::script('personal/js/bootstrap-table-multiple-search.js') !!}
 <script type="text/javascript">
 	$(function (){
+        var hola = $('#hola');
 		var table = $('#table');
 		var routeIndex = '{!! route('consultas.index') !!}';
 		var routeCedula = '{!! route('cedula.index') !!}';
@@ -54,7 +56,7 @@
 		var routeMail = '{!! route('mail.index') !!}';
 
 		var formatTableActions = function(value, row, index) {				
-			btn = '<a href="'+routeCedula+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit " data-toggle="tooltip" data-placement="right" title="Editar cédula" ><i class="fa fa-address-card"></i></a>&nbsp;';
+			btn = '<a href="'+routeCedula+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit" data-toggle="tooltip" data-placement="right" title="Editar cédula" ><i class="fa fa-address-card"></i></a>&nbsp;';
 			btn = btn+'<a href="'+routeBoletin+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit" data-toggle="tooltip" data-placement="right" title="Boletín"><i class="fa fa-file"></i></a>&nbsp;';
 			/*btn = btn+'<a href="'+routeMail+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit"><i class="fa fa-envelope"></i></a>&nbsp;';*/
 			/*btn = '<div class="btn-group">';
@@ -133,7 +135,19 @@
 				events: operateEvents
 			}]			
 		})
-	})
+        
+setTimeout(function(){toggle()},1000); 
+        
+        })
+function toggle(){
+    $('[data-toggle="tooltip"]').tooltip();
+	
+}
+			
+               
+
+		
+    
 
 </script>
 @endsection
