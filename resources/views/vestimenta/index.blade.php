@@ -87,14 +87,44 @@
 			},
 			'click #removeVestimenta': function (e, value, row, index){
 				console.log(row);
-				cargarDatosColores(row.color.codigo);
+				/*cargarDatosColores(row.color.codigo);
 				cargarDatosPrendas(row.idPrenda, row.idVestimenta);
 				$('select#idVestimenta option[value="'+row.idVestimenta+'"]').attr("selected",true);
 				$('#material').val(row.material);
 				$('select#idMarca option[value="'+row.idMarca+'"]').attr("selected",true);
 				$('#talla').val(row.talla);
 				$('#diseno').val(row.diseno);
-				$('#idPrenda').prop('disabled', false);
+				$('#idPrenda').prop('disabled', false);*/
+				var fileToUpload = $('#archivo')[0].files[0];
+				if (fileToUpload == 'undefined') {
+					fileToUpload = null 
+				}
+				var formData = new FormData();
+				formData.append("archivo",fileToUpload);
+				formData.append('material', $('#material').val());
+				formData.append('diseno', $('#diseno').val());
+				formData.append('talla', $('#talla').val());
+				formData.append('idMarca', $('#idMarca').val());
+				formData.append('idColor', $('#idColor').val());
+				formData.append('idVestimenta', $('#idVestimenta').val());
+				formData.append('idPrenda', $('#idPrenda').val());
+				formData.append('method', 'PUT');
+				formData.append('idDesaparecido', idDesaparecido);
+				formData.append('idPrendaDesaparecido',btnPrendaActualizar.val());
+				$.ajax({
+					type: 'DELETE',
+					data: formData,
+					dataType: 'json',
+					processData: false,
+					contentType: false,
+					succes: function(data){
+						console.log(data);
+						table.bootstrapTable('refresh');
+					},
+					error: function(data){
+						console.log(data);
+					}
+				});
 			}
 		}
 
@@ -251,7 +281,7 @@
 			var fileToUpload = $('#archivo')[0].files[0];
 			if (fileToUpload == 'undefined') { fileToUpload = null }
 
-			var formData = new FormData();
+			var formData = FormData();
 			formData.append("archivo",fileToUpload);
 			formData.append('material', $('#material').val());
 			formData.append('diseno', $('#diseno').val());

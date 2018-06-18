@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\DatosDentista;
 use App\Models\Dentadura;
 use App\Models\Desaparecido;
 use App\Models\Anexos;
@@ -35,7 +36,7 @@ class DatosDentalesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DatosDentista $request)
     {
 
 

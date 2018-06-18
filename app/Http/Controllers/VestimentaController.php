@@ -226,6 +226,7 @@ class VestimentaController extends Controller
 	 */
 	public function destroy($id)
 	{
-		//
+		Prenda::find($id)->delete();
+		return back()->with('succes','Eliminado');
 	}
 }
