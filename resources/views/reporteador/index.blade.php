@@ -302,7 +302,7 @@
 
 
 <!-- data-id-table="advancedTable" 
- -->          <div id="toolbar">
+ -->          <div id="toolbar" style="display:none">
                   <select class="form-control">
                     <option value="">Exportar página</option>
                     <option value="all">Exportar todos</option>
@@ -331,7 +331,7 @@
 
              <thead>
                 <tr>
-                        <th data-field="steate" data-checkbox="true"></th>
+<!--                        <th data-field="steate" data-checkbox="true"></th>-->
                         <th data-field="nombres" 
                             data-sortable="true" data-filter-control="input"></th>
                         <th data-field="Fecha de desaparición" 
@@ -980,7 +980,7 @@ var formatTableActions = function(value, row, index) {
      //-o-|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-
 
     filtros.click(function(){
-        
+       // $("#toolbar").show();
         var municipiosData='';
     if(variable==0){
         municipiosData='';
@@ -1075,9 +1075,10 @@ var formatTableActions = function(value, row, index) {
              //
             //data: data,
       //url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+'/'+ estados,
-      columns: [{         
-                    field: 'state',
-            },{
+     columns: [// {         
+//                    field: 'state',
+//            },
+              {
                     field: 'nombre',
                     title: 'Nombre',
             },{
@@ -1173,9 +1174,11 @@ var formatTableActions = function(value, row, index) {
          image.src = src;
   
          try2.click(function(){
+             table.bootstrapTable('togglePagination');
          var doc = new jsPDF('l', 'pt');
          var height = doc.internal.pageSize.height;
     var res = doc.autoTableHtmlToJson(document.getElementById('tableDependencias'));
+              
     doc.autoTable(res.columns, res.data, {
         theme: 'striped', 
         styles: {
@@ -1208,6 +1211,7 @@ var formatTableActions = function(value, row, index) {
     });      
             
             doc.save('Extraviados.pdf');
+            table.bootstrapTable('togglePagination');
         });
         
          $('.search input').val('');
