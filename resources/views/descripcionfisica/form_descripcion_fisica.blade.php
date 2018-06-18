@@ -85,24 +85,99 @@
                                             <div class="row">
                                                 <div class="col-md-8">
                                                     <div class="card-block">
-                                                            <code class="card-title">{!! $value->parteh !!}</code>                                                            
-                                                            <p><strong>Tamaño: </strong>{!! $value->tamano !!}</p>
-                                                            <p><strong>Color: </strong>{!! $value->color !!}</p>
-                                                            <p><strong>Posición: </strong>{!! $value->posicion !!}</p>
-                                                            <label for="">Modificaciones:</label>
-                                                            @foreach ($value->modificaciones as $modificacion)
-                                                                {!! $modificacion !!}, 
-                                                            @endforeach
+                                                            <code class="card-title">{!! $value->parteh !!}</code>
                                                             <br>
-                                                            <label for="">Particularidades:</label>
-                                                            @foreach ($value->particularidades as $particularidad)
-                                                                {!! $particularidad !!}, 
-                                                            @endforeach
-                                                            <br>
-                                                            <label for="">Observaciones:</label>
-                                                            {!! $value->observaciones !!}
-                                                            <br>
-                                                            {{--<button class="btn btn-dark" id="btnEditar">Editar</button>--}}
+                                                          @foreach (json_decode($value->reglas) as $ket => $regla)                                            
+                                                          @switch($ket)
+                                                            @case('tipo')
+                                                              @if($regla == 1)
+                                                                @if($value->tipo == 'OTRO')
+                                                                
+                                                                  <p><strong>Tipo: </strong>{!! $value->otroTipo !!}</p>
+                                                                
+                                                                @else
+                                                                  <p><strong>Tipo: </strong>{!! $value->tipo !!}</p>
+
+                                                                @endif          
+                                                                
+                                                                @break
+                                                              @else
+                                                                  @break
+                                                              @endif
+                                                              
+                                                            @case('tamano')
+                                                              @if($regla == 1)          
+                                                                <p><strong>Tamaño: </strong>{!! $value->tamano !!}</p>
+                                                                @break
+                                                              @else
+                                                                  @break
+                                                              @endif
+
+                                                            @case('color')
+                                                              @if($regla == 1)
+                                                                @if($value->color == 'OTRO')
+                                                                
+                                                                    <p><strong>Color: </strong>{!! $value->otroColor !!}</p>
+                                                                
+                                                                
+                                                                @else
+                                                                  <p><strong>Color: </strong>{!! $value->color !!}</p>
+
+                                                                @endif                    
+                                                                
+                                                                @break
+                                                              @else
+                                                                  @break
+                                                              @endif
+
+                                                            @case('posicion')
+                                                              @if($regla == 1)          
+                                                                <p><strong>Posición: </strong>{!! $value->posicion !!}</p>
+                                                                @break
+                                                              @else
+                                                                  @break
+                                                              @endif
+
+                                                            @case('modificaciones')
+                                                              @if($regla == 1)          
+                                                                <label for="">Modificaciones:</label>
+                                                                @foreach ($value->modificaciones as $modificacion)
+                                                                    {!! $modificacion !!}, 
+                                                                @endforeach
+                                                                <br>
+                                                                @break
+                                                              @else
+                                                                  @break
+                                                              @endif
+
+                                                            @case('particularidades')
+                                                              @if($regla == 1)          
+                                                                <label for="">Particularidades:</label>
+                                                                @foreach ($value->particularidades as $particularidad)
+                                                                    {!! $particularidad !!}, 
+                                                                @endforeach
+                                                                <br>
+                                                                @break
+                                                              @else
+                                                                  @break
+                                                              @endif
+
+                                                            @case('observaciones')
+                                                              @if($regla == 1)          
+                                                                <label for="">Observaciones:</label>
+                                                                {!! $value->observaciones !!}
+                                                                <br>
+                                                                @break
+                                                              @else
+                                                                  @break
+                                                              @endif
+                                                          @endswitch
+                                                            
+                                                            
+                                                            
+                                                          @endforeach
+                                                            <button class="btn btn-dark" id="btnEditar" value='{!! $value->idParteh !!}'>Editar</button>
+                                                            <button class="btn btn-dark pull-right" id="btnEliminar" value='{!! $value->idParteCuerpo !!}'>Eliminar</button>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
@@ -142,7 +217,7 @@
   
   $.each(partesCuerpo, function(key, value){	
     console.log(value.idPadre);
-    $('g[data-cuerpo="'+value.idPadre+'"] path').css({"fill":"#fb77bd", "stroke":"#626362","stroke-width":"2-"});
+    $('g[data-cuerpo="'+value.idPadre+'"] path').css({"fill":"#17a4da", "stroke":"#626362","stroke-width":"2-"});
   })
   
 

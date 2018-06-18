@@ -32,7 +32,7 @@ class CreateDesaparecidoDentaduraTable extends Migration
 
             $table->text('tratamientos')->nullable();
 
-            //$table->enum('perdiodiente', ['SIN INFORMACION','NO','SI']);
+            $table->enum('dentaCompleta', ['SÍ','NO']);
             
             //$table->enum('higieneBucal', ['SIN INFORMACION','NO','SI']);
             //$table->string('describeHigBucal')->nullable();

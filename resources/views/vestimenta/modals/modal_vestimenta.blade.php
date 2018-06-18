@@ -9,7 +9,7 @@
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body"> 
+				<div class="modal-body" id="modalbody"> 
 					<form id="formVestimenta">
 					<!-- Contenido del formulario-->
 					<div class="row">
@@ -36,9 +36,18 @@
 												['class' => 'form-control mayuscula',
 													'placeholder' => 'Material de la prenda'] )!!}
 							<div class="form-control-feedback" id="error_material"></div>
-						</div>							
+						</div>
+						<div class="form-group col-md-4" id="div_banco" style="display:none">
+							{!! Form::label ('banco','Nombre del banco:',['class' => 'form-control-label']) !!}
+							{!! Form::text ('banco',
+												old('banco'),
+												['class' => 'form-control mayuscula',
+													'data-validation' => 'required',
+													'data-validation-error-msg-required' => 'Ingrese nombre de banco.',
+													'placeholder' => 'Ingrese nombre del banco'] )!!}
+							<div class="form-control-feedback" id="error_banco"></div>
+						</div>
 					</div>
-
 					<div class="row">
 						<div class="form-group col-md-4" id="div_idMarca">
 							{!! Form::label ('idMarca','Marca y origen:',['class' => 'form-control-label']) !!}
@@ -69,10 +78,22 @@
 							{!! Form::textarea ('diseno',
 											old('Dibujo/Bordado/Franjas'),
 											['class' => 'form-control mayuscula',
+												'id' => 'diseno',
 												'data-validation' => 'required',
 												'data-validation-error-msg-required' => 'Ingrese observaciones',
 												'placeholder' => 'Ingrese el bordado, dibujo, franja u observaciones de la prenda'] )!!}
 							<div class="form-control-feedback" id="error_diseno"></div>
+						</div>
+						<div class="form-group col-md-6" id="div_cuenta" style="display:none">
+							{!! Form::label ('cuenta','No. de cuenta:',['class' => 'form-control-label']) !!}
+							{!! Form::text ('cuenta',
+												old('cuenta'),
+												['class' => 'form-control mayuscula',
+													'id' => 'cuenta',
+													'data-validation' => 'required',
+													'data-validation-error-msg-required' => 'Ingrese no. de cuenta.',
+													'placeholder' => 'Ingrese no. de cuenta'] )!!}
+							<div class="form-control-feedback" id="error_cuenta"></div>
 						</div>
 						<div class="form-group col-md-6" id="div_archivo">
 							{!! Form::label ('archivo','Foto:',['class' => 'form-control-label']) !!}
@@ -87,7 +108,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-dark" id="btnGuardarPrenda">GUARDAR</button>
-					<button type="button" class="btn btn-dark" id="btnActualizarPrenda">ACTUALIZAR</button>
+					<button type="button" class="btn btn-dark" id="btnActualizarPrenda">GUARDAR</button>
 					<button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
 				</div>
 			</div>

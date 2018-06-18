@@ -13,55 +13,55 @@
 	  </div>
 	  <div class="modal-body">
           <div class="row">
-			<div class="col-lg-9">
+			<div class="col-lg-8">
 			<dl class="row">
-				<dt class="col-sm-3">Nombre:</dt>
+				<dt class="col-sm-4">Nombre:</dt>
 				<dd class="col-sm-8" id="idNombre">
 					 
 				</dd>
-				<dt class="col-sm-3">Apodo:</dt>
+				<dt class="col-sm-4">Apodo:</dt>
 				<dd class="col-sm-8" id="apodo">
 					
 				</dd>
-				<dt class="col-sm-3">Género:</dt>
+				<dt class="col-sm-4">Género:</dt>
 				<dd class="col-sm-8" id="idGenero">
 				</dd>
-				<dt class="col-sm-3">Nacionalidad:</dt>
+				<dt class="col-sm-4">Nacionalidad:</dt>
 				<dd class="col-sm-8" id="idNacionalidad"> </dd>
-				<dt class="col-sm-3">Estado de desaparición:</dt>
+				<dt class="col-sm-4">Estado de desaparición:</dt>
 				<dd class="col-sm-8" id="idEstadoM"> </dd>
-				<dt class="col-sm-3">Municipio de desaparición:</dt>
+				<dt class="col-sm-4">Municipio de desaparición:</dt>
 				<dd class="col-sm-8" id="idMunicipioM"> </dd>
-				<dt class="col-sm-3">Fecha de desaparición:</dt>
+				<dt class="col-sm-4">Fecha de desaparición:</dt>
 				<dd class="col-sm-8"id="idFecha"> </dd>
-				<dt class="col-sm-3">Edad de extravio:</dt>
+				<dt class="col-sm-4">Edad de extravio:</dt>
 				<dd class="col-sm-8"id="idEdad"> </dd>
-				<dt class="col-sm-3">Estatura:</dt>
+				<dt class="col-sm-4">Estatura:</dt>
 				<dd class="col-sm-8" id="idEstatura">
 				</dd> 
-				<dt class="col-sm-3">Peso:</dt>
+				<dt class="col-sm-4">Peso:</dt>
 				<dd class="col-sm-8" id="idPeso">
 				</dd>
-				<dt class="col-sm-3">Color de piel:</dt>
+				<dt class="col-sm-4">Color de piel:</dt>
 				<dd class="col-sm-8" id="idCPiel">
 				</dd>
-				<dt class="col-sm-3">Complexión:</dt>
+				<dt class="col-sm-4">Complexión:</dt>
 				<dd class="col-sm-8" id="idComplexion">
 				</dd>
-				<dt class="col-sm-3">Cabello:</dt>
-				<dd class="col-sm-8"id="idCabello"> </dd>
-				<dt class="col-sm-3">Vello facial:</dt>
-				<dd class="col-sm-8"id="idVelloFacial"> </dd>
-				<dt class="col-sm-3">Ojos:</dt>
-				<dd class="col-sm-8"id="idOjos"> </dd>
-				<dt class="col-sm-3">Labios:</dt>
-				<dd class="col-sm-8"id="idLabios"> </dd>
+				<dt class="col-sm-4">Cabello:</dt>
+				<dd class="col-sm-8"id="idCabelloM"> </dd>
+				<dt class="col-sm-4">Vello facial:</dt>
+				<dd class="col-sm-8"id="idVelloFacialM"> </dd>
+				<dt class="col-sm-4">Ojos:</dt>
+				<dd class="col-sm-8"id="idOjosM"> </dd>
+				<dt class="col-sm-4">Labios:</dt>
+				<dd class="col-sm-8"id="idLabiosM"> </dd>
 				
-				<dt class="col-sm-3">Modificaciones:</dt>
+				<dt class="col-sm-4">Modificaciones:</dt>
 				<dd class="col-sm-8"id="idModificaciones"> </dd>
-				<dt class="col-sm-3">Particularidades:</dt>
+				<dt class="col-sm-4">Particularidades:</dt>
 				<dd class="col-sm-8"id="idParticularidades"> </dd>
-				<dt class="col-sm-3">Observaciones:</dt>
+				<dt class="col-sm-4">Observaciones:</dt>
 				<dd class="col-sm-8"id="idObservaciones"> </dd>
 
 				
@@ -93,8 +93,8 @@
 -->
 			</dl>
 		</div>
-		<div class="col-lg-3">
-              {{ HTML::image('images/perfil3.png', 'Fiscal', array('class' => 'rounded w-100 p-3 float-right')) }}
+		<div class="col-lg-4" id="foto">
+              
           </div>
 	
 		</div>

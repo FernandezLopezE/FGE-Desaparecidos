@@ -73,36 +73,51 @@ class DescripcionFisicaController extends Controller
                         ->leftJoin('cat_tipos_cuerpo AS ti', 'ce.idTipoCuerpo', '=', 'ti.id')
                         ->leftJoin('cat_colores_cuerpo AS co', 'ce.idColoresCuerpo', '=', 'co.id')
                         ->where('idPersonaDesaparecida', $idDesaparecido)
-                        ->select('ce.id as idParteCuerpo','pa.id as idPadre', 'pa.nombre as partep', 'cu.nombre as parteh',
-                        'ta.nombre as tamano', 'ti.nombre as tipo', 'co.nombre as color', 'ce.posicion', 'ce.observaciones', 'ce.imagen')
+                        ->select('ce.id as idParteCuerpo','pa.id as idPadre', 'pa.nombre as partep','cu.id as idParteh' ,'cu.nombre as parteh',
+                        'ta.nombre as tamano', 'ti.nombre as tipo', 'co.nombre as color', 'ce.posicion', 'ce.observaciones', 'ce.imagen', 'cu.reglas', 'ce.otroTipo', 'ce.otroColor')
                         ->get();
         
         $dataPartes = array();
         $partePadre = null;
+        
+        //dd($activasPartes);
          foreach ($partesSeleccionadas as $parte) {
+            //dd($parte->idParteh);
+            $otras=$this->get_otros($parte->idParteh, $idDesaparecido, $parte->idParteCuerpo);
             $modificaciones = $this->get_modificaciones($parte->idParteCuerpo);
             $modifi = array();
-            foreach ($modificaciones as $value) {               
-                $modifi[] = $value->nombre;
+            foreach ($modificaciones as $value) {
+                if($value->nombre == 'OTRO'){
+                    $modifi[] = $otras[0]->otraModificacion;
+                }else{
+                    $modifi[] = $value->nombre;    
+                }
+                
             }
-
+            
+            //dd($otras);
             $particularidades = $this->get_particularidades($parte->idParteCuerpo);
             $parti = array();
             foreach ($particularidades as $value) {               
-                $parti[] = $value->nombre;
+                if($value->nombre == 'OTRO'){
+                    $parti[] = $otras[0]->otraParticularidad;
+                }else{
+                    $parti[] = $value->nombre;    
+                }
+                
             }
             $parte->modificaciones = $modifi;
             $parte->particularidades = $parti;
            
 
             if ($parte->idPadre != $partePadre) {
-                $dataPartes[$parte->partep] = array('idPadre' => $parte->idPadre                                
-                            );
+                $dataPartes[$parte->partep] = array('idPadre' => $parte->idPadre);
                 $partePadre = $parte->idPadre;
             }
             $dataPartes[$parte->partep]['hijos'][] = $parte;
+            //$dataPartes[$parte->partep]['otras'][] = json_encode($otras); 
         }
-       
+        //dd($dataPartes);
         $complexiones = \App\Models\CatComplexion::all()->pluck('nombre','id');
         $coloresPiel = \App\Models\CatColorPiel::all()->pluck('nombre','id');
 
@@ -115,7 +130,7 @@ class DescripcionFisicaController extends Controller
         //consulta cabello
         $cedulaPartesCuerpo = CedulaPartesCuerpo::where('idPersonaDesaparecida',$idDesaparecido)->get();
         $showCabello = false;
-        
+        //dd($dataPartes);
         return view('descripcionfisica.form_descripcion_fisica',
             [
                 'desaparecido' => $desaparecido,
@@ -151,6 +166,17 @@ class DescripcionFisicaController extends Controller
         return $particularidades;
     }
 
+    public function get_otros($idParteCuerpo, $idPersonaDesaparecida, $idCedulaPartesCuerpo)
+    {
+        $otros = \DB::table('cedula_partes_cuerpo AS ce')
+                            ->where('ce.idPartesCuerpo', $idParteCuerpo)
+                            ->where('ce.idPersonaDesaparecida', $idPersonaDesaparecida)
+                            ->where('ce.id', $idCedulaPartesCuerpo)
+                            ->select('ce.otraParticularidad','ce.otraModificacion','ce.otroTipo','ce.otroColor')
+                            ->get();
+
+        return $otros;
+    }
     /**
      * Show the form for editing the specified resource.
      *

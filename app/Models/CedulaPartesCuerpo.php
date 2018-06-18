@@ -13,7 +13,7 @@ class CedulaPartesCuerpo extends Model
 		'observaciones',
 		'otraParticularidad',
 		'otraModificacion',
-		'otroTipoCuerpo',
+		'otroTipo',
 		'otroColor',
 		'imagen',
 		'posicion',
@@ -23,6 +23,21 @@ class CedulaPartesCuerpo extends Model
 		'idColoresCuerpo',
 		'idPersonaDesaparecida',
 	];
+
+	public function catTamanoCuerpo()
+	{
+		return $this->belongsTo('App\Models\CatTamanoCuerpo','idTamanoCuerpo');
+	}
+
+	public function catTipoCuerpo()
+	{
+		return $this->belongsTo('App\Models\CatTiposCuerpo','idTipoCuerpo');
+	}
+
+	public function catColoresCuerpo()
+	{
+		return $this->belongsTo('App\Models\CatColoresCuerpo','idColoresCuerpo');
+	}
 
 	public function catpartescuerpo()
 	{
