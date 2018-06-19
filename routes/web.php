@@ -14,7 +14,7 @@
 Route::get('/', 'InicioController@index');
 
 	Route::resource('cedula','CedulaController');
-
+	Route::resource('oficioCedula','OficioCedulaController');
 	Route::resource('informante','InformanteController');
 
 	Route::get('extraviado/create/{idCedula}', 'ExtraviadoController@create')
