@@ -60,10 +60,10 @@ class VestimentaRequest extends FormRequest
     public function messages()
     {
         return [
-            'diseno.required'  => 'El campo observaciones es requerido.',
-            'idMarca.required'  => 'El campo marca es requerido.',
-            'idVestimenta.required'  => 'El campo vestimenta es requerido.',
-            'idPrenda.required'  => 'El campo prenda es requerido.',
+            'diseno.required'  => 'El campo es requerido.',
+            'idMarca.required'  => 'El campo es requerido.',
+            'idVestimenta.required'  => 'El es requerido.',
+            'idPrenda.required'  => 'El campo es requerido.',
         ];
     }
 
