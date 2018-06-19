@@ -36,7 +36,6 @@
 			$('#div_idColor').hide();
 			$('#obvs').hide();
 			$('#diseno').hide();
-
 			$('#MarcasBanco').show();
 			$('#cuentaBanco').show();
 			$('#cuenta').show();
@@ -46,7 +45,6 @@
 			$('#div_idColor').show();
 			$('#obvs').show();
 			$('#diseno').show();
-			
 			$('#MarcasBanco').hide();
 			$('#cuentaBanco').hide();
 			$('#cuenta').hide();
@@ -78,9 +76,30 @@
 				cargarDatosPrendas(row.idPrenda, row.idVestimenta);
 				$('select#idVestimenta option[value="'+row.idVestimenta+'"]').attr("selected",true);
 				$('#material').val(row.material);
+				if(row.idPrenda === 30){
+					console.log('tarjeta de credito');
+					$('#Marcas').hide();
+					$('#div_talla').hide();
+					$('#div_idColor').hide();
+					$('#obvs').hide();
+					$('#diseno').hide();
+					$('#MarcasBanco').show();
+					$('#cuentaBanco').show();
+					$('#cuenta').show();
+					$('#cuenta').val(row.diseno);
+				}else{
+					$('#Marcas').show();
+					$('#div_talla').show();
+					$('#div_idColor').show();
+					$('#obvs').show();
+					$('#diseno').show();
+					$('#MarcasBanco').hide();
+					$('#cuentaBanco').hide();
+					$('#cuenta').hide();
+					$('#diseno').val(row.diseno);
+				}
 				$('#idMarca').val(row.idMarca);
 				$('#talla').val(row.talla);
-				$('#diseno').val(row.diseno);
 				$('#idPrenda').prop('disabled', false);
 				btnPrendaActualizar.val(row.id);
 				btnPrendaActualizar.show();
@@ -137,10 +156,12 @@
 		btnPrendaAgregar.click(function(e){		
 			$('#div_talla').show();
 			$('#div_idColor').show();
+			$('#Marcas').show();
+			$('#obvs').show();
+			$('#diseno').show();
 			$('#MarcasBanco').hide();
 			$('#cuentaBanco').hide();
 			$('#cuenta').hide();
-			
 			$('#idPrenda').empty();				
 			$('#formVestimenta')[0].reset();
 			$('select#idVestimenta option[value="1"]').attr("selected",true);
@@ -205,7 +226,7 @@
 			var formData = new FormData();
 			formData.append("archivo",fileToUpload);
 			formData.append('material', $('#material').val());
-			if( ($('#cuenta').val()) != null ){
+			if( ($('#diseno').val()) == '' ){
 				console.log('No. de cuenta: '+$('#cuenta').val());
 				formData.append('diseno', $('#cuenta').val());
 			}else{
