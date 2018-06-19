@@ -36,6 +36,8 @@ Route::get('/', 'InicioController@index');
 
 	Route::resource('datos_dentales','DatosDentalesController');
 
+	Route::resource('oficio','oficioController');
+
     
     Route::resource('dependencia_destinatario','AgregarDependenciaController');
 
