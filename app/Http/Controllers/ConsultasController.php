@@ -136,7 +136,8 @@ class ConsultasController extends Controller
             $fechaRep2 = $request->input('fechaRep2');
             $reporteFecha2 = Carbon::createFromFormat('d/m/Y',$fechaRep2)->format('Y-m-d');
         }    
-                
+    
+    \DB::statement('SET @rownum = 0');
     $desaparecidos = \DB::table('desaparecidos_personas as des')                           
     ->leftjoin('persona as p', 'des.idPersona', '=', 'p.id')
     ->leftjoin('desaparecidos_cedula_investigacion AS dci', 'dci.id', '=', 'des.idCedula')
@@ -156,7 +157,7 @@ class ConsultasController extends Controller
   
 
     ->select('des.id as id', \DB::raw('CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))AS nombre'), 'p.sexo as sexo',\DB::raw('DATE_FORMAT(substr(dci.desaparicionFecha, 1,10), "%d/%m/%Y") as fecha'),'des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'),'des.estatura as estatura','des.peso as peso','cc.id as idComplexion','cc.nombre as complexion','ccp.id as idCPiel','ccp.nombre as cPiel','ce.id as idEstado','ce.nombre as estado','cm.id as idMuni','cm.nombre as municipio',
-                     'cn.nombre as nacionalidad',\DB::raw('DATE_FORMAT(dci.fechaVisita,"%d/%m/%Y")  as fechaReporte'), 'dci.desaparicionObservaciones as hechos','des.fotoDesaparecido as foto')
+                     'cn.nombre as nacionalidad',\DB::raw('DATE_FORMAT(dci.fechaVisita,"%d/%m/%Y")  as fechaReporte'), 'dci.desaparicionObservaciones as hechos','des.fotoDesaparecido as foto',\DB::raw('@rownum := @rownum + 1 AS rownum'))
 
             //{->where('des.edadExtravio', 'like', "$rg%")
                             //->where('des.edadExtravio', 'like', "$rg2%")
@@ -511,7 +512,8 @@ class ConsultasController extends Controller
 
                 
  
-           $registros[$i] = array('id' => $value->id,
+           $registros[$i] = array('rownum'=> $value->rownum,
+                                'id' => $value->id,
                                 'nombre' => $value->nombre,
                                 'fecha' => $value->fecha,
                                 'sexo' => $value->sexo,

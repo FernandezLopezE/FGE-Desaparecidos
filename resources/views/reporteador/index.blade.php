@@ -301,8 +301,8 @@
         <div id="tablaGen" style="width:100%">
 
 
-<!-- data-id-table="advancedTable" 
- -->          <div id="toolbar" style="display:none">
+<!-- data-id-table="advancedTable" -->         
+                  <div id="toolbar" style="display:none">
                   <select class="form-control">
                     <option value="">Exportar página</option>
                     <option value="all">Exportar todos</option>
@@ -332,6 +332,7 @@
              <thead>
                 <tr>
 <!--                        <th data-field="steate" data-checkbox="true"></th>-->
+                        <th data-field="N°" ></th>
                         <th data-field="nombres" 
                             data-sortable="true" data-filter-control="input"></th>
                         <th data-field="Fecha de desaparición" 
@@ -1078,7 +1079,10 @@ var formatTableActions = function(value, row, index) {
      columns: [// {         
 //                    field: 'state',
 //            },
-              {
+                 {     
+                    field: 'rownum',
+                    title: 'N°',
+            },{     
                     field: 'nombre',
                     title: 'Nombre',
             },{
@@ -1178,7 +1182,7 @@ var formatTableActions = function(value, row, index) {
          var doc = new jsPDF('l', 'pt');
          var height = doc.internal.pageSize.height;
     var res = doc.autoTableHtmlToJson(document.getElementById('tableDependencias'));
-              
+    doc.page=1;          
     doc.autoTable(res.columns, res.data, {
         theme: 'striped', 
         styles: {
@@ -1191,7 +1195,7 @@ var formatTableActions = function(value, row, index) {
             },
        margin : {
             top: 40,
-            bottom: 60,
+            bottom: 20,
             left: 120,
             width: 522
             },
@@ -1201,12 +1205,20 @@ var formatTableActions = function(value, row, index) {
             body: {},
             alternateRow: {}
             },
+           
             beforePageContent: function(data) {
             doc.setTextColor(50,50,50)
             doc.setFontSize(18)
-            doc.text(250, 20, "Listado de personas no localizadas")
+            doc.text(300, 20, "Listado de personas no localizadas")
             doc.addImage(image, 'JPG', 15, 40, 100, 100);
+           },
+            afterPageContent: function(data) {
+            doc.setTextColor(50,50,50)
+            doc.setFontSize(12)
+            doc.text(770, 580,  " "+doc.page);            
+            doc.page ++;
            }
+             
             
     });      
             

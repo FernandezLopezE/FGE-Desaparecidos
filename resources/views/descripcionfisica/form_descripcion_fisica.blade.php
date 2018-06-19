@@ -139,11 +139,14 @@
                                                               @endif
 
                                                             @case('modificaciones')
-                                                              @if($regla == 1)          
+                                                              @if($regla == 1)                                                                 
                                                                 <label for="">Modificaciones:</label>
+                                                                @php $tmpModi = ''; @endphp 
                                                                 @foreach ($value->modificaciones as $modificacion)
-                                                                    {!! $modificacion !!}, 
+                                                                    @php $tmpModi = $modificacion.', '.$tmpModi; @endphp 
                                                                 @endforeach
+                                                                  @php $tmpModi = trim($tmpModi,', '); @endphp 
+                                                                 {!! $tmpModi !!}
                                                                 <br>
                                                                 @break
                                                               @else
@@ -153,9 +156,12 @@
                                                             @case('particularidades')
                                                               @if($regla == 1)          
                                                                 <label for="">Particularidades:</label>
+                                                                @php $tmpParti = ''; @endphp 
                                                                 @foreach ($value->particularidades as $particularidad)
-                                                                    {!! $particularidad !!}, 
+                                                                  @php $tmpParti = $particularidad.', '.$tmpParti; @endphp 
                                                                 @endforeach
+                                                                 @php $tmpParti = trim($tmpParti,', '); @endphp 
+                                                                  {!! $tmpParti !!}
                                                                 <br>
                                                                 @break
                                                               @else
