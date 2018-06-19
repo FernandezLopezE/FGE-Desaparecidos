@@ -158,34 +158,38 @@
                 </tr>
                 <tr></tr>
                 <tr>
-                    <td><strong>SEXO: </strong>{!! $desaparecido->persona->sexo !!}</td>
+                    <td><strong>SEXO: </strong>@if(($desaparecido->persona)!=null){!! $desaparecido->persona->sexo !!} @else SIN INFORMACIÓN. @endif</td>
                 </tr>
                 <tr>
-                    <td><strong>EDAD: </strong>{!! $desaparecido->edadExtravio !!}</td>
+                    <td><strong>EDAD: </strong>@if(($desaparecido->edadExtravio)!=null){!! $desaparecido->edadExtravio !!} @else SIN INFORMACIÓN. @endif</td>
                 </tr>
                 <tr>
-                    <td><strong>NACIONALIDAD: </strong>{!! $desaparecido->persona->nacionalidad->nombre !!}</td>
+                    <td><strong>NACIONALIDAD: </strong>@if(($desaparecido->persona->nacionalidad)!=null){!! $desaparecido->persona->nacionalidad->nombre !!} @else SIN INFORMACIÓN. @endif</td>
                 </tr>
                 <tr>
-                    <td><strong>ORIGINARIO: </strong>{!! $desaparecido->persona->estado->nombre !!}</td>
+                    <td><strong>ORIGINARIO: </strong>@if(($desaparecido->persona->estado)!=null){!! $desaparecido->persona->estado->nombre !!} @else SIN INFORMACIÓN. @endif</td>
                 </tr>
                 <tr>
-                    <td><strong>ESCOLARIDAD: </strong>{!! $desaparecido->escolaridad->nombre !!}</td>
+                    <td><strong>ESCOLARIDAD: </strong>@if(($desaparecido->escolaridad)!=null){!! $desaparecido->escolaridad->nombre !!} @else SIN INFORMACIÓN. @endif</td>
                 </tr>
                 <tr>
                     <td>
-                        <strong>ESTATURA: </strong>{!! $desaparecido->estatura !!} CM.         
-                        <strong>       PESO: </strong>{!! $desaparecido->peso !!} KG.
+                        <strong>ESTATURA: </strong>@if(($desaparecido->estatura)!=null){!! $desaparecido->estatura !!} CM. @else SIN INFORMACIÓN. @endif         
+                        <strong>       PESO: </strong>@if(($desaparecido->peso)!=null){!! $desaparecido->peso !!} KG. @else SIN INFORMACIÓN. @endif
                     </td>
                 </tr>
                 <tr>
-                    <td><strong>COMPLEXIÓN: </strong>{!! $desaparecido->complexion->nombre !!}</td>
+                    <td><strong>COMPLEXIÓN: </strong>@if(($desaparecido->complexion)!=null){{ $desaparecido->complexion->nombre }}@else SIN INFORMACIÓN. @endif</td>
                 </tr>
                 <tr>
                     <td><strong>CABELLO: </strong>
                         @foreach($desaparecido->partescuerpo as $partecuerpo) 
-                            @if($partecuerpo->idPartesCuerpo==2)
-                                @if(($partecuerpo->idTamanoCuerpo)!=null){{ $partecuerpo->catTamanoCuerpo->nombre }}@endif @if(($partecuerpo->idTipoCuerpo)!=null) {{ $partecuerpo->catTipoCuerpo->nombre }}@endif @if(($partecuerpo->idColoresCuerpo)!=null) {{ $partecuerpo->catColoresCuerpo->nombre }}@endif
+                            @if(($partecuerpo->idPartesCuerpo==2))
+                                @if( (($partecuerpo->idTamanoCuerpo)==null)&&(($partecuerpo->idTipoCuerpo)==null)&&(($partecuerpo->idColoresCuerpo)==null) )
+                                    SIN INFORMACIÓN.
+                                @else
+                                    @if(($partecuerpo->idTamanoCuerpo)!=null){{ $partecuerpo->catTamanoCuerpo->nombre }}@endif @if(($partecuerpo->idTipoCuerpo)!=null) {{ $partecuerpo->catTipoCuerpo->nombre }}@endif @if(($partecuerpo->idColoresCuerpo)!=null) {{ $partecuerpo->catColoresCuerpo->nombre }}@endif
+                                @endif
                             @endif
                         @endforeach
                     </td>
@@ -194,7 +198,11 @@
                     <td><strong>LABIOS: </strong>
                         @foreach($desaparecido->partescuerpo as $partecuerpo)
                             @if($partecuerpo->idPartesCuerpo==14)
-                                @if(($partecuerpo->idTamanoCuerpo)!=null){{ $partecuerpo->catTamanoCuerpo->nombre }}@endif @if(($partecuerpo->idTipoCuerpo)!=null) {{ $partecuerpo->catTipoCuerpo->nombre }}@endif @if(($partecuerpo->idColoresCuerpo)!=null) {{ $partecuerpo->catColoresCuerpo->nombre }}@endif
+                                @if( (($partecuerpo->idTamanoCuerpo)==null)&&(($partecuerpo->idTipoCuerpo)==null)&&(($partecuerpo->idColoresCuerpo)==null) )
+                                    SIN INFORMACIÓN.
+                                @else
+                                    @if(($partecuerpo->idTamanoCuerpo)!=null){{ $partecuerpo->catTamanoCuerpo->nombre }}@endif @if(($partecuerpo->idTipoCuerpo)!=null) {{ $partecuerpo->catTipoCuerpo->nombre }}@endif @if(($partecuerpo->idColoresCuerpo)!=null) {{ $partecuerpo->catColoresCuerpo->nombre }}@endif
+                                @endif
                             @endif
                         @endforeach
                     </td>
@@ -202,8 +210,12 @@
                 <tr>
                     <td><strong>NARIZ: </strong>
                         @foreach($desaparecido->partescuerpo as $partecuerpo) 
-                            @if($partecuerpo->idPartesCuerpo==10)
-                                @if(($partecuerpo->idTamanoCuerpo)!=null){{ $partecuerpo->catTamanoCuerpo->nombre }}@endif @if(($partecuerpo->idTipoCuerpo)!=null) {{ $partecuerpo->catTipoCuerpo->nombre }}@endif @if(($partecuerpo->idColoresCuerpo)!=null) {{ $partecuerpo->catColoresCuerpo->nombre }}@endif
+                            @if(($partecuerpo->idPartesCuerpo)==10)
+                                @if( (($partecuerpo->idTamanoCuerpo)==null)&&(($partecuerpo->idTipoCuerpo)==null)&&(($partecuerpo->idColoresCuerpo)==null) )
+                                    SIN INFORMACIÓN.
+                                @else
+                                    @if(($partecuerpo->idTamanoCuerpo)!=null){{ $partecuerpo->catTamanoCuerpo->nombre }}@endif @if(($partecuerpo->idTipoCuerpo)!=null) {{ $partecuerpo->catTipoCuerpo->nombre }}@endif @if(($partecuerpo->idColoresCuerpo)!=null) {{ $partecuerpo->catColoresCuerpo->nombre }}@endif
+                                @endif
                             @endif
                         @endforeach
                     </td>
@@ -212,13 +224,17 @@
                     <td><strong>OJOS: </strong>
                         @foreach($desaparecido->partescuerpo as $partecuerpo) 
                             @if($partecuerpo->idPartesCuerpo==9)
-                                @if(($partecuerpo->idTamanoCuerpo)!=null){{ $partecuerpo->catTamanoCuerpo->nombre }}@endif @if(($partecuerpo->idTipoCuerpo)!=null) {{ $partecuerpo->catTipoCuerpo->nombre }}@endif @if(($partecuerpo->idColoresCuerpo)!=null) {{ $partecuerpo->catColoresCuerpo->nombre }}@endif
+                                @if( (($partecuerpo->idTamanoCuerpo)==null)&&(($partecuerpo->idTipoCuerpo)==null)&&(($partecuerpo->idColoresCuerpo)==null) )
+                                    SIN INFORMACIÓN.
+                                @else
+                                    @if(($partecuerpo->idTamanoCuerpo)!=null){{ $partecuerpo->catTamanoCuerpo->nombre }}@endif @if(($partecuerpo->idTipoCuerpo)!=null) {{ $partecuerpo->catTipoCuerpo->nombre }}@endif @if(($partecuerpo->idColoresCuerpo)!=null) {{ $partecuerpo->catColoresCuerpo->nombre }}@endif
+                                @endif
                             @endif
                         @endforeach
                     </td>
                 </tr>
                 <tr>
-                    <td><strong>COLOR DE PIEL: </strong>{!! $desaparecido->colorpiel->nombre !!}</td>
+                    <td><strong>COLOR DE PIEL: </strong>@if(($desaparecido->colorpiel->nombre)!=null){!! $desaparecido->colorpiel->nombre !!} @else SIN INFORMACIÓN. @endif</td>
                 </tr>
                 <tr>
                     <td class="text-sm-center">
