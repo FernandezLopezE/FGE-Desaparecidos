@@ -16,12 +16,12 @@ class CreateCatDependenciasTable extends Migration
         Schema::create('cat_dependencias', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->string('correo');
-            $table->integer('documento')->unsigned();
-            $table->foreign('documento')->references('id')->on('cat_documentos');
-            
-            //$table->integer('color')->unsigned();
-            //$table->foreign('color')->references('id')->on('cat_colores');
+            $table->string('correo')->nullable();
+            $table->text('oficios')->nullable();
+            // $table->integer('documento')->unsigned();
+            // $table->foreign('documento')->references('id')->on('cat_documentos');
+            $table->integer('idEncargado')->unsigned();
+            $table->foreign('idEncargado')->references('id')->on('cat_encargado');
             $table->timestamps();
         });
     }
