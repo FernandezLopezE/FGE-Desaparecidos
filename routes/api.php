@@ -16,3 +16,5 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('personas_no_localizadas/{idCarpeta}', 'ConexionUipjController@getDesaparecidosCarpeta')->name('personas_no_localizadas');

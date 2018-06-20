@@ -37,29 +37,27 @@
 													'placeholder' => 'Material de la prenda'] )!!}
 							<div class="form-control-feedback" id="error_material"></div>
 						</div>
-						<div class="form-group col-md-4" id="div_banco" style="display:none">
-							{!! Form::label ('banco','Nombre del banco:',['class' => 'form-control-label']) !!}
-							{!! Form::text ('banco',
-												old('banco'),
-												['class' => 'form-control mayuscula',
-													'data-validation' => 'required',
-													'data-validation-error-msg-required' => 'Ingrese nombre de banco.',
-													'placeholder' => 'Ingrese nombre del banco'] )!!}
-							<div class="form-control-feedback" id="error_banco"></div>
-						</div>
 					</div>
 					<div class="row">
 						<div class="form-group col-md-4" id="div_idMarca">
-							{!! Form::label ('idMarca','Marca y origen:',['class' => 'form-control-label']) !!}
-							{!! Form::select('idMarca',
-											 $marcas,
+							{!! Form::label ('idMarca','Marca y origen:',['class' => 'form-control-label','id' => 'Marcas']) !!}
+							{!! Form::label ('idMarca','Nombre del banco:',['class' => 'form-control-label','id' => 'MarcasBanco']) !!}
+							{!! Form::text('idMarca',
 											 null,
-											 ['class' => 'form-control']) !!}
+											 ['class' => 'form-control mayuscula',
+											 	'data-validation' => 'required', 
+												'data-validation-error-msg-required' => 'El campo es requerido.', 
+												'placeholder' => 'Marca'
+												]) !!}
 							<div class="form-control-feedback" id="error_idMarca"></div>
 						</div>
 						<div class="form-group col-md-4" id="div_talla">
 							{!! Form::label ('talla','Talla:',['class' => 'form-control-label']) !!}
-							{!! Form::text ('talla',old('Talla'), ['class' => 'form-control mayuscula', 'data-validation' => 'required', 'data-validation-error-msg-required' => 'Ingrese la talla', 'placeholder' => 'Talla'] )!!}
+							{!! Form::text ('talla',old('Talla'), ['class' => 'form-control mayuscula', 
+																	'data-validation' => 'required', 
+																	'data-validation-error-msg-required' => 'El campo es requerido.', 
+																	'placeholder' => 'Talla'
+																	] )!!}
 							<div class="form-control-feedback" id="error_talla"></div>
 						</div>
 						<div class="form-group col-md-4" id="div_idColor">
@@ -74,26 +72,23 @@
 
 					<div class="row">
 						<div class="form-group col-md-6" id="div_diseno">
-							{!! Form::label ('diseno','Observaciones:',['class' => 'form-control-label']) !!}
+							{!! Form::label ('diseno','Observaciones:',['class' => 'form-control-label','id' => 'obvs']) !!}
+							{!! Form::label ('diseno','Número de cuenta:',['class' => 'form-control-label','id' => 'cuentaBanco']) !!}
 							{!! Form::textarea ('diseno',
 											old('Dibujo/Bordado/Franjas'),
 											['class' => 'form-control mayuscula',
 												'id' => 'diseno',
 												'data-validation' => 'required',
-												'data-validation-error-msg-required' => 'Ingrese observaciones',
+												'data-validation-error-msg-required' => 'El campo es requerido.',
 												'placeholder' => 'Ingrese el bordado, dibujo, franja u observaciones de la prenda'] )!!}
-							<div class="form-control-feedback" id="error_diseno"></div>
-						</div>
-						<div class="form-group col-md-6" id="div_cuenta" style="display:none">
-							{!! Form::label ('cuenta','No. de cuenta:',['class' => 'form-control-label']) !!}
 							{!! Form::text ('cuenta',
-												old('cuenta'),
-												['class' => 'form-control mayuscula',
-													'id' => 'cuenta',
-													'data-validation' => 'required',
-													'data-validation-error-msg-required' => 'Ingrese no. de cuenta.',
-													'placeholder' => 'Ingrese no. de cuenta'] )!!}
-							<div class="form-control-feedback" id="error_cuenta"></div>
+											old('cuenta'),
+											['class' => 'form-control mayuscula',
+												'id' => 'cuenta',
+												'data-validation' => 'required',
+												'data-validation-error-msg-required' => 'El campo es requerido.',
+												'placeholder' => 'Número de cuenta'] )!!}
+							<div class="form-control-feedback" id="error_diseno"></div>
 						</div>
 						<div class="form-group col-md-6" id="div_archivo">
 							{!! Form::label ('archivo','Foto:',['class' => 'form-control-label']) !!}

@@ -33,23 +33,23 @@
 		g = $('#idPrenda').val();
 
 		if(g==30){
-			$('#div_material').hide();
-			$('#div_idMarca').hide();
+			$('#Marcas').hide();
 			$('#div_talla').hide();
 			$('#div_idColor').hide();
-			$('#div_diseno').hide();
-
-			$('#div_banco').show();
-			$('#div_cuenta').show();
+			$('#obvs').hide();
+			$('#diseno').hide();
+			$('#MarcasBanco').show();
+			$('#cuentaBanco').show();
+			$('#cuenta').show();
 		}else{
-			$('#div_material').show();
-			$('#div_idMarca').show();
+			$('#Marcas').show();
 			$('#div_talla').show();
 			$('#div_idColor').show();
-			$('#div_diseno').show();
-
-			$('#div_banco').hide();
-			$('#div_cuenta').hide();
+			$('#obvs').show();
+			$('#diseno').show();
+			$('#MarcasBanco').hide();
+			$('#cuentaBanco').hide();
+			$('#cuenta').hide();
 		}
 	});
 
@@ -78,9 +78,30 @@
 				cargarDatosPrendas(row.idPrenda, row.idVestimenta);
 				$('select#idVestimenta option[value="'+row.idVestimenta+'"]').attr("selected",true);
 				$('#material').val(row.material);
-				$('select#idMarca option[value="'+row.idMarca+'"]').attr("selected",true);
+				if(row.idPrenda === 30){
+					console.log('tarjeta de credito');
+					$('#Marcas').hide();
+					$('#div_talla').hide();
+					$('#div_idColor').hide();
+					$('#obvs').hide();
+					$('#diseno').hide();
+					$('#MarcasBanco').show();
+					$('#cuentaBanco').show();
+					$('#cuenta').show();
+					$('#cuenta').val(row.diseno);
+				}else{
+					$('#Marcas').show();
+					$('#div_talla').show();
+					$('#div_idColor').show();
+					$('#obvs').show();
+					$('#diseno').show();
+					$('#MarcasBanco').hide();
+					$('#cuentaBanco').hide();
+					$('#cuenta').hide();
+					$('#diseno').val(row.diseno);
+				}
+				$('#idMarca').val(row.idMarca);
 				$('#talla').val(row.talla);
-				$('#diseno').val(row.diseno);
 				$('#idPrenda').prop('disabled', false);
 				btnPrendaActualizar.val(row.id);
 				btnPrendaActualizar.show();
@@ -89,44 +110,6 @@
 			},
 			'click #removeVestimenta': function (e, value, row, index){
 				console.log(row);
-				/*cargarDatosColores(row.color.codigo);
-				cargarDatosPrendas(row.idPrenda, row.idVestimenta);
-				$('select#idVestimenta option[value="'+row.idVestimenta+'"]').attr("selected",true);
-				$('#material').val(row.material);
-				$('select#idMarca option[value="'+row.idMarca+'"]').attr("selected",true);
-				$('#talla').val(row.talla);
-				$('#diseno').val(row.diseno);
-				$('#idPrenda').prop('disabled', false);*/
-				var fileToUpload = $('#archivo')[0].files[0];
-				if (fileToUpload == 'undefined') {
-					fileToUpload = null 
-				}
-				var formData = new FormData();
-				formData.append("archivo",fileToUpload);
-				formData.append('material', $('#material').val());
-				formData.append('diseno', $('#diseno').val());
-				formData.append('talla', $('#talla').val());
-				formData.append('idMarca', $('#idMarca').val());
-				formData.append('idColor', $('#idColor').val());
-				formData.append('idVestimenta', $('#idVestimenta').val());
-				formData.append('idPrenda', $('#idPrenda').val());
-				formData.append('method', 'PUT');
-				formData.append('idDesaparecido', idDesaparecido);
-				formData.append('idPrendaDesaparecido',btnPrendaActualizar.val());
-				$.ajax({
-					type: 'DELETE',
-					data: formData,
-					dataType: 'json',
-					processData: false,
-					contentType: false,
-					succes: function(data){
-						console.log(data);
-						table.bootstrapTable('refresh');
-					},
-					error: function(data){
-						console.log(data);
-					}
-				});
 			}
 		}
 
@@ -144,7 +127,7 @@
 				field: 'prenda.nombre',
 				title: 'Tipo',
 			}, {					
-				field: 'marca.nombre',
+				field: 'idMarca',
 				title: 'Marca',
 			}, {					
 				field: 'talla',
@@ -173,13 +156,14 @@
 		
 		//Vista de datos de la vestimenta
 		btnPrendaAgregar.click(function(e){		
-			$('#div_material').show();
-			$('#div_idMarca').show();
 			$('#div_talla').show();
 			$('#div_idColor').show();
-			$('#div_diseno').show();
-			$('#div_banco').hide();
-			$('#div_cuenta').hide();
+			$('#Marcas').show();
+			$('#obvs').show();
+			$('#diseno').show();
+			$('#MarcasBanco').hide();
+			$('#cuentaBanco').hide();
+			$('#cuenta').hide();
 			$('#idPrenda').empty();				
 			$('#formVestimenta')[0].reset();
 			$('select#idVestimenta option[value="1"]').attr("selected",true);
@@ -235,24 +219,28 @@
 			});
 		}
 
-
 		btnPrendaGuardar.click (function(){
-
 			//var archivo = $('input[name=archivo]');
 			var fileToUpload = $('#archivo')[0].files[0];
-			if (fileToUpload == 'undefined') { fileToUpload = null }
-
+			if (fileToUpload == 'undefined') { 
+				fileToUpload = null 
+			}
 			var formData = new FormData();
 			formData.append("archivo",fileToUpload);
 			formData.append('material', $('#material').val());
-			formData.append('diseno', $('#diseno').val());
+			if( ($('#diseno').val()) == '' ){
+				console.log('No. de cuenta: '+$('#cuenta').val());
+				formData.append('diseno', $('#cuenta').val());
+			}else{
+				console.log('Observaciones: '+$('#diseno').val());
+				formData.append('diseno', $('#diseno').val());
+			}
 			formData.append('talla', $('#talla').val());
 			formData.append('idMarca', $('#idMarca').val());
 			formData.append('idColor', $('#idColor').val());
 			formData.append('idVestimenta', $('#idVestimenta').val());
 			formData.append('idPrenda', $('#idPrenda').val());
 			formData.append('idDesaparecido', idDesaparecido);
-		
 			$.ajax({
 				type: 'POST',
 				url: routeVestimenta,				
@@ -277,13 +265,14 @@
 				}
 			});
 		});
-		btnPrendaActualizar.click (function(){
 
+		btnPrendaActualizar.click (function(){
 			//var archivo = $('input[name=archivo]');
 			var fileToUpload = $('#archivo')[0].files[0];
-			if (fileToUpload == 'undefined') { fileToUpload = null }
-
-			var formData = FormData();
+			if (fileToUpload == 'undefined') { 
+				fileToUpload = null 
+			}
+			var formData = new FormData();
 			formData.append("archivo",fileToUpload);
 			formData.append('material', $('#material').val());
 			formData.append('diseno', $('#diseno').val());
@@ -295,7 +284,6 @@
 			formData.append('method', 'PUT');
 			formData.append('idDesaparecido', idDesaparecido);
 			formData.append('idPrendaDesaparecido',btnPrendaActualizar.val());
-			console.log(idDesaparecido);
 			$.ajax({
 				type: 'POST',
 				url: routeVestimenta,

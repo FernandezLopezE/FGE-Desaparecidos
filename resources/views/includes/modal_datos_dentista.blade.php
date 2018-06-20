@@ -77,7 +77,7 @@
       </div>
       </form>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="agregaDentista">Aceptar</button>
+        <button type="button" class="btn btn-primary" id="agregaDentista" data-dismiss="modal">Aceptar</button>
       </div>
     </div>
   </div>

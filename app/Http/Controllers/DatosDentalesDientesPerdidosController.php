@@ -42,19 +42,27 @@ class DatosDentalesDientesPerdidosController extends Controller
         $query = \DB::table('desaparecido_dentadura as ddp')
                         ->where('ddp.idDesaparecido',$request['idDesaparecido'])
                         ->get();
+        //dd($query);
 
         if ($dentadura != null) {
-            \DB::table('pivot_diente_perdido')->where('idDentadura', $query->toArray()[0]->id)->delete();
+            //dd($query->toArray()[0]->id);
+            $pivot = \DB::table('pivot_diente_perdido')->where('idDentadura', $query->toArray()[0]->id);
+
+            if(!empty($pivot)){
+                $pivot->delete();
+            }
 
             $dientes = $request->input('idDiente');
-            foreach ($request->input('causaPerdida') as $index => $value) {
-                if (!empty($value)) {
-                    $dientesPer[] = array(
-                                        'idDiente' => $dientes[$index],
-                                        'causaPerdida' => $value,
-                                        //'idDentadura' => $request->input('idDentadura')
-                                        'idDentadura' => $dentadura[0]['id']
-                                    );
+            if(!empty($dientes)){
+                foreach ($request->input('causaPerdida') as $index => $value) {
+                    if (!empty($value)) {
+                        $dientesPer[] = array(
+                                            'idDiente' => $dientes[$index],
+                                            'causaPerdida' => $value,
+                                            //'idDentadura' => $request->input('idDentadura')
+                                            'idDentadura' => $dentadura[0]['id']
+                                        );
+                    }
                 }
             }
         }else{
@@ -70,7 +78,10 @@ class DatosDentalesDientesPerdidosController extends Controller
                 }
             }
         }
-        \DB::table('pivot_diente_perdido')->insert($dientesPer);
+        if(!empty($dientesPer)){
+            \DB::table('pivot_diente_perdido')->insert($dientesPer);
+        }
+        
         return response()->json('Guardado');
     }
 

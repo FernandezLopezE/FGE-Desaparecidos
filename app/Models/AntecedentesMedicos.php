@@ -11,6 +11,12 @@ class AntecedentesMedicos extends Model
 	protected $fillable = [
 		'observaciones',
 		'medicamentosToma',
+		'otraEnfermedad',
+		'otraIQ',
+		'otraAdiccion',
+		'otroImplante',
 		'idCedula',	
 	];
+
+
 }
