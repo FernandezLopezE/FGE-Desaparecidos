@@ -40,6 +40,8 @@ Route::get('/', 'InicioController@index');
 
 	Route::resource('oficiosDependencias','OficioDependencia');
 
+	Route::resource('configuraciones','ConfiguracionesController');
+
     
     Route::resource('dependencia_destinatario','AgregarDependenciaController');
 
