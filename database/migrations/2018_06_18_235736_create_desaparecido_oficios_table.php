@@ -19,9 +19,6 @@ class CreateDesaparecidoOficiosTable extends Migration
             $table->integer('idOficio')->unsigned()->nullable();           
             $table->foreign('idOficio')->references('id')->on('cat_documentos');
 
-            $table->integer('idDependencia')->unsigned()->nullable();           
-            $table->foreign('idDependencia')->references('id')->on('cat_dependencias');
-
             $table->integer('idDesaparecido')->unsigned();           
             $table->foreign('idDesaparecido')->references('id')->on('desaparecidos_personas');
 
