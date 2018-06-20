@@ -100,9 +100,6 @@ class OficioController extends Controller
     }
 
     public function oficioprueba($id){
-        $date = Carbon::now();
-        $now = new \DateTime();
-
         $doc="";
         $resolucion ="NO";
         $fotoExtra = "NO";
@@ -126,8 +123,7 @@ class OficioController extends Controller
                         \DB::raw('CONCAT(person.nombres," ",person.primerAp," ",person.segundoAp) AS informante'),
                         'dperson.tipoPersona AS tipoPersona',
                         'parentesco.nombre AS parentesco',
-                        'dperson.edadExtravio AS edadExtravio',
-                        'dperson.fotoDesaparecido AS foto',
+                        'person.sexo AS genero',
                         \DB::raw('CONCAT(domicilios.calle,", #",domicilios.numExterno,", ","EN LA COLONIA ",colonia.nombre,", DE LA LOCALIDAD ",localidad.nombre,", EN EL MUNICIPIO DE ",municipio.nombre,", ",estado.nombre) AS direccion'),
                         'docIden.nombre AS documentoI'                            
                         )
@@ -144,7 +140,7 @@ class OficioController extends Controller
                     ->leftJoin('cat_documento_identidad AS docIden', 'dperson.idDocumentoIdentidad', '=', 'docIden.id')
                     ->select(
                         'dci.carpeta AS numCarpeta',
-                        \DB::raw('DATE(dci.created_at) AS fechaRegistro'),
+                        \DB::raw('DATE_FORMAT(dci.created_at," %d DE %M DE %Y") AS fechaRegistro'),
                         'dci.desaparicionObservaciones as observacionDesa',
                         \DB::raw('CONCAT(person.nombres," ",person.primerAp," ",person.segundoAp) AS informante'),
                         'dperson.tipoPersona AS tipoPersona',
@@ -190,7 +186,7 @@ class OficioController extends Controller
             'fotoExtra' => $fotoExtra,
             'resolucion' => $resolucion,
             'fechaReg' => $desaparecido[0]->fechaRegistro,
-            'edadExtra' => $desaparecido[0]->edadExtravio,
+            'edadExtra' => strtoupper($desaparecido[0]->edadExtravio),
             'hora' => $desaparecido[0]->horaReg
             );
             return response()->json($data);

@@ -97,7 +97,12 @@ class OficioCedulaController extends Controller
 
 
     public function json_oficio1(){
-        $oficio1 = \DB::table('desaparecidos_cedula_investigacion AS dci')
+        $doc="";
+        $resolucion ="NO";
+        $fotoExtra = "NO";
+        $carpeta = "SI";
+        $actaNac = "SI";
+        $informante = \DB::table('desaparecidos_cedula_investigacion AS dci')
                     ->join('desaparecidos_personas AS dperson','dci.id','=','dperson.idCedula')
                     ->join('persona AS person','person.id','=','dperson.idPersona')
                     ->leftJoin('desaparecidos_domicilios AS domicilios', 'dperson.id', '=', 'domicilios.idDesaparecido')
@@ -115,22 +120,73 @@ class OficioCedulaController extends Controller
                         \DB::raw('CONCAT(person.nombres," ",person.primerAp," ",person.segundoAp) AS informante'),
                         'dperson.tipoPersona AS tipoPersona',
                         'parentesco.nombre AS parentesco',
-                        'dperson.edadExtravio AS edadExtravio',
-                        'dperson.fotoDesaparecido AS foto',
-                        'domicilios.calle AS calle',
-                        'domicilios.numExterno AS numeroExt',
-                        'domicilios.numInterno AS numeroInt',
-                        'colonia.nombre AS colonia',
-                        'localidad.nombre AS localidad',
-                        'municipio.nombre AS municipio',
-                        'estado.nombre AS estado',
+                        'person.sexo AS genero',
+                        \DB::raw('CONCAT(domicilios.calle,", #",domicilios.numExterno,", ","EN LA COLONIA ",colonia.nombre,", DE LA LOCALIDAD ",localidad.nombre,", EN EL MUNICIPIO DE ",municipio.nombre,", ",estado.nombre) AS direccion'),
                         'docIden.nombre AS documentoI'                            
                         )
-                    ->where('dperson.idCedula',1)
+                    ->where('dperson.idCedula',$id)
                     ->where('dperson.tipoPersona','INFORMANTE')
+                    ->limit(1)
                     ->get();
 
-        return $oficio1;
+
+        $desaparecido = \DB::table('desaparecidos_cedula_investigacion AS dci')
+                    ->join('desaparecidos_personas AS dperson','dci.id','=','dperson.idCedula')
+                    ->join('persona AS person','person.id','=','dperson.idPersona')
+                    ->leftJoin('desaparecidos_domicilios AS domicilios', 'dperson.id', '=', 'domicilios.idDesaparecido')
+                    ->leftJoin('cat_documento_identidad AS docIden', 'dperson.idDocumentoIdentidad', '=', 'docIden.id')
+                    ->select(
+                        'dci.carpeta AS numCarpeta',
+                        \DB::raw('DATE_FORMAT(dci.created_at," %d DE %M DE %Y") AS fechaRegistro'),
+                        'dci.desaparicionObservaciones as observacionDesa',
+                        \DB::raw('CONCAT(person.nombres," ",person.primerAp," ",person.segundoAp) AS informante'),
+                        'dperson.tipoPersona AS tipoPersona',
+                        'dperson.edadExtravio AS edadExtravio',
+                        'dperson.fotoDesaparecido AS foto',
+                        'docIden.nombre AS documentoI',
+                        \DB::raw('TIME(dci.created_at) AS horaReg')                            
+                        )
+                    ->where('dperson.idCedula',$id)
+                    ->where('dperson.tipoPersona','DESAPARECIDA')
+                    ->limit(1)
+                    ->get();
+
+                    //dd($desaparecido);
+
+
+                    if($informante[0]->documentoI == null || $informante[0]->documentoI == 'NO ESPECIFICADO' ){
+                        $doc = 'NO';
+                    }else{
+                        $doc = 'SÍ';
+                    }
+                    if($desaparecido[0]->documentoI == 'ACTA DE NACIMIENTO'){
+                        $actaNac = 'SÍ';
+                    }else{
+                        $actaNac = 'NO';
+                    }
+
+                    if($desaparecido[0]->foto == null){
+                        $fotoExtra = 'NO';
+                    }else{
+                        $fotoExtra = 'SÍ';
+                    }
+        //return $informante;
+         $data = array(
+            'entrevistador' => $informante[0]->entrevistador,
+            'cargo' => $informante[0]->cargo,
+            'informante' => $informante[0]->informante,
+            'direccion' => $informante[0]->direccion,
+            'parentesco' => $informante[0]->parentesco,
+            'docIdenti' => $doc,
+            'actaNac' => $actaNac,
+            'carpeta' => $carpeta,
+            'fotoExtra' => $fotoExtra,
+            'resolucion' => $resolucion,
+            'fechaReg' => $desaparecido[0]->fechaRegistro,
+            'edadExtra' => strtoupper($desaparecido[0]->edadExtravio),
+            'hora' => $desaparecido[0]->horaReg
+            );
+            return response()->json($data);
     }
 
     /**
