@@ -78,7 +78,7 @@ class OficioCedulaController extends Controller
     public function show($id)
     {
         //
-        $datos = \App\Models\Desaparecido::where('idCedula', $id)
+        /*$datos = \App\Models\Desaparecido::where('idCedula', $id)
                                             ->where('tipoPersona', 'DESAPARECIDA')
                                             ->limit(1)
                                             ->get();
@@ -90,9 +90,9 @@ class OficioCedulaController extends Controller
         $pdf -> loadHTML($view);
         
         
-        $pdf->setPaper('carta');
-
-        return $pdf->stream('formato_'.time().'.pdf');
+        $pdf->setPaper('carta');*/
+        return view('plantillas.cedulaMediaAfiliacion.oficioGeneral');
+        //return $pdf->stream('formato_'.time().'.pdf');
     }
 
 
