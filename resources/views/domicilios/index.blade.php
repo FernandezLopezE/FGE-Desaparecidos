@@ -174,6 +174,12 @@
 
 		btnAgregar.click(function(e){
 			modal.modal('show');
+			modal.find('form')[0].reset();
+			modal.removeData('modal');
+			municipio.empty();
+			localidad.empty();
+			colonia.empty();
+			cp.empty();
 			$('#btnActualizarD').hide();
 			$('#btnGuardarDomicilio').show();
             $("input[name='telefonos']").mask('(000) 000 0000');
@@ -223,7 +229,15 @@
                     
 				},
 				error: function(data) {
-					console.log(data);
+					//console.log(data);
+					var errors = data.responseJSON;
+					$('.modal-body div.has-danger').removeClass('has-danger');
+					$('.form-control-feedback').empty();
+					$.each(errors.errors, function(key, value){					
+						$('#div_'+key).addClass('has-danger');
+						$('input#'+key).addClass('form-control-danger');
+						$('#error_'+key).append(value);						
+					});
 				}
 			});
 		})
@@ -273,6 +287,7 @@
 			},
 			error: function(data) {
 				console.log(data);
+				var errors = data.responseJSON;
 			}
 		});
 	});

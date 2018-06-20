@@ -199,19 +199,19 @@
           <DIV id="idDesFisica">       
           <div class="row" >
               <div class="col-lg-4" >
-                  <div class=""  id="campoEdad" >                               
+                  <div class=""  id="campoEdad" align="center" >                               
                       <div class="" id="div_EdadDes">
-                          {!! Form::label ('','Edad de desaparición  ',['class' => '']) !!}
+                          {!! Form::label ('','Edad de desaparición  ',['class' => '', ]) !!}
                         <div class="row">
                          <div class="col"> &nbsp;{!! Form::label ('','Desde:  ',['class' => '']) !!}</div> 
                          <div class="col">  &nbsp;{!! Form::label ('','Hasta:  ',['class' => '']) !!}</div> </div>
                           </div>
                              <div class="row">                           
                              <div class="col-lg-6">
-                                 {!! Form::number('count','value', ['min' => '0' ,'max' => '120' ,'class' => 'form-control', 'id' => 'rng1']) !!} 
+                                 {!! Form::number('count','value', ['min' => '0' ,'max' => '120' ,'class' => 'form-control longitudNumero', 'id' => 'rng1']) !!} 
                            </div>
                            <div class="col-lg-6"> 
-                                   {!! Form::number('count','value', ['min' => '0' ,'max' => '120' ,'class' => 'form-control', 'id' => 'rng2']) !!}             
+                                   {!! Form::number('count','value', ['min' => '0' ,'max' => '120' ,'class' => 'form-control longitudNumero', 'id' => 'rng2']) !!}             
                            </div>
                            </div>
                     </div>     
@@ -220,7 +220,7 @@
               
               
              <div class="col-lg-4"> 
-                 <div class=""  id="campoEstatura" >                               
+                 <div class=""  id="campoEstatura" align="center">                               
                       <div class="" id="div_EdadDes">           
                   {!! Form::label ('','Estatura  ',['class' => '']) !!}
                   <div class="row">
@@ -229,17 +229,17 @@
                           </div>
                              <div class="row">                           
                              <div class="col-lg-6">
-                    {!! Form::number('count','value', ['min' => '0' ,'max' => '300' ,'class' => 'form-control', 'id' => 'estatura1']) !!}
+                    {!! Form::number('count','value', ['min' => '0' ,'max' => '300' ,'class' => 'form-control longitudNumero', 'id' => 'estatura1']) !!}
                     </div>
                            <div class="col-lg-6">
-                    {!! Form::number('count','value', ['min' => '0' ,'max' => '300' ,'class' => 'form-control', 'id' => 'estatura2']) !!}
+                    {!! Form::number('count','value', ['min' => '0' ,'max' => '300' ,'class' => 'form-control longitudNumero', 'id' => 'estatura2']) !!}
              </div>
                            </div>
                     </div>     
                   </div>
                  
             <div class="col-lg-4"> 
-                 <div class=""  id="campoPeso" >                               
+                 <div class=""  id="campoPeso" align="center">                               
                       <div class="" id="div_EdadDes">           
                   {!! Form::label ('','Peso  ',['class' => '']) !!}
                   <div class="row">
@@ -248,10 +248,10 @@
                           </div>
                              <div class="row">                           
                              <div class="col-lg-6">
-                     {!! Form::number('count','value', ['min' => '0' ,'max' => '500' ,'class' => 'form-control', 'id' => 'peso1']) !!}
+                     {!! Form::number('count','value', ['min' => '0' ,'max' => '500' ,'class' => 'form-control longitudNumero', 'id' => 'peso1']) !!}
                      </div>
                            <div class="col-lg-6">
-                     {!! Form::number('count','value', ['min' => '0' ,'max' => '500' ,'class' => 'form-control', 'id' => 'peso2']) !!}
+                     {!! Form::number('count','value', ['min' => '0' ,'max' => '500' ,'class' => 'form-control longitudNumero', 'id' => 'peso2']) !!}
               </div>
                            </div>
                     </div>     
@@ -269,82 +269,7 @@
         </div>
     </DIV>        
       </div>        
-          
-          <div id="catCabello" style="display:none"> 
-              <br><div class="row">
-                    &nbsp;&nbsp; <h5>Características del cabello</h5>                        
-              </div> <hr>      
-             <div class="row" id="idCabello">
-                 <div class="col-lg-4">
-                    {!! Form::label ('tipoCabello','Tipo de cabello') !!}
-                    {!! Form::select('tipoCabello', $tipoCabello, '', ['class' => '', 'id' => 'tipoCabello','multiple' => 'multiple'] ) !!}           
-                </div>
-                 <div class="col-lg-4">
-                   {!! Form::label ('tamanoCabello','Tamaño de cabello:') !!}
-                   {!! Form::select('tamanoCabello', $tamanoCabello, '', ['class' => '', 'id' => 'tamanoCabello','multiple' => 'multiple'] ) !!}
-                </div>
-                <div class="col-lg-4">  
-                    {!! Form::label ('tipoCabe','Color de cabello') !!}
-                    {!! Form::select('colorCabello', $coloresCabello, '', ['class' => '', 'id' => 'colorCabello','multiple' => 'multiple'] ) !!}
-                </div>
-              </div>
-          </div> 	
-          
-          <div id="catBarbaBigotePatilla" style="display:none"> 
-              <br><div class="row">
-                    &nbsp;&nbsp; <h5>Características del vello facial</h5>                        
-              </div> <hr>      
-             <div class="row">
-                 <div class="col-lg-4">
-                    {!! Form::label ('tipoBarba','Tipo de barba:') !!}
-                    {!! Form::select('tipoBarba', $tipoBarba, '', ['class' => '', 'id' => 'tipoBarba','multiple' => 'multiple'] ) !!}
-                 </div>
-                 <div class="col-lg-4">
-                     {!! Form::label ('color','Color de barba:') !!}
-                     {!! Form::select('colorBarba', $coloresBarba, '', ['class' => '', 'id' => 'colorBarba','multiple' => 'multiple'] ) !!}
-                </div>
-                <div class="col-lg-4">
-                      {!! Form::label ('tipoBigote','Tipo de bigote:') !!}
-                      {!! Form::select('tipoBigote', $tipoBigote, '', ['class' => '', 'id' => 'tipoBigote','multiple' => 'multiple'] ) !!}
-                 </div>                 
-              </div>
-              <br><div class="row" >
-                  <div class="col-lg-4">
-                    {!! Form::label ('colorBigotes','Color de bigote:') !!}
-                    {!! Form::select('colorBigote', $coloresBigote, '', ['class' => '', 'id' => 'colorBigote','multiple' => 'multiple'] ) !!}
-                  </div>
-                  <div class="col-lg-4">
-                     {!! Form::label ('tipoPatilla','Tipo de patilla:') !!}
-                     {!! Form::select('tipoPatilla', $tipoPatilla, '', ['class' => '', 'id' => 'tipoPatilla','multiple' => 'multiple'] ) !!}
-                  </div>
-                  <div class="col-lg-4">
-                    {!! Form::label ('colorPatillas','Color de patillas:') !!}
-                    {!! Form::select('colorPatillas', $coloresPatilla, '', ['class' => '', 'id' => 'colorPatilla','multiple' => 'multiple'] ) !!}
-                  </div>
-              </div>
-          </div>
-                     
-          <div id="catLabiosOjos" style="display:none"> 
-              <br><div class="row">
-                    &nbsp;&nbsp; <h5>Características de ojos y labios</h5>                        
-              </div>  <hr>  
-             <div class="row" id="idOjos"> 
-                 <div class="col-lg-4">
-                    {!! Form::label ('tamanoOjos','Tamaño de ojos:') !!}
-                    {!! Form::select('tamanoOjos', $tamanoOjos, '', ['class' => '', 'id' => 'tamanoOjos','multiple' => 'multiple'] ) !!}
-                 </div>
-                 <div class="col-lg-4">
-                  {!! Form::label ('colorOjoso','Color de ojos:') !!}
-                  {!! Form::select('colorOjos', $coloresOjos, '', ['class' => '', 'id' => 'colorOjos','multiple' => 'multiple'] ) !!}
-                 </div>               
-                <div class="col-lg-4">  
-                       {!! Form::label ('tipoLabios','Tipo de labios:') !!}
-                       {!! Form::select('tipoLabio', $tipoLabios, '', ['class' => '', 'id' => 'tipoLabio','multiple' => 'multiple'] ) !!}
-                </div>
- 	        </div>
- 	        </div>
-          
-          <div id="catModiParti" style="display:none"> 
+         <div id="catModiParti" style="display:none"> 
               <br><div class="row">
                     &nbsp;&nbsp; <h5>Modificaciones y particularidades del cuerpo</h5>                        
               </div>  <hr>  
@@ -376,9 +301,15 @@
         <div id="tablaGen" style="width:100%">
 
 
-<!-- data-id-table="advancedTable" 
- -->          <table id="tableDependencias"
-              data-search="true"
+<!-- data-id-table="advancedTable" -->         
+                  <div id="toolbar" style="display:none">
+                  <select class="form-control">
+                    <option value="">Exportar página</option>
+                    <option value="all">Exportar todos</option>
+                    <option value="selected">Exportar Selecccionados</option>
+                  </select>
+                </div>
+             <table id="tableDependencias"              
               data-advanced-search="true"
               data-toolbar="#toolbar"
               data-show-refresh="true"
@@ -393,14 +324,19 @@
               data-show-print="true"
               data-filter-control="true"
               data-trim-on-search="false"
-              data-page-list="[10, 50, 70, 100]"> 
+              data-page-list="[10, 50, 70, 100]"
+              data-export-options='{                 
+                 "ignoreColumn": ["state","Acciones"]
+               }'> 
 
              <thead>
                 <tr>
-                    <th data-field="nombres" 
-                        data-sortable="true" data-filter-control="input"></th>
-                    <th data-field="Fecha de desaparición" 
-                        data-sortable="true" data-filter-control="input"></th>
+<!--                        <th data-field="steate" data-checkbox="true"></th>-->
+                        <th data-field="N°" ></th>
+                        <th data-field="nombres" 
+                            data-sortable="true" data-filter-control="input"></th>
+                        <th data-field="Fecha de desaparición" 
+                            data-sortable="true" data-filter-control="input"></th>
                         <th data-field="Sexo" 
                         data-sortable="true" data-filter-control="input" data-visible="false"></th>
                         <th data-field="Apodo" 
@@ -422,7 +358,8 @@
                         <th data-field="ojos" 
                         data-sortable="true" data-filter-control="input"  data-visible="false" ></th>
                         <th data-field="labios" 
-                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>         <th data-field="Estado" 
+                        data-sortable="true" data-filter-control="input"  data-visible="false"></th>         
+                        <th data-field="Estado" 
                         data-sortable="true" data-filter-control="input" data-visible="false" ></th>
                         <th data-field="Municipio" 
                         data-sortable="true" data-filter-control="input"  data-visible="false"></th>
@@ -438,7 +375,7 @@
                         data-sortable="true" data-filter-control="input"  data-visible="false"></th>
                         <th data-field="Observaciones" 
                         data-sortable="true" data-filter-control="input"  data-visible="false"></th>
-               <th data-field="Acciones"> </th>
+                       <th data-field="Acciones" data-tableexport-display="none"> </th>
                 </tr>
             </thead>
  <tbody >
@@ -467,6 +404,66 @@
 {!! HTML::script('personal/js/FileSaver.min.js') !!} 
 {!! HTML::script('personal/js/bootstrap-table-filter-control.js') !!}
 <script type="text/javascript">
+       $(function () {
+         $('#toolbar').find('select').change(function () {
+          var expType = $(this).val(); 
+             console.log(expType);
+    table.bootstrapTable('refreshOptions', {
+         
+      exportDataType: $(this).val()
+    });
+             $("#idLiExport").remove();
+         $("#ulExport").append("<li id='idLiExport' data-type='Pdf'><a href='javascript:void(0)' id = 'exportPdf'>PDF</a></li>");
+   var try2 = $('#exportPdf');
+         var image = new Image();
+         var src = 'images/fge-logo.jpg'; //Esta es la variable que contiene la url de una imagen ejemplo, luego puedes poner la que quieras
+         image.src = src;
+  
+         try2.click(function(){
+         var doc = new jsPDF('l', 'pt');
+         var height = doc.internal.pageSize.height;
+    var res = doc.autoTableHtmlToJson(document.getElementById('tableDependencias'));
+    table.bootstrapTable('refreshOptions', {
+         
+      exportDataType: expType
+    });
+             
+     doc.autoTable(res.columns, res.data, {
+         theme: 'striped', 
+        styles: {
+            cellPadding: 1.5,
+            overflow: 'linebreak',
+            valign: 'middle',
+            halign: 'left',
+            lineColor: [0, 0, 0],
+            lineWidth: 0.2 
+            },
+       margin : {
+            top: 40,
+            bottom: 60,
+            left: 120,
+            width: 522
+            },
+       grid: {
+            table: { fillColor: 255, textColor: 80, fontStyle: 'normal', lineWidth: 0.1 },
+            header: { textColor: 255, fillColor: [16, 8, 6], fontStyle: 'bold', lineWidth: 0 },
+            body: {},
+            alternateRow: {}
+            },
+            beforePageContent: function(data) {
+            doc.setTextColor(50,50,50)
+            doc.setFontSize(18)
+            doc.text(250, 20, "Listado de personas no localizadas")
+            doc.addImage(image, 'JPG', 15, 40, 100, 100);
+           }
+            
+    });      
+            
+            doc.save('Extraviados.pdf');
+        }); 
+     });
+             });
+    
   var variable= 0;
     $('#idEstadoC').on('change', function(){
         console.log($(this).val());
@@ -539,24 +536,6 @@ $('#return-to-top').click(function() {      // When arrow is clicked
         }; }); 
      $('#A3').change(function()
       {if ($(this).is(':checked')) {
-            $('#catCabello').show();
-        }else{
-            $('#catCabello').hide()
-        }; });  
-     $('#A4').change(function()
-      {if ($(this).is(':checked')) {
-            $('#catBarbaBigotePatilla').show();
-        }else{
-            $('#catBarbaBigotePatilla').hide()
-        }; });  
-     $('#A5').change(function()
-      {if ($(this).is(':checked')) {
-            $('#catLabiosOjos').show();
-        }else{
-            $('#catLabiosOjos').hide()
-        }; }); 
-     $('#A6').change(function()
-      {if ($(this).is(':checked')) {
             $('#catModiParti').show();
         }else{
             $('#catModiParti').hide()
@@ -619,64 +598,65 @@ $('#return-to-top').click(function() {      // When arrow is clicked
    });
     
     
-    $('#rng1').change(function(){  
-    desde = $("#rng1").val();
-    hasta = $("#rng2").val();
-        if(hasta=='' ){            
-        }else{
-            if (desde > hasta)
-            { $("#rng1").val(""); }
-        }
-     
-   });
-    $('#rng2').change(function(){  
-    desde2 = $("#rng1").val();
-    hasta2 = $("#rng2").val();
-      if(desde2=='' ){           
-        }else{
-            if (hasta2 < desde2)
-            { $("#rng2").val(""); } 
-        }
-   });
-    
-    $('#estatura1').change(function(){  
-    desde = $("#estatura1").val();
-    hasta = $("#estatura2").val();
-        if(hasta=='' ){            
-        }else{
-            if (desde > hasta)
-            { $("#estatura1").val(""); }
-        }
-     
-   });
-    $('#estatura2').change(function(){  
-    desde2 = $("#estatura1").val();
-    hasta2 = $("#estatura2").val();
-      if(desde2=='' ){           
-        }else{
-            if (hasta2 < desde2)
-            { $("#estatura2").val(""); } 
-        }
-   });
-    $('#peso1').change(function(){  
-    desde = $("#peso1").val();
-    hasta = $("#peso2").val();
-        if(hasta=='' ){            
-        }else{
-            if (desde > hasta)
-            { $("#peso1").val(""); }
-        }
-     
-   });
-    $('#peso2').change(function(){  
-    desde2 = $("#peso1").val();
-    hasta2 = $("#peso2").val();
-      if(desde2=='' ){           
-        }else{
-            if (hasta2 < desde2)
-            { $("#peso2").val(""); } 
-        }
-   });
+//    $('#rng1').change(function(){  
+//    desde = $("#rng1").val();
+//    hasta = $("#rng2").val();
+//        if(hasta=='' ){            
+//        }else{
+//            if (desde > hasta)
+//            { $("#rng1").val(""); }
+//        }
+//     
+//   });
+//    $('#rng2').change(function(){  
+//    desde2 = $("#rng1").val();
+//    hasta2 = $("#rng2").val();
+//      if(desde2=='' ){           
+//        }else{
+//            if (hasta2 < desde2)
+//            { $("#rng2").val(""); } 
+//        }
+//   });
+//    
+//    $('#estatura1').change(function(){  
+//    desde = $("#estatura1").val();
+//    hasta = $("#estatura2").val();
+//        if(hasta=='' ){            
+//        }else{
+//            if (desde > hasta)
+//            { $("#estatura1").val(""); }
+//        }
+//     
+//   });
+//    $('#estatura2').change(function(){  
+//    desde2 = $("#estatura1").val();
+//    hasta2 = $("#estatura2").val();
+//      if(desde2=='' ){           
+//        }else{
+//            if (hasta2 < desde2)
+//            { $("#estatura2").val(""); } 
+//        }
+//   });
+//    $('#peso1').change(function(){  
+//    desde = $("#peso1").val();
+//    hasta = $("#peso2").val();
+//        if(hasta=='' ){            
+//        }else{
+//            if (desde > hasta)
+//            { $("#peso1").val(""); }
+//        }
+//     
+//   });
+//    $('#peso2').change(function(){  
+//    desde2 = $("#peso1").val();
+//    hasta2 = $("#peso2").val();
+//      if(desde2=='' ){           
+//        }else{
+//            if (hasta2 < desde2)
+//            { $("#peso2").val(""); } 
+//        }
+//   });
+//    
   //*****************************
     //-<<--<--<<--<<--<<-MULTISELECTS-<<--<--<<--<<--<<-<<--<--<<--<<--<<
       
@@ -713,57 +693,6 @@ $('#return-to-top').click(function() {      // When arrow is clicked
             filter: true,
             width: '100%'
         });
-    $('#tipoCabello').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
-    $('#tamanoCabello').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
-    $('#colorCabello').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
-    $('#tipoBarba').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
-    $('#colorBarba').multipleSelect({
-            filter: true,
-            width: '100%'
-        }); 
-
-    $('#tipoBigote').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
-    $('#colorBigote').multipleSelect({
-            filter: true,
-            width: '100%'
-        }); 
-
-     $('#tipoPatilla').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
-    $('#colorPatilla').multipleSelect({
-            filter: true,
-            width: '100%'
-        }); 
-
-    $('#tamanoOjos').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
-    $('#colorOjos').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
-     $('#tipoLabio').multipleSelect({
-            filter: true,
-            width: '100%'
-        });
     $('#modificaciones').multipleSelect({
             filter: true,
             width: '100%'
@@ -780,42 +709,9 @@ $('#return-to-top').click(function() {      // When arrow is clicked
         $("#campoColorPiel").toggle();
         $("#campoComplexion").toggle();
     });
-    $("#colapsar3").click(function(event) {
-        //$("#campoUbicacion").show();
-        $("#campoTipoCabello").toggle();
-        $("#campoTamanoCabello").toggle();
-        $("#campoColorCabello").toggle();
- 
-    });
-    
-     $("#colapsar4").click(function(event) {
-        //$("#campoUbicacion").show();
-         $("#campoTipoBarba").toggle();        
-        $("#campoColorBarba").toggle();
-        
-    });
     $("#colapsar5").click(function(event) {
         $("#campoFechaD").toggle();
         $("#campoFechaR").toggle();
-    });
-    $("#colapsar6").click(function(event) {
-         $("#campoTipoBigote").toggle();        
-        $("#campoColorBigote").toggle();
-        
-    });
-    $("#colapsar7").click(function(event) {
-         $("#campoTipoPatilla").toggle();        
-        $("#campoColorPatilla").toggle();
-        
-    });
-     $("#colapsar8").click(function(event) {
-         $("#campoTamanoOjos").toggle(); 
-         $("#campoColorOjos").toggle();               
-    });
-
-    $("#colapsar9").click(function(event) {
-        //$("#campoUbicacion").show();
-         $("#campoTipoLabio").toggle();             
     });
     $("#colapsar10").click(function(event) {
         //$("#campoUbicacion").show();
@@ -830,9 +726,8 @@ $('#return-to-top').click(function() {      // When arrow is clicked
     var CheckMasc = $('#masc');
     var filtros = $('#filtros');
     var filtrosTodos = $('#filtrosTodos');
-        var CheckFem = $('#fem');
-    
-        var fem = "";  
+    var CheckFem = $('#fem');
+    var fem = "";  
 
     prueba.click(function(e){
       $('#idMunicipio').multipleSelect();
@@ -907,8 +802,8 @@ var formatTableActions = function(value, row, index) {
             $("#idNacionalidad").empty();
             $("#idCabelloM").empty();
             $("#idVelloFacialM").empty();
-            $("#idOjos").empty();
-            $("#idLabios").empty();
+            $("#idOjosM").empty();
+            $("#idLabiosM").empty();
         $("#idModificaciones").empty();
         $("#idParticularidades").empty();
         $("#idObservaciones").empty();
@@ -936,8 +831,8 @@ var formatTableActions = function(value, row, index) {
             //$("#idTipoCabello").append(row.tipoCabello);
             $("#idCabelloM").append(row.cabello);
             $("#idVelloFacialM").append(row.velloFacial);
-            $("#idOjos").append(row.ojos);
-            $("#idLabios").append(row.labios);
+            $("#idOjosM").append(row.ojos);
+            $("#idLabiosM").append(row.labios);
         $("#idModificaciones").append(row.modificaciones);
         $("#idParticularidades").append(row.particularidades);
         $("#idObservaciones").append(row.observaciones);
@@ -996,6 +891,9 @@ var formatTableActions = function(value, row, index) {
 }
     }
      filtrosTodos.click(function(){
+      
+         
+         
           tablaGen.hide();
 //          var estados = $('#estados').multipleSelect('getSelects');
 //          console.log("El string:")
@@ -1047,7 +945,7 @@ var formatTableActions = function(value, row, index) {
           console.log('Error en la consulta')
         }
       });
-          
+
           table2.bootstrapTable({     
 
       columns: [{         
@@ -1081,8 +979,9 @@ var formatTableActions = function(value, row, index) {
         //console.log("entrando")
         });
      //-o-|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-
+
     filtros.click(function(){
-        
+       // $("#toolbar").show();
         var municipiosData='';
     if(variable==0){
         municipiosData='';
@@ -1113,7 +1012,8 @@ var formatTableActions = function(value, row, index) {
           
           var fem =' ';
           var masc =' ';
-   
+   	
+        
           table.bootstrapTable("refresh", {
               data: dataString
               //url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+ '/'+ estados
@@ -1122,49 +1022,16 @@ var formatTableActions = function(value, row, index) {
 //{          var sexo = '';
 //                var femen = $("input#fem:checked").val();    
 //                var mascul = $("input#masc:checked").val();
-//        
-//                
-//                if (femen == null ){
-//                    sexo = '\''+mascul+'\'';
-//                     console.log('--------------------------');
-//                    console.log(sexo);
-//                }else{ if (mascul == null ){
-//                    sexo = '\''+femen+'\'';
-//                     console.log('--------------------------');
-//                    console.log(sexo);
-//                } else{
-//                    sexo = '\'' +femen + '\',\'' + mascul+ '\'';
-//                     console.log('--------------------------');
-//                    console.log(sexo);
-//                    
-//                } } } 
-
+ 
           var dataString = {
                 nacionalidad: $('#nacionalidades').multipleSelect('getSelects'),              
                 estados: $('#idEstadoC').multipleSelect('getSelects'),
                 municipios: municipiosData,
                 cPiel: $('#cPiel').multipleSelect('getSelects'),
-                complexion: $('#complexion').multipleSelect('getSelects'),
-                tipoCabello: $('#tipoCabello').multipleSelect('getSelects'),
-                tamanoCabello: $('#tamanoCabello').multipleSelect('getSelects'),
-                colorCabello: $('#colorCabello').multipleSelect('getSelects'),
-                tipoBarba: $('#tipoBarba').multipleSelect('getSelects'),
-                colorBarba: $('#colorBarba').multipleSelect('getSelects'),
-              
-                tipoBigote: $('#tipoBigote').multipleSelect('getSelects'),
-                colorBigote: $('#colorBigote').multipleSelect('getSelects'),
-                tipoPatilla: $('#tipoPatilla').multipleSelect('getSelects'),
-                colorPatilla: $('#colorPatilla').multipleSelect('getSelects'),
-              
-                tamanoOjos: $('#tamanoOjos').multipleSelect('getSelects'),
-                colorOjos: $('#colorOjos').multipleSelect('getSelects'),
-                tipoLabio: $('#tipoLabio').multipleSelect('getSelects'),
+                complexion: $('#complexion').multipleSelect('getSelects'),                
                 modif: $('#modificaciones').multipleSelect('getSelects'),
                 partic: $('#particularidades').multipleSelect('getSelects'),
                 genero: $('#generos').multipleSelect('getSelects'),
-                //fem : $("input#fem:checked").val(),     
-                //masc : $("input#masc:checked").val(),
-          //    sexo,
                 rg : $('#rng1').val(),
                 rg2 : $('#rng2').val(),
                 estatura1 : $('#estatura1').val(),
@@ -1209,7 +1076,13 @@ var formatTableActions = function(value, row, index) {
              //
             //data: data,
       //url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+'/'+ estados,
-      columns: [{         
+     columns: [// {         
+//                    field: 'state',
+//            },
+                 {     
+                    field: 'rownum',
+                    title: 'N°',
+            },{     
                     field: 'nombre',
                     title: 'Nombre',
             },{
@@ -1293,10 +1166,24 @@ var formatTableActions = function(value, row, index) {
         var try2 = $('#exportPdf');
         console.log('hiiiiiiiiiiiiiiiiii');
        
+        //var imgData = 'data:images/Diente/amalgama.jpg'
+
+//var pdf = new jsPDF();
+// var img = new Image;
+//        img.crossOrigin = "";  
+// img.src = "images/Diente/amalgama.jpg";
+
+         var image = new Image();
+         var src = 'images/fge-logo.jpg'; //Esta es la variable que contiene la url de una imagen ejemplo, luego puedes poner la que quieras
+         image.src = src;
+  
          try2.click(function(){
-        var doc = new jsPDF('l', 'pt');
+             table.bootstrapTable('togglePagination');
+         var doc = new jsPDF('l', 'pt');
+         var height = doc.internal.pageSize.height;
     var res = doc.autoTableHtmlToJson(document.getElementById('tableDependencias'));
-   doc.autoTable(res.columns, res.data, {
+    doc.page=1;          
+    doc.autoTable(res.columns, res.data, {
         theme: 'striped', 
         styles: {
             cellPadding: 1.5,
@@ -1305,20 +1192,46 @@ var formatTableActions = function(value, row, index) {
             halign: 'left',
             lineColor: [0, 0, 0],
             lineWidth: 0.2 
-        },
+            },
+       margin : {
+            top: 40,
+            bottom: 20,
+            left: 120,
+            width: 522
+            },
        grid: {
             table: { fillColor: 255, textColor: 80, fontStyle: 'normal', lineWidth: 0.1 },
             header: { textColor: 255, fillColor: [16, 8, 6], fontStyle: 'bold', lineWidth: 0 },
             body: {},
             alternateRow: {}
-        }
-       
-    });
-    doc.save('no_localizados.pdf');
+            },
+           
+            beforePageContent: function(data) {
+            doc.setTextColor(50,50,50)
+            doc.setFontSize(18)
+            doc.text(300, 20, "Listado de personas no localizadas")
+            doc.addImage(image, 'JPG', 15, 40, 100, 100);
+           },
+            afterPageContent: function(data) {
+            doc.setTextColor(50,50,50)
+            doc.setFontSize(12)
+            doc.text(770, 580,  " "+doc.page);            
+            doc.page ++;
+           }
+             
+            
+    });      
+            
+            doc.save('Extraviados.pdf');
+            table.bootstrapTable('togglePagination');
         });
         
-        
-        
+         $('.search input').val('');
+            table.bootstrapTable('refresh', {
+                query: {search: ''}
+            });
+        $('.search input').focus().val('').blur();
+    
 //{
 //     table.bootstrapTable('hideColumn', 'nombres');
 //

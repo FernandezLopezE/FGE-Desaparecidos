@@ -26,20 +26,20 @@ class VestimentaRequest extends FormRequest
     {
         $rules = [
             'material'          => '',
-            'diseno'            => 'required',
+            'diseno'            => '',
             'talla'             => '',
             'idMarca'           => 'required',
             'idColor'           => '',
             'idVestimenta'      => ['required',
                                     function($attribute, $value, $fail){
                                         if($value === "1"){
-                                            return $fail('Seleccione una vestimenta');
+                                            return $fail('Seleccione una vestimenta.');
                                         }
                                     }],
             'idPrenda'          => ['required',
                                     function($attribute, $value, $fail){
                                         if($value === "null"){
-                                            return $fail('La Prenda es requerida');
+                                            return $fail('La Prenda es requerida.');
                                         }
                                     }],
 
@@ -60,10 +60,10 @@ class VestimentaRequest extends FormRequest
     public function messages()
     {
         return [
-            'diseno.required' => 'Las Observaciones son requeridas',
-            'idMarca.required'  => 'Marca es requerido',
-            'idVestimenta.required'  => 'Tipo vestimenta es requerido',
-            'idPrenda.required'  => 'Tipo de prenda es requerido',
+            'diseno.required'  => 'El campo es requerido.',
+            'idMarca.required'  => 'El campo es requerido.',
+            'idVestimenta.required'  => 'El es requerido.',
+            'idPrenda.required'  => 'El campo es requerido.',
         ];
     }
 

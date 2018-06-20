@@ -21,8 +21,8 @@
 	  		<div class="card border-success">
 	  			<div class="card-header">	
 					<h5>Descripción de los hechos
-					<button type="submit" class="btn btn-dark pull-right"  id="btnGuardarDescripcionHechos">	Guardar		
-					</button>		
+					<button type="button" class="btn btn-light pull-right" id="cancelar">Cancelar</button>
+					<button type="submit" class="btn btn-dark pull-right"  id="btnGuardarDescripcionHechos">	Guardar		</button>		
 					</h5>
 				</div>
 	  		</div>
@@ -33,7 +33,7 @@
 							<div class="col-10 pull-right">
 								
 							</div>	
-							
+
 					
 				</div>
 	  			<div class="row">				
@@ -505,6 +505,10 @@ $(btnGuardarDescripcionHechos).click (function(){
 					});
 				}
 			});
+		})
+
+		$(cancelar).click (function(){
+			window.location =  routeIndex2 +'/{!! $desaparecido->id !!}';
 		})
 
 

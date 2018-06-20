@@ -141,7 +141,7 @@ class AntecedentesMedicosController extends Controller
         $implantes = \App\Models\CatImplantes::all()->pluck('nombre','id');
 
 
-        return view('antecedentesmedicos.form_antecedentes_medicos',
+        return view('antecedentesmedicos.show_antecedentes_medicos',
             [
                 'desaparecido' => $desaparecido,
                 'enfermedades' => $enfermedades,

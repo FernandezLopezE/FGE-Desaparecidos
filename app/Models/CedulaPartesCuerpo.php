@@ -13,7 +13,7 @@ class CedulaPartesCuerpo extends Model
 		'observaciones',
 		'otraParticularidad',
 		'otraModificacion',
-		'otroTipoCuerpo',
+		'otroTipo',
 		'otroColor',
 		'imagen',
 		'posicion',

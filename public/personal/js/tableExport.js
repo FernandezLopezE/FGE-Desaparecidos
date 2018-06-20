@@ -21,7 +21,7 @@
       displayTableName:    false,
       escape:              true,
       exportHiddenCells:   false,       // true = speed up export of large tables with hidden cells (hidden cells will be exported !)
-      fileName:            'Buscador persona no localizada',
+      fileName:            'Extraviados',
       htmlContent:         false,
       ignoreColumn:        [],
       ignoreRow:           [],

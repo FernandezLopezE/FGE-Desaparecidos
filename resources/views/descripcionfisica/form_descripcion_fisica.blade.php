@@ -90,8 +90,16 @@
                                                           @foreach (json_decode($value->reglas) as $ket => $regla)                                            
                                                           @switch($ket)
                                                             @case('tipo')
-                                                              @if($regla == 1)          
-                                                                <p><strong>Tipo: </strong>{!! $value->tipo !!}</p>
+                                                              @if($regla == 1)
+                                                                @if($value->tipo == 'OTRO')
+                                                                
+                                                                  <p><strong>Tipo: </strong>{!! $value->otroTipo !!}</p>
+                                                                
+                                                                @else
+                                                                  <p><strong>Tipo: </strong>{!! $value->tipo !!}</p>
+
+                                                                @endif          
+                                                                
                                                                 @break
                                                               @else
                                                                   @break
@@ -106,8 +114,17 @@
                                                               @endif
 
                                                             @case('color')
-                                                              @if($regla == 1)          
-                                                                <p><strong>Color: </strong>{!! $value->color !!}</p>
+                                                              @if($regla == 1)
+                                                                @if($value->color == 'OTRO')
+                                                                
+                                                                    <p><strong>Color: </strong>{!! $value->otroColor !!}</p>
+                                                                
+                                                                
+                                                                @else
+                                                                  <p><strong>Color: </strong>{!! $value->color !!}</p>
+
+                                                                @endif                    
+                                                                
                                                                 @break
                                                               @else
                                                                   @break
@@ -122,11 +139,14 @@
                                                               @endif
 
                                                             @case('modificaciones')
-                                                              @if($regla == 1)          
+                                                              @if($regla == 1)                                                                 
                                                                 <label for="">Modificaciones:</label>
+                                                                @php $tmpModi = ''; @endphp 
                                                                 @foreach ($value->modificaciones as $modificacion)
-                                                                    {!! $modificacion !!}, 
+                                                                    @php $tmpModi = $modificacion.', '.$tmpModi; @endphp 
                                                                 @endforeach
+                                                                  @php $tmpModi = trim($tmpModi,', '); @endphp 
+                                                                 {!! $tmpModi !!}
                                                                 <br>
                                                                 @break
                                                               @else
@@ -136,9 +156,12 @@
                                                             @case('particularidades')
                                                               @if($regla == 1)          
                                                                 <label for="">Particularidades:</label>
+                                                                @php $tmpParti = ''; @endphp 
                                                                 @foreach ($value->particularidades as $particularidad)
-                                                                    {!! $particularidad !!}, 
+                                                                  @php $tmpParti = $particularidad.', '.$tmpParti; @endphp 
                                                                 @endforeach
+                                                                 @php $tmpParti = trim($tmpParti,', '); @endphp 
+                                                                  {!! $tmpParti !!}
                                                                 <br>
                                                                 @break
                                                               @else
@@ -200,7 +223,7 @@
   
   $.each(partesCuerpo, function(key, value){	
     console.log(value.idPadre);
-    $('g[data-cuerpo="'+value.idPadre+'"] path').css({"fill":"#fb77bd", "stroke":"#626362","stroke-width":"2-"});
+    $('g[data-cuerpo="'+value.idPadre+'"] path').css({"fill":"#17a4da", "stroke":"#626362","stroke-width":"2-"});
   })
   
 
