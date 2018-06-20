@@ -56,7 +56,7 @@
 		var routeIndex = '{!! route('consultas.index') !!}';
 		var routeCedula = '{!! route('cedula.index') !!}';
 		var routeBoletin = '{!! route('boletin.index') !!}';
-		var routeOficio = '{!! route('oficio.index') !!}';
+		var routeOficio = '{!! route('oficiosDependencias.index') !!}';
 
 		var formatTableActions = function(value, row, index) {				
 
