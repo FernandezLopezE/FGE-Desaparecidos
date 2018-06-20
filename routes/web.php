@@ -40,6 +40,8 @@ Route::get('/', 'InicioController@index');
 
 	Route::resource('oficiosDependencias','OficioDependencia');
 
+	Route::resource('configuraciones','ConfiguracionesController');
+
     
     Route::resource('dependencia_destinatario','AgregarDependenciaController');
 
@@ -190,9 +192,9 @@ Route::post('/desaparecido/update_vestimenta', 'DesaparecidoController@update_ve
 
 //fin de mis rutas
 //Rutas para antedecedentes medicos
-Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'AntecedentesMedicosController@show')
+/*Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'AntecedentesMedicosController@show')
 	->name('antecedentesmedicos.show');
-Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store');
+Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store');*/
 Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
 
 //mostrar vista de señas particulares 
@@ -215,10 +217,10 @@ Route::post('/mail/pdf', 'MailController@pdf')
 	->name('mail.pdf');
 
 //Rutas para antedecedentes medicos
-Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'AntecedentesMedicosController@show')
+/*Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'AntecedentesMedicosController@show')
 	->name('antecedentesmedicos.show');
 Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store');
-Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
+Route::resource('/antecedentesmedicos','AntecedentesMedicosController');*/
 
 Route::get('/email/{idCedula}', 'MailController@show')->name('mail.show');
 // Rutas de la dependencias

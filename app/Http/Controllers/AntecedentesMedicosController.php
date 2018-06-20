@@ -122,16 +122,63 @@ class AntecedentesMedicosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($idExtraviado, Request $request)
+    public function show($idExtraviado)
     {
-        //
+        $desaparecido = \App\Models\Desaparecido::find($idExtraviado);
+        $idDesaparecido = ($idExtraviado);
+        //dd($desaparecido->toArray());
+        $anteMedi = \App\Models\AntecedentesMedicos::where('idPersonaDesaparecida', $idExtraviado)->limit(1)->get();
+        //dd($anteMedi->toArray());
+        $datos2= \DB::table('desaparecidos_personas AS dp')
+                    ->select('dp.idCedula as idCedula')
+                    ->where('dp.id', $idDesaparecido)
+                    ->get();
+        //dd($datos2->toArray());
+        $idCedula = ($datos2[0] ->idCedula);
+        $observaciones= \DB::table('antecedentes_medicos AS anmi')->select('anmi.observaciones as observaciones')->where('anmi.id', $idCedula)->get();
+        //dd($observaciones->toArray());
+        if(empty($observaciones[0] ->observaciones)){
+            $images = (Anexos::where('idDesaparecido', $idExtraviado)->where('tipoAnexo', 'antecedentesMedicos')->get());
+            $enfermedades = \App\Models\CatEnfermedades::all()->pluck('nombre','id');
+            $iQuirurgicas = \App\Models\CatIntervencionesQuirurgicas::all()->pluck('nombre','id');
+            $adicciones = \App\Models\CatAdicciones::all()->pluck('nombre','id');
+            $implantes = \App\Models\CatImplantes::all()->pluck('nombre','id');
+
+            return view('antecedentesmedicos.form_antecedentes_medicos',
+            [
+                'desaparecido' => $desaparecido,
+                'enfermedades' => $enfermedades,
+                'iQuirurgicas' => $iQuirurgicas,
+                'adicciones' => $adicciones,
+                'implantes' => $implantes,
+                'images' => $images,
+                
+            ]);
+        }else{
+            $images = (Anexos::where('idDesaparecido', $idExtraviado)->where('tipoAnexo', 'antecedentesMedicos')->get());
+            $enfermedades = \App\Models\CatEnfermedades::all()->pluck('nombre','id');
+            $iQuirurgicas = \App\Models\CatIntervencionesQuirurgicas::all()->pluck('nombre','id');
+            $adicciones = \App\Models\CatAdicciones::all()->pluck('nombre','id');
+            $implantes = \App\Models\CatImplantes::all()->pluck('nombre','id');
+            //dd($desaparecido->antecedentesMedicos->toArray());
+
+            //$observaciones=$anteMedi->observaciones;
+            return view('antecedentesmedicos.show_antecedentes_medicos',
+            [
+                'desaparecido' => $desaparecido,
+                'enfermedades' => $enfermedades,
+                'iQuirurgicas' => $iQuirurgicas,
+                'adicciones' => $adicciones,
+                'implantes' => $implantes,
+                'images' => $images,
+                //'observaciones' => $observaciones,
+            ]);
+        }
+
+        /*
         $images = (Anexos::where('idDesaparecido', $idExtraviado)->where('tipoAnexo', 'antecedentesMedicos')->get());
 
-
         //return view('image-gallery',compact('images'));
-
-
-
 
         $desaparecido = Desaparecido::find($idExtraviado);
 
@@ -140,16 +187,16 @@ class AntecedentesMedicosController extends Controller
         $adicciones = \App\Models\CatAdicciones::all()->pluck('nombre','id');
         $implantes = \App\Models\CatImplantes::all()->pluck('nombre','id');
 
-
+        //dd($desaparecido->antecedentesMedicos->toArray());
         return view('antecedentesmedicos.show_antecedentes_medicos',
-            [
-                'desaparecido' => $desaparecido,
-                'enfermedades' => $enfermedades,
-                'iQuirurgicas' => $iQuirurgicas,
-                'adicciones' => $adicciones,
-                'implantes' => $implantes,
-                'images' => $images,
-            ]);
+        [
+            'desaparecido' => $desaparecido,
+            'enfermedades' => $enfermedades,
+            'iQuirurgicas' => $iQuirurgicas,
+            'adicciones' => $adicciones,
+            'implantes' => $implantes,
+            'images' => $images,
+        ]);*/
     }
 
     /**
