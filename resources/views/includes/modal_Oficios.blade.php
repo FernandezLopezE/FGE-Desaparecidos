@@ -9,24 +9,35 @@
       </div>
       <div class="modal-body">
         <!-- Contenido del formulario-->
-        <div class="form-group row">
-          <div class="col-6">
+        <div class="row">
+          <div class="col">
+            <h5>SECRETARIA DE SEGURIDAD PÚBLICA</h5>
             <label for="">Dirigido a</label>
-            <input type="text" class="form-control">
-          </div>
-          <div class="col-6">
-            <label for="">Cargo</label>
-            <input type="text" class="form-control" value="Secretario de Seguridad Pública del Estado de Veracruz">
           </div>
         </div>
-        <div class="row">
-          <div class="col-12">
-            <label for="">Dependencias:</label>
-            <input type="text" class="form-control" value="CENTRO ESTATAL DE CONTROL, COMANDO, COMUNICACIONES Y TRANSPORTE">
-            <input type="text" class="form-control" value="DIRECCIÓN GENERAL DE LA POLICÍA MINISTERIAL">
-            <input type="text" class="form-control" value="DIRECCIÓN GENERAL DE PREVENCIÓN Y REINSERCIÓN SOCIAL">
-          </div>
 
+        <div class="form-group row">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Nombre">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Primer apellido">
+          </div>
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Segundo apellido">
+          </div>
+        </div>
+      
+        <div class="form-group row">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Cargo que desempeña">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col">
+            <input type="text" class="form-control" placeholder="Correo eléctronico (opcional)">
+          </div>
         </div>
           
         <!-- Fin del Contenido del formulario-->
