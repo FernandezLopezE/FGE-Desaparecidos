@@ -14,7 +14,7 @@
 Route::get('/', 'InicioController@index');
 
 	Route::resource('cedula','CedulaController');
-
+	Route::resource('oficioCedula','OficioCedulaController');
 	Route::resource('informante','InformanteController');
 
 	Route::get('extraviado/create/{idCedula}', 'ExtraviadoController@create')
@@ -35,6 +35,12 @@ Route::get('/', 'InicioController@index');
 	Route::resource('senas_particulares','SenasParticularesController');
 
 	Route::resource('datos_dentales','DatosDentalesController');
+
+	Route::resource('oficio','oficioController');
+
+	Route::resource('oficiosDependencias','OficioDependencia');
+
+	Route::resource('configuraciones','ConfiguracionesController');
 
     
     Route::resource('dependencia_destinatario','AgregarDependenciaController');
@@ -186,9 +192,9 @@ Route::post('/desaparecido/update_vestimenta', 'DesaparecidoController@update_ve
 
 //fin de mis rutas
 //Rutas para antedecedentes medicos
-Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'AntecedentesMedicosController@show')
+/*Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'AntecedentesMedicosController@show')
 	->name('antecedentesmedicos.show');
-Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store');
+Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store');*/
 Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
 
 //mostrar vista de señas particulares 
@@ -211,10 +217,10 @@ Route::post('/mail/pdf', 'MailController@pdf')
 	->name('mail.pdf');
 
 //Rutas para antedecedentes medicos
-Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'AntecedentesMedicosController@show')
+/*Route::get('/antecedentesmedicos/antecedentesm/{idPersonaDesaparecida}', 'AntecedentesMedicosController@show')
 	->name('antecedentesmedicos.show');
 Route::post('/antecedentesmedicos/store', 'AntecedentesMedicosController@store');
-Route::resource('/antecedentesmedicos','AntecedentesMedicosController');
+Route::resource('/antecedentesmedicos','AntecedentesMedicosController');*/
 
 Route::get('/email/{idCedula}', 'MailController@show')->name('mail.show');
 // Rutas de la dependencias
@@ -344,3 +350,18 @@ Route::post('anexosC/imagenDesaparecido','AnexosController@store');
 
 
 Route::get('conexion/uipj/{carpeta}', 'ConexionUipjController@resolviendo_peticion');
+
+/*OFICIOS*/
+Route::post('oficios', 'OficioController@oficios')->name('oficios');
+Route::post('getToken', 'OficioController@getToken')->name('getToken');
+Route::post('saveOficio', 'OficioController@saveOficio')->name('saveOficio');
+Route::post('intentos', 'OficioController@intentos')->name('intentos');
+Route::get('getOficios', 'OficioController@getOficios')->name('getOficios');
+Route::post('getOficio', 'OficioController@getOficio')->name('getOficio');
+Route::post('addOficio', 'OficioController@addOficio')->name('addOficio');
+Route::post('updateOficio', 'OficioController@updateOficio')->name('updateOficio');
+
+Route::get('oficioprueba/{id}', 'OficioController@oficioprueba')->name('oficioprueba');
+Route::get('/pruebasformatos', function(){
+    return view('oficios.prueba');
+    });

@@ -74,9 +74,15 @@
 
 						<li class="nav-header">MISCELLANEOUS</li>
 						<li class="nav-item">
-							<a href="https://adminlte.io/docs" class="nav-link">
-								<i class="nav-icon fa fa-file"></i>
-								<p>Documentation</p>
+							<a href="{!! route('configuraciones.index') !!}" class="nav-link">
+								<i class="nav-icon fa fa-cogs"></i>
+								<p>Configuración</p>
+							</a>
+						</li>
+						<li class="nav-item has-treeview">
+							<a href="{{url('getOficios')}}" class="nav-link {{ Request::is( 'getOficios') ? 'active' : '' }}">
+								<i class="nav-icon fa fa-font"></i>
+								<p>Oficios</p>
 							</a>
 						</li>
 						<li class="nav-item bottom" ><a class="nav-link" href="#" onclick="event.preventDefault();
