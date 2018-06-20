@@ -234,7 +234,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><strong>COLOR DE PIEL: </strong>@if(($desaparecido->colorpiel->nombre)!=null){!! $desaparecido->colorpiel->nombre !!} @else SIN INFORMACIÓN. @endif</td>
+                    <td><strong>COLOR DE PIEL: </strong>@if(($desaparecido->colorpiel)!=null){!! $desaparecido->colorpiel->nombre !!} @else SIN INFORMACIÓN. @endif</td>
                 </tr>
                 <tr>
                     <td class="text-sm-center">

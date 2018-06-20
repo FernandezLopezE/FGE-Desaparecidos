@@ -21,31 +21,40 @@
 		<div class="col">
 			<dl class="row">
 				<dt class="col-sm-4">ENFERMEDADES:</dt>
-			
 				<dt class="col-sm-4">ADICCIONES:</dt>
-			
 				<dt class="col-sm-4">INTERVENCIONES QUIRÚRGICAS:</dt>
 			</dl>
 			<dl class="row">
-				<dt class="col-sm-4">ANEXOS:</dt>
+				<dd class="col-sm-4">
+					{!! $desaparecido->antecedentesMedicos !!}		
+				</dd>
+				<dd class="col-sm-4">
+					egrfgregergerg		
+				</dd>
+				<dd class="col-sm-4">
+					egrfgregergerg		
+				</dd>
 			</dl>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col">
-				<dl class="row">
-					<dt class="col-sm-8">ÚLTIMA PERSONA QUE LO VIO:</dt>
-				</dl>
-				<dl class="row">
-					<dt class="col-sm-3">Nombre:</dt>
-					<dd class="col-sm-5">
-						
-					</dd>
-					<dt class="col-sm-2">Parentesco:</dt>
-					<dd class="col-sm-2">
-						
-					</dd>
-				</dl>
+			<dl class="row">
+				<dt class="col-sm-4">MEDICAMENTOS QUE TOMA:</dt>
+				<dt class="col-sm-4">OBSERVACIONES:</dt>
+			</dl>
+			<dl class="row">
+				<dd class="col-sm-4">
+					egrfgregergerg		
+				</dd>
+				<dd class="col-sm-4">
+					egrfgregergerg		
+				</dd>
+			</dl>
+			<dl class="row">
+				<dt class="col-sm-12">ANEXOS:</dt>
+			</dl>
+			<dl class="row">
+				<dd class="col-sm-12">
+					egrfgregergerg		
+				</dd>
+			</dl>
 		</div>
 	</div>
 </div>	
