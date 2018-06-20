@@ -28,7 +28,7 @@
 	</div>
 	<div class="card-body">
 		<div class="form-group row">
-			<div class="col-4 dentadura">
+			<div class="col-lg-4 dentadura">
 				@if($edad[0] > 14)
               		@include('datosdentales.dentadura_adult')
             	@endif

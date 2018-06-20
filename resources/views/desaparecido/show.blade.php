@@ -85,7 +85,7 @@ height:150px;
   
   <div class="card-body">
     <div class="form-group row">
-      <div class="col-4" style="width: 18rem; margin: 0 auto;">
+      <div class="col-lg-4 col-xs-12" style="width: 26rem; margin: 0 auto;">
         @if(empty($desaparecido->fotoDesaparecido))
         <center>{{ HTML::image('images/perfil3.png', 'Fiscal', array('class' => '','style' => "width: 80%;")) }}</center>
           @else
@@ -102,7 +102,7 @@ height:150px;
 
       <div class="col">
         <div class="row">
-          <div class="col-3">
+          <div class="col-4">
             <dt>Nombres:</dt>
           </div>
           <div class="col">
@@ -115,7 +115,7 @@ height:150px;
         </div>
 
         <div class="row">
-          <div class="col-3">
+          <div class="col-4">
             <dt>Apodo:</dt>
           </div>
           <div class="col">
@@ -126,7 +126,7 @@ height:150px;
         </div>
 
         <div class="row">
-          <div class="col-3">
+          <div class="col-4">
             <dt>Género:</dt>
           </div>
           <div class="col">
@@ -146,7 +146,7 @@ height:150px;
         </div>
 
         <div class="row">
-          <div class="col-3">
+          <div class="col-4">
             <dt>Nacionalidad:</dt>
           </div>
           <div class="col">
@@ -155,7 +155,7 @@ height:150px;
         </div>
 
         <div class="row">
-          <div class="col-3">
+          <div class="col-4">
             <dt>Estado natal:</dt>
           </div>
           <div class="col">
@@ -164,7 +164,7 @@ height:150px;
         </div>
 
         <div class="row">
-          <div class="col-3">
+          <div class="col-4">
             <dt>Fecha nacimiento:</dt>
           </div>
           <div class="col">
@@ -173,7 +173,7 @@ height:150px;
         </div>
 
         <div class="row">
-          <div class="col-3">
+          <div class="col-4">
             <dt>Edad de extravio:</dt>
           </div>
           <div class="col">
@@ -182,7 +182,7 @@ height:150px;
         </div>
 
         <div class="row">
-          <div class="col-3">
+          <div class="col-4">
             <dt>Edad aparente:</dt>
           </div>
           <div class="col">
@@ -191,7 +191,7 @@ height:150px;
         </div>
 
         <div class="row">
-          <div class="col-3">
+          <div class="col-4">
             <dt>CURP:</dt>
           </div>
           <div class="col">
@@ -200,7 +200,7 @@ height:150px;
         </div>
 
         <div class="row">
-          <div class="col-3">
+          <div class="col-4">
             <dt>Escolaridad:</dt>
           </div>
           <div class="col">
@@ -209,7 +209,7 @@ height:150px;
         </div>
 
         <div class="row">
-          <div class="col-3">
+          <div class="col-4">
             <dt>Ocupación:</dt>
           </div>
           <div class="col">
@@ -218,7 +218,7 @@ height:150px;
         </div>
 
         <div class="row">
-          <div class="col-3">
+          <div class="col-4">
             <dt>Identificación:</dt>
           </div>
           <div class="col">
@@ -231,7 +231,7 @@ height:150px;
         </div>
 
         <div class="row">
-          <div class="col-3">
+          <div class="col-4">
             <dt>Número de identificación:</dt>
           </div>
           <div class="col">
@@ -240,7 +240,7 @@ height:150px;
         </div>
 
         <div class="row">
-          <div class="col-3">
+          <div class="col-4">
             <dt>Estado civil:</dt>
           </div>
           <div class="col">
@@ -250,7 +250,7 @@ height:150px;
         </div>
 
         <div class="row">
-          <div class="col-3">
+          <div class="col-4">
             <dt>Embarazada:</dt>
           </div>
           <div class="col">
@@ -259,7 +259,7 @@ height:150px;
         </div>
 
         <div class="row">
-          <div class="col-3">
+          <div class="col-4">
             <dt>Periodo:</dt>
           </div>
           <div class="col">
@@ -268,7 +268,7 @@ height:150px;
         </div>
 
         <div class="row">
-          <div class="col-3">
+          <div class="col-4">
             <dt>Por menores:</dt>
           </div>
           <div class="col">
