@@ -105,6 +105,7 @@ class InformanteController extends Controller
 	 */
 	public function show($id)
 	{
+
 		$cedula = \App\Models\Cedula::find($id);
 
 		$sexos = array('H' => 'MASCULINO', 'M' => 'FEMENINO');
@@ -131,8 +132,11 @@ class InformanteController extends Controller
 								'TRABAJO' => 'TRABAJO',
 								'CELULAR' => 'CELULAR');            
 
-		$informantes = \App\Models\Desaparecido::where('tipoPersona', 'INFORMANTE')->get();
-
+		$informantes = \DB::table('desaparecidos_personas AS dp')
+            ->where('dp.tipoPersona', 'INFORMANTE')
+            ->where('dp.idCedula', $cedula->id)
+            ->get();
+         //dd($informantes);
 		return view('informante.index',compact(                                           
 											'cedula',
 											'sexos',

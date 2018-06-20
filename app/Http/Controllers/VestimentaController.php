@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Prenda;
 use App\Http\Requests\VestimentaRequest;
+use DB;
 
 class VestimentaController extends Controller
 {
@@ -37,6 +38,7 @@ class VestimentaController extends Controller
 	public function store(VestimentaRequest $request)
 	{
 		define('DS', DIRECTORY_SEPARATOR);
+		//dd($request->toArray()); 
 		$vestimenta = array(
 			'material' 			=> $request->input('material'),
 			'talla' 			=> $request->input('talla'),
@@ -50,7 +52,7 @@ class VestimentaController extends Controller
 		if($request->input('method') == 'PUT'){
 			$data = Prenda::find($request->input('idPrendaDesaparecido'));
 			if(is_null($request->file('archivo')))
-	    	{	    			    		
+	    	{	 		    		
 	    		$vestimenta['path'] = $data->path;
 			} else {
 				if($data->path != 'images'.DS.'vestimenta_sin_imagen.png'){
@@ -156,7 +158,7 @@ class VestimentaController extends Controller
 		$tiposCalzados		= \App\Models\CatTiposCalzados::all()->pluck('nombre','id');
 		$marcas				= \App\Models\CatMarca::all()->pluck('nombre','id');
 		$colores 			= \App\Models\CatCalzadoColor::all()->pluck('nombre','id');
-
+		//dd($prendas->toArray());
 		return view('vestimenta.index',
 					['vestimentas' => $vestimentas,
 					 'prendas' => $prendas,
@@ -224,6 +226,7 @@ class VestimentaController extends Controller
 	 */
 	public function destroy($id)
 	{
-		//
+		Prenda::find($id)->delete();
+		return back()->with('succes','Eliminado');
 	}
 }

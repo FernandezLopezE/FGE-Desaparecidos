@@ -79,6 +79,12 @@
 								<p>Documentation</p>
 							</a>
 						</li>
+						<li class="nav-item has-treeview">
+							<a href="{{url('getOficios')}}" class="nav-link {{ Request::is( 'getOficios') ? 'active' : '' }}">
+								<i class="nav-icon fa fa-font"></i>
+								<p>Oficios</p>
+							</a>
+						</li>
 						<li class="nav-item bottom" ><a class="nav-link" href="#" onclick="event.preventDefault();
 							document.getElementById('logout-form').submit();"><i class=" nav-icon fa fa-power-off" ></i><p> Cerrar sesión</p></a>
 							<form id="logout-form" action="#" method="POST" style="display: none;">

@@ -186,8 +186,15 @@
 			}]				
 		})
 
-		btnAgregarContacto.click(function(e){			
+		btnAgregarContacto.click(function(e){	
+			$('#formulario')[0].reset();	
+			$("#divCorreo").hide();
+            $("#divTelefono").hide();
+        	$("#divRedSocial").hide();	
+			
+			
 			modalDesaparecidoContacto.modal('show');
+			document.getElementById("ladaC").value="(+52)-";
 		 	/*$( "#modalDesaparecidoContacto" ).sisyphus( {
 	           excludeFields: $('input[name=_token]')
             });*/

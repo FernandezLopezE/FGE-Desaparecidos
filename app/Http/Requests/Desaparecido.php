@@ -29,7 +29,7 @@ class DesaparecidoRequest extends FormRequest
             'primerAp' => 'required',
             'segundoAp' => 'required',
             'fechaNacimiento' => 'required|Y/m/d',
-            'idNacionalidad' => 'required'
+            'idNacionalidad' => 'required',
             'sexo' => 'required',
 
             //Datos familia

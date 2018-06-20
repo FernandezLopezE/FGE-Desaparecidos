@@ -25,8 +25,8 @@ class CreateDesaparecidosPrendasTable extends Migration
             $table->foreign('idVestimenta')->references('id')->on('cat_vestimentas');
             $table->integer('idPrenda')->unsigned();
             $table->foreign('idPrenda')->references('id')->on('cat_prendas');
-            $table->integer('idMarca')->unsigned();
-            $table->foreign('idMarca')->references('id')->on('cat_marcas');
+            $table->string('idMarca',50)->nullable();
+            /*$table->foreign('idMarca')->references('id')->on('cat_marcas');*/
             $table->integer('idColor')->unsigned();
             $table->foreign('idColor')->references('id')->on('cat_colores');
             $table->integer('idDesaparecido')->unsigned();

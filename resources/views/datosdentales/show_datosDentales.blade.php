@@ -162,7 +162,7 @@
       $.each(trata, function(key, value) {
         verTrata = value+", "+verTrata;
       });
-
+      verTrata = verTrata.substring(0, verTrata.length-2);  
      $("#tratDientes").html(verTrata);
 
      //asignar enfermedades en una variable
@@ -173,7 +173,7 @@
      $.each(enfDen, function(key, value) {
         verEnfer = value+", "+verEnfer;
       });
-
+      verEnfer = verEnfer.substring(0,verEnfer.length-2);
      $("#enfDientes").html(verEnfer);
 
      //asignar malos habitos en una variable
@@ -184,7 +184,7 @@
      $.each(malosHab, function(key, value) {
         verMalosHab = value+", "+verMalosHab;
       });
-
+      verMalosHab = verMalosHab.substring(0,verMalosHab.length-2)
      $("#MalosDientes").html(verMalosHab);
 
 

@@ -13,8 +13,33 @@
 	<div class="card-header">
 		<h4><i class="fa fa-paste"></i> Cédulas</h4>
 	</div>
+	 
 	<div class="card-body bg-white">
-		<table id="table"style="overflow:auto;"></table>
+		<table id="table"style="overflow:auto;"
+		    data-search="true"
+		    data-trim-on-search="false">
+		<thead>
+                <tr>
+                    <th data-field="no" 
+                        data-sortable="true"></th>
+                    <th data-field="nombres" 
+                        data-sortable="true"></th>
+                    <th data-field="apodo" 
+                        data-sortable="true"></th>
+                    <th data-field="genero" 
+                        data-sortable="true"></th>
+                    <th data-field="edadExtravio" 
+                        data-sortable="true"></th>
+                    <th data-field="nacionalidad" 
+                        data-sortable="true"></th>
+                    <th data-field="created_at" 
+                        data-sortable="true"></th>
+                    <th data-field="acciones" 
+                        data-sortable="true"></th>
+                    
+                </tr>
+        </thead>        
+        </table>
 	</div>
 </div>
 
@@ -23,10 +48,10 @@
 @endsection
 
 @section('scripts')
-{!! HTML::script('personal/js/sisyphus.min.js') !!}
-{!! HTML::script('personal/js/sisyphus.js') !!}
+{!! HTML::script('personal/js/bootstrap-table-multiple-search.js') !!}
 <script type="text/javascript">
 	$(function (){
+        var hola = $('#hola');
 		var table = $('#table');
 		var routeIndex = '{!! route('consultas.index') !!}';
 		var routeCedula = '{!! route('cedula.index') !!}';
@@ -34,9 +59,11 @@
 		var routeOficio = '{!! route('oficio.index') !!}';
 
 		var formatTableActions = function(value, row, index) {				
+
 			btn = '<a href="'+routeCedula+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit " data-toggle="tooltip" data-placement="right" title="Editar cédula" ><i class="fa fa-address-card"></i></a>&nbsp;';
 			btn = btn+'<a href="'+routeBoletin+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit" data-toggle="tooltip" data-placement="right" title="Boletín"><i class="fa fa-file"></i></a>&nbsp;';
 			btn = btn+'<a href="'+routeOficio+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit" data-toggle="tooltip" title="Documentos" data-placement="right"><i class="fa fa-book"></i></a>&nbsp;';
+
 			/*btn = '<div class="btn-group">';
 			btn = btn+'<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 			btn = btn+'Acciones';
@@ -78,7 +105,6 @@
 		table.bootstrapTable({
 			pagination: true,
 			pageList: [10, 25, 50, 100],
-			search: true,
 			rowStyle: rowStyle,				
 			url: routeIndex+'/get_cedulas',
 			columns: [{		
@@ -108,13 +134,28 @@
 			}, {				
 				field: 'created_at',
 				title: 'Apertura',
+			}, {
+				field: '',
+				title: 'Estatus',
 			}, {					
 				title: 'Acciones',
 				formatter: formatTableActions,
 				events: operateEvents
 			}]			
 		})
-	})
+        
+setTimeout(function(){toggle()},1000); 
+        
+        })
+function toggle(){
+    $('[data-toggle="tooltip"]').tooltip();
+	
+}
+			
+               
+
+		
+    
 
 </script>
 @endsection

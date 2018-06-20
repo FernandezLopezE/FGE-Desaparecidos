@@ -53,9 +53,9 @@
 				<dt class="col-sm-4">Vello facial:</dt>
 				<dd class="col-sm-8"id="idVelloFacialM"> </dd>
 				<dt class="col-sm-4">Ojos:</dt>
-				<dd class="col-sm-8"id="idOjos"> </dd>
+				<dd class="col-sm-8"id="idOjosM"> </dd>
 				<dt class="col-sm-4">Labios:</dt>
-				<dd class="col-sm-8"id="idLabios"> </dd>
+				<dd class="col-sm-8"id="idLabiosM"> </dd>
 				
 				<dt class="col-sm-4">Modificaciones:</dt>
 				<dd class="col-sm-8"id="idModificaciones"> </dd>
