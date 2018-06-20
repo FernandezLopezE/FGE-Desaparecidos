@@ -106,5 +106,9 @@ class Desaparecido extends Model
 	{
 		return $this->hasMany('App\Models\CedulaPartesCuerpo', 'idPersonaDesaparecida', 'id');
 	}
+	public function antecedentesMedicos()
+	{
+		return $this->belongsTo('App\Models\AntecedentesMedicos', 'idPersonaDesaparecida', 'id');
+	}
 	
 }

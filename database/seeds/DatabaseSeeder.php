@@ -109,10 +109,9 @@ class DatabaseSeeder extends Seeder
         $this->call(ColoresSeeder::class);
         $this->call(ParentescoSeeder::class);
         //Ale para envio de documentos
-        
-        $this->call(CatDocumentosSeeder::class);
+        $this->call(CatEncargadoSeeder::class);
         $this->call(CatDependenciasSeeder::class);
-        $this->call(CatDestinariosSeeder::class);
+        //$this->call(CatDestinariosSeeder::class);
 
         $this->call(CatSenasParticularesSeeder::class);
         $this->call(CatSenasParticularesUbicacionesSeeder::class);

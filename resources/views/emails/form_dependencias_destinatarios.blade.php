@@ -77,7 +77,7 @@ data-search="true">
 
 <div class="card border-success" id="divDestinatarios" style="display:none">
 	<div class="card-header">
-		<h5 class="card-title">Destinatarios
+		<h5 class="card-title">Destinatarios fdsfdsfds
             <button type="button" class="btn btn-dark pull-right" style="margin-right:10px" id="btnAgregarDestinatario">
                 AGREGAR
             </button>

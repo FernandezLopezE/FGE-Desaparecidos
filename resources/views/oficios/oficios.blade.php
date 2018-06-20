@@ -292,5 +292,6 @@ function valida(conten, nombre){
     }
     return bandera;
 }
+
 </script>
 @endsection

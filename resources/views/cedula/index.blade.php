@@ -8,6 +8,7 @@
 @section('titulo', '')
 
 @section('content')
+
 <div class="card">
 	<div class="card-header">
 		<h4><i class="fa fa-paste"></i> Cédulas</h4>
@@ -42,6 +43,8 @@
 	</div>
 </div>
 
+
+
 @endsection
 
 @section('scripts')
@@ -53,12 +56,14 @@
 		var routeIndex = '{!! route('consultas.index') !!}';
 		var routeCedula = '{!! route('cedula.index') !!}';
 		var routeBoletin = '{!! route('boletin.index') !!}';
-		var routeMail = '{!! route('mail.index') !!}';
+		var routeOficio = '{!! route('oficiosDependencias.index') !!}';
 
 		var formatTableActions = function(value, row, index) {				
-			btn = '<a href="'+routeCedula+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit" data-toggle="tooltip" data-placement="right" title="Editar cédula" ><i class="fa fa-address-card"></i></a>&nbsp;';
-			btn = btn+'<a href="'+routeBoletin+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit" data-toggle="tooltip" data-placement="right" title="Boletín" target="_blank"><i class="fa fa-file"></i></a>&nbsp;';
-			/*btn = btn+'<a href="'+routeMail+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit"><i class="fa fa-envelope"></i></a>&nbsp;';*/
+
+			btn = '<a href="'+routeCedula+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit " data-toggle="tooltip" data-placement="right" title="Editar cédula" ><i class="fa fa-address-card"></i></a>&nbsp;';
+			btn = btn+'<a href="'+routeBoletin+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit" data-toggle="tooltip" data-placement="right" title="Boletín"><i class="fa fa-file"></i></a>&nbsp;';
+			btn = btn+'<a href="'+routeOficio+'/'+row.id+'" class="btn btn-dark btn-sm" id="edit" data-toggle="tooltip" title="Documentos" data-placement="right"><i class="fa fa-book"></i></a>&nbsp;';
+
 			/*btn = '<div class="btn-group">';
 			btn = btn+'<button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
 			btn = btn+'Acciones';
