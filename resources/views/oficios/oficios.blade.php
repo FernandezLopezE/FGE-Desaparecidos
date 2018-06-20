@@ -1,10 +1,12 @@
 @extends('layouts.app_uipj')
 @section('content')
 @section('css')
+
 <style type="text/css">
 
 </style>
 @endsection	
+
 
 @include('includes.modal_Oficios')
 <div class="card">
@@ -12,7 +14,7 @@
 		<h5>Documentos generados</h5>
 	</div>
 	<div class="card-body">
-		<table class="table table-hover table-responsive" id="documentos">
+		<table class="table table-hover" id="documentos">
 		    <thead>
 		        <tr>
 		            <th >Documento</th>
@@ -24,10 +26,8 @@
 		    <tbody>
 		        <tr>
 		        	<th>Solicitud sobre puntos de revisión</th>
-		        	<th style="width: 50%;">SECRETARIA DE SEGURIDAD PÚBLICA, 
-		        		ÚNIDAD DE ANÁLISIS DE INFORMACIÓN EN LA FISCALÍA GENERAL DEL ESTADO DE VERACRUZ,
-		        		CENTRO ESTATAL DE CONTROL, COMANDO, COMUNICACIONES Y TRANSPORTE,
-						SECRETARÍA DE FINANZAS Y PLANEACIÓN
+		        	<th>SECRETARIA DE SEGURIDAD PÚBLICA 
+		        		
 		        	</th>
 		        	<th><i class="fa fa-square" style="color:#1CA800;"></i> Completo</th>
 		        	<th><button class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Editar" id="editar"><i class="fa fa-edit"></i></button>
