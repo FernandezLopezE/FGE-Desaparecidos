@@ -6,17 +6,19 @@
 <div class="card-body bg-white">
   <div class="form-group row">
     <div class="col">
-      <label for="">Oficios <i class="fa fa-plus-circle" id="oficios" data-toggle="tooltip" data-placement="right" title="Nuevo oficio"></i></label>
+      <label for="">Oficios </label>
       {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'atencionOdonto'] ) !!}
     </div>
       
     <div class="col">
       <label for="">Dependencias</label>
+      <button class="btn btn-primary btn-sm pull-right" id="newDepen" data-toggle="tooltip" data-placement="left" title="Nueva dependencia"><i class="fa fa-plus-circle"></i></button>
       {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'atencionOdonto'] ) !!}
     </div>
 
     <div class="col">
       <label for="">Encargado</label>
+      <button class="btn btn-primary btn-sm pull-right" id="newEncar" data-toggle="tooltip" data-placement="left" title="Nuevo encargado"><i class="fa fa-plus-circle"></i></button>
       {!! Form::select('size', array('SIN INFORMACIÓN' => 'SIN INFORMACIÓN', 'SI' => 'SI', 'NO' => 'NO'), '', ['class' => 'form-control', 'id' => 'atencionOdonto'] ) !!}
     </div>
 
