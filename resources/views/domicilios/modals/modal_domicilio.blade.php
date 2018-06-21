@@ -124,9 +124,9 @@
 		<!-- Fin del Contenido del formulario-->
 	  </div>
 	  <div class="modal-footer">
-	    <button type="button" class="btn btn-dark" id="btnActualizarD">ACTUALIZAR</button>
-		<button type="button" class="btn btn-dark" id="btnGuardarDomicilio">GUARDAR</button>
-		<button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
+	    <button type="button" class="btn btn-dark" id="btnActualizarD">Guardar</button>
+		<button type="button" class="btn btn-dark" id="btnGuardarDomicilio">Guardar</button>
+		<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 	  </div>
 	</div>
   </div>
