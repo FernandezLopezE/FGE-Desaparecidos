@@ -44,11 +44,22 @@
 <script type="text/javascript">
 $(document).ready(function(){
 
-  /**********************************************************************
+  oficio = $('#catOficios').val();
+  depen = $('#catDependencias').val();
+  encar = $('#catEncargados').val();
+
+  if (oficio == null || depen == null || encar == null) {
+    $('#btnAgregar').disabled(true);
+  }
+
+
+  /**********************************************************************routeEncargado
   *** Declaración de rutas a usar de los campos en el formulario ********
   ***********************************************************************/
   
   var routepivoteoficios = '{!! route('configuraciones.index') !!}';
+  var routeDependencia = '{!! route('dependencia.index') !!}';
+  var routeEncargado = '{!! route('encargado.index') !!}';
   var routeIndex = '{!! route('consultas.index') !!}';
   var table = $('#tableoficios');
 
@@ -100,7 +111,7 @@ $(document).ready(function(){
       depen : $('#catDependencias').val(),
       encar : $('#catEncargados').val()
     }
-
+    console.log(dataString);
     $.ajax({
       type: 'POST',
       url:  routepivoteoficios,
@@ -113,10 +124,48 @@ $(document).ready(function(){
   });
 
   /**********************************************************************
-  ********** opción para el metódo store de la relación *****************
+  ********** opción para el metodo store de una dependencia *************
   ***********************************************************************/
   $('#btnDepend').click(function(){
-    alert('hola');
+    var dataString = {
+      nombre : $('#nombreDependencia').val()
+    }
+    $.ajax({
+      type: 'POST',
+      url:  routeDependencia,
+      data: dataString,
+      dataType: 'json',
+      success: function(data){
+        $('#nombreDependencia').val('');
+        $('#modal_ConfigDepend').modal('hide');
+      }
+    });
+  });
+
+  /**********************************************************************
+  ********** opción para el metódo store de un encargado ****************
+  ***********************************************************************/
+  $('#btnEncargado').click(function(){
+    var dataString = {
+      nombres : $('#nombres').val(),
+      primerAp : $('#primerAp').val(),
+      segundoAp : $('#segundoAp').val(),
+      cargo : $('#cargo').val()
+    }
+    $.ajax({
+      type: 'POST',
+      url:  routeEncargado,
+      data: dataString,
+      dataType: 'json',
+      success: function(data){
+        $('#nombres').val('');
+        $('#primerAp').val('');
+        $('#segundoAp').val('');
+        $('#cargo').val('');
+        $('#modal_ConfigEncargado').modal('hide');
+      }
+    });
+
   });
 
 });

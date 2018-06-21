@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\CatEncargado;
+use DB;
 
-class NuevaDependenciaController extends Controller
+class EncargadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,7 +36,17 @@ class NuevaDependenciaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $encargado = new CatEncargado();
+
+        $encargado->nombres = $request['nombres'];
+        $encargado->primerAp = $request['primerAp'];
+        $encargado->segundoAp = $request['segundoAp'];
+        $encargado->cargo = $request['cargo'];
+        
+
+        $encargado->save();
+
+        return response()->json($encargado);
     }
 
     /**

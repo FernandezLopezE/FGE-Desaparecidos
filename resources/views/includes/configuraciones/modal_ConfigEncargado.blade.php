@@ -11,29 +11,29 @@
         <!-- Inicio del Contenido del formulario-->
         <div class="form-group row">
           <div class="col">
-            <label for="">Nombre</label>
-            <input type="text" class="form-control">
+            <label for="">Nombre:</label>
+            <input type="text" class="form-control" placeholder="Ingrese el nombre" id="nombres">
           </div>
           <div class="col">
-            <label for="">Primer apellido</label>
-            <input type="text" class="form-control">
+            <label for="">Primer apellido:</label>
+            <input type="text" class="form-control" placeholder="Ingrese el primer apellido" id="primerAp">
           </div>
           <div class="col">
-            <label for="">Segundo apellido</label>
-            <input type="text" class="form-control">
+            <label for="">Segundo apellido:</label>
+            <input type="text" class="form-control" placeholder="Ingrese el segundo apellido" id="segundoAp">
           </div>
         </div>
 
         <div class="form-group row">
           <div class="col">
-            <label for="">Nombre del cargo que desempeña</label>
-            <input type="text" class="form-control">
+            <label for="">Nombre del cargo que desempeña:</label>
+            <input type="text" class="form-control" placeholder="Ingrese el nombre del cargo que desempeña" id="cargo">
           </div>
         </div>
         <!-- Fin del Contenido del formulario-->
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="btnAgregarInformante">Guardar</button>
+        <button type="button" class="btn btn-primary" id="btnEncargado">Guardar</button>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
       </div>
     </div>

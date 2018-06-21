@@ -11,10 +11,10 @@
         <!-- Inicio del Contenido del formulario-->
         <div class="form-group">
           <div class="col">
-            <label for="">Nombre de la dependencia</label>
+            <label for="">Nombre de la dependencia:</label>
           </div>
           <div class="col">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" placeholder="Ingresa el nombre de una dependencia" id="nombreDependencia">
           </div>
         </div>
         <!-- Fin del Contenido del formulario-->

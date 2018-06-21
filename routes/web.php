@@ -40,9 +40,13 @@ Route::get('/', 'InicioController@index');
 
 	Route::resource('oficiosDependencias','OficioDependencia');
 
+	//Ruta para la vista de relacionar oficios con dependencias AlfredoR
 	Route::resource('configuraciones','ConfigDocumentosController');	
+	Route::resource('dependencia','DependenciaController');
+	Route::resource('encargado','EncargadoController');
     
-    Route::resource('dependencia_destinatario','AgregarDependenciaController');
+    //comento tacho, si truena algo,descomentar xD
+    //Route::resource('dependencia_destinatario','AgregarDependenciaController');
 
 	Route::resource('datos_dentales_dientes_perdidos','DatosDentalesDientesPerdidosController');
 	// inician rutas descripción física
@@ -120,7 +124,7 @@ Route::get('consultas/get_diente/{id}', 'ConsultasController@json_diente')
 	->name('consultas.get_diente');	
 Route::get('consultas/json_cabecera_partes/{idParteCuerpo}', 'ConsultasController@json_cabecera_partes')->name('consultas.jsonCabecerasPartes');
 
-//Se consulta la tabla de la relación de oficios con dependencias
+//Se consulta la tabla de la relación de oficios con dependencias AlfredoR
 Route::get('consultas/get_oficios', 'ConsultasController@jsonOficioDependencia');
 
 Route::resource('consultas','ConsultasController');
