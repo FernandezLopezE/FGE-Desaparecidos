@@ -17,11 +17,6 @@ class CreateCatDependenciasTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->string('correo')->nullable();
-            $table->text('oficios')->nullable();
-            // $table->integer('documento')->unsigned();
-            // $table->foreign('documento')->references('id')->on('cat_documentos');
-            $table->integer('idEncargado')->unsigned();
-            $table->foreign('idEncargado')->references('id')->on('cat_encargado');
             $table->timestamps();
         });
     }
