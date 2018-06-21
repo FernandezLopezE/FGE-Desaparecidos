@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 class ConfiguracionesController extends Controller
 {
@@ -13,7 +14,19 @@ class ConfiguracionesController extends Controller
      */
     public function index()
     {
-        return view('configuraciones.configDocumentos');
+        $oficios = \App\Models\CatOficios::all()->pluck('nombre','id');
+        $dependencias = \App\Models\CatDependencias::all()->pluck('nombre','id');
+        //$encargados = \App\Models\CatEncargado::all()->pluck('segundoAp','primerAp','nombres','id');
+        $encargados = DB::table('cat_encargado AS ce')->select(\DB::raw('CONCAT(ce.nombres," ", ce.primerAp," ",ce.segundoAp) AS nombrecompleto'),'id')->pluck('nombrecompleto','id');
+
+
+
+        //dd($encargados);
+        return view('configuraciones.configDocumentos',[
+                        'oficios' => $oficios,
+                        'dependencias' => $dependencias,
+                        'encargados' => $encargados,
+                    ]);
     }
 
     /**

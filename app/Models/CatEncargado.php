@@ -9,8 +9,8 @@ class CatEncargado extends Model
    protected $table = 'cat_encargado';
 	protected $fillable = [	
 	    					'nombres',
-	    					'primerAp'
-	    					'segundoAp'
+	    					'primerAp',
+	    					'segundoAp',
 	    					'cargo',
 						];
 
