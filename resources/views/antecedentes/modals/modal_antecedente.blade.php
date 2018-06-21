@@ -13,7 +13,7 @@
 		<!-- Contenido del formulario-->
 		<form id="formDesaparecido">
             <div class="row">
-                <div class="col">
+                <div class="col-lg-4 col-xs-12">
                     <div class="form-group">
                         {!! Form::label ('mesAnio','Mes / Año:') !!}
                         {!! Form::text ('mesAnio',
@@ -26,13 +26,13 @@
                         					] )!!}
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-lg-4 col-xs-12">
                     <div class="form-group">
                         {!! Form::label ('idDelito','Delito:') !!}
                         {!! Form::select ('idDelito',$delitos,'', ['class' => 'form-control', 'id' => 'idDelito'] )!!}
                     </div>
                 </div>
-                <div class="col">
+                <div class="col-lg-4 col-xs-12">
                     <div class="form-group">
                         {!! Form::label ('idCentroReclusion','Centro de reclusión:') !!}
                         {!! Form::select ('idCentroReclusion',$centros,'', ['class' => 'form-control', 'id' => 'idCentroReclusion'] )!!}

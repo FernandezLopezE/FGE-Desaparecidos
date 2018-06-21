@@ -87,7 +87,7 @@
                <div class="col-lg-2" >
                     <div class=""> 
                           <div class=""  id="campoGenero"> 
-                            <div>
+                            <div> <br>
                                <p>&nbsp;</p>
                                 {!! Form::label ('comple','Género:') !!}<br>
                                 {!! Form::select ('comple', $generos, '',['class' => '', 'id' => 'generos','multiple' => 'multiple'] )!!}
@@ -98,16 +98,12 @@
          
                
                <div class="col-lg-5" align="center">                             
-                      <div class="" id="" >
+                      <div class="" id="" ><br>
                       
                        {!! Form::label ('','Fecha de desaparición',['class' => '']) !!} 
                         <div class="row">
-                         <div class="col"> &nbsp;{!! Form::label ('','Desde:  ',['class' => '']) !!}</div> 
-                         <div class="col">  &nbsp;{!! Form::label ('','Hasta:  ',['class' => '']) !!}</div> </div>
-                         
-                          <div class="row">                              
-                          <div class="col-lg-6">
-                              {!! Form::text ('fechaNacimiento',
+                         <div class="col"> &nbsp;{!! Form::label ('','Desde:  ',['class' => '']) !!}  <br>
+                         {!! Form::text ('fechaNacimiento',
                               '',
                               ['class' => 'form-control',
                                 'id' => 'fechaDesaparicion1',
@@ -115,10 +111,10 @@
                                 'data-validation-format'=>"dd/mm/yyyy",
                                 'data-validation-error-msg-date' => 'Ingrese fecha correcta',
                                 'placeholder' => 'dd/mm/aaaa'
-                              ] )!!} 
-                          </div>
-                          <div class="col-lg-6">
-                              {!! Form::text ('fechaNacimiento',
+                              ] )!!}  
+                              </div> 
+                         <div class="col">  &nbsp;{!! Form::label ('','Hasta:  ',['class' => '']) !!} <br>
+                         {!! Form::text ('fechaNacimiento',
                               '',
                               ['class' => 'form-control',
                                 'id' => 'fechaDesaparicion2',
@@ -126,22 +122,17 @@
                                 'data-validation-format'=>"dd/mm/yyyy",
                                 'data-validation-error-msg-date' => 'Ingrese fecha correcta',
                                 'placeholder' => 'dd/mm/aaaa'
-                              ] )!!}
-                          </div>                    
-                        </div>
+                              ] )!!} 
+                              </div> </div>        
                     </div>     
               </div>
                
                <div class="col-lg-5" align="center">
                   <div class=""  id="" >                               
-                      <div class="" id="div_idEstado">
+                      <div class="" id="div_idEstado"> <br>
                           {!! Form::label ('','Fecha de reporte  ',['class' => '']) !!}
                           <div class="row">
-                         <div class="col"> &nbsp;{!! Form::label ('','Desde:  ',['class' => '']) !!}</div> 
-                         <div class="col">  &nbsp;{!! Form::label ('','Hasta:  ',['class' => '']) !!}</div> </div>
-                <div class="row"> 
-                    <div class="col-lg-6">
-                     {!! Form::text ('fechaNacimiento',
+                         <div class="col"> &nbsp;{!! Form::label ('','Desde:  ',['class' => '']) !!} <br> {!! Form::text ('fechaNacimiento',
                       '',
                       ['class' => 'form-control',
                         'id' => 'fechaReporte1',
@@ -149,18 +140,16 @@
                         'data-validation-format'=>"dd/mm/yyyy",
                         'data-validation-error-msg-date' => 'Ingrese una fecha válida o menor a la actual','placeholder' => 'dd/mm/aaaa'
                       ] )!!}
-                </div>
-                <div class="col-lg-6"> 
-                      {!! Form::text ('fechaNacimiento',
+                        </div> 
+                         <div class="col">  &nbsp;{!! Form::label ('','Hasta:  ',['class' => '']) !!} <br> {!! Form::text ('fechaNacimiento',
                       '',
                       ['class' => 'form-control',
                         'id' => 'fechaReporte2',
                         'data-validation' =>'date',
                         'data-validation-format'=>"dd/mm/aaaa",
                         'data-validation-error-msg-date' => 'Ingrese una fecha válida o menor a la actual','placeholder' => 'dd/mm/aaaa'
-                      ] )!!}                        
-                </div>
-                   </div>
+                      ] )!!} 
+                      </div> </div>
                     </div>     
                   </div>
               </div>
@@ -200,20 +189,12 @@
           <div class="row" >
               <div class="col-lg-4" >
                   <div class=""  id="campoEdad" align="center" >                               
-                      <div class="" id="div_EdadDes">
+                      <div class="" id="div_EdadDes"> <br>
                           {!! Form::label ('','Edad de desaparición  ',['class' => '', ]) !!}
                         <div class="row">
-                         <div class="col"> &nbsp;{!! Form::label ('','Desde:  ',['class' => '']) !!}</div> 
-                         <div class="col">  &nbsp;{!! Form::label ('','Hasta:  ',['class' => '']) !!}</div> </div>
+                         <div class="col"> &nbsp;{!! Form::label ('','Desde:  ',['class' => '']) !!} <br> {!! Form::number('count','value', ['min' => '0' ,'max' => '120' ,'class' => 'form-control longitudNumero', 'id' => 'rng1']) !!} </div> 
+                         <div class="col">  &nbsp;{!! Form::label ('','Hasta:  ',['class' => '']) !!} <br> {!! Form::number('count','value', ['min' => '0' ,'max' => '120' ,'class' => 'form-control longitudNumero', 'id' => 'rng2']) !!} </div> </div>
                           </div>
-                             <div class="row">                           
-                             <div class="col-lg-6">
-                                 {!! Form::number('count','value', ['min' => '0' ,'max' => '120' ,'class' => 'form-control longitudNumero', 'id' => 'rng1']) !!} 
-                           </div>
-                           <div class="col-lg-6"> 
-                                   {!! Form::number('count','value', ['min' => '0' ,'max' => '120' ,'class' => 'form-control longitudNumero', 'id' => 'rng2']) !!}             
-                           </div>
-                           </div>
                     </div>     
                   </div>
              
@@ -221,39 +202,23 @@
               
              <div class="col-lg-4"> 
                  <div class=""  id="campoEstatura" align="center">                               
-                      <div class="" id="div_EdadDes">           
+                      <div class="" id="div_EdadDes">  <br>         
                   {!! Form::label ('','Estatura  ',['class' => '']) !!}
                   <div class="row">
-                         <div class="col"> &nbsp;{!! Form::label ('','Desde:  ',['class' => '']) !!}</div> 
-                         <div class="col">  &nbsp;{!! Form::label ('','Hasta:  ',['class' => '']) !!}</div> </div>
-                          </div>
-                             <div class="row">                           
-                             <div class="col-lg-6">
-                    {!! Form::number('count','value', ['min' => '0' ,'max' => '300' ,'class' => 'form-control longitudNumero', 'id' => 'estatura1']) !!}
-                    </div>
-                           <div class="col-lg-6">
-                    {!! Form::number('count','value', ['min' => '0' ,'max' => '300' ,'class' => 'form-control longitudNumero', 'id' => 'estatura2']) !!}
-             </div>
-                           </div>
+                         <div class="col"> &nbsp;{!! Form::label ('','Desde:  ',['class' => '']) !!} <br> {!! Form::number('count','value', ['min' => '0' ,'max' => '300' ,'class' => 'form-control longitudNumero', 'id' => 'estatura1']) !!} </div> 
+                         <div class="col">  &nbsp;{!! Form::label ('','Hasta:  ',['class' => '']) !!} <br> {!! Form::number('count','value', ['min' => '0' ,'max' => '300' ,'class' => 'form-control longitudNumero', 'id' => 'estatura2']) !!} </div> </div>
+                          </div>        
                     </div>     
                   </div>
                  
             <div class="col-lg-4"> 
                  <div class=""  id="campoPeso" align="center">                               
-                      <div class="" id="div_EdadDes">           
+                      <div class="" id="div_EdadDes"> <br>          
                   {!! Form::label ('','Peso  ',['class' => '']) !!}
                   <div class="row">
-                         <div class="col"> &nbsp;{!! Form::label ('','Desde:  ',['class' => '']) !!}</div> 
-                         <div class="col">  &nbsp;{!! Form::label ('','Hasta:  ',['class' => '']) !!}</div> </div>
-                          </div>
-                             <div class="row">                           
-                             <div class="col-lg-6">
-                     {!! Form::number('count','value', ['min' => '0' ,'max' => '500' ,'class' => 'form-control longitudNumero', 'id' => 'peso1']) !!}
-                     </div>
-                           <div class="col-lg-6">
-                     {!! Form::number('count','value', ['min' => '0' ,'max' => '500' ,'class' => 'form-control longitudNumero', 'id' => 'peso2']) !!}
-              </div>
-                           </div>
+                         <div class="col"> &nbsp;{!! Form::label ('','Desde:  ',['class' => '']) !!} <br> {!! Form::number('count','value', ['min' => '0' ,'max' => '500' ,'class' => 'form-control longitudNumero', 'id' => 'peso1']) !!} </div> 
+                         <div class="col">  &nbsp;{!! Form::label ('','Hasta:  ',['class' => '']) !!} <br> {!! Form::number('count','value', ['min' => '0' ,'max' => '500' ,'class' => 'form-control longitudNumero', 'id' => 'peso2']) !!} </div> </div>
+                          </div>                             
                     </div>     
                   </div>
           </div>

@@ -76,7 +76,7 @@ $(document).ready(function(){
 				DATOS DEL ENTREVISTADOR
 	*******************************************************/ 
 	//Mostrar campos al seleccionar otro dialecto
-	$('#entrevistadorIdioma').select2();
+	$('#entrevistadorIdioma');
 	$('#entrevistadorIdioma').change(function() {
 
 		e = $('#entrevistadorIdioma').val();

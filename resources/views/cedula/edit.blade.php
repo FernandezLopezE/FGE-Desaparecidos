@@ -2,6 +2,11 @@
 
 @section('css')
 	{!! Html::style('') !!}
+	<style type="text/css">
+	.right {
+  float: right;
+} 
+</style>
 @endsection
 
 @section('titulo', '')
@@ -19,8 +24,11 @@
 		<i class="fa fa-plus"></i> GUARDAR			
 </button>
 <div class="card-body bg-white">
-	<div class="row">
-		<div class="col-10">
+	<div >
+	<div class="col-lg-2 right" >
+				{{ HTML::image('images/perfil3.png', 'Fiscal', array(  'class' => 'rounded w-100 p-3 float-right')) }}	
+			</div>	
+		<div class="col-lg-10">
 			<h5>Datos del fiscal</h5>
 			<dl class="row">
 				<dt class="col-sm-4">Nombre:</dt>
@@ -34,9 +42,6 @@
 					{!! $cedula->entrevistadorCargo !!}
 				</dd>
 			</dl>
-		</div>
-		<div class="col-2">
-			{{ HTML::image('images/perfil3.png', 'Fiscal', array('class' => 'rounded w-100 p-3 float-right')) }}	
 		</div>		
 	</div>		
 	@include('cedula.form_cedula')

@@ -1,6 +1,8 @@
-.modal-lg {
-    max-width: 80%; /*Se ajusta el ancho del model a un buen tamaño*/
-}
+      @media only screen and (min-width: 700px) {
+	.modal-lg {
+		max-width: 80%;
+        } 
+    } 
 
 .carousel-inner img { /*se utiliza para el carrusel de los slider*/
 	width: 90%;
