@@ -5,7 +5,6 @@
 	<style type="text/css">
 	.right {
   float: right;
-
 } 
 </style>
 @endsection

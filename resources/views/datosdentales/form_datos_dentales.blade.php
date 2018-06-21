@@ -58,7 +58,7 @@
 			<button type="button" class="btn btn-dark pull-right" id="editarInformacion">Editar</button>
 			<button type="button" class="btn btn-dark pull-right" id="updateInformacion">Actualizar</button>
 		</h5>
-		<div id="primeraseccion"><hr>
+		<div id="primeraseccion"><hr> <br>
 
 		<div class="form-group row">
 			<div class="col-lg-2">
