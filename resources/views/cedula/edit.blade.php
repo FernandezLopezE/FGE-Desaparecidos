@@ -16,7 +16,7 @@
 @include('navs.navs_datos',array('activar' => 'entrevista'))
 
 <button type="submit" class="btn btn-dark pull-right"  id="btnAgregarInformante">	
-		<i class="fa fa-plus"></i> GUARDAR			
+	Guardar			
 </button>
 <div class="card-body bg-white">
 	<div class="row">

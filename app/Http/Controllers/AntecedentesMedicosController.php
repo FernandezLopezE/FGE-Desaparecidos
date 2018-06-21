@@ -124,6 +124,8 @@ class AntecedentesMedicosController extends Controller
      */
     public function show($idExtraviado)
     {
+        //$antecedentesM = \App\Models\AntecedentesMedicos::find($idExtraviado);
+        //dd($antecedentesM);
         $desaparecido = \App\Models\Desaparecido::find($idExtraviado);
         $idDesaparecido = ($idExtraviado);
         //dd($desaparecido->toArray());
@@ -162,7 +164,7 @@ class AntecedentesMedicosController extends Controller
             $implantes = \App\Models\CatImplantes::all()->pluck('nombre','id');
             //dd($desaparecido->antecedentesMedicos->toArray());
 
-            //$observaciones=$anteMedi->observaciones;
+            $observaciones=$anteMedi->observaciones;
             return view('antecedentesmedicos.show_antecedentes_medicos',
             [
                 'desaparecido' => $desaparecido,

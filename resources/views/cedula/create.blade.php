@@ -10,7 +10,7 @@
 {{ Form::model($cedula, ['action' => 'CedulaController@store']) }}
 @include('navs.navs_datos',array('activar' => 'entrevista'))
 <button type="submit" class="btn btn-dark pull-right" id="btnAgregarInformante">
-	GUARDAR		
+	Guardar		
 </button>
 	<div class="card-body bg-white">
 		<div class="row">

@@ -15,7 +15,7 @@
 @endsection
 @section('content')
 @include('navs.navs_datos',array('activar' => 'vestimenta'))
-<button type="button" class="btn btn-dark pull-right"  id="btnAgregarPrenda">AGREGAR</button>
+<button type="button" class="btn btn-dark pull-right"  id="btnAgregarPrenda">Agregar</button>
 
 <div class="card-body bg-white">	
 	@include('vestimenta.modals.modal_vestimenta')
@@ -63,9 +63,9 @@
 		var routeAsset = '{{asset("")}}';
 		
 		var formatTableActions = function(value, row, index) {				
-			btn = '<button class="btn btn-dark btn-xs edit" id="editVestimenta">EDITAR</button>';
+			btn = '<button class="btn btn-dark btn-xs edit" id="editVestimenta">Editar</button>';
 			br = '<br><br>';	
-			btnE = '<button class="btn btn-danger btn-xs remove" id="removeVestimenta">BORRAR</button>';
+			btnE = '<button class="btn btn-primary btn-xs remove" id="removeVestimenta">Borrar</button>';
 			return [btn,br,btnE].join('');
 		};
 

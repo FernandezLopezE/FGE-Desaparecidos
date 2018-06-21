@@ -169,8 +169,8 @@ $(document).ready(function(){
                 html = html+'<textarea type="text" class="form-control mayusculas" id="observaciones"></textarea>';
                 html = html+'</div>';
 
-                html = html+'<button type="submit" id="btnGuardar"  value="'+method+'" class="btn btn-primary">Guardar</button>';
-                html = html+'<button type="submit" id="btnCancelar" class="btn btn-primary float-right">Cancelar</button>';
+                html = html+'<button type="submit" id="btnCancelar" class="btn btn-secondary">Cancelar</button>';
+                html = html+'<button type="submit" id="btnGuardar"  value="'+method+'" class="btn btn-primary float-right">Guardar</button>';
                 
                 campo.append(html);
 
