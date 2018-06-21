@@ -39,7 +39,7 @@
 					</span>
 				</span>
 			</td>
-			<td style="border-color: black; height: 1px; text-align: center; vertical-align: top; width: 185px;" colspan="1">
+			<td style="border-color: black; text-align: center; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						FECHA Y &nbsp;HORA &nbsp;DE REGISTRO:
@@ -59,7 +59,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="border-color: black; height: 1px; text-align: center; vertical-align: top; width: 291px;" colspan="2">
+			<td style="border-color: black; text-align: center; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						TIPO DE SOLICITUD: 
@@ -74,7 +74,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="border-color: black; height: 5.25pt; text-align: center; vertical-align: top; width: 449px;" colspan="2">
+			<td style="border-color: black; text-align: center; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						FISCAL ESPECIALIZADO EN LA ATENCI&Oacute;N DE DENUNCIAS POR PERSONAS DESAPARECIDAS, ZONA CENTRO XALAPA.
@@ -83,7 +83,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="background-color: #d9d9d9; border-color: black; height: 6.85pt; text-align: center; width: 449px;" colspan="2">
+			<td style="background-color: #d9d9d9; border-color: black; text-align: center;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						<strong>DATOS PERSONALES</strong>
@@ -92,14 +92,14 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="border-color: black; height: 6.85pt; vertical-align: top; width: 449px;" colspan="1">
+			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						NOMBRE: <strong>CESAR ARTUTO BRAVO CAMPOS</strong>
 					</span>
 				</span>
 			</td>
-			<td style="border-color: black; height: 4.95pt; vertical-align: top; width: 185px;" colspan="1">
+			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						EDAD: 25 a&ntilde;os, 6 meses y 18 dias
@@ -108,14 +108,14 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="height: 4.95pt; vertical-align: top; width: 230px;" colspan="1">
+			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						G&Eacute;NERO:
 					</span>
 				</span>
 			</td>
-			<td style="height: 4.95pt; vertical-align: top; width: 291px;" colspan="1">
+			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						EDO. CIVIL:
@@ -124,7 +124,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="border-color: black; height: 4.1pt; text-align: center; vertical-align: top; width: 449px;" colspan="2">
+			<td style="border-color: black; text-align: center; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						DOMICILIO:
@@ -139,14 +139,14 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="border-color: black; height: 3.9pt; vertical-align: top; width: 419px;" colspan="1">
+			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						ESCOLARIDAD: TERCERO DE PRIMARIA
 					</span>
 				</span>
 			</td>
-			<td style="height: 3.9pt; vertical-align: top; width: 291px;" colspan="1">
+			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						OCUPACI&Oacute;N: OBRERO
@@ -155,7 +155,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="border-color: black; height: 4.7pt; vertical-align: top; width: 449px;" colspan="2">
+			<td style="border-color: black; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						EXTRAVIADO (&nbsp;&nbsp; )&nbsp;&nbsp;&nbsp; SUSTRACCI&Oacute;N&nbsp; (&nbsp; X )&nbsp;&nbsp; AUSENCIA ( &nbsp;)&nbsp; 
@@ -164,7 +164,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="border-color: black; height: 5.25pt; text-align: center; vertical-align: top; width: 449px;" colspan="2">
+			<td style="border-color: black; text-align: center; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						LUGAR DE EXTRAVI&Oacute;: CARRETERA XALAPA, VERACRUZ, LOCALIDAD RINCONADA
@@ -173,7 +173,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="border-color: black; height: 5.1pt; vertical-align: top; width: 449px;" colspan="2">
+			<td style="border-color: black; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						EN CASO DE CONTROVERSIA FAMILIAR SI SE LO LLEVO:
@@ -182,7 +182,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="border-color: black; height: 5.4pt; vertical-align: top; width: 449px;" colspan="2">
+			<td style="border-color: black; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						PAPA:----------
@@ -191,7 +191,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="border-color: black; height: 5.25pt; vertical-align: top; width: 449px;" colspan="2">
+			<td style="border-color: black; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						MAMA:--------
@@ -200,7 +200,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="border-color: black; height: 5.25pt; vertical-align: top; width: 449px;" colspan="2">
+			<td style="border-color: black; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						OTRO FAMILIAR:--------- 
@@ -209,7 +209,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="background-color: #d9d9d9; border-color: black; height: 6.35pt; text-align: center; width: 449px;" colspan="2">
+			<td style="background-color: #d9d9d9; border-color: black; text-align: center;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						<strong>DATOS DE LA PERSONA SOLICITANTE</strong>
@@ -218,7 +218,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="border-color: black; height: 5.65pt; vertical-align: top; width: 185px;" colspan="2">
+			<td style="border-color: black; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						NOMBRE: LUZ DEL ROSARIO MENDOZA GER&Oacute;N
@@ -227,14 +227,14 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="border-color: black; height: 6.45pt; vertical-align: top; width: 185px;" colspan="1">
+			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						EDAD: 25 a&ntilde;os, 6 meses y 18 dias
 					</span>
 				</span>
 			</td>
-			<td style="border-color: black; height: 6.45pt; vertical-align: top; width: 185px;" colspan="1">
+			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						PARENTESCO CON EL DESAPARECIDO: PAREJA
@@ -243,14 +243,14 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="height: 6.45pt; vertical-align: top; width: 230px;" colspan="1">
+			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						G&Eacute;NERO:
 					</span>
 				</span>
 			</td>
-			<td style="height: 6.45pt; vertical-align: top; width: 291px;" colspan="1">
+			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						EDO. CIVIL:
@@ -259,7 +259,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="border-color: black; height: 14px; text-align: center; vertical-align: top; width: 449px;" colspan="2">
+			<td style="border-color: black; text-align: center; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						DOMICILIO:
@@ -274,7 +274,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="background-color: #d9d9d9; border-color: black; height: 6.15pt; text-align: center; width: 449px;" colspan="2">
+			<td style="background-color: #d9d9d9; border-color: black; text-align: center;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						<strong>S&Iacute;NTESIS</strong>
@@ -283,7 +283,7 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="border-color: black; height: 4px; vertical-align: top; width: 449px;" colspan="2">
+			<td style="border-color: black; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
 						<strong>REFIERE LA DENUNCIANTE QUE EL D&Iacute;A DE AYER 11 DE JUNIO DE 2018, SIENDO LAS 15:00 APROXIMADAMENTE, AL ENCONTRARSE TRABAJANDO EN LAS AFUERAS DE LA TIENDA TRES HERMANOS, LLEGARON TRES CAMIONETAS CON VARIOS SUJETOS Y SE LLEVARON AL AHORA DESAPARECIDO, CON RUMBO DESCONOCIDO. </strong>
