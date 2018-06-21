@@ -20,7 +20,8 @@
 
 
 	<div id="app">
-		<oficio tipo="solicitud de la persona extraviada" url="{{url("oficioprueba")}}" id="1"></oficio>
+		<oficio tipo="solicitud de la persona extraviada" url="{{url("jsonOficio1")}}" id="1" ></oficio>
+		<oficio tipo="cedula persona extraviada" url="{{url("json_oficio2")}}" id="1" ></oficio>
 		
 	</div>
 	
