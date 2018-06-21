@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOficioDependenciaTable extends Migration
+class CreatePivotOficioDependenciaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateOficioDependenciaTable extends Migration
      */
     public function up()
     {
-        Schema::create('oficio_dependencia', function (Blueprint $table) {
+        Schema::create('pivot_oficio_dependencia', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('idOficio')->unsigned()->nullable();           
@@ -36,6 +36,6 @@ class CreateOficioDependenciaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('oficio_dependencia');
+        Schema::dropIfExists('pivot_oficio_dependencia');
     }
 }

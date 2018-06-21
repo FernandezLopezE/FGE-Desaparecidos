@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class PivotOficioDependenciaEncargado extends Model
 {
-    protected $table = 'oficio_dependencia';
+    protected $table = 'pivot_oficio_dependencia';
 	protected $fillable = [
 		'idOficio',
 		'idDependencia',

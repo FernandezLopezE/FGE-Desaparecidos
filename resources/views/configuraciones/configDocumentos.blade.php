@@ -8,48 +8,34 @@
     <div class="col">
       <label for="">Oficios </label>
       <button class="btn btn-primary btn-sm pull-right" id="#" data-toggle="tooltip" data-placement="top" title="Nuevo oficio"><i class="fa fa-plus-circle"></i></button>
-      {!! Form::select('oficios', $oficios, '', ['class' => 'form-control', 'id' => 'catOficios'] ) !!}
+      {!! Form::select('oficios', $oficios, '', ['class' => 'form-control', 'id' => 'catOficios', 'placeholder' => 'SELECCIONA UN OFICIO'] ) !!}
     </div>
       
     <div class="col">
       <label for="">Dependencias</label>
       <button class="btn btn-primary btn-sm pull-right" id="newDepen" data-toggle="tooltip" data-placement="top" title="Nueva dependencia"><i class="fa fa-plus-circle"></i></button>
-      {!! Form::select('dependencias', $dependencias, '', ['class' => 'form-control', 'id' => 'catDependencias'] ) !!}
+      {!! Form::select('dependencias', $dependencias, '', ['class' => 'form-control', 'id' => 'catDependencias', 'placeholder' => 'SELECCIONA UNA DEPENDENCIA'] ) !!}
     </div>
     @include('includes.configuraciones.modal_ConfigDepend')
 
     <div class="col">
       <label for="">Encargado</label>
       <button class="btn btn-primary btn-sm pull-right" id="newEncar" data-toggle="tooltip" data-placement="top" title="Nuevo encargado"><i class="fa fa-plus-circle"></i></button>
-      {!! Form::select('encargados', $encargados, '', ['class' => 'form-control', 'id' => 'catEncargados'] ) !!}
+      {!! Form::select('encargados', $encargados, '', ['class' => 'form-control', 'id' => 'catEncargados', 'placeholder' => 'SELECCIONA UN ENCARGADO'] ) !!}
     </div>
     @include('includes.configuraciones.modal_ConfigEncargado')
 
     <div class="col-1">
-      <label for=""><font color="#FFFFFF">.</font></label>
-      <button class="form-control btn-primary">Agregar</button>
+      <div>
+        <label for=""><font color="#FFFFFF">.</font></label>
+      </div>
+      <div>
+        <button class="btn btn-dark pull-right" id="btnAgregar">Agregar</button>
+      </div>
     </div>
   </div><br>
 
-  <table class="table table-bordered table-hover">
-    <thead>
-      <tr>
-        <th>Oficio</th>
-        <th>Dependencia</th>
-        <th>Encargado</th>
-        <th>Acciones</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th>prueba</th>
-        <th>prueba</th>
-        <th>prueba</th>
-        <th>prueba</th>
-      </tr>
-    </tbody>
-</table>
-  
+  <table id="tableoficios" ></table>
 </div>
 
 @endsection
@@ -57,14 +43,81 @@
 @section('scripts')
 <script type="text/javascript">
 $(document).ready(function(){
+
+  /**********************************************************************
+  *** Declaración de rutas a usar de los campos en el formulario ********
+  ***********************************************************************/
+  
+  var routepivoteoficios = '{!! route('configuraciones.index') !!}';
+  var routeIndex = '{!! route('consultas.index') !!}';
+  var table = $('#tableoficios');
+
+  /**********************************************************************
+  *** Se agrega columna de acción "EDITAR" Y la tabla de oficios ********
+  ***********************************************************************/
+
+  var formatTableActions = function(value, row, index) {        
+      btn = '<button class="btn btn-dark btn-xs edit" id="editRelacion">EDITAR</button>';
+      return [btn].join('');
+    };
+
+    table.bootstrapTable({        
+      url: routeIndex+'/get_oficios/',
+      columns: [{         
+        field: 'oficio',
+        title: 'Oficio',        
+      }, {          
+        field: 'dependencia',
+        title: 'Dependencia',
+      }, {          
+        field: 'nombre',
+        title: 'Encargado',
+      }, {
+        title: 'Acciones',
+        formatter: formatTableActions,
+        //events: operateEvents
+      }]        
+    }); 
+
+  //Muestra modal para agregar una dependencia
   $("#newDepen").click(function(event) {
    $("#modal_ConfigDepend").modal();
   });
 
+  //Muestra modal para agregar un encargado
   $("#newEncar").click(function(event) {
    $("#modal_ConfigEncargado").modal();
   });
 
+  
+  /**********************************************************************
+  ********** opción para el metódo store de la relación *****************
+  ***********************************************************************/
+  $('#btnAgregar').click(function(){
+
+    var dataString = {
+      oficio : $('#catOficios').val(),
+      depen : $('#catDependencias').val(),
+      encar : $('#catEncargados').val()
+    }
+
+    $.ajax({
+      type: 'POST',
+      url:  routepivoteoficios,
+      data: dataString,
+      dataType: 'json',
+      success: function(data){
+        table.bootstrapTable('refresh');
+      }
+    });
+  });
+
+  /**********************************************************************
+  ********** opción para el metódo store de la relación *****************
+  ***********************************************************************/
+  $('#btnDepend').click(function(){
+    alert('hola');
+  });
 
 });
 </script>
