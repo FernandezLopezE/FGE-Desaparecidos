@@ -14,7 +14,7 @@
 Route::get('/', 'InicioController@index');
 
 	Route::resource('cedula','CedulaController');
-	Route::resource('oficioCedula','OficioCedulaController');
+	//Route::resource('oficioCedula','OficioCedulaController');
 	Route::resource('informante','InformanteController');
 
 	Route::get('extraviado/create/{idCedula}', 'ExtraviadoController@create')
@@ -365,3 +365,8 @@ Route::get('oficioprueba/{id}', 'OficioController@oficioprueba')->name('oficiopr
 Route::get('/pruebasformatos', function(){
     return view('oficios.prueba');
     });
+
+//oficios
+Route::get('jsonOficio1/{id}', 'OficioCedulaController@json_oficio1')->name('jsonOficio1');
+Route::get('json_oficio2/{id}', 'OficioCedulaController@json_oficio2')->name('json_oficio2');
+Route::resource('oficioCedula','OficioCedulaController');
