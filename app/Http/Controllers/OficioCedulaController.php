@@ -14,7 +14,7 @@ class OficioCedulaController extends Controller
     public function index()
     {
         //
-        $data = \DB::table('desaparecidos_cedula_investigacion AS dci')
+        /*$data = \DB::table('desaparecidos_cedula_investigacion AS dci')
                     ->join('desaparecidos_personas AS dperson','dci.id','=','dperson.idCedula')
                     ->join('persona AS person','person.id','=','dperson.idPersona')
                     ->leftJoin('desaparecidos_domicilios AS domicilios', 'dperson.id', '=', 'domicilios.idDesaparecido')
@@ -45,7 +45,10 @@ class OficioCedulaController extends Controller
                         )
                     ->get();
 
-        return response()->json( $this->json_oficio1());
+        return response()->json( $this->json_oficio1());*/
+        $data = $this->json_oficio1(1);
+
+        return view('plantillas.cedulaMediaAfiliacion.solicitud',['data' => $data]);
     }
 
     /**
@@ -96,7 +99,7 @@ class OficioCedulaController extends Controller
     }
 
 
-    public function json_oficio1(){
+    public function json_oficio1($id){
         $doc="";
         $resolucion ="NO";
         $fotoExtra = "NO";
@@ -189,6 +192,109 @@ class OficioCedulaController extends Controller
             return response()->json($data);
     }
 
+    public function json_oficio2($id){
+        $informante = \DB::table('desaparecidos_cedula_investigacion AS dci')
+                    ->join('desaparecidos_personas AS dperson','dci.id','=','dperson.idCedula')
+                    ->join('persona AS person','person.id','=','dperson.idPersona')
+                    ->leftJoin('desaparecidos_domicilios AS domicilios', 'dperson.id', '=', 'domicilios.idDesaparecido')
+                    ->leftJoin('cat_colonia AS colonia', 'domicilios.idColonia', '=', 'colonia.id')
+                    ->leftJoin('cat_localidad AS localidad', 'domicilios.idLocalidad', '=', 'localidad.id')
+                    ->leftJoin('cat_municipio AS municipio', 'domicilios.idMunicipio', '=', 'municipio.id')
+                    ->leftJoin('cat_estado AS estado', 'domicilios.idEstado', '=', 'estado.id')
+                    ->leftJoin('cat_parentesco AS parentesco', 'dperson.idParentesco', '=', 'parentesco.id')
+                    ->leftJoin('cat_documento_identidad AS docIden', 'dperson.idDocumentoIdentidad', '=', 'docIden.id')
+                    ->leftJoin('cat_estado_civil AS edoCivil','dperson.idEdocivil','=','edoCivil.id')
+                    ->select(
+                        'dci.desaparicionObservaciones as observacionDesa',
+                        \DB::raw('CONCAT(person.nombres," ",person.primerAp," ",person.segundoAp) AS informante'),
+                        'dperson.tipoPersona AS tipoPersona',
+                        'parentesco.nombre AS parentesco',
+                        'person.sexo AS genero',
+                        \DB::raw('CONCAT(domicilios.calle,", #",domicilios.numExterno,", ","EN LA COLONIA ",colonia.nombre,", DE LA LOCALIDAD ",localidad.nombre,", EN EL MUNICIPIO DE ",municipio.nombre,", ",estado.nombre) AS direccion'),
+                        'edoCivil.nombre AS estadoC',
+                        'dperson.edadExtravio AS edadExtravio',
+                        'docIden.nombre AS documentoI'                            
+                        )
+                    ->where('dperson.idCedula',$id)
+                    ->where('dperson.tipoPersona','INFORMANTE')
+                    ->limit(1)
+                    ->get();
+
+        $desaparecido = \DB::table('desaparecidos_cedula_investigacion AS dci')
+                    ->join('desaparecidos_personas AS dperson','dci.id','=','dperson.idCedula')
+                    ->leftJoin('persona AS person','person.id','=','dperson.idPersona')
+                    ->leftJoin('desaparecidos_domicilios AS domicilios', 'dperson.id', '=', 'domicilios.idDesaparecido')
+                    ->leftJoin('cat_colonia AS colonia', 'domicilios.idColonia', '=', 'colonia.id')
+                    ->leftJoin('cat_localidad AS localidad', 'domicilios.idLocalidad', '=', 'localidad.id')
+                    ->leftJoin('cat_municipio AS municipio', 'domicilios.idMunicipio', '=', 'municipio.id')
+                    ->leftJoin('cat_estado AS estado', 'domicilios.idEstado', '=', 'estado.id')
+                    ->leftJoin('cat_parentesco AS parentesco', 'dperson.idParentesco', '=', 'parentesco.id')
+                    ->leftJoin('cat_documento_identidad AS docIden', 'dperson.idDocumentoIdentidad', '=', 'docIden.id')
+                    ->leftJoin('cat_estado_civil AS edoCivil','dperson.idEdocivil','=','edoCivil.id')
+                    ->leftJoin('cat_escolaridad AS escolaridad','dperson.idEscolaridad','=','escolaridad.id')
+                    ->leftJoin('cat_ocupacion AS ocupacion','dperson.idOcupacion','=','ocupacion.id')
+                    ->select(
+                        'dci.carpeta AS numCarpeta',
+                        \DB::raw('DATE_FORMAT(dci.created_at," %d DE %M DE %Y") AS fechaRegistro'),
+                        'dci.desaparicionObservaciones as observacionDesa',
+                        \DB::raw('CONCAT(person.nombres," ",person.primerAp," ",person.segundoAp) AS desaparecido'),
+                        'dperson.tipoPersona AS tipoPersona',
+                        'dperson.edadExtravio AS edadExtravio',
+                        'dperson.fotoDesaparecido AS foto',
+                        'docIden.nombre AS documentoI',
+                        'person.sexo AS genero',
+                        'edoCivil.nombre AS estadoC',
+                        'escolaridad.nombre AS escolari',
+                        'ocupacion.nombre AS ocupa',
+                        'dperson.id AS idDesa',
+                        \DB::raw('CONCAT(domicilios.calle,", #",domicilios.numExterno,", ","EN LA COLONIA ",colonia.nombre,", DE LA LOCALIDAD ",localidad.nombre,", EN EL MUNICIPIO DE ",municipio.nombre,", ",estado.nombre) AS direccion'),
+                        \DB::raw('TIME(dci.created_at) AS horaReg')                            
+                        )
+                    ->where('dperson.idCedula',$id)
+                    ->where('dperson.tipoPersona','DESAPARECIDA')
+                    ->limit(1)
+                    ->get();
+
+
+        $lugar = \DB::table('desaparecidos_cedula_investigacion AS dci')
+                ->join('desaparecidos_personas AS dperson','dci.id','=','dperson.idCedula')
+                ->join('persona AS person','person.id','=','dperson.idPersona')
+                ->leftJoin('desaparecidos_domicilios AS domicilios', 'dperson.id', '=', 'domicilios.idDesaparecido')
+                ->leftJoin('cat_colonia AS colonia', 'domicilios.idColonia', '=', 'colonia.id')
+                ->leftJoin('cat_localidad AS localidad', 'domicilios.idLocalidad', '=', 'localidad.id')
+                ->leftJoin('cat_municipio AS municipio', 'domicilios.idMunicipio', '=', 'municipio.id')
+                ->leftJoin('cat_estado AS estado', 'domicilios.idEstado', '=', 'estado.id')
+                ->select(
+                        \DB::raw('CONCAT(domicilios.calle,", #",domicilios.numExterno,", ","EN LA COLONIA ",colonia.nombre,", DE LA LOCALIDAD ",localidad.nombre,", EN EL MUNICIPIO DE ",municipio.nombre,", ",estado.nombre) AS direccion')                       )
+                    ->where('domicilios.idDesaparecido',$desaparecido[0]->idDesa)
+                    ->where('domicilios.tipoDireccion','LUGAR DE AVISTAMIENTO')
+                    ->limit(1)
+                    ->get();
+
+        //return $informante;
+         $data = array(
+            'nombreInfo' => $informante[0]->informante,
+            'edadInfo' => $informante[0]->edadExtravio,
+            'generoInfo' => $informante[0]->genero,
+            'estadoCivilInfo' => $informante[0]->estadoC,
+            'parentescoInfo' => $informante[0]->parentesco,
+            'domicilioInfo' => $informante[0]->direccion,
+            'observacionDesa' => $informante[0]->observacionDesa,
+            'fechaHora' => $desaparecido[0]->fechaRegistro." A LAS ".$desaparecido[0]->horaReg,
+            'carpeta' => $desaparecido[0]->numCarpeta,
+            'nombreDesa' => $desaparecido[0]->desaparecido,
+            'edadDesa' => $desaparecido[0]->edadExtravio,
+            'generoDesa' => $desaparecido[0]->genero,
+            'estadoCivilDesa' => $desaparecido[0]->estadoC,
+            'domicilioDesa' => $desaparecido[0]->direccion,
+            'escolaridadDesa' => $desaparecido[0]->escolari,
+            'ocupacionDesa' => $desaparecido[0]->ocupa, 
+            'lugarExtravio' => $lugar[0]->direccion
+            );
+         //dd($data);
+            return response()->json($data);
+
+    }
     /**
      * Show the form for editing the specified resource.
      *

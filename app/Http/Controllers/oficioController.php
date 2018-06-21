@@ -100,7 +100,7 @@ class OficioController extends Controller
     }
 
     public function oficioprueba($id){
-        $doc="";
+       /* $doc="";
         $resolucion ="NO";
         $fotoExtra = "NO";
         $carpeta = "SI";
@@ -189,6 +189,6 @@ class OficioController extends Controller
             'edadExtra' => strtoupper($desaparecido[0]->edadExtravio),
             'hora' => $desaparecido[0]->horaReg
             );
-            return response()->json($data);
+            return response()->json($data);*/
     }
 }
