@@ -81,21 +81,22 @@ class OficioCedulaController extends Controller
     public function show($id)
     {
         //
-        /*$datos = \App\Models\Desaparecido::where('idCedula', $id)
+        $datos = \App\Models\Desaparecido::where('idCedula', $id)
                                             ->where('tipoPersona', 'DESAPARECIDA')
                                             ->limit(1)
                                             ->get();
         
         $desaparecido = \App\Models\Desaparecido::find($datos[0]->id);
+        $data = $this->json_oficio1($id);
         //dd($desaparecido->partescuerpo->toArray());
-        $view = view('plantillas.cedulaMediaAfiliacion.oficioGeneral', compact('desaparecido'))->render();
+        $view = view('plantillas.cedulaMediaAfiliacion.oficioGeneral', compact('desaparecido','data'))->render();
         $pdf =\App::make('dompdf.wrapper');
         $pdf -> loadHTML($view);
         
         
-        $pdf->setPaper('carta');*/
-        return view('plantillas.cedulaMediaAfiliacion.oficioGeneral');
-        //return $pdf->stream('formato_'.time().'.pdf');
+        $pdf->setPaper('carta');
+        //return view('plantillas.cedulaMediaAfiliacion.oficioGeneral');
+        return $pdf->stream('formato_'.time().'.pdf');
     }
 
 
@@ -189,7 +190,8 @@ class OficioCedulaController extends Controller
             'edadExtra' => strtoupper($desaparecido[0]->edadExtravio),
             'hora' => $desaparecido[0]->horaReg
             );
-            return response()->json($data);
+            //return response()->json($data);
+         return $data;
     }
 
     public function json_oficio2($id){
