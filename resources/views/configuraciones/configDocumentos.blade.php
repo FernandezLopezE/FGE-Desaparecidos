@@ -13,7 +13,6 @@
       
     <div class="col">
       <label for="">Dependencias</label>
-      <button class="btn btn-primary btn-sm pull-right" id="newDepen" data-toggle="tooltip" data-placement="left" title="Nueva dependencia"><i class="fa fa-plus-circle"></i></button>
       <button class="btn btn-primary btn-sm pull-right" id="newDepen" data-toggle="tooltip" data-placement="top" title="Nueva dependencia"><i class="fa fa-plus-circle"></i></button>
       {!! Form::select('dependencias', $dependencias, '', ['class' => 'form-control', 'id' => 'catDependencias'] ) !!}
     </div>
@@ -21,7 +20,6 @@
 
     <div class="col">
       <label for="">Encargado</label>
-      <button class="btn btn-primary btn-sm pull-right" id="newEncar" data-toggle="tooltip" data-placement="left" title="Nuevo encargado"><i class="fa fa-plus-circle"></i></button>
       <button class="btn btn-primary btn-sm pull-right" id="newEncar" data-toggle="tooltip" data-placement="top" title="Nuevo encargado"><i class="fa fa-plus-circle"></i></button>
       {!! Form::select('encargados', $encargados, '', ['class' => 'form-control', 'id' => 'catEncargados'] ) !!}
     </div>
