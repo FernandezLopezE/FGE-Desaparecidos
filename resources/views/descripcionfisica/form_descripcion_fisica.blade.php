@@ -12,8 +12,7 @@
         <div class="form-group" id="fomularioPrin2">
                 <h6><b>Selecciona la parte del cuerpo</b></h6>
         </div>
-        <div class="row" id="fomularioPrin" >
-            <div class="col">
+         <div class="col-lg-4" >
               <!-- Card de datos físicos-->
                 <div class="card-transparent" style="max-width: 18rem;height: -70%;">
                   <div class="card-header-transparent">
@@ -55,14 +54,16 @@
                   </div>
               </div>
             </div>
-            <div class="col" style="margin-left:-350px; margin-top:-20px;">
+           
+        <div class="row" id="fomularioPrin" >
+            <div class="col-lg-4" style="">
               <img src="{{asset('/images/cuerpo2.gif')}}" class="img-fluid" alt="" width="27" height="57" style="float: right;" data-toggle="tooltip" title="Atrás" data-placement="bottom" id="btnTras">
               <img src="{{asset('/images/cuerpo1.gif')}}" class="img-fluid" alt="" width="27" height="57" style="float: right; display:none;" data-toggle="tooltip" title="Frente" data-placement="bottom" id="btnFrente">
 
               @include('descripcionfisica.avatar')
               @include('descripcionfisica.avatarTras')
             </div>
-            <div class="col-8" id='formulario'>
+            <div class="col-lg-8" id='formulario'>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <?php $i = 0; ?>
                     @foreach ($dataPartes as $key => $parte)
@@ -187,8 +188,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-4">
-                                                        <div class="card-block">
-                                                            <img class="card-img-left" style="width: 100%;" src="{{asset($value->imagen)}}" alt="Card image cap"/>
+                                                        <div class="card-block" align="center">
+                                                            <img class="card-img-left" style="width: 70%;" src="{{asset($value->imagen)}}" alt="Card image cap"/>
                                                         </div>
                                                 </div>
                                                     
@@ -205,6 +206,7 @@
                 </div>           
 
             </div>
+            
         </div>
     </div>
 </div>

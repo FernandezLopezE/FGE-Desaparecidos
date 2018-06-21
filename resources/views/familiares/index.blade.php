@@ -3,9 +3,12 @@
 @section('css')
 {!! Html::style('') !!}
 <style type="text/css">
-	.modal-lg {
+    @media only screen and (min-width: 700px) {
+.modal-lg {
 		max-width: 80%;
 	}
+}
+	
 	.gi-3x{font-size: 2.5em;}
 
 
@@ -35,6 +38,7 @@
 {!! HTML::script('personal/js/sisyphus.min.js') !!}
 {!! HTML::script('personal/js/sisyphus.js') !!}
 <script type="text/javascript">
+
 	$(function (){
 		var table = $('#tableFamiliares');
 		var routeIndex = '{!! route('consultas.index') !!}';

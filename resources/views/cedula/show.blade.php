@@ -2,6 +2,11 @@
 
 @section('css')
 	{!! Html::style('') !!}
+	<style type="text/css">
+	.right {
+  float: right;
+} 
+</style>
 @endsection
 
 @section('titulo', '')
@@ -15,8 +20,11 @@
 	EDITAR
 </a> 
 <div class="card-body bg-white">
-	<div class="row">
-		<div class="col-10">
+	<div>
+	<div class="col-lg-2 right">
+			{{ HTML::image('images/perfil3.png', 'Fiscal', array('class' => 'rounded w-100 p-3 float-right')) }}	
+		</div>
+		<div class="col-lg-10">
 			<h5>Datos del fiscal</h5>
 			<dl class="row">
 				<dt class="col-sm-4">Nombre:</dt>
@@ -62,9 +70,7 @@
 				@endisset
 			</dl>
 		</div>
-		<div class="col-2">
-			{{ HTML::image('images/perfil3.png', 'Fiscal', array('class' => 'rounded w-100 p-3 float-right')) }}	
-		</div>		
+				
 	</div>
 </div>
 	

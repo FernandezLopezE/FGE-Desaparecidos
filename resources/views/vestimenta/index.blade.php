@@ -2,9 +2,11 @@
 @section('css')
 {!! Html::style('') !!}
 <style type="text/css">
+	  @media only screen and (min-width: 700px) {
 	.modal-lg {
 		max-width: 80%;
-	}
+        } 
+    }
 	#diseno{
 		height: 40%;
 	}
