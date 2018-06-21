@@ -5,10 +5,19 @@
 {!! HTML::style('personal/css/multiple-select.css') !!}
 {!! HTML::style('personal/css/bootstrap-table-filter-control.css') !!}
 <style type="text/css">
+	@media only screen and (min-width: 700px) {
 	.modal-lg {
 		max-width: 80%;
-	}
-
+        } 
+    }
+    @media only screen and (max-width: 700px) {
+	#modalContent div{
+		align-content: center;
+        } 
+    }
+.right {
+  float: right;
+} 
 
 .class2:hover {
     transform:scale(1.5);

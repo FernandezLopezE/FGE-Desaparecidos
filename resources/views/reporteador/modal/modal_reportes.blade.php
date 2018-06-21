@@ -13,6 +13,9 @@
 	  </div>
 	  <div class="modal-body">
           <div class="row">
+			<div class="col-lg-4 right" id="foto">
+              
+          </div>
 			<div class="col-lg-8">
 			<dl class="row">
 				<dt class="col-sm-4">Nombre:</dt>
@@ -93,9 +96,7 @@
 -->
 			</dl>
 		</div>
-		<div class="col-lg-4" id="foto">
-              
-          </div>
+		
 	
 		</div>
 	  </div>
