@@ -102,9 +102,9 @@
 					</form> 
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-dark" id="btnGuardarPrenda">GUARDAR</button>
-					<button type="button" class="btn btn-dark" id="btnActualizarPrenda">GUARDAR</button>
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">CERRAR</button>
+					<button type="button" class="btn btn-dark" id="btnGuardarPrenda">Guardar</button>
+					<button type="button" class="btn btn-dark" id="btnActualizarPrenda">Guardar</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 				</div>
 			</div>
 		</div>

@@ -51,7 +51,7 @@
 		<div class="content-header">
 			<div class="container-fluid">
 				<div class="row mb-2">
-					<div class="col-sm-6">
+					<div class="col-sm-12">
 						<h4 class="m-0 text-dark">
 							<i class="fa fa-male" aria-hidden="true"></i>
 							Cédula de investigación de la persona no localizada.

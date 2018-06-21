@@ -1,10 +1,8 @@
 @extends('layouts.app_uipj')
 
 @section('css')
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
 {!! Html::style('') !!}
-{!! HTML::style('personal/css/bootstrap-datetimepicker.min.css') !!}
 <style type="text/css">
 	.modal-lg {
 		max-width: 80%;
@@ -55,22 +53,42 @@
 											
 						</div>
 						<div class="col">
-                            <div class="container">
-                                <div class="row">
-                                    <div class='col-sm-6'>
-                                        <div class="form-group">
-                                            <label for="">Hora:</label>
-                                            <div class='input-group date' id='datetimepicker1'>
-                                                <input type='text' class="form-control" />
-                                                <span class="input-group-addon">
-                                                    <span class="glyphicon glyphicon-time"></span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
+								<div class="container">
+								  <div class="row">
+								    <div class="col">
+								      <div class="form-group">
+								        <label for="">Hora (24 hrs):</label>
+								        <div class="input-group col-4">
+								          
+								          {!! Form::number ('horasAvisto',
+												old('Horas'),
+												['class' => 'form-control',
+													'id' => 'horas' ,
+													'data-validation' => 'required',
+                    'data-validation-error-msg-required' => 'El campo es requerido',
+													'max' =>'23','min' =>'0',
+													'data-validation'=>"number" ,
+													'data-validation-allowing'=>"range[0;23],negative",
+													'placeholder' => 'HH'				
+												])!!}
 
-                                </div>
-                            </div>
+								          <span class="input-group-addon"><strong>:</strong></span>
+								          {!! Form::number ('miniutos',
+												old('min'),
+												['class' => 'form-control',
+													'id' => 'minutos' ,
+													'data-validation' => 'required',
+													'data-validation-error-msg' => 'Ingrese una hora válida',
+													'max' =>'59','min' =>'0',
+													'data-validation'=>"number" ,
+													'data-validation-allowing'=>"range[0;59],negative",
+													'placeholder' => 'MM'						
+												])!!}
+								        </div>
+								      </div>
+								    </div>
+								  </div>
+								</div>
 						</div>	
 					
 				</div>
@@ -251,23 +269,13 @@
 
 @endsection
 
-@section('scripts') 
-{!! HTML::script('personal/js/moment-with-locales.js') !!}
-{!! HTML::script('personal/js/bootstrap-datetimepicker.min.js') !!}
+@section('scripts')
 {!! HTML::script('personal/js/sisyphus.min.js') !!}
 {!! HTML::script('personal/js/sisyphus.js') !!}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 <script type="text/javascript">
-    
-            $(function () {
-                $('#datetimepicker1').datetimepicker({
-                    format: 'LT'
-                });
-            });
-
-    
 	$(document).ready(function()
 	{
 		document.getElementById("vehiculoPlacas").disabled = true;
@@ -309,9 +317,6 @@
 var routeIndex = '{!! route('desaparicion.index') !!}';
 $(btnGuardarDescripcionHechos).click (function(){
 			
-    var timee = $('#datetimepicker1').val();
-    console.log('consola: ')
-    console.log(timee);
 		 if ($('#sinInformacionVehiculo').is(':checked')) {
         		
       			vehiculoPlacas = "";
@@ -323,7 +328,6 @@ $(btnGuardarDescripcionHechos).click (function(){
       			}
 
       		var token = $("#token").val();
-    
 			var dataString = {
 				desaparicionFecha: $("#familiaresFechaNacimiento").val()+" "+$("#horas").val()+":"+$("#minutos").val()+":00",
 				//desaparicionHora: $("#horas").val()+":"+$("#minutos").val(),
