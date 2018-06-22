@@ -35,7 +35,7 @@
 				<br />
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>FEADPD/ZCX/61/2018-06</strong>
+						<strong>{{$oficio2['carpeta']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -48,12 +48,12 @@
 				<br />
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						12 DE JUNIO DE 2018
+						<strong>{{$oficio2['fechaHora']}}</strong>
 					</span>
 				</span>
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						A LAS 11:30 HORAS
+						
 					</span>
 				</span>
 			</td>
@@ -95,14 +95,14 @@
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						NOMBRE: <strong>CESAR ARTUTO BRAVO CAMPOS</strong>
+						NOMBRE: <strong>{{$oficio2['nombreDesa']}}</strong>
 					</span>
 				</span>
 			</td>
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						EDAD: 25 a&ntilde;os, 6 meses y 18 dias
+						EDAD: <strong>{{$oficio2['edadDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -111,14 +111,14 @@
 			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						G&Eacute;NERO:
+						G&Eacute;NERO: <strong>{{$oficio2['generoDesa']}}</strong>
 					</span>
 				</span>
 			</td>
 			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						EDO. CIVIL:
+						EDO. CIVIL: <strong>{{$oficio2['estadoCivilDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -127,13 +127,13 @@
 			<td style="border-color: black; text-align: center; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						DOMICILIO:
+						DOMICILIO: 
 					</span>
 				</span>
 				<br />
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						CALLE: &Aacute;LVARO OBREG&Oacute;N, NUMERO: S/N, COLONIA:&nbsp; LOS PINOS, LOCALIDAD: RINCONADA, MUNICIPIO:&nbsp; EMILIANO ZAPATA, ENTIDAD: VERACRUZ, C.P.:
+						<strong>{{$oficio2['domicilioDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -142,14 +142,14 @@
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						ESCOLARIDAD: TERCERO DE PRIMARIA
+						ESCOLARIDAD: <strong>{{$oficio2['escolaridadDesa']}}</strong>
 					</span>
 				</span>
 			</td>
 			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						OCUPACI&Oacute;N: OBRERO
+						OCUPACI&Oacute;N: <strong>{{$oficio2['ocupacionDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -164,10 +164,10 @@
 			</td>
 		</tr>
 		<tr>
-			<td style="border-color: black; text-align: center; vertical-align: top;" colspan="2">
+			<td style="border-color: black;  vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						LUGAR DE EXTRAVI&Oacute;: CARRETERA XALAPA, VERACRUZ, LOCALIDAD RINCONADA
+						LUGAR DE EXTRAVI&Oacute;: <strong>{{$oficio2['lugarExtravio']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -221,7 +221,7 @@
 			<td style="border-color: black; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						NOMBRE: LUZ DEL ROSARIO MENDOZA GER&Oacute;N
+						NOMBRE: <strong>{{$oficio2['nombreInfo']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -230,14 +230,14 @@
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						EDAD: 25 a&ntilde;os, 6 meses y 18 dias
+						EDAD: <strong>{{$oficio2['edadInfo']}}</strong>
 					</span>
 				</span>
 			</td>
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						PARENTESCO CON EL DESAPARECIDO: PAREJA
+						PARENTESCO CON EL DESAPARECIDO: <strong>{{$oficio2['parentescoInfo']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -246,14 +246,14 @@
 			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						G&Eacute;NERO:
+						G&Eacute;NERO: <strong>{{$oficio2['generoInfo']}}</strong>
 					</span>
 				</span>
 			</td>
 			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						EDO. CIVIL:
+						EDO. CIVIL: <strong>{{$oficio2['estadoCivilInfo']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -262,13 +262,13 @@
 			<td style="border-color: black; text-align: center; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						DOMICILIO:
+						DOMICILIO: 
 					</span>
 				</span>
 				<br />
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						CALLE: &Aacute;LVARO OBREG&Oacute;N, NUMERO: S/N, COLONIA:&nbsp; LOS PINOS, LOCALIDAD: RINCONADA, MUNICIPIO:&nbsp; EMILIANO ZAPATA, ENTIDAD: VERACRUZ, C.P.:
+						<strong>{{$oficio2['domicilioInfo']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -286,7 +286,7 @@
 			<td style="border-color: black; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>REFIERE LA DENUNCIANTE QUE EL D&Iacute;A DE AYER 11 DE JUNIO DE 2018, SIENDO LAS 15:00 APROXIMADAMENTE, AL ENCONTRARSE TRABAJANDO EN LAS AFUERAS DE LA TIENDA TRES HERMANOS, LLEGARON TRES CAMIONETAS CON VARIOS SUJETOS Y SE LLEVARON AL AHORA DESAPARECIDO, CON RUMBO DESCONOCIDO. </strong>
+						<strong>{{$oficio2['observacionDesa']}} </strong>
 					</span>
 				</span>
 			</td>
@@ -298,6 +298,6 @@
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;">&nbsp;</p>
-<p style="text-align: center;"><span style="font-size: 11px;"><span style="font-family: Tahoma,Geneva,sans-serif;"><strong>LIC. DAVID GARC&Iacute;A GALV&Aacute;N</strong></span></span></p>
+<p style="text-align: center;"><span style="font-size: 11px;"><span style="font-family: Tahoma,Geneva,sans-serif;"><strong>LIC. {{$oficio2['entrevistador']}}</strong></span></span></p>
 </body>
 </html>

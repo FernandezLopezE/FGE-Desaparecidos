@@ -28,7 +28,7 @@
 			<td style="border-color: black;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						NOMBRE: <strong>CESAR ARTURO BRAVO CAMPOS</strong>
+						NOMBRE: <strong>{{$oficio3['nombreDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -37,14 +37,14 @@
 			<td style="border-color: black; vertical-align: top; " colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						SOBRENOMBRE: <strong>CESC</strong>
+						SOBRENOMBRE: <strong>{{$oficio3['apodo']}}</strong>
 					</span>
 				</span>
 			</td>
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						EDAD: <strong>23</strong>
+						EDAD: <strong>{{$oficio3['edadDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -53,14 +53,14 @@
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						GÉNERO: <strong>MASCULINO</strong>
+						GÉNERO: <strong>{{$oficio3['generoDesa']}}</strong>
 					</span>
 				</span>
 			</td>
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						EDO. CIVIL: <strong>UNION LIBRE</strong>
+						EDO. CIVIL: <strong>{{$oficio3['estadoCivilDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -76,7 +76,7 @@
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>1.70 METROS</strong>
+						<strong>{{$oficio3['estaturaDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -92,7 +92,7 @@
 			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>CLARO</strong>
+						<strong>{{$oficio3['colorPiel']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -202,7 +202,7 @@
 			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        <strong>05 DE NOVIEMBRE DE 1992</strong>
+                        <strong>{{$oficio3['fechaNacimi']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -217,14 +217,14 @@
 				<br />
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        DELEGACIÓN Y/O MUNICIPIO. ESTADO. DIA, MES Y AÑO.
+                        (DELEGACIÓN Y/O MUNICIPIO. ESTADO. DIA, MES Y AÑO.)
 					</span>
 				</span>
 			</td>
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        LUGAR: <strong>CARRETERA XALAPA-VERACRUZ, LOCALIDAD RINCONADA
+                        LUGAR: <strong>{{$oficio3['lugarExtravio']}}</strong>
 					</span>
 				</span>
                 <br />
@@ -262,7 +262,7 @@
             <td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        <strong>SI</strong>
+                        <strong>{{$oficio3['fotoExtra']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -280,7 +280,7 @@
 			<td style="border-color: black; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        <strong>REFIERE LA DENUNCIANTE QUE EL DÍA DE AYER 11 DE JUNIO DE 2018, SIENDO LAS 15:00 APROXIMADAMENTE, AL ENCONTRARSE TRABAJANDO EN LAS AFUERAS DE LA TIENDA TRES HERMANOS, LLEGARON TRES CAMIONETAS CON VARIOS SUJETOS Y SE LLEVARON AL AHORA DESAPARECIDO, CON RUMBO DESCONOCIDO.</strong>
+                        <strong>{{$oficio3['observa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -292,6 +292,6 @@
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;">&nbsp;</p>
-<p style="text-align: center;"><span style="font-size: 11px;"><span style="font-family: Tahoma,Geneva,sans-serif;"><strong>LIC. DAVID GARC&Iacute;A GALV&Aacute;N</strong></span></span></p>
+<p style="text-align: center;"><span style="font-size: 11px;"><span style="font-family: Tahoma,Geneva,sans-serif;"><strong>LIC. {{$oficio3['entrevistador']}}</strong></span></span></p>
 </body>
 </html>
