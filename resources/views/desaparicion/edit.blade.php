@@ -55,8 +55,7 @@
 											
 						</div>
 					   <div class="col">
-                            <div class="">
-                             
+                            <div class="">                             
                                         <div class="form-group"><br>   
                                             <label for="">Hora:</label>
                                             <div class='input-group date' id='datetimepicker1'>
@@ -115,11 +114,11 @@
 							</div>
 
 							<div class="row" id=""  > 	
-									<div class="form-group col">
+									<div class="form-group col-lg-4">
 										{!! Form::label ('idEstado','Estado:') !!}
 										{!! Form::select ('idEstado',$estados,'', ['class' => 'form-control' , 'id' =>'idEstado'] )!!}				
 									</div>
-									<div class="form-group col">
+									<div class="form-group col-lg-4">
 										{!! Form::label ('idMunicipio','Municipio:') !!}
 										{!! Form::select ('idMunicipio',$municipios,@$domicilio->idMunicipio,
 																 ['class' => 'form-control'

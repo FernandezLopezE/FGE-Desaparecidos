@@ -39,7 +39,7 @@
 				</div>
 	  			<div class="row">				
 					
-						<div class="form-group col-4">
+						<div class="col-lg-6 col-sm-12"><br> 
 							{!! Form::label ('fechaAvisto','Fecha de la última vez que fue visto:') !!}
 							{!! Form::text ('familiaresFechaNacimiento',
 												old('Fecha de nacimiento'),
@@ -55,10 +55,8 @@
 											
 						</div>
 						<div class="col">
-                            <div class="container">
-                                <div class="row">
-                                    <div class='col-sm-6'>
-                                        <div class="form-group">
+                            <div class="">                               
+                                        <div class="form-group"><br> 
                                             <label for="">Hora:</label>
                                             <div class='input-group date' id='datetimepicker1'>
                                                 <input type='text' class="form-control" id="idTime"/>
@@ -69,17 +67,14 @@
                                         </div>
                                     </div>
 
-                                </div>
-                            </div>
-						</div>	
-					
+                                </div>       
 				</div>
 				
 						{{--AQUI ENPIEZAN LOS DIV DEL TOGGLE--}}
 											
 							<div class="row" > 	
 								
-								<div class="form-group col">
+								<div class=" col-lg-4 col-sm-6">
 									{!! Form::label ('calle','Calle:') !!}
 									{!! Form::text ('calle',
 														old('calle'),
@@ -88,7 +83,7 @@
 														
 														] )!!}				
 								</div>
-								<div class="form-group col">
+								<div class="col-lg-4 col-sm-6">
 									{!! Form::label ('numExterno','Número exterior:') !!}
 									{!! Form::text ('numExterno',
 													old('numExterno'),
@@ -96,7 +91,7 @@
 														'id' => 'numExterno',
 													] )!!}				
 								</div>
-								<div class="form-group col">
+								<div class="col">
 									{!! Form::label ('ref','Referencia:') !!}
 									{!! Form::text ('referencia',
 														old('referencia'),
@@ -109,11 +104,11 @@
 							</div>
 
 							<div class="row" id=""  > 	
-									<div class="form-group col">
+									<div class="form-group col-lg-4">
 										{!! Form::label ('idEstado','Estado:') !!}
 										{!! Form::select ('idEstado',$estados,'', ['class' => 'form-control'] )!!}				
 									</div>
-									<div class="form-group col">
+									<div class="form-group col-lg-4">
 										{!! Form::label ('idMunicipio','Municipio:') !!}
 										{!! Form::select ('idMunicipio',$municipios,'',
 																 ['class' => 'form-control',
@@ -344,7 +339,7 @@ $(btnGuardarDescripcionHechos).click (function(){
       		var token = $("#token").val();
     
 			var dataString = {  
-				desaparicionFecha: $("#familiaresFechaNacimiento").val()+" "+ sHours+":"+sMinutes+":00",
+				desaparicionFecha: $("#familiaresFechaNacimiento").val()+" "+ sHours+":"+sMinutes+":00",          
 				//desaparicionHora: $("#horas").val()+":"+$("#minutos").val(),
 				calle: $("#calle").val(),
 				numExterno: $("#numExterno").val(),	
