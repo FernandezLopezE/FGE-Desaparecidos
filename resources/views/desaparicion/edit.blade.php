@@ -3,6 +3,7 @@
 @section('css')
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
 {!! Html::style('') !!}
+{!! HTML::style('personal/css/bootstrap-datetimepicker.min.css') !!}
 <style type="text/css">
 	.modal-lg {
 		max-width: 80%;
@@ -38,7 +39,7 @@
 				</div>
 	  			<div class="row">				
 					
-						<div class="form-group col-4">
+						<div class=" col-lg-6 col-sm-12"><br>
 							{!! Form::label ('fechaAvisto','Fecha de la última vez que fue visto:') !!}
 							{!! Form::text ('familiaresFechaNacimiento',
 												$desaparicionFecha,
@@ -53,52 +54,38 @@
 
 											
 						</div>
-						<div class="col">
-								<div class="container">
-								  <div class="row">
-								    <div class="col">
-								      <div class="form-group">
-								        <label for="">Hora</label>
-								        <div class="input-group col-4">
-								          
-								          {!! Form::number ('horasAvisto',
+					   <div class="col">
+                            <div class="">
+                             
+                                        <div class="form-group"><br>   
+                                            <label for="">Hora:</label>
+                                            <div class='input-group date' id='datetimepicker1'>
+                                                
+                                                {!! Form::text ('horasAvisto',
 												$desaparicionHoras,
 												['class' => 'form-control',
 													'id' => 'horas' ,
 													'data-validation' => 'required',
-                    'data-validation-error-msg-required' => 'El campo es requerido',
-													'max' =>'23','min' =>'0',
-													'data-validation'=>"number" ,
-													'data-validation-allowing'=>"range[0;23],negative",
-													'placeholder' => 'HH'				
+                                                    'data-validation-error-msg-required' => 'El campo es requerido',									
+													'placeholder' => 'HH:MM'				
 												])!!}
+                                                
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-time"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
 
-								          <span class="input-group-addon"><strong>:</strong></span>
-								          {!! Form::number ('miniutos',
-												$desaparicionMinutos,
-												['class' => 'form-control',
-													'id' => 'minutos' ,
-													'data-validation' => 'required',
-													'data-validation-error-msg' => 'Ingrese una hora válida',
-													'max' =>'59','min' =>'0',
-													'data-validation'=>"number" ,
-													'data-validation-allowing'=>"range[0;59],negative",
-													'placeholder' => 'MM'						
-												])!!}
-								        </div>
-								      </div>
-								    </div>
-								  </div>
-								</div>
-						</div>	
-					
+                                </div>
+                          
 				</div>
 				
 						{{--AQUI ENPIEZAN LOS DIV DEL TOGGLE--}}
 											
 							<div class="row" > 	
 								
-								<div class="form-group col">
+								<div class=" col-lg-4 col-sm-6">
 									{!! Form::label ('calle','Calle:') !!}
 									{!! Form::text ('calle',
 														$domicilio->calle,
@@ -107,7 +94,7 @@
 															
 														] )!!}				
 								</div>
-								<div class="form-group col">
+								<div class=" col-lg-4 col-sm-6">
 									{!! Form::label ('numExterno','Número exterior:') !!}
 									{!! Form::text ('numExterno',
 													$domicilio->numExterno,
@@ -115,7 +102,7 @@
 														'id' => 'numExterno',
 													] )!!}				
 								</div>
-								<div class="form-group col">
+								<div class=" col">
 									{!! Form::label ('ref','Referencia:') !!}
 									{!! Form::text ('referencia',
 														$desaparecido->cedula->desaparicionRef,
@@ -315,14 +302,25 @@
 @endsection
 
 @section('scripts')
+<!--
 {!! HTML::script('personal/js/sisyphus.min.js') !!}
 {!! HTML::script('personal/js/sisyphus.js') !!}
+-->
+{!! HTML::script('personal/js/moment-with-locales.js') !!}
+{!! HTML::script('personal/js/bootstrap-datetimepicker.min.js') !!}
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 <script type="text/javascript">
 	var routeIndex = '{!! route('consultas.index') !!}';	
 
+     $(function () {
+                $('#datetimepicker1').datetimepicker({
+                    format: 'hh:mm A'
+                });
+                
+            });
+    
 	$(document).ready(function()
 	{	
 		console.log(routeIndex);
@@ -428,8 +426,20 @@
 
 $(btnGuardarDescripcionHechos).click (function(){
 			
-			
-
+			var selected_datetime = $("#datetimepicker1").data("date");
+    
+    var time = selected_datetime;
+    var hours = Number(time.match(/^(\d+)/)[1]);
+    var minutes = Number(time.match(/:(\d+)/)[1]);
+    var AMPM = time.match(/\s(.*)$/)[1];
+    if(AMPM == "PM" && hours<12) hours = hours+12;
+    if(AMPM == "AM" && hours==12) hours = hours-12;
+    var sHours = hours.toString();
+    var sMinutes = minutes.toString();
+    if(hours<10) sHours = "0" + sHours;
+    if(minutes<10) sMinutes = "0" + sMinutes;
+    console.log('HOLA');
+console.log(sHours + ":" + sMinutes);
 		 if ($('#sinInformacionVehiculo').is(':checked')) {
         		
       			vehiculoPlacas = "";
@@ -442,7 +452,7 @@ $(btnGuardarDescripcionHechos).click (function(){
 
       		var token = $("#token").val();
 			var dataString = {
-				desaparicionFecha: $("#familiaresFechaNacimiento").val()+" "+$("#horas").val()+":"+$("#minutos").val()+":00",
+				desaparicionFecha: $("#familiaresFechaNacimiento").val()+" "+ sHours+":"+sMinutes+":00",
 				//desaparicionHora: $("#horas").val()+":"+$("#minutos").val(),
 				calle: $("#calle").val(),
 				numExterno: $("#numExterno").val(),	
