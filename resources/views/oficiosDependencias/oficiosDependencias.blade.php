@@ -32,7 +32,7 @@
 		        	</th>
 		        	<th><i class="fa fa-square" style="color:#1CA800;"></i> Completo</th>
 		        	<th>
-		        		<button class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Ver/imprimir" id="#"><i class="fa fa-print"></i></button>
+		        		<a class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Ver/imprimir" id="#" href="{!! route('oficioCedula.show',['id' => $desaparecido->idCedula]) !!}"><i class="fa fa-print"></i></a>
 		        	</th>
 		    	</tr>
 		        <tr>
