@@ -168,6 +168,9 @@ $(document).ready(function(){
 
   });
 
+  $("#catOficios").select2();
+  $("#catDependencias").select2();
+  $("#catEncargados").select2();
 });
 </script>
 @endsection
