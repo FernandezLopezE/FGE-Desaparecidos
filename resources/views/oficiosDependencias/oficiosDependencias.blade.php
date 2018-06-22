@@ -25,6 +25,16 @@
 		        </tr>
 		    </thead>
 		    <tbody>
+		    	<tr>
+		    		<th>Anexos</th>
+		    		<th>
+		        		<button type="button" class="btn btn-primary btn-sm" id="btnRuben">Ver contenido&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+		        	</th>
+		        	<th><i class="fa fa-square" style="color:#1CA800;"></i> Completo</th>
+		        	<th>
+		        		<button class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Ver/imprimir" id="#"><i class="fa fa-print"></i></button>
+		        	</th>
+		    	</tr>
 		        <tr>
 		        	<th>Solicitud sobre puntos de revisión</th>
 		        	<th>
@@ -96,6 +106,16 @@ $(document).ready( function (){
 		$("#valor2").hide();
 		$("#valor3").show();
 	});
+
+	$("#btnRuben").click(function(event) {
+		$("#modal_VerDepend").modal();
+		$("#valor1").hide();
+		$("#valor2").hide();
+		$("#valor3").hide();
+		$("#valor4").show();
+	});
+
+
 
 	$("#imp2").click(function(event) {
 		$.confirm({

@@ -22,6 +22,14 @@
         <form action="" id="valor3" style="display: none;">
           <li>FISCALÍA GENERAL DEL ESTADO</li>
         </form>
+
+        <form action="" id="valor4" style="display: none;">
+          <li>SOLICITUD DE PERSONAS EXTRAVIADAS, SUSTRAIDAS O AUSENTES</li>
+          <li>CÉDULA DE PERSONAS EXTRAVIADAS, SUSTRAIDAS O AUSENTES</li>
+          <li>DATOS DE PERSONA EXTRAVIADA, SUSTRAIDA O AUSENTE</li>
+          <li>FOTOGRAFÍA ESCANEADA DE PERSONA EXTRAVIADA, SUSTRAIDA O AUSENTE</li>
+          <li>BOLETÍN</li>
+        </form>
       
 
         <!-- Fin del Contenido del formulario-->
