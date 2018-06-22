@@ -5,13 +5,264 @@
 	<title>Document</title>
 </head>
 <body>
+<p style="text-align: center;">
+    <span style="font-size: 11px;">
+        <span style="font-family: Tahoma,Geneva,sans-serif;">
+            CÉDULA DE DATOS DE PERSONA<br /> EXTRAVIADA, SUSTRAIDA O AUSENTE
+        </span>
+    </span>
+</p>
+
 <table border="1" align="center">
 	<tbody>
 		<tr>
 			<td style="background-color: #d9d9d9; border-color: black; text-align: center;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>CEDULA DE PERSONAS EXTRAVIADAS, SUSTRA&Iacute;DAS O AUSENTES</strong>
+						<strong>DATOS PERSONALES (MEDIA FILIACION)</strong>
+					</span>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-color: black;" colspan="2">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+						NOMBRE: <strong>{{$oficio3['nombreDesa']}}</strong>
+					</span>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-color: black; vertical-align: top; " colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+						SOBRENOMBRE: <strong>{{$oficio3['apodo']}}</strong>
+					</span>
+				</span>
+			</td>
+			<td style="border-color: black; vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+						EDAD: <strong>{{$oficio3['edadDesa']}}</strong>
+					</span>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-color: black; vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+						GÉNERO: <strong>{{$oficio3['generoDesa']}}</strong>
+					</span>
+				</span>
+			</td>
+			<td style="border-color: black; vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+						EDO. CIVIL: <strong>{{$oficio3['estadoCivilDesa']}}</strong>
+					</span>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-color: black;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+						ESTATURA:
+					</span>
+				</span>
+			</td>
+			<td style="border-color: black; vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+						<strong>{{$oficio3['estaturaDesa']}}</strong>
+					</span>
+				</span>
+			</td>
+        </tr>
+        <tr>
+			<td style="border-color: black; vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        TEZ (COLOR DE PIEL):
+					</span>
+				</span>
+			</td>
+			<td style="vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+						<strong>{{$oficio3['colorPiel']}}</strong>
+					</span>
+				</span>
+			</td>
+        </tr>
+        <tr>
+			<td style="vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        TIPO DE CABELLO:
+					</span>
+				</span>
+			</td>
+            <td style="vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        <strong>ONDULADO</strong>
+					</span>
+				</span>
+			</td>
+        </tr>
+        <tr>
+			<td style="vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        COLOR DE CABELLO: (NEGRO, CASTAÑO CLARO U OSCURO, CANO, ENTRECANO, RUBIO, ROJIZO)
+					</span>
+				</span>
+			</td>
+            <td style="vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        <strong>NEGRO</strong>
+					</span>
+				</span>
+			</td>
+        </tr>
+        <tr>
+			<td style="vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        TIPO DE OJOS: (GRANDES, MEDIANOS, CHICOS)
+					</span>
+				</span>
+			</td>
+            <td style="vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        <strong>MEDIANOS</strong>
+					</span>
+				</span>
+			</td>
+        </tr>
+        <tr>
+			<td style="vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        COLOR DE OJOS: 
+					</span>
+				</span>
+                <br />
+                <span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        (CAFÉ CLARO U OSCUROS, VERDES,AZULES, GRISES, MIEL)
+					</span>
+				</span>
+			</td>
+            <td style="vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        <strong>CAFÉ CLARO</strong>
+					</span>
+				</span>
+			</td>
+        </tr>
+        <tr>
+			<td style="border-color: black; text-align: center; vertical-align: top;" colspan="2">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+						SEÑAS PARTICULARES:
+					</span>
+				</span>
+				<br />
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+						TODO AQUELLO QUE SEA VISIBLE: CICATRICES, TATUAJES, LUNARES, CEJAS DEPILADAS, SI SE TIÑE EL CABELLO, ETC.
+					</span>
+				</span>
+			</td>
+		</tr>
+        <tr>
+			<td style="border-color: black; text-align: center; vertical-align: top;" colspan="2">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        <strong>TATUAJES EN AMBOS BRAZOS DE CALAVERAS, DE JESUCRISTO, DE LA MUERTE EN EL CUELLO TIENE OTRO TATUAJE QUE DICE “ALEJANDRO”, EN EL PECHO TIENE UN TATUAJE QUE DICE “MERIDI”, UNA ESTRELLA, EN EL ESTOMAGO TIENE UN CHIVO DE UN LADO DICE “CANDE” Y “CHRISTIAN” Y DEL OTRO “CESAR” Y “SANTIAN”, OTRO EN LA RODILLA ENCIMA DE UNA CICATRIZ QUE DICDE “CARMEN”, UN SIGNO DE YINGYANG EN LA PANTORRILLA.</strong>
+					</span>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-color: black; vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+						FECHA DE NACIMIENTO:
+					</span>
+				</span>
+			</td>
+			<td style="vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        <strong>{{$oficio3['fechaNacimi']}}</strong>
+					</span>
+				</span>
+			</td>
+		</tr>
+        <tr>
+			<td style="border-color: black; vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        LUGAR Y FECHA DE EXTRAVIO:
+					</span>
+				</span>
+				<br />
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        (DELEGACIÓN Y/O MUNICIPIO. ESTADO. DIA, MES Y AÑO.)
+					</span>
+				</span>
+			</td>
+			<td style="border-color: black; vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        LUGAR: <strong>{{$oficio3['lugarExtravio']}}</strong>
+					</span>
+				</span>
+                <br />
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        </strong> FECHA: <strong>11 DE JUNIO DE 2018.</strong>
+					</span>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-color: black; vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        OBSERVACIONES: (ENFERMEDADES QUE PADECE U OTRA CIRCUNSTANCIA QUE SEA PARTICULAR DEL EXTRAVIADO)
+					</span>
+				</span>
+			</td>
+            <td style="border-color: black; vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        <strong>NINGUNA</strong>
+					</span>
+				</span>
+			</td>
+		</tr>
+		<tr>
+			<td style="border-color: black; vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        FOTOGRAFIA: (DEBERÁ SER DIGITALIZADA EN JPG, RECIENTE Y LEGIBLE DEL EXTRAVIADO)
+					</span>
+				</span>
+			</td>
+            <td style="border-color: black; vertical-align: top;" colspan="1">
+				<span style="font-size: 11px;">
+					<span style="font-family: Tahoma,Geneva,sans-serif;">
+                        <strong>{{$oficio3['fotoExtra']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -20,136 +271,7 @@
 			<td style="background-color: #d9d9d9; border-color: black; text-align: center;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>C&Eacute;DULA DE RECEPCI&Oacute;N</strong>
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="border-color: black; text-align: center; vertical-align: top; " colspan="1">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						CARPETA DE INVESTIGACI&Oacute;N: 
-					</span>
-				</span>
-				<br />
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>{{$oficio2['carpeta']}}</strong>
-					</span>
-				</span>
-			</td>
-			<td style="border-color: black; text-align: center; vertical-align: top;" colspan="1">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						FECHA Y &nbsp;HORA &nbsp;DE REGISTRO:
-					</span>
-				</span>
-				<br />
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>{{$oficio2['fechaHora']}}</strong>
-					</span>
-				</span>
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="border-color: black; text-align: center; vertical-align: top;" colspan="2">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						TIPO DE SOLICITUD: 
-					</span>
-				</span>
-				<br />
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						PERSONAL (<strong>X</strong>) CORRESPONDENCIA ( )&nbsp;&nbsp; TELEF&Oacute;NICA ( )
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="border-color: black; text-align: center; vertical-align: top;" colspan="2">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						FISCAL ESPECIALIZADO EN LA ATENCI&Oacute;N DE DENUNCIAS POR PERSONAS DESAPARECIDAS, ZONA CENTRO XALAPA.
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="background-color: #d9d9d9; border-color: black; text-align: center;" colspan="2">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>DATOS PERSONALES</strong>
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="border-color: black; vertical-align: top;" colspan="1">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						NOMBRE: <strong>{{$oficio2['nombreDesa']}}</strong>
-					</span>
-				</span>
-			</td>
-			<td style="border-color: black; vertical-align: top;" colspan="1">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						EDAD: <strong>{{$oficio2['edadDesa']}}</strong>
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="vertical-align: top;" colspan="1">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						G&Eacute;NERO: <strong>{{$oficio2['generoDesa']}}</strong>
-					</span>
-				</span>
-			</td>
-			<td style="vertical-align: top;" colspan="1">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						EDO. CIVIL: <strong>{{$oficio2['estadoCivilDesa']}}</strong>
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="border-color: black; text-align: center; vertical-align: top;" colspan="2">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						DOMICILIO: 
-					</span>
-				</span>
-				<br />
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>{{$oficio2['domicilioDesa']}}</strong>
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="border-color: black; vertical-align: top;" colspan="1">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						ESCOLARIDAD: <strong>{{$oficio2['escolaridadDesa']}}</strong>
-					</span>
-				</span>
-			</td>
-			<td style="vertical-align: top;" colspan="1">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						OCUPACI&Oacute;N: <strong>{{$oficio2['ocupacionDesa']}}</strong>
+						<strong>OTRAS CARACTERISTICAS<strong>
 					</span>
 				</span>
 			</td>
@@ -158,135 +280,7 @@
 			<td style="border-color: black; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						EXTRAVIADO (&nbsp;&nbsp; )&nbsp;&nbsp;&nbsp; SUSTRACCI&Oacute;N&nbsp; (&nbsp; X )&nbsp;&nbsp; AUSENCIA ( &nbsp;)&nbsp; 
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="border-color: black;  vertical-align: top;" colspan="2">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						LUGAR DE EXTRAVI&Oacute;: <strong>{{$oficio2['lugarExtravio']}}</strong>
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="border-color: black; vertical-align: top;" colspan="2">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						EN CASO DE CONTROVERSIA FAMILIAR SI SE LO LLEVO:
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="border-color: black; vertical-align: top;" colspan="2">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						PAPA:----------
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="border-color: black; vertical-align: top;" colspan="2">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						MAMA:--------
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="border-color: black; vertical-align: top;" colspan="2">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						OTRO FAMILIAR:--------- 
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="background-color: #d9d9d9; border-color: black; text-align: center;" colspan="2">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>DATOS DE LA PERSONA SOLICITANTE</strong>
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="border-color: black; vertical-align: top;" colspan="2">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						NOMBRE: <strong>{{$oficio2['nombreInfo']}}</strong>
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="border-color: black; vertical-align: top;" colspan="1">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						EDAD: <strong>{{$oficio2['edadInfo']}}</strong>
-					</span>
-				</span>
-			</td>
-			<td style="border-color: black; vertical-align: top;" colspan="1">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						PARENTESCO CON EL DESAPARECIDO: <strong>{{$oficio2['parentescoInfo']}}</strong>
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="vertical-align: top;" colspan="1">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						G&Eacute;NERO: <strong>{{$oficio2['generoInfo']}}</strong>
-					</span>
-				</span>
-			</td>
-			<td style="vertical-align: top;" colspan="1">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						EDO. CIVIL: <strong>{{$oficio2['estadoCivilInfo']}}</strong>
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="border-color: black; text-align: center; vertical-align: top;" colspan="2">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						DOMICILIO: 
-					</span>
-				</span>
-				<br />
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>{{$oficio2['domicilioInfo']}}</strong>
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="background-color: #d9d9d9; border-color: black; text-align: center;" colspan="2">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>S&Iacute;NTESIS</strong>
-					</span>
-				</span>
-			</td>
-		</tr>
-		<tr>
-			<td style="border-color: black; vertical-align: top;" colspan="2">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>{{$oficio2['observacionDesa']}} </strong>
+                        <strong>{{$oficio3['observa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -298,6 +292,6 @@
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;">&nbsp;</p>
-<p style="text-align: center;"><span style="font-size: 11px;"><span style="font-family: Tahoma,Geneva,sans-serif;"><strong>LIC. {{$oficio2['entrevistador']}}</strong></span></span></p>
+<p style="text-align: center;"><span style="font-size: 11px;"><span style="font-family: Tahoma,Geneva,sans-serif;"><strong>LIC. {{$oficio3['entrevistador']}}</strong></span></span></p>
 </body>
 </html>

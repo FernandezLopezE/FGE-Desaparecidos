@@ -39,7 +39,7 @@
 				</div>
 	  			<div class="row">				
 					
-						<div class="form-group col-4">
+						<div class="col-lg-6 col-sm-12"><br> 
 							{!! Form::label ('fechaAvisto','Fecha de la última vez que fue visto:') !!}
 							{!! Form::text ('familiaresFechaNacimiento',
 												old('Fecha de nacimiento'),
@@ -55,13 +55,11 @@
 											
 						</div>
 						<div class="col">
-                            <div class="container">
-                                <div class="row">
-                                    <div class='col-sm-6'>
-                                        <div class="form-group">
+                            <div class="">                               
+                                        <div class="form-group"><br> 
                                             <label for="">Hora:</label>
                                             <div class='input-group date' id='datetimepicker1'>
-                                                <input type='text' class="form-control" />
+                                                <input type='text' class="form-control" id="idTime"/>
                                                 <span class="input-group-addon">
                                                     <span class="glyphicon glyphicon-time"></span>
                                                 </span>
@@ -69,17 +67,14 @@
                                         </div>
                                     </div>
 
-                                </div>
-                            </div>
-						</div>	
-					
+                                </div>       
 				</div>
 				
 						{{--AQUI ENPIEZAN LOS DIV DEL TOGGLE--}}
 											
 							<div class="row" > 	
 								
-								<div class="form-group col">
+								<div class=" col-lg-4 col-sm-6">
 									{!! Form::label ('calle','Calle:') !!}
 									{!! Form::text ('calle',
 														old('calle'),
@@ -88,7 +83,7 @@
 														
 														] )!!}				
 								</div>
-								<div class="form-group col">
+								<div class="col-lg-4 col-sm-6">
 									{!! Form::label ('numExterno','Número exterior:') !!}
 									{!! Form::text ('numExterno',
 													old('numExterno'),
@@ -96,7 +91,7 @@
 														'id' => 'numExterno',
 													] )!!}				
 								</div>
-								<div class="form-group col">
+								<div class="col">
 									{!! Form::label ('ref','Referencia:') !!}
 									{!! Form::text ('referencia',
 														old('referencia'),
@@ -109,11 +104,11 @@
 							</div>
 
 							<div class="row" id=""  > 	
-									<div class="form-group col">
+									<div class="form-group col-lg-4">
 										{!! Form::label ('idEstado','Estado:') !!}
 										{!! Form::select ('idEstado',$estados,'', ['class' => 'form-control'] )!!}				
 									</div>
-									<div class="form-group col">
+									<div class="form-group col-lg-4">
 										{!! Form::label ('idMunicipio','Municipio:') !!}
 										{!! Form::select ('idMunicipio',$municipios,'',
 																 ['class' => 'form-control',
@@ -254,8 +249,10 @@
 @section('scripts') 
 {!! HTML::script('personal/js/moment-with-locales.js') !!}
 {!! HTML::script('personal/js/bootstrap-datetimepicker.min.js') !!}
+<!--
 {!! HTML::script('personal/js/sisyphus.min.js') !!}
 {!! HTML::script('personal/js/sisyphus.js') !!}
+-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
@@ -263,11 +260,11 @@
     
             $(function () {
                 $('#datetimepicker1').datetimepicker({
-                    format: 'LT'
+                    format: 'hh:mm A'
                 });
+                
             });
 
-    
 	$(document).ready(function()
 	{
 		document.getElementById("vehiculoPlacas").disabled = true;
@@ -308,10 +305,27 @@
 	var vehiculoDescripcion = "";
 var routeIndex = '{!! route('desaparicion.index') !!}';
 $(btnGuardarDescripcionHechos).click (function(){
-			
-    var timee = $('#datetimepicker1').val();
+	
+    //var convert = $('#datetimepicker1').val().utc().format('HH:mm');
+    var selected_datetime = $("#datetimepicker1").data("date");
+    
+    var time = selected_datetime;
+    var hours = Number(time.match(/^(\d+)/)[1]);
+    var minutes = Number(time.match(/:(\d+)/)[1]);
+    var AMPM = time.match(/\s(.*)$/)[1];
+    if(AMPM == "PM" && hours<12) hours = hours+12;
+    if(AMPM == "AM" && hours==12) hours = hours-12;
+    var sHours = hours.toString();
+    var sMinutes = minutes.toString();
+    if(hours<10) sHours = "0" + sHours;
+    if(minutes<10) sMinutes = "0" + sMinutes;
+    //alert(sHours + ":" + sMinutes);
+    
+    var timee2 = $('#datetimepicker1').val();
     console.log('consola: ')
-    console.log(timee);
+    console.log(sHours + ":" + sMinutes);
+    console.log('consola2: ')
+    //console.log(convert);
 		 if ($('#sinInformacionVehiculo').is(':checked')) {
         		
       			vehiculoPlacas = "";
@@ -324,8 +338,8 @@ $(btnGuardarDescripcionHechos).click (function(){
 
       		var token = $("#token").val();
     
-			var dataString = {
-				desaparicionFecha: $("#familiaresFechaNacimiento").val()+" "+$("#horas").val()+":"+$("#minutos").val()+":00",
+			var dataString = {  
+				desaparicionFecha: $("#familiaresFechaNacimiento").val()+" "+ sHours+":"+sMinutes+":00",          
 				//desaparicionHora: $("#horas").val()+":"+$("#minutos").val(),
 				calle: $("#calle").val(),
 				numExterno: $("#numExterno").val(),	
