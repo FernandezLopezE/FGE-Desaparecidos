@@ -19,8 +19,8 @@
 <body>
 	<div class="page-break">@include('plantillas.cedulaMediaAfiliacion.solicitud')</div>
 	<div class="page-break">@include('plantillas.cedulaMediaAfiliacion.cedula')</div>
-	<div class="page-break">pagina 3</div>
-	<div class="page-break">pagina 4</div>
+	<div class="page-break">@include('plantillas.cedulaMediaAfiliacion.cedulaExtraviada')</div>
+	<div class="page-break">@include('plantillas.cedulaMediaAfiliacion.fotografia')</div>
 	<div class="page-break">@include('desaparecidos.boletin')</div>
 
 	<!-- <div id="app">
