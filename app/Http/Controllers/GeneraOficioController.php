@@ -6,17 +6,15 @@ use Illuminate\Http\Request;
 
 class GeneraOficioController extends Controller
 {
-	public function export($type){
+	public function index(){
 
-		if ($type == "pdf") {
-            $view = view('plantillas.form_24_hospitales')->render();;
-            //$view = view('plantillas.form_24_punto_revision');
-	 	    $pdf =\App::make('dompdf.wrapper');
-	 	    $pdf ->loadHTML($view);
-	 	   
-	 		$pdf->setPaper('oficio');
+        $view = view('plantillas.form_24_punto_revision')->render();
+        $pdf =\App::make('dompdf.wrapper');
+        $pdf -> loadHTML($view);
+        
+        
+        $pdf->setPaper('oficio');
 
-	 		return $pdf->stream('formato_'.time().'.pdf');
-        }
+        return $pdf->stream('formato_'.time().'.pdf');
 	}
 }
