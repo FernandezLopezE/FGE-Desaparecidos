@@ -344,7 +344,8 @@ class OficioCedulaController extends Controller
                         'dperson.estatura AS estatura',
                         'colorP.nombre AS colorPiel',
                         'dperson.apodo AS apodo',
-                        'person.fechaNacimiento AS fechaNac',
+                        \DB::raw('DATE_FORMAT(person.fechaNacimiento," %d DE %M DE %Y") AS fechaNac'),
+                        \DB::raw('DATE_FORMAT(dci.desaparicionFecha," %d DE %M DE %Y") AS fechaExtravio'),
                         \DB::raw('CONCAT(domicilios.calle,", #",domicilios.numExterno,", ","EN LA COLONIA ",colonia.nombre,", DE LA LOCALIDAD ",localidad.nombre,", EN EL MUNICIPIO DE ",municipio.nombre,", ",estado.nombre) AS direccion'),
                         \DB::raw('CONCAT(dci.entrevistadorNombres," ", dci.entrevistadorPrimerAp," ",dci.entrevistadorSegundoAp) AS entrevistador'),
                         \DB::raw('TIME(dci.created_at) AS horaReg')                            
@@ -375,6 +376,11 @@ class OficioCedulaController extends Controller
         }else{
             $fotoExtra = 'SÍ';
         }
+        if($desaparecido[0]->genero == 'H'){
+            $desaparecido[0]->genero = 'MASCULINO';
+        }else{
+            $desaparecido[0]->genero = 'FEMENINO';
+        }
 
         $data = array(
             'nombreDesa' => $desaparecido[0]->desaparecido,
@@ -383,12 +389,13 @@ class OficioCedulaController extends Controller
             'estadoCivilDesa' => $desaparecido[0]->estadoC,
             'estaturaDesa' => $desaparecido[0]->estatura,
             'colorPiel' => $desaparecido[0]->colorPiel,
-            'fechaNacimi' => $desaparecido[0]->fechaNac,
+            'fechaNacimi' => strtoupper($desaparecido[0]->fechaNac),
             'fotoExtra' => $fotoExtra,
             'observa' => $desaparecido[0]->observacionDesa, 
             'lugarExtravio' => $lugar[0]->direccion,
             'apodo' => $desaparecido[0]->apodo,
-            'entrevistador' => $desaparecido[0]->entrevistador
+            'entrevistador' => $desaparecido[0]->entrevistador,
+            'fechaDesaparicion' => $desaparecido[0]->fechaExtravio
         );
 
          return $data;
