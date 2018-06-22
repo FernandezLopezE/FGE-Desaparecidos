@@ -124,6 +124,9 @@ class AntecedentesMedicosController extends Controller
      */
     public function show($idExtraviado)
     {
+        
+        
+        
         //$antecedentesM = \App\Models\AntecedentesMedicos::find($idExtraviado);
         //dd($antecedentesM);
         $desaparecido = \App\Models\Desaparecido::find($idExtraviado);
@@ -132,12 +135,16 @@ class AntecedentesMedicosController extends Controller
         $anteMedi = \App\Models\AntecedentesMedicos::where('idPersonaDesaparecida', $idExtraviado)->limit(1)->get();
         //dd($anteMedi->toArray());
         $datos2= \DB::table('desaparecidos_personas AS dp')
-                    ->select('dp.idCedula as idCedula')
-                    ->where('dp.id', $idDesaparecido)
+                    ->select('dp.idPersona as idCedula')
+                    ->where('dp.idPersona', $idDesaparecido)
                     ->get();
+                
+
         //dd($datos2->toArray());
         $idCedula = ($datos2[0] ->idCedula);
-        $observaciones= \DB::table('antecedentes_medicos AS anmi')->select('anmi.observaciones as observaciones')->where('anmi.id', $idCedula)->get();
+        
+        $observaciones= \DB::table('antecedentes_medicos AS anmi')->select('anmi.observaciones as observaciones')->where('anmi.idPersonaDesaparecida', $idCedula)->get();
+        //dd($observaciones);
         //dd($observaciones->toArray());
         if(empty($observaciones[0] ->observaciones)){
             $images = (Anexos::where('idDesaparecido', $idExtraviado)->where('tipoAnexo', 'antecedentesMedicos')->get());
@@ -164,7 +171,7 @@ class AntecedentesMedicosController extends Controller
             $implantes = \App\Models\CatImplantes::all()->pluck('nombre','id');
             //dd($desaparecido->antecedentesMedicos->toArray());
 
-            $observaciones=$anteMedi->observaciones;
+            //$observaciones=$anteMedi->observaciones;
             return view('antecedentesmedicos.show_antecedentes_medicos',
             [
                 'desaparecido' => $desaparecido,
