@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\PivotOficioDependenciaEncargado;
+use App\Models\CatEncargado;
 use DB;
 
-class ConfigDocumentosController extends Controller
+class EncargadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +15,7 @@ class ConfigDocumentosController extends Controller
      */
     public function index()
     {
-        $oficios = \App\Models\CatOficios::all()->pluck('nombre','id');
-        $dependencias = \App\Models\CatDependencias::all()->pluck('nombre','id');
-        $encargados = DB::table('cat_encargado AS ce')->select(\DB::raw('CONCAT(ce.nombres," ", ce.primerAp," ",ce.segundoAp) AS nombrecompleto'),'id')->pluck('nombrecompleto','id');
-        
-        return view('configuraciones.configDocumentos',[
-                        'oficios' => $oficios,
-                        'dependencias' => $dependencias,
-                        'encargados' => $encargados,
-                    ]);
+        //
     }
 
     /**
@@ -44,15 +36,17 @@ class ConfigDocumentosController extends Controller
      */
     public function store(Request $request)
     {
-        $pivoteOficios = new PivotOficioDependenciaEncargado();
+        $encargado = new CatEncargado();
 
-        $pivoteOficios->idOficio = $request['oficio'];
-        $pivoteOficios->idDependencia = $request['depen'];
-        $pivoteOficios->idEncargado = $request['encar'];
+        $encargado->nombres = $request['nombres'];
+        $encargado->primerAp = $request['primerAp'];
+        $encargado->segundoAp = $request['segundoAp'];
+        $encargado->cargo = $request['cargo'];
+        
 
-        $pivoteOficios->save();
+        $encargado->save();
 
-        return response()->json($pivoteOficios);
+        return response()->json($encargado);
     }
 
     /**

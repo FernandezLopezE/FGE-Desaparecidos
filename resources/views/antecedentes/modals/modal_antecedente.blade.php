@@ -59,9 +59,9 @@
 		<!-- Fin del Contenido del formulario-->
 	  </div>
 	  <div class="modal-footer">
-        <button type="button" class="btn btn-dark" id="btnEditarAntecedente"><i class="fa fa-save"></i>  GUARDAR</button>
-		<button type="button" class="btn btn-dark" id="btnGuardarAntecedente"><i class="fa fa-save"></i>  GUARDAR</button>
-		<button type="button" class="btn btn-danger" data-dismiss="modal">CERRAR</button>
+        <button type="button" class="btn btn-dark" id="btnEditarAntecedente">Guardar</button>
+		<button type="button" class="btn btn-dark" id="btnGuardarAntecedente">Guardar</button>
+		<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 	  </div>
 	</div>
   </div>

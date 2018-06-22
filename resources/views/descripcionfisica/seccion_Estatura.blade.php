@@ -43,7 +43,7 @@
                                   ] )!!}                      
           </div>
         </div>
-        <button type="button" class="btn btn-primary" style="float: right;" id="guardarTalla">GUARDAR</button>
+        <button type="button" class="btn btn-primary" style="float: right;" id="guardarTalla">Guardar</button>
 </div>
 </div>
 </div>

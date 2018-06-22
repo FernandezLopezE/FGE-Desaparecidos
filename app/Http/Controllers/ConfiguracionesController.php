@@ -13,7 +13,7 @@ class ConfiguracionesController extends Controller
      */
     public function index()
     {
-        return view('configuraciones.configDocumentos');
+        //return view('configuraciones.configDocumentos');
     }
 
     /**

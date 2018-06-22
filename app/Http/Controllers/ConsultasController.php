@@ -1065,4 +1065,17 @@ class ConsultasController extends Controller
         $data = \App\Models\CatDiente::where('id', $id)->get();
         return response()->json($data);
     }
+
+    public function jsonOficioDependencia(Request $request)
+    {
+         $oficiosDepen = \DB::table('pivot_oficio_dependencia as pod')
+                        ->join('cat_documentos as cd', 'pod.idOficio', '=', 'cd.id')
+                        ->join('cat_dependencias as cde', 'pod.idDependencia', '=', 'cde.id')
+                        ->join('cat_encargado as ce', 'pod.idEncargado', '=', 'ce.id')
+                        ->select('cd.nombre as oficio','cde.nombre as dependencia',
+                        \DB::raw('CONCAT(ce.nombres, " ", ce.primerAp," ", ce.segundoAp," ") AS nombre'))
+                        ->get();
+
+        return response()->json($oficiosDepen);
+    }
 }

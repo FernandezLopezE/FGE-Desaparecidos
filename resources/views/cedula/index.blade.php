@@ -2,7 +2,13 @@
 
 @section('css')
 	{!! Html::style('') !!}
+<style type="text/css">
+#idAcciones th{
+  width: 130px;
+  overflow: auto;
 
+}
+</style>
 @endsection
 
 @section('titulo', '')
@@ -15,10 +21,10 @@
 	</div>
 	 
 	<div class="card-body bg-white">
-		<table id="table"style="overflow:auto;"
+		<table id="table"
 		    data-search="true"
 		    data-trim-on-search="false">
-		<thead>
+		<thead >
                 <tr>
                     <th data-field="no" 
                         data-sortable="true"></th>
@@ -34,8 +40,7 @@
                         data-sortable="true"></th>
                     <th data-field="created_at" 
                         data-sortable="true"></th>
-                    <th data-field="acciones" 
-                        data-sortable="true"></th>
+                    <th data-field="Acciones"></th>
                     
                 </tr>
         </thead>        
@@ -51,6 +56,7 @@
 {!! HTML::script('personal/js/bootstrap-table-multiple-search.js') !!}
 <script type="text/javascript">
 	$(function (){
+        
         var hola = $('#hola');
 		var table = $('#table');
 		var routeIndex = '{!! route('consultas.index') !!}';
@@ -137,8 +143,8 @@
 			}, {
 				field: '',
 				title: 'Estatus',
-			}, {					
-				title: 'Acciones',
+			}, {
+				title: 'Acciones &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 				formatter: formatTableActions,
 				events: operateEvents
 			}]			
