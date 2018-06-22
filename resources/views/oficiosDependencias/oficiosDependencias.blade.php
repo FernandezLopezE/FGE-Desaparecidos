@@ -91,6 +91,7 @@ $(document).ready( function (){
 		$("#valor1").show();
 		$("#valor2").hide();
 		$("#valor3").hide();
+		$("#valor4").hide();
 	});
 
 	$("#btn2").click(function(event) {
@@ -98,6 +99,7 @@ $(document).ready( function (){
 		$("#valor1").hide();
 		$("#valor2").show();
 		$("#valor3").hide();
+		$("#valor4").hide();
 	});
 
 	$("#btn3").click(function(event) {
@@ -105,6 +107,7 @@ $(document).ready( function (){
 		$("#valor1").hide();
 		$("#valor2").hide();
 		$("#valor3").show();
+		$("#valor4").hide();
 	});
 
 	$("#btnRuben").click(function(event) {
