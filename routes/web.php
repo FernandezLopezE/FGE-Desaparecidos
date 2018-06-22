@@ -14,7 +14,7 @@
 Route::get('/', 'InicioController@index');
 
 	Route::resource('cedula','CedulaController');
-	Route::resource('oficioCedula','OficioCedulaController');
+	//Route::resource('oficioCedula','OficioCedulaController');
 	Route::resource('informante','InformanteController');
 
 	Route::get('extraviado/create/{idCedula}', 'ExtraviadoController@create')
@@ -40,10 +40,13 @@ Route::get('/', 'InicioController@index');
 
 	Route::resource('oficiosDependencias','OficioDependencia');
 
-	Route::resource('configuraciones','ConfiguracionesController');
-
+	//Ruta para la vista de relacionar oficios con dependencias AlfredoR
+	Route::resource('configuraciones','ConfigDocumentosController');	
+	Route::resource('dependencia','DependenciaController');
+	Route::resource('encargado','EncargadoController');
     
-    Route::resource('dependencia_destinatario','AgregarDependenciaController');
+    //comento tacho, si truena algo,descomentar xD
+    //Route::resource('dependencia_destinatario','AgregarDependenciaController');
 
 	Route::resource('datos_dentales_dientes_perdidos','DatosDentalesDientesPerdidosController');
 	// inician rutas descripción física
@@ -120,6 +123,10 @@ Route::get('consultas/json_subparte_cuerpo/{idParteCuerpo}', 'ConsultasControlle
 Route::get('consultas/get_diente/{id}', 'ConsultasController@json_diente')
 	->name('consultas.get_diente');	
 Route::get('consultas/json_cabecera_partes/{idParteCuerpo}', 'ConsultasController@json_cabecera_partes')->name('consultas.jsonCabecerasPartes');
+
+//Se consulta la tabla de la relación de oficios con dependencias AlfredoR
+Route::get('consultas/get_oficios', 'ConsultasController@jsonOficioDependencia');
+
 Route::resource('consultas','ConsultasController');
 
 // Consultar todas la cedulas de investigación.
@@ -365,3 +372,8 @@ Route::get('oficioprueba/{id}', 'OficioController@oficioprueba')->name('oficiopr
 Route::get('/pruebasformatos', function(){
     return view('oficios.prueba');
     });
+
+//oficios
+Route::get('jsonOficio1/{id}', 'OficioCedulaController@json_oficio1')->name('jsonOficio1');
+Route::get('json_oficio2/{id}', 'OficioCedulaController@json_oficio2')->name('json_oficio2');
+Route::resource('oficioCedula','OficioCedulaController');

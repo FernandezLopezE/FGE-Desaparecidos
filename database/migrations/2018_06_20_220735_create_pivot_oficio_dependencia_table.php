@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDesaparecidoOficiosTable extends Migration
+class CreatePivotOficioDependenciaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,17 @@ class CreateDesaparecidoOficiosTable extends Migration
      */
     public function up()
     {
-        Schema::create('desaparecido_oficios', function (Blueprint $table) {
+        Schema::create('pivot_oficio_dependencia', function (Blueprint $table) {
             $table->increments('id');
 
             $table->integer('idOficio')->unsigned()->nullable();           
             $table->foreign('idOficio')->references('id')->on('cat_documentos');
 
-            $table->integer('idDesaparecido')->unsigned();           
-            $table->foreign('idDesaparecido')->references('id')->on('desaparecidos_personas');
+            $table->integer('idDependencia')->unsigned()->nullable();           
+            $table->foreign('idDependencia')->references('id')->on('cat_dependencias');
+
+            $table->integer('idEncargado')->unsigned()->nullable();           
+            $table->foreign('idEncargado')->references('id')->on('cat_encargado');
 
             $table->timestamps();
         });
@@ -33,6 +36,6 @@ class CreateDesaparecidoOficiosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('desaparecido_oficios');
+        Schema::dropIfExists('pivot_oficio_dependencia');
     }
 }
