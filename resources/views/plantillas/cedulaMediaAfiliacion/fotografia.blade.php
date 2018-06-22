@@ -28,7 +28,7 @@
 			<td style="border-color: black;" colspan="3">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						NOMBRE: <strong>CESAR ARTURO BRAVO CAMPOS</strong>
+						NOMBRE: <strong>{{$oficio4['nombreDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -37,21 +37,21 @@
 			<td style="border-color: black; vertical-align: top; " colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        EDAD: <strong>23</strong>
+                        EDAD: <strong>{{$oficio4['edadDesa']}}</strong>
 					</span>
 				</span>
 			</td>
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        GÉNERO: <strong>MASCULINO</strong>
+                        GÉNERO: <strong>{{$oficio4['generoDesa']}}</strong>
 					</span>
 				</span>
 			</td>
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        EDO. CIVIL: <strong>UNION LIBRE</strong>
+                        EDO. CIVIL: <strong>{{$oficio4['estadoCivilDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -75,8 +75,8 @@
 			<td style="background-color: #d9d9d9; border-color: black; text-align: center;" colspan="3">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                    fhdhdt
-                        <img src"{!! $desaparecido->fotoDesaparecido !!}" alt="" style="width: 200px;">
+                    
+                        <img src="{!! $oficio4['fotoExtra'] !!}" alt="" style="width: 200px;">
 					</span>
 				</span>
 			</td>
@@ -88,6 +88,6 @@
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;">&nbsp;</p>
-<p style="text-align: center;"><span style="font-size: 11px;"><span style="font-family: Tahoma,Geneva,sans-serif;"><strong>LIC. DAVID GARC&Iacute;A GALV&Aacute;N</strong></span></span></p>
+<p style="text-align: center;"><span style="font-size: 11px;"><span style="font-family: Tahoma,Geneva,sans-serif;"><strong>LIC. {{$oficio4['entrevistador']}}</strong></span></span></p>
 </body>
 </html>
