@@ -230,7 +230,7 @@
                 <br />
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        </strong> FECHA: <strong>11 DE JUNIO DE 2018.</strong>
+                        </strong> FECHA: <strong>{{$oficio3['fechaDesaparicion']}}.</strong>
 					</span>
 				</span>
 			</td>

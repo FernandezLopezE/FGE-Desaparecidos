@@ -46,7 +46,11 @@ class OficioDependencia extends Controller
      */
     public function show($id)
     {
-        $desaparecido = \App\Models\Desaparecido::find($id);
+        $desaparecido = \DB::table('desaparecidos_personas AS dperson')
+                        ->where('dperson.idCedula',$id)
+                        ->where('dperson.idCedula',$id)
+                        ->get();
+        //dd($desaparecido->toArray());
         return view('oficiosDependencias.oficiosDependencias', compact('desaparecido'));
     }
 

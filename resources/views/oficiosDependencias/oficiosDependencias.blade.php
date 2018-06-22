@@ -32,7 +32,7 @@
 		        	</th>
 		        	<th><i class="fa fa-square" style="color:#1CA800;"></i> Completo</th>
 		        	<th>
-		        		<a class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Ver/imprimir" id="#" href="{!! route('oficioCedula.show',['id' => $desaparecido->idCedula]) !!}"><i class="fa fa-print"></i></a>
+		        		<a class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Ver/imprimir" id="#" href="{!! route('oficioCedula.show',['id' => $desaparecido[0]->idCedula]) !!} " target="_blank"><i class="fa fa-print"></i></a>
 		        	</th>
 		    	</tr>
 		        <tr>
@@ -42,7 +42,7 @@
 		        	</th>
 		        	<th><i class="fa fa-square" style="color:#1CA800;"></i> Completo</th>
 		        	<th>
-		        		<button class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Ver/imprimir" id="imp1"><i class="fa fa-print"></i></button>
+		        		<a class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Ver/imprimir" id="imp1" href="{!! route('GeneraOficio.index') !!} " target="_blank"><i class="fa fa-print"></i></a>
 		        		<button class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="top" title="Enviar por correo"><i class="fa fa-envelope"></i></button>
 		        	</th>
 		        </tr>

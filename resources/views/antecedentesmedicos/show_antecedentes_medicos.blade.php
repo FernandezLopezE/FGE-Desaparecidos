@@ -25,15 +25,18 @@
 				<dt class="col-sm-4">INTERVENCIONES QUIRÚRGICAS:</dt>
 			</dl>
 			<dl class="row">
-				<dd class="col-sm-4">
-					{!! $desaparecido->antecedentesMedicos !!}		
+				<dd class="col-sm-4"> 
+<!--
+				{!! $desaparecido->persona->nombres !!} 
+					{!! $desaparecido->$enfermedades !!}		
+-->
 				</dd>
 				<dd class="col-sm-4">
-					egrfgregergerg		
+<!--					egrfgregergerg		-->
 				</dd>
 				<dd class="col-sm-4">
-					egrfgregergerg		
-				</dd>
+
+								</dd>
 			</dl>
 			<dl class="row">
 				<dt class="col-sm-4">MEDICAMENTOS QUE TOMA:</dt>
@@ -41,10 +44,10 @@
 			</dl>
 			<dl class="row">
 				<dd class="col-sm-4">
-					egrfgregergerg		
-				</dd>
+
+								</dd>
 				<dd class="col-sm-4">
-					egrfgregergerg		
+				
 				</dd>
 			</dl>
 			<dl class="row">
@@ -52,7 +55,7 @@
 			</dl>
 			<dl class="row">
 				<dd class="col-sm-12">
-					egrfgregergerg		
+				
 				</dd>
 			</dl>
 		</div>

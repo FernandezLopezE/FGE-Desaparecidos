@@ -44,8 +44,7 @@ Route::get('/', 'InicioController@index');
 	Route::resource('configuraciones','ConfigDocumentosController');	
 	Route::resource('dependencia','DependenciaController');
 	Route::resource('encargado','EncargadoController');
-	//Route::resource('GeneraOficio','GeneraOficioController');
-	Route::get('GeneraOficio/{type}', 'GeneraOficioController@export');
+	Route::resource('GeneraOficio','GeneraOficioController');
     
     //comento tacho, si truena algo,descomentar xD
     //Route::resource('dependencia_destinatario','AgregarDependenciaController');

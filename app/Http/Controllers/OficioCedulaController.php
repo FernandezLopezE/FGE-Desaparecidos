@@ -90,8 +90,9 @@ class OficioCedulaController extends Controller
         $data = $this->json_oficio1($id);
         $oficio2 = $this->json_oficio2($id);
         $oficio3 = $this->json_oficio3($id);
+        $oficio4 = $this->json_oficio4($id);
         //dd($desaparecido->partescuerpo->toArray());
-        $view = view('plantillas.cedulaMediaAfiliacion.oficioGeneral', compact('desaparecido','data','oficio2','oficio3'))->render();
+        $view = view('plantillas.cedulaMediaAfiliacion.oficioGeneral', compact('desaparecido','data','oficio2','oficio3','oficio4'))->render();
         $pdf =\App::make('dompdf.wrapper');
         $pdf -> loadHTML($view);
         
@@ -193,6 +194,7 @@ class OficioCedulaController extends Controller
             'edadExtra' => $desaparecido[0]->edadExtravio,
             'hora' => $desaparecido[0]->horaReg
             );
+         //dd($data);
             //return response()->json($data);
          return $data;
     }
@@ -261,7 +263,7 @@ class OficioCedulaController extends Controller
                     ->where('domicilios.tipoDireccion','!=','LUGAR DE AVISTAMIENTO')
                     ->limit(1)
                     ->get();
-
+                    //dd($desaparecido);
 
         $lugar = \DB::table('desaparecidos_domicilios AS domicilios')
                 ->Join('cat_colonia AS colonia', 'domicilios.idColonia', '=', 'colonia.id')
@@ -344,7 +346,8 @@ class OficioCedulaController extends Controller
                         'dperson.estatura AS estatura',
                         'colorP.nombre AS colorPiel',
                         'dperson.apodo AS apodo',
-                        'person.fechaNacimiento AS fechaNac',
+                        \DB::raw('DATE_FORMAT(person.fechaNacimiento," %d DE %M DE %Y") AS fechaNac'),
+                        \DB::raw('DATE_FORMAT(dci.desaparicionFecha," %d DE %M DE %Y") AS fechaExtravio'),
                         \DB::raw('CONCAT(domicilios.calle,", #",domicilios.numExterno,", ","EN LA COLONIA ",colonia.nombre,", DE LA LOCALIDAD ",localidad.nombre,", EN EL MUNICIPIO DE ",municipio.nombre,", ",estado.nombre) AS direccion'),
                         \DB::raw('CONCAT(dci.entrevistadorNombres," ", dci.entrevistadorPrimerAp," ",dci.entrevistadorSegundoAp) AS entrevistador'),
                         \DB::raw('TIME(dci.created_at) AS horaReg')                            
@@ -375,6 +378,11 @@ class OficioCedulaController extends Controller
         }else{
             $fotoExtra = 'SÍ';
         }
+        if($desaparecido[0]->genero == 'H'){
+            $desaparecido[0]->genero = 'MASCULINO';
+        }else{
+            $desaparecido[0]->genero = 'FEMENINO';
+        }
 
         $data = array(
             'nombreDesa' => $desaparecido[0]->desaparecido,
@@ -383,17 +391,62 @@ class OficioCedulaController extends Controller
             'estadoCivilDesa' => $desaparecido[0]->estadoC,
             'estaturaDesa' => $desaparecido[0]->estatura,
             'colorPiel' => $desaparecido[0]->colorPiel,
-            'fechaNacimi' => $desaparecido[0]->fechaNac,
+            'fechaNacimi' => strtoupper($desaparecido[0]->fechaNac),
             'fotoExtra' => $fotoExtra,
             'observa' => $desaparecido[0]->observacionDesa, 
             'lugarExtravio' => $lugar[0]->direccion,
             'apodo' => $desaparecido[0]->apodo,
-            'entrevistador' => $desaparecido[0]->entrevistador
+            'entrevistador' => $desaparecido[0]->entrevistador,
+            'fechaDesaparicion' => $desaparecido[0]->fechaExtravio
         );
 
          return $data;
     }
 
+    public function json_oficio4($id){
+        $desaparecido = \DB::table('desaparecidos_cedula_investigacion AS dci')
+                    ->join('desaparecidos_personas AS dperson','dci.id','=','dperson.idCedula')
+                    ->join('persona AS person','person.id','=','dperson.idPersona')
+                    ->leftJoin('desaparecidos_domicilios AS domicilios', 'dperson.id', '=', 'domicilios.idDesaparecido')
+                    ->leftJoin('cat_documento_identidad AS docIden', 'dperson.idDocumentoIdentidad', '=', 'docIden.id')
+                    ->leftJoin('cat_estado_civil AS edoCivil','dperson.idEdocivil','=','edoCivil.id')
+                    ->select(
+                        'dci.carpeta AS numCarpeta',
+                        \DB::raw('DATE_FORMAT(dci.created_at," %d DE %M DE %Y") AS fechaRegistro'),
+                        'dci.desaparicionObservaciones as observacionDesa',
+                        \DB::raw('CONCAT(person.nombres," ",person.primerAp," ",person.segundoAp) AS desaparecido'),
+                        'dperson.tipoPersona AS tipoPersona',
+                        \DB::raw('UPPER(dperson.edadExtravio) AS edadExtravio'),
+                        'dperson.fotoDesaparecido AS foto',
+                        'docIden.nombre AS documentoI',
+                        'person.sexo AS genero',
+                        'edoCivil.nombre AS estadoC',
+                        \DB::raw('CONCAT(dci.entrevistadorNombres," ", dci.entrevistadorPrimerAp," ",dci.entrevistadorSegundoAp) AS entrevistador'),
+                        \DB::raw('TIME(dci.created_at) AS horaReg')                            
+                        )
+                    ->where('dperson.idCedula',$id)
+                    ->where('dperson.tipoPersona','DESAPARECIDA')
+                    ->limit(1)
+                    ->get();
+        if($desaparecido[0]->genero == 'H'){
+            $desaparecido[0]->genero = 'MASCULINO';
+        }else{
+            $desaparecido[0]->genero = 'FEMENINO';
+        }
+
+        $data = array(
+            'nombreDesa' => $desaparecido[0]->desaparecido,
+            'edadDesa' => $desaparecido[0]->edadExtravio,
+            'generoDesa' => $desaparecido[0]->genero,
+            'estadoCivilDesa' => $desaparecido[0]->estadoC,
+            'fotoExtra' => $desaparecido[0]->foto,
+            'observa' => $desaparecido[0]->observacionDesa, 
+            'entrevistador' => $desaparecido[0]->entrevistador
+        );
+
+         return $data;
+
+    } 
     /**
      * Show the form for editing the specified resource.
      *
