@@ -330,7 +330,7 @@ height:150px;
 
     <br>
       <div class="row">
-         <div class="col">
+         <div class="col-lg-6">
             {!! Form::label ('observacioneM','Observaciones:') !!}
             {!! Form::textarea  ('observacionesAM',
                                 old('observacioneM',null),
@@ -685,7 +685,7 @@ var routeIndexAM = '{!! route('antecedentesmedicos.index') !!}';
     console.log(dataString);
     $.ajax({
       type: 'POST',
-      url: routeIndexAM+'/store',
+      url: routeIndexAM,
       data: dataString,
       dataType: 'json',
       success: function(data) {           
