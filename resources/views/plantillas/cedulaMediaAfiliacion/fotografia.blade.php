@@ -73,12 +73,8 @@
 		</tr>
         <tr>
 			<td style="background-color: #d9d9d9; border-color: black; text-align: center;" colspan="3">
-				<span style="font-size: 11px;">
-					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                    
-                        <img src="{!! $data['fotoDesaparecido'] !!}" alt="" style="width: 200px;">
-					</span>
-				</span>
+
+                <img src="{!! $oficio4['fotoDesaparecido'] !!}" alt="" style="width: 400px;">
 			</td>
 		</tr>
     </tbody>

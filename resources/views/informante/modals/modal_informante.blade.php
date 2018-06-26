@@ -16,40 +16,43 @@
 		<form id="formDesaparecido">
 			<div class="row">
 				<div class="form-group col-md-4" id="div_nombres">
-					{!! Form::label ('nombres','Nombre(s):',['class' => 'form-control-label']) !!}
+					{!! Form::label ('nombres','Nombre(s):') !!}
 					{!! Form::text ('nombres',
 									old('nombres'),
 									['class' => 'form-control mayuscula',
 										'id' => 'nombres',
+										'autocomplete' => 'off',
 										'data-validation' => 'required',
-										'data-validation-error-msg-required' => 'El campo es requerido'
+										'data-validation-error-msg-required' => 'El campo es requerido.'
 									] )!!}
 					<div class="form-control-feedback" id="error_nombres"></div>
 				</div>
 				<div class="form-group col-md-4" id="div_primerAp">
-					{!! Form::label ('primerAp','Primer apellido:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('primerAp','Primer apellido:') !!}
 					{!! Form::text ('primerAp',
 									old('primerAp'),
 									['class' => 'form-control mayuscula',
 										'id' => 'primerAp',
+										'autocomplete' => 'off',
 										'data-validation' => 'required',
-										'data-validation-error-msg-required' => 'El campo es requerido'
+										'data-validation-error-msg-required' => 'El campo es requerido.'
 									] )!!}
 					<div class="form-control-feedback" id="error_primerAp"></div>
 				</div>
 				<div class="form-group col-md-4" id="div_segundoAp">
-					{!! Form::label ('segundoAp','Segundo apellido:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('segundoAp','Segundo apellido:') !!}
 					{!! Form::text ('segundoAp',
 									old('segundoAp'),
 									['class' => 'form-control mayuscula',
 										'id' => 'segundoAp',
+										'autocomplete' => 'off',
 									] )!!}
 					<div class="form-control-feedback" id="error_segundoAp"></div>
 				</div>
 			</div>
 			<div class="row">
 				<div class="form-group col-md-4" id="div_idParentesco">
-				{!! Form::label ('idParentesco','Parentesco:',['class' => 'form-control-label']) !!}
+				{!! Form::label ('idParentesco','Parentesco:') !!}
 				{!! Form::select ('idParentesco',
 									$parentescos,
 									'',
@@ -59,16 +62,17 @@
 					<div class="form-control-feedback" id="error_idParentesco"></div>		
 				</div>
 				<div class="form-group col-md-4" id="div_otroParentesco" style="display:none">
-					{!! Form::label ('otroParentesco','Especifique:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('otroParentesco','Especifique:') !!}
 					{!! Form::text ('otroParentesco',
 									old('otroParentesco'),
 									['class' => 'form-control mayuscula',
 										'id' => 'otroParentesco',
+										'autocomplete' => 'off',
 									] )!!}
 					<div class="form-control-feedback" id="error_otroParentesco"></div>
 				</div>
 				<div class="form-group col-md-4" id="div_idNacionalidad">
-					{!! Form::label ('idNacionalidad','Nacionalidad:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('idNacionalidad','Nacionalidad:') !!}
 					{!! Form::select ('idNacionalidad',
 										$nacionalidades,
 										'',
@@ -83,7 +87,7 @@
 
 			<div class="row" id="" >
 				<div class="form-group col-md-4" id="div_idDocumentoIdentidad">
-					{!! Form::label ('idDocumentoIdentidad','Identificación:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('idDocumentoIdentidad','Identificación:') !!}
 					{!! Form::select ('idDocumentoIdentidad',
 										$documentos,
 										'',
@@ -93,7 +97,7 @@
 					<div class="form-control-feedback" id="error_idDocumentoIdentidad"></div>		
 				</div>
 				<div class="form-group col-md-4" id="div_otroDocIdentidad" style="display:none">
-					{!! Form::label ('otroDocIdentidad','Especifique:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('otroDocIdentidad','Especifique:') !!}
 					{!! Form::text ('otroDocIdentidad',
 										old('otroDocIdentidad'),
 										['class' => 'form-control mayuscula',
@@ -102,13 +106,14 @@
 					<div class="form-control-feedback" id="error_otroDocIdentidad"></div>				
 				</div>
 				<div class="form-group col-md-4" id="div_numDocIdentidad">
-					{!! Form::label ('numDocIdentidad','Número de identificación:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('numDocIdentidad','Número de identificación:') !!}
 					{!! Form::text ('numDocIdentidad',
 										old('numDocIdentidad'),
 										['class' => 'form-control mayuscula',
 											'id' => 'numDocIdentidad',
+											'autocomplete' => 'off',
 											'data-validation' => 'required',
-											'data-validation-error-msg-required' => 'El campo es requerido'
+											'data-validation-error-msg-required' => 'El campo es requerido.'
 										])!!}
 					<div class="form-control-feedback" id="error_numDocIdentidad"></div>		
 				</div>
@@ -119,7 +124,7 @@
 
 			<div class="row" id=""  > 	
 				<div class="form-group col-md-4" id="div_tipoDireccion">
-					{!! Form::label ('tipoDireccion','Tipo de dirección:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('tipoDireccion','Tipo de dirección:') !!}
 						{!! Form::select ('tipoDireccion',
 											$tiposDireccion,
 											'tipoDireccion',
@@ -134,26 +139,29 @@
 										old('calle'),
 										['class' => 'form-control mayuscula',
 											'id' => 'calle',
+											'autocomplete' => 'off',
 											'data-validation' => 'required',
-											'data-validation-error-msg-required' => 'El campo es requerido'
+											'data-validation-error-msg-required' => 'El campo es requerido.'
 										] )!!}
 					<div class="form-control-feedback" id="error_calle"></div>
 				</div>
 				<div class="form-group col-md-2" id="div_numExterno">
-					{!! Form::label ('numExterno','Número exterior:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('numExterno','Número exterior:') !!}
 					{!! Form::text ('numExterno',
 									old('numExterno'),
 									['class' => 'form-control mayuscula',
 										'id' => 'numExterno',
+										'autocomplete' => 'off',
 									] )!!}
 					<div class="form-control-feedback" id="error_numExterno"></div>
 				</div>
 				<div class="form-group col-md-2" id="div_numInterno">
-					{!! Form::label ('numInterno','Número interior:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('numInterno','Número interior:') !!}
 					{!! Form::text ('numInterno',
 									old('numInterno'),
 									['class' => 'form-control mayuscula',
 										'id' => 'numInterno',
+										'autocomplete' => 'off',
 									])!!}
 					<div class="form-control-feedback" id="error_numInterno"></div>
 				</div>
@@ -161,25 +169,25 @@
 
 			<div class="row" id=""  > 	
 				<div class="form-group col-md-4" id="div_idEstado">
-					{!! Form::label ('idEstado','Estado:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('idEstado','Estado:') !!}
 					{!! Form::select ('idEstado',$estados,'', ['class' => 'form-control'] )!!}
 					<div class="form-control-feedback" id="error_idEstado"></div>
 				</div>
 				<div class="form-group col-md-4" id="div_idMunicipio">
-					{!! Form::label ('idMunicipio','Municipio:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('idMunicipio','Municipio:') !!}
 					{!! Form::select ('idMunicipio',$municipios,'',
 											 ['class' => 'form-control',
 												'data-validation' => 'required',
-												'data-validation-error-msg-required' => 'El campo es requerido'
+												'data-validation-error-msg-required' => 'El campo es requerido.'
 											] )!!}
 					<div class="form-control-feedback" id="error_idMunicipio"></div>
 				</div>
 				<div class="form-group col-md-4" id="div_idLocalidad">
-					{!! Form::label ('idLocalidad','Localidad:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('idLocalidad','Localidad:') !!}
 					{!! Form::select ('idLocalidad',$localidades,'',
 											 ['class' => 'form-control',
 												'data-validation' => 'required',
-												'data-validation-error-msg-required' => 'El campo es requerido'
+												'data-validation-error-msg-required' => 'El campo es requerido.'
 											 ] )!!}
 					<div class="form-control-feedback" id="error_idLocalidad"></div>
 				</div>
@@ -187,73 +195,81 @@
 	
 			<div class="row" id=""  > 	
 				<div class="form-group col-md-8" id="div_idColonia">
-					{!! Form::label ('idColonia','Colonia:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('idColonia','Colonia:') !!}
 					{!! Form::select ('idColonia',$colonias,'',
 											['class' => 'form-control',
 												'data-validation' => 'required',
-												'data-validation-error-msg-required' => 'El campo es requerido'
+												'data-validation-error-msg-required' => 'El campo es requerido.'
 											] )!!}
 					<div class="form-control-feedback" id="error_idColonia"></div>				
 				</div>
 				<div class="form-group col-md-4" id="div_idCodigoPostal">
-					{!! Form::label ('idCodigoPostal','Código postal:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('idCodigoPostal','Código postal:') !!}
 					{!! Form::select ('idCodigoPostal',$codigos,'',
 											['class' => 'form-control',
 												'data-validation' => 'required',
-												'data-validation-error-msg-required' => 'El campo es requerido'
+												'data-validation-error-msg-required' => 'El campo es requerido.'
 											] )!!}
 					<div class="form-control-feedback" id="error_idCodigoPostal"></div>				
 				</div>
 			</div>
-			<div class="row pull-right">
-				<button type="button" class="btn btn-dark btn-sm"  id="btnAgregarTelefono">Agregar otro teléfono</button>
-			</div>
+			
 			<div class='hr'>
 				<span class='hr-title'> Datos de contacto </span>				
 			</div>
-			
-			
+
 			<div class="row" id=""  > 
 				<div class="form-group col-md-2">
-					{!! Form::label ('tipoTelefono','Tipo de teléfono:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('tipoTelefono','Tipo de teléfono:') !!}
 					{!! Form::select ('tipoTelefono[]',
 										$tiposTelefonos,
 										'',
 										['class' => 'form-control'])!!}	
 				</div>
 				<div class="form-group col-md-2">
-					{!! Form::label ('lada','Código del país:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('lada','Código del país:') !!}
 					{!! Form::text ('lada[]',
 										old(''),
 										['class' => 'form-control',
-											'id' => 'lada'
+											'id' => 'lada',
+											'autocomplete' => 'off',
 											] )!!}		
 				</div>
 				<div class="form-group col-md-4">
-					{!! Form::label ('telefonos','Número:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('telefonos','Número:') !!}
 					{!! Form::text ('telefonos[]',
 										old('telefonos'), 
 										['class' => 'form-control mayuscula',
+											'autocomplete' => 'off',
 											'data-validation' => 'required',
-											'data-validation-error-msg-required' => 'El campo es requerido'
+											'data-validation-error-msg-required' => 'El campo es requerido.'
 										] )!!}				
 				</div>
 				<div class="form-group col-md-1">
-					{!! Form::label ('ext','Ext:',['class' => 'form-control-label']) !!}
-					{!! Form::text ('ext[]',old(''), ['class' => 'form-control mayuscula'] )!!}				
+					{!! Form::label ('ext','Ext:') !!}
+					{!! Form::text ('ext[]',old(''), ['class' => 'form-control mayuscula','autocomplete' => 'off',] )!!}				
 				</div>	
 				<div class="form-group col-md-3" id="div_correoElectronico">
-					{!! Form::label ('correoElectronico','Correo electrónico:',['class' => 'form-control-label']) !!}
+					{!! Form::label ('correoElectronico','Correo electrónico:') !!}
 					{!! Form::text ('correoElectronico',
 										old('correoElectronico'),
 										['class' => 'form-control',
-											'id' => 'correoElectronico'
+											'id' => 'correoElectronico',
+											'autocomplete' => 'off',
 										] )!!}
 					<div class="form-control-feedback" id="error_correoElectronico"></div>					
 				</div>
 			</div>
+
 			<div id="telefono2"> </div>
 
+			<div class="row pull-right">
+				<button type="button" class="btn btn-dark btn-sm"  id="btnAgregarTelefono">Agregar otro teléfono</button>
+			</div>
+			<div class='hr'>
+				<span class='hr-title'></span>				
+			</div>
+			
 			<div class="row">
 				<div class="form-check col-lg-12">
 					<input class="form-check-input" type="checkbox" id="informante" checked="">

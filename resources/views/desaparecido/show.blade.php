@@ -93,7 +93,7 @@ height:150px;
         @endif
         <div class="form-group col-md" id="div_archivo">
           <!--{!! Form::label ('archivo','Foto:',['class' => 'form-control-label']) !!}-->
-          {!! Form::file('archivo', ['class' => 'form-control', 'style' => 'display:none']) !!}
+          {!! Form::file('archivo', ['class' => 'form-control', 'style' => 'display:none', 'accept' => '.jpg, .jpeg, .png']) !!}
           <center><i class="fa fa-camera" id="camara" style="font-size:40px; margin-top: 4px;" data-toggle="tooltip" title="Subir foto" data-placement="right"></i></center>
           <div class="form-control-feedback" id="error_archivo"></div>
         </div>  

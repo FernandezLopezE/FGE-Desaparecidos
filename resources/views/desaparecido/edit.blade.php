@@ -327,7 +327,7 @@
 
 				modalBody.append('<code>'+errors.message+'</code>');
 				
-				modalTitle.append('<i class="fa fa-warning"></i> Ooops... algo salió mal');
+				modalTitle.append('<i class="fa fa-warning"></i> Algo salió mal');
 				modalGral.modal('show');
 			}
 		});
