@@ -82,8 +82,19 @@
 			btn = btn+'<a class="dropdown-item" href="#">Separated link</a>';
 			btn = btn+'</div>'
 			btn = btn+'</div>';*/			
-			return [btn].join('');envelope-square
+			return [btn].join('');
 		};
+
+		var formatCarpeta = function(value, row, index) {
+			if(row.idCarpeta){
+				btn = '<a href="http://127.0.0.1/uipj/public/carpeta/'+row.idCarpeta+'">'+row.carpeta+'</a>';
+			} else {
+				btn = '';
+			}
+			
+
+			return [btn].join('');
+		}
 
 		var formatGenero = function(value, row, index){
       		texto = '';
@@ -138,11 +149,11 @@
 				field: 'nacionalidad',
 				title: 'Nacionalidad',
 			}, {				
+				title: 'Carpeta',
+				formatter: formatCarpeta
+			}, {				
 				field: 'created_at',
 				title: 'Apertura',
-			}, {
-				field: '',
-				title: 'Estatus',
 			}, {
 				title: 'Acciones &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;',
 				formatter: formatTableActions,

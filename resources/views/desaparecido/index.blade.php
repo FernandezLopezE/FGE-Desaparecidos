@@ -332,7 +332,7 @@ var btnLimpiar = $('#btnLimpiar');
 
 				modalBody.append('<code>'+errors.message+'</code>');
 				
-				modalTitle.append('<i class="fa fa-warning"></i> Ooops... algo salió mal');
+				modalTitle.append('<i class="fa fa-warning"></i> Algo salió mal');
 				modalGral.modal('show');
 			}
 		});
@@ -358,8 +358,8 @@ var btnLimpiar = $('#btnLimpiar');
 			fechaNacimiento = from[2] + "-" + from[1] + "-" + from[0];
 			fechaEnviada = Date.parse(fechaNacimiento);	   
 			fechaActual= new Date();
-            
-			if (fechaEnviada > fechaActual)
+			edadMinima = (fechaActual.getFullYear() - 100);
+			if ((fechaEnviada > fechaActual) || (from[2]<edadMinima) )
 			{
 				$("#fechaNacimiento").val("");
 				$("#edadExtravio").val("");

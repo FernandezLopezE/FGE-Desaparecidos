@@ -5,6 +5,28 @@
 {!! HTML::style('personal/css/multiple-select.css') !!}
 {!! HTML::style('personal/css/bootstrap-table-filter-control.css') !!}
 <style type="text/css">
+    
+    .loader {
+  border: 16px solid #eceeef;
+  border-radius: 50%;
+  border-top: 16px solid #aaa;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+    
 	@media only screen and (min-width: 700px) {
 	.modal-lg {
 		max-width: 80%;
@@ -271,9 +293,9 @@
            </div>
         <!--<imput type="button" class="btn btn-dark pull-right" id="button2">PRUEBA</imput>-->
        <!--<imput type="button" class="btn btn-dark pull-right" id="prueba">PRUEBA</imput>-->
-        
+        <div id="loader" align="center">&nbsp;</div>
         <div id="tablaGen" style="width:100%">
-
+           
 
 <!-- data-id-table="advancedTable" -->         
                   <div id="toolbar" style="display:none">
@@ -286,7 +308,7 @@
              <table id="tableDependencias"              
               data-advanced-search="true"
               data-toolbar="#toolbar"
-              data-show-refresh="true"
+             
               data-show-toggle="true"
               data-show-columns="true"
               data-sort-name="id_user"
@@ -361,7 +383,7 @@
         </div>
 
        <br><br><br><br><br><br><br><br>
-   
+    
 </div><hr>
 
 @endsection
@@ -955,6 +977,9 @@ var formatTableActions = function(value, row, index) {
      //-o-|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-
 
     filtros.click(function(){
+        
+        
+        $("#loader").append( " <div id='campoLoader' class='loader' > </div>" );
        // $("#toolbar").show();
         var municipiosData='';
     if(variable==0){
@@ -988,10 +1013,10 @@ var formatTableActions = function(value, row, index) {
           var masc =' ';
    	
         
-          table.bootstrapTable("refresh", {
-              data: dataString
-              //url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+ '/'+ estados
-    });
+//          table.bootstrapTable("refresh", {
+//              data: dataString
+//              //url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+ '/'+ estados
+//    });
         
 //{          var sexo = '';
 //                var femen = $("input#fem:checked").val();    
@@ -1025,31 +1050,13 @@ var formatTableActions = function(value, row, index) {
         data: dataString,
         dataType: 'json',
         success: function(data) {
+            $("#campoLoader").remove();
           //modalInformanteAgregar.modal('hide');
-                    table.bootstrapTable('refresh');
-                    table.bootstrapTable('load', data)
-                    
-          
-                   // modalInformanteAgregar.find('form')[0].reset();
-                    //modalInformanteAgregar.removeData('modal');
-                    
-        },
-        error: function(data) {
-          var errors = data.responseJSON; 
-          $('.modal-body div.has-danger').removeClass('has-danger');
-          $('.form-control-feedback').empty();
-          $.each(errors.errors, function(key, value){         
-            $('#div_'+key).addClass('has-danger');
-            $('input#'+key).addClass('form-control-danger');
-            $('#error_'+key).append(value);           
-          });
-        }
-      });
-          
-          table.bootstrapTable({      
+                    //table.bootstrapTable('refresh');
+            table.bootstrapTable({      
              //
             //data: data,
-      //url: routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+'/'+ estados,
+      //url: routeIndex+'/get_desaparecidos_personas',
      columns: [// {         
 //                    field: 'state',
 //            },
@@ -1129,11 +1136,32 @@ var formatTableActions = function(value, row, index) {
                     events: operateEvents
                 }]        
             })
+                    table.bootstrapTable('load', data)
+                    //tablaGen.show();
+          
+                   // modalInformanteAgregar.find('form')[0].reset();
+                    //modalInformanteAgregar.removeData('modal');
+                    
+        },
+        error: function(data) {
+          var errors = data.responseJSON; 
+            $("#campoLoader").remove();
+          $('.modal-body div.has-danger').removeClass('has-danger');
+          $('.form-control-feedback').empty();
+          $.each(errors.errors, function(key, value){         
+            $('#div_'+key).addClass('has-danger');
+            $('input#'+key).addClass('form-control-danger');
+            $('#error_'+key).append(value);           
+          });
+        }
+      });
+          
+          
 
           console.log(routeIndex+'/get_desaparecidos_personas/'+ masc +'/'+ fem+'/'+ rg+'/'+ rg2+'/'+ estados);
         fechar1 =$('#fechaReporte1');
 
-        tablaGen.show();
+        //tablaGen.show();
          $("#idLiExport").remove();
          $("#ulExport").append("<li id='idLiExport' data-type='Pdf'><a href='javascript:void(0)' id = 'exportPdf'>PDF</a></li>");
 

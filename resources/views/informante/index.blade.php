@@ -79,7 +79,7 @@
 		var addCamposTelefono = function(tipoTel = null, lada=null, telefono=null, ext=null) {
                         
 			var lada1 = $("#lada").val();
-            $("#telefono2").append('<div class="row"><div class="form-group col-md-2">{!! Form::label ("tipoTelefono","Tipo de telefono:") !!}	            {!! Form::select ("tipoTelefono[]", $tiposTelefonos,"'+tipoTel+'",["class" => "form-control","id" => "tipoTelefono[]"])!!} </div> <div class="form-group col-md-2">                                             {!! Form::label ("lada","Lada:") !!}	                                    {!! Form::text ("lada[]",old(""),["class" => "form-control lada","id" =>"lada[]"])!!} </div>  <div class="form-group col-md-4">                                                                {!! Form::label ("telefonos","Número:") !!}                    {!! Form::text ("telefonos[]",old("'+telefono+'"),["class" => "form-control mayuscula valid","data-validation" => "required","data-validation-error-msg-required" => "El campo es requerido","id" => "telefonos[]"] )!!} </div>    <div class="form-group col-md-1">                                              {!! Form::label ("ext","Ext:") !!}                                        {!! Form::text ("ext[]",old("'+ext+'"), ["class" => "form-control mayuscula","id" => "ext[]"] )!!} </div> </div>');
+            $("#telefono2").append('<div class="row"><div class="form-group col-md-2">{!! Form::label ("tipoTelefono","Tipo de telefono:") !!}	            {!! Form::select ("tipoTelefono[]", $tiposTelefonos,"'+tipoTel+'",["class" => "form-control","id" => "tipoTelefono[]"])!!} </div> <div class="form-group col-md-2">                                             {!! Form::label ("lada","Lada:") !!}	                                    {!! Form::text ("lada[]",old(""),["class" => "form-control lada","id" =>"lada[]","autocomplete" => "off"])!!} </div>  <div class="form-group col-md-4">                                                                {!! Form::label ("telefonos","Número:") !!}                    {!! Form::text ("telefonos[]",old("'+telefono+'"),["class" => "form-control mayuscula","autocomplete" => "off","data-validation" => "required","data-validation-error-msg-required" => "El campo es requerido.","id" => "telefonos[]"] )!!} </div>    <div class="form-group col-md-1">                                              {!! Form::label ("ext","Ext:") !!}                                        {!! Form::text ("ext[]",old("'+ext+'"), ["class" => "form-control mayuscula","id" => "ext[]","autocomplete" => "off"] )!!} </div> </div>');
              var otrasLadas = document.getElementsByClassName("lada");
 		    otrasLadas[contador].value = lada1;
 		    contador = contador + 1;
@@ -368,7 +368,7 @@
 					table.bootstrapTable('refresh');
                     modalInformanteAgregar.find('form')[0].reset();
                     modalInformanteAgregar.removeData('modal');
-                    location.reload();
+                    /*location.reload();*/
                     
 				},
 				error: function(data) {
@@ -424,6 +424,8 @@
 				success: function(data) {
 					modalInformanteAgregar.modal('hide');
 					table.bootstrapTable('refresh');
+					modalInformanteAgregar.find('form')[0].reset();
+                    modalInformanteAgregar.removeData('modal');
                     //telefono2.remove();
 				},
 				error: function(data) {
