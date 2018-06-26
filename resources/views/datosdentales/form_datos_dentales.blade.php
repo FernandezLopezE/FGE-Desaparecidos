@@ -387,7 +387,7 @@
 	</div>
 	
 
-  	<div class="card border-primary" id="anexos">
+  	<!-- <div class="card border-primary" id="anexos">
         <div class="card border-success">
           <div class="card-header"> 
               <h5>AGREGAR ANEXOS
@@ -439,7 +439,7 @@
     </div>
     <br>
 
-
+ -->
 
 
 </nav>
@@ -525,11 +525,11 @@ $(document).ready(function(){
         	swal("NOTA:", "Dar un click en el diente para seleccionarlo; un segundo click para eliminarlo; click en el botón de GUARDAR cuando se haya terminado de seleccionar todos los dientes correspondientes.");
         }
     }
-
+/*
 	$(".fancybox").fancybox({
 		openEffect: "none",
     	closeEffect: "none"
-    });
+    });*/
 
 	$(".zoom").hover(function(){
 		$(this).addClass('transition');
@@ -636,7 +636,7 @@ $(document).ready(function(){
 	// 	location.reload();
 	// });
 
-	var routeIndex = '{!! route('anexoscontroller.index') !!}';
+	/*var routeIndex = '{!! route('anexoscontroller.index') !!}';
 	$("#fileImagenes").fileinput({
 		language:'es',
 		theme: 'fa',
@@ -658,7 +658,7 @@ $(document).ready(function(){
       		console.log($nombre);
       		return  filename.replace('(', '_').replace(']', '_');
       	}
-      });
+      });*/
 
    	/**********************************************************************
 	*** Declaración de rutas a usar de los campos en el formulario ********
