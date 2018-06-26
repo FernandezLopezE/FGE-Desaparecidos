@@ -8,8 +8,8 @@
 {!! Html::style('personal/css/sweetalert.css') !!}
 {!! Html::style('personal/css/datos_dentales/dentaduraAdult.css') !!}
 {!! Html::style('personal/css/datos_dentales/datosDentales.css') !!}
-<link href="../plugins/bootstrap_fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+<!-- <link href="../plugins/bootstrap_fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen"> -->
 @endsection
 
 @section('titulo', '')
@@ -186,26 +186,6 @@
       });
       verMalosHab = verMalosHab.substring(0,verMalosHab.length-2)
      $("#MalosDientes").html(verMalosHab);
-
-
-    // $("#editDientes").click(function(event) {
-    //   $.ajax({
-    //     url: routedatosDentales+'/edit_datos_dentales/'+idDesaparecido,
-    //     type: 'GET',
-    //     dataType: 'json',
-      
-    //   })
-    //   .done(function() {
-    //     console.log("success");
-    //   })
-    //   .fail(function() {
-    //     console.log("error");
-    //   })
-    //   .always(function() {
-    //     console.log("complete");
-    //   });
-      
-    // });
 
 	
 </script>

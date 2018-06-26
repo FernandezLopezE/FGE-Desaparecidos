@@ -455,16 +455,17 @@
 {!! Html::script('personal/js/datos_dentales/accionDientes.js') !!}
 {!! Html::script('personal/js/datos_dentales/sliders_dentales.js') !!}
 
-<script src="../plugins/bootstrap_fileinput/js/popper.min.js" type="text/javascript"></script>
-<script src="../plugins/bootstrap_fileinput/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- <script src="../plugins/bootstrap_fileinput/js/popper.min.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap_fileinput/js/bootstrap.min.js" type="text/javascript"></script> -->
 <!-- the main fileinput plugin file -->
-<script src="../plugins/bootstrap_fileinput/js/fileinput.js"></script>
+<!-- <script src="../plugins/bootstrap_fileinput/js/fileinput.js"></script> -->
 <!-- optionally uncomment line below for loading your theme assets for a theme like Font Awesome (`fa`) -->
-<script src="../plugins/bootstrap_fileinput/js/theme.js"></script>
+<!-- <script src="../plugins/bootstrap_fileinput/js/theme.js"></script> -->
 <!-- optionally if you need translation for your language then include  locale file as mentioned below -->
-<script src="../plugins/bootstrap_fileinput/js/es.js"></script>
+<!-- <script src="../plugins/bootstrap_fileinput/js/es.js"></script> -->
 <!-- para la galeria de imagenes fancybox -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+ -->
 
 <script type="text/javascript">
 	//console.log('ID de la persona desaparecida: {!! $desaparecido->id !!}');

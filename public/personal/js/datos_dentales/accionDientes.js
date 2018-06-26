@@ -42,7 +42,7 @@ $(document).ready(function(){
                 contenido = contenido+'</div>'
         
                 contenido = contenido+'<div class="col">';
-                contenido = contenido+'<input type="text" class="form-control" name="perdio[]" placeholder="ACCIDENTE, EXTRACCIÓN, NATURAL, ETC">';
+                contenido = contenido+'<input type="text" class="form-control mayuscula" name="perdio[]" placeholder="ACCIDENTE, EXTRACCIÓN, NATURAL, ETC">';
                 $.each(data, function(key, value){
                     contenido = contenido+'<input type="hidden" name="dienteselec[]" value="'+value.id+'">';
                 });
