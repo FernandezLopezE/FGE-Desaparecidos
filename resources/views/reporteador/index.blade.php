@@ -699,7 +699,6 @@ $('#return-to-top').click(function() {      // When arrow is clicked
 
     var CheckMasc = $('#masc');
     var filtros = $('#filtros');
-    var filtrosTodos = $('#filtrosTodos');
     var CheckFem = $('#fem');
     var fem = "";  
 
@@ -864,94 +863,6 @@ var formatTableActions = function(value, row, index) {
             $("#idNacionalidad").append(row.nacionalidad);
 }
     }
-     filtrosTodos.click(function(){
-      
-         
-         
-          tablaGen.hide();
-//          var estados = $('#estados').multipleSelect('getSelects');
-//          console.log("El string:")
-//        console.log(estados)
-//        var array = JSON.parse("[" + estados + "]");
-//         // estados.toString();
-//          //estados.replace(/['"]+/g, '');
-//          console.log("El arreglo:")
-//          console.log(array)
-//          
-//          console.log('ids de estados:'+' ' + estados);
-         // var quote_str =  "'" + str + "'";
-          var rg = $('#rng1').val();
-          var rg2 = $('#rng2').val();
-          if (rg==''){
-              rg=0
-          }
-          if (rg2==''){
-              rg2=120
-          }
-          
-          var fem =' ';
-          var masc =' ';
-
-          table2.bootstrapTable("refresh", {
-              data: dataString
-    });
-  
-          var dataString = {
-          estados: $('#idEstado').multipleSelect('getSelects'),
-                fem : $("input#fem:checked").val(),     
-                masc : $("input#masc:checked").val(),
-                rg : $('#rng1').val(),
-                rg2 : $('#rng2').val(),
-      };
-          console.log("El dataString:");
-          console.log(dataString);
-          $.ajax({
-        type: 'POST',
-        url: routeIndex+'/get_desaparecidos_personas_todos',
-        data: dataString,
-        dataType: 'json',
-        success: function(data) {
-                    table2.bootstrapTable('refresh');
-                    table2.bootstrapTable('load', data)
-
-        },
-        error: function(data) {
-          console.log('Error en la consulta')
-        }
-      });
-
-          table2.bootstrapTable({     
-
-      columns: [{         
-        field: 'nombre',
-        title: 'Nombre',
-        }, {          
-        title: 'Género',
-                formatter: formatCheckGenero
-      }, {          
-        field: 'edad',
-        title: 'Edad de extravío',
-      }, {
-                field: 'fecha',
-        title: 'Fecha de desaparición',
-      }, {          
-        field: 'estado',
-        title: 'Estado',
-      }, {          
-        field: 'municipio',
-        title: 'Municipio',
-            }, {          
-        title: 'Acciones',
-        formatter: formatTableActions,
-        events: operateEvents
-      }]        
-    })
-
-          console.log(routeIndex+'/get_desaparecidos_personas_todos');
-        tablaGenTodos.show();
-
-        //console.log("entrando")
-        });
      //-o-|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-|||---|||-o-|||-o-|||-o-|||-o-
 
     filtros.click(function(){
