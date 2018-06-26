@@ -63,7 +63,7 @@
                 </tr>
                 <tr>
                     <td rowspan="15" class="text-sm-center" colspan="1">
-                        <img src="{!! $desaparecido->fotoDesaparecido !!}" style="width: 250px;">
+                        <img src="{!! $desaparecido->fotoDesaparecido !!}" style="width:200px">
                     </td>
                 </tr>
                 <tr>
