@@ -18,8 +18,8 @@ class DocumentosIdentidadSeeder extends Seeder
         	['nombre' => 'CREDENCIAL DE ELECTOR'],
         	['nombre' => 'CARTILLA DE SERVICIO MILITAR'],
         	['nombre' => 'LICENCIA DE CONDUCIR'],
-        	['nombre' => 'TARJETON'],
-        	['nombre' => 'CARTILLA DE VACUNACION'],
+        	['nombre' => 'TARJETÓN'],
+        	['nombre' => 'CARTILLA DE VACUNACIÓN'],
         	['nombre' => 'PASAPORTE'],
             ['nombre' => 'OTRO (ESPECIFIQUE)']
         ]);
