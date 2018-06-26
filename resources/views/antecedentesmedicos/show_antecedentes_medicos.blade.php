@@ -26,10 +26,11 @@
 			</dl>
 			<dl class="row">
 				<dd class="col-sm-4"> 
-<!--
+
 				{!! $desaparecido->persona->nombres !!} 
-					{!! $desaparecido->$enfermedades !!}		
--->
+					{!! $desaparecido->antecedentesMedicos->observaciones !!} 
+							
+
 				</dd>
 				<dd class="col-sm-4">
 <!--					egrfgregergerg		-->
