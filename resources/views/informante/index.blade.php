@@ -2,6 +2,7 @@
 
 @section('css')
 {!! Html::style('') !!}
+{!! Html::style('personal/css/jquery-confirm.min.css') !!}
 <style type="text/css">
     @media only screen and (min-width: 700px) {
 	.modal-lg {
@@ -47,6 +48,7 @@
 {!! HTML::script('personal/js/lada.js') !!}
 {!! HTML::script('personal/js/sisyphus.min.js') !!}
 {!! HTML::script('personal/js/sisyphus.js') !!}
+{!! Html::script('personal/js/jquery-confirm.min.js') !!}
 
 <script type="text/javascript">    
 	var contador=0;
@@ -70,7 +72,7 @@
 		var modalFooter = $('.modal-footer');
         var btnLimpiar = $('#btnLimpiar');
         var telefono2 = $('#telefono2');
-        
+        var tieneInformante = "{{count($informantes)}}";
         
         var valueCamposTelefono = function(tipoTel, lada, telefono, ext) {
 			console.log("valor de los campos telefono");
@@ -239,10 +241,14 @@
 				$("#correoElectronico").val(row.correoElectronico);
 				if (row.informante == 0) {
 					$("input#informante").iCheck('uncheck');
+				}else{
+					$("input#informante").iCheck('check');
 				}
 
 				if (row.notificaciones == 0) {
 					$("input#notificaciones").iCheck('uncheck');
+				}else{
+					$("input#notificaciones").iCheck('check');
 				}                
                 
 				//modalFooter.empty();
@@ -250,7 +256,18 @@
 				$("#btnGuardarInformante").hide();
                     
                 $("#btnEditarInformante").val(row.idDesaparecido);
-				
+				if(tieneInformante == 1){
+	            	$("#informante").attr("disabled", true);
+	            }
+
+				if( tieneInformante > 1 ){
+	            	$("#informante").removeAttr("disabled");
+	            }
+	            if(tieneInformante == 1 && row.informante == 0){
+	            	$("#informante").removeAttr("disabled");
+	            }
+	            
+	            
 				modalInformanteAgregar.modal('show');
 			}
 		}
@@ -304,14 +321,8 @@
 
 			$('.modal-body div.has-danger').removeClass('has-danger');
 			$('.form-control-feedback').empty();
-            var tieneInformante = "{{count($informantes)}}";
-            console.log(tieneInformante);
-
-            if(tieneInformante == 0){
-            	console.log("Vacio");
-            	$("#informante").attr("disabled", true);
-            }else{
-            	console.log("lleno");
+            //validacion del checkbox
+            if( tieneInformante >= 1){
             	$("#informante").removeAttr("disabled");
             }
 			modalInformanteAgregar.modal('show');
@@ -357,31 +368,50 @@
 				notificaciones: $("input#notificaciones:checked").val(),
 				idCedula: $("#idCedula").val(),
 			};
-
-			$.ajax({
-				type: 'POST',
-				url: routeInformante,
-				data: dataString,
-				dataType: 'json',
-				success: function(data) {
-					modalInformanteAgregar.modal('hide');
-					table.bootstrapTable('refresh');
-                    modalInformanteAgregar.find('form')[0].reset();
-                    modalInformanteAgregar.removeData('modal');
-                    /*location.reload();*/
-                    
-				},
-				error: function(data) {
-					var errors = data.responseJSON;	
-					$('.modal-body div.has-danger').removeClass('has-danger');
-					$('.form-control-feedback').empty();
-					$.each(errors.errors, function(key, value){					
-						$('#div_'+key).addClass('has-danger');
-						$('input#'+key).addClass('form-control-danger');
-						$('#error_'+key).append(value);						
-					});
-				}
-			});
+			if ($('input[type=checkbox]:checked').length === 0) {
+		        
+		        
+				$.confirm({
+				    title: 'Aviso!',
+				    type: 'orange',
+				    typeAnimated: true,
+				    content: 'Al menos un opción debe estar seleccionada!',
+				    buttons: {
+				        tryAgain: {
+				            text: 'Aceptar',
+				            btnClass: 'btn',
+				            action: function(){
+				            }
+				        },
+				        
+				    }
+				});
+		    }else{
+				$.ajax({
+					type: 'POST',
+					url: routeInformante,
+					data: dataString,
+					dataType: 'json',
+					success: function(data) {
+						modalInformanteAgregar.modal('hide');
+						table.bootstrapTable('refresh');
+	                    modalInformanteAgregar.find('form')[0].reset();
+	                    modalInformanteAgregar.removeData('modal');
+	                    location.reload();
+	                    
+					},
+					error: function(data) {
+						var errors = data.responseJSON;	
+						$('.modal-body div.has-danger').removeClass('has-danger');
+						$('.form-control-feedback').empty();
+						$.each(errors.errors, function(key, value){					
+							$('#div_'+key).addClass('has-danger');
+							$('input#'+key).addClass('form-control-danger');
+							$('#error_'+key).append(value);						
+						});
+					}
+				});
+			}
 		})
 
 		modalFooter.on('click', '#btnEditarInformante', function(){
@@ -415,23 +445,42 @@
 			};
 
 			idDesaparecido = $("#btnEditarInformante").val();
-
-			$.ajax({
-				type: 'PUT',
-				url: routeInformante+'/'+idDesaparecido,
-				data: dataString,
-				dataType: 'json',
-				success: function(data) {
-					modalInformanteAgregar.modal('hide');
-					table.bootstrapTable('refresh');
-					modalInformanteAgregar.find('form')[0].reset();
-                    modalInformanteAgregar.removeData('modal');
-                    //telefono2.remove();
-				},
-				error: function(data) {
-					console.log(data);
-				}
-			});
+			if ($('input[type=checkbox]:checked').length === 0) {
+		        
+		        $.confirm({
+				    title: 'Aviso!',
+				    type: 'orange',
+				    typeAnimated: true,
+				    content: 'Al menos un opción debe estar seleccionada!',
+				    buttons: {
+				        tryAgain: {
+				            text: 'Aceptar',
+				            btnClass: 'btn',
+				            action: function(){
+				            }
+				        },
+				        
+				    }
+				});
+		    }else{
+				$.ajax({
+					type: 'PUT',
+					url: routeInformante+'/'+idDesaparecido,
+					data: dataString,
+					dataType: 'json',
+					success: function(data) {
+						modalInformanteAgregar.modal('hide');
+						table.bootstrapTable('refresh');
+						modalInformanteAgregar.find('form')[0].reset();
+	                    modalInformanteAgregar.removeData('modal');
+	                    //telefono2.remove();
+	                    location.reload();
+					},
+					error: function(data) {
+						console.log(data);
+					}
+				});
+			}
 
 		})
 
@@ -448,7 +497,22 @@
 			}
 		}
 
+		function validarCheck(){
+			//validacion del checkbox
+            
+            console.log(tieneInformante);
+
+            if(tieneInformante == 0 || tieneInformante == 1){
+            	console.log("Vacio");
+            	$("#informante").attr("disabled", true);
+            }else{
+            	console.log("lleno");
+            	$("#informante").removeAttr("disabled");
+            }
+		}
+
 		documentosIdentidad();
+		validarCheck();
 	})
 </script>
 @endsection

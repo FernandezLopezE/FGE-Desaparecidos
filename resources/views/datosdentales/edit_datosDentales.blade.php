@@ -479,7 +479,7 @@ $(document).ready(function(){
         var nameDent5 = datosDental.telefono;
         var nameDent6 = datosDental.direccion;
         
-		if (nameDent1 == null && nameDent2 && null || nameDent3 && null || nameDent4 && null || nameDent5 && null ) {
+		if (nameDent1 == null && nameDent2 == null && nameDent3 == null && nameDent4 == null && nameDent5 == null ) {
 			$("#atencionOdonto").val("SIN INFORMACIÓN");
             $("#infoDen").hide();
 			$("#verinfodentista").hide();

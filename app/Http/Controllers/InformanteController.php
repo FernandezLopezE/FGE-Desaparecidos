@@ -134,6 +134,7 @@ class InformanteController extends Controller
 
 		$informantes = \DB::table('desaparecidos_personas AS dp')
             ->where('dp.tipoPersona', 'INFORMANTE')
+            ->where('dp.informante','1')
             ->where('dp.idCedula', $cedula->id)
             ->get();
          //dd($informantes);
