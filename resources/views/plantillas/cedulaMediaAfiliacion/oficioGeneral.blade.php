@@ -21,7 +21,7 @@
 	<div class="page-break">@include('plantillas.cedulaMediaAfiliacion.cedula')</div>
 	<div class="page-break">@include('plantillas.cedulaMediaAfiliacion.cedulaExtraviada')</div>
 	<div class="page-break">@include('plantillas.cedulaMediaAfiliacion.fotografia')</div>
-	<div class="page-break">@include('desaparecidos.boletin')</div>
+	<div >@include('desaparecidos.boletin')</div>
 
 	<!-- <div id="app">
 		<oficio tipo="solicitud de la persona extraviada" url="{{url("jsonOficio1")}}" id="1" ></oficio>

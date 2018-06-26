@@ -35,7 +35,7 @@
 				<br />
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>{{$oficio2['carpeta']}}</strong>
+						<strong>{{$data['numCarpeta']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -48,7 +48,7 @@
 				<br />
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>{{$oficio2['fechaHora']}}</strong>
+						<strong>{{$data['fechaHora']}}</strong>
 					</span>
 				</span>
 				<span style="font-size: 11px;">
@@ -95,14 +95,14 @@
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						NOMBRE: <strong>{{$oficio2['nombreDesa']}}</strong>
+						NOMBRE: <strong>{{$data['nombreDesa']}}</strong>
 					</span>
 				</span>
 			</td>
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						EDAD: <strong>{{$oficio2['edadDesa']}}</strong>
+						EDAD: <strong>{{$data['edadExtravioDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -111,14 +111,14 @@
 			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						G&Eacute;NERO: <strong>{{$oficio2['generoDesa']}}</strong>
+						G&Eacute;NERO: <strong>{{$data['generoDesa']}}</strong>
 					</span>
 				</span>
 			</td>
 			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						EDO. CIVIL: <strong>{{$oficio2['estadoCivilDesa']}}</strong>
+						EDO. CIVIL: <strong>{{$data['estadoCivilDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -133,7 +133,7 @@
 				<br />
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>{{$oficio2['domicilioDesa']}}</strong>
+						<strong>{{$data['domicilioDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -142,14 +142,14 @@
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						ESCOLARIDAD: <strong>{{$oficio2['escolaridadDesa']}}</strong>
+						ESCOLARIDAD: <strong>{{$data['escolaridadDesa']}}</strong>
 					</span>
 				</span>
 			</td>
 			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						OCUPACI&Oacute;N: <strong>{{$oficio2['ocupacionDesa']}}</strong>
+						OCUPACI&Oacute;N: <strong>{{$data['ocupacionDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -167,7 +167,7 @@
 			<td style="border-color: black;  vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						LUGAR DE EXTRAVI&Oacute;: <strong>{{$oficio2['lugarExtravio']}}</strong>
+						LUGAR DE EXTRAVI&Oacute;: <strong>{{$data['lugarExtravio']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -221,7 +221,7 @@
 			<td style="border-color: black; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						NOMBRE: <strong>{{$oficio2['nombreInfo']}}</strong>
+						NOMBRE: <strong>{{$data['informante']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -230,14 +230,14 @@
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						EDAD: <strong>{{$oficio2['edadInfo']}}</strong>
+						EDAD: <strong>{{$data['edadInfo']}}</strong>
 					</span>
 				</span>
 			</td>
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						PARENTESCO CON EL DESAPARECIDO: <strong>{{$oficio2['parentescoInfo']}}</strong>
+						PARENTESCO CON EL DESAPARECIDO: <strong>{{$data['parentescoInfo']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -246,14 +246,14 @@
 			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						G&Eacute;NERO: <strong>{{$oficio2['generoInfo']}}</strong>
+						G&Eacute;NERO: <strong>{{$data['generoInfo']}}</strong>
 					</span>
 				</span>
 			</td>
 			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						EDO. CIVIL: <strong>{{$oficio2['estadoCivilInfo']}}</strong>
+						EDO. CIVIL: <strong>{{$data['estadoCivilInfo']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -268,7 +268,7 @@
 				<br />
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>{{$oficio2['domicilioInfo']}}</strong>
+						<strong>{{$data['domicilioInfo']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -286,7 +286,7 @@
 			<td style="border-color: black; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>{{$oficio2['observacionDesa']}} </strong>
+						<strong>{{$data['observacionDesa']}} </strong>
 					</span>
 				</span>
 			</td>
@@ -298,6 +298,6 @@
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;">&nbsp;</p>
-<p style="text-align: center;"><span style="font-size: 11px;"><span style="font-family: Tahoma,Geneva,sans-serif;"><strong>LIC. {{$oficio2['entrevistador']}}</strong></span></span></p>
+<p style="text-align: center;"><span style="font-size: 11px;"><span style="font-family: Tahoma,Geneva,sans-serif;"><strong>LIC. {{$data['entrevistador']}}</strong></span></span></p>
 </body>
 </html>

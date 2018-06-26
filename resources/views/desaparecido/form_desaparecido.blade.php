@@ -16,7 +16,7 @@
 							['class' => 'form-control mayuscula',
 								'id' => 'nombres',
 								'data-validation' => 'required',
-								'data-validation-error-msg-required' => '* Ingresa un nombre'
+								'data-validation-error-msg-required' => 'El campo es requerido.'
 							] )!!}
 	</div>
 	<div class="col">
@@ -26,7 +26,7 @@
 							['class' => 'form-control mayuscula',
 								'id' => 'primerAp',
 								'data-validation' => 'required',
-								'data-validation-error-msg-required' => '* Ingresa un apellido'
+								'data-validation-error-msg-required' => 'El campo es requerido.'
 							] )!!}
 	</div>
 	<div class="col">

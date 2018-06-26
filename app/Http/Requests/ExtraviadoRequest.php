@@ -26,18 +26,18 @@ class ExtraviadoRequest extends FormRequest
 		$rules = [
 			'sexo'					=> 'required|in:H,M',
 			'idDocumentoIdentidad'	=> 'required',
-			'nombres'				=> 'required_unless:idDocumentoIdentidad,1',
-			'segundoAp' 			=> 'required_unless:idDocumentoIdentidad,1',
-			'primerAp' 				=> 'required_unless:idDocumentoIdentidad,1',
+			'nombres'				=> 'required_unless:idDocumentoIdentidad,NO ESPECIFICADO',
+			'segundoAp' 			=> 'required_unless:idDocumentoIdentidad,NO ESPECIFICADO',
+			'primerAp' 				=> 'required_unless:idDocumentoIdentidad,NO ESPECIFICADO',
 			'apodo'					=> 'required_without:nombres,segundoAp,primerAp',
-			'idNacionalidad'		=> 'required_unless:idDocumentoIdentidad,1',
-			'idEstadoOrigen'		=> 'required_unless:idDocumentoIdentidad,1',
-			'fechaNacimiento'		=> 'required_unless:idDocumentoIdentidad,1|date_format:d/m/Y|before_or_equal:'.date('Y-m-d'),
-			'edadExtravio'			=> 'required_unless:idDocumentoIdentidad,1',
+			'idNacionalidad'		=> 'required_unless:idDocumentoIdentidad,NO ESPECIFICADO',
+			'idEstadoOrigen'		=> 'required_unless:idDocumentoIdentidad,NO ESPECIFICADO',
+			'fechaNacimiento'		=> 'required_unless:idDocumentoIdentidad,NO ESPECIFICADO|date_format:d/m/Y|before_or_equal:'.date('Y-m-d'),
+			'edadExtravio'			=> 'required_unless:idDocumentoIdentidad,NO ESPECIFICADO',
 			'edadAparente'			=> 'required|Integer|Min:1|Max:150',
-			'curp'					=> 'required_unless:idDocumentoIdentidad,1|unique:persona,curp,'.$this->request->get('idPersona').',id',
-			'otroDocIdentidad' 		=> 'required_if:idDocumentoIdentidad,9',
-			'numDocIdentidad' 		=> 'required_unless:idDocumentoIdentidad,1',
+			'curp'					=> 'required_unless:idDocumentoIdentidad,NO ESPECIFICADO|unique:persona,curp,'.$this->request->get('idPersona').',id',
+			'otroDocIdentidad' 		=> 'required_if:idDocumentoIdentidad,OTRO',
+			'numDocIdentidad' 		=> 'required_unless:idDocumentoIdentidad,NO ESPECIFICADO',
 			
 		];
 
@@ -80,9 +80,8 @@ class ExtraviadoRequest extends FormRequest
 	public function messages()
     {
         return [
-            'numDocIdentidad.required_unless' => 'El campo número de identificación es requerido.',
-            'fechaNacimiento.date_format' => 'El campo fecha de nacimiento no corresponde al formato dd/mm/aaaa. ',
-          
+            'numDocIdentidad.required_unless' => 'El campo es requerido.',
+            'fechaNacimiento.date_format' => 'El campo no corresponde al formato dd/mm/aaaa.',
         ];
     }
 
