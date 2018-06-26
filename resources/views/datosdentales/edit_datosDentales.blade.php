@@ -468,12 +468,20 @@ $(document).ready(function(){
 	var datomordida = @JSON($nombreMordida);
 	var datosonrisa = @JSON($nombreSonrisa);
 	var datosDental = @JSON($denta);
+    //console.log(datosDental);
 	
 	function mostrarDatos(){
 		$('#dienteTamano').val(datosDental.idTamanoDiente);
-		var nameDent = datosDental.nombres;
-		if (nameDent == null ) {
-			$("#infoDen").show();
+		var nameDent1 = datosDental.nombres;
+        var nameDent2 = datosDental.primerAp;
+        var nameDent3 = datosDental.segundoAp;
+        var nameDent4 = datosDental.empresa;
+        var nameDent5 = datosDental.telefono;
+        var nameDent6 = datosDental.direccion;
+        
+		if (nameDent1 == null && nameDent2 && null || nameDent3 && null || nameDent4 && null || nameDent5 && null ) {
+			$("#atencionOdonto").val("SIN INFORMACIÓN");
+            $("#infoDen").hide();
 			$("#verinfodentista").hide();
 		}else{
 			$("#atencionOdonto").val("SI");
@@ -485,9 +493,11 @@ $(document).ready(function(){
 			$('#empresa').val(datosDental.empresa);
 			$('#telefono').val(datosDental.telefono);
 			$('#direccion').val(datosDental.direccion);
-			$('#idDentaCompleta').val(datosDental.dentaCompleta).trigger('change');
+			
 
 		}
+
+        $('#idDentaCompleta').val(datosDental.dentaCompleta).trigger('change');
 		console.log(datoperfil);
 		$.each(datoperfil,function(key,value){
 			$("#valorPerfil").val(value.nombrePerfil);

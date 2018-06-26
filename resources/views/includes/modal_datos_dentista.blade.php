@@ -15,9 +15,7 @@
                           old('nombres'), 
                           ['class' => 'form-control mayuscula', 
                             'id' => 'nombres', 
-                            'placeholder' => 'Ingrese el nombre', 
-                            'data-validation' => 'required', 
-                            'data-validation-error-msg-required' => 'El campo nombre(s) es requerido.'
+                            'placeholder' => 'Ingrese el nombre'
                           ] )!!}
           <div class="form-control-feedback" id="error_nombres"></div>
         </div>
@@ -27,9 +25,7 @@
                           old('primerAp'), 
                           ['class' => 'form-control mayuscula', 
                             'id' => 'primerAp', 
-                            'placeholder' => 'Ingrese el primer apellido',
-                            'data-validation' => 'required', 
-                            'data-validation-error-msg-required' => 'El campo primer apellido es requerido.'
+                            'placeholder' => 'Ingrese el primer apellido'
                           ])!!}
           <div class="form-control-feedback" id="error_primerAp"></div>
         </div>
