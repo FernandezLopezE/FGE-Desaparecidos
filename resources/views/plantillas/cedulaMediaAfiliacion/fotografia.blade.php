@@ -28,7 +28,7 @@
 			<td style="border-color: black;" colspan="3">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						NOMBRE: <strong>{{$oficio4['nombreDesa']}}</strong>
+						NOMBRE: <strong>{{$data['nombreDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -37,21 +37,21 @@
 			<td style="border-color: black; vertical-align: top; " colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        EDAD: <strong>{{$oficio4['edadDesa']}}</strong>
+                        EDAD: <strong>{{$data['edadExtravioDesa']}}</strong>
 					</span>
 				</span>
 			</td>
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        GÉNERO: <strong>{{$oficio4['generoDesa']}}</strong>
+                        GÉNERO: <strong>{{$data['generoDesa']}}</strong>
 					</span>
 				</span>
 			</td>
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        EDO. CIVIL: <strong>{{$oficio4['estadoCivilDesa']}}</strong>
+                        EDO. CIVIL: <strong>{{$data['estadoCivilDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -76,7 +76,7 @@
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
                     
-                        <img src="{!! $oficio4['fotoExtra'] !!}" alt="" style="width: 200px;">
+                        <img src="{!! $data['fotoDesaparecido'] !!}" alt="" style="width: 200px;">
 					</span>
 				</span>
 			</td>
@@ -88,6 +88,6 @@
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;">&nbsp;</p>
-<p style="text-align: center;"><span style="font-size: 11px;"><span style="font-family: Tahoma,Geneva,sans-serif;"><strong>LIC. {{$oficio4['entrevistador']}}</strong></span></span></p>
+<p style="text-align: center;"><span style="font-size: 11px;"><span style="font-family: Tahoma,Geneva,sans-serif;"><strong>LIC. {{$data['entrevistador']}}</strong></span></span></p>
 </body>
 </html>

@@ -28,7 +28,7 @@
 			<td style="border-color: black;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						NOMBRE: <strong>{{$oficio3['nombreDesa']}}</strong>
+						NOMBRE: <strong>{{$data['nombreDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -37,14 +37,14 @@
 			<td style="border-color: black; vertical-align: top; " colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						SOBRENOMBRE: <strong>{{$oficio3['apodo']}}</strong>
+						SOBRENOMBRE: <strong>{{$data['apodoDesa']}}</strong>
 					</span>
 				</span>
 			</td>
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						EDAD: <strong>{{$oficio3['edadDesa']}}</strong>
+						EDAD: <strong>{{$data['edadExtravioDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -53,14 +53,14 @@
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						GÉNERO: <strong>{{$oficio3['generoDesa']}}</strong>
+						GÉNERO: <strong>{{$data['generoDesa']}}</strong>
 					</span>
 				</span>
 			</td>
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						EDO. CIVIL: <strong>{{$oficio3['estadoCivilDesa']}}</strong>
+						EDO. CIVIL: <strong>{{$data['estadoCivilDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -76,7 +76,7 @@
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>{{$oficio3['estaturaDesa']}}</strong>
+						<strong>{{$data['estaturaDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -92,7 +92,7 @@
 			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-						<strong>{{$oficio3['colorPiel']}}</strong>
+						<strong>{{$data['colorPiel']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -202,7 +202,7 @@
 			<td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        <strong>{{$oficio3['fechaNacimi']}}</strong>
+                        <strong>{{$data['fechaNacimiento']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -224,13 +224,13 @@
 			<td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        LUGAR: <strong>{{$oficio3['lugarExtravio']}}</strong>
+                        LUGAR: <strong>{{$data['lugarExtravio']}}</strong>
 					</span>
 				</span>
                 <br />
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        </strong> FECHA: <strong>{{$oficio3['fechaDesaparicion']}}.</strong>
+                        </strong> FECHA: <strong>{{$data['fechaDesaparicion']}}.</strong>
 					</span>
 				</span>
 			</td>
@@ -262,7 +262,7 @@
             <td style="border-color: black; vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        <strong>{{$oficio3['fotoExtra']}}</strong>
+                        <strong>{{$data['fotoExtra']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -280,7 +280,7 @@
 			<td style="border-color: black; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        <strong>{{$oficio3['observa']}}</strong>
+                        <strong>{{$data['observacionDesa']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -292,6 +292,6 @@
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;">&nbsp;</p>
-<p style="text-align: center;"><span style="font-size: 11px;"><span style="font-family: Tahoma,Geneva,sans-serif;"><strong>LIC. {{$oficio3['entrevistador']}}</strong></span></span></p>
+<p style="text-align: center;"><span style="font-size: 11px;"><span style="font-family: Tahoma,Geneva,sans-serif;"><strong>LIC. {{$data['entrevistador']}}</strong></span></span></p>
 </body>
 </html>
