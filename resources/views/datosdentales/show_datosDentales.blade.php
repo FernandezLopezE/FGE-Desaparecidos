@@ -8,8 +8,8 @@
 {!! Html::style('personal/css/sweetalert.css') !!}
 {!! Html::style('personal/css/datos_dentales/dentaduraAdult.css') !!}
 {!! Html::style('personal/css/datos_dentales/datosDentales.css') !!}
-<link href="../plugins/bootstrap_fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+<!-- <link href="../plugins/bootstrap_fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen"> -->
 @endsection
 
 @section('titulo', '')

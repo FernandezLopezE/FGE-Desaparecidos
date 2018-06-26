@@ -43,8 +43,8 @@
 {!! Html::style('personal/css/sweetalert.css') !!}
 {!! Html::style('personal/css/datos_dentales/dentaduraAdult.css') !!}
 {!! Html::style('personal/css/datos_dentales/datosDentales.css') !!}
-<link href="../plugins/bootstrap_fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+<!-- <link href="../plugins/bootstrap_fileinput/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen"> -->
 @endsection
 
 
@@ -392,17 +392,17 @@
 {!! Html::script('personal/js/datos_dentales/accionDientes.js') !!}
 {!! Html::script('personal/js/datos_dentales/sliders_dentales.js') !!}
 
-<script src="../plugins/bootstrap_fileinput/js/popper.min.js" type="text/javascript"></script>
-<script src="../plugins/bootstrap_fileinput/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- <script src="../plugins/bootstrap_fileinput/js/popper.min.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap_fileinput/js/bootstrap.min.js" type="text/javascript"></script> -->
 <!-- the main fileinput plugin file -->
-<script src="../plugins/bootstrap_fileinput/js/fileinput.js"></script>
+<!-- <script src="../plugins/bootstrap_fileinput/js/fileinput.js"></script> -->
 <!-- optionally uncomment line below for loading your theme assets for a theme like Font Awesome (`fa`) -->
-<script src="../plugins/bootstrap_fileinput/js/theme.js"></script>
+<!-- <script src="../plugins/bootstrap_fileinput/js/theme.js"></script> -->
 <!-- optionally if you need translation for your language then include  locale file as mentioned below -->
-<script src="../plugins/bootstrap_fileinput/js/es.js"></script>
+<!-- <script src="../plugins/bootstrap_fileinput/js/es.js"></script> -->
 <!-- para la galeria de imagenes fancybox -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+ -->
 <script type="text/javascript">
 //Toltips de ayuda visual
 $(function() {
@@ -479,7 +479,7 @@ $(document).ready(function(){
         var nameDent5 = datosDental.telefono;
         var nameDent6 = datosDental.direccion;
         
-		if (nameDent1 == null && nameDent2 && null || nameDent3 && null || nameDent4 && null || nameDent5 && null ) {
+		if (nameDent1 == null && nameDent2 == null && nameDent3 == null && nameDent4 == null && nameDent5 == null ) {
 			$("#atencionOdonto").val("SIN INFORMACIÓN");
             $("#infoDen").hide();
 			$("#verinfodentista").hide();
