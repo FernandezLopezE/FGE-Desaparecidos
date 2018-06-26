@@ -187,26 +187,6 @@
       verMalosHab = verMalosHab.substring(0,verMalosHab.length-2)
      $("#MalosDientes").html(verMalosHab);
 
-
-    // $("#editDientes").click(function(event) {
-    //   $.ajax({
-    //     url: routedatosDentales+'/edit_datos_dentales/'+idDesaparecido,
-    //     type: 'GET',
-    //     dataType: 'json',
-      
-    //   })
-    //   .done(function() {
-    //     console.log("success");
-    //   })
-    //   .fail(function() {
-    //     console.log("error");
-    //   })
-    //   .always(function() {
-    //     console.log("complete");
-    //   });
-      
-    // });
-
 	
 </script>
 @endsection
