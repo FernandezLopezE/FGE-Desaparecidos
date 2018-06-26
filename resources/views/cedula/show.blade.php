@@ -25,6 +25,7 @@
 			{{ HTML::image('images/perfil3.png', 'Fiscal', array('class' => 'rounded w-100 p-3 float-right')) }}	
 		</div>
 		<div class="col-lg-10">
+			<h5><a href="http://127.0.0.1/uipj/public/carpeta/{!! $cedula->idCarpeta !!}">{!! $cedula->carpeta !!} </a></h5>
 			<h5>Datos del fiscal</h5>
 			<dl class="row">
 				<dt class="col-sm-4">Nombre:</dt>

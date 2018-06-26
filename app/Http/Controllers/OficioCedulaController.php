@@ -87,10 +87,93 @@ class OficioCedulaController extends Controller
                                             ->get();
         
         $desaparecido = \App\Models\Desaparecido::find($datos[0]->id);
-        $data = $this->json_oficio1($id);
-        $oficio2 = $this->json_oficio2($id);
+        //$data = $this->json_oficio1($id);
+        /*$oficio2 = $this->json_oficio2($id);
         $oficio3 = $this->json_oficio3($id);
-        $oficio4 = $this->json_oficio4($id);
+        $oficio4 = $this->json_oficio4($id);*/
+        $doc="";
+        $resolucion ="NO";
+        $fotoExtra = "NO";
+        $carpeta = "SI";
+        $actaNac = "SI";
+
+        //---Obtener desaparecido---
+        $datosDesaparecido = $this->obtenerDatosPersona($id,'DESAPARECIDA');
+        //---Obtener informante---
+        $datosInformante = $this->obtenerDatosPersona($id,'INFORMANTE');
+        //---Obtener domiciolio informante---
+        $datosDomicilioInformante = $this->obtenerDireccion($datosInformante[0]->idDesa,'PERSONAL');
+        //---Obtener domiciolio desaparecido---
+        $datosDomicilioDesaparecido = $this->obtenerDireccion($datosDesaparecido[0]->idDesa,'PERSONAL');
+        //---Obtener domiciolio desaparecido---
+        $datosDomicilioUltimo = $this->obtenerDireccion($datosDesaparecido[0]->idDesa,'LUGAR DE AVISTAMIENTO');
+        
+        //dd($datosDesaparecido);
+        if($datosDesaparecido[0]->documentoI == null || $datosDesaparecido[0]->documentoI == 'NO ESPECIFICADO' ){
+            $doc = 'NO';
+        }else{
+            $doc = 'SÍ';
+        }
+        if($datosDesaparecido[0]->documentoI == 'ACTA DE NACIMIENTO'){
+            $actaNac = 'SÍ';
+        }else{
+            $actaNac = 'NO';
+        }
+
+        if($datosDesaparecido[0]->foto == null){
+            $fotoExtra = 'NO';
+        }else{
+            $fotoExtra = 'SÍ';
+        }
+
+        if($datosDesaparecido[0]->genero == 'H'){
+            $datosDesaparecido[0]->genero = 'MASCULINO';
+        }else{
+            $datosDesaparecido[0]->genero = 'FEMENINO';
+        }
+        if($datosInformante[0]->genero == 'H'){
+            $datosInformante[0]->genero = 'MASCULINO';
+        }else{
+            $datosInformante[0]->genero = 'FEMENINO';
+        }
+
+        $data = array(
+            'entrevistador' => $datosInformante[0]->entrevistador,
+            'cargo' => $datosInformante[0]->cargo,
+            'informante' => $datosInformante[0]->nombreInformante,
+            'edadInfo' => $datosInformante[0]->edadExtravio,
+            'generoInfo' => $datosInformante[0]->genero,
+            'estadoCivilInfo' => $datosInformante[0]->estadoCivil,
+            'domicilioInfo' => $datosDomicilioInformante[0]->direccion ?? "SIN INFORMACIÓN",
+            'parentescoInfo' => $datosInformante[0]->parentesco,
+            'docIdentiInfo' => $doc,
+            'nomDocIdentiInfo' => $datosInformante[0]->documentoI,
+            'actaNac' => $actaNac,
+            'carpeta' => $carpeta,
+            'fotoExtra' => $fotoExtra,
+            'resolucion' => $resolucion,
+            'fechaReg' => strtoupper($datosDesaparecido[0]->fechaRegistro),
+            'edadExtravioDesa' => $datosDesaparecido[0]->edadExtravio,//edad desaparecido
+            'hora' => $datosDesaparecido[0]->horaRegistro,
+            'numCarpeta' => $datosDesaparecido[0]->numCarpeta,//oficio2
+            'fechaHora' => strtoupper($datosDesaparecido[0]->fechaRegistro." A LAS ".$datosDesaparecido[0]->horaRegistro." HORAS"),
+            'nombreDesa' => $datosDesaparecido[0]->nombreInformante,
+            'generoDesa' => $datosDesaparecido[0]->genero,
+            'estadoCivilDesa' => $datosDesaparecido[0]->estadoCivil,
+            'domicilioDesa' => $datosDomicilioDesaparecido[0]->direccion ?? "SIN INFORMACIÓN",
+            'escolaridadDesa' => $datosDesaparecido[0]->escolaridad,
+            'ocupacionDesa' => $datosDesaparecido[0]->ocupacion,
+            'lugarExtravio' => $datosDomicilioUltimo[0]->direccion ?? "SIN INFORMACIÓN",
+            'observacionDesa' => $datosDesaparecido[0]->observacionDesa,
+            'apodoDesa' => $datosDesaparecido[0]->apodo,
+            'estaturaDesa' => $datosDesaparecido[0]->estatura,
+            'colorPiel' => $datosDesaparecido[0]->colorPiel,
+            'fechaNacimiento' => $datosDesaparecido[0]->fechaNacimiento,
+            'fechaDesaparicion' => $datosDesaparecido[0]->fechaExtravio,
+            'fotoDesaparecido' => $datosDesaparecido[0]->foto
+
+            );
+        //dd($datosDomicilio);
         //dd($desaparecido->partescuerpo->toArray());
         $view = view('plantillas.cedulaMediaAfiliacion.oficioGeneral', compact('desaparecido','data','oficio2','oficio3','oficio4'))->render();
         $pdf =\App::make('dompdf.wrapper');
@@ -103,7 +186,7 @@ class OficioCedulaController extends Controller
     }
 
 
-    public function json_oficio1($id){
+    /*public function json_oficio1($id){
         $doc="";
         $resolucion ="NO";
         $fotoExtra = "NO";
@@ -446,7 +529,7 @@ class OficioCedulaController extends Controller
 
          return $data;
 
-    } 
+    } */
     /**
      * Show the form for editing the specified resource.
      *
@@ -479,5 +562,70 @@ class OficioCedulaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function obtenerDatosPersona($idCedula, $tipoPersona){
+
+        \DB::statement('SET lc_time_names = "es_ES"');
+        $desaparecido = \DB::table('desaparecidos_cedula_investigacion AS dci')
+                    ->join('desaparecidos_personas AS dperson','dci.id','=','dperson.idCedula')
+                    ->join('persona AS person','person.id','=','dperson.idPersona')
+                    ->leftJoin('desaparecidos_domicilios AS domicilios', 'dperson.id', '=', 'domicilios.idDesaparecido')
+                    ->leftJoin('cat_colonia AS colonia', 'domicilios.idColonia', '=', 'colonia.id')
+                    ->leftJoin('cat_localidad AS localidad', 'domicilios.idLocalidad', '=', 'localidad.id')
+                    ->leftJoin('cat_municipio AS municipio', 'domicilios.idMunicipio', '=', 'municipio.id')
+                    ->leftJoin('cat_estado AS estado', 'domicilios.idEstado', '=', 'estado.id')
+                    ->leftJoin('cat_parentesco AS parentesco', 'dperson.idParentesco', '=', 'parentesco.id')
+                    ->leftJoin('cat_documento_identidad AS docIden', 'dperson.idDocumentoIdentidad', '=', 'docIden.id')
+                    ->leftJoin('cat_estado_civil AS edoCivil','dperson.idEdocivil','=','edoCivil.id')
+                    ->leftJoin('cat_escolaridad AS escolaridad','dperson.idEscolaridad','=','escolaridad.id')
+                    ->leftJoin('cat_ocupacion AS ocupacion','dperson.idOcupacion','=','ocupacion.id')
+                    ->leftJoin('cat_color_piel AS colorP','dperson.idColorPiel','=','colorP.id')
+                    ->selectRaw('CONCAT(dci.entrevistadorNombres," ", dci.entrevistadorPrimerAp," ",dci.entrevistadorSegundoAp) AS entrevistador,
+                                dci.entrevistadorCargo AS cargo,
+                                dci.carpeta AS numCarpeta,
+                                DATE_FORMAT(dci.created_at," %d DE %M DE %Y") AS fechaRegistro,
+                                TIME(dci.created_at) AS horaRegistro,
+                                dci.desaparicionObservaciones as observacionDesa,
+                                CONCAT(person.nombres," ",person.primerAp," ",person.segundoAp) AS nombreInformante,
+                                dperson.tipoPersona AS tipoPersona,
+                                parentesco.nombre AS parentesco,
+                                UPPER(dperson.edadExtravio) AS edadExtravio,
+                                dperson.fotoDesaparecido AS foto,
+                                CONCAT(domicilios.calle,", #",domicilios.numExterno,", ","COLONIA ",colonia.nombre,", LOCALIDAD ",localidad.nombre,", MUNICIPIO DE ",municipio.nombre,", ",estado.nombre) AS direccion,
+                                docIden.nombre AS documentoI,
+                                edoCivil.nombre AS estadoCivil,
+                                person.sexo AS genero,
+                                escolaridad.nombre AS escolaridad,
+                                ocupacion.nombre AS ocupacion,
+                                dperson.id AS idDesa,
+                                dperson.estatura AS estatura,
+                                colorP.nombre AS colorPiel,
+                                dperson.apodo AS apodo,
+                                DATE_FORMAT(person.fechaNacimiento," %d DE %M DE %Y") AS fechaNacimiento,
+                                DATE_FORMAT(dci.desaparicionFecha," %d DE %M DE %Y") AS fechaExtravio')
+                    ->where('dperson.idCedula',$idCedula)
+                    ->where('dperson.tipoPersona',$tipoPersona)
+                    ->get();
+
+        return $desaparecido;
+    }
+
+    public function obtenerDireccion($idPersona, $tipoDireccion){
+
+        $lugar = \DB::table('desaparecidos_domicilios AS domicilios')
+                ->Join('cat_colonia AS colonia', 'domicilios.idColonia', '=', 'colonia.id')
+                ->Join('cat_localidad AS localidad', 'domicilios.idLocalidad', '=', 'localidad.id')
+                ->Join('cat_municipio AS municipio', 'domicilios.idMunicipio', '=', 'municipio.id')
+                ->Join('cat_estado AS estado', 'domicilios.idEstado', '=', 'estado.id')
+                ->select(
+                        \DB::raw('CONCAT(domicilios.calle,", #",domicilios.numExterno,", ","EN LA COLONIA ",colonia.nombre,", DE LA LOCALIDAD ",localidad.nombre,", EN EL MUNICIPIO DE ",municipio.nombre,", ",estado.nombre,", ","CON CÓDIGO POSTAL ",colonia.codigoPostal) AS direccion'))
+                    ->where('domicilios.idDesaparecido',$idPersona)
+                    ->where('domicilios.tipoDireccion',$tipoDireccion)
+                    
+                    ->get();
+
+        return $lugar;
+
     }
 }

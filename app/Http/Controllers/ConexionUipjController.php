@@ -24,8 +24,9 @@ class ConexionUipjController extends Controller
             $carpeta = \DB::connection('mysql2')
                                 ->select('select c.id, u.nombres, u.apellidos, n.nombre as unidad, c.numCarpeta
                                             from carpeta c
-                                            left outer join users u on c.idFiscal = u.id
-                                            left outer join unidad n on c.idUnidad = n.id
+                                            left outer join control_carpeta t on c.id = t.idCarpeta 
+                                            left outer join users u on t.idFiscal = u.id
+                                            left outer join unidad n on t.idUnidad = n.id
                                             where c.id ='.$idCarpeta);
             
             
