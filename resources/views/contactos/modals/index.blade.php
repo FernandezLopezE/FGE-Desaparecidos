@@ -29,7 +29,8 @@
 					{!! Form::text ('email',
 										old(''),
 										['class' => 'form-control',
-											'id' => 'correoElectronico'
+											'id' => 'correoElectronico',
+											'autocomplete' => 'off'
 											] )!!}	
 				</div>
 			</div>
@@ -40,7 +41,7 @@
 										$tiposTelefonos,
 										'',
 										['class' => 'form-control',
-											'id' => 'informanteTipoTelC[]'
+											'id' => 'informanteTipoTelC'
 											])!!}	
 				</div>
 				<div class="form-group col-lg-2">
@@ -48,7 +49,8 @@
 					{!! Form::text ('ladaC[]',
 										old(''),
 										['class' => 'form-control',
-											'id' => 'ladaC'
+											'id' => 'ladaC',
+											'autocomplete' => 'off'
 											] )!!}	
 				</div>
 				<div class="form-group col-lg-4">
@@ -58,13 +60,15 @@
 										['class' => 'form-control mayuscula',
 											'data-validation' => 'required',
 											'data-validation-error-msg-required' => 'El campo es requerido',
-											'id' => 'informanteTelefonosC'
+											'id' => 'informanteTelefonosC',
+											'autocomplete' => 'off'
 										] )!!}				
 				</div>
-				<div class="form-group col-lg-2">
+				<div class="form-group col-lg-2" id="div_ext">
 					{!! Form::label ('ext','Ext:') !!}
 					{!! Form::text ('extC[]',old(''), ['class' => 'form-control mayuscula',
-											'id' => 'extC[]'
+											'id' => 'extC',
+											'autocomplete' => 'off'
 											] )!!}				
 				</div>	
 			</div>
@@ -82,7 +86,8 @@
 				<div class="col-lg-6">
 				    {!! Form::label ('nombreUsuario','Nombre de usuario:') !!}
 				    {!! Form::text ('nombreUsuario',old(''), ['class' => 'form-control mayuscula',
-											'id' => 'nombreUsuario'
+											'id' => 'nombreUsuario',
+											'autocomplete' => 'off'
 											] )!!}
 					
 				</div>

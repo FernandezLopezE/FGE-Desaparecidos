@@ -12,15 +12,15 @@
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" src="/images/TiposDentadura/separados.jpg" alt="Dientes separados" id="DientesSeparados" value="2">
+              <img class="d-block w-100" src="{{ asset('/images/TiposDentadura/separados.jpg')}}" alt="Dientes separados" id="DientesSeparados" value="2">
               <center><b><h3>Dientes separados</h3></b></center>
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="/images/TiposDentadura/apinados.jpg" alt="Dientes girados" id="DientesGirados" value="3">
+              <img class="d-block w-100" src="{{ asset('/images/TiposDentadura/apinados.jpg')}}" alt="Dientes girados" id="DientesGirados" value="3">
               <center><b><h3>Dientes girados</h3></b></center>
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="/images/TiposDentadura/girados.jpg" alt="Dientes apiñados" id="DientesApinados" value="4">
+              <img class="d-block w-100" src="{{ asset('/images/TiposDentadura/girados.jpg')}}" alt="Dientes apiñados" id="DientesApinados" value="4">
               <center><b><h3>Dientes apiñados</h3></b></center>
             </div>
           </div>

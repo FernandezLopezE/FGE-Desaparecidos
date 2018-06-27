@@ -13,7 +13,7 @@ class CatIntervencionesQuirurgicasSeeder extends Seeder
     {
         //
          DB::table('cat_intervenciones_quirurgicas')->insert([
-          //  ['nombre' => 'SIN INFORMACIÓN'],    //1
+            ['nombre' => 'SIN INFORMACIÓN'],    //1
             ['nombre' => 'APÉNDICE'], 	         //2
             ['nombre' => 'CESÁREA'],			 //3
             ['nombre' => 'CIRCUNCISIÓN'],		//4
@@ -25,7 +25,7 @@ class CatIntervencionesQuirurgicasSeeder extends Seeder
             ['nombre' => 'DIU'],				//10
             ['nombre' => 'LIGADURA'],			//11
             ['nombre' => 'VASECTOMÍA'],		    //12
-          //  ['nombre' => 'OTRO'],				//13
+            ['nombre' => 'OTRO'],				//13
             
         ]);
     }

@@ -10,9 +10,8 @@
 
 @include('navs.navs_datos',array('activar' => 'desaparecido'))
 
-<button type="submit" class="btn btn-dark pull-right"  id="btnGuardar">
-	Guardar		
-</button>
+<button type="submit" class="btn btn-dark pull-right"  id="btnGuardar">Guardar</button>
+<button type="submit" class="btn btn-secondary pull-right"  id="btnCancelar">Cancelar</button>
 <div class="card-body bg-white">
 		<div class="card-body">
 			<div class="row">
@@ -258,6 +257,11 @@
 	    excludeFields: $('input[name=_token]')
     });*/
 
+
+	$('#btnCancelar').click(function(){
+		window.location = routeDesaparecido+'/'+'{!! $desaparecido->idCedula !!}';
+	});
+
     $('#idOcupacion').select2();
 
     $('#btnGuardar').click(function(e)
@@ -352,8 +356,9 @@
 			from = $("#fechaNacimiento").val().split("/");
 			fechaNacimiento = from[2] + "-" + from[1] + "-" + from[0];
 			fechaEnviada = Date.parse(fechaNacimiento);	   
-			fechaActual= new Date();	   
-			if (fechaEnviada > fechaActual)
+			fechaActual= new Date();
+			edadMinima = (fechaActual.getFullYear() - 100);	   
+			if ((fechaEnviada > fechaActual) || (from[2]<edadMinima))
 			{
 				$("#fechaNacimiento").val("");
 				$("#edadExtravio").val("");

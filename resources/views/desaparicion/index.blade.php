@@ -38,36 +38,31 @@
 					
 				</div>
 	  			<div class="row">				
-					
-						<div class="col-lg-6 col-sm-12"><br> 
-							{!! Form::label ('fechaAvisto','Fecha de la última vez que fue visto:') !!}
-							{!! Form::text ('familiaresFechaNacimiento',
-												old('Fecha de nacimiento'),
-												['class' => 'form-control',
-													'id' => 'familiaresFechaNacimiento' ,
-													'data-validation' => 'required date',
-													'data-validation-error-msg' => 'Ingrese una fecha valida o menor a la actual',
-													'data-validation-format'=>"dd/mm/yyyy",
-													'placeholder' => 'dd/mm/yyyy'
-
-												])!!}
-
-											
-						</div>
-						<div class="col">
-                            <div class="">                               
-                                        <div class="form-group"><br> 
-                                            <label for="">Hora:</label>
-                                            <div class='input-group date' id='datetimepicker1'>
-                                                <input type='text' class="form-control" id="idTime"/>
-                                                <span class="input-group-addon">
-                                                    <span class="glyphicon glyphicon-time"></span>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>       
+					<div class="col-lg-6 col-sm-12"><br> 
+						{!! Form::label ('fechaAvisto','Fecha de la última vez que fue visto:') !!}
+						{!! Form::text ('familiaresFechaNacimiento',
+											old('Fecha de nacimiento'),
+											['class' => 'form-control',
+												'id' => 'familiaresFechaNacimiento' ,
+												'data-validation' => 'required date',
+												'data-validation-error-msg' => 'Ingrese una fecha valida o menor a la actual',
+												'data-validation-format'=>"dd/mm/yyyy",
+												'placeholder' => 'DD/MM/AAAA'
+											])!!}
+					</div>
+					<div class="col">
+                        <div class="">                               
+                            <div class="form-group"><br> 
+								<label for="">Hora:</label>
+								<div class='input-group date' id='datetimepicker1'>
+									<input type='text' class="form-control" id="idTime" placeholder="HH:MM AM/PM"/>
+									<span class="input-group-addon">
+										<span class="glyphicon glyphicon-time"></span>
+									</span>
+								</div>
+                            </div>
+                        </div>
+                    </div>       
 				</div>
 				
 						{{--AQUI ENPIEZAN LOS DIV DEL TOGGLE--}}
@@ -145,7 +140,22 @@
 							<div class='hr'>
 									<span class='hr-title'> Última persona que lo vio </span>
 							</div>	
-							
+							<div class="row">
+								<div class="form-group col" id="div_nombres">
+									{!! Form::label ('parentescoDesaparecido','Parentesco:') !!}
+									{!! Form::select ('avistoidParentesco[]',$parentescos,'', ['class' => 'form-control', 'id' => 'avistoidParentesco'] )!!}
+									<div class="form-control-feedback" id="error_nombres"></div>
+								</div>
+								<div class="form-group col-md-4" id="div_otroParentesco"  style="display:none">
+										{!! Form::label ('otroParentesco','Especifique:',['class' => 'form-control-label']) !!}
+										{!! Form::text ('otroParentesco',
+														old('otroParentesco'),
+														['class' => 'form-control mayuscula',
+															'id' => 'otroParentesco',
+														] )!!}
+										<div class="form-control-feedback" id="error_otroParentesco"></div>
+								</div>
+							</div>
 							<div class="row">
 								<div class="form-group col-md-4" id="div_nombres">
 									{!! Form::label ('nombres','Nombres(s):',['class' => 'form-control-label' ]) !!}
@@ -174,24 +184,6 @@
 															'id' => 'segundoAp']
 															 )!!}
 									<div class="form-control-feedback" id="error_segundoAp"></div>
-								</div>
-								
-
-							</div>
-							<div class="row">
-								<div class="form-group col" id="div_nombres">
-									{!! Form::label ('parentescoDesaparecido','Parentesco:') !!}
-									{!! Form::select ('avistoidParentesco[]',$parentescos,'', ['class' => 'form-control', 'id' => 'avistoidParentesco'] )!!}
-									<div class="form-control-feedback" id="error_nombres"></div>
-								</div>
-								<div class="form-group col-md-4" id="div_otroParentesco"  style="display:none">
-										{!! Form::label ('otroParentesco','Especifique:',['class' => 'form-control-label']) !!}
-										{!! Form::text ('otroParentesco',
-														old('otroParentesco'),
-														['class' => 'form-control mayuscula',
-															'id' => 'otroParentesco',
-														] )!!}
-										<div class="form-control-feedback" id="error_otroParentesco"></div>
 								</div>
 							</div>
 						</div>
@@ -374,7 +366,7 @@ $(btnGuardarDescripcionHechos).click (function(){
 				success: function(data) {
 					console.log("Ya la hiciste");
 					$.confirm({
-				            title: 'Datos guardados!',
+				            title: '¡Datos guardados!',
 				            content: 'Los datos fueron guardados exitosamente.',
 				            type: 'dark',
 				            typeAnimated: true,
@@ -404,24 +396,31 @@ $(btnGuardarDescripcionHechos).click (function(){
 			});
 		})
 
+	var idDesaparecido2 = '@foreach($desaparecido->familiares as $familiar) {{$familiar->idParentesco}}  @endforeach';
+	var idDesaparecido3 = '@foreach($desaparecido->familiares as $familiar) {{$familiar->nombres}}  @endforeach';
+	var array = [idDesaparecido2];
+	var pos = array.indexOf('13');
 
 	$('#avistoidParentesco').change(function() {
 			f = $('#avistoidParentesco').val();
 			console.log(f);
 			if (f==14) {
+				console.log("NOMBRE: "+pos);
 				$("#div_otroParentesco").show();
 			}else{
 				$("#div_otroParentesco").hide();
 			}
+			if(f==idDesaparecido2){
+				console.log("NOMBRE: "+idDesaparecido3);
+				$("#nombres").val(idDesaparecido3);
+			}
 		});
 	$("#sinInformacionVehiculo").change(function () { 
-      $("#vehiculoPlacas").prop('disabled', this.checked);
-      $("#vehiculoDescripcion").prop('disabled', this.checked);
-     
-      if (this.checked) {
-        $("#otra_Adiccion").hide();
-      }
-      });
-
+      	$("#vehiculoPlacas").prop('disabled', this.checked);
+      	$("#vehiculoDescripcion").prop('disabled', this.checked);
+      	if (this.checked) {
+        	$("#otra_Adiccion").hide();
+      	}
+    });
 </script>
 @endsection
