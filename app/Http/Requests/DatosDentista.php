@@ -24,12 +24,12 @@ class DatosDentista extends FormRequest
     public function rules()
     {
         $rules = [
-            'nombres'       =>'required',
-            'primerAp'      =>'required',
+            'nombres'       =>'',
+            'primerAp'      =>'',
             'segundoAp'     =>'',
-            'empresa'       =>'required',
-            'telefono'      =>'required',
-            'direccion'     =>'required',
+            'empresa'       =>'',
+            'telefono'      =>'',
+            'direccion'     =>'',
         ];
         return $rules;
     }

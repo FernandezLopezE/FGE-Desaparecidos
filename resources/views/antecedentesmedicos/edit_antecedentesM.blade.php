@@ -15,7 +15,7 @@
     
           <div class="card-header"> 
                 <h5>ANTECEDENTES MÉDICOS
-                 <button  type="button" class="btn btn-dark pull-right"  id="nuevoAntecedenteMedico">GUARDAR</button> 
+                <button type="button" class="btn btn-dark pull-right" id="updateAM">Actualizar</button> 
                 </button>   
                 </h5>
           </div>
@@ -252,13 +252,13 @@
          <div class="col-lg-6">
             {!! Form::label ('observacioneM','Observaciones:') !!}
             {!! Form::textarea  ('observacionesAM',
-                                old('observacioneM',null),
+                                old('observacioneM',$observaciones),
                                 ['class' => 'form-control mayuscula sinEnter', 'id' => 'observacionesAM','size' => '30x4', 'placeholder' => 'Ingrese las observaciones'])!!}
             </div>    
           <div class="col">
             {!! Form::label ('medicamentos','Medicamentos que toma:') !!}
             {!! Form::textarea  ('medicamentosToma',
-                                old('medicamentos',null),
+                                old('medicamentos',$medicamentos),
                                 ['class' => 'form-control mayuscula sinEnter', 'id' => 'medicamentosToma','size' => '30x4', 'placeholder' => 'Ingrese los medicamentos que toma'])!!}
             </div>                            
     </div> 

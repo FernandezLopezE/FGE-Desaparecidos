@@ -387,7 +387,7 @@
 	</div>
 	
 
-  	<div class="card border-primary" id="anexos">
+  	<!-- <div class="card border-primary" id="anexos">
         <div class="card border-success">
           <div class="card-header"> 
               <h5>AGREGAR ANEXOS
@@ -439,7 +439,7 @@
     </div>
     <br>
 
-
+ -->
 
 
 </nav>
@@ -455,16 +455,17 @@
 {!! Html::script('personal/js/datos_dentales/accionDientes.js') !!}
 {!! Html::script('personal/js/datos_dentales/sliders_dentales.js') !!}
 
-<script src="../plugins/bootstrap_fileinput/js/popper.min.js" type="text/javascript"></script>
-<script src="../plugins/bootstrap_fileinput/js/bootstrap.min.js" type="text/javascript"></script>
+<!-- <script src="../plugins/bootstrap_fileinput/js/popper.min.js" type="text/javascript"></script>
+<script src="../plugins/bootstrap_fileinput/js/bootstrap.min.js" type="text/javascript"></script> -->
 <!-- the main fileinput plugin file -->
-<script src="../plugins/bootstrap_fileinput/js/fileinput.js"></script>
+<!-- <script src="../plugins/bootstrap_fileinput/js/fileinput.js"></script> -->
 <!-- optionally uncomment line below for loading your theme assets for a theme like Font Awesome (`fa`) -->
-<script src="../plugins/bootstrap_fileinput/js/theme.js"></script>
+<!-- <script src="../plugins/bootstrap_fileinput/js/theme.js"></script> -->
 <!-- optionally if you need translation for your language then include  locale file as mentioned below -->
-<script src="../plugins/bootstrap_fileinput/js/es.js"></script>
+<!-- <script src="../plugins/bootstrap_fileinput/js/es.js"></script> -->
 <!-- para la galeria de imagenes fancybox -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+ -->
 
 <script type="text/javascript">
 	//console.log('ID de la persona desaparecida: {!! $desaparecido->id !!}');
@@ -517,18 +518,11 @@ $(document).ready(function(){
             $("a[rel=popover]").popover('disable');
         }
     }*/
-
-    function myFunctionTeeth() {
-        var checkBox = document.getElementById("toggle-teeth");
-        if (checkBox.checked == true) {
-        	swal("NOTA:", "Dar un click en el diente para seleccionarlo; un segundo click para eliminarlo; click en el botón de GUARDAR cuando se haya terminado de seleccionar todos los dientes correspondientes.");
-        }
-    }
-
+/*
 	$(".fancybox").fancybox({
 		openEffect: "none",
     	closeEffect: "none"
-    });
+    });*/
 
 	$(".zoom").hover(function(){
 		$(this).addClass('transition');
@@ -635,7 +629,7 @@ $(document).ready(function(){
 	// 	location.reload();
 	// });
 
-	var routeIndex = '{!! route('anexoscontroller.index') !!}';
+	/*var routeIndex = '{!! route('anexoscontroller.index') !!}';
 	$("#fileImagenes").fileinput({
 		language:'es',
 		theme: 'fa',
@@ -657,7 +651,7 @@ $(document).ready(function(){
       		console.log($nombre);
       		return  filename.replace('(', '_').replace(']', '_');
       	}
-      });
+      });*/
 
    	/**********************************************************************
 	*** Declaración de rutas a usar de los campos en el formulario ********
