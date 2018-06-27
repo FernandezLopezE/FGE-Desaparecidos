@@ -108,7 +108,7 @@
             <td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        <strong>ONDULADO</strong>
+                        <strong>{{$data['tipoCabello']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -124,7 +124,7 @@
             <td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        <strong>NEGRO</strong>
+                        <strong>{{$data['colorCabello']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -140,7 +140,7 @@
             <td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        <strong>MEDIANOS</strong>
+                        <strong>{{$data['tipoOjos']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -162,7 +162,7 @@
             <td style="vertical-align: top;" colspan="1">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        <strong>CAFÉ CLARO</strong>
+                        <strong>{{$data['colorOjos']}}</strong>
 					</span>
 				</span>
 			</td>
@@ -183,10 +183,115 @@
 			</td>
 		</tr>
         <tr>
-			<td style="border-color: black; text-align: center; vertical-align: top;" colspan="2">
+			<td style="border-color: black; text-align: justify; vertical-align: top;" colspan="2">
 				<span style="font-size: 11px;">
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
-                        <strong>TATUAJES EN AMBOS BRAZOS DE CALAVERAS, DE JESUCRISTO, DE LA MUERTE EN EL CUELLO TIENE OTRO TATUAJE QUE DICE “ALEJANDRO”, EN EL PECHO TIENE UN TATUAJE QUE DICE “MERIDI”, UNA ESTRELLA, EN EL ESTOMAGO TIENE UN CHIVO DE UN LADO DICE “CANDE” Y “CHRISTIAN” Y DEL OTRO “CESAR” Y “SANTIAN”, OTRO EN LA RODILLA ENCIMA DE UNA CICATRIZ QUE DICDE “CARMEN”, UN SIGNO DE YINGYANG EN LA PANTORRILLA.</strong>
+                        
+                        	<?php $x = 0; ?>
+                        	@if(isset($dataPartes))
+                        		<center><strong>SIN INFORMACIÓN</strong></center>
+                        	@else
+	                    		@foreach ($dataPartes as $key => $parte)
+									@foreach ($parte['hijos'] as $value)
+										<strong>{!! $value->parteh !!} -</strong>
+										@foreach (json_decode($value->reglas) as $ket => $regla)                                            
+	                                                          @switch($ket)
+	                                                            @case('tipo')
+	                                                              @if($regla == 1)
+	                                                                @if($value->tipo == 'OTRO')
+	                                                                
+	                                                                  <strong>Tipo: </strong>{!! $value->otroTipo !!}
+	                                                                
+	                                                                @else
+	                                                                  <strong>Tipo: </strong>{!! $value->tipo !!}
+
+	                                                                @endif          
+	                                                                
+	                                                                @break
+	                                                              @else
+	                                                                  @break
+	                                                              @endif
+	                                                              
+	                                                            @case('tamano')
+	                                                              @if($regla == 1)          
+	                                                                <strong>Tamaño: </strong>{!! $value->tamano !!}
+	                                                                <br>
+	                                                                @break
+	                                                              @else
+	                                                                  @break
+	                                                              @endif
+
+	                                                            @case('color')
+	                                                              @if($regla == 1)
+	                                                                @if($value->color == 'OTRO')
+	                                                                
+	                                                                    <strong>Color: </strong>{!! $value->otroColor !!}
+	                                                                
+	                                                                
+	                                                                @else
+	                                                                  <strong>Color: </strong>{!! $value->color !!}
+
+	                                                                @endif                    
+	                                                                
+	                                                                @break
+	                                                              @else
+	                                                                  @break
+	                                                              @endif
+
+	                                                            @case('posicion')
+	                                                              @if($regla == 1)          
+	                                                                <strong>Posición: </strong>{!! $value->posicion !!}
+	                                                                @break
+	                                                              @else
+	                                                                  @break
+	                                                              @endif
+
+	                                                            @case('modificaciones')
+	                                                              @if($regla == 1)                                                                 
+	                                                                <strong><label for="">Modificaciones:</label></strong>
+	                                                                @php $tmpModi = ''; @endphp 
+	                                                                @foreach ($value->modificaciones as $modificacion)
+	                                                                    @php $tmpModi = $modificacion.', '.$tmpModi; @endphp 
+	                                                                @endforeach
+	                                                                  @php $tmpModi = trim($tmpModi,', '); @endphp 
+	                                                                 {!! $tmpModi !!}
+	                                                                <br>
+	                                                                @break
+	                                                              @else
+	                                                                  @break
+	                                                              @endif
+
+	                                                            @case('particularidades')
+	                                                              @if($regla == 1)          
+	                                                                <strong><label for="">Particularidades:</label></strong>
+	                                                                @php $tmpParti = ''; @endphp 
+	                                                                @foreach ($value->particularidades as $particularidad)
+	                                                                  @php $tmpParti = $particularidad.', '.$tmpParti; @endphp 
+	                                                                @endforeach
+	                                                                 @php $tmpParti = trim($tmpParti,', '); @endphp 
+	                                                                  {!! $tmpParti !!}
+	                                                                <br>
+	                                                                @break
+	                                                              @else
+	                                                                  @break
+	                                                              @endif
+
+	                                                            @case('observaciones')
+	                                                              @if($regla == 1)          
+	                                                                <strong><label for="">Observaciones:</label></strong>
+	                                                                {!! $value->observaciones !!}
+	                                                                <br>
+	                                                                <hr>
+	                                                                @break
+	                                                              @else
+	                                                                  @break
+	                                                              @endif
+	                                                          @endswitch
+	                                            @endforeach
+									@endforeach
+	                    		@endforeach
+	                    	@endif
+                        
 					</span>
 				</span>
 			</td>
