@@ -13,7 +13,7 @@ class CatEnfermedadesSeeder extends Seeder
     {
         //
         DB::table('cat_enfermedades')->insert([
-            ['nombre' => 'SIN INFORMACION'], //1
+            ['nombre' => 'SIN INFORMACIÓN'], //1
             ['nombre' => 'ESQUIZOFRENIA'], 	    //2
             ['nombre' => 'MENTALES'],			//3
             ['nombre' => 'DIABETES'],			//4
