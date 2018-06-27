@@ -186,7 +186,5 @@
       });
       verMalosHab = verMalosHab.substring(0,verMalosHab.length-2)
      $("#MalosDientes").html(verMalosHab);
-
-	
 </script>
 @endsection

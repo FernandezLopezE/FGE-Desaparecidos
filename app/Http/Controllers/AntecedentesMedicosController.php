@@ -130,9 +130,12 @@ class AntecedentesMedicosController extends Controller
         //$antecedentesM = \App\Models\AntecedentesMedicos::find($idExtraviado);
         //dd($antecedentesM);
         $desaparecido = \App\Models\Desaparecido::find($idExtraviado);
+        
         $idDesaparecido = ($idExtraviado);
         //dd($desaparecido->toArray());
         $anteMedi = \App\Models\AntecedentesMedicos::where('idPersonaDesaparecida', $idExtraviado)->limit(1)->get();
+       
+        
         //dd($anteMedi->toArray());
         $datos2= \DB::table('desaparecidos_personas AS dp')
                     ->select('dp.idPersona as idCedula')
@@ -143,7 +146,9 @@ class AntecedentesMedicosController extends Controller
         //dd($datos2->toArray());
         $idCedula = ($datos2[0] ->idCedula);
         
-        $observaciones= \DB::table('antecedentes_medicos AS anmi')->select('anmi.observaciones as observaciones')->where('anmi.idPersonaDesaparecida', $idCedula)->get();
+$observaciones= \DB::table('antecedentes_medicos AS anmi')->where('anmi.idPersonaDesaparecida', $idCedula)->get();
+        
+         //dd($observaciones);
         //dd($observaciones);
         //dd($observaciones->toArray());
         if(empty($observaciones[0] ->observaciones)){
@@ -165,8 +170,60 @@ class AntecedentesMedicosController extends Controller
             ]);
         }else{
          
-              
-            return view('antecedentesmedicos.show_antecedentes_medicos',['desaparecido' => $desaparecido]);
+              $anteMedic= \App\Models\AntecedentesMedicos::find($observaciones[0]->id);
+            $images = (Anexos::where('idDesaparecido', $idExtraviado)->where('tipoAnexo', 'antecedentesMedicos')->get());
+            $enfermedades = \DB::table('pivot_enfermedades_medicas as pem')
+                       ->join('cat_enfermedades as ce', 'pem.idEnfermedades', '=', 'ce.id')
+                       ->select('pem.idEnfermedades','ce.nombre')
+                       ->where('pem.idAntecedentesMedicos',$anteMedic->id)
+                       ->get();
+            $adicciones = \DB::table('pivot_adicciones as pam')
+                       ->join('cat_adicciones as ca', 'pam.idAdicciones', '=', 'ca.id')
+                       ->select('pam.idAdicciones','ca.nombre')
+                       ->where('pam.idAntecedentesMedicos',$anteMedic->id)
+                       ->get();
+            $iQuirurgicas = \DB::table('pivot_intervenciones_medicas as pime')
+                       ->join('cat_intervenciones_quirurgicas as cin', 'pime.idIntervencionesQuirurgicas', '=', 'cin.id')
+                       ->select('pime.idIntervencionesQuirurgicas','cin.nombre')
+                       ->where('pime.idAntecedentesMedicos',$anteMedic->id)
+                       ->get();
+            //$adicciones = \App\Models\CatAdicciones::all()->pluck('nombre','id');
+            $implantes = \DB::table('pivot_implantes_medicos as pim')
+                       ->join('cat_implantes as ci', 'pim.idImplantes', '=', 'ci.id')
+                       ->select('pim.idImplantes','ci.nombre')
+                       ->where('pim.idAntecedentesMedicos',$anteMedic->id)
+                       ->get();
+            
+            
+            //{dd($desaparecido->antecedentesMedicos->toArray());
+
+            //$observaciones=$anteMedi->observaciones;
+            //dd($iQuirurgicas);
+            
+//            return view('datosdentales.show_datosDentales',compact([
+//                'desaparecido',
+//                'denta',
+//                'dientesPerdidos',
+//                'edad', 'dentadura']}
+            return view('antecedentesmedicos.show_antecedentes_medicos',compact(
+            [
+                'desaparecido',
+                'anteMedic',
+                'enfermedades',
+                'iQuirurgicas'  ,
+                'adicciones'  ,
+                'implantes'  ,
+                'images'  ,
+                'observaciones'  ,
+            ]));
+             
+//            return view('datosdentales.form_datos_dentales',[
+//                        'dienteTamano' => $dienteTamano,
+//                        'desaparecido' => $desaparecido,
+//                        'edadExtraviado' => $edad,
+//                        'images' => $images,
+//                        'dentadura' => $dentadura
+//                    ]);
         }
 
         /*
@@ -202,6 +259,46 @@ class AntecedentesMedicosController extends Controller
     public function edit($id)
     {
         //
+        $desaparecido = \App\Models\Desaparecido::find($id);
+        $idDesaparecido = $id;
+
+        $anteMedi = \App\Models\AntecedentesMedicos::where('idPersonaDesaparecida', $idDesaparecido)->limit(1)->get();
+        
+        $datos2= \DB::table('desaparecidos_personas AS dp')
+                    ->select('dp.idPersona as idCedula')
+                    ->where('dp.idPersona', $idDesaparecido)
+                    ->get();
+                
+
+        //dd($datos2->toArray());
+        $idCedula = ($datos2[0] ->idCedula);
+        $observaciones= \DB::table('antecedentes_medicos AS anmi')->where('anmi.idPersonaDesaparecida', $idCedula)->get();
+        
+        
+        $anteMedic= \App\Models\AntecedentesMedicos::find($observaciones[0]->id);
+            $images = (Anexos::where('idDesaparecido', $idDesaparecido)->where('tipoAnexo', 'antecedentesMedicos')->get());
+        //
+           $enfermedades = \App\Models\CatEnfermedades::all()->pluck('nombre','id');
+            $iQuirurgicas = \App\Models\CatIntervencionesQuirurgicas::all()->pluck('nombre','id');
+            $adicciones = \App\Models\CatAdicciones::all()->pluck('nombre','id');
+            $implantes = \App\Models\CatImplantes::all()->pluck('nombre','id');
+            $observa = $anteMedic->observaciones;
+            $medic = $anteMedic->medicamentosToma;
+        //dd($anteMedic->medicamentosToma);
+        return view('antecedentesmedicos.edit_antecedentesM',
+            [
+                'desaparecido' => $desaparecido,
+                'enfermedades' => $enfermedades,
+                'implantes' => $implantes,
+                'iQuirurgicas' => $iQuirurgicas,
+                'adicciones' => $adicciones,
+                'observaciones' => $observa,
+                'medicamentos' => $medic,
+                
+               
+                
+            ]);
+        
     }
 
     /**

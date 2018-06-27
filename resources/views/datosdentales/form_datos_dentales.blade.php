@@ -518,13 +518,6 @@ $(document).ready(function(){
             $("a[rel=popover]").popover('disable');
         }
     }*/
-
-    function myFunctionTeeth() {
-        var checkBox = document.getElementById("toggle-teeth");
-        if (checkBox.checked == true) {
-        	swal("NOTA:", "Dar un click en el diente para seleccionarlo; un segundo click para eliminarlo; click en el botón de GUARDAR cuando se haya terminado de seleccionar todos los dientes correspondientes.");
-        }
-    }
 /*
 	$(".fancybox").fancybox({
 		openEffect: "none",
