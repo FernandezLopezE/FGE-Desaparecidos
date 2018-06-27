@@ -46,7 +46,7 @@
 													'data-validation' => 'required date',
 													'data-validation-error-msg' => 'Ingrese una fecha valida o menor a la actual',
 													'data-validation-format'=>"dd/mm/yyyy",
-													'placeholder' => 'dd/mm/yyyy'
+													'placeholder' => 'DD/MM/AAAA'
 
 												])!!}
 

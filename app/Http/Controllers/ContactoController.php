@@ -169,7 +169,8 @@ class ContactoController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		//
+		$desaparecido = Desaparecido::find($id);
+		$contactos = Contacto::find($desaparecido->contactos[0]['id']);
 	}
 
 	/**

@@ -15,6 +15,7 @@ class ConfigDocumentosController extends Controller
      */
     public function index()
     {
+        //se corrije
         $oficios = \App\Models\CatOficios::all()->pluck('nombre','id');
         $dependencias = \App\Models\CatDependencias::all()->pluck('nombre','id');
         $encargados = DB::table('cat_encargado AS ce')->select(\DB::raw('CONCAT(ce.nombres," ", ce.primerAp," ",ce.segundoAp) AS nombrecompleto'),'id')->pluck('nombrecompleto','id');
