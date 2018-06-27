@@ -13,11 +13,11 @@ class CatAdiccionesSeeder extends Seeder
     {
         //
         DB::table('cat_adicciones')->insert([
-            //['nombre' => 'SIN INFORMACIÓN'], //1
+            ['nombre' => 'SIN INFORMACIÓN'], //1
             ['nombre' => 'ALCOHOL'], 	      //2 
             ['nombre' => 'CIGARRO'],		  //3jhshdfkjshdfsjdfhsdfjh
             ['nombre' => 'DROGAS'],			  //4
-          //  ['nombre' => 'OTRO'],			  //5
+            ['nombre' => 'OTRO'],			  //5
             
         ]);
     }
