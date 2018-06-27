@@ -20,6 +20,8 @@
                         					'',
                         					['class' => 'form-control',
                         						'id' => 'mesAnio',
+                                                'placeholder' => 'MM/AAAA',
+                                                'autocomplete' => 'off',
                         						'data-validation-format'=>"dd/mm/yyyy",
                                                 'data-validation' =>'required',
                                                 'data-validation-error-msg-required' =>'Este campo es requerido.'

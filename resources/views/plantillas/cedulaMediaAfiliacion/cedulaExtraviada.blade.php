@@ -188,7 +188,7 @@
 					<span style="font-family: Tahoma,Geneva,sans-serif;">
                         
                         	<?php $x = 0; ?>
-                        	@if(isset($dataPartes))
+                        	@if($dataPartes == null)
                         		<center><strong>SIN INFORMACIÓN</strong></center>
                         	@else
 	                    		@foreach ($dataPartes as $key => $parte)
