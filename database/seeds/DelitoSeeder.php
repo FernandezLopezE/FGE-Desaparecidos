@@ -19,7 +19,6 @@ class DelitoSeeder extends Seeder
             ['nombre' => 'VIOLENCIA'],
             ['nombre' => 'DESPOJO'],
             ['nombre' => 'DELITOS'],
-            ['nombre' => 'HECHOS'],
             ['nombre' => 'INMERSION'],
             ['nombre' => 'ACOSO SEXUAL'],
             ['nombre' => 'ROBO'],

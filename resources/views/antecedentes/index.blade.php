@@ -148,7 +148,19 @@
 				}
 			});
 		})
-
+		$('#mesAnio').change(function(){
+		 	console.log($(this).val());  
+			from = $("#mesAnio").val().split("/");
+			fechaNacimiento = from[2] + "-" + from[1];
+			fechaEnviada = Date.parse(fechaNacimiento);	   
+			fechaActual= new Date();
+			edadMinima = (fechaActual.getFullYear() - 100);	   
+			if ((fechaEnviada > fechaActual) || (from[2]<edadMinima))
+			{
+				$("#fechaNacimiento").val("");
+				$("#edadExtravio").val("");
+			}
+		});
 	})
 
 </script>

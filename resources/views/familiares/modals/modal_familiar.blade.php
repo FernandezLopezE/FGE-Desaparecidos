@@ -28,6 +28,7 @@
 									old('nombres'),
 									['class' => 'form-control mayuscula',
 										'id' => 'nombres',
+										'autocomplete' => 'off',
 										'data-validation' => 'required',
 										'data-validation-error-msg-required' => 'El campo es requerido'
 									] )!!}
@@ -39,6 +40,7 @@
 									old('primerAp'),
 									['class' => 'form-control mayuscula',
 										'id' => 'primerAp',
+										'autocomplete' => 'off',
 										'data-validation' => 'required',
 										'data-validation-error-msg-required' => 'El campo es requerido'
 									] )!!}
@@ -50,6 +52,7 @@
 									old('segundoAp'),
 									['class' => 'form-control mayuscula',
 										'id' => 'segundoAp',
+										'autocomplete' => 'off',
 									] )!!}
 					<div class="form-control-feedback" id="error_segundoAp"></div>
 				</div>
@@ -59,6 +62,8 @@
 									old('fechaNacimiento'),
 									['class' => 'form-control',
 										'id' => 'fechaNacimiento',
+										'autocomplete' => 'off',
+										'placeholder' => 'dd/mm/aaaa',
 										'data-validation-format'=>"dd/mm/yyyy"
 									] )!!}
 					<div class="form-control-feedback" id="error_fechaNacimiento"></div>
@@ -69,6 +74,7 @@
 									old('edad'),
 									['class' => 'form-control',
 										'id' => 'edad',
+										'autocomplete' => 'off',
 									] )!!}
 					<div class="form-control-feedback" id="error_edad"></div>
 				</div>

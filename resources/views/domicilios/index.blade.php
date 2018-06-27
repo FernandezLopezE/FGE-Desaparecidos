@@ -141,7 +141,7 @@
                     
                     
 				})
-			
+				$("#div_ext").hide();
                 $("#btnActualizarD").show();
 				$("#btnGuardarDomicilio").hide();
 				$("#modalDomicilio").modal("show");    
@@ -183,6 +183,7 @@
 			colonia.empty();
 			cp.empty();
 			$('#btnActualizarD').hide();
+			$("#div_ext").hide();
 			$('#btnGuardarDomicilio').show();
             $("input[name='telefonos']").mask('(000) 000 0000');
 		})
@@ -249,24 +250,19 @@
 		//alert("hola");
 		var dataString = {
 			//prendaTipo: $('#idVestimenta').val(),
-			
-            
-            tipoDireccion : $("#tipoDireccion").val(),
-				calle: $("#calle").val(),
-				numExterno : $("#numExterno").val(),
-				numInterno : $("#numInterno").val(),
-				idEstado : $("#idEstado").val(),
-				idMunicipio : $("#idMunicipio").val(),
-				idLocalidad : $("#idLocalidad").val(),
-				idColonia : $("#idColonia").val(),
-				idCodigoPostal : $("#idCodigoPostal").val(),
-				telefonos : $("#telefonos").val(),
-				ext : $("#ext").val(),
-				
-            
-
+			tipoDireccion : $("#tipoDireccion").val(),
+			calle: $("#calle").val(),
+			numExterno : $("#numExterno").val(),
+			numInterno : $("#numInterno").val(),
+			idEstado : $("#idEstado").val(),
+			idMunicipio : $("#idMunicipio").val(),
+			idLocalidad : $("#idLocalidad").val(),
+			idColonia : $("#idColonia").val(),
+			idCodigoPostal : $("#idCodigoPostal").val(),
+			telefonos : $("#telefonos").val(),
+			ext : $("#ext").val(),
 		};
-             idDesaparecido2 = $("#btnActualizarD").val();
+        idDesaparecido2 = $("#btnActualizarD").val();
 		console.log(dataString);
 		$.ajax({
 			type: 'PUT',
@@ -276,7 +272,7 @@
 			success: function(data) {						
 				console.log(data);
 				table.bootstrapTable('refresh');
-                     modal.find('form')[0].reset();
+                    modal.find('form')[0].reset();
                     modal.removeData('modal');
                     municipio.empty();
                     localidad.empty();

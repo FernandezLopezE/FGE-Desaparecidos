@@ -110,7 +110,7 @@
 										['class' => 'form-control mayuscula'
 										] )!!}				
 				</div>
-				<div class="form-group col-lg-2">
+				<div class="form-group col-lg-2" id="div_ext">
 					{!! Form::label ('ext','Ext:') !!}
 					{!! Form::text ('ext',old(''), ['class' => 'form-control mayuscula'] )!!}				
 				</div>	

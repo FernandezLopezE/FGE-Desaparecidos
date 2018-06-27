@@ -486,7 +486,7 @@ console.log(sHours + ":" + sMinutes);
 				success: function(data) {
 					console.log("Ya la hiciste");
 					$.confirm({
-				            title: 'Datos guardados!',
+				            title: '¡Datos guardados!',
 				            content: 'Los datos fueron guardados exitosamente.',
 				            type: 'dark',
 				            typeAnimated: true,
