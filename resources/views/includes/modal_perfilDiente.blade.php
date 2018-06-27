@@ -13,15 +13,15 @@
         <div id="carouselPDiente" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" src="/images/TiposPerfil/RECTO/TEAM-recto.jpg" alt="Perfil recto" id="perfilRecto" value="2">
+              <img class="d-block w-100" src="{{ asset('/images/TiposPerfil/RECTO/TEAM-recto.jpg')}}" alt="Perfil recto" id="perfilRecto" value="2">
               <center><b><h3>Perfil recto</h3></b></center>
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="/images/TiposPerfil/CONCAVO/TEAM-concavo.jpg" alt="Perfil cóncavo" id="perfilConcavo" value="3">
+              <img class="d-block w-100" src="{{ asset('/images/TiposPerfil/CONCAVO/TEAM-concavo.jpg')}}" alt="Perfil cóncavo" id="perfilConcavo" value="3">
               <center><b><h3>Perfil cóncavo</h3></b></center>
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="/images/TiposPerfil/CONVEXO/TEAM-convexo.jpg" alt="Perfil convexo" id="perfilConvexo" value="4">
+              <img class="d-block w-100" src="{{ asset('/images/TiposPerfil/CONVEXO/TEAM-convexo.jpg')}}" alt="Perfil convexo" id="perfilConvexo" value="4">
               <center><b><h3>Perfil convexo</h3></b></center>
             </div>
           </div>

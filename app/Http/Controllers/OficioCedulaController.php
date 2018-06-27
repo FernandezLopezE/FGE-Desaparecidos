@@ -107,8 +107,14 @@ class OficioCedulaController extends Controller
         $datosDomicilioDesaparecido = $this->obtenerDireccion($datosDesaparecido[0]->idDesa,'PERSONAL');
         //---Obtener domiciolio desaparecido---
         $datosDomicilioUltimo = $this->obtenerDireccion($datosDesaparecido[0]->idDesa,'LUGAR DE AVISTAMIENTO');
+
+        $datosCabello = $this->obtenerCabelloOjos($datosDesaparecido[0]->idDesa,2);
+
+        $datosOjo = $this->obtenerCabelloOjos($datosDesaparecido[0]->idDesa,9);
+
+        $dataPartes = $this->obtenerSenasParticulares($datosDesaparecido[0]->idDesa);
         
-        //dd($datosDesaparecido);
+        //dd($dataPartes);
         if($datosDesaparecido[0]->documentoI == null || $datosDesaparecido[0]->documentoI == 'NO ESPECIFICADO' ){
             $doc = 'NO';
         }else{
@@ -168,14 +174,18 @@ class OficioCedulaController extends Controller
             'apodoDesa' => $datosDesaparecido[0]->apodo,
             'estaturaDesa' => $datosDesaparecido[0]->estatura,
             'colorPiel' => $datosDesaparecido[0]->colorPiel,
-            'fechaNacimiento' => $datosDesaparecido[0]->fechaNacimiento,
-            'fechaDesaparicion' => $datosDesaparecido[0]->fechaExtravio,
-            'fotoDesaparecido' => $datosDesaparecido[0]->foto
+            'fechaNacimiento' => strtoupper($datosDesaparecido[0]->fechaNacimiento),
+            'fechaDesaparicion' => strtoupper($datosDesaparecido[0]->fechaExtravio),
+            'fotoDesaparecido' => $datosDesaparecido[0]->foto,
+            'tipoCabello' => $datosCabello[0]->tipo ?? "SIN INFORMACIÓN",
+            'colorCabello' => $datosCabello[0]->color ?? "SIN INFORMACIÓN",
+            'tipoOjos' => $datosOjo[0]->tamano ?? "SIN INFORMACIÓN",
+            'colorOjos' =>$datosOjo[0]->color ?? "SIN INFORMACIÓN"
 
             );
         //dd($datosDomicilio);
         //dd($desaparecido->partescuerpo->toArray());
-        $view = view('plantillas.cedulaMediaAfiliacion.oficioGeneral', compact('desaparecido','data','oficio2','oficio3','oficio4'))->render();
+        $view = view('plantillas.cedulaMediaAfiliacion.oficioGeneral', compact('desaparecido','data','dataPartes','oficio3','oficio4'))->render();
         $pdf =\App::make('dompdf.wrapper');
         $pdf -> loadHTML($view);
         
@@ -627,5 +637,114 @@ class OficioCedulaController extends Controller
 
         return $lugar;
 
+    }
+
+    public function obtenerCabelloOjos($idDesaparecido,$idParteCuerpo){
+        $parte = \DB::table('cedula_partes_cuerpo AS cpc')
+                ->Join('cat_partes_cuerpo AS partesC', 'cpc.idPartesCuerpo', '=', 'partesC.id')
+                ->leftJoin('cat_tamano_cuerpo AS taC', 'cpc.idTamanoCuerpo', '=', 'taC.id')
+                ->leftJoin('cat_tipos_cuerpo AS tiC', 'cpc.idTipoCuerpo', '=', 'tiC.id')
+                ->leftJoin('cat_colores_cuerpo AS coloresC', 'cpc.idColoresCuerpo', '=', 'coloresC.id')
+                ->selectRaw('cpc.observaciones,
+                            partesC.nombre AS parteCuerpo,
+                            tac.nombre AS tamano,
+                            tic.nombre AS tipo,
+                            coloresC.nombre AS color')
+                    ->where('cpc.idPersonaDesaparecida',$idDesaparecido)
+                    ->where('cpc.idPartesCuerpo',$idParteCuerpo)
+                    
+                    ->get();
+
+        return $parte;
+    }
+
+    public function obtenerSenasParticulares($idDesaparecido){
+        $partesSeleccionadas = \DB::table('cedula_partes_cuerpo AS ce')
+                        ->leftJoin('cat_partes_cuerpo AS cu', 'ce.idPartesCuerpo', '=', 'cu.id')
+                        ->leftJoin('cat_partes_cuerpo AS pa', 'cu.partePadre', '=', 'pa.id')
+                        ->leftJoin('cat_tamano_cuerpo AS ta', 'ce.idTamanoCuerpo', '=', 'ta.id')
+                        ->leftJoin('cat_tipos_cuerpo AS ti', 'ce.idTipoCuerpo', '=', 'ti.id')
+                        ->leftJoin('cat_colores_cuerpo AS co', 'ce.idColoresCuerpo', '=', 'co.id')
+                        ->where('idPersonaDesaparecida', $idDesaparecido)
+                        ->select('ce.id as idParteCuerpo','pa.id as idPadre', 'pa.nombre as partep','cu.id as idParteh' ,'cu.nombre as parteh',
+                        'ta.nombre as tamano', 'ti.nombre as tipo', 'co.nombre as color', 'ce.posicion', 'ce.observaciones', 'ce.imagen', 'cu.reglas', 'ce.otroTipo', 'ce.otroColor')
+                        ->get();
+
+        $dataPartes = array();
+        $partePadre = null;
+        
+        //dd($activasPartes);
+         foreach ($partesSeleccionadas as $parte) {
+            //dd($parte->idParteh);
+            $otras=$this->get_otros($parte->idParteh, $idDesaparecido, $parte->idParteCuerpo);
+            $modificaciones = $this->get_modificaciones($parte->idParteCuerpo);
+            $modifi = array();
+            foreach ($modificaciones as $value) {
+                if($value->nombre == 'OTRO'){
+                    $modifi[] = $otras[0]->otraModificacion;
+                }else{
+                    $modifi[] = $value->nombre;    
+                }
+                
+            }
+            
+            //dd($otras);
+            $particularidades = $this->get_particularidades($parte->idParteCuerpo);
+            $parti = array();
+            foreach ($particularidades as $value) {               
+                if($value->nombre == 'OTRO'){
+                    $parti[] = $otras[0]->otraParticularidad;
+                }else{
+                    $parti[] = $value->nombre;    
+                }
+                
+            }
+            $parte->modificaciones = $modifi;
+            $parte->particularidades = $parti;
+           
+
+            if ($parte->idPadre != $partePadre) {
+                $dataPartes[$parte->partep] = array('idPadre' => $parte->idPadre);
+                $partePadre = $parte->idPadre;
+            }
+            $dataPartes[$parte->partep]['hijos'][] = $parte;
+            //$dataPartes[$parte->partep]['otras'][] = json_encode($otras); 
+        }
+
+        return $dataPartes;
+    }
+
+    public function get_modificaciones($idParteCuerpo)
+    {
+        $modificaciones = \DB::table('pivot_submodi_cuerpo AS pi')
+                            ->leftJoin('cat_modificaciones_cuerpo AS mo', 'pi.idModificaciones', '=', 'mo.id')
+                            ->where('pi.idCedulaPartesCuerpo', $idParteCuerpo)
+                            ->select('mo.nombre')
+                            ->get();
+
+        return $modificaciones;
+    }
+
+    public function get_particularidades($idParteCuerpo)
+    {
+        $particularidades = \DB::table('pivot_subparti_cuerpo AS pi')
+                            ->leftJoin('cat_particularidades_cuerpo AS mo', 'pi.idParticularidades', '=', 'mo.id')
+                            ->where('pi.idCedulaPartesCuerpo', $idParteCuerpo)
+                            ->select('mo.nombre')
+                            ->get();
+
+        return $particularidades;
+    }
+
+    public function get_otros($idParteCuerpo, $idPersonaDesaparecida, $idCedulaPartesCuerpo)
+    {
+        $otros = \DB::table('cedula_partes_cuerpo AS ce')
+                            ->where('ce.idPartesCuerpo', $idParteCuerpo)
+                            ->where('ce.idPersonaDesaparecida', $idPersonaDesaparecida)
+                            ->where('ce.id', $idCedulaPartesCuerpo)
+                            ->select('ce.otraParticularidad','ce.otraModificacion','ce.otroTipo','ce.otroColor')
+                            ->get();
+
+        return $otros;
     }
 }
