@@ -452,7 +452,7 @@
 {!! Html::script('personal/js/alertify.min.js') !!}
 {!! Html::script('personal/js/sweetalert.min.js') !!}
 {!! Html::script('personal/js/functions.js') !!}
-{!! Html::script('personal/js/datos_dentales/accionDientes.js') !!}
+
 {!! Html::script('personal/js/datos_dentales/sliders_dentales.js') !!}
 
 <!-- <script src="../plugins/bootstrap_fileinput/js/popper.min.js" type="text/javascript"></script>
@@ -474,6 +474,7 @@
 	********* función para los toltip's de tratamientos **********S
 	**************************************************************/
 $(document).ready(function(){
+
 	$('#toggle-dien').click();
     $(function() {
         
@@ -659,6 +660,8 @@ $(document).ready(function(){
 	
 	var routedatosDentales = '{!! route('datos_dentales.index') !!}';
 	var routedientesPerdidos = '{!! route('datos_dentales_dientes_perdidos.index') !!}';
+
+    var routeIndex = "{!! route('consultas.index') !!}";
 	var idDesaparecido = '{!! $desaparecido->id !!}'
 	var auxTrata = new Array();
 	var auxEnfer = new Array();
@@ -1029,4 +1032,5 @@ $(document).ready(function(){
 	});*/
 });
 </script>
+{!! Html::script('personal/js/datos_dentales/accionDientes.js') !!}
 @endsection

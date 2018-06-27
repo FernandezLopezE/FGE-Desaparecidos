@@ -618,6 +618,7 @@ $(document).ready(function(){
 	
 	var routedatosDentales = '{!! route('datos_dentales.index') !!}';
 	var routedientesPerdidos = '{!! route('datos_dentales_dientes_perdidos.index') !!}';
+    var routeIndex = "{!! route('consultas.index') !!}";
 	var idDesaparecido = '{!! $desaparecido->id !!}';
 	var auxTrata = new Array();
 	var auxEnfer = new Array();

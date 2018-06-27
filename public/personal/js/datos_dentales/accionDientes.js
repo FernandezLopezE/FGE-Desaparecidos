@@ -16,6 +16,7 @@ $(document).ready(function(){
         }
     }
 
+
     //Generar formualrio 
      $('g').click(function(){
         parteDiente = $(this).attr("data-diente");
@@ -27,7 +28,7 @@ $(document).ready(function(){
         } else {
           $.ajax({
             type: 'GET',
-            url: '/consultas/get_diente/'+parteDiente,            
+            url: routeIndex+'/get_diente/'+parteDiente,
             dataType: 'json',
             success: function(data) {
                 console.log(data);
