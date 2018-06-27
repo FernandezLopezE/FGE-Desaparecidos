@@ -14,6 +14,7 @@
 		<h5>Documentos generados</h5>
 	</div>
 	<div class="card-body">
+		<center><h3 style="color: red;"><i class="fa fa-exclamation-triangle"></i> En desarrollo</h3></center>
 		@include('includes.modal_VerDepend')
 		<table class="table table-hover" id="documentos">
 		    <thead>

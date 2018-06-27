@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\models\Cedula;
+use App\Models\Cedula;
 use App\Models\Persona;
 use App\Models\Desaparecido;
 use App\Models\Domicilio;
