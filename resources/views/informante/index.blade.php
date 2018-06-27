@@ -375,7 +375,7 @@
 				    title: 'Aviso!',
 				    type: 'orange',
 				    typeAnimated: true,
-				    content: 'Al menos un opción debe estar seleccionada!',
+				    content: 'Seleccione si es informante o autorizada!',
 				    buttons: {
 				        tryAgain: {
 				            text: 'Aceptar',
@@ -451,7 +451,7 @@
 				    title: 'Aviso!',
 				    type: 'orange',
 				    typeAnimated: true,
-				    content: 'Al menos un opción debe estar seleccionada!',
+				    content: 'Seleccione si es informante o autorizada!',
 				    buttons: {
 				        tryAgain: {
 				            text: 'Aceptar',
