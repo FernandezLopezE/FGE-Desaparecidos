@@ -36,32 +36,7 @@ class ConsultasController extends Controller
 
 		return response()->json($cedulas);
 	}
-    
-    public function jsonDesaparecidosPersonaTodos(Request $request)
-	{
-
-        $estados = $request->input('estados');
-        $masc = $request->input('masc');
-        $fem = $request->input('fem');
-        $rg = $request->input('rg');
-        $rg2 = $request->input('rg2');
-
-        $desaparecidos = \DB::table('desaparecidos_personas as des')
-                                        
-                            ->leftjoin('persona as p', 'des.id', '=', 'p.id')
-                            
-                            ->leftjoin('desaparecidos_cedula_investigacion AS dci', 'dci.id', '=', 'des.idCedula')
-                            ->leftjoin('cat_estado AS ce', 'dci.idEstadoDesaparicion', '=', 'ce.id')
-                            ->leftjoin('cat_municipio AS cm', 'dci.idMunicipioDesa', '=', 'cm.id', 'and', 'cm.idEstado', '=', 'dci.idEstadoDesaparicion')
-                            ->leftjoin('cat_nacionalidad AS cn', 'p.idNacionalidad', '=', 'cn.id')
-
-            ->select('des.id as id', \DB::raw('CONCAT(p.nombres, " ", ifnull(p.primerAp,"")," ",ifnull( p.segundoAp,""))AS nombre'), 'p.sexo as sexo',\DB::raw('substr(dci.desaparicionFecha, 1,10) as fecha'),'des.apodo as apodo',\DB::raw('CAST(substr(des.edadExtravio, 1,3)AS SIGNED) as edad'),'ce.id as idEstado','ce.nombre as estado','cm.id as idMuni','cm.nombre as municipio','cn.nombre as nacionalidad')
-            
-                            ->where('tipoPersona','DESAPARECIDA')
-                            ->get();
-
-		return response()->json($desaparecidos);
-	}
+ 
     public function jsonDesaparecidosPersona(Request $request)
 	{
         $nacionalidad = $request->input('nacionalidad');
