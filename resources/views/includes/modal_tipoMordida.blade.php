@@ -12,15 +12,15 @@
         <div id="carouselMordida" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
-              <img class="d-block w-100" src="/images/TiposMordidas/mordidaAbierta.jpg" alt="ABIERTA" id="mordidaAbierta" value="2">
+              <img class="d-block w-100" src="{{ asset('/images/TiposMordidas/mordidaAbierta.jpg')}}" alt="ABIERTA" id="mordidaAbierta" value="2">
               <center><b><h3>Abierta</h3></b></center>
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="/images/TiposMordidas/mordidaCerrada.jpg" alt="CERRADA" id="mordidaCerrada" value="3">
+              <img class="d-block w-100" src="{{ asset('/images/TiposMordidas/mordidaCerrada.jpg')}}" alt="CERRADA" id="mordidaCerrada" value="3">
               <center><b><h3>Cerrada</h3></b></center>
             </div>
             <div class="carousel-item">
-              <img class="d-block w-100" src="/images/TiposMordidas/mordidaCruzada.jpg" alt="CRUZADA" id="mordidaCruzada" value="4">
+              <img class="d-block w-100" src="{{ asset('/images/TiposMordidas/mordidaCruzada.jpg')}}" alt="CRUZADA" id="mordidaCruzada" value="4">
               <center><b><h3>Cruzada</h3></b></center>
             </div>
           </div>
